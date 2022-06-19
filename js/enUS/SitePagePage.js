@@ -156,7 +156,7 @@ function suggestSitePageObjectSuggest($formFilters, $list) {
 	success = function( data, textStatus, jQxhr ) {
 		$list.empty();
 		$.each(data['list'], function(i, o) {
-			var $i = $('<i>').attr('class', 'fad fa-page ');
+			var $i = $('<i>').attr('class', 'fad fa-newspaper ');
 			var $span = $('<span>').attr('class', '').text(o['objectTitle']);
 			var $li = $('<li>');
 			var $a = $('<a>').attr('href', o['pageUrlPk']);
@@ -695,7 +695,7 @@ async function websocketSitePage(success) {
 			var $margin = $('<div>').attr('class', 'w3-margin ').attr('id', 'margin-' + id);
 			var $card = $('<div>').attr('class', 'w3-card w3-white ').attr('id', 'card-' + id);
 			var $header = $('<div>').attr('class', 'w3-container fa-2017-navy-peony ').attr('id', 'header-' + id);
-			var $i = $('<i>').attr('class', 'fad fa-page w3-margin-right ').attr('id', 'icon-' + id);
+			var $i = $('<i>').attr('class', 'fad fa-newspaper w3-margin-right ').attr('id', 'icon-' + id);
 			var $headerSpan = $('<span>').attr('class', '').text('modify articles in ' + json.timeRemaining);
 			var $x = $('<span>').attr('class', 'w3-button w3-display-topright ').attr('onclick', '$("#card-' + id + '").hide(); ').attr('id', 'x-' + id);
 			var $body = $('<div>').attr('class', 'w3-container w3-padding ').attr('id', 'text-' + id);
