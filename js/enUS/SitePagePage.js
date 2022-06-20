@@ -269,6 +269,10 @@ async function postSitePage($formValues, success, error) {
 	if(valueObjectTitle != null && valueObjectTitle !== '')
 		vals['objectTitle'] = valueObjectTitle;
 
+	var valueObjectText = $formValues.find('.valueObjectText').val();
+	if(valueObjectText != null && valueObjectText !== '')
+		vals['objectText'] = valueObjectText;
+
 	$.ajax({
 		url: '/api/page'
 		, dataType: 'json'
@@ -508,6 +512,18 @@ async function patchSitePage($formFilters, $formValues, id, success, error) {
 	var removeObjectTitle = $formValues.find('.removeObjectTitle').val();
 	if(removeObjectTitle != null && removeObjectTitle !== '')
 		vals['removeObjectTitle'] = removeObjectTitle;
+
+	var valueObjectText = $formValues.find('.valueObjectText').val();
+	var removeObjectText = $formValues.find('.removeObjectText').val() === 'true';
+	var setObjectText = removeObjectText ? null : $formValues.find('.setObjectText').val();
+	var addObjectText = $formValues.find('.addObjectText').val();
+	if(removeObjectText || setObjectText != null && setObjectText !== '')
+		vals['setObjectText'] = setObjectText;
+	if(addObjectText != null && addObjectText !== '')
+		vals['addObjectText'] = addObjectText;
+	var removeObjectText = $formValues.find('.removeObjectText').val();
+	if(removeObjectText != null && removeObjectText !== '')
+		vals['removeObjectText'] = removeObjectText;
 
 	patchSitePageVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, success, error);
 }
