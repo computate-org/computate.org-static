@@ -91,6 +91,10 @@ function searchSiteHtmFilters($formFilters) {
 		if(filterText != null && filterText !== '')
 			filters.push({ name: 'fq', value: 'text:' + filterText });
 
+		var filterComment = $formFilters.find('.valueComment').val();
+		if(filterComment != null && filterComment !== '')
+			filters.push({ name: 'fq', value: 'comment:' + filterComment });
+
 		var filterTabs = $formFilters.find('.valueTabs').val();
 		if(filterTabs != null && filterTabs !== '')
 			filters.push({ name: 'fq', value: 'tabs:' + filterTabs });
@@ -263,6 +267,10 @@ async function postSiteHtm($formValues, success, error) {
 	var valueText = $formValues.find('.valueText').val();
 	if(valueText != null && valueText !== '')
 		vals['text'] = valueText;
+
+	var valueComment = $formValues.find('.valueComment').val();
+	if(valueComment != null && valueComment !== '')
+		vals['comment'] = valueComment;
 
 	var valueTabs = $formValues.find('.valueTabs').val();
 	if(valueTabs != null && valueTabs !== '')
@@ -500,6 +508,18 @@ async function patchSiteHtm($formFilters, $formValues, id, success, error) {
 	if(removeText != null && removeText !== '')
 		vals['removeText'] = removeText;
 
+	var valueComment = $formValues.find('.valueComment').val();
+	var removeComment = $formValues.find('.removeComment').val() === 'true';
+	var setComment = removeComment ? null : $formValues.find('.setComment').val();
+	var addComment = $formValues.find('.addComment').val();
+	if(removeComment || setComment != null && setComment !== '')
+		vals['setComment'] = setComment;
+	if(addComment != null && addComment !== '')
+		vals['addComment'] = addComment;
+	var removeComment = $formValues.find('.removeComment').val();
+	if(removeComment != null && removeComment !== '')
+		vals['removeComment'] = removeComment;
+
 	var valueTabs = $formValues.find('.valueTabs').val();
 	var removeTabs = $formValues.find('.removeTabs').val() === 'true';
 	var setTabs = removeTabs ? null : $formValues.find('.setTabs').val();
@@ -646,6 +666,10 @@ function patchSiteHtmFilters($formFilters) {
 		var filterText = $formFilters.find('.valueText').val();
 		if(filterText != null && filterText !== '')
 			filters.push({ name: 'fq', value: 'text:' + filterText });
+
+		var filterComment = $formFilters.find('.valueComment').val();
+		if(filterComment != null && filterComment !== '')
+			filters.push({ name: 'fq', value: 'comment:' + filterComment });
 
 		var filterTabs = $formFilters.find('.valueTabs').val();
 		if(filterTabs != null && filterTabs !== '')
@@ -988,6 +1012,18 @@ async function websocketSiteHtmInner(apiRequest) {
 						$(this).text(val);
 				});
 				addGlow($('.inputSiteHtm' + pk + 'Text'));
+			}
+			var val = o['comment'];
+			if(vars.includes('comment')) {
+				$('.inputSiteHtm' + pk + 'Comment').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varSiteHtm' + pk + 'Comment').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputSiteHtm' + pk + 'Comment'));
 			}
 			var val = o['tabs'];
 			if(vars.includes('tabs')) {
