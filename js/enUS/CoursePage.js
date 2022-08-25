@@ -1,17 +1,17 @@
 
-// Search //
+// SearchPage //
 
-async function searchArticle($formFilters, success, error) {
-	var filters = searchArticleFilters($formFilters);
+async function searchpageCourse($formFilters, success, error) {
+	var filters = searchpageCourseFilters($formFilters);
 	if(success == null)
 		success = function( data, textStatus, jQxhr ) {};
 	if(error == null)
 		error = function( jqXhr, textStatus, errorThrown ) {};
 
-	searchArticleVals(filters, success, error);
+	searchpageCourseVals(filters, success, error);
 }
 
-function searchArticleFilters($formFilters) {
+function searchpageCourseFilters($formFilters) {
 	var filters = [];
 	if($formFilters) {
 
@@ -106,9 +106,9 @@ function searchArticleFilters($formFilters) {
 	return filters;
 }
 
-function searchArticleVals(filters, success, error) {
+function searchpageCourseVals(filters, success, error) {
 	$.ajax({
-		url: '/api/article?' + $.param(filters)
+		url: '/enUS/course?' + $.param(filters)
 		, dataType: 'json'
 		, type: 'GET'
 		, contentType: 'application/json; charset=utf-8'
@@ -117,7 +117,7 @@ function searchArticleVals(filters, success, error) {
 	});
 }
 
-function suggestArticleObjectSuggest($formFilters, $list) {
+function suggestCourseObjectSuggest($formFilters, $list) {
 	success = function( data, textStatus, jQxhr ) {
 		$list.empty();
 		$.each(data['list'], function(i, o) {
@@ -132,150 +132,24 @@ function suggestArticleObjectSuggest($formFilters, $list) {
 		});
 	};
 	error = function( jqXhr, textStatus, errorThrown ) {};
-	searchArticleVals($formFilters, success, error);
+	searchCourseVals($formFilters, success, error);
 }
 
-// GET //
+// Search //
 
-async function getArticle() {
-	$.ajax({
-		url: '/api/article/' + id
-		, dataType: 'json'
-		, type: 'GET'
-		, contentType: 'application/json; charset=utf-8'
-		, success: success
-		, error: error
-	});
+async function searchCourse($formFilters, success, error) {
+	var filters = searchCourseFilters($formFilters);
+	if(success == null)
+		success = function( data, textStatus, jQxhr ) {};
+	if(error == null)
+		error = function( jqXhr, textStatus, errorThrown ) {};
+
+	searchCourseVals(filters, success, error);
 }
 
-// PATCH //
-
-async function patchArticle($formFilters, $formValues, id, success, error) {
-	var filters = patchArticleFilters($formFilters);
-
-	var vals = {};
-
-	var valueCreated = $formValues.find('.valueCreated').val();
-	var removeCreated = $formValues.find('.removeCreated').val() === 'true';
-	var setCreated = removeCreated ? null : $formValues.find('.setCreated').val();
-	var addCreated = $formValues.find('.addCreated').val();
-	if(removeCreated || setCreated != null && setCreated !== '')
-		vals['setCreated'] = setCreated;
-	if(addCreated != null && addCreated !== '')
-		vals['addCreated'] = addCreated;
-	var removeCreated = $formValues.find('.removeCreated').val();
-	if(removeCreated != null && removeCreated !== '')
-		vals['removeCreated'] = removeCreated;
-
-	var valueModified = $formValues.find('.valueModified').val();
-	var removeModified = $formValues.find('.removeModified').val() === 'true';
-	var setModified = removeModified ? null : $formValues.find('.setModified').val();
-	var addModified = $formValues.find('.addModified').val();
-	if(removeModified || setModified != null && setModified !== '')
-		vals['setModified'] = setModified;
-	if(addModified != null && addModified !== '')
-		vals['addModified'] = addModified;
-	var removeModified = $formValues.find('.removeModified').val();
-	if(removeModified != null && removeModified !== '')
-		vals['removeModified'] = removeModified;
-
-	var valueObjectId = $formValues.find('.valueObjectId').val();
-	var removeObjectId = $formValues.find('.removeObjectId').val() === 'true';
-	var setObjectId = removeObjectId ? null : $formValues.find('.setObjectId').val();
-	var addObjectId = $formValues.find('.addObjectId').val();
-	if(removeObjectId || setObjectId != null && setObjectId !== '')
-		vals['setObjectId'] = setObjectId;
-	if(addObjectId != null && addObjectId !== '')
-		vals['addObjectId'] = addObjectId;
-	var removeObjectId = $formValues.find('.removeObjectId').val();
-	if(removeObjectId != null && removeObjectId !== '')
-		vals['removeObjectId'] = removeObjectId;
-
-	var valueArchived = $formValues.find('.valueArchived').val();
-	var removeArchived = $formValues.find('.removeArchived').val() === 'true';
-	var valueArchivedSelectVal = $formValues.find('select.setArchived').val();
-	if(valueArchivedSelectVal != null && valueArchivedSelectVal !== '')
-		valueArchived = valueArchivedSelectVal == 'true';
-	var setArchived = removeArchived ? null : valueArchived;
-	var addArchived = $formValues.find('.addArchived').prop('checked');
-	if(removeArchived || setArchived != null && setArchived !== '')
-		vals['setArchived'] = setArchived;
-	if(addArchived != null && addArchived !== '')
-		vals['addArchived'] = addArchived;
-	var removeArchived = $formValues.find('.removeArchived').prop('checked');
-	if(removeArchived != null && removeArchived !== '')
-		vals['removeArchived'] = removeArchived;
-
-	var valueDeleted = $formValues.find('.valueDeleted').val();
-	var removeDeleted = $formValues.find('.removeDeleted').val() === 'true';
-	var valueDeletedSelectVal = $formValues.find('select.setDeleted').val();
-	if(valueDeletedSelectVal != null && valueDeletedSelectVal !== '')
-		valueDeleted = valueDeletedSelectVal == 'true';
-	var setDeleted = removeDeleted ? null : valueDeleted;
-	var addDeleted = $formValues.find('.addDeleted').prop('checked');
-	if(removeDeleted || setDeleted != null && setDeleted !== '')
-		vals['setDeleted'] = setDeleted;
-	if(addDeleted != null && addDeleted !== '')
-		vals['addDeleted'] = addDeleted;
-	var removeDeleted = $formValues.find('.removeDeleted').prop('checked');
-	if(removeDeleted != null && removeDeleted !== '')
-		vals['removeDeleted'] = removeDeleted;
-
-	var valueInheritPk = $formValues.find('.valueInheritPk').val();
-	var removeInheritPk = $formValues.find('.removeInheritPk').val() === 'true';
-	var setInheritPk = removeInheritPk ? null : $formValues.find('.setInheritPk').val();
-	var addInheritPk = $formValues.find('.addInheritPk').val();
-	if(removeInheritPk || setInheritPk != null && setInheritPk !== '')
-		vals['setInheritPk'] = setInheritPk;
-	if(addInheritPk != null && addInheritPk !== '')
-		vals['addInheritPk'] = addInheritPk;
-	var removeInheritPk = $formValues.find('.removeInheritPk').val();
-	if(removeInheritPk != null && removeInheritPk !== '')
-		vals['removeInheritPk'] = removeInheritPk;
-
-	var valueSessionId = $formValues.find('.valueSessionId').val();
-	var removeSessionId = $formValues.find('.removeSessionId').val() === 'true';
-	var setSessionId = removeSessionId ? null : $formValues.find('.setSessionId').val();
-	var addSessionId = $formValues.find('.addSessionId').val();
-	if(removeSessionId || setSessionId != null && setSessionId !== '')
-		vals['setSessionId'] = setSessionId;
-	if(addSessionId != null && addSessionId !== '')
-		vals['addSessionId'] = addSessionId;
-	var removeSessionId = $formValues.find('.removeSessionId').val();
-	if(removeSessionId != null && removeSessionId !== '')
-		vals['removeSessionId'] = removeSessionId;
-
-	var valueUserKey = $formValues.find('.valueUserKey').val();
-	var removeUserKey = $formValues.find('.removeUserKey').val() === 'true';
-	var setUserKey = removeUserKey ? null : $formValues.find('.setUserKey').val();
-	var addUserKey = $formValues.find('.addUserKey').val();
-	if(removeUserKey || setUserKey != null && setUserKey !== '')
-		vals['setUserKey'] = setUserKey;
-	if(addUserKey != null && addUserKey !== '')
-		vals['addUserKey'] = addUserKey;
-	var removeUserKey = $formValues.find('.removeUserKey').val();
-	if(removeUserKey != null && removeUserKey !== '')
-		vals['removeUserKey'] = removeUserKey;
-
-	var valueObjectTitle = $formValues.find('.valueObjectTitle').val();
-	var removeObjectTitle = $formValues.find('.removeObjectTitle').val() === 'true';
-	var setObjectTitle = removeObjectTitle ? null : $formValues.find('.setObjectTitle').val();
-	var addObjectTitle = $formValues.find('.addObjectTitle').val();
-	if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-		vals['setObjectTitle'] = setObjectTitle;
-	if(addObjectTitle != null && addObjectTitle !== '')
-		vals['addObjectTitle'] = addObjectTitle;
-	var removeObjectTitle = $formValues.find('.removeObjectTitle').val();
-	if(removeObjectTitle != null && removeObjectTitle !== '')
-		vals['removeObjectTitle'] = removeObjectTitle;
-
-	patchArticleVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, success, error);
-}
-
-function patchArticleFilters($formFilters) {
+function searchCourseFilters($formFilters) {
 	var filters = [];
 	if($formFilters) {
-		filters.push({ name: 'softCommit', value: 'true' });
 
 		var filterCreated = $formFilters.find('.valueCreated').val();
 		if(filterCreated != null && filterCreated !== '')
@@ -368,129 +242,56 @@ function patchArticleFilters($formFilters) {
 	return filters;
 }
 
-function patchArticleVal(filters, v, val, success, error) {
-	var vals = {};
-	vals[v] = val;
-	patchArticleVals(filters, vals, success, error);
-}
-
-function patchArticleVals(filters, vals, success, error) {
+function searchCourseVals(filters, success, error) {
 	$.ajax({
-		url: '/api/article?' + $.param(filters)
+		url: '/api/course?' + $.param(filters)
 		, dataType: 'json'
-		, type: 'PATCH'
+		, type: 'GET'
 		, contentType: 'application/json; charset=utf-8'
-		, data: JSON.stringify(vals)
 		, success: success
 		, error: error
 	});
 }
 
-// POST //
+function suggestCourseObjectSuggest($formFilters, $list) {
+	success = function( data, textStatus, jQxhr ) {
+		$list.empty();
+		$.each(data['list'], function(i, o) {
+			var $i = $('<i>').attr('class', 'far fa-university ');
+			var $span = $('<span>').attr('class', '').text(o['objectTitle']);
+			var $li = $('<li>');
+			var $a = $('<a>').attr('href', o['pageUrlPk']);
+			$a.append($i);
+			$a.append($span);
+			$li.append($a);
+			$list.append($li);
+		});
+	};
+	error = function( jqXhr, textStatus, errorThrown ) {};
+	searchCourseVals($formFilters, success, error);
+}
 
-async function postArticle($formValues, success, error) {
-	var vals = {};
-	if(success == null) {
-		success = function( data, textStatus, jQxhr ) {
-			addGlow($formValues.next('button'));
-			var url = data['pageUrlPk'];
-			if(url)
-				window.location.href = url;
-		};
-	}
-	if(error == null) {
-		error = function( jqXhr, textStatus, errorThrown ) {
-			addError($formValues.next('button'));
-		};
-	}
+// GET //
 
-	var valueCreated = $formValues.find('.valueCreated').val();
-	if(valueCreated != null && valueCreated !== '')
-		vals['created'] = valueCreated;
-
-	var valueModified = $formValues.find('.valueModified').val();
-	if(valueModified != null && valueModified !== '')
-		vals['modified'] = valueModified;
-
-	var valueObjectId = $formValues.find('.valueObjectId').val();
-	if(valueObjectId != null && valueObjectId !== '')
-		vals['objectId'] = valueObjectId;
-
-	var valueArchived = $formValues.find('.valueArchived').val();
-	if(valueArchived != null && valueArchived !== '')
-		vals['archived'] = valueArchived == 'true';
-
-	var valueDeleted = $formValues.find('.valueDeleted').val();
-	if(valueDeleted != null && valueDeleted !== '')
-		vals['deleted'] = valueDeleted == 'true';
-
-	var valueInheritPk = $formValues.find('.valueInheritPk').val();
-	if(valueInheritPk != null && valueInheritPk !== '')
-		vals['inheritPk'] = valueInheritPk;
-
-	var valueSessionId = $formValues.find('.valueSessionId').val();
-	if(valueSessionId != null && valueSessionId !== '')
-		vals['sessionId'] = valueSessionId;
-
-	var valueUserKey = $formValues.find('.valueUserKey').val();
-	if(valueUserKey != null && valueUserKey !== '')
-		vals['userKey'] = valueUserKey;
-
-	var valueObjectTitle = $formValues.find('.valueObjectTitle').val();
-	if(valueObjectTitle != null && valueObjectTitle !== '')
-		vals['objectTitle'] = valueObjectTitle;
-
+async function getCourse() {
 	$.ajax({
-		url: '/api/article'
+		url: '/api/course/' + id
 		, dataType: 'json'
-		, type: 'POST'
+		, type: 'GET'
 		, contentType: 'application/json; charset=utf-8'
-		, data: JSON.stringify(vals)
 		, success: success
 		, error: error
 	});
 }
 
-function postArticleVals(vals, success, error) {
-	$.ajax({
-		url: '/api/article'
-		, dataType: 'json'
-		, type: 'POST'
-		, contentType: 'application/json; charset=utf-8'
-		, data: JSON.stringify(vals)
-		, success: success
-		, error: error
-	});
-}
-
-// PUTImport //
-
-async function putimportArticle($formValues, id, success, error) {
-	var json = $formValues.find('.PUTImport_searchList').val();
-	if(json != null && json !== '')
-		putimportArticleVals(JSON.parse(json), success, error);
-}
-
-function putimportArticleVals(json, success, error) {
-	$.ajax({
-		url: '/api/article-import'
-		, dataType: 'json'
-		, type: 'PUT'
-		, contentType: 'application/json; charset=utf-8'
-		, data: JSON.stringify(json)
-		, success: success
-		, error: error
-	});
-}
-
-async function websocketArticle(success) {
+async function websocketCourse(success) {
 	window.eventBus.onopen = function () {
 
-		window.eventBus.registerHandler('websocketArticle', function (error, message) {
+		window.eventBus.registerHandler('websocketCourse', function (error, message) {
 			var json = JSON.parse(message['body']);
 			var id = json['id'];
 			var pk = json['pk'];
-			var pkPage = $('#ArticleForm :input[name=id]').val();
+			var pkPage = $('#CourseForm :input[name=id]').val();
 			var pks = json['pks'];
 			var empty = json['empty'];
 			var numFound = parseInt(json['numFound']);
@@ -501,7 +302,7 @@ async function websocketArticle(success) {
 			var $card = $('<div>').attr('class', 'w3-card w3-white ').attr('id', 'card-' + id);
 			var $header = $('<div>').attr('class', 'w3-container fa-green ').attr('id', 'header-' + id);
 			var $i = $('<i>').attr('class', 'far fa-university w3-margin-right ').attr('id', 'icon-' + id);
-			var $headerSpan = $('<span>').attr('class', '').text('modify articles in ' + json.timeRemaining);
+			var $headerSpan = $('<span>').attr('class', '').text('modify courses in ' + json.timeRemaining);
 			var $x = $('<span>').attr('class', 'w3-button w3-display-topright ').attr('onclick', '$("#card-' + id + '").hide(); ').attr('id', 'x-' + id);
 			var $body = $('<div>').attr('class', 'w3-container w3-padding ').attr('id', 'text-' + id);
 			var $bar = $('<div>').attr('class', 'w3-light-gray ').attr('id', 'bar-' + id);
@@ -532,7 +333,7 @@ async function websocketArticle(success) {
 		});
 	}
 }
-async function websocketArticleInner(apiRequest) {
+async function websocketCourseInner(apiRequest) {
 	var pk = apiRequest['pk'];
 	var pks = apiRequest['pks'];
 	var classes = apiRequest['classes'];
@@ -540,235 +341,235 @@ async function websocketArticleInner(apiRequest) {
 	var empty = apiRequest['empty'];
 
 	if(pk != null) {
-		searchArticleVals([ {name: 'fq', value: 'id:' + pk} ], function( data, textStatus, jQxhr ) {
+		searchCourseVals([ {name: 'fq', value: 'id:' + pk} ], function( data, textStatus, jQxhr ) {
 			var o = data['list'][0];
 			var val = o['created'];
 			if(vars.includes('created')) {
-				$('.inputArticle' + pk + 'Created').each(function() {
+				$('.inputCourse' + pk + 'Created').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Created').each(function() {
+				$('.varCourse' + pk + 'Created').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Created'));
+				addGlow($('.inputCourse' + pk + 'Created'));
 			}
 			var val = o['modified'];
 			if(vars.includes('modified')) {
-				$('.inputArticle' + pk + 'Modified').each(function() {
+				$('.inputCourse' + pk + 'Modified').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Modified').each(function() {
+				$('.varCourse' + pk + 'Modified').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Modified'));
+				addGlow($('.inputCourse' + pk + 'Modified'));
 			}
 			var val = o['objectId'];
 			if(vars.includes('objectId')) {
-				$('.inputArticle' + pk + 'ObjectId').each(function() {
+				$('.inputCourse' + pk + 'ObjectId').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ObjectId').each(function() {
+				$('.varCourse' + pk + 'ObjectId').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ObjectId'));
+				addGlow($('.inputCourse' + pk + 'ObjectId'));
 			}
 			var val = o['archived'];
 			if(vars.includes('archived')) {
-				$('.inputArticle' + pk + 'Archived').each(function() {
+				$('.inputCourse' + pk + 'Archived').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Archived').each(function() {
+				$('.varCourse' + pk + 'Archived').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Archived'));
+				addGlow($('.inputCourse' + pk + 'Archived'));
 			}
 			var val = o['deleted'];
 			if(vars.includes('deleted')) {
-				$('.inputArticle' + pk + 'Deleted').each(function() {
+				$('.inputCourse' + pk + 'Deleted').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Deleted').each(function() {
+				$('.varCourse' + pk + 'Deleted').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Deleted'));
+				addGlow($('.inputCourse' + pk + 'Deleted'));
 			}
 			var val = o['inheritPk'];
 			if(vars.includes('inheritPk')) {
-				$('.inputArticle' + pk + 'InheritPk').each(function() {
+				$('.inputCourse' + pk + 'InheritPk').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'InheritPk').each(function() {
+				$('.varCourse' + pk + 'InheritPk').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'InheritPk'));
+				addGlow($('.inputCourse' + pk + 'InheritPk'));
 			}
 			var val = o['classCanonicalName'];
 			if(vars.includes('classCanonicalName')) {
-				$('.inputArticle' + pk + 'ClassCanonicalName').each(function() {
+				$('.inputCourse' + pk + 'ClassCanonicalName').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ClassCanonicalName').each(function() {
+				$('.varCourse' + pk + 'ClassCanonicalName').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ClassCanonicalName'));
+				addGlow($('.inputCourse' + pk + 'ClassCanonicalName'));
 			}
 			var val = o['classSimpleName'];
 			if(vars.includes('classSimpleName')) {
-				$('.inputArticle' + pk + 'ClassSimpleName').each(function() {
+				$('.inputCourse' + pk + 'ClassSimpleName').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ClassSimpleName').each(function() {
+				$('.varCourse' + pk + 'ClassSimpleName').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ClassSimpleName'));
+				addGlow($('.inputCourse' + pk + 'ClassSimpleName'));
 			}
 			var val = o['classCanonicalNames'];
 			if(vars.includes('classCanonicalNames')) {
-				$('.inputArticle' + pk + 'ClassCanonicalNames').each(function() {
+				$('.inputCourse' + pk + 'ClassCanonicalNames').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ClassCanonicalNames').each(function() {
+				$('.varCourse' + pk + 'ClassCanonicalNames').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ClassCanonicalNames'));
+				addGlow($('.inputCourse' + pk + 'ClassCanonicalNames'));
 			}
 			var val = o['sessionId'];
 			if(vars.includes('sessionId')) {
-				$('.inputArticle' + pk + 'SessionId').each(function() {
+				$('.inputCourse' + pk + 'SessionId').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'SessionId').each(function() {
+				$('.varCourse' + pk + 'SessionId').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'SessionId'));
+				addGlow($('.inputCourse' + pk + 'SessionId'));
 			}
 			var val = o['userKey'];
 			if(vars.includes('userKey')) {
-				$('.inputArticle' + pk + 'UserKey').each(function() {
+				$('.inputCourse' + pk + 'UserKey').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'UserKey').each(function() {
+				$('.varCourse' + pk + 'UserKey').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'UserKey'));
+				addGlow($('.inputCourse' + pk + 'UserKey'));
 			}
 			var val = o['saves'];
 			if(vars.includes('saves')) {
-				$('.inputArticle' + pk + 'Saves').each(function() {
+				$('.inputCourse' + pk + 'Saves').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Saves').each(function() {
+				$('.varCourse' + pk + 'Saves').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Saves'));
+				addGlow($('.inputCourse' + pk + 'Saves'));
 			}
 			var val = o['objectTitle'];
 			if(vars.includes('objectTitle')) {
-				$('.inputArticle' + pk + 'ObjectTitle').each(function() {
+				$('.inputCourse' + pk + 'ObjectTitle').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ObjectTitle').each(function() {
+				$('.varCourse' + pk + 'ObjectTitle').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ObjectTitle'));
+				addGlow($('.inputCourse' + pk + 'ObjectTitle'));
 			}
 			var val = o['objectSuggest'];
 			if(vars.includes('objectSuggest')) {
-				$('.inputArticle' + pk + 'ObjectSuggest').each(function() {
+				$('.inputCourse' + pk + 'ObjectSuggest').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ObjectSuggest').each(function() {
+				$('.varCourse' + pk + 'ObjectSuggest').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ObjectSuggest'));
+				addGlow($('.inputCourse' + pk + 'ObjectSuggest'));
 			}
 			var val = o['objectText'];
 			if(vars.includes('objectText')) {
-				$('.inputArticle' + pk + 'ObjectText').each(function() {
+				$('.inputCourse' + pk + 'ObjectText').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ObjectText').each(function() {
+				$('.varCourse' + pk + 'ObjectText').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ObjectText'));
+				addGlow($('.inputCourse' + pk + 'ObjectText'));
 			}
 			var val = o['pageUrlId'];
 			if(vars.includes('pageUrlId')) {
-				$('.inputArticle' + pk + 'PageUrlId').each(function() {
+				$('.inputCourse' + pk + 'PageUrlId').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'PageUrlId').each(function() {
+				$('.varCourse' + pk + 'PageUrlId').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'PageUrlId'));
+				addGlow($('.inputCourse' + pk + 'PageUrlId'));
 			}
 			var val = o['pageUrlPk'];
 			if(vars.includes('pageUrlPk')) {
-				$('.inputArticle' + pk + 'PageUrlPk').each(function() {
+				$('.inputCourse' + pk + 'PageUrlPk').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'PageUrlPk').each(function() {
+				$('.varCourse' + pk + 'PageUrlPk').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'PageUrlPk'));
+				addGlow($('.inputCourse' + pk + 'PageUrlPk'));
 			}
 			var val = o['pageUrlApi'];
 			if(vars.includes('pageUrlApi')) {
-				$('.inputArticle' + pk + 'PageUrlApi').each(function() {
+				$('.inputCourse' + pk + 'PageUrlApi').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'PageUrlApi').each(function() {
+				$('.varCourse' + pk + 'PageUrlApi').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'PageUrlApi'));
+				addGlow($('.inputCourse' + pk + 'PageUrlApi'));
 			}
 			var val = o['id'];
 			if(vars.includes('id')) {
-				$('.inputArticle' + pk + 'Id').each(function() {
+				$('.inputCourse' + pk + 'Id').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Id').each(function() {
+				$('.varCourse' + pk + 'Id').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Id'));
+				addGlow($('.inputCourse' + pk + 'Id'));
 			}
 		});
 	}
@@ -850,7 +651,7 @@ function pageGraph(apiRequest) {
 				});
 				data.push(trace);
 			} else if(range) {
-				layout['title'] = 'Article';
+				layout['title'] = 'Course';
 				layout['xaxis'] = {
 					title: rangeVarFq.displayName
 				}
@@ -869,7 +670,7 @@ function pageGraph(apiRequest) {
 					data.push(trace);
 				});
 			}
-			Plotly.react('htmBodyGraphPageLayout', data, layout);
+			Plotly.react('htmBodyGraphArticlePage', data, layout);
 		}
 	}
 }

@@ -20,6 +20,7 @@ dt:after { content: ': '; }
 dd { display: inline; margin: 0; padding: 0; font-style: italic; }
 i { font-weight: normal; }
 body {  }
+.padding-right-quarter-em { padding-right: 0.25em; }
 ul.w3-bar { padding-left: 0; }
 .display-none { display: none; }
 .min-width-300px { min-width: 300px; }
@@ -297,12 +298,12 @@ site-header-image-custom {
 .review2Table i {
 	color:#08232E;
 	font-size:32px;
-	margin: 8px;
+	margin-left: 8px;
 }
 .review2Table svg {
 	color:#08232E;
 	font-size:32px;
-	margin: 8px;
+	margin-left: 8px;
 }
 .review2TableTr.odd td {
 	color:#fff;background-color:#2E6E87;font-size:30px;

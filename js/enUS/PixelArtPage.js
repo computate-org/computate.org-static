@@ -1,19 +1,23 @@
 
 // Search //
 
-async function searchArticle($formFilters, success, error) {
-	var filters = searchArticleFilters($formFilters);
+async function searchPixelArt($formFilters, success, error) {
+	var filters = searchPixelArtFilters($formFilters);
 	if(success == null)
 		success = function( data, textStatus, jQxhr ) {};
 	if(error == null)
 		error = function( jqXhr, textStatus, errorThrown ) {};
 
-	searchArticleVals(filters, success, error);
+	searchPixelArtVals(filters, success, error);
 }
 
-function searchArticleFilters($formFilters) {
+function searchPixelArtFilters($formFilters) {
 	var filters = [];
 	if($formFilters) {
+
+		var filterPk = $formFilters.find('.valuePk').val();
+		if(filterPk != null && filterPk !== '')
+			filters.push({ name: 'fq', value: 'pk:' + filterPk });
 
 		var filterCreated = $formFilters.find('.valueCreated').val();
 		if(filterCreated != null && filterCreated !== '')
@@ -46,6 +50,10 @@ function searchArticleFilters($formFilters) {
 			filterDeleted = filterDeletedSelectVal == 'true';
 		if(filterDeleted != null && filterDeleted === true)
 			filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
+
+		var filterPixelArtName = $formFilters.find('.valuePixelArtName').val();
+		if(filterPixelArtName != null && filterPixelArtName !== '')
+			filters.push({ name: 'fq', value: 'pixelArtName:' + filterPixelArtName });
 
 		var filterInheritPk = $formFilters.find('.valueInheritPk').val();
 		if(filterInheritPk != null && filterInheritPk !== '')
@@ -106,9 +114,10 @@ function searchArticleFilters($formFilters) {
 	return filters;
 }
 
-function searchArticleVals(filters, success, error) {
+function searchPixelArtVals(filters, success, error) {
+
 	$.ajax({
-		url: '/api/article?' + $.param(filters)
+		url: '/api/pixel-art?' + $.param(filters)
 		, dataType: 'json'
 		, type: 'GET'
 		, contentType: 'application/json; charset=utf-8'
@@ -117,11 +126,11 @@ function searchArticleVals(filters, success, error) {
 	});
 }
 
-function suggestArticleObjectSuggest($formFilters, $list) {
+function suggestPixelArtObjectSuggest($formFilters, $list) {
 	success = function( data, textStatus, jQxhr ) {
 		$list.empty();
 		$.each(data['list'], function(i, o) {
-			var $i = $('<i>').attr('class', 'far fa-university ');
+			var $i = $('<i>').attr('class', 'fat fa-table-cells ');
 			var $span = $('<span>').attr('class', '').text(o['objectTitle']);
 			var $li = $('<li>');
 			var $a = $('<a>').attr('href', o['pageUrlPk']);
@@ -132,14 +141,14 @@ function suggestArticleObjectSuggest($formFilters, $list) {
 		});
 	};
 	error = function( jqXhr, textStatus, errorThrown ) {};
-	searchArticleVals($formFilters, success, error);
+	searchPixelArtVals($formFilters, success, error);
 }
 
 // GET //
 
-async function getArticle() {
+async function getPixelArt(pk) {
 	$.ajax({
-		url: '/api/article/' + id
+		url: '/api/pixel-art/' + id
 		, dataType: 'json'
 		, type: 'GET'
 		, contentType: 'application/json; charset=utf-8'
@@ -150,10 +159,22 @@ async function getArticle() {
 
 // PATCH //
 
-async function patchArticle($formFilters, $formValues, id, success, error) {
-	var filters = patchArticleFilters($formFilters);
+async function patchPixelArt($formFilters, $formValues, pk, success, error) {
+	var filters = patchPixelArtFilters($formFilters);
 
 	var vals = {};
+
+	var valuePk = $formValues.find('.valuePk').val();
+	var removePk = $formValues.find('.removePk').val() === 'true';
+	var setPk = removePk ? null : $formValues.find('.setPk').val();
+	var addPk = $formValues.find('.addPk').val();
+	if(removePk || setPk != null && setPk !== '')
+		vals['setPk'] = setPk;
+	if(addPk != null && addPk !== '')
+		vals['addPk'] = addPk;
+	var removePk = $formValues.find('.removePk').val();
+	if(removePk != null && removePk !== '')
+		vals['removePk'] = removePk;
 
 	var valueCreated = $formValues.find('.valueCreated').val();
 	var removeCreated = $formValues.find('.removeCreated').val() === 'true';
@@ -221,6 +242,30 @@ async function patchArticle($formFilters, $formValues, id, success, error) {
 	if(removeDeleted != null && removeDeleted !== '')
 		vals['removeDeleted'] = removeDeleted;
 
+	var valueBase64Data = $formValues.find('.valueBase64Data').val();
+	var removeBase64Data = $formValues.find('.removeBase64Data').val() === 'true';
+	var setBase64Data = removeBase64Data ? null : $formValues.find('.setBase64Data').val();
+	var addBase64Data = $formValues.find('.addBase64Data').val();
+	if(removeBase64Data || setBase64Data != null && setBase64Data !== '')
+		vals['setBase64Data'] = setBase64Data;
+	if(addBase64Data != null && addBase64Data !== '')
+		vals['addBase64Data'] = addBase64Data;
+	var removeBase64Data = $formValues.find('.removeBase64Data').val();
+	if(removeBase64Data != null && removeBase64Data !== '')
+		vals['removeBase64Data'] = removeBase64Data;
+
+	var valuePixelArtName = $formValues.find('.valuePixelArtName').val();
+	var removePixelArtName = $formValues.find('.removePixelArtName').val() === 'true';
+	var setPixelArtName = removePixelArtName ? null : $formValues.find('.setPixelArtName').val();
+	var addPixelArtName = $formValues.find('.addPixelArtName').val();
+	if(removePixelArtName || setPixelArtName != null && setPixelArtName !== '')
+		vals['setPixelArtName'] = setPixelArtName;
+	if(addPixelArtName != null && addPixelArtName !== '')
+		vals['addPixelArtName'] = addPixelArtName;
+	var removePixelArtName = $formValues.find('.removePixelArtName').val();
+	if(removePixelArtName != null && removePixelArtName !== '')
+		vals['removePixelArtName'] = removePixelArtName;
+
 	var valueInheritPk = $formValues.find('.valueInheritPk').val();
 	var removeInheritPk = $formValues.find('.removeInheritPk').val() === 'true';
 	var setInheritPk = removeInheritPk ? null : $formValues.find('.setInheritPk').val();
@@ -269,13 +314,17 @@ async function patchArticle($formFilters, $formValues, id, success, error) {
 	if(removeObjectTitle != null && removeObjectTitle !== '')
 		vals['removeObjectTitle'] = removeObjectTitle;
 
-	patchArticleVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, success, error);
+	patchPixelArtVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, success, error);
 }
 
-function patchArticleFilters($formFilters) {
+function patchPixelArtFilters($formFilters) {
 	var filters = [];
 	if($formFilters) {
 		filters.push({ name: 'softCommit', value: 'true' });
+
+		var filterPk = $formFilters.find('.valuePk').val();
+		if(filterPk != null && filterPk !== '')
+			filters.push({ name: 'fq', value: 'pk:' + filterPk });
 
 		var filterCreated = $formFilters.find('.valueCreated').val();
 		if(filterCreated != null && filterCreated !== '')
@@ -308,6 +357,10 @@ function patchArticleFilters($formFilters) {
 			filterDeleted = filterDeletedSelectVal == 'true';
 		if(filterDeleted != null && filterDeleted === true)
 			filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
+
+		var filterPixelArtName = $formFilters.find('.valuePixelArtName').val();
+		if(filterPixelArtName != null && filterPixelArtName !== '')
+			filters.push({ name: 'fq', value: 'pixelArtName:' + filterPixelArtName });
 
 		var filterInheritPk = $formFilters.find('.valueInheritPk').val();
 		if(filterInheritPk != null && filterInheritPk !== '')
@@ -368,15 +421,15 @@ function patchArticleFilters($formFilters) {
 	return filters;
 }
 
-function patchArticleVal(filters, v, val, success, error) {
+function patchPixelArtVal(filters, v, val, success, error) {
 	var vals = {};
 	vals[v] = val;
-	patchArticleVals(filters, vals, success, error);
+	patchPixelArtVals(filters, vals, success, error);
 }
 
-function patchArticleVals(filters, vals, success, error) {
+function patchPixelArtVals(filters, vals, success, error) {
 	$.ajax({
-		url: '/api/article?' + $.param(filters)
+		url: '/api/pixel-art?' + $.param(filters)
 		, dataType: 'json'
 		, type: 'PATCH'
 		, contentType: 'application/json; charset=utf-8'
@@ -388,7 +441,7 @@ function patchArticleVals(filters, vals, success, error) {
 
 // POST //
 
-async function postArticle($formValues, success, error) {
+async function postPixelArt($formValues, success, error) {
 	var vals = {};
 	if(success == null) {
 		success = function( data, textStatus, jQxhr ) {
@@ -403,6 +456,10 @@ async function postArticle($formValues, success, error) {
 			addError($formValues.next('button'));
 		};
 	}
+
+	var valuePk = $formValues.find('.valuePk').val();
+	if(valuePk != null && valuePk !== '')
+		vals['pk'] = valuePk;
 
 	var valueCreated = $formValues.find('.valueCreated').val();
 	if(valueCreated != null && valueCreated !== '')
@@ -424,6 +481,14 @@ async function postArticle($formValues, success, error) {
 	if(valueDeleted != null && valueDeleted !== '')
 		vals['deleted'] = valueDeleted == 'true';
 
+	var valueBase64Data = $formValues.find('.valueBase64Data').val();
+	if(valueBase64Data != null && valueBase64Data !== '')
+		vals['base64Data'] = valueBase64Data;
+
+	var valuePixelArtName = $formValues.find('.valuePixelArtName').val();
+	if(valuePixelArtName != null && valuePixelArtName !== '')
+		vals['pixelArtName'] = valuePixelArtName;
+
 	var valueInheritPk = $formValues.find('.valueInheritPk').val();
 	if(valueInheritPk != null && valueInheritPk !== '')
 		vals['inheritPk'] = valueInheritPk;
@@ -441,7 +506,7 @@ async function postArticle($formValues, success, error) {
 		vals['objectTitle'] = valueObjectTitle;
 
 	$.ajax({
-		url: '/api/article'
+		url: '/api/pixel-art'
 		, dataType: 'json'
 		, type: 'POST'
 		, contentType: 'application/json; charset=utf-8'
@@ -451,9 +516,9 @@ async function postArticle($formValues, success, error) {
 	});
 }
 
-function postArticleVals(vals, success, error) {
+function postPixelArtVals(vals, success, error) {
 	$.ajax({
-		url: '/api/article'
+		url: '/api/pixel-art'
 		, dataType: 'json'
 		, type: 'POST'
 		, contentType: 'application/json; charset=utf-8'
@@ -465,15 +530,15 @@ function postArticleVals(vals, success, error) {
 
 // PUTImport //
 
-async function putimportArticle($formValues, id, success, error) {
+async function putimportPixelArt($formValues, pk, success, error) {
 	var json = $formValues.find('.PUTImport_searchList').val();
 	if(json != null && json !== '')
-		putimportArticleVals(JSON.parse(json), success, error);
+		putimportPixelArtVals(json, success, error);
 }
 
-function putimportArticleVals(json, success, error) {
+function putimportPixelArtVals(json, success, error) {
 	$.ajax({
-		url: '/api/article-import'
+		url: '/api/pixel-art-import'
 		, dataType: 'json'
 		, type: 'PUT'
 		, contentType: 'application/json; charset=utf-8'
@@ -483,14 +548,14 @@ function putimportArticleVals(json, success, error) {
 	});
 }
 
-async function websocketArticle(success) {
+async function websocketPixelArt(success) {
 	window.eventBus.onopen = function () {
 
-		window.eventBus.registerHandler('websocketArticle', function (error, message) {
+		window.eventBus.registerHandler('websocketPixelArt', function (error, message) {
 			var json = JSON.parse(message['body']);
 			var id = json['id'];
 			var pk = json['pk'];
-			var pkPage = $('#ArticleForm :input[name=id]').val();
+			var pkPage = $('#PixelArtForm :input[name=pk]').val();
 			var pks = json['pks'];
 			var empty = json['empty'];
 			var numFound = parseInt(json['numFound']);
@@ -499,13 +564,13 @@ async function websocketArticle(success) {
 			var $box = $('<div>').attr('class', 'w3-quarter box-' + id + ' ').attr('id', 'box-' + id).attr('data-numPATCH', numPATCH);
 			var $margin = $('<div>').attr('class', 'w3-margin ').attr('id', 'margin-' + id);
 			var $card = $('<div>').attr('class', 'w3-card w3-white ').attr('id', 'card-' + id);
-			var $header = $('<div>').attr('class', 'w3-container fa-green ').attr('id', 'header-' + id);
-			var $i = $('<i>').attr('class', 'far fa-university w3-margin-right ').attr('id', 'icon-' + id);
-			var $headerSpan = $('<span>').attr('class', '').text('modify articles in ' + json.timeRemaining);
+			var $header = $('<div>').attr('class', 'w3-container fa-blue ').attr('id', 'header-' + id);
+			var $i = $('<i>').attr('class', 'fat fa-table-cells w3-margin-right ').attr('id', 'icon-' + id);
+			var $headerSpan = $('<span>').attr('class', '').text('modify pixel arts in ' + json.timeRemaining);
 			var $x = $('<span>').attr('class', 'w3-button w3-display-topright ').attr('onclick', '$("#card-' + id + '").hide(); ').attr('id', 'x-' + id);
 			var $body = $('<div>').attr('class', 'w3-container w3-padding ').attr('id', 'text-' + id);
 			var $bar = $('<div>').attr('class', 'w3-light-gray ').attr('id', 'bar-' + id);
-			var $progress = $('<div>').attr('class', 'w3-green ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+			var $progress = $('<div>').attr('class', 'w3-blue ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
 			$card.append($header);
 			$header.append($i);
 			$header.append($headerSpan);
@@ -532,7 +597,7 @@ async function websocketArticle(success) {
 		});
 	}
 }
-async function websocketArticleInner(apiRequest) {
+async function websocketPixelArtInner(apiRequest) {
 	var pk = apiRequest['pk'];
 	var pks = apiRequest['pks'];
 	var classes = apiRequest['classes'];
@@ -540,336 +605,381 @@ async function websocketArticleInner(apiRequest) {
 	var empty = apiRequest['empty'];
 
 	if(pk != null) {
-		searchArticleVals([ {name: 'fq', value: 'id:' + pk} ], function( data, textStatus, jQxhr ) {
+		searchPixelArtVals([ {name: 'fq', value: 'pk:' + pk} ], function( data, textStatus, jQxhr ) {
 			var o = data['list'][0];
-			var val = o['created'];
-			if(vars.includes('created')) {
-				$('.inputArticle' + pk + 'Created').each(function() {
+			var val = o['pk'];
+			if(vars.includes('pk')) {
+				$('.inputPixelArt' + pk + 'Pk').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Created').each(function() {
+				$('.varPixelArt' + pk + 'Pk').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Created'));
+				addGlow($('.inputPixelArt' + pk + 'Pk'));
+			}
+			var val = o['created'];
+			if(vars.includes('created')) {
+				$('.inputPixelArt' + pk + 'Created').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varPixelArt' + pk + 'Created').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputPixelArt' + pk + 'Created'));
 			}
 			var val = o['modified'];
 			if(vars.includes('modified')) {
-				$('.inputArticle' + pk + 'Modified').each(function() {
+				$('.inputPixelArt' + pk + 'Modified').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Modified').each(function() {
+				$('.varPixelArt' + pk + 'Modified').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Modified'));
+				addGlow($('.inputPixelArt' + pk + 'Modified'));
 			}
 			var val = o['objectId'];
 			if(vars.includes('objectId')) {
-				$('.inputArticle' + pk + 'ObjectId').each(function() {
+				$('.inputPixelArt' + pk + 'ObjectId').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ObjectId').each(function() {
+				$('.varPixelArt' + pk + 'ObjectId').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ObjectId'));
+				addGlow($('.inputPixelArt' + pk + 'ObjectId'));
 			}
 			var val = o['archived'];
 			if(vars.includes('archived')) {
-				$('.inputArticle' + pk + 'Archived').each(function() {
+				$('.inputPixelArt' + pk + 'Archived').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Archived').each(function() {
+				$('.varPixelArt' + pk + 'Archived').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Archived'));
+				addGlow($('.inputPixelArt' + pk + 'Archived'));
 			}
 			var val = o['deleted'];
 			if(vars.includes('deleted')) {
-				$('.inputArticle' + pk + 'Deleted').each(function() {
+				$('.inputPixelArt' + pk + 'Deleted').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Deleted').each(function() {
+				$('.varPixelArt' + pk + 'Deleted').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Deleted'));
+				addGlow($('.inputPixelArt' + pk + 'Deleted'));
+			}
+			var val = o['base64Data'];
+			if(vars.includes('base64Data')) {
+				if(val === undefined)
+					val = null;
+				$('.imgPixelArt' + pk + 'Base64Data').each(function() {
+					if(val !== $(this).attr('src'))
+						$(this).attr('src', val);
+				});
+				$('.inputPixelArt' + pk + 'Base64Data').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varPixelArt' + pk + 'Base64Data').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputPixelArt' + pk + 'Base64Data'));
+			}
+			var val = o['pixelArtName'];
+			if(vars.includes('pixelArtName')) {
+				$('.inputPixelArt' + pk + 'PixelArtName').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varPixelArt' + pk + 'PixelArtName').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputPixelArt' + pk + 'PixelArtName'));
 			}
 			var val = o['inheritPk'];
 			if(vars.includes('inheritPk')) {
-				$('.inputArticle' + pk + 'InheritPk').each(function() {
+				$('.inputPixelArt' + pk + 'InheritPk').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'InheritPk').each(function() {
+				$('.varPixelArt' + pk + 'InheritPk').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'InheritPk'));
+				addGlow($('.inputPixelArt' + pk + 'InheritPk'));
 			}
 			var val = o['classCanonicalName'];
 			if(vars.includes('classCanonicalName')) {
-				$('.inputArticle' + pk + 'ClassCanonicalName').each(function() {
+				$('.inputPixelArt' + pk + 'ClassCanonicalName').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ClassCanonicalName').each(function() {
+				$('.varPixelArt' + pk + 'ClassCanonicalName').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ClassCanonicalName'));
+				addGlow($('.inputPixelArt' + pk + 'ClassCanonicalName'));
 			}
 			var val = o['classSimpleName'];
 			if(vars.includes('classSimpleName')) {
-				$('.inputArticle' + pk + 'ClassSimpleName').each(function() {
+				$('.inputPixelArt' + pk + 'ClassSimpleName').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ClassSimpleName').each(function() {
+				$('.varPixelArt' + pk + 'ClassSimpleName').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ClassSimpleName'));
+				addGlow($('.inputPixelArt' + pk + 'ClassSimpleName'));
 			}
 			var val = o['classCanonicalNames'];
 			if(vars.includes('classCanonicalNames')) {
-				$('.inputArticle' + pk + 'ClassCanonicalNames').each(function() {
+				$('.inputPixelArt' + pk + 'ClassCanonicalNames').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ClassCanonicalNames').each(function() {
+				$('.varPixelArt' + pk + 'ClassCanonicalNames').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ClassCanonicalNames'));
+				addGlow($('.inputPixelArt' + pk + 'ClassCanonicalNames'));
 			}
 			var val = o['sessionId'];
 			if(vars.includes('sessionId')) {
-				$('.inputArticle' + pk + 'SessionId').each(function() {
+				$('.inputPixelArt' + pk + 'SessionId').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'SessionId').each(function() {
+				$('.varPixelArt' + pk + 'SessionId').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'SessionId'));
+				addGlow($('.inputPixelArt' + pk + 'SessionId'));
 			}
 			var val = o['userKey'];
 			if(vars.includes('userKey')) {
-				$('.inputArticle' + pk + 'UserKey').each(function() {
+				$('.inputPixelArt' + pk + 'UserKey').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'UserKey').each(function() {
+				$('.varPixelArt' + pk + 'UserKey').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'UserKey'));
+				addGlow($('.inputPixelArt' + pk + 'UserKey'));
 			}
 			var val = o['saves'];
 			if(vars.includes('saves')) {
-				$('.inputArticle' + pk + 'Saves').each(function() {
+				$('.inputPixelArt' + pk + 'Saves').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Saves').each(function() {
+				$('.varPixelArt' + pk + 'Saves').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Saves'));
+				addGlow($('.inputPixelArt' + pk + 'Saves'));
 			}
 			var val = o['objectTitle'];
 			if(vars.includes('objectTitle')) {
-				$('.inputArticle' + pk + 'ObjectTitle').each(function() {
+				$('.inputPixelArt' + pk + 'ObjectTitle').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ObjectTitle').each(function() {
+				$('.varPixelArt' + pk + 'ObjectTitle').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ObjectTitle'));
+				addGlow($('.inputPixelArt' + pk + 'ObjectTitle'));
 			}
 			var val = o['objectSuggest'];
 			if(vars.includes('objectSuggest')) {
-				$('.inputArticle' + pk + 'ObjectSuggest').each(function() {
+				$('.inputPixelArt' + pk + 'ObjectSuggest').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ObjectSuggest').each(function() {
+				$('.varPixelArt' + pk + 'ObjectSuggest').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ObjectSuggest'));
+				addGlow($('.inputPixelArt' + pk + 'ObjectSuggest'));
 			}
 			var val = o['objectText'];
 			if(vars.includes('objectText')) {
-				$('.inputArticle' + pk + 'ObjectText').each(function() {
+				$('.inputPixelArt' + pk + 'ObjectText').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'ObjectText').each(function() {
+				$('.varPixelArt' + pk + 'ObjectText').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'ObjectText'));
+				addGlow($('.inputPixelArt' + pk + 'ObjectText'));
 			}
 			var val = o['pageUrlId'];
 			if(vars.includes('pageUrlId')) {
-				$('.inputArticle' + pk + 'PageUrlId').each(function() {
+				$('.inputPixelArt' + pk + 'PageUrlId').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'PageUrlId').each(function() {
+				$('.varPixelArt' + pk + 'PageUrlId').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'PageUrlId'));
+				addGlow($('.inputPixelArt' + pk + 'PageUrlId'));
 			}
 			var val = o['pageUrlPk'];
 			if(vars.includes('pageUrlPk')) {
-				$('.inputArticle' + pk + 'PageUrlPk').each(function() {
+				$('.inputPixelArt' + pk + 'PageUrlPk').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'PageUrlPk').each(function() {
+				$('.varPixelArt' + pk + 'PageUrlPk').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'PageUrlPk'));
+				addGlow($('.inputPixelArt' + pk + 'PageUrlPk'));
 			}
 			var val = o['pageUrlApi'];
 			if(vars.includes('pageUrlApi')) {
-				$('.inputArticle' + pk + 'PageUrlApi').each(function() {
+				$('.inputPixelArt' + pk + 'PageUrlApi').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'PageUrlApi').each(function() {
+				$('.varPixelArt' + pk + 'PageUrlApi').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'PageUrlApi'));
+				addGlow($('.inputPixelArt' + pk + 'PageUrlApi'));
 			}
 			var val = o['id'];
 			if(vars.includes('id')) {
-				$('.inputArticle' + pk + 'Id').each(function() {
+				$('.inputPixelArt' + pk + 'Id').each(function() {
 					if(val !== $(this).val())
 						$(this).val(val);
 				});
-				$('.varArticle' + pk + 'Id').each(function() {
+				$('.varPixelArt' + pk + 'Id').each(function() {
 					if(val !== $(this).text())
 						$(this).text(val);
 				});
-				addGlow($('.inputArticle' + pk + 'Id'));
+				addGlow($('.inputPixelArt' + pk + 'Id'));
 			}
 		});
 	}
 }
 
 function pageGraph(apiRequest) {
-	var json = JSON.parse($('.pageForm .pageResponse').val());
-	if(json['facetCounts']) {
-		var facetCounts = json.facetCounts;
-		if(facetCounts['facetPivot'] && facetCounts['facetRanges']) {
-			var numPivots = json.responseHeader.params['facet.pivot'].split(',').length;
-			var range = facetCounts.facetRanges.ranges[Object.keys(facetCounts.facetRanges.ranges)[0]];
-			var rangeName;
-			var rangeVar;
-			var rangeVarFq;
-			var rangeCounts;
-			var rangeVals;
-			if(range) {
-				rangeName = range.name;
-				rangeVar = rangeName.substring(0, rangeName.indexOf('_'));
-				rangeVarFq = window.varsFq[rangeVar];
-				rangeCounts = range.counts;
-				rangeVals = Object.keys(rangeCounts).map(key => key);
-			}
-			var pivot1Name = Object.keys(facetCounts.facetPivot.pivotMap)[0];
-			var pivot1VarIndexed = pivot1Name;
-			if(pivot1VarIndexed.includes(','))
-				pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
-			var pivot1Var = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf('_'));
-			var pivot1VarFq = window.varsFq[pivot1Var] ? window.varsFq[pivot1Var] : 'classSimpleName';
-			var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
-			var pivot1Vals = Object.keys(pivot1Map);
-			var data = [];
-			var layout = {};
-			if(pivot1VarFq.classSimpleName === 'Point') {
-				layout['showlegend'] = true;
-				layout['dragmode'] = 'zoom';
-				layout['uirevision'] = 'true';
-				if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
-					layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] }, zoom: window['DEFAULT_MAP_ZOOM'] };
-				else if(window['DEFAULT_MAP_ZOOM'])
-					layout['mapbox'] = { style: 'open-street-map', zoom: window['DEFAULT_MAP_ZOOM'] };
-				else if(window['DEFAULT_MAP_LOCATION'])
-					layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] } };
-				else
-					layout['mapbox'] = { style: 'open-street-map' };
-				layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
-				var trace = {};
-				trace['showlegend'] = true;
-				trace['type'] = 'scattermapbox';
-				trace['marker'] = { color: 'fuchsia', size: 6 };
-				var lat = [];
-				var lon = [];
-				var text = [];
-				var customdata = [];
-				trace['lat'] = lat;
-				trace['lon'] = lon;
-				trace['text'] = text;
-				trace['customdata'] = customdata;
-				json.response.docs.forEach((record) => {
-					var location = record.fields[pivot1VarIndexed];
-					if(location) {
-						var locationParts = location.split(',');
-						text.push('pivot1Val');
-						lat.push(parseFloat(locationParts[0]));
-						lon.push(parseFloat(locationParts[1]));
-						var vals = {};
-						var hovertemplate = '';
-						Object.entries(window.varsFq).forEach(([key, data]) => {
-							if(data.displayName) {
-								vals[data.var] = record.fields[data.varStored];
-								hovertemplate += '<b>' + data.displayName + ': %{customdata.' + data.var + '}</b><br>';
-							}
-							customdata.push(vals);
-						});
-						customdata.push(vals);
-						trace['hovertemplate'] = hovertemplate;
-					}
-				});
-				data.push(trace);
-			} else if(range) {
-				layout['title'] = 'Article';
-				layout['xaxis'] = {
-					title: rangeVarFq.displayName
+	var r = $('.pageForm .pageResponse').val();
+	if(r) {
+	var json = JSON.parse(r);
+		if(json['facetCounts']) {
+			var facetCounts = json.facetCounts;
+			if(facetCounts['facetPivot'] && facetCounts['facetRanges']) {
+				var numPivots = json.responseHeader.params['facet.pivot'].split(',').length;
+				var range = facetCounts.facetRanges.ranges[Object.keys(facetCounts.facetRanges.ranges)[0]];
+				var rangeName;
+				var rangeVar;
+				var rangeVarFq;
+				var rangeCounts;
+				var rangeVals;
+				if(range) {
+					rangeName = range.name;
+					rangeVar = rangeName.substring(0, rangeName.indexOf('_'));
+					rangeVarFq = window.varsFq[rangeVar];
+					rangeCounts = range.counts;
+					rangeVals = Object.keys(rangeCounts).map(key => key);
 				}
-				layout['yaxis'] = {
-					title: pivot1VarFq.displayName
-				}
-				pivot1Vals.forEach((pivot1Val) => {
-					var pivot1 = pivot1Map[pivot1Val];
-					var pivot1Counts = pivot1.ranges[rangeName].counts;
+				var pivot1Name = Object.keys(facetCounts.facetPivot.pivotMap)[0];
+				var pivot1VarIndexed = pivot1Name;
+				if(pivot1VarIndexed.includes(','))
+					pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
+				var pivot1Var = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf('_'));
+				var pivot1VarFq = window.varsFq[pivot1Var] ? window.varsFq[pivot1Var] : 'classSimpleName';
+				var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
+				var pivot1Vals = Object.keys(pivot1Map);
+				var data = [];
+				var layout = {};
+				if(pivot1VarFq.classSimpleName === 'Point') {
+					layout['showlegend'] = true;
+					layout['dragmode'] = 'zoom';
+					layout['uirevision'] = 'true';
+					if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
+						layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] }, zoom: window['DEFAULT_MAP_ZOOM'] };
+					else if(window['DEFAULT_MAP_ZOOM'])
+						layout['mapbox'] = { style: 'open-street-map', zoom: window['DEFAULT_MAP_ZOOM'] };
+					else if(window['DEFAULT_MAP_LOCATION'])
+						layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] } };
+					else
+						layout['mapbox'] = { style: 'open-street-map' };
+					layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
 					var trace = {};
 					trace['showlegend'] = true;
-					trace['x'] = Object.keys(pivot1Counts).map(key => key);
-					trace['y'] = Object.values(pivot1Counts);
-					trace['mode'] = 'lines+markers';
-					trace['name'] = pivot1Val;
+					trace['type'] = 'scattermapbox';
+					trace['marker'] = { color: 'fuchsia', size: 6 };
+					var lat = [];
+					var lon = [];
+					var text = [];
+					var customdata = [];
+					trace['lat'] = lat;
+					trace['lon'] = lon;
+					trace['text'] = text;
+					trace['customdata'] = customdata;
+					json.response.docs.forEach((record) => {
+						var location = record.fields[pivot1VarIndexed];
+						if(location) {
+							var locationParts = location.split(',');
+							text.push('pivot1Val');
+							lat.push(parseFloat(locationParts[0]));
+							lon.push(parseFloat(locationParts[1]));
+							var vals = {};
+							var hovertemplate = '';
+							Object.entries(window.varsFq).forEach(([key, data]) => {
+								if(data.displayName) {
+									vals[data.var] = record.fields[data.varStored];
+									hovertemplate += '<b>' + data.displayName + ': %{customdata.' + data.var + '}</b><br>';
+								}
+								customdata.push(vals);
+							});
+							customdata.push(vals);
+							trace['hovertemplate'] = hovertemplate;
+						}
+					});
 					data.push(trace);
-				});
+				} else if(range) {
+					layout['title'] = 'PixelArt';
+					layout['xaxis'] = {
+						title: rangeVarFq.displayName
+					}
+					layout['yaxis'] = {
+						title: pivot1VarFq.displayName
+					}
+					pivot1Vals.forEach((pivot1Val) => {
+						var pivot1 = pivot1Map[pivot1Val];
+						var pivot1Counts = pivot1.ranges[rangeName].counts;
+						var trace = {};
+						trace['showlegend'] = true;
+						trace['x'] = Object.keys(pivot1Counts).map(key => key);
+						trace['y'] = Object.values(pivot1Counts);
+						trace['mode'] = 'lines+markers';
+						trace['name'] = pivot1Val;
+						data.push(trace);
+					});
+				}
+				Plotly.react('htmBodyGraphBaseModelPage', data, layout);
 			}
-			Plotly.react('htmBodyGraphPageLayout', data, layout);
 		}
 	}
 }
