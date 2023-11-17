@@ -63,22 +63,6 @@ function searchSitePageFilters($formFilters) {
 		if(filterPageImageUri != null && filterPageImageUri !== '')
 			filters.push({ name: 'fq', value: 'pageImageUri:' + filterPageImageUri });
 
-		var filterCourseNum = $formFilters.find('.valueCourseNum').val();
-		if(filterCourseNum != null && filterCourseNum !== '')
-			filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
-
-		var filterLessonNum = $formFilters.find('.valueLessonNum').val();
-		if(filterLessonNum != null && filterLessonNum !== '')
-			filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
-
-		var filterH1 = $formFilters.find('.valueH1').val();
-		if(filterH1 != null && filterH1 !== '')
-			filters.push({ name: 'fq', value: 'h1:' + filterH1 });
-
-		var filterH2 = $formFilters.find('.valueH2').val();
-		if(filterH2 != null && filterH2 !== '')
-			filters.push({ name: 'fq', value: 'h2:' + filterH2 });
-
 		var filterInheritPk = $formFilters.find('.valueInheritPk').val();
 		if(filterInheritPk != null && filterInheritPk !== '')
 			filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
@@ -134,14 +118,28 @@ function searchSitePageFilters($formFilters) {
 		var filterId = $formFilters.find('.valueId').val();
 		if(filterId != null && filterId !== '')
 			filters.push({ name: 'fq', value: 'id:' + filterId });
+
+		var filterCourseNum = $formFilters.find('.valueCourseNum').val();
+		if(filterCourseNum != null && filterCourseNum !== '')
+			filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
+
+		var filterLessonNum = $formFilters.find('.valueLessonNum').val();
+		if(filterLessonNum != null && filterLessonNum !== '')
+			filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
+
+		var filterH2 = $formFilters.find('.valueH2').val();
+		if(filterH2 != null && filterH2 !== '')
+			filters.push({ name: 'fq', value: 'h2:' + filterH2 });
+
+		var filterH1 = $formFilters.find('.valueH1').val();
+		if(filterH1 != null && filterH1 !== '')
+			filters.push({ name: 'fq', value: 'h1:' + filterH1 });
 	}
 	return filters;
 }
 
 function searchSitePageVals(filters, success, error) {
 
-	filters.push({ name: 'sort', value: 'courseNum asc' });
-	filters.push({ name: 'sort', value: 'lessonNum asc' });
 	$.ajax({
 		url: '/api/page?' + $.param(filters)
 		, dataType: 'json'
@@ -237,22 +235,6 @@ async function postSitePage($formValues, success, error) {
 	if(valuePageImageUri != null && valuePageImageUri !== '')
 		vals['pageImageUri'] = valuePageImageUri;
 
-	var valueCourseNum = $formValues.find('.valueCourseNum').val();
-	if(valueCourseNum != null && valueCourseNum !== '')
-		vals['courseNum'] = valueCourseNum;
-
-	var valueLessonNum = $formValues.find('.valueLessonNum').val();
-	if(valueLessonNum != null && valueLessonNum !== '')
-		vals['lessonNum'] = valueLessonNum;
-
-	var valueH1 = $formValues.find('.valueH1').val();
-	if(valueH1 != null && valueH1 !== '')
-		vals['h1'] = valueH1;
-
-	var valueH2 = $formValues.find('.valueH2').val();
-	if(valueH2 != null && valueH2 !== '')
-		vals['h2'] = valueH2;
-
 	var valueInheritPk = $formValues.find('.valueInheritPk').val();
 	if(valueInheritPk != null && valueInheritPk !== '')
 		vals['inheritPk'] = valueInheritPk;
@@ -269,9 +251,21 @@ async function postSitePage($formValues, success, error) {
 	if(valueObjectTitle != null && valueObjectTitle !== '')
 		vals['objectTitle'] = valueObjectTitle;
 
-	var valueObjectText = $formValues.find('.valueObjectText').val();
-	if(valueObjectText != null && valueObjectText !== '')
-		vals['objectText'] = valueObjectText;
+	var valueCourseNum = $formValues.find('.valueCourseNum').val();
+	if(valueCourseNum != null && valueCourseNum !== '')
+		vals['courseNum'] = valueCourseNum;
+
+	var valueLessonNum = $formValues.find('.valueLessonNum').val();
+	if(valueLessonNum != null && valueLessonNum !== '')
+		vals['lessonNum'] = valueLessonNum;
+
+	var valueH2 = $formValues.find('.valueH2').val();
+	if(valueH2 != null && valueH2 !== '')
+		vals['h2'] = valueH2;
+
+	var valueH1 = $formValues.find('.valueH1').val();
+	if(valueH1 != null && valueH1 !== '')
+		vals['h1'] = valueH1;
 
 	$.ajax({
 		url: '/api/page'
@@ -417,54 +411,6 @@ async function patchSitePage($formFilters, $formValues, id, success, error) {
 	if(removePageImageUri != null && removePageImageUri !== '')
 		vals['removePageImageUri'] = removePageImageUri;
 
-	var valueCourseNum = $formValues.find('.valueCourseNum').val();
-	var removeCourseNum = $formValues.find('.removeCourseNum').val() === 'true';
-	var setCourseNum = removeCourseNum ? null : $formValues.find('.setCourseNum').val();
-	var addCourseNum = $formValues.find('.addCourseNum').val();
-	if(removeCourseNum || setCourseNum != null && setCourseNum !== '')
-		vals['setCourseNum'] = setCourseNum;
-	if(addCourseNum != null && addCourseNum !== '')
-		vals['addCourseNum'] = addCourseNum;
-	var removeCourseNum = $formValues.find('.removeCourseNum').val();
-	if(removeCourseNum != null && removeCourseNum !== '')
-		vals['removeCourseNum'] = removeCourseNum;
-
-	var valueLessonNum = $formValues.find('.valueLessonNum').val();
-	var removeLessonNum = $formValues.find('.removeLessonNum').val() === 'true';
-	var setLessonNum = removeLessonNum ? null : $formValues.find('.setLessonNum').val();
-	var addLessonNum = $formValues.find('.addLessonNum').val();
-	if(removeLessonNum || setLessonNum != null && setLessonNum !== '')
-		vals['setLessonNum'] = setLessonNum;
-	if(addLessonNum != null && addLessonNum !== '')
-		vals['addLessonNum'] = addLessonNum;
-	var removeLessonNum = $formValues.find('.removeLessonNum').val();
-	if(removeLessonNum != null && removeLessonNum !== '')
-		vals['removeLessonNum'] = removeLessonNum;
-
-	var valueH1 = $formValues.find('.valueH1').val();
-	var removeH1 = $formValues.find('.removeH1').val() === 'true';
-	var setH1 = removeH1 ? null : $formValues.find('.setH1').val();
-	var addH1 = $formValues.find('.addH1').val();
-	if(removeH1 || setH1 != null && setH1 !== '')
-		vals['setH1'] = setH1;
-	if(addH1 != null && addH1 !== '')
-		vals['addH1'] = addH1;
-	var removeH1 = $formValues.find('.removeH1').val();
-	if(removeH1 != null && removeH1 !== '')
-		vals['removeH1'] = removeH1;
-
-	var valueH2 = $formValues.find('.valueH2').val();
-	var removeH2 = $formValues.find('.removeH2').val() === 'true';
-	var setH2 = removeH2 ? null : $formValues.find('.setH2').val();
-	var addH2 = $formValues.find('.addH2').val();
-	if(removeH2 || setH2 != null && setH2 !== '')
-		vals['setH2'] = setH2;
-	if(addH2 != null && addH2 !== '')
-		vals['addH2'] = addH2;
-	var removeH2 = $formValues.find('.removeH2').val();
-	if(removeH2 != null && removeH2 !== '')
-		vals['removeH2'] = removeH2;
-
 	var valueInheritPk = $formValues.find('.valueInheritPk').val();
 	var removeInheritPk = $formValues.find('.removeInheritPk').val() === 'true';
 	var setInheritPk = removeInheritPk ? null : $formValues.find('.setInheritPk').val();
@@ -513,17 +459,53 @@ async function patchSitePage($formFilters, $formValues, id, success, error) {
 	if(removeObjectTitle != null && removeObjectTitle !== '')
 		vals['removeObjectTitle'] = removeObjectTitle;
 
-	var valueObjectText = $formValues.find('.valueObjectText').val();
-	var removeObjectText = $formValues.find('.removeObjectText').val() === 'true';
-	var setObjectText = removeObjectText ? null : $formValues.find('.setObjectText').val();
-	var addObjectText = $formValues.find('.addObjectText').val();
-	if(removeObjectText || setObjectText != null && setObjectText !== '')
-		vals['setObjectText'] = setObjectText;
-	if(addObjectText != null && addObjectText !== '')
-		vals['addObjectText'] = addObjectText;
-	var removeObjectText = $formValues.find('.removeObjectText').val();
-	if(removeObjectText != null && removeObjectText !== '')
-		vals['removeObjectText'] = removeObjectText;
+	var valueCourseNum = $formValues.find('.valueCourseNum').val();
+	var removeCourseNum = $formValues.find('.removeCourseNum').val() === 'true';
+	var setCourseNum = removeCourseNum ? null : $formValues.find('.setCourseNum').val();
+	var addCourseNum = $formValues.find('.addCourseNum').val();
+	if(removeCourseNum || setCourseNum != null && setCourseNum !== '')
+		vals['setCourseNum'] = setCourseNum;
+	if(addCourseNum != null && addCourseNum !== '')
+		vals['addCourseNum'] = addCourseNum;
+	var removeCourseNum = $formValues.find('.removeCourseNum').val();
+	if(removeCourseNum != null && removeCourseNum !== '')
+		vals['removeCourseNum'] = removeCourseNum;
+
+	var valueLessonNum = $formValues.find('.valueLessonNum').val();
+	var removeLessonNum = $formValues.find('.removeLessonNum').val() === 'true';
+	var setLessonNum = removeLessonNum ? null : $formValues.find('.setLessonNum').val();
+	var addLessonNum = $formValues.find('.addLessonNum').val();
+	if(removeLessonNum || setLessonNum != null && setLessonNum !== '')
+		vals['setLessonNum'] = setLessonNum;
+	if(addLessonNum != null && addLessonNum !== '')
+		vals['addLessonNum'] = addLessonNum;
+	var removeLessonNum = $formValues.find('.removeLessonNum').val();
+	if(removeLessonNum != null && removeLessonNum !== '')
+		vals['removeLessonNum'] = removeLessonNum;
+
+	var valueH2 = $formValues.find('.valueH2').val();
+	var removeH2 = $formValues.find('.removeH2').val() === 'true';
+	var setH2 = removeH2 ? null : $formValues.find('.setH2').val();
+	var addH2 = $formValues.find('.addH2').val();
+	if(removeH2 || setH2 != null && setH2 !== '')
+		vals['setH2'] = setH2;
+	if(addH2 != null && addH2 !== '')
+		vals['addH2'] = addH2;
+	var removeH2 = $formValues.find('.removeH2').val();
+	if(removeH2 != null && removeH2 !== '')
+		vals['removeH2'] = removeH2;
+
+	var valueH1 = $formValues.find('.valueH1').val();
+	var removeH1 = $formValues.find('.removeH1').val() === 'true';
+	var setH1 = removeH1 ? null : $formValues.find('.setH1').val();
+	var addH1 = $formValues.find('.addH1').val();
+	if(removeH1 || setH1 != null && setH1 !== '')
+		vals['setH1'] = setH1;
+	if(addH1 != null && addH1 !== '')
+		vals['addH1'] = addH1;
+	var removeH1 = $formValues.find('.removeH1').val();
+	if(removeH1 != null && removeH1 !== '')
+		vals['removeH1'] = removeH1;
 
 	patchSitePageVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, success, error);
 }
@@ -581,22 +563,6 @@ function patchSitePageFilters($formFilters) {
 		if(filterPageImageUri != null && filterPageImageUri !== '')
 			filters.push({ name: 'fq', value: 'pageImageUri:' + filterPageImageUri });
 
-		var filterCourseNum = $formFilters.find('.valueCourseNum').val();
-		if(filterCourseNum != null && filterCourseNum !== '')
-			filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
-
-		var filterLessonNum = $formFilters.find('.valueLessonNum').val();
-		if(filterLessonNum != null && filterLessonNum !== '')
-			filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
-
-		var filterH1 = $formFilters.find('.valueH1').val();
-		if(filterH1 != null && filterH1 !== '')
-			filters.push({ name: 'fq', value: 'h1:' + filterH1 });
-
-		var filterH2 = $formFilters.find('.valueH2').val();
-		if(filterH2 != null && filterH2 !== '')
-			filters.push({ name: 'fq', value: 'h2:' + filterH2 });
-
 		var filterInheritPk = $formFilters.find('.valueInheritPk').val();
 		if(filterInheritPk != null && filterInheritPk !== '')
 			filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
@@ -652,6 +618,22 @@ function patchSitePageFilters($formFilters) {
 		var filterId = $formFilters.find('.valueId').val();
 		if(filterId != null && filterId !== '')
 			filters.push({ name: 'fq', value: 'id:' + filterId });
+
+		var filterCourseNum = $formFilters.find('.valueCourseNum').val();
+		if(filterCourseNum != null && filterCourseNum !== '')
+			filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
+
+		var filterLessonNum = $formFilters.find('.valueLessonNum').val();
+		if(filterLessonNum != null && filterLessonNum !== '')
+			filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
+
+		var filterH2 = $formFilters.find('.valueH2').val();
+		if(filterH2 != null && filterH2 !== '')
+			filters.push({ name: 'fq', value: 'h2:' + filterH2 });
+
+		var filterH1 = $formFilters.find('.valueH1').val();
+		if(filterH1 != null && filterH1 !== '')
+			filters.push({ name: 'fq', value: 'h1:' + filterH1 });
 	}
 	return filters;
 }
@@ -710,13 +692,13 @@ async function websocketSitePage(success) {
 			var $box = $('<div>').attr('class', 'w3-quarter box-' + id + ' ').attr('id', 'box-' + id).attr('data-numPATCH', numPATCH);
 			var $margin = $('<div>').attr('class', 'w3-margin ').attr('id', 'margin-' + id);
 			var $card = $('<div>').attr('class', 'w3-card w3-white ').attr('id', 'card-' + id);
-			var $header = $('<div>').attr('class', 'w3-container fa-2017-navy-peony ').attr('id', 'header-' + id);
+			var $header = $('<div>').attr('class', 'w3-container fa-2017-shaded-spruce ').attr('id', 'header-' + id);
 			var $i = $('<i>').attr('class', 'fad fa-newspaper w3-margin-right ').attr('id', 'icon-' + id);
 			var $headerSpan = $('<span>').attr('class', '').text('modify articles in ' + json.timeRemaining);
 			var $x = $('<span>').attr('class', 'w3-button w3-display-topright ').attr('onclick', '$("#card-' + id + '").hide(); ').attr('id', 'x-' + id);
 			var $body = $('<div>').attr('class', 'w3-container w3-padding ').attr('id', 'text-' + id);
 			var $bar = $('<div>').attr('class', 'w3-light-gray ').attr('id', 'bar-' + id);
-			var $progress = $('<div>').attr('class', 'w3-2017-navy-peony ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+			var $progress = $('<div>').attr('class', 'w3-2017-shaded-spruce ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
 			$card.append($header);
 			$header.append($i);
 			$header.append($headerSpan);
@@ -860,54 +842,6 @@ async function websocketSitePageInner(apiRequest) {
 						$(this).text(val);
 				});
 				addGlow($('.inputSitePage' + pk + 'PageImageUri'));
-			}
-			var val = o['courseNum'];
-			if(vars.includes('courseNum')) {
-				$('.inputSitePage' + pk + 'CourseNum').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSitePage' + pk + 'CourseNum').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSitePage' + pk + 'CourseNum'));
-			}
-			var val = o['lessonNum'];
-			if(vars.includes('lessonNum')) {
-				$('.inputSitePage' + pk + 'LessonNum').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSitePage' + pk + 'LessonNum').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSitePage' + pk + 'LessonNum'));
-			}
-			var val = o['h1'];
-			if(vars.includes('h1')) {
-				$('.inputSitePage' + pk + 'H1').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSitePage' + pk + 'H1').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSitePage' + pk + 'H1'));
-			}
-			var val = o['h2'];
-			if(vars.includes('h2')) {
-				$('.inputSitePage' + pk + 'H2').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSitePage' + pk + 'H2').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSitePage' + pk + 'H2'));
 			}
 			var val = o['inheritPk'];
 			if(vars.includes('inheritPk')) {
@@ -1077,106 +1011,200 @@ async function websocketSitePageInner(apiRequest) {
 				});
 				addGlow($('.inputSitePage' + pk + 'Id'));
 			}
+			var val = o['courseNum'];
+			if(vars.includes('courseNum')) {
+				$('.inputSitePage' + pk + 'CourseNum').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varSitePage' + pk + 'CourseNum').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputSitePage' + pk + 'CourseNum'));
+			}
+			var val = o['lessonNum'];
+			if(vars.includes('lessonNum')) {
+				$('.inputSitePage' + pk + 'LessonNum').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varSitePage' + pk + 'LessonNum').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputSitePage' + pk + 'LessonNum'));
+			}
+			var val = o['h2'];
+			if(vars.includes('h2')) {
+				$('.inputSitePage' + pk + 'H2').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varSitePage' + pk + 'H2').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputSitePage' + pk + 'H2'));
+			}
+			var val = o['h1'];
+			if(vars.includes('h1')) {
+				$('.inputSitePage' + pk + 'H1').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varSitePage' + pk + 'H1').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputSitePage' + pk + 'H1'));
+			}
 		});
 	}
 }
 
 function pageGraph(apiRequest) {
-	var json = JSON.parse($('.pageForm .pageResponse').val());
-	if(json['facetCounts']) {
-		var facetCounts = json.facetCounts;
-		if(facetCounts['facetPivot'] && facetCounts['facetRanges']) {
-			var numPivots = json.responseHeader.params['facet.pivot'].split(',').length;
-			var range = facetCounts.facetRanges.ranges[Object.keys(facetCounts.facetRanges.ranges)[0]];
-			var rangeName;
-			var rangeVar;
-			var rangeVarFq;
-			var rangeCounts;
-			var rangeVals;
-			if(range) {
-				rangeName = range.name;
-				rangeVar = rangeName.substring(0, rangeName.indexOf('_'));
-				rangeVarFq = window.varsFq[rangeVar];
-				rangeCounts = range.counts;
-				rangeVals = Object.keys(rangeCounts).map(key => key);
-			}
-			var pivot1Name = Object.keys(facetCounts.facetPivot.pivotMap)[0];
-			var pivot1VarIndexed = pivot1Name;
-			if(pivot1VarIndexed.includes(','))
-				pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
-			var pivot1Var = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf('_'));
-			var pivot1VarFq = window.varsFq[pivot1Var] ? window.varsFq[pivot1Var] : 'classSimpleName';
-			var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
-			var pivot1Vals = Object.keys(pivot1Map);
-			var data = [];
-			var layout = {};
-			if(pivot1VarFq.classSimpleName === 'Point') {
-				layout['showlegend'] = true;
-				layout['dragmode'] = 'zoom';
-				layout['uirevision'] = 'true';
-				if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
-					layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] }, zoom: window['DEFAULT_MAP_ZOOM'] };
-				else if(window['DEFAULT_MAP_ZOOM'])
-					layout['mapbox'] = { style: 'open-street-map', zoom: window['DEFAULT_MAP_ZOOM'] };
-				else if(window['DEFAULT_MAP_LOCATION'])
-					layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] } };
-				else
-					layout['mapbox'] = { style: 'open-street-map' };
-				layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
-				var trace = {};
-				trace['showlegend'] = true;
-				trace['type'] = 'scattermapbox';
-				trace['marker'] = { color: 'fuchsia', size: 6 };
-				var lat = [];
-				var lon = [];
-				var text = [];
-				var customdata = [];
-				trace['lat'] = lat;
-				trace['lon'] = lon;
-				trace['text'] = text;
-				trace['customdata'] = customdata;
-				json.response.docs.forEach((record) => {
-					var location = record.fields[pivot1VarIndexed];
-					if(location) {
-						var locationParts = location.split(',');
-						text.push('pivot1Val');
-						lat.push(parseFloat(locationParts[0]));
-						lon.push(parseFloat(locationParts[1]));
-						var vals = {};
-						var hovertemplate = '';
-						Object.entries(window.varsFq).forEach(([key, data]) => {
-							if(data.displayName) {
-								vals[data.var] = record.fields[data.varStored];
-								hovertemplate += '<b>' + data.displayName + ': %{customdata.' + data.var + '}</b><br>';
-							}
-							customdata.push(vals);
-						});
-						customdata.push(vals);
-						trace['hovertemplate'] = hovertemplate;
-					}
-				});
-				data.push(trace);
-			} else if(range) {
-				layout['title'] = 'SitePage';
-				layout['xaxis'] = {
-					title: rangeVarFq.displayName
+	var r = $('.pageForm .pageResponse').val();
+	if(r) {
+	var json = JSON.parse(r);
+		if(json['facetCounts']) {
+			var facetCounts = json.facetCounts;
+			if(facetCounts['facetPivot'] && facetCounts['facetRanges']) {
+				var numPivots = json.responseHeader.params['facet.pivot'].split(',').length;
+				var range = facetCounts.facetRanges.ranges[Object.keys(facetCounts.facetRanges.ranges)[0]];
+				var rangeName;
+				var rangeVar;
+				var rangeVarFq;
+				var rangeCounts;
+				var rangeVals;
+				if(range) {
+					rangeName = range.name;
+					rangeVar = rangeName.substring(0, rangeName.indexOf('_'));
+					rangeVarFq = window.varsFq[rangeVar];
+					rangeCounts = range.counts;
+					rangeVals = Object.keys(rangeCounts).map(key => key);
 				}
-				layout['yaxis'] = {
-					title: pivot1VarFq.displayName
-				}
-				pivot1Vals.forEach((pivot1Val) => {
-					var pivot1 = pivot1Map[pivot1Val];
-					var pivot1Counts = pivot1.ranges[rangeName].counts;
+				var pivot1Name = Object.keys(facetCounts.facetPivot.pivotMap)[0];
+				var pivot1VarIndexed = pivot1Name;
+				if(pivot1VarIndexed.includes(','))
+					pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
+				var pivot1VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot1VarIndexed);
+				var pivot1VarFq = pivot1VarObj ? pivot1VarObj.var : 'classSimpleName';
+				var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
+				var pivot1Vals = Object.keys(pivot1Map);
+				var data = [];
+				var layout = {};
+				if(pivot1VarObj.classSimpleName === 'Point') {
+					layout['showlegend'] = true;
+					layout['dragmode'] = 'zoom';
+					layout['uirevision'] = 'true';
+					if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
+						layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] }, zoom: window['DEFAULT_MAP_ZOOM'] };
+					else if(window['DEFAULT_MAP_ZOOM'])
+						layout['mapbox'] = { style: 'open-street-map', zoom: window['DEFAULT_MAP_ZOOM'] };
+					else if(window['DEFAULT_MAP_LOCATION'])
+						layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] } };
+					else
+						layout['mapbox'] = { style: 'open-street-map' };
+					layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
 					var trace = {};
 					trace['showlegend'] = true;
-					trace['x'] = Object.keys(pivot1Counts).map(key => key);
-					trace['y'] = Object.values(pivot1Counts);
-					trace['mode'] = 'lines+markers';
-					trace['name'] = pivot1Val;
+					trace['type'] = 'scattermapbox';
+					var colors = [];
+					var lat = [];
+					var lon = [];
+					var text = [];
+					var customdata = [];
+					trace['lat'] = lat;
+					trace['lon'] = lon;
+					trace['text'] = text;
+					trace['customdata'] = customdata;
+					json.response.docs.forEach((record) => {
+						var location = record.fields[pivot1VarIndexed];
+						if(location) {
+							var locationParts = location.split(',');
+							text.push('pivot1Val');
+							lat.push(parseFloat(locationParts[0]));
+							lon.push(parseFloat(locationParts[1]));
+							colors.push('fuchsia');
+							var vals = {};
+							var hovertemplate = '';
+							Object.entries(window.varsFq).forEach(([key, data]) => {
+								if(data.displayName) {
+									vals[data.var] = record.fields[data.varStored];
+									hovertemplate += '<b>' + data.displayName + ': %{customdata.' + data.var + '}</b><br>';
+								}
+								customdata.push(vals);
+							});
+							customdata.push(vals);
+							trace['hovertemplate'] = hovertemplate;
+						}
+					});
+					trace['marker'] = { color: colors, size: 10 };
 					data.push(trace);
-				});
+				} else if(range) {
+					layout['title'] = 'SitePage';
+					layout['xaxis'] = {
+						title: rangeVarFq.displayName
+					}
+					if(pivot1Vals.length > 0 && pivot1Map[pivot1Vals[0]].pivotMap && Object.keys(pivot1Map[pivot1Vals[0]].pivotMap).length > 0) {
+						var pivot2VarIndexed = pivot1Map[pivot1Vals[0]].pivotMap[Object.keys(pivot1Map[pivot1Vals[0]].pivotMap)[0]].field;
+						var pivot2VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot2VarIndexed);
+						var pivot2VarFq = pivot2VarObj ? pivot2VarObj.var : 'classSimpleName';
+						layout['yaxis'] = {
+							title: pivot2VarObj.displayName
+						}
+						pivot1Vals.forEach((pivot1Val) => {
+							var pivot1 = pivot1Map[pivot1Val];
+							var pivot1Counts = pivot1.ranges[rangeName].counts;
+							var pivot2Map = pivot1.pivotMap;
+							var trace = {};
+							var facetField;
+							trace['showlegend'] = true;
+							trace['mode'] = 'lines+markers';
+							trace['name'] = pivot1Val;
+							trace['x'] = Object.keys(pivot1Counts).map(key => key);
+							if(pivot2Map) {
+								var xs = [];
+								var ys = [];
+								var pivot2Vals = Object.keys(pivot2Map);
+								pivot2Vals.forEach((pivot2Val) => {
+									var pivot2 = pivot2Map[pivot2Val];
+									var pivot2Counts = pivot2.ranges[rangeName].counts;
+									Object.entries(pivot2Counts).forEach(([key, count]) => {
+										xs.push(key);
+										ys.push(parseFloat(pivot2Val));
+									});
+								});
+								trace['y'] = ys;
+								trace['x'] = xs;
+							} else {
+								trace['x'] = Object.keys(pivot1Counts).map(key => key);
+								trace['y'] = Object.entries(pivot1Counts).map(([key, count]) => count);
+							}
+							data.push(trace);
+						});
+					} else {
+						layout['yaxis'] = {
+							title: pivot1VarObj.displayName
+						}
+						pivot1Vals.forEach((pivot1Val) => {
+							var pivot1 = pivot1Map[pivot1Val];
+							var pivot1Counts = pivot1.ranges[rangeName].counts;
+							var pivot2Map = pivot1.pivotMap;
+							var trace = {};
+							var facetField;
+							trace['showlegend'] = true;
+							trace['mode'] = 'lines+markers';
+							trace['name'] = pivot1Val;
+								trace['x'] = Object.keys(pivot1Counts).map(key => key);
+								trace['y'] = Object.entries(pivot1Counts).map(([key, count]) => count);
+							data.push(trace);
+						});
+					}
+				}
+				Plotly.react('htmBodyGraphBaseResultPage', data, layout);
 			}
-			Plotly.react('htmBodyGraphPageLayout', data, layout);
 		}
 	}
 }
@@ -1193,8 +1221,8 @@ function animateStats() {
 	if (x > xMax || x < 0) {
 		clearInterval(animateInterval);
 	}
-	$('#fqVehicleStep_time').val(x);
-	$('#fqVehicleStep_time').change();
+	$('#fqSitePage_time').val(x);
+	$('#fqSitePage_time').change();
 	searchPage();
 	}, speedRate);
 }

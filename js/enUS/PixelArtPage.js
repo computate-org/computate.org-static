@@ -116,6 +116,7 @@ function searchPixelArtFilters($formFilters) {
 
 function searchPixelArtVals(filters, success, error) {
 
+
 	$.ajax({
 		url: '/api/pixel-art?' + $.param(filters)
 		, dataType: 'json'
@@ -906,13 +907,13 @@ function pageGraph(apiRequest) {
 				var pivot1VarIndexed = pivot1Name;
 				if(pivot1VarIndexed.includes(','))
 					pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
-				var pivot1Var = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf('_'));
-				var pivot1VarFq = window.varsFq[pivot1Var] ? window.varsFq[pivot1Var] : 'classSimpleName';
+				var pivot1VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot1VarIndexed);
+				var pivot1VarFq = pivot1VarObj ? pivot1VarObj.var : 'classSimpleName';
 				var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
 				var pivot1Vals = Object.keys(pivot1Map);
 				var data = [];
 				var layout = {};
-				if(pivot1VarFq.classSimpleName === 'Point') {
+				if(pivot1VarObj.classSimpleName === 'Point') {
 					layout['showlegend'] = true;
 					layout['dragmode'] = 'zoom';
 					layout['uirevision'] = 'true';
@@ -928,7 +929,7 @@ function pageGraph(apiRequest) {
 					var trace = {};
 					trace['showlegend'] = true;
 					trace['type'] = 'scattermapbox';
-					trace['marker'] = { color: 'fuchsia', size: 6 };
+					var colors = [];
 					var lat = [];
 					var lon = [];
 					var text = [];
@@ -944,6 +945,7 @@ function pageGraph(apiRequest) {
 							text.push('pivot1Val');
 							lat.push(parseFloat(locationParts[0]));
 							lon.push(parseFloat(locationParts[1]));
+							colors.push('fuchsia');
 							var vals = {};
 							var hovertemplate = '';
 							Object.entries(window.varsFq).forEach(([key, data]) => {
@@ -957,26 +959,68 @@ function pageGraph(apiRequest) {
 							trace['hovertemplate'] = hovertemplate;
 						}
 					});
+					trace['marker'] = { color: colors, size: 10 };
 					data.push(trace);
 				} else if(range) {
 					layout['title'] = 'PixelArt';
 					layout['xaxis'] = {
 						title: rangeVarFq.displayName
 					}
-					layout['yaxis'] = {
-						title: pivot1VarFq.displayName
+					if(pivot1Vals.length > 0 && pivot1Map[pivot1Vals[0]].pivotMap && Object.keys(pivot1Map[pivot1Vals[0]].pivotMap).length > 0) {
+						var pivot2VarIndexed = pivot1Map[pivot1Vals[0]].pivotMap[Object.keys(pivot1Map[pivot1Vals[0]].pivotMap)[0]].field;
+						var pivot2VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot2VarIndexed);
+						var pivot2VarFq = pivot2VarObj ? pivot2VarObj.var : 'classSimpleName';
+						layout['yaxis'] = {
+							title: pivot2VarObj.displayName
+						}
+						pivot1Vals.forEach((pivot1Val) => {
+							var pivot1 = pivot1Map[pivot1Val];
+							var pivot1Counts = pivot1.ranges[rangeName].counts;
+							var pivot2Map = pivot1.pivotMap;
+							var trace = {};
+							var facetField;
+							trace['showlegend'] = true;
+							trace['mode'] = 'lines+markers';
+							trace['name'] = pivot1Val;
+							trace['x'] = Object.keys(pivot1Counts).map(key => key);
+							if(pivot2Map) {
+								var xs = [];
+								var ys = [];
+								var pivot2Vals = Object.keys(pivot2Map);
+								pivot2Vals.forEach((pivot2Val) => {
+									var pivot2 = pivot2Map[pivot2Val];
+									var pivot2Counts = pivot2.ranges[rangeName].counts;
+									Object.entries(pivot2Counts).forEach(([key, count]) => {
+										xs.push(key);
+										ys.push(parseFloat(pivot2Val));
+									});
+								});
+								trace['y'] = ys;
+								trace['x'] = xs;
+							} else {
+								trace['x'] = Object.keys(pivot1Counts).map(key => key);
+								trace['y'] = Object.entries(pivot1Counts).map(([key, count]) => count);
+							}
+							data.push(trace);
+						});
+					} else {
+						layout['yaxis'] = {
+							title: pivot1VarObj.displayName
+						}
+						pivot1Vals.forEach((pivot1Val) => {
+							var pivot1 = pivot1Map[pivot1Val];
+							var pivot1Counts = pivot1.ranges[rangeName].counts;
+							var pivot2Map = pivot1.pivotMap;
+							var trace = {};
+							var facetField;
+							trace['showlegend'] = true;
+							trace['mode'] = 'lines+markers';
+							trace['name'] = pivot1Val;
+								trace['x'] = Object.keys(pivot1Counts).map(key => key);
+								trace['y'] = Object.entries(pivot1Counts).map(([key, count]) => count);
+							data.push(trace);
+						});
 					}
-					pivot1Vals.forEach((pivot1Val) => {
-						var pivot1 = pivot1Map[pivot1Val];
-						var pivot1Counts = pivot1.ranges[rangeName].counts;
-						var trace = {};
-						trace['showlegend'] = true;
-						trace['x'] = Object.keys(pivot1Counts).map(key => key);
-						trace['y'] = Object.values(pivot1Counts);
-						trace['mode'] = 'lines+markers';
-						trace['name'] = pivot1Val;
-						data.push(trace);
-					});
 				}
 				Plotly.react('htmBodyGraphBaseModelPage', data, layout);
 			}
@@ -996,8 +1040,8 @@ function animateStats() {
 	if (x > xMax || x < 0) {
 		clearInterval(animateInterval);
 	}
-	$('#fqVehicleStep_time').val(x);
-	$('#fqVehicleStep_time').change();
+	$('#fqPixelArt_time').val(x);
+	$('#fqPixelArt_time').change();
 	searchPage();
 	}, speedRate);
 }

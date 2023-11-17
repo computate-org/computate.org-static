@@ -10,42 +10,134 @@ $(window).on('load', function() {
                     $target.hide();
             }
     });
+
+	$('.datetimepicker').datePicker({
+		weekDays: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+		, months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		, closeOnSelect: false
+		, readValue: function(element) {
+			var userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			if (!element.value) {
+				var d = new Date();
+				var s = moment(d).format('YYYY-MM-DD h:mm a'); 
+				return s; // initial time if empty
+			}
+			var timeZone = element.value.split('[').pop().split(']')[0];
+			var t1 = moment(element.value.split('[')[0].trim(), 'MM/DD/YYYY h:mm a');
+			var t2 = moment.tz(element.value.split('[')[0].trim(), 'MM/DD/YYYY h:mm a', timeZone);
+			var t3 = new Date(t1._d); t3.setTime(t1.toDate().getTime() + t2.toDate().getTime() - t1.toDate().getTime());
+			var m = moment(t3);
+			var s = m.format('YYYY-MM-DD h:mm a');
+			return s; // triggers default behavior
+		}
+		, renderValue: function(container, element, value) {
+			var userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			element.value = moment(value, 'YYYY-MM-DD h:mm a').format('MM/DD/YYYY h:mm A') + ' [' + userTimeZone + ']';
+			$(element).change();
+		}
+		, header:
+			'<div class="w3-small ">Press [ Tab ] to close</div>' +
+			'<div class="dp-title">' +
+				'<button class="dp-prev" type="button"{{disable-prev}}>{{prev}}</button>' +
+				'<button class="dp-next" type="button"{{disable-next}}>{{next}}</button>' +
+				'<div class="dp-label dp-label-month">{{month}}' +
+					'<select class="dp-select dp-select-month" tabindex="-1">' +
+						'{{months}}' +
+					'</select>' +
+				'</div>' +
+				'<div class="dp-label dp-label-year">{{year}}' +
+					'<select class="dp-select dp-select-year" tabindex="-1">' +
+						'{{years}}' +
+					'</select>' +
+				'</div>' +
+			'</div>'
+		, footer:
+			'<div class="dp-footer">' +
+				'<div class="dp-label">{{hour}}' +
+					'<select class="dp-select dp-select-hour" tabindex="-1">' +
+						'{{hours}}' +
+					'</select>' +
+				'</div>' +
+				'<div class="dp-label">{{minute}}' +
+					'<select class="dp-select dp-select-minute" tabindex="-1">' +
+						'{{minutes}}' +
+					'</select>' +
+				'</div>' +
+				'<div class="dp-label">{{second}}' +
+					'<select class="dp-select dp-select-second" tabindex="-1">' +
+						'{{seconds}}' +
+					'</select>' +
+				'</div>' +
+				'<div class="dp-label">{{am-pm}} [' + Intl.DateTimeFormat().resolvedOptions().timeZone + ']' +
+					'<select class="dp-select dp-select-am-pm" tabindex="-1">' +
+						'{{am-pms}}' +
+					'</select>' +
+				'</div>' +
+			'</div>'
+	});
+	$('.datepicker').datePicker({
+		weekDays: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+		, months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		, timeFormat: 'HH:MM AM'
+		, readValue: function(element) {
+			if (!element.value) {
+				var d = new Date();
+				var s = moment(d).format('YYYY-MM-DD'); 
+				return s; // initial time if empty
+			}
+			var result = moment(element.value, 'MM/DD/YYYY').format('YYYY-MM-DD');
+			return result; // triggers default behavior
+		}
+		, renderValue: function(container, element, value) {
+			element.value = moment(value, 'YYYY-MM-DD').format('MM/DD/YYYY');
+			$(element).change();
+		}
+	});
+	$('.timepicker').datePicker({
+		timeFormat: "HH:mm a"
+		, readValue: function(element) {
+			if (!element.value) {
+				return moment().format('h:mm a'); // initial time if empty
+			}
+			return element.value; // triggers default behavior
+		}
+	});
 });
 
-function paramChange(elem) {
+function paramChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	if($elem.val())
 		$elem.next().text($elem.attr('data-var') + "=" + encodeURIComponent($elem.val()));
 	else
 		$elem.next().text("");
-	searchPage();
+	searchPage(classSimpleName);
 }
 
-function qChange(elem) {
+function qChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	if($elem.val())
 		$elem.next().text("q=" + $elem.attr('data-var') + ":" + encodeURIComponent($elem.val()));
 	else
 		$elem.next().text("");
-	searchPage();
+	searchPage(classSimpleName);
 }
 
-function fqChange(elem) {
+function fqChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	if($elem.val())
 		$("#pageSearchVal-" + $(elem).attr("id")).text("fq=" + $elem.attr('data-var') + ":" + encodeURIComponent($elem.val()));
 	else
 		$("#pageSearchVal-" + $(elem).attr("id")).text("");
-	searchPage();
+	searchPage(classSimpleName);
 }
 
-function fqReplace(elem) {
+function fqReplace(classSimpleName, elem) {
 	var $fq = $('#fq' + elem.getAttribute('data-class') + '_' + elem.getAttribute('data-var'));
 	$fq.val(elem.getAttribute('data-val'));
-	fqChange($fq[0]);
+	fqChange(classSimpleName, $fq[0]);
 }
 
-function facetFieldChange(elem) {
+function facetFieldChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	if($elem.attr("data-clear") === "false") {
 		$("#pageSearchVal-" + $(elem).attr("id")).text("facet.field=" + $elem.attr('data-var'));
@@ -54,27 +146,54 @@ function facetFieldChange(elem) {
 		$("#pageSearchVal-" + $(elem).attr("id")).text("");
 		$elem.attr("data-clear", "false");
 	}
-	searchPage();
+	searchPage(classSimpleName);
 }
 
-function facetRangeChange(elem, classSimpleName) {
+function facetRangeChange(classSimpleName, elem) {
 	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
 	if(facetRangeVal) {
 		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 		$("#pageSearchVal-pageFacetRangeGap-" + classSimpleName).text("facet.range.gap=" + encodeURIComponent($("#pageFacetRangeGap-" + classSimpleName).val()));
-		$("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).text("facet.range.start=" + encodeURIComponent($("#pageFacetRangeStart-" + classSimpleName).val() + ":00.000[" + timeZone + "]"));
-		$("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).text("facet.range.end=" + encodeURIComponent($("#pageFacetRangeEnd-" + classSimpleName).val() + ":00.000[" + timeZone + "]"));
-		$("#pageSearchVal-pageFacetRangeVar-" + classSimpleName).text("facet.range={!tag=r1}" + encodeURIComponent(facetRangeVal));
 	} else {
 		$("#pageSearchVal-pageFacetRangeGap-" + classSimpleName).text("");
-		$("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).text("");
-		$("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).text("");
-		$("#pageSearchVal-pageFacetRangeVar-" + classSimpleName).text("");
 	}
-	searchPage();
+	searchPage(classSimpleName);
 }
 
-function facetPivotChange(elem, classSimpleName) {
+function facetRangeStartChange(classSimpleName, elem, classSimpleName) {
+	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
+	if(facetRangeVal) {
+		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		$("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).text("facet.range.start=" + encodeURIComponent($("#pageFacetRangeStart-" + classSimpleName).val() + ":00.000[" + timeZone + "]"));
+	} else {
+		$("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).text("");
+	}
+	searchPage(classSimpleName);
+}
+
+function facetRangeEndChange(classSimpleName, elem, classSimpleName) {
+	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
+	if(facetRangeVal) {
+		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		$("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).text("facet.range.end=" + encodeURIComponent($("#pageFacetRangeEnd-" + classSimpleName).val() + ":00.000[" + timeZone + "]"));
+	} else {
+		$("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).text("");
+	}
+	searchPage(classSimpleName);
+}
+
+function facetRangeChange(classSimpleName, elem, classSimpleName) {
+	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
+	if(facetRangeVal) {
+		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		$("#pageSearchVal-pageFacetRangeVar-" + classSimpleName).text("facet.range={!tag=r1}" + encodeURIComponent(facetRangeVal));
+	} else {
+		$("#pageSearchVal-pageFacetRangeVar-" + classSimpleName).text("");
+	}
+	searchPage(classSimpleName);
+}
+
+function facetPivotChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	var $listHidden = $("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
 	if($elem.is(":checked")) {
@@ -91,17 +210,23 @@ function facetPivotChange(elem, classSimpleName) {
 	var $list = $("#pageSearchVal-Pivot" + classSimpleName);
 	var $listHidden = $("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
 	if($listHidden.children().length > 0) {
+		var pivotVal = '';
+		$listHidden.children().each(function(index, pivotElem) {
+			if(pivotVal)
+				pivotVal += ",";
+			pivotVal += pivotElem.innerText;
+		});
 		$list.append($("<div>")
 				.attr("id", "pageSearchVal-Pivot" + classSimpleName + "_1")
 				.attr("class", "pageSearchVal pageSearchVal-Pivot" + classSimpleName + " ")
-				.text("facet.pivot={!range=r1}" + $elem.val())
+				.text("facet.pivot={!range=r1}" + pivotVal)
 				)
 				;
 	}
-	searchPage();
+	searchPage(classSimpleName);
 }
 
-function facetFieldListChange(elem, classSimpleName) {
+function facetFieldListChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	var $listHidden = $("#pageSearchVal-FieldList" + classSimpleName + "Hidden");
 	if($elem.is(":checked")) {
@@ -125,10 +250,10 @@ function facetFieldListChange(elem, classSimpleName) {
 				)
 				;
 	}
-	searchPage();
+	searchPage(classSimpleName);
 }
 
-function facetStatsChange(elem, classSimpleName) {
+function facetStatsChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	var $list = $("#pageSearchVal-Stats" + classSimpleName);
 	if($elem.is(":checked")) {
@@ -141,10 +266,14 @@ function facetStatsChange(elem, classSimpleName) {
 	} else {
 		$("#pageSearchVal-Stats" + classSimpleName + "_" + $elem.val()).remove();
 	}
-	searchPage();
+	searchPage(classSimpleName);
 }
 
-function searchPage() {
+function searchPage(classSimpleName, success, error) {
+	if(success == null)
+		success = function( data, textStatus, jQxhr ) {};
+	if(error == null)
+		error = function( jqXhr, textStatus, errorThrown ) {};
 	var queryParams = "?" + $(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
 	var uri = location.pathname + queryParams;
 	$.get(uri, {}, function(data) {
@@ -158,7 +287,8 @@ function searchPage() {
 			$statsField.replaceWith($response.find("." + $statsField.attr("id")));
 		});
 		$(".pageContent").replaceWith($response.find(".pageContent"));
-		pageGraph();
+		window['pageGraph' + classSimpleName](classSimpleName)
+		success(data);
 	}, 'html');
 	window.history.replaceState('', '', uri);
 }
@@ -623,3 +753,105 @@ if (param.length === 2) {
 return obj;
 };
 })(jQuery);
+
+function unpack(rows, key) {
+    return rows.map(function(row) { return row[key]; });
+}
+
+function pageGraphTrafficFlowObserved2(apiRequest) {
+	var data = [];
+	var layout = {};
+	layout['showlegend'] = true;
+	layout['dragmode'] = 'zoom';
+	layout['uirevision'] = 'true';
+	if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
+		layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] }, zoom: window['DEFAULT_MAP_ZOOM'] };
+	else if(window['DEFAULT_MAP_ZOOM'])
+		layout['mapbox'] = { style: 'open-street-map', zoom: window['DEFAULT_MAP_ZOOM'] };
+	else if(window['DEFAULT_MAP_LOCATION'])
+		layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] } };
+	else
+		layout['mapbox'] = { style: 'open-street-map' };
+	layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
+	var trace = {};
+	trace['showlegend'] = true;
+	trace['type'] = 'scattermapbox';
+	var colors = [];
+	var lat = [];
+	var lon = [];
+	var text = [];
+	var customdata = [];
+	trace['lat'] = lat;
+	trace['lon'] = lon;
+	trace['text'] = text;
+	trace['customdata'] = customdata;
+	trace['marker'] = { color: colors, size: 10 };
+
+	data.push({
+		type: 'scattermapbox'
+		, lat: [55.63271352675811, 55.6328803799553, 55.63307851322209, 55.633165023015664]
+		, lon: [13.491925461716146, 13.491959719458668, 13.492001830794774, 13.49203583929166]
+		, mode: 'lines'
+		, line:{
+			width: 2,
+			color: 'red'
+		}
+	});
+
+	data.push({
+		type: 'scattermapbox'
+		, lat: [55.63326306524109, 55.63330503030353, 55.633425750604616, 55.63359752341646]
+		, lon: [13.492094186839967, 13.49212323459849, 13.49224266648859, 13.49241399185663]
+		, mode: 'lines'
+		, line:{
+			width: 2,
+			color: 'red'
+		}
+	});
+
+	data.push({
+		type: 'scattermapbox'
+		, lat: [55.633599977927105, 55.63370944475262, 55.63372646415785]
+		, lon: [13.492416280489497, 13.492519465989837, 13.492544230047926]
+		, mode: 'lines'
+		, line:{
+			width: 2,
+			color: 'red'
+		}
+	});
+//
+//	data.push({
+//		type: 'scattermapbox'
+//		, lat: [55.63384939609901, 55.633875165438056, 55.634140281266916]
+//		, lon: [13.492697416863956, 13.492724863479838, 13.492952500168899]
+//		, mode: 'lines'
+//		, line:{
+//			width: 2,
+//			color: 'green'
+//		}
+//	});
+//
+//	data.push({
+//		type: 'scattermapbox'
+//		, lat: [55.63414273186631, 55.63472632914901, 55.63509159275175]
+//		, lon: [13.492954471292927, 13.49341596662811, 13.493668683273997]
+//		, mode: 'lines'
+//		, line:{
+//			width: 2,
+//			color: 'blue'
+//		}
+//	});
+//
+//	data.push({
+//		type: 'scattermapbox'
+//		, lat: [55.63388689055707, 55.63383866352221, 55.63381227119676, 55.633800109877335, 55.63378863975465, 55.63377785887736, 55.633767859019244, 55.63370621199576, 55.63371215221394, 55.63371287672952, 55.633712074241565, 55.63370965492635, 55.633705796480186, 55.63376534098908, 55.6337834129885, 55.63379312370555, 55.63380313322735, 55.633813623152065, 55.633824501703515, 55.633885178409066, 55.63387923039151, 55.63387876754385, 55.63387983169902, 55.63388250877847]
+//		, lon: [13.492611304455265, 13.492752794694571, 13.49273315616578, 13.492730763615159, 13.492733428057525, 13.492740990703231, 13.492753606885252, 13.492629362383209, 13.492615472331352, 13.49260861353063, 13.492601813364129, 13.492595075281741, 13.492588233600983, 13.492460924160683, 13.492476275049242, 13.492476696442864, 13.49247218169007, 13.492462882673642, 13.492448644053335, 13.492574355652383, 13.492587610628993, 13.492593823968758, 13.492599978673477, 13.4926057537232]
+//		, mode: 'lines'
+//		, line:{
+//			width: 2,
+//			color: 'purple'
+//		}
+//	});
+
+	Plotly.react('htmBodyGraphMapResultPage2', data, layout);
+}

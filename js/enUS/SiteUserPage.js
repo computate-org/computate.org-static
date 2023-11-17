@@ -71,10 +71,6 @@ function searchSiteUserFilters($formFilters) {
 		if(filterSeeDeleted != null && filterSeeDeleted === true)
 			filters.push({ name: 'fq', value: 'seeDeleted:' + filterSeeDeleted });
 
-		var filterInheritPk = $formFilters.find('.valueInheritPk').val();
-		if(filterInheritPk != null && filterInheritPk !== '')
-			filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
-
 		var filterClassCanonicalName = $formFilters.find('.valueClassCanonicalName').val();
 		if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
 			filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
@@ -127,6 +123,10 @@ function searchSiteUserFilters($formFilters) {
 		if(filterId != null && filterId !== '')
 			filters.push({ name: 'fq', value: 'id:' + filterId });
 
+		var filterInheritPk = $formFilters.find('.valueInheritPk').val();
+		if(filterInheritPk != null && filterInheritPk !== '')
+			filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
+
 		var filterUserKeys = $formFilters.find('.valueUserKeys').val();
 		if(filterUserKeys != null && filterUserKeys !== '')
 			filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
@@ -139,26 +139,27 @@ function searchSiteUserFilters($formFilters) {
 		if(filterUserName != null && filterUserName !== '')
 			filters.push({ name: 'fq', value: 'userName:' + filterUserName });
 
-		var filterUserEmail = $formFilters.find('.valueUserEmail').val();
-		if(filterUserEmail != null && filterUserEmail !== '')
-			filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
-
 		var filterUserFirstName = $formFilters.find('.valueUserFirstName').val();
 		if(filterUserFirstName != null && filterUserFirstName !== '')
 			filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
 
-		var filterUserLastName = $formFilters.find('.valueUserLastName').val();
-		if(filterUserLastName != null && filterUserLastName !== '')
-			filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
-
 		var filterUserFullName = $formFilters.find('.valueUserFullName').val();
 		if(filterUserFullName != null && filterUserFullName !== '')
 			filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
+
+		var filterUserEmail = $formFilters.find('.valueUserEmail').val();
+		if(filterUserEmail != null && filterUserEmail !== '')
+			filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
+
+		var filterUserLastName = $formFilters.find('.valueUserLastName').val();
+		if(filterUserLastName != null && filterUserLastName !== '')
+			filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
 	}
 	return filters;
 }
 
 function searchSiteUserVals(filters, success, error) {
+
 	$.ajax({
 		url: '/api/user?' + $.param(filters)
 		, dataType: 'json'
@@ -302,18 +303,6 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 	if(removeSeeDeleted != null && removeSeeDeleted !== '')
 		vals['removeSeeDeleted'] = removeSeeDeleted;
 
-	var valueInheritPk = $formValues.find('.valueInheritPk').val();
-	var removeInheritPk = $formValues.find('.removeInheritPk').val() === 'true';
-	var setInheritPk = removeInheritPk ? null : $formValues.find('.setInheritPk').val();
-	var addInheritPk = $formValues.find('.addInheritPk').val();
-	if(removeInheritPk || setInheritPk != null && setInheritPk !== '')
-		vals['setInheritPk'] = setInheritPk;
-	if(addInheritPk != null && addInheritPk !== '')
-		vals['addInheritPk'] = addInheritPk;
-	var removeInheritPk = $formValues.find('.removeInheritPk').val();
-	if(removeInheritPk != null && removeInheritPk !== '')
-		vals['removeInheritPk'] = removeInheritPk;
-
 	var valueSessionId = $formValues.find('.valueSessionId').val();
 	var removeSessionId = $formValues.find('.removeSessionId').val() === 'true';
 	var setSessionId = removeSessionId ? null : $formValues.find('.setSessionId').val();
@@ -350,6 +339,18 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 	if(removeObjectTitle != null && removeObjectTitle !== '')
 		vals['removeObjectTitle'] = removeObjectTitle;
 
+	var valueInheritPk = $formValues.find('.valueInheritPk').val();
+	var removeInheritPk = $formValues.find('.removeInheritPk').val() === 'true';
+	var setInheritPk = removeInheritPk ? null : $formValues.find('.setInheritPk').val();
+	var addInheritPk = $formValues.find('.addInheritPk').val();
+	if(removeInheritPk || setInheritPk != null && setInheritPk !== '')
+		vals['setInheritPk'] = setInheritPk;
+	if(addInheritPk != null && addInheritPk !== '')
+		vals['addInheritPk'] = addInheritPk;
+	var removeInheritPk = $formValues.find('.removeInheritPk').val();
+	if(removeInheritPk != null && removeInheritPk !== '')
+		vals['removeInheritPk'] = removeInheritPk;
+
 	var valueUserId = $formValues.find('.valueUserId').val();
 	var removeUserId = $formValues.find('.removeUserId').val() === 'true';
 	var setUserId = removeUserId ? null : $formValues.find('.setUserId').val();
@@ -374,18 +375,6 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 	if(removeUserName != null && removeUserName !== '')
 		vals['removeUserName'] = removeUserName;
 
-	var valueUserEmail = $formValues.find('.valueUserEmail').val();
-	var removeUserEmail = $formValues.find('.removeUserEmail').val() === 'true';
-	var setUserEmail = removeUserEmail ? null : $formValues.find('.setUserEmail').val();
-	var addUserEmail = $formValues.find('.addUserEmail').val();
-	if(removeUserEmail || setUserEmail != null && setUserEmail !== '')
-		vals['setUserEmail'] = setUserEmail;
-	if(addUserEmail != null && addUserEmail !== '')
-		vals['addUserEmail'] = addUserEmail;
-	var removeUserEmail = $formValues.find('.removeUserEmail').val();
-	if(removeUserEmail != null && removeUserEmail !== '')
-		vals['removeUserEmail'] = removeUserEmail;
-
 	var valueUserFirstName = $formValues.find('.valueUserFirstName').val();
 	var removeUserFirstName = $formValues.find('.removeUserFirstName').val() === 'true';
 	var setUserFirstName = removeUserFirstName ? null : $formValues.find('.setUserFirstName').val();
@@ -398,18 +387,6 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 	if(removeUserFirstName != null && removeUserFirstName !== '')
 		vals['removeUserFirstName'] = removeUserFirstName;
 
-	var valueUserLastName = $formValues.find('.valueUserLastName').val();
-	var removeUserLastName = $formValues.find('.removeUserLastName').val() === 'true';
-	var setUserLastName = removeUserLastName ? null : $formValues.find('.setUserLastName').val();
-	var addUserLastName = $formValues.find('.addUserLastName').val();
-	if(removeUserLastName || setUserLastName != null && setUserLastName !== '')
-		vals['setUserLastName'] = setUserLastName;
-	if(addUserLastName != null && addUserLastName !== '')
-		vals['addUserLastName'] = addUserLastName;
-	var removeUserLastName = $formValues.find('.removeUserLastName').val();
-	if(removeUserLastName != null && removeUserLastName !== '')
-		vals['removeUserLastName'] = removeUserLastName;
-
 	var valueUserFullName = $formValues.find('.valueUserFullName').val();
 	var removeUserFullName = $formValues.find('.removeUserFullName').val() === 'true';
 	var setUserFullName = removeUserFullName ? null : $formValues.find('.setUserFullName').val();
@@ -421,6 +398,30 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 	var removeUserFullName = $formValues.find('.removeUserFullName').val();
 	if(removeUserFullName != null && removeUserFullName !== '')
 		vals['removeUserFullName'] = removeUserFullName;
+
+	var valueUserEmail = $formValues.find('.valueUserEmail').val();
+	var removeUserEmail = $formValues.find('.removeUserEmail').val() === 'true';
+	var setUserEmail = removeUserEmail ? null : $formValues.find('.setUserEmail').val();
+	var addUserEmail = $formValues.find('.addUserEmail').val();
+	if(removeUserEmail || setUserEmail != null && setUserEmail !== '')
+		vals['setUserEmail'] = setUserEmail;
+	if(addUserEmail != null && addUserEmail !== '')
+		vals['addUserEmail'] = addUserEmail;
+	var removeUserEmail = $formValues.find('.removeUserEmail').val();
+	if(removeUserEmail != null && removeUserEmail !== '')
+		vals['removeUserEmail'] = removeUserEmail;
+
+	var valueUserLastName = $formValues.find('.valueUserLastName').val();
+	var removeUserLastName = $formValues.find('.removeUserLastName').val() === 'true';
+	var setUserLastName = removeUserLastName ? null : $formValues.find('.setUserLastName').val();
+	var addUserLastName = $formValues.find('.addUserLastName').val();
+	if(removeUserLastName || setUserLastName != null && setUserLastName !== '')
+		vals['setUserLastName'] = setUserLastName;
+	if(addUserLastName != null && addUserLastName !== '')
+		vals['addUserLastName'] = addUserLastName;
+	var removeUserLastName = $formValues.find('.removeUserLastName').val();
+	if(removeUserLastName != null && removeUserLastName !== '')
+		vals['removeUserLastName'] = removeUserLastName;
 
 	patchSiteUserVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, success, error);
 }
@@ -486,10 +487,6 @@ function patchSiteUserFilters($formFilters) {
 		if(filterSeeDeleted != null && filterSeeDeleted === true)
 			filters.push({ name: 'fq', value: 'seeDeleted:' + filterSeeDeleted });
 
-		var filterInheritPk = $formFilters.find('.valueInheritPk').val();
-		if(filterInheritPk != null && filterInheritPk !== '')
-			filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
-
 		var filterClassCanonicalName = $formFilters.find('.valueClassCanonicalName').val();
 		if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
 			filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
@@ -542,6 +539,10 @@ function patchSiteUserFilters($formFilters) {
 		if(filterId != null && filterId !== '')
 			filters.push({ name: 'fq', value: 'id:' + filterId });
 
+		var filterInheritPk = $formFilters.find('.valueInheritPk').val();
+		if(filterInheritPk != null && filterInheritPk !== '')
+			filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
+
 		var filterUserKeys = $formFilters.find('.valueUserKeys').val();
 		if(filterUserKeys != null && filterUserKeys !== '')
 			filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
@@ -554,21 +555,21 @@ function patchSiteUserFilters($formFilters) {
 		if(filterUserName != null && filterUserName !== '')
 			filters.push({ name: 'fq', value: 'userName:' + filterUserName });
 
-		var filterUserEmail = $formFilters.find('.valueUserEmail').val();
-		if(filterUserEmail != null && filterUserEmail !== '')
-			filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
-
 		var filterUserFirstName = $formFilters.find('.valueUserFirstName').val();
 		if(filterUserFirstName != null && filterUserFirstName !== '')
 			filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
 
-		var filterUserLastName = $formFilters.find('.valueUserLastName').val();
-		if(filterUserLastName != null && filterUserLastName !== '')
-			filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
-
 		var filterUserFullName = $formFilters.find('.valueUserFullName').val();
 		if(filterUserFullName != null && filterUserFullName !== '')
 			filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
+
+		var filterUserEmail = $formFilters.find('.valueUserEmail').val();
+		if(filterUserEmail != null && filterUserEmail !== '')
+			filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
+
+		var filterUserLastName = $formFilters.find('.valueUserLastName').val();
+		if(filterUserLastName != null && filterUserLastName !== '')
+			filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
 	}
 	return filters;
 }
@@ -641,10 +642,6 @@ async function postSiteUser($formValues, success, error) {
 	if(valueSeeDeleted != null && valueSeeDeleted !== '')
 		vals['seeDeleted'] = valueSeeDeleted == 'true';
 
-	var valueInheritPk = $formValues.find('.valueInheritPk').val();
-	if(valueInheritPk != null && valueInheritPk !== '')
-		vals['inheritPk'] = valueInheritPk;
-
 	var valueSessionId = $formValues.find('.valueSessionId').val();
 	if(valueSessionId != null && valueSessionId !== '')
 		vals['sessionId'] = valueSessionId;
@@ -657,6 +654,10 @@ async function postSiteUser($formValues, success, error) {
 	if(valueObjectTitle != null && valueObjectTitle !== '')
 		vals['objectTitle'] = valueObjectTitle;
 
+	var valueInheritPk = $formValues.find('.valueInheritPk').val();
+	if(valueInheritPk != null && valueInheritPk !== '')
+		vals['inheritPk'] = valueInheritPk;
+
 	var valueUserId = $formValues.find('.valueUserId').val();
 	if(valueUserId != null && valueUserId !== '')
 		vals['userId'] = valueUserId;
@@ -665,21 +666,21 @@ async function postSiteUser($formValues, success, error) {
 	if(valueUserName != null && valueUserName !== '')
 		vals['userName'] = valueUserName;
 
-	var valueUserEmail = $formValues.find('.valueUserEmail').val();
-	if(valueUserEmail != null && valueUserEmail !== '')
-		vals['userEmail'] = valueUserEmail;
-
 	var valueUserFirstName = $formValues.find('.valueUserFirstName').val();
 	if(valueUserFirstName != null && valueUserFirstName !== '')
 		vals['userFirstName'] = valueUserFirstName;
 
-	var valueUserLastName = $formValues.find('.valueUserLastName').val();
-	if(valueUserLastName != null && valueUserLastName !== '')
-		vals['userLastName'] = valueUserLastName;
-
 	var valueUserFullName = $formValues.find('.valueUserFullName').val();
 	if(valueUserFullName != null && valueUserFullName !== '')
 		vals['userFullName'] = valueUserFullName;
+
+	var valueUserEmail = $formValues.find('.valueUserEmail').val();
+	if(valueUserEmail != null && valueUserEmail !== '')
+		vals['userEmail'] = valueUserEmail;
+
+	var valueUserLastName = $formValues.find('.valueUserLastName').val();
+	if(valueUserLastName != null && valueUserLastName !== '')
+		vals['userLastName'] = valueUserLastName;
 
 	$.ajax({
 		url: '/api/user'
@@ -740,13 +741,13 @@ async function websocketSiteUser(success) {
 			var $box = $('<div>').attr('class', 'w3-quarter box-' + id + ' ').attr('id', 'box-' + id).attr('data-numPATCH', numPATCH);
 			var $margin = $('<div>').attr('class', 'w3-margin ').attr('id', 'margin-' + id);
 			var $card = $('<div>').attr('class', 'w3-card w3-white ').attr('id', 'card-' + id);
-			var $header = $('<div>').attr('class', 'w3-container fa-gray ').attr('id', 'header-' + id);
+			var $header = $('<div>').attr('class', 'w3-container fa-2017-shaded-spruce ').attr('id', 'header-' + id);
 			var $i = $('<i>').attr('class', 'far fa-user-cog w3-margin-right ').attr('id', 'icon-' + id);
 			var $headerSpan = $('<span>').attr('class', '').text('modify site users in ' + json.timeRemaining);
 			var $x = $('<span>').attr('class', 'w3-button w3-display-topright ').attr('onclick', '$("#card-' + id + '").hide(); ').attr('id', 'x-' + id);
 			var $body = $('<div>').attr('class', 'w3-container w3-padding ').attr('id', 'text-' + id);
 			var $bar = $('<div>').attr('class', 'w3-light-gray ').attr('id', 'bar-' + id);
-			var $progress = $('<div>').attr('class', 'w3-gray ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+			var $progress = $('<div>').attr('class', 'w3-2017-shaded-spruce ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
 			$card.append($header);
 			$header.append($i);
 			$header.append($headerSpan);
@@ -878,18 +879,6 @@ async function websocketSiteUserInner(apiRequest) {
 						$(this).text(val);
 				});
 				addGlow($('.inputSiteUser' + pk + 'SeeDeleted'));
-			}
-			var val = o['inheritPk'];
-			if(vars.includes('inheritPk')) {
-				$('.inputSiteUser' + pk + 'InheritPk').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSiteUser' + pk + 'InheritPk').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSiteUser' + pk + 'InheritPk'));
 			}
 			var val = o['classCanonicalName'];
 			if(vars.includes('classCanonicalName')) {
@@ -1047,6 +1036,18 @@ async function websocketSiteUserInner(apiRequest) {
 				});
 				addGlow($('.inputSiteUser' + pk + 'Id'));
 			}
+			var val = o['inheritPk'];
+			if(vars.includes('inheritPk')) {
+				$('.inputSiteUser' + pk + 'InheritPk').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varSiteUser' + pk + 'InheritPk').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputSiteUser' + pk + 'InheritPk'));
+			}
 			var val = o['userKeys'];
 			if(vars.includes('userKeys')) {
 				$('.inputSiteUser' + pk + 'UserKeys').each(function() {
@@ -1083,18 +1084,6 @@ async function websocketSiteUserInner(apiRequest) {
 				});
 				addGlow($('.inputSiteUser' + pk + 'UserName'));
 			}
-			var val = o['userEmail'];
-			if(vars.includes('userEmail')) {
-				$('.inputSiteUser' + pk + 'UserEmail').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSiteUser' + pk + 'UserEmail').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSiteUser' + pk + 'UserEmail'));
-			}
 			var val = o['userFirstName'];
 			if(vars.includes('userFirstName')) {
 				$('.inputSiteUser' + pk + 'UserFirstName').each(function() {
@@ -1106,18 +1095,6 @@ async function websocketSiteUserInner(apiRequest) {
 						$(this).text(val);
 				});
 				addGlow($('.inputSiteUser' + pk + 'UserFirstName'));
-			}
-			var val = o['userLastName'];
-			if(vars.includes('userLastName')) {
-				$('.inputSiteUser' + pk + 'UserLastName').each(function() {
-					if(val !== $(this).val())
-						$(this).val(val);
-				});
-				$('.varSiteUser' + pk + 'UserLastName').each(function() {
-					if(val !== $(this).text())
-						$(this).text(val);
-				});
-				addGlow($('.inputSiteUser' + pk + 'UserLastName'));
 			}
 			var val = o['userFullName'];
 			if(vars.includes('userFullName')) {
@@ -1131,106 +1108,176 @@ async function websocketSiteUserInner(apiRequest) {
 				});
 				addGlow($('.inputSiteUser' + pk + 'UserFullName'));
 			}
+			var val = o['userEmail'];
+			if(vars.includes('userEmail')) {
+				$('.inputSiteUser' + pk + 'UserEmail').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varSiteUser' + pk + 'UserEmail').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputSiteUser' + pk + 'UserEmail'));
+			}
+			var val = o['userLastName'];
+			if(vars.includes('userLastName')) {
+				$('.inputSiteUser' + pk + 'UserLastName').each(function() {
+					if(val !== $(this).val())
+						$(this).val(val);
+				});
+				$('.varSiteUser' + pk + 'UserLastName').each(function() {
+					if(val !== $(this).text())
+						$(this).text(val);
+				});
+				addGlow($('.inputSiteUser' + pk + 'UserLastName'));
+			}
 		});
 	}
 }
 
 function pageGraph(apiRequest) {
-	var json = JSON.parse($('.pageForm .pageResponse').val());
-	if(json['facetCounts']) {
-		var facetCounts = json.facetCounts;
-		if(facetCounts['facetPivot'] && facetCounts['facetRanges']) {
-			var numPivots = json.responseHeader.params['facet.pivot'].split(',').length;
-			var range = facetCounts.facetRanges.ranges[Object.keys(facetCounts.facetRanges.ranges)[0]];
-			var rangeName;
-			var rangeVar;
-			var rangeVarFq;
-			var rangeCounts;
-			var rangeVals;
-			if(range) {
-				rangeName = range.name;
-				rangeVar = rangeName.substring(0, rangeName.indexOf('_'));
-				rangeVarFq = window.varsFq[rangeVar];
-				rangeCounts = range.counts;
-				rangeVals = Object.keys(rangeCounts).map(key => key);
-			}
-			var pivot1Name = Object.keys(facetCounts.facetPivot.pivotMap)[0];
-			var pivot1VarIndexed = pivot1Name;
-			if(pivot1VarIndexed.includes(','))
-				pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
-			var pivot1Var = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf('_'));
-			var pivot1VarFq = window.varsFq[pivot1Var] ? window.varsFq[pivot1Var] : 'classSimpleName';
-			var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
-			var pivot1Vals = Object.keys(pivot1Map);
-			var data = [];
-			var layout = {};
-			if(pivot1VarFq.classSimpleName === 'Point') {
-				layout['showlegend'] = true;
-				layout['dragmode'] = 'zoom';
-				layout['uirevision'] = 'true';
-				if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
-					layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] }, zoom: window['DEFAULT_MAP_ZOOM'] };
-				else if(window['DEFAULT_MAP_ZOOM'])
-					layout['mapbox'] = { style: 'open-street-map', zoom: window['DEFAULT_MAP_ZOOM'] };
-				else if(window['DEFAULT_MAP_LOCATION'])
-					layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] } };
-				else
-					layout['mapbox'] = { style: 'open-street-map' };
-				layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
-				var trace = {};
-				trace['showlegend'] = true;
-				trace['type'] = 'scattermapbox';
-				trace['marker'] = { color: 'fuchsia', size: 6 };
-				var lat = [];
-				var lon = [];
-				var text = [];
-				var customdata = [];
-				trace['lat'] = lat;
-				trace['lon'] = lon;
-				trace['text'] = text;
-				trace['customdata'] = customdata;
-				json.response.docs.forEach((record) => {
-					var location = record.fields[pivot1VarIndexed];
-					if(location) {
-						var locationParts = location.split(',');
-						text.push('pivot1Val');
-						lat.push(parseFloat(locationParts[0]));
-						lon.push(parseFloat(locationParts[1]));
-						var vals = {};
-						var hovertemplate = '';
-						Object.entries(window.varsFq).forEach(([key, data]) => {
-							if(data.displayName) {
-								vals[data.var] = record.fields[data.varStored];
-								hovertemplate += '<b>' + data.displayName + ': %{customdata.' + data.var + '}</b><br>';
-							}
-							customdata.push(vals);
-						});
-						customdata.push(vals);
-						trace['hovertemplate'] = hovertemplate;
-					}
-				});
-				data.push(trace);
-			} else if(range) {
-				layout['title'] = 'SiteUser';
-				layout['xaxis'] = {
-					title: rangeVarFq.displayName
+	var r = $('.pageForm .pageResponse').val();
+	if(r) {
+	var json = JSON.parse(r);
+		if(json['facetCounts']) {
+			var facetCounts = json.facetCounts;
+			if(facetCounts['facetPivot'] && facetCounts['facetRanges']) {
+				var numPivots = json.responseHeader.params['facet.pivot'].split(',').length;
+				var range = facetCounts.facetRanges.ranges[Object.keys(facetCounts.facetRanges.ranges)[0]];
+				var rangeName;
+				var rangeVar;
+				var rangeVarFq;
+				var rangeCounts;
+				var rangeVals;
+				if(range) {
+					rangeName = range.name;
+					rangeVar = rangeName.substring(0, rangeName.indexOf('_'));
+					rangeVarFq = window.varsFq[rangeVar];
+					rangeCounts = range.counts;
+					rangeVals = Object.keys(rangeCounts).map(key => key);
 				}
-				layout['yaxis'] = {
-					title: pivot1VarFq.displayName
-				}
-				pivot1Vals.forEach((pivot1Val) => {
-					var pivot1 = pivot1Map[pivot1Val];
-					var pivot1Counts = pivot1.ranges[rangeName].counts;
+				var pivot1Name = Object.keys(facetCounts.facetPivot.pivotMap)[0];
+				var pivot1VarIndexed = pivot1Name;
+				if(pivot1VarIndexed.includes(','))
+					pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
+				var pivot1VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot1VarIndexed);
+				var pivot1VarFq = pivot1VarObj ? pivot1VarObj.var : 'classSimpleName';
+				var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
+				var pivot1Vals = Object.keys(pivot1Map);
+				var data = [];
+				var layout = {};
+				if(pivot1VarObj.classSimpleName === 'Point') {
+					layout['showlegend'] = true;
+					layout['dragmode'] = 'zoom';
+					layout['uirevision'] = 'true';
+					if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
+						layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] }, zoom: window['DEFAULT_MAP_ZOOM'] };
+					else if(window['DEFAULT_MAP_ZOOM'])
+						layout['mapbox'] = { style: 'open-street-map', zoom: window['DEFAULT_MAP_ZOOM'] };
+					else if(window['DEFAULT_MAP_LOCATION'])
+						layout['mapbox'] = { style: 'open-street-map', center: { lat: window['DEFAULT_MAP_LOCATION']['lat'], lon: window['DEFAULT_MAP_LOCATION']['lon'] } };
+					else
+						layout['mapbox'] = { style: 'open-street-map' };
+					layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
 					var trace = {};
 					trace['showlegend'] = true;
-					trace['x'] = Object.keys(pivot1Counts).map(key => key);
-					trace['y'] = Object.values(pivot1Counts);
-					trace['mode'] = 'lines+markers';
-					trace['name'] = pivot1Val;
+					trace['type'] = 'scattermapbox';
+					var colors = [];
+					var lat = [];
+					var lon = [];
+					var text = [];
+					var customdata = [];
+					trace['lat'] = lat;
+					trace['lon'] = lon;
+					trace['text'] = text;
+					trace['customdata'] = customdata;
+					json.response.docs.forEach((record) => {
+						var location = record.fields[pivot1VarIndexed];
+						if(location) {
+							var locationParts = location.split(',');
+							text.push('pivot1Val');
+							lat.push(parseFloat(locationParts[0]));
+							lon.push(parseFloat(locationParts[1]));
+							colors.push('fuchsia');
+							var vals = {};
+							var hovertemplate = '';
+							Object.entries(window.varsFq).forEach(([key, data]) => {
+								if(data.displayName) {
+									vals[data.var] = record.fields[data.varStored];
+									hovertemplate += '<b>' + data.displayName + ': %{customdata.' + data.var + '}</b><br>';
+								}
+								customdata.push(vals);
+							});
+							customdata.push(vals);
+							trace['hovertemplate'] = hovertemplate;
+						}
+					});
+					trace['marker'] = { color: colors, size: 10 };
 					data.push(trace);
-				});
+				} else if(range) {
+					layout['title'] = 'SiteUser';
+					layout['xaxis'] = {
+						title: rangeVarFq.displayName
+					}
+					if(pivot1Vals.length > 0 && pivot1Map[pivot1Vals[0]].pivotMap && Object.keys(pivot1Map[pivot1Vals[0]].pivotMap).length > 0) {
+						var pivot2VarIndexed = pivot1Map[pivot1Vals[0]].pivotMap[Object.keys(pivot1Map[pivot1Vals[0]].pivotMap)[0]].field;
+						var pivot2VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot2VarIndexed);
+						var pivot2VarFq = pivot2VarObj ? pivot2VarObj.var : 'classSimpleName';
+						layout['yaxis'] = {
+							title: pivot2VarObj.displayName
+						}
+						pivot1Vals.forEach((pivot1Val) => {
+							var pivot1 = pivot1Map[pivot1Val];
+							var pivot1Counts = pivot1.ranges[rangeName].counts;
+							var pivot2Map = pivot1.pivotMap;
+							var trace = {};
+							var facetField;
+							trace['showlegend'] = true;
+							trace['mode'] = 'lines+markers';
+							trace['name'] = pivot1Val;
+							trace['x'] = Object.keys(pivot1Counts).map(key => key);
+							if(pivot2Map) {
+								var xs = [];
+								var ys = [];
+								var pivot2Vals = Object.keys(pivot2Map);
+								pivot2Vals.forEach((pivot2Val) => {
+									var pivot2 = pivot2Map[pivot2Val];
+									var pivot2Counts = pivot2.ranges[rangeName].counts;
+									Object.entries(pivot2Counts).forEach(([key, count]) => {
+										xs.push(key);
+										ys.push(parseFloat(pivot2Val));
+									});
+								});
+								trace['y'] = ys;
+								trace['x'] = xs;
+							} else {
+								trace['x'] = Object.keys(pivot1Counts).map(key => key);
+								trace['y'] = Object.entries(pivot1Counts).map(([key, count]) => count);
+							}
+							data.push(trace);
+						});
+					} else {
+						layout['yaxis'] = {
+							title: pivot1VarObj.displayName
+						}
+						pivot1Vals.forEach((pivot1Val) => {
+							var pivot1 = pivot1Map[pivot1Val];
+							var pivot1Counts = pivot1.ranges[rangeName].counts;
+							var pivot2Map = pivot1.pivotMap;
+							var trace = {};
+							var facetField;
+							trace['showlegend'] = true;
+							trace['mode'] = 'lines+markers';
+							trace['name'] = pivot1Val;
+								trace['x'] = Object.keys(pivot1Counts).map(key => key);
+								trace['y'] = Object.entries(pivot1Counts).map(([key, count]) => count);
+							data.push(trace);
+						});
+					}
+				}
+				Plotly.react('htmBodyGraphBaseModelPage', data, layout);
 			}
-			Plotly.react('htmBodyGraphBaseModelPage', data, layout);
 		}
 	}
 }
@@ -1247,8 +1294,8 @@ function animateStats() {
 	if (x > xMax || x < 0) {
 		clearInterval(animateInterval);
 	}
-	$('#fqVehicleStep_time').val(x);
-	$('#fqVehicleStep_time').change();
+	$('#fqSiteUser_time').val(x);
+	$('#fqSiteUser_time').change();
 	searchPage();
 	}, speedRate);
 }

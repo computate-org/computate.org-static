@@ -20,7 +20,9 @@ dt:after { content: ': '; }
 dd { display: inline; margin: 0; padding: 0; font-style: italic; }
 i { font-weight: normal; }
 body {  }
+.w3-modal { z-index: 2000; }
 .padding-right-quarter-em { padding-right: 0.25em; }
+.w3-input { padding: 2px; }
 ul.w3-bar { padding-left: 0; }
 .display-none { display: none; }
 .min-width-300px { min-width: 300px; }
@@ -53,6 +55,35 @@ input[type=text], input[type=radio], input[type=checkbox], textarea {
 	-o-transition: all 0.50s ease-in;
 	outline: none;
 }
+
+.masonry-container {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+    
+  -webkit-column-gap: 15px;
+  -moz-column-gap: 15px;
+  column-gap: 15px;
+}
+
+.masonry-item {
+  display: inline-block;
+  width: 100%;
+}
+
+.masonry-item img {
+  display:block;
+  width: 100%;
+}
+
+@media (max-width:600px){
+  .masonry-container {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
+
 .glowSuccess {
 	box-shadow: 0 0 5px 3px rgba(0, 200, 30, 1);
 	border: 1px solid rgba(0, 200, 30, 1);
