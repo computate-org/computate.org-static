@@ -1,17 +1,17 @@
 
 // Search //
 
-async function searchSiteUser($formFilters, success, error) {
-  var filters = searchSiteUserFilters($formFilters);
+async function searchComputateEvent($formFilters, success, error) {
+  var filters = searchComputateEventFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchSiteUserVals(filters, success, error);
+  searchComputateEventVals(filters, success, error);
 }
 
-function searchSiteUserFilters($formFilters) {
+function searchComputateEventFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -51,25 +51,9 @@ function searchSiteUserFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var $filterSeeArchivedCheckbox = $formFilters.find('input.valueSeeArchived[type = "checkbox"]');
-    var $filterSeeArchivedSelect = $formFilters.find('select.valueSeeArchived');
-    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.val() : $filterSeeArchivedCheckbox.prop('checked');
-    var filterSeeArchivedSelectVal = $formFilters.find('select.filterSeeArchived').val();
-    var filterSeeArchived = null;
-    if(filterSeeArchivedSelectVal !== '')
-      filterSeeArchived = filterSeeArchivedSelectVal == 'true';
-    if(filterSeeArchived != null && filterSeeArchived === true)
-      filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
-
-    var $filterSeeDeletedCheckbox = $formFilters.find('input.valueSeeDeleted[type = "checkbox"]');
-    var $filterSeeDeletedSelect = $formFilters.find('select.valueSeeDeleted');
-    var filterSeeDeleted = $filterSeeDeletedSelect.length ? $filterSeeDeletedSelect.val() : $filterSeeDeletedCheckbox.prop('checked');
-    var filterSeeDeletedSelectVal = $formFilters.find('select.filterSeeDeleted').val();
-    var filterSeeDeleted = null;
-    if(filterSeeDeletedSelectVal !== '')
-      filterSeeDeleted = filterSeeDeletedSelectVal == 'true';
-    if(filterSeeDeleted != null && filterSeeDeleted === true)
-      filters.push({ name: 'fq', value: 'seeDeleted:' + filterSeeDeleted });
+    var filterLocation = $formFilters.find('.valueLocation').val();
+    if(filterLocation != null && filterLocation !== '')
+      filters.push({ name: 'fq', value: 'location:' + filterLocation });
 
     var filterInheritPk = $formFilters.find('.valueInheritPk').val();
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -126,42 +110,14 @@ function searchSiteUserFilters($formFilters) {
     var filterId = $formFilters.find('.valueId').val();
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
-
-    var filterUserKeys = $formFilters.find('.valueUserKeys').val();
-    if(filterUserKeys != null && filterUserKeys !== '')
-      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
-
-    var filterUserId = $formFilters.find('.valueUserId').val();
-    if(filterUserId != null && filterUserId !== '')
-      filters.push({ name: 'fq', value: 'userId:' + filterUserId });
-
-    var filterUserName = $formFilters.find('.valueUserName').val();
-    if(filterUserName != null && filterUserName !== '')
-      filters.push({ name: 'fq', value: 'userName:' + filterUserName });
-
-    var filterUserEmail = $formFilters.find('.valueUserEmail').val();
-    if(filterUserEmail != null && filterUserEmail !== '')
-      filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
-
-    var filterUserFirstName = $formFilters.find('.valueUserFirstName').val();
-    if(filterUserFirstName != null && filterUserFirstName !== '')
-      filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
-
-    var filterUserLastName = $formFilters.find('.valueUserLastName').val();
-    if(filterUserLastName != null && filterUserLastName !== '')
-      filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
-
-    var filterUserFullName = $formFilters.find('.valueUserFullName').val();
-    if(filterUserFullName != null && filterUserFullName !== '')
-      filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
   }
   return filters;
 }
 
-function searchSiteUserVals(filters, success, error) {
+function searchComputateEventVals(filters, success, error) {
 
   $.ajax({
-    url: '/api/user?' + $.param(filters)
+    url: '/api/event?' + $.param(filters)
     , dataType: 'json'
     , type: 'GET'
     , contentType: 'application/json; charset=utf-8'
@@ -170,11 +126,11 @@ function searchSiteUserVals(filters, success, error) {
   });
 }
 
-function suggestSiteUserObjectSuggest($formFilters, $list) {
+function suggestComputateEventObjectSuggest($formFilters, $list) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     $.each(data['list'], function(i, o) {
-      var $i = $('<i>').attr('class', 'far fa-user-cog ');
+      var $i = $('<i>').attr('class', 'fad fa-map-location-dot ');
       var $span = $('<span>').attr('class', '').text(o['objectTitle']);
       var $li = $('<li>');
       var $a = $('<a>').attr('href', o['pageUrlPk']);
@@ -185,13 +141,26 @@ function suggestSiteUserObjectSuggest($formFilters, $list) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchSiteUserVals($formFilters, success, error);
+  searchComputateEventVals($formFilters, success, error);
+}
+
+// GET //
+
+async function getComputateEvent(pk) {
+  $.ajax({
+    url: '/api/event/' + id
+    , dataType: 'json'
+    , type: 'GET'
+    , contentType: 'application/json; charset=utf-8'
+    , success: success
+    , error: error
+  });
 }
 
 // PATCH //
 
-async function patchSiteUser($formFilters, $formValues, pk, success, error) {
-  var filters = patchSiteUserFilters($formFilters);
+async function patchComputateEvent($formFilters, $formValues, pk, success, error) {
+  var filters = patchComputateEventFilters($formFilters);
 
   var vals = {};
 
@@ -273,35 +242,17 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
-  var valueSeeArchived = $formValues.find('.valueSeeArchived').val();
-  var removeSeeArchived = $formValues.find('.removeSeeArchived').val() === 'true';
-  var valueSeeArchivedSelectVal = $formValues.find('select.setSeeArchived').val();
-  if(valueSeeArchivedSelectVal != null && valueSeeArchivedSelectVal !== '')
-    valueSeeArchived = valueSeeArchivedSelectVal == 'true';
-  var setSeeArchived = removeSeeArchived ? null : valueSeeArchived;
-  var addSeeArchived = $formValues.find('.addSeeArchived').prop('checked');
-  if(removeSeeArchived || setSeeArchived != null && setSeeArchived !== '')
-    vals['setSeeArchived'] = setSeeArchived;
-  if(addSeeArchived != null && addSeeArchived !== '')
-    vals['addSeeArchived'] = addSeeArchived;
-  var removeSeeArchived = $formValues.find('.removeSeeArchived').prop('checked');
-  if(removeSeeArchived != null && removeSeeArchived !== '')
-    vals['removeSeeArchived'] = removeSeeArchived;
-
-  var valueSeeDeleted = $formValues.find('.valueSeeDeleted').val();
-  var removeSeeDeleted = $formValues.find('.removeSeeDeleted').val() === 'true';
-  var valueSeeDeletedSelectVal = $formValues.find('select.setSeeDeleted').val();
-  if(valueSeeDeletedSelectVal != null && valueSeeDeletedSelectVal !== '')
-    valueSeeDeleted = valueSeeDeletedSelectVal == 'true';
-  var setSeeDeleted = removeSeeDeleted ? null : valueSeeDeleted;
-  var addSeeDeleted = $formValues.find('.addSeeDeleted').prop('checked');
-  if(removeSeeDeleted || setSeeDeleted != null && setSeeDeleted !== '')
-    vals['setSeeDeleted'] = setSeeDeleted;
-  if(addSeeDeleted != null && addSeeDeleted !== '')
-    vals['addSeeDeleted'] = addSeeDeleted;
-  var removeSeeDeleted = $formValues.find('.removeSeeDeleted').prop('checked');
-  if(removeSeeDeleted != null && removeSeeDeleted !== '')
-    vals['removeSeeDeleted'] = removeSeeDeleted;
+  var valueLocation = $formValues.find('.valueLocation').val();
+  var removeLocation = $formValues.find('.removeLocation').val() === 'true';
+  var setLocation = removeLocation ? null : $formValues.find('.setLocation').val();
+  var addLocation = $formValues.find('.addLocation').val();
+  if(removeLocation || setLocation != null && setLocation !== '')
+    vals['setLocation'] = JSON.parse(setLocation);
+  if(addLocation != null && addLocation !== '')
+    vals['addLocation'] = addLocation;
+  var removeLocation = $formValues.find('.removeLocation').val();
+  if(removeLocation != null && removeLocation !== '')
+    vals['removeLocation'] = removeLocation;
 
   var valueInheritPk = $formValues.find('.valueInheritPk').val();
   var removeInheritPk = $formValues.find('.removeInheritPk').val() === 'true';
@@ -351,82 +302,10 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
   if(removeObjectTitle != null && removeObjectTitle !== '')
     vals['removeObjectTitle'] = removeObjectTitle;
 
-  var valueUserId = $formValues.find('.valueUserId').val();
-  var removeUserId = $formValues.find('.removeUserId').val() === 'true';
-  var setUserId = removeUserId ? null : $formValues.find('.setUserId').val();
-  var addUserId = $formValues.find('.addUserId').val();
-  if(removeUserId || setUserId != null && setUserId !== '')
-    vals['setUserId'] = setUserId;
-  if(addUserId != null && addUserId !== '')
-    vals['addUserId'] = addUserId;
-  var removeUserId = $formValues.find('.removeUserId').val();
-  if(removeUserId != null && removeUserId !== '')
-    vals['removeUserId'] = removeUserId;
-
-  var valueUserName = $formValues.find('.valueUserName').val();
-  var removeUserName = $formValues.find('.removeUserName').val() === 'true';
-  var setUserName = removeUserName ? null : $formValues.find('.setUserName').val();
-  var addUserName = $formValues.find('.addUserName').val();
-  if(removeUserName || setUserName != null && setUserName !== '')
-    vals['setUserName'] = setUserName;
-  if(addUserName != null && addUserName !== '')
-    vals['addUserName'] = addUserName;
-  var removeUserName = $formValues.find('.removeUserName').val();
-  if(removeUserName != null && removeUserName !== '')
-    vals['removeUserName'] = removeUserName;
-
-  var valueUserEmail = $formValues.find('.valueUserEmail').val();
-  var removeUserEmail = $formValues.find('.removeUserEmail').val() === 'true';
-  var setUserEmail = removeUserEmail ? null : $formValues.find('.setUserEmail').val();
-  var addUserEmail = $formValues.find('.addUserEmail').val();
-  if(removeUserEmail || setUserEmail != null && setUserEmail !== '')
-    vals['setUserEmail'] = setUserEmail;
-  if(addUserEmail != null && addUserEmail !== '')
-    vals['addUserEmail'] = addUserEmail;
-  var removeUserEmail = $formValues.find('.removeUserEmail').val();
-  if(removeUserEmail != null && removeUserEmail !== '')
-    vals['removeUserEmail'] = removeUserEmail;
-
-  var valueUserFirstName = $formValues.find('.valueUserFirstName').val();
-  var removeUserFirstName = $formValues.find('.removeUserFirstName').val() === 'true';
-  var setUserFirstName = removeUserFirstName ? null : $formValues.find('.setUserFirstName').val();
-  var addUserFirstName = $formValues.find('.addUserFirstName').val();
-  if(removeUserFirstName || setUserFirstName != null && setUserFirstName !== '')
-    vals['setUserFirstName'] = setUserFirstName;
-  if(addUserFirstName != null && addUserFirstName !== '')
-    vals['addUserFirstName'] = addUserFirstName;
-  var removeUserFirstName = $formValues.find('.removeUserFirstName').val();
-  if(removeUserFirstName != null && removeUserFirstName !== '')
-    vals['removeUserFirstName'] = removeUserFirstName;
-
-  var valueUserLastName = $formValues.find('.valueUserLastName').val();
-  var removeUserLastName = $formValues.find('.removeUserLastName').val() === 'true';
-  var setUserLastName = removeUserLastName ? null : $formValues.find('.setUserLastName').val();
-  var addUserLastName = $formValues.find('.addUserLastName').val();
-  if(removeUserLastName || setUserLastName != null && setUserLastName !== '')
-    vals['setUserLastName'] = setUserLastName;
-  if(addUserLastName != null && addUserLastName !== '')
-    vals['addUserLastName'] = addUserLastName;
-  var removeUserLastName = $formValues.find('.removeUserLastName').val();
-  if(removeUserLastName != null && removeUserLastName !== '')
-    vals['removeUserLastName'] = removeUserLastName;
-
-  var valueUserFullName = $formValues.find('.valueUserFullName').val();
-  var removeUserFullName = $formValues.find('.removeUserFullName').val() === 'true';
-  var setUserFullName = removeUserFullName ? null : $formValues.find('.setUserFullName').val();
-  var addUserFullName = $formValues.find('.addUserFullName').val();
-  if(removeUserFullName || setUserFullName != null && setUserFullName !== '')
-    vals['setUserFullName'] = setUserFullName;
-  if(addUserFullName != null && addUserFullName !== '')
-    vals['addUserFullName'] = addUserFullName;
-  var removeUserFullName = $formValues.find('.removeUserFullName').val();
-  if(removeUserFullName != null && removeUserFullName !== '')
-    vals['removeUserFullName'] = removeUserFullName;
-
-  patchSiteUserVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, success, error);
+  patchComputateEventVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, success, error);
 }
 
-function patchSiteUserFilters($formFilters) {
+function patchComputateEventFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -467,25 +346,9 @@ function patchSiteUserFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var $filterSeeArchivedCheckbox = $formFilters.find('input.valueSeeArchived[type = "checkbox"]');
-    var $filterSeeArchivedSelect = $formFilters.find('select.valueSeeArchived');
-    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.val() : $filterSeeArchivedCheckbox.prop('checked');
-    var filterSeeArchivedSelectVal = $formFilters.find('select.filterSeeArchived').val();
-    var filterSeeArchived = null;
-    if(filterSeeArchivedSelectVal !== '')
-      filterSeeArchived = filterSeeArchivedSelectVal == 'true';
-    if(filterSeeArchived != null && filterSeeArchived === true)
-      filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
-
-    var $filterSeeDeletedCheckbox = $formFilters.find('input.valueSeeDeleted[type = "checkbox"]');
-    var $filterSeeDeletedSelect = $formFilters.find('select.valueSeeDeleted');
-    var filterSeeDeleted = $filterSeeDeletedSelect.length ? $filterSeeDeletedSelect.val() : $filterSeeDeletedCheckbox.prop('checked');
-    var filterSeeDeletedSelectVal = $formFilters.find('select.filterSeeDeleted').val();
-    var filterSeeDeleted = null;
-    if(filterSeeDeletedSelectVal !== '')
-      filterSeeDeleted = filterSeeDeletedSelectVal == 'true';
-    if(filterSeeDeleted != null && filterSeeDeleted === true)
-      filters.push({ name: 'fq', value: 'seeDeleted:' + filterSeeDeleted });
+    var filterLocation = $formFilters.find('.valueLocation').val();
+    if(filterLocation != null && filterLocation !== '')
+      filters.push({ name: 'fq', value: 'location:' + filterLocation });
 
     var filterInheritPk = $formFilters.find('.valueInheritPk').val();
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -542,47 +405,19 @@ function patchSiteUserFilters($formFilters) {
     var filterId = $formFilters.find('.valueId').val();
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
-
-    var filterUserKeys = $formFilters.find('.valueUserKeys').val();
-    if(filterUserKeys != null && filterUserKeys !== '')
-      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
-
-    var filterUserId = $formFilters.find('.valueUserId').val();
-    if(filterUserId != null && filterUserId !== '')
-      filters.push({ name: 'fq', value: 'userId:' + filterUserId });
-
-    var filterUserName = $formFilters.find('.valueUserName').val();
-    if(filterUserName != null && filterUserName !== '')
-      filters.push({ name: 'fq', value: 'userName:' + filterUserName });
-
-    var filterUserEmail = $formFilters.find('.valueUserEmail').val();
-    if(filterUserEmail != null && filterUserEmail !== '')
-      filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
-
-    var filterUserFirstName = $formFilters.find('.valueUserFirstName').val();
-    if(filterUserFirstName != null && filterUserFirstName !== '')
-      filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
-
-    var filterUserLastName = $formFilters.find('.valueUserLastName').val();
-    if(filterUserLastName != null && filterUserLastName !== '')
-      filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
-
-    var filterUserFullName = $formFilters.find('.valueUserFullName').val();
-    if(filterUserFullName != null && filterUserFullName !== '')
-      filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
   }
   return filters;
 }
 
-function patchSiteUserVal(filters, v, val, success, error) {
+function patchComputateEventVal(filters, v, val, success, error) {
   var vals = {};
   vals[v] = val;
-  patchSiteUserVals(filters, vals, success, error);
+  patchComputateEventVals(filters, vals, success, error);
 }
 
-function patchSiteUserVals(filters, vals, success, error) {
+function patchComputateEventVals(filters, vals, success, error) {
   $.ajax({
-    url: '/api/user?' + $.param(filters)
+    url: '/api/event?' + $.param(filters)
     , dataType: 'json'
     , type: 'PATCH'
     , contentType: 'application/json; charset=utf-8'
@@ -594,7 +429,7 @@ function patchSiteUserVals(filters, vals, success, error) {
 
 // POST //
 
-async function postSiteUser($formValues, success, error) {
+async function postComputateEvent($formValues, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -634,13 +469,9 @@ async function postSiteUser($formValues, success, error) {
   if(valueDeleted != null && valueDeleted !== '')
     vals['deleted'] = valueDeleted == 'true';
 
-  var valueSeeArchived = $formValues.find('.valueSeeArchived').val();
-  if(valueSeeArchived != null && valueSeeArchived !== '')
-    vals['seeArchived'] = valueSeeArchived == 'true';
-
-  var valueSeeDeleted = $formValues.find('.valueSeeDeleted').val();
-  if(valueSeeDeleted != null && valueSeeDeleted !== '')
-    vals['seeDeleted'] = valueSeeDeleted == 'true';
+  var valueLocation = $formValues.find('.valueLocation').val();
+  if(valueLocation != null && valueLocation !== '')
+    vals['location'] = JSON.parse(valueLocation);
 
   var valueInheritPk = $formValues.find('.valueInheritPk').val();
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -658,32 +489,8 @@ async function postSiteUser($formValues, success, error) {
   if(valueObjectTitle != null && valueObjectTitle !== '')
     vals['objectTitle'] = valueObjectTitle;
 
-  var valueUserId = $formValues.find('.valueUserId').val();
-  if(valueUserId != null && valueUserId !== '')
-    vals['userId'] = valueUserId;
-
-  var valueUserName = $formValues.find('.valueUserName').val();
-  if(valueUserName != null && valueUserName !== '')
-    vals['userName'] = valueUserName;
-
-  var valueUserEmail = $formValues.find('.valueUserEmail').val();
-  if(valueUserEmail != null && valueUserEmail !== '')
-    vals['userEmail'] = valueUserEmail;
-
-  var valueUserFirstName = $formValues.find('.valueUserFirstName').val();
-  if(valueUserFirstName != null && valueUserFirstName !== '')
-    vals['userFirstName'] = valueUserFirstName;
-
-  var valueUserLastName = $formValues.find('.valueUserLastName').val();
-  if(valueUserLastName != null && valueUserLastName !== '')
-    vals['userLastName'] = valueUserLastName;
-
-  var valueUserFullName = $formValues.find('.valueUserFullName').val();
-  if(valueUserFullName != null && valueUserFullName !== '')
-    vals['userFullName'] = valueUserFullName;
-
   $.ajax({
-    url: '/api/user'
+    url: '/api/event'
     , dataType: 'json'
     , type: 'POST'
     , contentType: 'application/json; charset=utf-8'
@@ -693,9 +500,9 @@ async function postSiteUser($formValues, success, error) {
   });
 }
 
-function postSiteUserVals(vals, success, error) {
+function postComputateEventVals(vals, success, error) {
   $.ajax({
-    url: '/api/user'
+    url: '/api/event'
     , dataType: 'json'
     , type: 'POST'
     , contentType: 'application/json; charset=utf-8'
@@ -707,15 +514,15 @@ function postSiteUserVals(vals, success, error) {
 
 // PUTImport //
 
-async function putimportSiteUser($formValues, pk, success, error) {
+async function putimportComputateEvent($formValues, pk, success, error) {
   var json = $formValues.find('.PUTImport_searchList').val();
   if(json != null && json !== '')
-    putimportSiteUserVals(JSON.parse(json), success, error);
+    putimportComputateEventVals(JSON.parse(json), success, error);
 }
 
-function putimportSiteUserVals(json, success, error) {
+function putimportComputateEventVals(json, success, error) {
   $.ajax({
-    url: '/api/user-import'
+    url: '/api/event-import'
     , dataType: 'json'
     , type: 'PUT'
     , contentType: 'application/json; charset=utf-8'
@@ -725,14 +532,14 @@ function putimportSiteUserVals(json, success, error) {
   });
 }
 
-async function websocketSiteUser(success) {
+async function websocketComputateEvent(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketSiteUser', function (error, message) {
+    window.eventBus.registerHandler('websocketComputateEvent', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = $('#SiteUserForm :input[name=pk]').val();
+      var pkPage = $('#ComputateEventForm :input[name=pk]').val();
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -741,13 +548,13 @@ async function websocketSiteUser(success) {
       var $box = $('<div>').attr('class', 'w3-quarter box-' + id + ' ').attr('id', 'box-' + id).attr('data-numPATCH', numPATCH);
       var $margin = $('<div>').attr('class', 'w3-margin ').attr('id', 'margin-' + id);
       var $card = $('<div>').attr('class', 'w3-card w3-white ').attr('id', 'card-' + id);
-      var $header = $('<div>').attr('class', 'w3-container fa-2017-shaded-spruce ').attr('id', 'header-' + id);
-      var $i = $('<i>').attr('class', 'far fa-user-cog w3-margin-right ').attr('id', 'icon-' + id);
-      var $headerSpan = $('<span>').attr('class', '').text('modify site users in ' + json.timeRemaining);
+      var $header = $('<div>').attr('class', 'w3-container fa- ').attr('id', 'header-' + id);
+      var $i = $('<i>').attr('class', 'fad fa-map-location-dot w3-margin-right ').attr('id', 'icon-' + id);
+      var $headerSpan = $('<span>').attr('class', '').text('modify events in ' + json.timeRemaining);
       var $x = $('<span>').attr('class', 'w3-button w3-display-topright ').attr('onclick', '$("#card-' + id + '").hide(); ').attr('id', 'x-' + id);
       var $body = $('<div>').attr('class', 'w3-container w3-padding ').attr('id', 'text-' + id);
       var $bar = $('<div>').attr('class', 'w3-light-gray ').attr('id', 'bar-' + id);
-      var $progress = $('<div>').attr('class', 'w3-2017-shaded-spruce ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+      var $progress = $('<div>').attr('class', 'w3- ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
       $card.append($header);
       $header.append($i);
       $header.append($headerSpan);
@@ -774,7 +581,7 @@ async function websocketSiteUser(success) {
     });
   }
 }
-async function websocketSiteUserInner(apiRequest) {
+async function websocketComputateEventInner(apiRequest) {
   var pk = apiRequest['pk'];
   var pks = apiRequest['pks'];
   var classes = apiRequest['classes'];
@@ -792,8 +599,7 @@ async function websocketSiteUserInner(apiRequest) {
         var inputObjectId = null;
         var inputArchived = null;
         var inputDeleted = null;
-        var inputSeeArchived = null;
-        var inputSeeDeleted = null;
+        var inputLocation = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -808,13 +614,6 @@ async function websocketSiteUserInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
-        var inputUserKeys = null;
-        var inputUserId = null;
-        var inputUserName = null;
-        var inputUserEmail = null;
-        var inputUserFirstName = null;
-        var inputUserLastName = null;
-        var inputUserFullName = null;
 
         if(vars.includes('pk'))
           inputPk = $response.find('#Page_pk');
@@ -828,10 +627,8 @@ async function websocketSiteUserInner(apiRequest) {
           inputArchived = $response.find('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.find('#Page_deleted');
-        if(vars.includes('seeArchived'))
-          inputSeeArchived = $response.find('#Page_seeArchived');
-        if(vars.includes('seeDeleted'))
-          inputSeeDeleted = $response.find('#Page_seeDeleted');
+        if(vars.includes('location'))
+          inputLocation = $response.find('#Page_location');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.find('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -860,24 +657,10 @@ async function websocketSiteUserInner(apiRequest) {
           inputPageUrlApi = $response.find('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.find('#Page_id');
-        if(vars.includes('userKeys'))
-          inputUserKeys = $response.find('#Page_userKeys');
-        if(vars.includes('userId'))
-          inputUserId = $response.find('#Page_userId');
-        if(vars.includes('userName'))
-          inputUserName = $response.find('#Page_userName');
-        if(vars.includes('userEmail'))
-          inputUserEmail = $response.find('#Page_userEmail');
-        if(vars.includes('userFirstName'))
-          inputUserFirstName = $response.find('#Page_userFirstName');
-        if(vars.includes('userLastName'))
-          inputUserLastName = $response.find('#Page_userLastName');
-        if(vars.includes('userFullName'))
-          inputUserFullName = $response.find('#Page_userFullName');
-        jsWebsocketSiteUser(pk, vars, $response);
+        jsWebsocketComputateEvent(pk, vars, $response);
 
-        window.siteUser = JSON.parse($response.find('.pageForm .siteUser').val());
-        window.listSiteUser = JSON.parse($response.find('.pageForm .listSiteUser').val());
+        window.computateEvent = JSON.parse($response.find('.pageForm .computateEvent').val());
+        window.listComputateEvent = JSON.parse($response.find('.pageForm .listComputateEvent').val());
 
 
         if(inputPk) {
@@ -910,14 +693,9 @@ async function websocketSiteUserInner(apiRequest) {
           addGlow($('#Page_deleted'));
         }
 
-        if(inputSeeArchived) {
-          inputSeeArchived.replaceAll('#Page_seeArchived');
-          addGlow($('#Page_seeArchived'));
-        }
-
-        if(inputSeeDeleted) {
-          inputSeeDeleted.replaceAll('#Page_seeDeleted');
-          addGlow($('#Page_seeDeleted'));
+        if(inputLocation) {
+          inputLocation.replaceAll('#Page_location');
+          addGlow($('#Page_location'));
         }
 
         if(inputInheritPk) {
@@ -990,47 +768,12 @@ async function websocketSiteUserInner(apiRequest) {
           addGlow($('#Page_id'));
         }
 
-        if(inputUserKeys) {
-          inputUserKeys.replaceAll('#Page_userKeys');
-          addGlow($('#Page_userKeys'));
-        }
-
-        if(inputUserId) {
-          inputUserId.replaceAll('#Page_userId');
-          addGlow($('#Page_userId'));
-        }
-
-        if(inputUserName) {
-          inputUserName.replaceAll('#Page_userName');
-          addGlow($('#Page_userName'));
-        }
-
-        if(inputUserEmail) {
-          inputUserEmail.replaceAll('#Page_userEmail');
-          addGlow($('#Page_userEmail'));
-        }
-
-        if(inputUserFirstName) {
-          inputUserFirstName.replaceAll('#Page_userFirstName');
-          addGlow($('#Page_userFirstName'));
-        }
-
-        if(inputUserLastName) {
-          inputUserLastName.replaceAll('#Page_userLastName');
-          addGlow($('#Page_userLastName'));
-        }
-
-        if(inputUserFullName) {
-          inputUserFullName.replaceAll('#Page_userFullName');
-          addGlow($('#Page_userFullName'));
-        }
-
-        pageGraphSiteUser();
+        pageGraphComputateEvent();
     });
   }
 }
 
-function pageGraphSiteUser(apiRequest) {
+function pageGraphComputateEvent(apiRequest) {
   var r = $('.pageForm .pageResponse').val();
   if(r) {
     var json = JSON.parse(r);
@@ -1062,7 +805,7 @@ function pageGraphSiteUser(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'site users';
+          layout['title'] = 'events';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -1133,8 +876,8 @@ function pageGraphSiteUser(apiRequest) {
 }
 
 function animateStats() {
-  $('#pageSearchVal-fqSiteUser_time').text('');
-  searchPage('SiteUser', function() {
+  $('#pageSearchVal-fqComputateEvent_time').text('');
+  searchPage('ComputateEvent', function() {
     let speedRate = parseFloat($('#animateStatsSpeed').val()) * 1000;
     let xStep = parseFloat($('#animateStatsStep').val());
     let xMin = parseFloat($('#animateStatsMin').val());
@@ -1146,9 +889,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      $('#fqSiteUser_time').val(x);
-      $('#fqSiteUser_time').change();
-      searchPage('SiteUser');
+      $('#fqComputateEvent_time').val(x);
+      $('#fqComputateEvent_time').change();
+      searchPage('ComputateEvent');
     }, speedRate);
   });
 }
