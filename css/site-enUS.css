@@ -1,39 +1,34 @@
 
 
 /* theme css */
+:root {
+  /* Changes the primary theme color to purple using primitives */
+  --sl-color-primary-50: var(--sl-color-purple-50);
+  --sl-color-primary-100: var(--sl-color-purple-100);
+  --sl-color-primary-200: var(--sl-color-purple-200);
+  --sl-color-primary-300: var(--sl-color-purple-300);
+  --sl-color-primary-400: var(--sl-color-purple-400);
+  --sl-color-primary-500: var(--sl-color-purple-500);
+  --sl-color-primary-600: var(--sl-color-purple-600);
+  --sl-color-primary-700: var(--sl-color-purple-700);
+  --sl-color-primary-800: var(--sl-color-purple-800);
+  --sl-color-primary-900: var(--sl-color-purple-900);
+  --sl-color-primary-950: var(--sl-color-purple-950);
+}
+
+/* theme css */
 :root,
 :host,
-.sl-theme-default-light {
-  --sl-color-brand-fill-quiet: var(--sl-color-violet-95);
-  --sl-color-brand-fill-normal: var(--sl-color-violet-90);
-  --sl-color-brand-fill-loud: var(--sl-color-violet-50);
-  --sl-color-brand-border-quiet: var(--sl-color-violet-90);
-  --sl-color-brand-border-normal: var(--sl-color-violet-80);
-  --sl-color-brand-border-loud: var(--sl-color-violet-60);
-  --sl-color-brand-on-quiet: var(--sl-color-violet-40);
-  --sl-color-brand-on-normal: var(--sl-color-violet-30);
-  --sl-color-brand-on-loud: white;
-
-  --sl-color-focus: var(--sl-color-brand-fill-loud);
-  --opposite-color-brand-on-normal: var(--sl-color-violet-70);
+.sl-theme-light {
+  --opposite-color-brand-on-normal: var(--sl-color-purple-700);
 }
-.sl-theme-default-dark {
-  --sl-color-brand-fill-quiet: var(--sl-color-violet-05);
-  --sl-color-brand-fill-normal: var(--sl-color-violet-10);
-  --sl-color-brand-fill-loud: var(--sl-color-violet-50);
-  --sl-color-brand-border-quiet: var(--sl-color-violet-10);
-  --sl-color-brand-border-normal: var(--sl-color-violet-20);
-  --sl-color-brand-border-loud: var(--sl-color-violet-40);
-  --sl-color-brand-on-quiet: var(--sl-color-violet-60);
-  --sl-color-brand-on-normal: var(--sl-color-violet-70);
-  --sl-color-brand-on-loud: white;
-
-  --sl-color-focus: var(--sl-color-brand-fill-loud);
-  --opposite-color-brand-on-normal: var(--sl-color-violet-30);
+.sl-theme-dark {
+  --opposite-color-brand-on-normal: var(--sl-color-purple-300);
 }
+
 .opposite-color {
-  background-color: var(--sl-color-text-normal);
-  color: var(--sl-color-surface-default);
+  background-color: var(--sl-color-neutral-1000);
+  color: var(--sl-color-neutral-0);
 }
 .opposite-color a {
   color: var(--opposite-color-brand-on-normal);
@@ -91,12 +86,6 @@ a:hover, a:active {
   padding-inline-start: var(--sl-space-m);
 }
 /* mobile stuff */
-#sl-page[view="mobile"] .only-desktop {
-  display: none!important;
-}
-#sl-page[view="desktop"] .only-mobile {
-  display: none!important;
-}
 /* header image stuff */
 #img-keys-a {display: flex; align-items: center;}
 #img-keys-img {width: 17rem;}
@@ -121,20 +110,47 @@ a:hover, a:active {
 #sl-page[view="desktop"] #top-bar {
   padding: var(--sl-space-m) var(--sl-space-3xl);
 }
-html.sl-theme-default-dark .only-light, html:not(.sl-theme-default-dark) .only-dark {
+html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
   display: none;
 }
 /* footer stuff */
 #footer-open-source {
   padding: 1rem;
   text-align: center;
+  font-size: 1rem;
 }
+#footer-open-source sl-icon {
+  font-size: 10rem;
+  padding: 0 1rem;
+}
+
 #footer-powered-by {
   padding: 1rem;
   text-align: center;
+  font-size: 1rem;
 }
+#footer-powered-by img {
+  height: 8rem;
+  padding: 0 1rem;
+}
+
+#footer-generated-by {
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+#footer-generated-by img {
+  height: 2rem;
+  padding: 0 1rem;
+}
+
 .display-flex {
   display: flex;
+}
+.display-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .flex-align-center {
   display: flex;
@@ -144,9 +160,21 @@ html.sl-theme-default-dark .only-light, html:not(.sl-theme-default-dark) .only-d
   height: 1rem;
 }
 
-/* Shoelace items */
+/* layout items */
+@media (max-width:600px){
+  .hide-mobile{display:none!important}
+}
+@media (min-width:601px){
+  .hide-desktop{display:none!important}
+}
 #site-page {
   display: block;
   box-sizing: border-box;
   height: 100%;
+}
+.float-left {
+  float: left;
+}
+footer {
+  clear: both;
 }
