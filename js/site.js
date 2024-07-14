@@ -2,6 +2,21 @@
 //////////
 // site //
 //////////
+//
+//function addGlow($input) {
+//    $input.addClass('glowSuccess');
+//    $input.removeClass('glowError');
+//}
+//
+//function removeGlow($input) {
+//    $input.removeClass('glowSuccess');
+//    $input.removeClass('glowError');
+//}
+//
+//function addError($input) {
+//    $input.removeClass('glowSuccess');
+//    $input.addClass('glowError');
+//}
 
 (() => {
   document.querySelector('#nav-toggle-button').addEventListener('click', event => {
@@ -326,21 +341,6 @@
 //            $('.w3-modal').filter(':visible').hide();
 //    }
 //});
-//
-//function addGlow($input) {
-//    $input.addClass('glowSuccess');
-//    $input.removeClass('glowError');
-//}
-//
-//function removeGlow($input) {
-//    $input.removeClass('glowSuccess');
-//    $input.removeClass('glowError');
-//}
-//
-//function addError($input) {
-//    $input.removeClass('glowSuccess');
-//    $input.addClass('glowError');
-//}
 //
 //function ajouterRemplacer($input) {
 //    var idListe = $input.attr('data-id'); 

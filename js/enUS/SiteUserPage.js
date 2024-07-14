@@ -15,143 +15,143 @@ function searchSiteUserFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
-    var filterPk = $formFilters.find('.valuePk').val();
+    var filterPk = $formFilters.querySelector('.valuePk')?.value;
     if(filterPk != null && filterPk !== '')
       filters.push({ name: 'fq', value: 'pk:' + filterPk });
 
-    var filterCreated = $formFilters.find('.valueCreated').val();
+    var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
     if(filterCreated != null && filterCreated !== '')
       filters.push({ name: 'fq', value: 'created:' + filterCreated });
 
-    var filterModified = $formFilters.find('.valueModified').val();
+    var filterModified = $formFilters.querySelector('.valueModified')?.value;
     if(filterModified != null && filterModified !== '')
       filters.push({ name: 'fq', value: 'modified:' + filterModified });
 
-    var filterObjectId = $formFilters.find('.valueObjectId').val();
+    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
     if(filterObjectId != null && filterObjectId !== '')
       filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
-    var $filterArchivedCheckbox = $formFilters.find('input.valueArchived[type = "checkbox"]');
-    var $filterArchivedSelect = $formFilters.find('select.valueArchived');
-    var filterArchived = $filterArchivedSelect.length ? $filterArchivedSelect.val() : $filterArchivedCheckbox.prop('checked');
-    var filterArchivedSelectVal = $formFilters.find('select.filterArchived').val();
+    var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
+    var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
+    var filterArchived = $filterArchivedSelect.length ? $filterArchivedSelect.value : $filterArchivedCheckbox.checked;
+    var filterArchivedSelectVal = $formFilters.querySelector('select.filterArchived')?.value;
     var filterArchived = null;
     if(filterArchivedSelectVal !== '')
       filterArchived = filterArchivedSelectVal == 'true';
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
 
-    var $filterDeletedCheckbox = $formFilters.find('input.valueDeleted[type = "checkbox"]');
-    var $filterDeletedSelect = $formFilters.find('select.valueDeleted');
-    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.val() : $filterDeletedCheckbox.prop('checked');
-    var filterDeletedSelectVal = $formFilters.find('select.filterDeleted').val();
+    var $filterDeletedCheckbox = $formFilters.querySelector('input.valueDeleted[type = "checkbox"]');
+    var $filterDeletedSelect = $formFilters.querySelector('select.valueDeleted');
+    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.value : $filterDeletedCheckbox.checked;
+    var filterDeletedSelectVal = $formFilters.querySelector('select.filterDeleted')?.value;
     var filterDeleted = null;
     if(filterDeletedSelectVal !== '')
       filterDeleted = filterDeletedSelectVal == 'true';
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var $filterSeeArchivedCheckbox = $formFilters.find('input.valueSeeArchived[type = "checkbox"]');
-    var $filterSeeArchivedSelect = $formFilters.find('select.valueSeeArchived');
-    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.val() : $filterSeeArchivedCheckbox.prop('checked');
-    var filterSeeArchivedSelectVal = $formFilters.find('select.filterSeeArchived').val();
+    var $filterSeeArchivedCheckbox = $formFilters.querySelector('input.valueSeeArchived[type = "checkbox"]');
+    var $filterSeeArchivedSelect = $formFilters.querySelector('select.valueSeeArchived');
+    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.value : $filterSeeArchivedCheckbox.checked;
+    var filterSeeArchivedSelectVal = $formFilters.querySelector('select.filterSeeArchived')?.value;
     var filterSeeArchived = null;
     if(filterSeeArchivedSelectVal !== '')
       filterSeeArchived = filterSeeArchivedSelectVal == 'true';
     if(filterSeeArchived != null && filterSeeArchived === true)
       filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
 
-    var $filterSeeDeletedCheckbox = $formFilters.find('input.valueSeeDeleted[type = "checkbox"]');
-    var $filterSeeDeletedSelect = $formFilters.find('select.valueSeeDeleted');
-    var filterSeeDeleted = $filterSeeDeletedSelect.length ? $filterSeeDeletedSelect.val() : $filterSeeDeletedCheckbox.prop('checked');
-    var filterSeeDeletedSelectVal = $formFilters.find('select.filterSeeDeleted').val();
+    var $filterSeeDeletedCheckbox = $formFilters.querySelector('input.valueSeeDeleted[type = "checkbox"]');
+    var $filterSeeDeletedSelect = $formFilters.querySelector('select.valueSeeDeleted');
+    var filterSeeDeleted = $filterSeeDeletedSelect.length ? $filterSeeDeletedSelect.value : $filterSeeDeletedCheckbox.checked;
+    var filterSeeDeletedSelectVal = $formFilters.querySelector('select.filterSeeDeleted')?.value;
     var filterSeeDeleted = null;
     if(filterSeeDeletedSelectVal !== '')
       filterSeeDeleted = filterSeeDeletedSelectVal == 'true';
     if(filterSeeDeleted != null && filterSeeDeleted === true)
       filters.push({ name: 'fq', value: 'seeDeleted:' + filterSeeDeleted });
 
-    var filterInheritPk = $formFilters.find('.valueInheritPk').val();
+    var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
       filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
 
-    var filterClassCanonicalName = $formFilters.find('.valueClassCanonicalName').val();
+    var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
       filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
 
-    var filterClassSimpleName = $formFilters.find('.valueClassSimpleName').val();
+    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
     if(filterClassSimpleName != null && filterClassSimpleName !== '')
       filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
 
-    var filterClassCanonicalNames = $formFilters.find('.valueClassCanonicalNames').val();
+    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
     if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
       filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
 
-    var filterSessionId = $formFilters.find('.valueSessionId').val();
+    var filterSessionId = $formFilters.querySelector('.valueSessionId')?.value;
     if(filterSessionId != null && filterSessionId !== '')
       filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
 
-    var filterUserKey = $formFilters.find('.valueUserKey').val();
+    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
     if(filterUserKey != null && filterUserKey !== '')
       filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
 
-    var filterSaves = $formFilters.find('.valueSaves').val();
+    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
 
-    var filterObjectTitle = $formFilters.find('.valueObjectTitle').val();
+    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
     if(filterObjectTitle != null && filterObjectTitle !== '')
       filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
 
-    var filterObjectSuggest = $formFilters.find('.valueObjectSuggest').val();
+    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
       filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
 
-    var filterObjectText = $formFilters.find('.valueObjectText').val();
+    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.find('.valuePageUrlId').val();
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
     if(filterPageUrlId != null && filterPageUrlId !== '')
       filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
 
-    var filterPageUrlPk = $formFilters.find('.valuePageUrlPk').val();
+    var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
 
-    var filterPageUrlApi = $formFilters.find('.valuePageUrlApi').val();
+    var filterPageUrlApi = $formFilters.querySelector('.valuePageUrlApi')?.value;
     if(filterPageUrlApi != null && filterPageUrlApi !== '')
       filters.push({ name: 'fq', value: 'pageUrlApi:' + filterPageUrlApi });
 
-    var filterId = $formFilters.find('.valueId').val();
+    var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
-    var filterUserKeys = $formFilters.find('.valueUserKeys').val();
+    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
     if(filterUserKeys != null && filterUserKeys !== '')
       filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
 
-    var filterUserId = $formFilters.find('.valueUserId').val();
+    var filterUserId = $formFilters.querySelector('.valueUserId')?.value;
     if(filterUserId != null && filterUserId !== '')
       filters.push({ name: 'fq', value: 'userId:' + filterUserId });
 
-    var filterUserName = $formFilters.find('.valueUserName').val();
+    var filterUserName = $formFilters.querySelector('.valueUserName')?.value;
     if(filterUserName != null && filterUserName !== '')
       filters.push({ name: 'fq', value: 'userName:' + filterUserName });
 
-    var filterUserEmail = $formFilters.find('.valueUserEmail').val();
+    var filterUserEmail = $formFilters.querySelector('.valueUserEmail')?.value;
     if(filterUserEmail != null && filterUserEmail !== '')
       filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
 
-    var filterUserFirstName = $formFilters.find('.valueUserFirstName').val();
+    var filterUserFirstName = $formFilters.querySelector('.valueUserFirstName')?.value;
     if(filterUserFirstName != null && filterUserFirstName !== '')
       filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
 
-    var filterUserLastName = $formFilters.find('.valueUserLastName').val();
+    var filterUserLastName = $formFilters.querySelector('.valueUserLastName')?.value;
     if(filterUserLastName != null && filterUserLastName !== '')
       filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
 
-    var filterUserFullName = $formFilters.find('.valueUserFullName').val();
+    var filterUserFullName = $formFilters.querySelector('.valueUserFullName')?.value;
     if(filterUserFullName != null && filterUserFullName !== '')
       filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
   }
@@ -160,24 +160,21 @@ function searchSiteUserFilters($formFilters) {
 
 function searchSiteUserVals(filters, success, error) {
 
-  $.ajax({
-    url: '/api/user?' + $.param(filters)
-    , dataType: 'json'
-    , type: 'GET'
-    , contentType: 'application/json; charset=utf-8'
-    , success: success
-    , error: error
-  });
+  fetch(
+    '/api/user?' + $.param(filters)
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+    }).then(success).catch(error);
 }
 
 function suggestSiteUserObjectSuggest($formFilters, $list) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
-    $.each(data['list'], function(i, o) {
-      var $i = $('<i>').attr('class', 'far fa-user-cog ');
-      var $span = $('<span>').attr('class', '').text(o['objectTitle']);
-      var $li = $('<li>');
-      var $a = $('<a>').attr('href', o['pageUrlPk']);
+    data['list'].forEach((o, i) => {
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-user-cog ');
+      var $span = document.querySelector('<span>').setAttribute('class', '').text(o['objectTitle']);
+      var $li = document.querySelector('<li>');
+      var $a = document.querySelector('<a>').setAttribute('href', o['pageUrlPk']);
       $a.append($i);
       $a.append($span);
       $li.append($a);
@@ -195,231 +192,231 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 
   var vals = {};
 
-  var valuePk = $formValues.find('.valuePk').val();
-  var removePk = $formValues.find('.removePk').val() === 'true';
-  var setPk = removePk ? null : $formValues.find('.setPk').val();
-  var addPk = $formValues.find('.addPk').val();
+  var valuePk = $formValues.querySelector('.valuePk')?.value;
+  var removePk = $formValues.querySelector('.removePk')?.value === 'true';
+  var setPk = removePk ? null : $formValues.querySelector('.setPk')?.value;
+  var addPk = $formValues.querySelector('.addPk')?.value;
   if(removePk || setPk != null && setPk !== '')
     vals['setPk'] = setPk;
   if(addPk != null && addPk !== '')
     vals['addPk'] = addPk;
-  var removePk = $formValues.find('.removePk').val();
+  var removePk = $formValues.querySelector('.removePk')?.value;
   if(removePk != null && removePk !== '')
     vals['removePk'] = removePk;
 
-  var valueCreated = $formValues.find('.valueCreated').val();
-  var removeCreated = $formValues.find('.removeCreated').val() === 'true';
-  var setCreated = removeCreated ? null : $formValues.find('.setCreated').val();
-  var addCreated = $formValues.find('.addCreated').val();
+  var valueCreated = $formValues.querySelector('.valueCreated')?.value;
+  var removeCreated = $formValues.querySelector('.removeCreated')?.value === 'true';
+  var setCreated = removeCreated ? null : $formValues.querySelector('.setCreated')?.value;
+  var addCreated = $formValues.querySelector('.addCreated')?.value;
   if(removeCreated || setCreated != null && setCreated !== '')
     vals['setCreated'] = setCreated;
   if(addCreated != null && addCreated !== '')
     vals['addCreated'] = addCreated;
-  var removeCreated = $formValues.find('.removeCreated').val();
+  var removeCreated = $formValues.querySelector('.removeCreated')?.value;
   if(removeCreated != null && removeCreated !== '')
     vals['removeCreated'] = removeCreated;
 
-  var valueModified = $formValues.find('.valueModified').val();
-  var removeModified = $formValues.find('.removeModified').val() === 'true';
-  var setModified = removeModified ? null : $formValues.find('.setModified').val();
-  var addModified = $formValues.find('.addModified').val();
+  var valueModified = $formValues.querySelector('.valueModified')?.value;
+  var removeModified = $formValues.querySelector('.removeModified')?.value === 'true';
+  var setModified = removeModified ? null : $formValues.querySelector('.setModified')?.value;
+  var addModified = $formValues.querySelector('.addModified')?.value;
   if(removeModified || setModified != null && setModified !== '')
     vals['setModified'] = setModified;
   if(addModified != null && addModified !== '')
     vals['addModified'] = addModified;
-  var removeModified = $formValues.find('.removeModified').val();
+  var removeModified = $formValues.querySelector('.removeModified')?.value;
   if(removeModified != null && removeModified !== '')
     vals['removeModified'] = removeModified;
 
-  var valueObjectId = $formValues.find('.valueObjectId').val();
-  var removeObjectId = $formValues.find('.removeObjectId').val() === 'true';
-  var setObjectId = removeObjectId ? null : $formValues.find('.setObjectId').val();
-  var addObjectId = $formValues.find('.addObjectId').val();
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
+  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value === 'true';
+  var setObjectId = removeObjectId ? null : $formValues.querySelector('.setObjectId')?.value;
+  var addObjectId = $formValues.querySelector('.addObjectId')?.value;
   if(removeObjectId || setObjectId != null && setObjectId !== '')
     vals['setObjectId'] = setObjectId;
   if(addObjectId != null && addObjectId !== '')
     vals['addObjectId'] = addObjectId;
-  var removeObjectId = $formValues.find('.removeObjectId').val();
+  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value;
   if(removeObjectId != null && removeObjectId !== '')
     vals['removeObjectId'] = removeObjectId;
 
-  var valueArchived = $formValues.find('.valueArchived').val();
-  var removeArchived = $formValues.find('.removeArchived').val() === 'true';
-  var valueArchivedSelectVal = $formValues.find('select.setArchived').val();
+  var valueArchived = $formValues.querySelector('.valueArchived')?.value;
+  var removeArchived = $formValues.querySelector('.removeArchived')?.value === 'true';
+  var valueArchivedSelectVal = $formValues.querySelector('select.setArchived')?.value;
   if(valueArchivedSelectVal != null && valueArchivedSelectVal !== '')
     valueArchived = valueArchivedSelectVal == 'true';
   var setArchived = removeArchived ? null : valueArchived;
-  var addArchived = $formValues.find('.addArchived').prop('checked');
+  var addArchived = $formValues.querySelector('.addArchived').checked;
   if(removeArchived || setArchived != null && setArchived !== '')
     vals['setArchived'] = setArchived;
   if(addArchived != null && addArchived !== '')
     vals['addArchived'] = addArchived;
-  var removeArchived = $formValues.find('.removeArchived').prop('checked');
+  var removeArchived = $formValues.querySelector('.removeArchived').checked;
   if(removeArchived != null && removeArchived !== '')
     vals['removeArchived'] = removeArchived;
 
-  var valueDeleted = $formValues.find('.valueDeleted').val();
-  var removeDeleted = $formValues.find('.removeDeleted').val() === 'true';
-  var valueDeletedSelectVal = $formValues.find('select.setDeleted').val();
+  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
+  var removeDeleted = $formValues.querySelector('.removeDeleted')?.value === 'true';
+  var valueDeletedSelectVal = $formValues.querySelector('select.setDeleted')?.value;
   if(valueDeletedSelectVal != null && valueDeletedSelectVal !== '')
     valueDeleted = valueDeletedSelectVal == 'true';
   var setDeleted = removeDeleted ? null : valueDeleted;
-  var addDeleted = $formValues.find('.addDeleted').prop('checked');
+  var addDeleted = $formValues.querySelector('.addDeleted').checked;
   if(removeDeleted || setDeleted != null && setDeleted !== '')
     vals['setDeleted'] = setDeleted;
   if(addDeleted != null && addDeleted !== '')
     vals['addDeleted'] = addDeleted;
-  var removeDeleted = $formValues.find('.removeDeleted').prop('checked');
+  var removeDeleted = $formValues.querySelector('.removeDeleted').checked;
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
-  var valueSeeArchived = $formValues.find('.valueSeeArchived').val();
-  var removeSeeArchived = $formValues.find('.removeSeeArchived').val() === 'true';
-  var valueSeeArchivedSelectVal = $formValues.find('select.setSeeArchived').val();
+  var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
+  var removeSeeArchived = $formValues.querySelector('.removeSeeArchived')?.value === 'true';
+  var valueSeeArchivedSelectVal = $formValues.querySelector('select.setSeeArchived')?.value;
   if(valueSeeArchivedSelectVal != null && valueSeeArchivedSelectVal !== '')
     valueSeeArchived = valueSeeArchivedSelectVal == 'true';
   var setSeeArchived = removeSeeArchived ? null : valueSeeArchived;
-  var addSeeArchived = $formValues.find('.addSeeArchived').prop('checked');
+  var addSeeArchived = $formValues.querySelector('.addSeeArchived').checked;
   if(removeSeeArchived || setSeeArchived != null && setSeeArchived !== '')
     vals['setSeeArchived'] = setSeeArchived;
   if(addSeeArchived != null && addSeeArchived !== '')
     vals['addSeeArchived'] = addSeeArchived;
-  var removeSeeArchived = $formValues.find('.removeSeeArchived').prop('checked');
+  var removeSeeArchived = $formValues.querySelector('.removeSeeArchived').checked;
   if(removeSeeArchived != null && removeSeeArchived !== '')
     vals['removeSeeArchived'] = removeSeeArchived;
 
-  var valueSeeDeleted = $formValues.find('.valueSeeDeleted').val();
-  var removeSeeDeleted = $formValues.find('.removeSeeDeleted').val() === 'true';
-  var valueSeeDeletedSelectVal = $formValues.find('select.setSeeDeleted').val();
+  var valueSeeDeleted = $formValues.querySelector('.valueSeeDeleted')?.value;
+  var removeSeeDeleted = $formValues.querySelector('.removeSeeDeleted')?.value === 'true';
+  var valueSeeDeletedSelectVal = $formValues.querySelector('select.setSeeDeleted')?.value;
   if(valueSeeDeletedSelectVal != null && valueSeeDeletedSelectVal !== '')
     valueSeeDeleted = valueSeeDeletedSelectVal == 'true';
   var setSeeDeleted = removeSeeDeleted ? null : valueSeeDeleted;
-  var addSeeDeleted = $formValues.find('.addSeeDeleted').prop('checked');
+  var addSeeDeleted = $formValues.querySelector('.addSeeDeleted').checked;
   if(removeSeeDeleted || setSeeDeleted != null && setSeeDeleted !== '')
     vals['setSeeDeleted'] = setSeeDeleted;
   if(addSeeDeleted != null && addSeeDeleted !== '')
     vals['addSeeDeleted'] = addSeeDeleted;
-  var removeSeeDeleted = $formValues.find('.removeSeeDeleted').prop('checked');
+  var removeSeeDeleted = $formValues.querySelector('.removeSeeDeleted').checked;
   if(removeSeeDeleted != null && removeSeeDeleted !== '')
     vals['removeSeeDeleted'] = removeSeeDeleted;
 
-  var valueInheritPk = $formValues.find('.valueInheritPk').val();
-  var removeInheritPk = $formValues.find('.removeInheritPk').val() === 'true';
-  var setInheritPk = removeInheritPk ? null : $formValues.find('.setInheritPk').val();
-  var addInheritPk = $formValues.find('.addInheritPk').val();
+  var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
+  var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
+  var setInheritPk = removeInheritPk ? null : $formValues.querySelector('.setInheritPk')?.value;
+  var addInheritPk = $formValues.querySelector('.addInheritPk')?.value;
   if(removeInheritPk || setInheritPk != null && setInheritPk !== '')
     vals['setInheritPk'] = setInheritPk;
   if(addInheritPk != null && addInheritPk !== '')
     vals['addInheritPk'] = addInheritPk;
-  var removeInheritPk = $formValues.find('.removeInheritPk').val();
+  var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value;
   if(removeInheritPk != null && removeInheritPk !== '')
     vals['removeInheritPk'] = removeInheritPk;
 
-  var valueSessionId = $formValues.find('.valueSessionId').val();
-  var removeSessionId = $formValues.find('.removeSessionId').val() === 'true';
-  var setSessionId = removeSessionId ? null : $formValues.find('.setSessionId').val();
-  var addSessionId = $formValues.find('.addSessionId').val();
+  var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
+  var removeSessionId = $formValues.querySelector('.removeSessionId')?.value === 'true';
+  var setSessionId = removeSessionId ? null : $formValues.querySelector('.setSessionId')?.value;
+  var addSessionId = $formValues.querySelector('.addSessionId')?.value;
   if(removeSessionId || setSessionId != null && setSessionId !== '')
     vals['setSessionId'] = setSessionId;
   if(addSessionId != null && addSessionId !== '')
     vals['addSessionId'] = addSessionId;
-  var removeSessionId = $formValues.find('.removeSessionId').val();
+  var removeSessionId = $formValues.querySelector('.removeSessionId')?.value;
   if(removeSessionId != null && removeSessionId !== '')
     vals['removeSessionId'] = removeSessionId;
 
-  var valueUserKey = $formValues.find('.valueUserKey').val();
-  var removeUserKey = $formValues.find('.removeUserKey').val() === 'true';
-  var setUserKey = removeUserKey ? null : $formValues.find('.setUserKey').val();
-  var addUserKey = $formValues.find('.addUserKey').val();
+  var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
+  var removeUserKey = $formValues.querySelector('.removeUserKey')?.value === 'true';
+  var setUserKey = removeUserKey ? null : $formValues.querySelector('.setUserKey')?.value;
+  var addUserKey = $formValues.querySelector('.addUserKey')?.value;
   if(removeUserKey || setUserKey != null && setUserKey !== '')
     vals['setUserKey'] = setUserKey;
   if(addUserKey != null && addUserKey !== '')
     vals['addUserKey'] = addUserKey;
-  var removeUserKey = $formValues.find('.removeUserKey').val();
+  var removeUserKey = $formValues.querySelector('.removeUserKey')?.value;
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.find('.valueObjectTitle').val();
-  var removeObjectTitle = $formValues.find('.removeObjectTitle').val() === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.find('.setObjectTitle').val();
-  var addObjectTitle = $formValues.find('.addObjectTitle').val();
+  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
+  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
+  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
+  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
   if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
     vals['setObjectTitle'] = setObjectTitle;
   if(addObjectTitle != null && addObjectTitle !== '')
     vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.find('.removeObjectTitle').val();
+  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
   if(removeObjectTitle != null && removeObjectTitle !== '')
     vals['removeObjectTitle'] = removeObjectTitle;
 
-  var valueUserId = $formValues.find('.valueUserId').val();
-  var removeUserId = $formValues.find('.removeUserId').val() === 'true';
-  var setUserId = removeUserId ? null : $formValues.find('.setUserId').val();
-  var addUserId = $formValues.find('.addUserId').val();
+  var valueUserId = $formValues.querySelector('.valueUserId')?.value;
+  var removeUserId = $formValues.querySelector('.removeUserId')?.value === 'true';
+  var setUserId = removeUserId ? null : $formValues.querySelector('.setUserId')?.value;
+  var addUserId = $formValues.querySelector('.addUserId')?.value;
   if(removeUserId || setUserId != null && setUserId !== '')
     vals['setUserId'] = setUserId;
   if(addUserId != null && addUserId !== '')
     vals['addUserId'] = addUserId;
-  var removeUserId = $formValues.find('.removeUserId').val();
+  var removeUserId = $formValues.querySelector('.removeUserId')?.value;
   if(removeUserId != null && removeUserId !== '')
     vals['removeUserId'] = removeUserId;
 
-  var valueUserName = $formValues.find('.valueUserName').val();
-  var removeUserName = $formValues.find('.removeUserName').val() === 'true';
-  var setUserName = removeUserName ? null : $formValues.find('.setUserName').val();
-  var addUserName = $formValues.find('.addUserName').val();
+  var valueUserName = $formValues.querySelector('.valueUserName')?.value;
+  var removeUserName = $formValues.querySelector('.removeUserName')?.value === 'true';
+  var setUserName = removeUserName ? null : $formValues.querySelector('.setUserName')?.value;
+  var addUserName = $formValues.querySelector('.addUserName')?.value;
   if(removeUserName || setUserName != null && setUserName !== '')
     vals['setUserName'] = setUserName;
   if(addUserName != null && addUserName !== '')
     vals['addUserName'] = addUserName;
-  var removeUserName = $formValues.find('.removeUserName').val();
+  var removeUserName = $formValues.querySelector('.removeUserName')?.value;
   if(removeUserName != null && removeUserName !== '')
     vals['removeUserName'] = removeUserName;
 
-  var valueUserEmail = $formValues.find('.valueUserEmail').val();
-  var removeUserEmail = $formValues.find('.removeUserEmail').val() === 'true';
-  var setUserEmail = removeUserEmail ? null : $formValues.find('.setUserEmail').val();
-  var addUserEmail = $formValues.find('.addUserEmail').val();
+  var valueUserEmail = $formValues.querySelector('.valueUserEmail')?.value;
+  var removeUserEmail = $formValues.querySelector('.removeUserEmail')?.value === 'true';
+  var setUserEmail = removeUserEmail ? null : $formValues.querySelector('.setUserEmail')?.value;
+  var addUserEmail = $formValues.querySelector('.addUserEmail')?.value;
   if(removeUserEmail || setUserEmail != null && setUserEmail !== '')
     vals['setUserEmail'] = setUserEmail;
   if(addUserEmail != null && addUserEmail !== '')
     vals['addUserEmail'] = addUserEmail;
-  var removeUserEmail = $formValues.find('.removeUserEmail').val();
+  var removeUserEmail = $formValues.querySelector('.removeUserEmail')?.value;
   if(removeUserEmail != null && removeUserEmail !== '')
     vals['removeUserEmail'] = removeUserEmail;
 
-  var valueUserFirstName = $formValues.find('.valueUserFirstName').val();
-  var removeUserFirstName = $formValues.find('.removeUserFirstName').val() === 'true';
-  var setUserFirstName = removeUserFirstName ? null : $formValues.find('.setUserFirstName').val();
-  var addUserFirstName = $formValues.find('.addUserFirstName').val();
+  var valueUserFirstName = $formValues.querySelector('.valueUserFirstName')?.value;
+  var removeUserFirstName = $formValues.querySelector('.removeUserFirstName')?.value === 'true';
+  var setUserFirstName = removeUserFirstName ? null : $formValues.querySelector('.setUserFirstName')?.value;
+  var addUserFirstName = $formValues.querySelector('.addUserFirstName')?.value;
   if(removeUserFirstName || setUserFirstName != null && setUserFirstName !== '')
     vals['setUserFirstName'] = setUserFirstName;
   if(addUserFirstName != null && addUserFirstName !== '')
     vals['addUserFirstName'] = addUserFirstName;
-  var removeUserFirstName = $formValues.find('.removeUserFirstName').val();
+  var removeUserFirstName = $formValues.querySelector('.removeUserFirstName')?.value;
   if(removeUserFirstName != null && removeUserFirstName !== '')
     vals['removeUserFirstName'] = removeUserFirstName;
 
-  var valueUserLastName = $formValues.find('.valueUserLastName').val();
-  var removeUserLastName = $formValues.find('.removeUserLastName').val() === 'true';
-  var setUserLastName = removeUserLastName ? null : $formValues.find('.setUserLastName').val();
-  var addUserLastName = $formValues.find('.addUserLastName').val();
+  var valueUserLastName = $formValues.querySelector('.valueUserLastName')?.value;
+  var removeUserLastName = $formValues.querySelector('.removeUserLastName')?.value === 'true';
+  var setUserLastName = removeUserLastName ? null : $formValues.querySelector('.setUserLastName')?.value;
+  var addUserLastName = $formValues.querySelector('.addUserLastName')?.value;
   if(removeUserLastName || setUserLastName != null && setUserLastName !== '')
     vals['setUserLastName'] = setUserLastName;
   if(addUserLastName != null && addUserLastName !== '')
     vals['addUserLastName'] = addUserLastName;
-  var removeUserLastName = $formValues.find('.removeUserLastName').val();
+  var removeUserLastName = $formValues.querySelector('.removeUserLastName')?.value;
   if(removeUserLastName != null && removeUserLastName !== '')
     vals['removeUserLastName'] = removeUserLastName;
 
-  var valueUserFullName = $formValues.find('.valueUserFullName').val();
-  var removeUserFullName = $formValues.find('.removeUserFullName').val() === 'true';
-  var setUserFullName = removeUserFullName ? null : $formValues.find('.setUserFullName').val();
-  var addUserFullName = $formValues.find('.addUserFullName').val();
+  var valueUserFullName = $formValues.querySelector('.valueUserFullName')?.value;
+  var removeUserFullName = $formValues.querySelector('.removeUserFullName')?.value === 'true';
+  var setUserFullName = removeUserFullName ? null : $formValues.querySelector('.setUserFullName')?.value;
+  var addUserFullName = $formValues.querySelector('.addUserFullName')?.value;
   if(removeUserFullName || setUserFullName != null && setUserFullName !== '')
     vals['setUserFullName'] = setUserFullName;
   if(addUserFullName != null && addUserFullName !== '')
     vals['addUserFullName'] = addUserFullName;
-  var removeUserFullName = $formValues.find('.removeUserFullName').val();
+  var removeUserFullName = $formValues.querySelector('.removeUserFullName')?.value;
   if(removeUserFullName != null && removeUserFullName !== '')
     vals['removeUserFullName'] = removeUserFullName;
 
@@ -431,143 +428,143 @@ function patchSiteUserFilters($formFilters) {
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
 
-    var filterPk = $formFilters.find('.valuePk').val();
+    var filterPk = $formFilters.querySelector('.valuePk')?.value;
     if(filterPk != null && filterPk !== '')
       filters.push({ name: 'fq', value: 'pk:' + filterPk });
 
-    var filterCreated = $formFilters.find('.valueCreated').val();
+    var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
     if(filterCreated != null && filterCreated !== '')
       filters.push({ name: 'fq', value: 'created:' + filterCreated });
 
-    var filterModified = $formFilters.find('.valueModified').val();
+    var filterModified = $formFilters.querySelector('.valueModified')?.value;
     if(filterModified != null && filterModified !== '')
       filters.push({ name: 'fq', value: 'modified:' + filterModified });
 
-    var filterObjectId = $formFilters.find('.valueObjectId').val();
+    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
     if(filterObjectId != null && filterObjectId !== '')
       filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
-    var $filterArchivedCheckbox = $formFilters.find('input.valueArchived[type = "checkbox"]');
-    var $filterArchivedSelect = $formFilters.find('select.valueArchived');
-    var filterArchived = $filterArchivedSelect.length ? $filterArchivedSelect.val() : $filterArchivedCheckbox.prop('checked');
-    var filterArchivedSelectVal = $formFilters.find('select.filterArchived').val();
+    var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
+    var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
+    var filterArchived = $filterArchivedSelect.length ? $filterArchivedSelect.value : $filterArchivedCheckbox.checked;
+    var filterArchivedSelectVal = $formFilters.querySelector('select.filterArchived')?.value;
     var filterArchived = null;
     if(filterArchivedSelectVal !== '')
       filterArchived = filterArchivedSelectVal == 'true';
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
 
-    var $filterDeletedCheckbox = $formFilters.find('input.valueDeleted[type = "checkbox"]');
-    var $filterDeletedSelect = $formFilters.find('select.valueDeleted');
-    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.val() : $filterDeletedCheckbox.prop('checked');
-    var filterDeletedSelectVal = $formFilters.find('select.filterDeleted').val();
+    var $filterDeletedCheckbox = $formFilters.querySelector('input.valueDeleted[type = "checkbox"]');
+    var $filterDeletedSelect = $formFilters.querySelector('select.valueDeleted');
+    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.value : $filterDeletedCheckbox.checked;
+    var filterDeletedSelectVal = $formFilters.querySelector('select.filterDeleted')?.value;
     var filterDeleted = null;
     if(filterDeletedSelectVal !== '')
       filterDeleted = filterDeletedSelectVal == 'true';
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var $filterSeeArchivedCheckbox = $formFilters.find('input.valueSeeArchived[type = "checkbox"]');
-    var $filterSeeArchivedSelect = $formFilters.find('select.valueSeeArchived');
-    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.val() : $filterSeeArchivedCheckbox.prop('checked');
-    var filterSeeArchivedSelectVal = $formFilters.find('select.filterSeeArchived').val();
+    var $filterSeeArchivedCheckbox = $formFilters.querySelector('input.valueSeeArchived[type = "checkbox"]');
+    var $filterSeeArchivedSelect = $formFilters.querySelector('select.valueSeeArchived');
+    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.value : $filterSeeArchivedCheckbox.checked;
+    var filterSeeArchivedSelectVal = $formFilters.querySelector('select.filterSeeArchived')?.value;
     var filterSeeArchived = null;
     if(filterSeeArchivedSelectVal !== '')
       filterSeeArchived = filterSeeArchivedSelectVal == 'true';
     if(filterSeeArchived != null && filterSeeArchived === true)
       filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
 
-    var $filterSeeDeletedCheckbox = $formFilters.find('input.valueSeeDeleted[type = "checkbox"]');
-    var $filterSeeDeletedSelect = $formFilters.find('select.valueSeeDeleted');
-    var filterSeeDeleted = $filterSeeDeletedSelect.length ? $filterSeeDeletedSelect.val() : $filterSeeDeletedCheckbox.prop('checked');
-    var filterSeeDeletedSelectVal = $formFilters.find('select.filterSeeDeleted').val();
+    var $filterSeeDeletedCheckbox = $formFilters.querySelector('input.valueSeeDeleted[type = "checkbox"]');
+    var $filterSeeDeletedSelect = $formFilters.querySelector('select.valueSeeDeleted');
+    var filterSeeDeleted = $filterSeeDeletedSelect.length ? $filterSeeDeletedSelect.value : $filterSeeDeletedCheckbox.checked;
+    var filterSeeDeletedSelectVal = $formFilters.querySelector('select.filterSeeDeleted')?.value;
     var filterSeeDeleted = null;
     if(filterSeeDeletedSelectVal !== '')
       filterSeeDeleted = filterSeeDeletedSelectVal == 'true';
     if(filterSeeDeleted != null && filterSeeDeleted === true)
       filters.push({ name: 'fq', value: 'seeDeleted:' + filterSeeDeleted });
 
-    var filterInheritPk = $formFilters.find('.valueInheritPk').val();
+    var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
       filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
 
-    var filterClassCanonicalName = $formFilters.find('.valueClassCanonicalName').val();
+    var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
       filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
 
-    var filterClassSimpleName = $formFilters.find('.valueClassSimpleName').val();
+    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
     if(filterClassSimpleName != null && filterClassSimpleName !== '')
       filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
 
-    var filterClassCanonicalNames = $formFilters.find('.valueClassCanonicalNames').val();
+    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
     if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
       filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
 
-    var filterSessionId = $formFilters.find('.valueSessionId').val();
+    var filterSessionId = $formFilters.querySelector('.valueSessionId')?.value;
     if(filterSessionId != null && filterSessionId !== '')
       filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
 
-    var filterUserKey = $formFilters.find('.valueUserKey').val();
+    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
     if(filterUserKey != null && filterUserKey !== '')
       filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
 
-    var filterSaves = $formFilters.find('.valueSaves').val();
+    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
 
-    var filterObjectTitle = $formFilters.find('.valueObjectTitle').val();
+    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
     if(filterObjectTitle != null && filterObjectTitle !== '')
       filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
 
-    var filterObjectSuggest = $formFilters.find('.valueObjectSuggest').val();
+    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
       filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
 
-    var filterObjectText = $formFilters.find('.valueObjectText').val();
+    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.find('.valuePageUrlId').val();
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
     if(filterPageUrlId != null && filterPageUrlId !== '')
       filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
 
-    var filterPageUrlPk = $formFilters.find('.valuePageUrlPk').val();
+    var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
 
-    var filterPageUrlApi = $formFilters.find('.valuePageUrlApi').val();
+    var filterPageUrlApi = $formFilters.querySelector('.valuePageUrlApi')?.value;
     if(filterPageUrlApi != null && filterPageUrlApi !== '')
       filters.push({ name: 'fq', value: 'pageUrlApi:' + filterPageUrlApi });
 
-    var filterId = $formFilters.find('.valueId').val();
+    var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
-    var filterUserKeys = $formFilters.find('.valueUserKeys').val();
+    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
     if(filterUserKeys != null && filterUserKeys !== '')
       filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
 
-    var filterUserId = $formFilters.find('.valueUserId').val();
+    var filterUserId = $formFilters.querySelector('.valueUserId')?.value;
     if(filterUserId != null && filterUserId !== '')
       filters.push({ name: 'fq', value: 'userId:' + filterUserId });
 
-    var filterUserName = $formFilters.find('.valueUserName').val();
+    var filterUserName = $formFilters.querySelector('.valueUserName')?.value;
     if(filterUserName != null && filterUserName !== '')
       filters.push({ name: 'fq', value: 'userName:' + filterUserName });
 
-    var filterUserEmail = $formFilters.find('.valueUserEmail').val();
+    var filterUserEmail = $formFilters.querySelector('.valueUserEmail')?.value;
     if(filterUserEmail != null && filterUserEmail !== '')
       filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
 
-    var filterUserFirstName = $formFilters.find('.valueUserFirstName').val();
+    var filterUserFirstName = $formFilters.querySelector('.valueUserFirstName')?.value;
     if(filterUserFirstName != null && filterUserFirstName !== '')
       filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
 
-    var filterUserLastName = $formFilters.find('.valueUserLastName').val();
+    var filterUserLastName = $formFilters.querySelector('.valueUserLastName')?.value;
     if(filterUserLastName != null && filterUserLastName !== '')
       filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
 
-    var filterUserFullName = $formFilters.find('.valueUserFullName').val();
+    var filterUserFullName = $formFilters.querySelector('.valueUserFullName')?.value;
     if(filterUserFullName != null && filterUserFullName !== '')
       filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
   }
@@ -581,15 +578,13 @@ function patchSiteUserVal(filters, v, val, success, error) {
 }
 
 function patchSiteUserVals(filters, vals, success, error) {
-  $.ajax({
-    url: '/api/user?' + $.param(filters)
-    , dataType: 'json'
-    , type: 'PATCH'
-    , contentType: 'application/json; charset=utf-8'
-    , data: JSON.stringify(vals)
-    , success: success
-    , error: error
-  });
+  fetch(
+    '/api/user?' + $.param(filters)
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'PATCH'
+      , body: JSON.stringify(vals)
+    }).then(success).catch(error);
 }
 
 // POST //
@@ -610,119 +605,114 @@ async function postSiteUser($formValues, success, error) {
     };
   }
 
-  var valuePk = $formValues.find('.valuePk').val();
+  var valuePk = $formValues.querySelector('.valuePk')?.value;
   if(valuePk != null && valuePk !== '')
     vals['pk'] = valuePk;
 
-  var valueCreated = $formValues.find('.valueCreated').val();
+  var valueCreated = $formValues.querySelector('.valueCreated')?.value;
   if(valueCreated != null && valueCreated !== '')
     vals['created'] = valueCreated;
 
-  var valueModified = $formValues.find('.valueModified').val();
+  var valueModified = $formValues.querySelector('.valueModified')?.value;
   if(valueModified != null && valueModified !== '')
     vals['modified'] = valueModified;
 
-  var valueObjectId = $formValues.find('.valueObjectId').val();
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
   if(valueObjectId != null && valueObjectId !== '')
     vals['objectId'] = valueObjectId;
 
-  var valueArchived = $formValues.find('.valueArchived').val();
+  var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   if(valueArchived != null && valueArchived !== '')
     vals['archived'] = valueArchived == 'true';
 
-  var valueDeleted = $formValues.find('.valueDeleted').val();
+  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
   if(valueDeleted != null && valueDeleted !== '')
     vals['deleted'] = valueDeleted == 'true';
 
-  var valueSeeArchived = $formValues.find('.valueSeeArchived').val();
+  var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
   if(valueSeeArchived != null && valueSeeArchived !== '')
     vals['seeArchived'] = valueSeeArchived == 'true';
 
-  var valueSeeDeleted = $formValues.find('.valueSeeDeleted').val();
+  var valueSeeDeleted = $formValues.querySelector('.valueSeeDeleted')?.value;
   if(valueSeeDeleted != null && valueSeeDeleted !== '')
     vals['seeDeleted'] = valueSeeDeleted == 'true';
 
-  var valueInheritPk = $formValues.find('.valueInheritPk').val();
+  var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
     vals['inheritPk'] = valueInheritPk;
 
-  var valueSessionId = $formValues.find('.valueSessionId').val();
+  var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
   if(valueSessionId != null && valueSessionId !== '')
     vals['sessionId'] = valueSessionId;
 
-  var valueUserKey = $formValues.find('.valueUserKey').val();
+  var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueObjectTitle = $formValues.find('.valueObjectTitle').val();
+  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
   if(valueObjectTitle != null && valueObjectTitle !== '')
     vals['objectTitle'] = valueObjectTitle;
 
-  var valueUserId = $formValues.find('.valueUserId').val();
+  var valueUserId = $formValues.querySelector('.valueUserId')?.value;
   if(valueUserId != null && valueUserId !== '')
     vals['userId'] = valueUserId;
 
-  var valueUserName = $formValues.find('.valueUserName').val();
+  var valueUserName = $formValues.querySelector('.valueUserName')?.value;
   if(valueUserName != null && valueUserName !== '')
     vals['userName'] = valueUserName;
 
-  var valueUserEmail = $formValues.find('.valueUserEmail').val();
+  var valueUserEmail = $formValues.querySelector('.valueUserEmail')?.value;
   if(valueUserEmail != null && valueUserEmail !== '')
     vals['userEmail'] = valueUserEmail;
 
-  var valueUserFirstName = $formValues.find('.valueUserFirstName').val();
+  var valueUserFirstName = $formValues.querySelector('.valueUserFirstName')?.value;
   if(valueUserFirstName != null && valueUserFirstName !== '')
     vals['userFirstName'] = valueUserFirstName;
 
-  var valueUserLastName = $formValues.find('.valueUserLastName').val();
+  var valueUserLastName = $formValues.querySelector('.valueUserLastName')?.value;
   if(valueUserLastName != null && valueUserLastName !== '')
     vals['userLastName'] = valueUserLastName;
 
-  var valueUserFullName = $formValues.find('.valueUserFullName').val();
+  var valueUserFullName = $formValues.querySelector('.valueUserFullName')?.value;
   if(valueUserFullName != null && valueUserFullName !== '')
     vals['userFullName'] = valueUserFullName;
 
-  $.ajax({
-    url: '/api/user'
-    , dataType: 'json'
-    , type: 'POST'
-    , contentType: 'application/json; charset=utf-8'
-    , data: JSON.stringify(vals)
-    , success: success
-    , error: error
-  });
+  fetch(
+    '/api/user'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'POST'
+      , body: JSON.stringify(vals)
+    }
+    ).then(success).catch(error);
 }
 
 function postSiteUserVals(vals, success, error) {
-  $.ajax({
-    url: '/api/user'
-    , dataType: 'json'
-    , type: 'POST'
-    , contentType: 'application/json; charset=utf-8'
-    , data: JSON.stringify(vals)
-    , success: success
-    , error: error
-  });
+  fetch(
+    '/api/user'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'POST'
+      , body: JSON.stringify(vals)
+    }).then(success).catch(error);
 }
 
 // PUTImport //
 
 async function putimportSiteUser($formValues, pk, success, error) {
-  var json = $formValues.find('.PUTImport_searchList').val();
+  var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
     putimportSiteUserVals(JSON.parse(json), success, error);
 }
 
 function putimportSiteUserVals(json, success, error) {
-  $.ajax({
-    url: '/api/user-import'
-    , dataType: 'json'
-    , type: 'PUT'
-    , contentType: 'application/json; charset=utf-8'
-    , data: JSON.stringify(json)
-    , success: success
-    , error: error
-  });
+  fetch(
+    '/api/user-import'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'PUT'
+      , body: JSON.stringify(json)
+    }).then(success).catch(error);
 }
 
 async function websocketSiteUser(success) {
@@ -732,22 +722,22 @@ async function websocketSiteUser(success) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = $('#SiteUserForm :input[name=pk]').val();
+      var pkPage = document.querySelector('#SiteUserForm :input[name=pk]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
       var numPATCH = parseInt(json['numPATCH']);
       var percent = Math.floor( numPATCH / numFound * 100 ) + '%';
-      var $box = $('<div>').attr('class', 'w3-quarter box-' + id + ' ').attr('id', 'box-' + id).attr('data-numPATCH', numPATCH);
-      var $margin = $('<div>').attr('class', 'w3-margin ').attr('id', 'margin-' + id);
-      var $card = $('<div>').attr('class', 'w3-card w3-white ').attr('id', 'card-' + id);
-      var $header = $('<div>').attr('class', 'w3-container fa-2017-shaded-spruce ').attr('id', 'header-' + id);
-      var $i = $('<i>').attr('class', 'far fa-user-cog w3-margin-right ').attr('id', 'icon-' + id);
-      var $headerSpan = $('<span>').attr('class', '').text('modify site users in ' + json.timeRemaining);
-      var $x = $('<span>').attr('class', 'w3-button w3-display-topright ').attr('onclick', '$("#card-' + id + '").hide(); ').attr('id', 'x-' + id);
-      var $body = $('<div>').attr('class', 'w3-container w3-padding ').attr('id', 'text-' + id);
-      var $bar = $('<div>').attr('class', 'w3-light-gray ').attr('id', 'bar-' + id);
-      var $progress = $('<div>').attr('class', 'w3-2017-shaded-spruce ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+      var $box = document.querySelector('<div>').setAttribute('class', 'w3-quarter box-' + id + ' ').setAttribute('id', 'box-' + id).setAttribute('data-numPATCH', numPATCH);
+      var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
+      var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
+      var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa-2017-shaded-spruce ').setAttribute('id', 'header-' + id);
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-user-cog w3-margin-right ').setAttribute('id', 'icon-' + id);
+      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify site users in ' + json.timeRemaining);
+      var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
+      var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
+      var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
+      var $progress = document.querySelector('<div>').setAttribute('class', 'w3-2017-shaded-spruce ').setAttribute('style', 'height: 24px; width: ' + percent + '; ').setAttribute('id', 'progress-' + id).text(numPATCH + '/' + numFound);
       $card.append($header);
       $header.append($i);
       $header.append($headerSpan);
@@ -758,14 +748,14 @@ async function websocketSiteUser(success) {
       $box.append($margin);
       $margin.append($card);
       if(numPATCH < numFound) {
-        var $old_box = $('.box-' + id);
+        var $old_box = document.querySelector('.box-' + id);
         if(!$old_box.size()) {
-          $('.top-box').append($box);
-        } else if($old_box && $old_box.attr('data-numPATCH') < numFound) {
-          $('.box-' + id).html($margin);
+          document.querySelector('.top-box').append($box);
+        } else if($old_box && $old_box.getAttribute('data-numPATCH') < numFound) {
+          document.querySelector('.box-' + id).html($margin);
         }
       } else {
-        $('.box-' + id).remove();
+        document.querySelector('.box-' + id).remove();
       }
       if(pk && pkPage && pk == pkPage) {
         if(success)
@@ -817,212 +807,212 @@ async function websocketSiteUserInner(apiRequest) {
         var inputUserFullName = null;
 
         if(vars.includes('pk'))
-          inputPk = $response.find('#Page_pk');
+          inputPk = $response.querySelector('#Page_pk');
         if(vars.includes('created'))
-          inputCreated = $response.find('#Page_created');
+          inputCreated = $response.querySelector('#Page_created');
         if(vars.includes('modified'))
-          inputModified = $response.find('#Page_modified');
+          inputModified = $response.querySelector('#Page_modified');
         if(vars.includes('objectId'))
-          inputObjectId = $response.find('#Page_objectId');
+          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('archived'))
-          inputArchived = $response.find('#Page_archived');
+          inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
-          inputDeleted = $response.find('#Page_deleted');
+          inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('seeArchived'))
-          inputSeeArchived = $response.find('#Page_seeArchived');
+          inputSeeArchived = $response.querySelector('#Page_seeArchived');
         if(vars.includes('seeDeleted'))
-          inputSeeDeleted = $response.find('#Page_seeDeleted');
+          inputSeeDeleted = $response.querySelector('#Page_seeDeleted');
         if(vars.includes('inheritPk'))
-          inputInheritPk = $response.find('#Page_inheritPk');
+          inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
-          inputClassCanonicalName = $response.find('#Page_classCanonicalName');
+          inputClassCanonicalName = $response.querySelector('#Page_classCanonicalName');
         if(vars.includes('classSimpleName'))
-          inputClassSimpleName = $response.find('#Page_classSimpleName');
+          inputClassSimpleName = $response.querySelector('#Page_classSimpleName');
         if(vars.includes('classCanonicalNames'))
-          inputClassCanonicalNames = $response.find('#Page_classCanonicalNames');
+          inputClassCanonicalNames = $response.querySelector('#Page_classCanonicalNames');
         if(vars.includes('sessionId'))
-          inputSessionId = $response.find('#Page_sessionId');
+          inputSessionId = $response.querySelector('#Page_sessionId');
         if(vars.includes('userKey'))
-          inputUserKey = $response.find('#Page_userKey');
+          inputUserKey = $response.querySelector('#Page_userKey');
         if(vars.includes('saves'))
-          inputSaves = $response.find('#Page_saves');
+          inputSaves = $response.querySelector('#Page_saves');
         if(vars.includes('objectTitle'))
-          inputObjectTitle = $response.find('#Page_objectTitle');
+          inputObjectTitle = $response.querySelector('#Page_objectTitle');
         if(vars.includes('objectSuggest'))
-          inputObjectSuggest = $response.find('#Page_objectSuggest');
+          inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
         if(vars.includes('objectText'))
-          inputObjectText = $response.find('#Page_objectText');
+          inputObjectText = $response.querySelector('#Page_objectText');
         if(vars.includes('pageUrlId'))
-          inputPageUrlId = $response.find('#Page_pageUrlId');
+          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('pageUrlPk'))
-          inputPageUrlPk = $response.find('#Page_pageUrlPk');
+          inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
-          inputPageUrlApi = $response.find('#Page_pageUrlApi');
+          inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
-          inputId = $response.find('#Page_id');
+          inputId = $response.querySelector('#Page_id');
         if(vars.includes('userKeys'))
-          inputUserKeys = $response.find('#Page_userKeys');
+          inputUserKeys = $response.querySelector('#Page_userKeys');
         if(vars.includes('userId'))
-          inputUserId = $response.find('#Page_userId');
+          inputUserId = $response.querySelector('#Page_userId');
         if(vars.includes('userName'))
-          inputUserName = $response.find('#Page_userName');
+          inputUserName = $response.querySelector('#Page_userName');
         if(vars.includes('userEmail'))
-          inputUserEmail = $response.find('#Page_userEmail');
+          inputUserEmail = $response.querySelector('#Page_userEmail');
         if(vars.includes('userFirstName'))
-          inputUserFirstName = $response.find('#Page_userFirstName');
+          inputUserFirstName = $response.querySelector('#Page_userFirstName');
         if(vars.includes('userLastName'))
-          inputUserLastName = $response.find('#Page_userLastName');
+          inputUserLastName = $response.querySelector('#Page_userLastName');
         if(vars.includes('userFullName'))
-          inputUserFullName = $response.find('#Page_userFullName');
+          inputUserFullName = $response.querySelector('#Page_userFullName');
         jsWebsocketSiteUser(pk, vars, $response);
 
-        window.siteUser = JSON.parse($response.find('.pageForm .siteUser').val());
-        window.listSiteUser = JSON.parse($response.find('.pageForm .listSiteUser').val());
+        window.siteUser = JSON.parse($response.querySelector('.pageForm .siteUser')?.value);
+        window.listSiteUser = JSON.parse($response.querySelector('.pageForm .listSiteUser')?.value);
 
 
         if(inputPk) {
           inputPk.replaceAll('#Page_pk');
-          addGlow($('#Page_pk'));
+          addGlow(document.querySelector('#Page_pk'));
         }
 
         if(inputCreated) {
           inputCreated.replaceAll('#Page_created');
-          addGlow($('#Page_created'));
+          addGlow(document.querySelector('#Page_created'));
         }
 
         if(inputModified) {
           inputModified.replaceAll('#Page_modified');
-          addGlow($('#Page_modified'));
+          addGlow(document.querySelector('#Page_modified'));
         }
 
         if(inputObjectId) {
           inputObjectId.replaceAll('#Page_objectId');
-          addGlow($('#Page_objectId'));
+          addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputArchived) {
           inputArchived.replaceAll('#Page_archived');
-          addGlow($('#Page_archived'));
+          addGlow(document.querySelector('#Page_archived'));
         }
 
         if(inputDeleted) {
           inputDeleted.replaceAll('#Page_deleted');
-          addGlow($('#Page_deleted'));
+          addGlow(document.querySelector('#Page_deleted'));
         }
 
         if(inputSeeArchived) {
           inputSeeArchived.replaceAll('#Page_seeArchived');
-          addGlow($('#Page_seeArchived'));
+          addGlow(document.querySelector('#Page_seeArchived'));
         }
 
         if(inputSeeDeleted) {
           inputSeeDeleted.replaceAll('#Page_seeDeleted');
-          addGlow($('#Page_seeDeleted'));
+          addGlow(document.querySelector('#Page_seeDeleted'));
         }
 
         if(inputInheritPk) {
           inputInheritPk.replaceAll('#Page_inheritPk');
-          addGlow($('#Page_inheritPk'));
+          addGlow(document.querySelector('#Page_inheritPk'));
         }
 
         if(inputClassCanonicalName) {
           inputClassCanonicalName.replaceAll('#Page_classCanonicalName');
-          addGlow($('#Page_classCanonicalName'));
+          addGlow(document.querySelector('#Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
           inputClassSimpleName.replaceAll('#Page_classSimpleName');
-          addGlow($('#Page_classSimpleName'));
+          addGlow(document.querySelector('#Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
           inputClassCanonicalNames.replaceAll('#Page_classCanonicalNames');
-          addGlow($('#Page_classCanonicalNames'));
+          addGlow(document.querySelector('#Page_classCanonicalNames'));
         }
 
         if(inputSessionId) {
           inputSessionId.replaceAll('#Page_sessionId');
-          addGlow($('#Page_sessionId'));
+          addGlow(document.querySelector('#Page_sessionId'));
         }
 
         if(inputUserKey) {
           inputUserKey.replaceAll('#Page_userKey');
-          addGlow($('#Page_userKey'));
+          addGlow(document.querySelector('#Page_userKey'));
         }
 
         if(inputSaves) {
           inputSaves.replaceAll('#Page_saves');
-          addGlow($('#Page_saves'));
+          addGlow(document.querySelector('#Page_saves'));
         }
 
         if(inputObjectTitle) {
           inputObjectTitle.replaceAll('#Page_objectTitle');
-          addGlow($('#Page_objectTitle'));
+          addGlow(document.querySelector('#Page_objectTitle'));
         }
 
         if(inputObjectSuggest) {
           inputObjectSuggest.replaceAll('#Page_objectSuggest');
-          addGlow($('#Page_objectSuggest'));
+          addGlow(document.querySelector('#Page_objectSuggest'));
         }
 
         if(inputObjectText) {
           inputObjectText.replaceAll('#Page_objectText');
-          addGlow($('#Page_objectText'));
+          addGlow(document.querySelector('#Page_objectText'));
         }
 
         if(inputPageUrlId) {
           inputPageUrlId.replaceAll('#Page_pageUrlId');
-          addGlow($('#Page_pageUrlId'));
+          addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputPageUrlPk) {
           inputPageUrlPk.replaceAll('#Page_pageUrlPk');
-          addGlow($('#Page_pageUrlPk'));
+          addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputPageUrlApi) {
           inputPageUrlApi.replaceAll('#Page_pageUrlApi');
-          addGlow($('#Page_pageUrlApi'));
+          addGlow(document.querySelector('#Page_pageUrlApi'));
         }
 
         if(inputId) {
           inputId.replaceAll('#Page_id');
-          addGlow($('#Page_id'));
+          addGlow(document.querySelector('#Page_id'));
         }
 
         if(inputUserKeys) {
           inputUserKeys.replaceAll('#Page_userKeys');
-          addGlow($('#Page_userKeys'));
+          addGlow(document.querySelector('#Page_userKeys'));
         }
 
         if(inputUserId) {
           inputUserId.replaceAll('#Page_userId');
-          addGlow($('#Page_userId'));
+          addGlow(document.querySelector('#Page_userId'));
         }
 
         if(inputUserName) {
           inputUserName.replaceAll('#Page_userName');
-          addGlow($('#Page_userName'));
+          addGlow(document.querySelector('#Page_userName'));
         }
 
         if(inputUserEmail) {
           inputUserEmail.replaceAll('#Page_userEmail');
-          addGlow($('#Page_userEmail'));
+          addGlow(document.querySelector('#Page_userEmail'));
         }
 
         if(inputUserFirstName) {
           inputUserFirstName.replaceAll('#Page_userFirstName');
-          addGlow($('#Page_userFirstName'));
+          addGlow(document.querySelector('#Page_userFirstName'));
         }
 
         if(inputUserLastName) {
           inputUserLastName.replaceAll('#Page_userLastName');
-          addGlow($('#Page_userLastName'));
+          addGlow(document.querySelector('#Page_userLastName'));
         }
 
         if(inputUserFullName) {
           inputUserFullName.replaceAll('#Page_userFullName');
-          addGlow($('#Page_userFullName'));
+          addGlow(document.querySelector('#Page_userFullName'));
         }
 
         pageGraphSiteUser();
@@ -1031,7 +1021,7 @@ async function websocketSiteUserInner(apiRequest) {
 }
 
 function pageGraphSiteUser(apiRequest) {
-  var r = $('.pageForm .pageResponse').val();
+  var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
     if(json['facetCounts']) {
@@ -1055,7 +1045,7 @@ function pageGraphSiteUser(apiRequest) {
         var pivot1VarIndexed = pivot1Name;
         if(pivot1VarIndexed.includes(','))
           pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
-        var pivot1VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot1VarIndexed);
+        var pivot1VarObj = Object.values(window.varsFq).querySelector(o => o.varIndexed === pivot1VarIndexed);
         var pivot1VarFq = pivot1VarObj ? pivot1VarObj.var : 'classSimpleName';
         var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
         var pivot1Vals = Object.keys(pivot1Map);
@@ -1068,7 +1058,7 @@ function pageGraphSiteUser(apiRequest) {
           }
           if(pivot1Vals.length > 0 && pivot1Map[pivot1Vals[0]].pivotMap && Object.keys(pivot1Map[pivot1Vals[0]].pivotMap).length > 0) {
             var pivot2VarIndexed = pivot1Map[pivot1Vals[0]].pivotMap[Object.keys(pivot1Map[pivot1Vals[0]].pivotMap)[0]].field;
-            var pivot2VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot2VarIndexed);
+            var pivot2VarObj = Object.values(window.varsFq).querySelector(o => o.varIndexed === pivot2VarIndexed);
             var pivot2VarFq = pivot2VarObj ? pivot2VarObj.var : 'classSimpleName';
             layout['yaxis'] = {
               title: pivot2VarObj.displayName
@@ -1133,12 +1123,12 @@ function pageGraphSiteUser(apiRequest) {
 }
 
 function animateStats() {
-  $('#pageSearchVal-fqSiteUser_time').text('');
+  document.querySelector('#pageSearchVal-fqSiteUser_time').text('');
   searchPage('SiteUser', function() {
-    let speedRate = parseFloat($('#animateStatsSpeed').val()) * 1000;
-    let xStep = parseFloat($('#animateStatsStep').val());
-    let xMin = parseFloat($('#animateStatsMin').val());
-    let xMax = parseFloat($('#animateStatsMax').val());
+    let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
+    let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
+    let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
+    let xMax = parseFloat(document.querySelector('#animateStatsMax')?.value);
     let x = xMin;
 
     let animateInterval = window.setInterval(() => {
@@ -1146,8 +1136,8 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      $('#fqSiteUser_time').val(x);
-      $('#fqSiteUser_time').change();
+      document.querySelector('#fqSiteUser_time').value = x;
+      document.querySelector('#fqSiteUser_time').onchange();
       searchPage('SiteUser');
     }, speedRate);
   });

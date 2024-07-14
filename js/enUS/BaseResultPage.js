@@ -6,22 +6,22 @@ async function websocketBaseResult(success) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = $('#BaseResultForm :input[name=id]').val();
+      var pkPage = document.querySelector('#BaseResultForm :input[name=id]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
       var numPATCH = parseInt(json['numPATCH']);
       var percent = Math.floor( numPATCH / numFound * 100 ) + '%';
-      var $box = $('<div>').attr('class', 'w3-quarter box-' + id + ' ').attr('id', 'box-' + id).attr('data-numPATCH', numPATCH);
-      var $margin = $('<div>').attr('class', 'w3-margin ').attr('id', 'margin-' + id);
-      var $card = $('<div>').attr('class', 'w3-card w3-white ').attr('id', 'card-' + id);
-      var $header = $('<div>').attr('class', 'w3-container fa- ').attr('id', 'header-' + id);
-      var $i = $('<i>').attr('class', 'fa fa- w3-margin-right ').attr('id', 'icon-' + id);
-      var $headerSpan = $('<span>').attr('class', '').text('modify  in ' + json.timeRemaining);
-      var $x = $('<span>').attr('class', 'w3-button w3-display-topright ').attr('onclick', '$("#card-' + id + '").hide(); ').attr('id', 'x-' + id);
-      var $body = $('<div>').attr('class', 'w3-container w3-padding ').attr('id', 'text-' + id);
-      var $bar = $('<div>').attr('class', 'w3-light-gray ').attr('id', 'bar-' + id);
-      var $progress = $('<div>').attr('class', 'w3- ').attr('style', 'height: 24px; width: ' + percent + '; ').attr('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+      var $box = document.querySelector('<div>').setAttribute('class', 'w3-quarter box-' + id + ' ').setAttribute('id', 'box-' + id).setAttribute('data-numPATCH', numPATCH);
+      var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
+      var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
+      var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
+      var $i = document.querySelector('<i>').setAttribute('class', 'fa fa- w3-margin-right ').setAttribute('id', 'icon-' + id);
+      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify  in ' + json.timeRemaining);
+      var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
+      var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
+      var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
+      var $progress = document.querySelector('<div>').setAttribute('class', 'w3- ').setAttribute('style', 'height: 24px; width: ' + percent + '; ').setAttribute('id', 'progress-' + id).text(numPATCH + '/' + numFound);
       $card.append($header);
       $header.append($i);
       $header.append($headerSpan);
@@ -32,14 +32,14 @@ async function websocketBaseResult(success) {
       $box.append($margin);
       $margin.append($card);
       if(numPATCH < numFound) {
-        var $old_box = $('.box-' + id);
+        var $old_box = document.querySelector('.box-' + id);
         if(!$old_box.size()) {
-          $('.top-box').append($box);
-        } else if($old_box && $old_box.attr('data-numPATCH') < numFound) {
-          $('.box-' + id).html($margin);
+          document.querySelector('.top-box').append($box);
+        } else if($old_box && $old_box.getAttribute('data-numPATCH') < numFound) {
+          document.querySelector('.box-' + id).html($margin);
         }
       } else {
-        $('.box-' + id).remove();
+        document.querySelector('.box-' + id).remove();
       }
       if(pk && pkPage && pk == pkPage) {
         if(success)
@@ -81,142 +81,142 @@ async function websocketBaseResultInner(apiRequest) {
         var inputId = null;
 
         if(vars.includes('created'))
-          inputCreated = $response.find('#Page_created');
+          inputCreated = $response.querySelector('#Page_created');
         if(vars.includes('modified'))
-          inputModified = $response.find('#Page_modified');
+          inputModified = $response.querySelector('#Page_modified');
         if(vars.includes('objectId'))
-          inputObjectId = $response.find('#Page_objectId');
+          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('archived'))
-          inputArchived = $response.find('#Page_archived');
+          inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
-          inputDeleted = $response.find('#Page_deleted');
+          inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('inheritPk'))
-          inputInheritPk = $response.find('#Page_inheritPk');
+          inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
-          inputClassCanonicalName = $response.find('#Page_classCanonicalName');
+          inputClassCanonicalName = $response.querySelector('#Page_classCanonicalName');
         if(vars.includes('classSimpleName'))
-          inputClassSimpleName = $response.find('#Page_classSimpleName');
+          inputClassSimpleName = $response.querySelector('#Page_classSimpleName');
         if(vars.includes('classCanonicalNames'))
-          inputClassCanonicalNames = $response.find('#Page_classCanonicalNames');
+          inputClassCanonicalNames = $response.querySelector('#Page_classCanonicalNames');
         if(vars.includes('sessionId'))
-          inputSessionId = $response.find('#Page_sessionId');
+          inputSessionId = $response.querySelector('#Page_sessionId');
         if(vars.includes('userKey'))
-          inputUserKey = $response.find('#Page_userKey');
+          inputUserKey = $response.querySelector('#Page_userKey');
         if(vars.includes('saves'))
-          inputSaves = $response.find('#Page_saves');
+          inputSaves = $response.querySelector('#Page_saves');
         if(vars.includes('objectTitle'))
-          inputObjectTitle = $response.find('#Page_objectTitle');
+          inputObjectTitle = $response.querySelector('#Page_objectTitle');
         if(vars.includes('objectSuggest'))
-          inputObjectSuggest = $response.find('#Page_objectSuggest');
+          inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
         if(vars.includes('objectText'))
-          inputObjectText = $response.find('#Page_objectText');
+          inputObjectText = $response.querySelector('#Page_objectText');
         if(vars.includes('pageUrlId'))
-          inputPageUrlId = $response.find('#Page_pageUrlId');
+          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('pageUrlPk'))
-          inputPageUrlPk = $response.find('#Page_pageUrlPk');
+          inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
-          inputPageUrlApi = $response.find('#Page_pageUrlApi');
+          inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
-          inputId = $response.find('#Page_id');
+          inputId = $response.querySelector('#Page_id');
         jsWebsocketBaseResult(id, vars, $response);
 
-        window.baseResult = JSON.parse($response.find('.pageForm .baseResult').val());
-        window.listBaseResult = JSON.parse($response.find('.pageForm .listBaseResult').val());
+        window.baseResult = JSON.parse($response.querySelector('.pageForm .baseResult')?.value);
+        window.listBaseResult = JSON.parse($response.querySelector('.pageForm .listBaseResult')?.value);
 
 
         if(inputCreated) {
           inputCreated.replaceAll('#Page_created');
-          addGlow($('#Page_created'));
+          addGlow(document.querySelector('#Page_created'));
         }
 
         if(inputModified) {
           inputModified.replaceAll('#Page_modified');
-          addGlow($('#Page_modified'));
+          addGlow(document.querySelector('#Page_modified'));
         }
 
         if(inputObjectId) {
           inputObjectId.replaceAll('#Page_objectId');
-          addGlow($('#Page_objectId'));
+          addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputArchived) {
           inputArchived.replaceAll('#Page_archived');
-          addGlow($('#Page_archived'));
+          addGlow(document.querySelector('#Page_archived'));
         }
 
         if(inputDeleted) {
           inputDeleted.replaceAll('#Page_deleted');
-          addGlow($('#Page_deleted'));
+          addGlow(document.querySelector('#Page_deleted'));
         }
 
         if(inputInheritPk) {
           inputInheritPk.replaceAll('#Page_inheritPk');
-          addGlow($('#Page_inheritPk'));
+          addGlow(document.querySelector('#Page_inheritPk'));
         }
 
         if(inputClassCanonicalName) {
           inputClassCanonicalName.replaceAll('#Page_classCanonicalName');
-          addGlow($('#Page_classCanonicalName'));
+          addGlow(document.querySelector('#Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
           inputClassSimpleName.replaceAll('#Page_classSimpleName');
-          addGlow($('#Page_classSimpleName'));
+          addGlow(document.querySelector('#Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
           inputClassCanonicalNames.replaceAll('#Page_classCanonicalNames');
-          addGlow($('#Page_classCanonicalNames'));
+          addGlow(document.querySelector('#Page_classCanonicalNames'));
         }
 
         if(inputSessionId) {
           inputSessionId.replaceAll('#Page_sessionId');
-          addGlow($('#Page_sessionId'));
+          addGlow(document.querySelector('#Page_sessionId'));
         }
 
         if(inputUserKey) {
           inputUserKey.replaceAll('#Page_userKey');
-          addGlow($('#Page_userKey'));
+          addGlow(document.querySelector('#Page_userKey'));
         }
 
         if(inputSaves) {
           inputSaves.replaceAll('#Page_saves');
-          addGlow($('#Page_saves'));
+          addGlow(document.querySelector('#Page_saves'));
         }
 
         if(inputObjectTitle) {
           inputObjectTitle.replaceAll('#Page_objectTitle');
-          addGlow($('#Page_objectTitle'));
+          addGlow(document.querySelector('#Page_objectTitle'));
         }
 
         if(inputObjectSuggest) {
           inputObjectSuggest.replaceAll('#Page_objectSuggest');
-          addGlow($('#Page_objectSuggest'));
+          addGlow(document.querySelector('#Page_objectSuggest'));
         }
 
         if(inputObjectText) {
           inputObjectText.replaceAll('#Page_objectText');
-          addGlow($('#Page_objectText'));
+          addGlow(document.querySelector('#Page_objectText'));
         }
 
         if(inputPageUrlId) {
           inputPageUrlId.replaceAll('#Page_pageUrlId');
-          addGlow($('#Page_pageUrlId'));
+          addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputPageUrlPk) {
           inputPageUrlPk.replaceAll('#Page_pageUrlPk');
-          addGlow($('#Page_pageUrlPk'));
+          addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputPageUrlApi) {
           inputPageUrlApi.replaceAll('#Page_pageUrlApi');
-          addGlow($('#Page_pageUrlApi'));
+          addGlow(document.querySelector('#Page_pageUrlApi'));
         }
 
         if(inputId) {
           inputId.replaceAll('#Page_id');
-          addGlow($('#Page_id'));
+          addGlow(document.querySelector('#Page_id'));
         }
 
         pageGraphBaseResult();
@@ -225,7 +225,7 @@ async function websocketBaseResultInner(apiRequest) {
 }
 
 function pageGraphBaseResult(apiRequest) {
-  var r = $('.pageForm .pageResponse').val();
+  var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
     if(json['facetCounts']) {
@@ -249,7 +249,7 @@ function pageGraphBaseResult(apiRequest) {
         var pivot1VarIndexed = pivot1Name;
         if(pivot1VarIndexed.includes(','))
           pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
-        var pivot1VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot1VarIndexed);
+        var pivot1VarObj = Object.values(window.varsFq).querySelector(o => o.varIndexed === pivot1VarIndexed);
         var pivot1VarFq = pivot1VarObj ? pivot1VarObj.var : 'classSimpleName';
         var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
         var pivot1Vals = Object.keys(pivot1Map);
@@ -262,7 +262,7 @@ function pageGraphBaseResult(apiRequest) {
           }
           if(pivot1Vals.length > 0 && pivot1Map[pivot1Vals[0]].pivotMap && Object.keys(pivot1Map[pivot1Vals[0]].pivotMap).length > 0) {
             var pivot2VarIndexed = pivot1Map[pivot1Vals[0]].pivotMap[Object.keys(pivot1Map[pivot1Vals[0]].pivotMap)[0]].field;
-            var pivot2VarObj = Object.values(window.varsFq).find(o => o.varIndexed === pivot2VarIndexed);
+            var pivot2VarObj = Object.values(window.varsFq).querySelector(o => o.varIndexed === pivot2VarIndexed);
             var pivot2VarFq = pivot2VarObj ? pivot2VarObj.var : 'classSimpleName';
             layout['yaxis'] = {
               title: pivot2VarObj.displayName
@@ -327,12 +327,12 @@ function pageGraphBaseResult(apiRequest) {
 }
 
 function animateStats() {
-  $('#pageSearchVal-fqBaseResult_time').text('');
+  document.querySelector('#pageSearchVal-fqBaseResult_time').text('');
   searchPage('BaseResult', function() {
-    let speedRate = parseFloat($('#animateStatsSpeed').val()) * 1000;
-    let xStep = parseFloat($('#animateStatsStep').val());
-    let xMin = parseFloat($('#animateStatsMin').val());
-    let xMax = parseFloat($('#animateStatsMax').val());
+    let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
+    let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
+    let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
+    let xMax = parseFloat(document.querySelector('#animateStatsMax')?.value);
     let x = xMin;
 
     let animateInterval = window.setInterval(() => {
@@ -340,8 +340,8 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      $('#fqBaseResult_time').val(x);
-      $('#fqBaseResult_time').change();
+      document.querySelector('#fqBaseResult_time').value = x;
+      document.querySelector('#fqBaseResult_time').onchange();
       searchPage('BaseResult');
     }, speedRate);
   });

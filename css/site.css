@@ -14,6 +14,7 @@
   --sl-color-primary-800: var(--sl-color-purple-800);
   --sl-color-primary-900: var(--sl-color-purple-900);
   --sl-color-primary-950: var(--sl-color-purple-950);
+  --sl-input-focus-ring-color: var(--sl-color-purple-600);
 }
 
 /* theme css */
@@ -160,6 +161,32 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
   height: 1rem;
 }
 
+/* shoelace */
+.label-on-left {
+  --label-width: 10.0rem;
+  --gap-width: 1rem;
+}
+
+.label-on-left + .label-on-left {
+  margin-top: var(--sl-spacing-medium);
+}
+
+.label-on-left::part(form-control) {
+  display: grid;
+  grid: auto / var(--label-width) 1fr;
+  gap: var(--sl-spacing-3x-small) var(--gap-width);
+  align-items: center;
+}
+
+.label-on-left::part(form-control-label) {
+  text-align: right;
+}
+
+.label-on-left::part(form-control-help-text) {
+  grid-column-start: 2;
+}
+
+
 /* layout items */
 @media (max-width:600px){
   .hide-mobile{display:none!important}
@@ -175,6 +202,22 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
 .float-left {
   float: left;
 }
+.float-right {
+  float: right;
+}
 footer {
   clear: both;
 }
+.display-none {
+  display: none;
+}
+
+.glowSuccess {
+        box-shadow: 0 0 5px 3px var(--sl-color-success-500);
+        border: 1px solid var(--sl-color-success-500);
+}
+.glowError {
+        box-shadow: 0 0 5px 3px var(--sl-color-danger-500);
+        border: 1px solid var(--sl-color-danger-500);
+}
+

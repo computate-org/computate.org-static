@@ -1,17 +1,17 @@
 
 // Search //
 
-async function searchComputateEvent($formFilters, success, error) {
-  var filters = searchComputateEventFilters($formFilters);
+async function searchComputateWebsite($formFilters, success, error) {
+  var filters = searchComputateWebsiteFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchComputateEventVals(filters, success, error);
+  searchComputateWebsiteVals(filters, success, error);
 }
 
-function searchComputateEventFilters($formFilters) {
+function searchComputateWebsiteFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -51,13 +51,9 @@ function searchComputateEventFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
-    if(filterLocation != null && filterLocation !== '')
-      filters.push({ name: 'fq', value: 'location:' + filterLocation });
-
-    var filterEventName = $formFilters.querySelector('.valueEventName')?.value;
-    if(filterEventName != null && filterEventName !== '')
-      filters.push({ name: 'fq', value: 'eventName:' + filterEventName });
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -114,36 +110,24 @@ function searchComputateEventFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
-
-    var filterLocationColors = $formFilters.querySelector('.valueLocationColors')?.value;
-    if(filterLocationColors != null && filterLocationColors !== '')
-      filters.push({ name: 'fq', value: 'locationColors:' + filterLocationColors });
-
-    var filterLocationTitles = $formFilters.querySelector('.valueLocationTitles')?.value;
-    if(filterLocationTitles != null && filterLocationTitles !== '')
-      filters.push({ name: 'fq', value: 'locationTitles:' + filterLocationTitles });
-
-    var filterLocationLinks = $formFilters.querySelector('.valueLocationLinks')?.value;
-    if(filterLocationLinks != null && filterLocationLinks !== '')
-      filters.push({ name: 'fq', value: 'locationLinks:' + filterLocationLinks });
   }
   return filters;
 }
 
-function searchComputateEventVals(filters, success, error) {
+function searchComputateWebsiteVals(filters, success, error) {
 
   fetch(
-    '/api/event?' + $.param(filters)
+    '/api/website?' + $.param(filters)
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(success).catch(error);
 }
 
-function suggestComputateEventObjectSuggest($formFilters, $list) {
+function suggestComputateWebsiteObjectSuggest($formFilters, $list) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-map-location-dot ');
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-globe-pointer ');
       var $span = document.querySelector('<span>').setAttribute('class', '').text(o['objectTitle']);
       var $li = document.querySelector('<li>');
       var $a = document.querySelector('<a>').setAttribute('href', o['pageUrlPk']);
@@ -154,14 +138,14 @@ function suggestComputateEventObjectSuggest($formFilters, $list) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchComputateEventVals($formFilters, success, error);
+  searchComputateWebsiteVals($formFilters, success, error);
 }
 
 // GET //
 
-async function getComputateEvent(pk) {
+async function getComputateWebsite(pk) {
   fetch(
-    '/api/event/' + id
+    '/api/website/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }
@@ -170,8 +154,8 @@ async function getComputateEvent(pk) {
 
 // PATCH //
 
-async function patchComputateEvent($formFilters, $formValues, pk, success, error) {
-  var filters = patchComputateEventFilters($formFilters);
+async function patchComputateWebsite($formFilters, $formValues, pk, success, error) {
+  var filters = patchComputateWebsiteFilters($formFilters);
 
   var vals = {};
 
@@ -253,29 +237,17 @@ async function patchComputateEvent($formFilters, $formValues, pk, success, error
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
-  var valueLocation = $formValues.querySelector('.valueLocation')?.value;
-  var removeLocation = $formValues.querySelector('.removeLocation')?.value === 'true';
-  var setLocation = removeLocation ? null : $formValues.querySelector('.setLocation')?.value;
-  var addLocation = $formValues.querySelector('.addLocation')?.value;
-  if(removeLocation || setLocation != null && setLocation !== '')
-    vals['setLocation'] = JSON.parse(setLocation);
-  if(addLocation != null && addLocation !== '')
-    vals['addLocation'] = addLocation;
-  var removeLocation = $formValues.querySelector('.removeLocation')?.value;
-  if(removeLocation != null && removeLocation !== '')
-    vals['removeLocation'] = removeLocation;
-
-  var valueEventName = $formValues.querySelector('.valueEventName')?.value;
-  var removeEventName = $formValues.querySelector('.removeEventName')?.value === 'true';
-  var setEventName = removeEventName ? null : $formValues.querySelector('.setEventName')?.value;
-  var addEventName = $formValues.querySelector('.addEventName')?.value;
-  if(removeEventName || setEventName != null && setEventName !== '')
-    vals['setEventName'] = setEventName;
-  if(addEventName != null && addEventName !== '')
-    vals['addEventName'] = addEventName;
-  var removeEventName = $formValues.querySelector('.removeEventName')?.value;
-  if(removeEventName != null && removeEventName !== '')
-    vals['removeEventName'] = removeEventName;
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
+  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
+  var addName = $formValues.querySelector('.addName')?.value;
+  if(removeName || setName != null && setName !== '')
+    vals['setName'] = setName;
+  if(addName != null && addName !== '')
+    vals['addName'] = addName;
+  var removeName = $formValues.querySelector('.removeName')?.value;
+  if(removeName != null && removeName !== '')
+    vals['removeName'] = removeName;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -325,10 +297,10 @@ async function patchComputateEvent($formFilters, $formValues, pk, success, error
   if(removeObjectTitle != null && removeObjectTitle !== '')
     vals['removeObjectTitle'] = removeObjectTitle;
 
-  patchComputateEventVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, success, error);
+  patchComputateWebsiteVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, success, error);
 }
 
-function patchComputateEventFilters($formFilters) {
+function patchComputateWebsiteFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -369,13 +341,9 @@ function patchComputateEventFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
-    if(filterLocation != null && filterLocation !== '')
-      filters.push({ name: 'fq', value: 'location:' + filterLocation });
-
-    var filterEventName = $formFilters.querySelector('.valueEventName')?.value;
-    if(filterEventName != null && filterEventName !== '')
-      filters.push({ name: 'fq', value: 'eventName:' + filterEventName });
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -432,31 +400,19 @@ function patchComputateEventFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
-
-    var filterLocationColors = $formFilters.querySelector('.valueLocationColors')?.value;
-    if(filterLocationColors != null && filterLocationColors !== '')
-      filters.push({ name: 'fq', value: 'locationColors:' + filterLocationColors });
-
-    var filterLocationTitles = $formFilters.querySelector('.valueLocationTitles')?.value;
-    if(filterLocationTitles != null && filterLocationTitles !== '')
-      filters.push({ name: 'fq', value: 'locationTitles:' + filterLocationTitles });
-
-    var filterLocationLinks = $formFilters.querySelector('.valueLocationLinks')?.value;
-    if(filterLocationLinks != null && filterLocationLinks !== '')
-      filters.push({ name: 'fq', value: 'locationLinks:' + filterLocationLinks });
   }
   return filters;
 }
 
-function patchComputateEventVal(filters, v, val, success, error) {
+function patchComputateWebsiteVal(filters, v, val, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateEventVals(filters, vals, success, error);
+  patchComputateWebsiteVals(filters, vals, success, error);
 }
 
-function patchComputateEventVals(filters, vals, success, error) {
+function patchComputateWebsiteVals(filters, vals, success, error) {
   fetch(
-    '/api/event?' + $.param(filters)
+    '/api/website?' + $.param(filters)
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -466,7 +422,7 @@ function patchComputateEventVals(filters, vals, success, error) {
 
 // POST //
 
-async function postComputateEvent($formValues, success, error) {
+async function postComputateWebsite($formValues, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -506,13 +462,9 @@ async function postComputateEvent($formValues, success, error) {
   if(valueDeleted != null && valueDeleted !== '')
     vals['deleted'] = valueDeleted == 'true';
 
-  var valueLocation = $formValues.querySelector('.valueLocation')?.value;
-  if(valueLocation != null && valueLocation !== '')
-    vals['location'] = JSON.parse(valueLocation);
-
-  var valueEventName = $formValues.querySelector('.valueEventName')?.value;
-  if(valueEventName != null && valueEventName !== '')
-    vals['eventName'] = valueEventName;
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  if(valueName != null && valueName !== '')
+    vals['name'] = valueName;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -531,7 +483,7 @@ async function postComputateEvent($formValues, success, error) {
     vals['objectTitle'] = valueObjectTitle;
 
   fetch(
-    '/api/event'
+    '/api/website'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -540,9 +492,9 @@ async function postComputateEvent($formValues, success, error) {
     ).then(success).catch(error);
 }
 
-function postComputateEventVals(vals, success, error) {
+function postComputateWebsiteVals(vals, success, error) {
   fetch(
-    '/api/event'
+    '/api/website'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -552,15 +504,15 @@ function postComputateEventVals(vals, success, error) {
 
 // PUTImport //
 
-async function putimportComputateEvent($formValues, pk, success, error) {
+async function putimportComputateWebsite($formValues, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateEventVals(JSON.parse(json), success, error);
+    putimportComputateWebsiteVals(JSON.parse(json), success, error);
 }
 
-function putimportComputateEventVals(json, success, error) {
+function putimportComputateWebsiteVals(json, success, error) {
   fetch(
-    '/api/event-import'
+    '/api/website-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -568,14 +520,14 @@ function putimportComputateEventVals(json, success, error) {
     }).then(success).catch(error);
 }
 
-async function websocketComputateEvent(success) {
+async function websocketComputateWebsite(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketComputateEvent', function (error, message) {
+    window.eventBus.registerHandler('websocketComputateWebsite', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#ComputateEventForm :input[name=pk]')?.value;
+      var pkPage = document.querySelector('#ComputateWebsiteForm :input[name=pk]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -585,8 +537,8 @@ async function websocketComputateEvent(success) {
       var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-map-location-dot w3-margin-right ').setAttribute('id', 'icon-' + id);
-      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify events in ' + json.timeRemaining);
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-globe-pointer w3-margin-right ').setAttribute('id', 'icon-' + id);
+      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify websites in ' + json.timeRemaining);
       var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
       var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
@@ -617,7 +569,7 @@ async function websocketComputateEvent(success) {
     });
   }
 }
-async function websocketComputateEventInner(apiRequest) {
+async function websocketComputateWebsiteInner(apiRequest) {
   var pk = apiRequest['pk'];
   var pks = apiRequest['pks'];
   var classes = apiRequest['classes'];
@@ -635,8 +587,7 @@ async function websocketComputateEventInner(apiRequest) {
         var inputObjectId = null;
         var inputArchived = null;
         var inputDeleted = null;
-        var inputLocation = null;
-        var inputEventName = null;
+        var inputName = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -651,9 +602,6 @@ async function websocketComputateEventInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
-        var inputLocationColors = null;
-        var inputLocationTitles = null;
-        var inputLocationLinks = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
@@ -667,10 +615,8 @@ async function websocketComputateEventInner(apiRequest) {
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.querySelector('#Page_deleted');
-        if(vars.includes('location'))
-          inputLocation = $response.querySelector('#Page_location');
-        if(vars.includes('eventName'))
-          inputEventName = $response.querySelector('#Page_eventName');
+        if(vars.includes('name'))
+          inputName = $response.querySelector('#Page_name');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -699,16 +645,10 @@ async function websocketComputateEventInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        if(vars.includes('locationColors'))
-          inputLocationColors = $response.querySelector('#Page_locationColors');
-        if(vars.includes('locationTitles'))
-          inputLocationTitles = $response.querySelector('#Page_locationTitles');
-        if(vars.includes('locationLinks'))
-          inputLocationLinks = $response.querySelector('#Page_locationLinks');
-        jsWebsocketComputateEvent(pk, vars, $response);
+        jsWebsocketComputateWebsite(pk, vars, $response);
 
-        window.computateEvent = JSON.parse($response.querySelector('.pageForm .computateEvent')?.value);
-        window.listComputateEvent = JSON.parse($response.querySelector('.pageForm .listComputateEvent')?.value);
+        window.computateWebsite = JSON.parse($response.querySelector('.pageForm .computateWebsite')?.value);
+        window.listComputateWebsite = JSON.parse($response.querySelector('.pageForm .listComputateWebsite')?.value);
 
 
         if(inputPk) {
@@ -741,14 +681,9 @@ async function websocketComputateEventInner(apiRequest) {
           addGlow(document.querySelector('#Page_deleted'));
         }
 
-        if(inputLocation) {
-          inputLocation.replaceAll('#Page_location');
-          addGlow(document.querySelector('#Page_location'));
-        }
-
-        if(inputEventName) {
-          inputEventName.replaceAll('#Page_eventName');
-          addGlow(document.querySelector('#Page_eventName'));
+        if(inputName) {
+          inputName.replaceAll('#Page_name');
+          addGlow(document.querySelector('#Page_name'));
         }
 
         if(inputInheritPk) {
@@ -821,27 +756,12 @@ async function websocketComputateEventInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        if(inputLocationColors) {
-          inputLocationColors.replaceAll('#Page_locationColors');
-          addGlow(document.querySelector('#Page_locationColors'));
-        }
-
-        if(inputLocationTitles) {
-          inputLocationTitles.replaceAll('#Page_locationTitles');
-          addGlow(document.querySelector('#Page_locationTitles'));
-        }
-
-        if(inputLocationLinks) {
-          inputLocationLinks.replaceAll('#Page_locationLinks');
-          addGlow(document.querySelector('#Page_locationLinks'));
-        }
-
-        pageGraphComputateEvent();
+        pageGraphComputateWebsite();
     });
   }
 }
 
-function pageGraphComputateEvent(apiRequest) {
+function pageGraphComputateWebsite(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -873,7 +793,7 @@ function pageGraphComputateEvent(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'events';
+          layout['title'] = 'websites';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -940,101 +860,12 @@ function pageGraphComputateEvent(apiRequest) {
         Plotly.react('htmBodyGraphBaseModelPage', data, layout);
       }
     }
-
-    // Graph Location
-    window.mapLayers = {};
-    function onEachFeature(feature, layer) {
-      let popupContent = htmTooltipComputateEvent(feature, layer);
-      layer.bindPopup(popupContent);
-      window.mapLayers[feature.properties.id] = layer;
-    };
-    if(window.mapComputateEvent) {
-      window.geoJSONComputateEvent.clearLayers();
-      window.listComputateEvent.forEach((computateEvent, index) => {
-        if(computateEvent.location) {
-          var shapes = [];
-          if(Array.isArray(computateEvent.location))
-            shapes = shapes.concat(computateEvent.location);
-          else
-            shapes.push(computateEvent.location);
-          shapes.forEach(function(shape, index) {
-            var features = [{
-              "type": "Feature"
-              , "properties": computateEvent
-              , "geometry": shape
-              , "index": index
-            }];
-            var layer = L.geoJSON(features, {
-              onEachFeature: onEachFeature
-              , style: jsStyleComputateEvent
-              , pointToLayer: function(feature, latlng) {
-                return L.circleMarker(latlng, jsStyleComputateEvent(feature));
-              }
-            });
-            window.geoJSONComputateEvent.addLayer(layer);
-          });
-        }
-      });
-    } else {
-      window.mapComputateEvent = L.map('htmBodyGraphLocationComputateEventPage', {closePopupOnClick: false});
-      var data = [];
-      var layout = {};
-      layout['showlegend'] = true;
-      layout['dragmode'] = 'zoom';
-      layout['uirevision'] = 'true';
-      var legend = L.control({position: 'bottomright'});
-      legend.onAdd = jsLegendComputateEvent;
-      legend.addTo(window.mapComputateEvent);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(window.mapComputateEvent);
-
-      if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
-        window.mapComputateEvent.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']], window['DEFAULT_MAP_ZOOM']);
-      else if(window['DEFAULT_MAP_ZOOM'])
-        window.mapComputateEvent.setView(null, window['DEFAULT_MAP_ZOOM']);
-      else if(window['DEFAULT_MAP_LOCATION'])
-        window.mapComputateEvent.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']]);
-
-      layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
-      window.geoJSONComputateEvent = L.geoJSON().addTo(window.mapComputateEvent);
-      window.listComputateEvent.forEach((computateEvent, index) => {
-        if(computateEvent.location) {
-          var shapes = [];
-          if(Array.isArray(computateEvent.location))
-            shapes = shapes.concat(computateEvent.location);
-          else
-            shapes.push(computateEvent.location);
-          shapes.forEach(shape => {
-            var features = [{
-              "type": "Feature"
-              , "properties": computateEvent
-              , "geometry": shape
-              , "index": index
-            }];
-            var layer = L.geoJSON(features, {
-              onEachFeature: onEachFeature
-              , style: jsStyleComputateEvent
-              , pointToLayer: function(feature, latlng) {
-                return L.circleMarker(latlng, jsStyleComputateEvent(feature));
-              }
-            });
-            window.geoJSONComputateEvent.addLayer(layer);
-          });
-        }
-      });
-      window.mapComputateEvent.on('popupopen', function(e) {
-        var feature = e.popup._source.feature;
-        jsTooltipComputateEvent(e, feature);
-      });
-    }
   }
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqComputateEvent_time').text('');
-  searchPage('ComputateEvent', function() {
+  document.querySelector('#pageSearchVal-fqComputateWebsite_time').text('');
+  searchPage('ComputateWebsite', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -1046,9 +877,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqComputateEvent_time').value = x;
-      document.querySelector('#fqComputateEvent_time').onchange();
-      searchPage('ComputateEvent');
+      document.querySelector('#fqComputateWebsite_time').value = x;
+      document.querySelector('#fqComputateWebsite_time').onchange();
+      searchPage('ComputateWebsite');
     }, speedRate);
   });
 }
