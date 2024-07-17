@@ -18,14 +18,19 @@
 //    $input.addClass('glowError');
 //}
 
-(() => {
+//(() => {
+Promise.all([
+  customElements.whenDefined('sl-button')
+  , customElements.whenDefined('sl-input')
+]).then(() => {
   document.querySelector('#nav-toggle-button').addEventListener('click', event => {
     document.querySelector('#sidebar').classList.toggle('hide-mobile');
   });
-  document.querySelector('#sidebar-close-button').addEventListener('click', event => {
+  document.querySelector('#site-aside-left-close-button').addEventListener('click', event => {
     document.querySelector('#sidebar').classList.toggle('hide-mobile');
   });
-})();
+});
+//})();
 
 //$(window).on('load', function() {
 //    $(document).click(function(e) {

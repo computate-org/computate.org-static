@@ -61,9 +61,9 @@ async function websocketBaseModelInner(apiRequest) {
     $.get(uri, {}, function(data) {
       var $response = $("<html/>").html(data);
         var inputPk = null;
+        var inputObjectId = null;
         var inputCreated = null;
         var inputModified = null;
-        var inputObjectId = null;
         var inputArchived = null;
         var inputDeleted = null;
         var inputInheritPk = null;
@@ -83,12 +83,12 @@ async function websocketBaseModelInner(apiRequest) {
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
+        if(vars.includes('objectId'))
+          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('created'))
           inputCreated = $response.querySelector('#Page_created');
         if(vars.includes('modified'))
           inputModified = $response.querySelector('#Page_modified');
-        if(vars.includes('objectId'))
-          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
@@ -132,6 +132,11 @@ async function websocketBaseModelInner(apiRequest) {
           addGlow(document.querySelector('#Page_pk'));
         }
 
+        if(inputObjectId) {
+          inputObjectId.replaceAll('#Page_objectId');
+          addGlow(document.querySelector('#Page_objectId'));
+        }
+
         if(inputCreated) {
           inputCreated.replaceAll('#Page_created');
           addGlow(document.querySelector('#Page_created'));
@@ -140,11 +145,6 @@ async function websocketBaseModelInner(apiRequest) {
         if(inputModified) {
           inputModified.replaceAll('#Page_modified');
           addGlow(document.querySelector('#Page_modified'));
-        }
-
-        if(inputObjectId) {
-          inputObjectId.replaceAll('#Page_objectId');
-          addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputArchived) {
