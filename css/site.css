@@ -59,13 +59,64 @@ body {
   transition: 0.1s opacity;
 }
 /* main page padding */
-#sl-page > main {
-  max-width: 100ch;
-  padding: var(--sl-space-xl);
+@media (max-width:600px){
+  #site-grid {
+    display: grid;
+    grid-template-areas:
+      'asideleft'
+      'main'
+      'footer';
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+  .hide-mobile{display:none!important}
 }
-#sl-page[view="desktop"] > main {
-  padding: var(--sl-space-3xl);
+@media (min-width:601px){
+  #site-grid {
+    display: grid;
+    grid-template-areas:
+      'asideleft main main main main'
+      'asideleft footer footer footer footer';
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+  .hide-desktop{display:none!important}
 }
+
+#site-grid > main {
+  grid-area: main;
+  padding: 1rem;
+}
+#site-grid > header {
+  grid-area: header;
+}
+#site-grid > footer {
+  grid-area: footer;
+}
+
+/* site-aside-left stuff (mostly copied from web awesome documentation page)*/
+#site-grid > aside#site-aside-left {
+  grid-area: asideleft;
+  padding: 1rem;
+}
+#site-aside-left li {
+  list-style: none;
+}
+#site-aside-left ul {
+  border-inline-start: var(--sl-border-width-s) solid var(--sl-color-surface-border);
+  padding-inline-start: var(--sl-space-m);
+}
+#site-aside-left-close-button {
+  display: inline-block;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+img#site-aside-left-img-logo {
+  width: 200px;
+  object-fit: cover;
+}
+
 /* anchor style */
 a {
   color: var(--sl-color-brand-on-normal);
@@ -73,19 +124,6 @@ a {
 }
 a:hover, a:active {
   text-decoration: underline;
-}
-/* sidebar stuff (mostly copied from web awesome documentation page)*/
-#sidebar {
-  /* padding: var(--sl-space-xl); */
-  padding: 1.5rem;
-}
-#sidebar li {
-  list-style: none;
-}
-#sidebar ul {
-  border-inline-start: var(--sl-border-width-s) solid var(--sl-color-surface-border);
-  padding-inline-start: var(--sl-space-m);
-}
 /* mobile stuff */
 /* header image stuff */
 #img-keys-a {display: flex; align-items: center;}
@@ -94,12 +132,6 @@ a:hover, a:active {
 /* site stuff */
 .max-width-100{max-width:100%;}
 /* mobile menu close button stuff (copied from web awesome documentation page) */
-#sidebar-close-button {
-  display: inline-block;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
 /* top bar stuff */
 #top-bar {
   /* padding: var(--sl-space-m); */
@@ -108,7 +140,7 @@ a:hover, a:active {
   gap: var(--sl-spacing-m);
 }
 #color-scheme-selector {margin-inline-start: 1rem;}
-#sl-page[view="desktop"] #top-bar {
+#site-grid[view="desktop"] #top-bar {
   padding: var(--sl-space-m) var(--sl-space-3xl);
 }
 html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
@@ -187,13 +219,6 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
 }
 
 
-/* layout items */
-@media (max-width:600px){
-  .hide-mobile{display:none!important}
-}
-@media (min-width:601px){
-  .hide-desktop{display:none!important}
-}
 #site-page {
   display: block;
   box-sizing: border-box;

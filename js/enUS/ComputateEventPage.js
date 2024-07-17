@@ -8,7 +8,7 @@ async function searchComputateEvent($formFilters, success, error) {
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchComputateEventVals(filters, success, error);
+  searchComputateEventVals(filters, target, success, error);
 }
 
 function searchComputateEventFilters($formFilters) {
@@ -130,16 +130,22 @@ function searchComputateEventFilters($formFilters) {
   return filters;
 }
 
-function searchComputateEventVals(filters, success, error) {
+function searchComputateEventVals(filters, target, success, error) {
 
   fetch(
-    '/api/event?' + $.param(filters)
+    '/api/event?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
-    }).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
-function suggestComputateEventObjectSuggest($formFilters, $list) {
+function suggestComputateEventObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
@@ -154,7 +160,7 @@ function suggestComputateEventObjectSuggest($formFilters, $list) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchComputateEventVals($formFilters, success, error);
+  searchComputateEventVals($formFilters, target, success, error);
 }
 
 // GET //
@@ -164,8 +170,13 @@ async function getComputateEvent(pk) {
     '/api/event/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
-    }
-    ).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
 // PATCH //
@@ -325,7 +336,7 @@ async function patchComputateEvent($formFilters, $formValues, pk, success, error
   if(removeObjectTitle != null && removeObjectTitle !== '')
     vals['removeObjectTitle'] = removeObjectTitle;
 
-  patchComputateEventVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, success, error);
+  patchComputateEventVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
 function patchComputateEventFilters($formFilters) {
@@ -448,25 +459,31 @@ function patchComputateEventFilters($formFilters) {
   return filters;
 }
 
-function patchComputateEventVal(filters, v, val, success, error) {
+function patchComputateEventVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateEventVals(filters, vals, success, error);
+  patchComputateEventVals(filters, vals, target, success, error);
 }
 
-function patchComputateEventVals(filters, vals, success, error) {
+function patchComputateEventVals(filters, vals, target, success, error) {
   fetch(
-    '/api/event?' + $.param(filters)
+    '/api/event?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
       , body: JSON.stringify(vals)
-    }).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
 // POST //
 
-async function postComputateEvent($formValues, success, error) {
+async function postComputateEvent($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -536,18 +553,29 @@ async function postComputateEvent($formValues, success, error) {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
       , body: JSON.stringify(vals)
-    }
-    ).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
-function postComputateEventVals(vals, success, error) {
+function postComputateEventVals(vals, target, success, error) {
   fetch(
     '/api/event'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
       , body: JSON.stringify(vals)
-    }).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
 // PUTImport //
@@ -555,17 +583,23 @@ function postComputateEventVals(vals, success, error) {
 async function putimportComputateEvent($formValues, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateEventVals(JSON.parse(json), success, error);
+    putimportComputateEventVals(JSON.parse(json), target, success, error);
 }
 
-function putimportComputateEventVals(json, success, error) {
+function putimportComputateEventVals(json, target, success, error) {
   fetch(
     '/api/event-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
       , body: JSON.stringify(json)
-    }).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
 async function websocketComputateEvent(success) {
