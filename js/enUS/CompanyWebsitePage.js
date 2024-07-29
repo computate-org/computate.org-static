@@ -1,17 +1,17 @@
 
 // Search //
 
-async function searchComputateResearch($formFilters, success, error) {
-  var filters = searchComputateResearchFilters($formFilters);
+async function searchCompanyWebsite($formFilters, success, error) {
+  var filters = searchCompanyWebsiteFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchComputateResearchVals(filters, target, success, error);
+  searchCompanyWebsiteVals(filters, target, success, error);
 }
 
-function searchComputateResearchFilters($formFilters) {
+function searchCompanyWebsiteFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -114,10 +114,10 @@ function searchComputateResearchFilters($formFilters) {
   return filters;
 }
 
-function searchComputateResearchVals(filters, target, success, error) {
+function searchCompanyWebsiteVals(filters, target, success, error) {
 
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/website?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -129,11 +129,11 @@ function searchComputateResearchVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
+function suggestCompanyWebsiteObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-school ');
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-globe-pointer ');
       var $span = document.querySelector('<span>').setAttribute('class', '').text(o['objectTitle']);
       var $li = document.querySelector('<li>');
       var $a = document.querySelector('<a>').setAttribute('href', o['pageUrlPk']);
@@ -144,14 +144,14 @@ function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchComputateResearchVals($formFilters, target, success, error);
+  searchCompanyWebsiteVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getComputateResearch(pk) {
+async function getCompanyWebsite(pk) {
   fetch(
-    '/api/research/' + id
+    '/api/website/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -165,8 +165,8 @@ async function getComputateResearch(pk) {
 
 // PATCH //
 
-async function patchComputateResearch($formFilters, $formValues, pk, success, error) {
-  var filters = patchComputateResearchFilters($formFilters);
+async function patchCompanyWebsite($formFilters, $formValues, pk, success, error) {
+  var filters = patchCompanyWebsiteFilters($formFilters);
 
   var vals = {};
 
@@ -296,22 +296,10 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
-
-  patchComputateResearchVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
+  patchCompanyWebsiteVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
-function patchComputateResearchFilters($formFilters) {
+function patchCompanyWebsiteFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -415,15 +403,15 @@ function patchComputateResearchFilters($formFilters) {
   return filters;
 }
 
-function patchComputateResearchVal(filters, v, val, target, success, error) {
+function patchCompanyWebsiteVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateResearchVals(filters, vals, target, success, error);
+  patchCompanyWebsiteVals(filters, vals, target, success, error);
 }
 
-function patchComputateResearchVals(filters, vals, target, success, error) {
+function patchCompanyWebsiteVals(filters, vals, target, success, error) {
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/website?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -439,7 +427,7 @@ function patchComputateResearchVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postComputateResearch($formValues, target, success, error) {
+async function postCompanyWebsite($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -495,12 +483,8 @@ async function postComputateResearch($formValues, target, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
-
   fetch(
-    '/api/research'
+    '/api/website'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -514,9 +498,9 @@ async function postComputateResearch($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postComputateResearchVals(vals, target, success, error) {
+function postCompanyWebsiteVals(vals, target, success, error) {
   fetch(
-    '/api/research'
+    '/api/website'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -532,15 +516,15 @@ function postComputateResearchVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportComputateResearch($formValues, pk, success, error) {
+async function putimportCompanyWebsite($formValues, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateResearchVals(JSON.parse(json), target, success, error);
+    putimportCompanyWebsiteVals(JSON.parse(json), target, success, error);
 }
 
-function putimportComputateResearchVals(json, target, success, error) {
+function putimportCompanyWebsiteVals(json, target, success, error) {
   fetch(
-    '/api/research-import'
+    '/api/website-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -554,14 +538,14 @@ function putimportComputateResearchVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
-async function websocketComputateResearch(success) {
+async function websocketCompanyWebsite(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketComputateResearch', function (error, message) {
+    window.eventBus.registerHandler('websocketCompanyWebsite', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#ComputateResearchForm :input[name=pk]')?.value;
+      var pkPage = document.querySelector('#CompanyWebsiteForm :input[name=pk]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -571,8 +555,8 @@ async function websocketComputateResearch(success) {
       var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-school w3-margin-right ').setAttribute('id', 'icon-' + id);
-      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify research in ' + json.timeRemaining);
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-globe-pointer w3-margin-right ').setAttribute('id', 'icon-' + id);
+      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify websites in ' + json.timeRemaining);
       var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
       var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
@@ -603,7 +587,7 @@ async function websocketComputateResearch(success) {
     });
   }
 }
-async function websocketComputateResearchInner(apiRequest) {
+async function websocketCompanyWebsiteInner(apiRequest) {
   var pk = apiRequest['pk'];
   var pks = apiRequest['pks'];
   var classes = apiRequest['classes'];
@@ -679,10 +663,10 @@ async function websocketComputateResearchInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        jsWebsocketComputateResearch(pk, vars, $response);
+        jsWebsocketCompanyWebsite(pk, vars, $response);
 
-        window.computateResearch = JSON.parse($response.querySelector('.pageForm .computateResearch')?.value);
-        window.listComputateResearch = JSON.parse($response.querySelector('.pageForm .listComputateResearch')?.value);
+        window.companyWebsite = JSON.parse($response.querySelector('.pageForm .companyWebsite')?.value);
+        window.listCompanyWebsite = JSON.parse($response.querySelector('.pageForm .listCompanyWebsite')?.value);
 
 
         if(inputPk) {
@@ -790,12 +774,12 @@ async function websocketComputateResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        pageGraphComputateResearch();
+        pageGraphCompanyWebsite();
     });
   }
 }
 
-function pageGraphComputateResearch(apiRequest) {
+function pageGraphCompanyWebsite(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -827,7 +811,7 @@ function pageGraphComputateResearch(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'research';
+          layout['title'] = 'websites';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -898,8 +882,8 @@ function pageGraphComputateResearch(apiRequest) {
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqComputateResearch_time').text('');
-  searchPage('ComputateResearch', function() {
+  document.querySelector('#pageSearchVal-fqCompanyWebsite_time').text('');
+  searchPage('CompanyWebsite', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -911,9 +895,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqComputateResearch_time').value = x;
-      document.querySelector('#fqComputateResearch_time').onchange();
-      searchPage('ComputateResearch');
+      document.querySelector('#fqCompanyWebsite_time').value = x;
+      document.querySelector('#fqCompanyWebsite_time').onchange();
+      searchPage('CompanyWebsite');
     }, speedRate);
   });
 }

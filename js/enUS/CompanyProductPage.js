@@ -1,27 +1,19 @@
 
 // Search //
 
-async function searchComputateResearch($formFilters, success, error) {
-  var filters = searchComputateResearchFilters($formFilters);
+async function searchCompanyProduct($formFilters, success, error) {
+  var filters = searchCompanyProductFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchComputateResearchVals(filters, target, success, error);
+  searchCompanyProductVals(filters, target, success, error);
 }
 
-function searchComputateResearchFilters($formFilters) {
+function searchCompanyProductFilters($formFilters) {
   var filters = [];
   if($formFilters) {
-
-    var filterPk = $formFilters.querySelector('.valuePk')?.value;
-    if(filterPk != null && filterPk !== '')
-      filters.push({ name: 'fq', value: 'pk:' + filterPk });
-
-    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
-    if(filterObjectId != null && filterObjectId !== '')
-      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
     if(filterCreated != null && filterCreated !== '')
@@ -30,6 +22,10 @@ function searchComputateResearchFilters($formFilters) {
     var filterModified = $formFilters.querySelector('.valueModified')?.value;
     if(filterModified != null && filterModified !== '')
       filters.push({ name: 'fq', value: 'modified:' + filterModified });
+
+    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
+    if(filterObjectId != null && filterObjectId !== '')
+      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
     var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
@@ -54,6 +50,18 @@ function searchComputateResearchFilters($formFilters) {
     var filterName = $formFilters.querySelector('.valueName')?.value;
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+
+    var filterUri = $formFilters.querySelector('.valueUri')?.value;
+    if(filterUri != null && filterUri !== '')
+      filters.push({ name: 'fq', value: 'uri:' + filterUri });
+
+    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
+    if(filterUrl != null && filterUrl !== '')
+      filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -110,14 +118,26 @@ function searchComputateResearchFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
+    if(filterResourceUri != null && filterResourceUri !== '')
+      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
+
+    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
+    if(filterTemplateUri != null && filterTemplateUri !== '')
+      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
+    if(filterTitle != null && filterTitle !== '')
+      filters.push({ name: 'fq', value: 'title:' + filterTitle });
   }
   return filters;
 }
 
-function searchComputateResearchVals(filters, target, success, error) {
+function searchCompanyProductVals(filters, target, success, error) {
 
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/product?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -129,11 +149,11 @@ function searchComputateResearchVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
+function suggestCompanyProductObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-school ');
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-conveyor-belt ');
       var $span = document.querySelector('<span>').setAttribute('class', '').text(o['objectTitle']);
       var $li = document.querySelector('<li>');
       var $a = document.querySelector('<a>').setAttribute('href', o['pageUrlPk']);
@@ -144,14 +164,14 @@ function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchComputateResearchVals($formFilters, target, success, error);
+  searchCompanyProductVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getComputateResearch(pk) {
+async function getCompanyProduct() {
   fetch(
-    '/api/research/' + id
+    '/api/product/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -165,34 +185,10 @@ async function getComputateResearch(pk) {
 
 // PATCH //
 
-async function patchComputateResearch($formFilters, $formValues, pk, success, error) {
-  var filters = patchComputateResearchFilters($formFilters);
+async function patchCompanyProduct($formFilters, $formValues, id, success, error) {
+  var filters = patchCompanyProductFilters($formFilters);
 
   var vals = {};
-
-  var valuePk = $formValues.querySelector('.valuePk')?.value;
-  var removePk = $formValues.querySelector('.removePk')?.value === 'true';
-  var setPk = removePk ? null : $formValues.querySelector('.setPk')?.value;
-  var addPk = $formValues.querySelector('.addPk')?.value;
-  if(removePk || setPk != null && setPk !== '')
-    vals['setPk'] = setPk;
-  if(addPk != null && addPk !== '')
-    vals['addPk'] = addPk;
-  var removePk = $formValues.querySelector('.removePk')?.value;
-  if(removePk != null && removePk !== '')
-    vals['removePk'] = removePk;
-
-  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
-  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value === 'true';
-  var setObjectId = removeObjectId ? null : $formValues.querySelector('.setObjectId')?.value;
-  var addObjectId = $formValues.querySelector('.addObjectId')?.value;
-  if(removeObjectId || setObjectId != null && setObjectId !== '')
-    vals['setObjectId'] = setObjectId;
-  if(addObjectId != null && addObjectId !== '')
-    vals['addObjectId'] = addObjectId;
-  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value;
-  if(removeObjectId != null && removeObjectId !== '')
-    vals['removeObjectId'] = removeObjectId;
 
   var valueCreated = $formValues.querySelector('.valueCreated')?.value;
   var removeCreated = $formValues.querySelector('.removeCreated')?.value === 'true';
@@ -217,6 +213,18 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   var removeModified = $formValues.querySelector('.removeModified')?.value;
   if(removeModified != null && removeModified !== '')
     vals['removeModified'] = removeModified;
+
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
+  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value === 'true';
+  var setObjectId = removeObjectId ? null : $formValues.querySelector('.setObjectId')?.value;
+  var addObjectId = $formValues.querySelector('.addObjectId')?.value;
+  if(removeObjectId || setObjectId != null && setObjectId !== '')
+    vals['setObjectId'] = setObjectId;
+  if(addObjectId != null && addObjectId !== '')
+    vals['addObjectId'] = addObjectId;
+  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value;
+  if(removeObjectId != null && removeObjectId !== '')
+    vals['removeObjectId'] = removeObjectId;
 
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   var removeArchived = $formValues.querySelector('.removeArchived')?.value === 'true';
@@ -260,6 +268,42 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   if(removeName != null && removeName !== '')
     vals['removeName'] = removeName;
 
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
+  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
+  var addPageId = $formValues.querySelector('.addPageId')?.value;
+  if(removePageId || setPageId != null && setPageId !== '')
+    vals['setPageId'] = setPageId;
+  if(addPageId != null && addPageId !== '')
+    vals['addPageId'] = addPageId;
+  var removePageId = $formValues.querySelector('.removePageId')?.value;
+  if(removePageId != null && removePageId !== '')
+    vals['removePageId'] = removePageId;
+
+  var valueUri = $formValues.querySelector('.valueUri')?.value;
+  var removeUri = $formValues.querySelector('.removeUri')?.value === 'true';
+  var setUri = removeUri ? null : $formValues.querySelector('.setUri')?.value;
+  var addUri = $formValues.querySelector('.addUri')?.value;
+  if(removeUri || setUri != null && setUri !== '')
+    vals['setUri'] = setUri;
+  if(addUri != null && addUri !== '')
+    vals['addUri'] = addUri;
+  var removeUri = $formValues.querySelector('.removeUri')?.value;
+  if(removeUri != null && removeUri !== '')
+    vals['removeUri'] = removeUri;
+
+  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
+  var removeUrl = $formValues.querySelector('.removeUrl')?.value === 'true';
+  var setUrl = removeUrl ? null : $formValues.querySelector('.setUrl')?.value;
+  var addUrl = $formValues.querySelector('.addUrl')?.value;
+  if(removeUrl || setUrl != null && setUrl !== '')
+    vals['setUrl'] = setUrl;
+  if(addUrl != null && addUrl !== '')
+    vals['addUrl'] = addUrl;
+  var removeUrl = $formValues.querySelector('.removeUrl')?.value;
+  if(removeUrl != null && removeUrl !== '')
+    vals['removeUrl'] = removeUrl;
+
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
   var setInheritPk = removeInheritPk ? null : $formValues.querySelector('.setInheritPk')?.value;
@@ -296,33 +340,61 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
+  var valueId = $formValues.querySelector('.valueId')?.value;
+  var removeId = $formValues.querySelector('.removeId')?.value === 'true';
+  var setId = removeId ? null : $formValues.querySelector('.setId')?.value;
+  var addId = $formValues.querySelector('.addId')?.value;
+  if(removeId || setId != null && setId !== '')
+    vals['setId'] = setId;
+  if(addId != null && addId !== '')
+    vals['addId'] = addId;
+  var removeId = $formValues.querySelector('.removeId')?.value;
+  if(removeId != null && removeId !== '')
+    vals['removeId'] = removeId;
 
-  patchComputateResearchVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
+  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
+  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value === 'true';
+  var setResourceUri = removeResourceUri ? null : $formValues.querySelector('.setResourceUri')?.value;
+  var addResourceUri = $formValues.querySelector('.addResourceUri')?.value;
+  if(removeResourceUri || setResourceUri != null && setResourceUri !== '')
+    vals['setResourceUri'] = setResourceUri;
+  if(addResourceUri != null && addResourceUri !== '')
+    vals['addResourceUri'] = addResourceUri;
+  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value;
+  if(removeResourceUri != null && removeResourceUri !== '')
+    vals['removeResourceUri'] = removeResourceUri;
+
+  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
+  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value === 'true';
+  var setTemplateUri = removeTemplateUri ? null : $formValues.querySelector('.setTemplateUri')?.value;
+  var addTemplateUri = $formValues.querySelector('.addTemplateUri')?.value;
+  if(removeTemplateUri || setTemplateUri != null && setTemplateUri !== '')
+    vals['setTemplateUri'] = setTemplateUri;
+  if(addTemplateUri != null && addTemplateUri !== '')
+    vals['addTemplateUri'] = addTemplateUri;
+  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value;
+  if(removeTemplateUri != null && removeTemplateUri !== '')
+    vals['removeTemplateUri'] = removeTemplateUri;
+
+  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
+  var removeTitle = $formValues.querySelector('.removeTitle')?.value === 'true';
+  var setTitle = removeTitle ? null : $formValues.querySelector('.setTitle')?.value;
+  var addTitle = $formValues.querySelector('.addTitle')?.value;
+  if(removeTitle || setTitle != null && setTitle !== '')
+    vals['setTitle'] = setTitle;
+  if(addTitle != null && addTitle !== '')
+    vals['addTitle'] = addTitle;
+  var removeTitle = $formValues.querySelector('.removeTitle')?.value;
+  if(removeTitle != null && removeTitle !== '')
+    vals['removeTitle'] = removeTitle;
+
+  patchCompanyProductVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, target, success, error);
 }
 
-function patchComputateResearchFilters($formFilters) {
+function patchCompanyProductFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
-
-    var filterPk = $formFilters.querySelector('.valuePk')?.value;
-    if(filterPk != null && filterPk !== '')
-      filters.push({ name: 'fq', value: 'pk:' + filterPk });
-
-    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
-    if(filterObjectId != null && filterObjectId !== '')
-      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
     if(filterCreated != null && filterCreated !== '')
@@ -331,6 +403,10 @@ function patchComputateResearchFilters($formFilters) {
     var filterModified = $formFilters.querySelector('.valueModified')?.value;
     if(filterModified != null && filterModified !== '')
       filters.push({ name: 'fq', value: 'modified:' + filterModified });
+
+    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
+    if(filterObjectId != null && filterObjectId !== '')
+      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
     var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
@@ -355,6 +431,18 @@ function patchComputateResearchFilters($formFilters) {
     var filterName = $formFilters.querySelector('.valueName')?.value;
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+
+    var filterUri = $formFilters.querySelector('.valueUri')?.value;
+    if(filterUri != null && filterUri !== '')
+      filters.push({ name: 'fq', value: 'uri:' + filterUri });
+
+    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
+    if(filterUrl != null && filterUrl !== '')
+      filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -411,19 +499,31 @@ function patchComputateResearchFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
+    if(filterResourceUri != null && filterResourceUri !== '')
+      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
+
+    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
+    if(filterTemplateUri != null && filterTemplateUri !== '')
+      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
+    if(filterTitle != null && filterTitle !== '')
+      filters.push({ name: 'fq', value: 'title:' + filterTitle });
   }
   return filters;
 }
 
-function patchComputateResearchVal(filters, v, val, target, success, error) {
+function patchCompanyProductVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateResearchVals(filters, vals, target, success, error);
+  patchCompanyProductVals(filters, vals, target, success, error);
 }
 
-function patchComputateResearchVals(filters, vals, target, success, error) {
+function patchCompanyProductVals(filters, vals, target, success, error) {
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/product?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -439,7 +539,7 @@ function patchComputateResearchVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postComputateResearch($formValues, target, success, error) {
+async function postCompanyProduct($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -455,14 +555,6 @@ async function postComputateResearch($formValues, target, success, error) {
     };
   }
 
-  var valuePk = $formValues.querySelector('.valuePk')?.value;
-  if(valuePk != null && valuePk !== '')
-    vals['pk'] = valuePk;
-
-  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
-  if(valueObjectId != null && valueObjectId !== '')
-    vals['objectId'] = valueObjectId;
-
   var valueCreated = $formValues.querySelector('.valueCreated')?.value;
   if(valueCreated != null && valueCreated !== '')
     vals['created'] = valueCreated;
@@ -470,6 +562,10 @@ async function postComputateResearch($formValues, target, success, error) {
   var valueModified = $formValues.querySelector('.valueModified')?.value;
   if(valueModified != null && valueModified !== '')
     vals['modified'] = valueModified;
+
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
+  if(valueObjectId != null && valueObjectId !== '')
+    vals['objectId'] = valueObjectId;
 
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   if(valueArchived != null && valueArchived !== '')
@@ -483,6 +579,18 @@ async function postComputateResearch($formValues, target, success, error) {
   if(valueName != null && valueName !== '')
     vals['name'] = valueName;
 
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  if(valuePageId != null && valuePageId !== '')
+    vals['pageId'] = valuePageId;
+
+  var valueUri = $formValues.querySelector('.valueUri')?.value;
+  if(valueUri != null && valueUri !== '')
+    vals['uri'] = valueUri;
+
+  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
+  if(valueUrl != null && valueUrl !== '')
+    vals['url'] = valueUrl;
+
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
     vals['inheritPk'] = valueInheritPk;
@@ -495,12 +603,24 @@ async function postComputateResearch($formValues, target, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
+  var valueId = $formValues.querySelector('.valueId')?.value;
+  if(valueId != null && valueId !== '')
+    vals['id'] = valueId;
+
+  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
+  if(valueResourceUri != null && valueResourceUri !== '')
+    vals['resourceUri'] = valueResourceUri;
+
+  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
+  if(valueTemplateUri != null && valueTemplateUri !== '')
+    vals['templateUri'] = valueTemplateUri;
+
+  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
+  if(valueTitle != null && valueTitle !== '')
+    vals['title'] = valueTitle;
 
   fetch(
-    '/api/research'
+    '/api/product'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -514,9 +634,9 @@ async function postComputateResearch($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postComputateResearchVals(vals, target, success, error) {
+function postCompanyProductVals(vals, target, success, error) {
   fetch(
-    '/api/research'
+    '/api/product'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -532,15 +652,15 @@ function postComputateResearchVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportComputateResearch($formValues, pk, success, error) {
+async function putimportCompanyProduct($formValues, id, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateResearchVals(JSON.parse(json), target, success, error);
+    putimportCompanyProductVals(JSON.parse(json), target, success, error);
 }
 
-function putimportComputateResearchVals(json, target, success, error) {
+function putimportCompanyProductVals(json, target, success, error) {
   fetch(
-    '/api/research-import'
+    '/api/product-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -554,14 +674,14 @@ function putimportComputateResearchVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
-async function websocketComputateResearch(success) {
+async function websocketCompanyProduct(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketComputateResearch', function (error, message) {
+    window.eventBus.registerHandler('websocketCompanyProduct', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#ComputateResearchForm :input[name=pk]')?.value;
+      var pkPage = document.querySelector('#CompanyProductForm :input[name=id]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -571,8 +691,8 @@ async function websocketComputateResearch(success) {
       var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-school w3-margin-right ').setAttribute('id', 'icon-' + id);
-      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify research in ' + json.timeRemaining);
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-conveyor-belt w3-margin-right ').setAttribute('id', 'icon-' + id);
+      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify products in ' + json.timeRemaining);
       var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
       var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
@@ -603,25 +723,27 @@ async function websocketComputateResearch(success) {
     });
   }
 }
-async function websocketComputateResearchInner(apiRequest) {
-  var pk = apiRequest['pk'];
-  var pks = apiRequest['pks'];
+async function websocketCompanyProductInner(apiRequest) {
+  var id = apiRequest['id'];
+  var ids = apiRequest['ids'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
   var empty = apiRequest['empty'];
 
-  if(pk != null && vars.length > 0) {
+  if(id != null && vars.length > 0) {
     var queryParams = "?" + $(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
     $.get(uri, {}, function(data) {
       var $response = $("<html/>").html(data);
-        var inputPk = null;
-        var inputObjectId = null;
         var inputCreated = null;
         var inputModified = null;
+        var inputObjectId = null;
         var inputArchived = null;
         var inputDeleted = null;
         var inputName = null;
+        var inputPageId = null;
+        var inputUri = null;
+        var inputUrl = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -636,21 +758,28 @@ async function websocketComputateResearchInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputResourceUri = null;
+        var inputTemplateUri = null;
+        var inputTitle = null;
 
-        if(vars.includes('pk'))
-          inputPk = $response.querySelector('#Page_pk');
-        if(vars.includes('objectId'))
-          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('created'))
           inputCreated = $response.querySelector('#Page_created');
         if(vars.includes('modified'))
           inputModified = $response.querySelector('#Page_modified');
+        if(vars.includes('objectId'))
+          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('name'))
           inputName = $response.querySelector('#Page_name');
+        if(vars.includes('pageId'))
+          inputPageId = $response.querySelector('#Page_pageId');
+        if(vars.includes('uri'))
+          inputUri = $response.querySelector('#Page_uri');
+        if(vars.includes('url'))
+          inputUrl = $response.querySelector('#Page_url');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -679,21 +808,17 @@ async function websocketComputateResearchInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        jsWebsocketComputateResearch(pk, vars, $response);
+        if(vars.includes('resourceUri'))
+          inputResourceUri = $response.querySelector('#Page_resourceUri');
+        if(vars.includes('templateUri'))
+          inputTemplateUri = $response.querySelector('#Page_templateUri');
+        if(vars.includes('title'))
+          inputTitle = $response.querySelector('#Page_title');
+        jsWebsocketCompanyProduct(id, vars, $response);
 
-        window.computateResearch = JSON.parse($response.querySelector('.pageForm .computateResearch')?.value);
-        window.listComputateResearch = JSON.parse($response.querySelector('.pageForm .listComputateResearch')?.value);
+        window.companyProduct = JSON.parse($response.querySelector('.pageForm .companyProduct')?.value);
+        window.listCompanyProduct = JSON.parse($response.querySelector('.pageForm .listCompanyProduct')?.value);
 
-
-        if(inputPk) {
-          inputPk.replaceAll('#Page_pk');
-          addGlow(document.querySelector('#Page_pk'));
-        }
-
-        if(inputObjectId) {
-          inputObjectId.replaceAll('#Page_objectId');
-          addGlow(document.querySelector('#Page_objectId'));
-        }
 
         if(inputCreated) {
           inputCreated.replaceAll('#Page_created');
@@ -703,6 +828,11 @@ async function websocketComputateResearchInner(apiRequest) {
         if(inputModified) {
           inputModified.replaceAll('#Page_modified');
           addGlow(document.querySelector('#Page_modified'));
+        }
+
+        if(inputObjectId) {
+          inputObjectId.replaceAll('#Page_objectId');
+          addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputArchived) {
@@ -718,6 +848,21 @@ async function websocketComputateResearchInner(apiRequest) {
         if(inputName) {
           inputName.replaceAll('#Page_name');
           addGlow(document.querySelector('#Page_name'));
+        }
+
+        if(inputPageId) {
+          inputPageId.replaceAll('#Page_pageId');
+          addGlow(document.querySelector('#Page_pageId'));
+        }
+
+        if(inputUri) {
+          inputUri.replaceAll('#Page_uri');
+          addGlow(document.querySelector('#Page_uri'));
+        }
+
+        if(inputUrl) {
+          inputUrl.replaceAll('#Page_url');
+          addGlow(document.querySelector('#Page_url'));
         }
 
         if(inputInheritPk) {
@@ -790,12 +935,27 @@ async function websocketComputateResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        pageGraphComputateResearch();
+        if(inputResourceUri) {
+          inputResourceUri.replaceAll('#Page_resourceUri');
+          addGlow(document.querySelector('#Page_resourceUri'));
+        }
+
+        if(inputTemplateUri) {
+          inputTemplateUri.replaceAll('#Page_templateUri');
+          addGlow(document.querySelector('#Page_templateUri'));
+        }
+
+        if(inputTitle) {
+          inputTitle.replaceAll('#Page_title');
+          addGlow(document.querySelector('#Page_title'));
+        }
+
+        pageGraphCompanyProduct();
     });
   }
 }
 
-function pageGraphComputateResearch(apiRequest) {
+function pageGraphCompanyProduct(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -827,7 +987,7 @@ function pageGraphComputateResearch(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'research';
+          layout['title'] = 'products';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -891,15 +1051,15 @@ function pageGraphComputateResearch(apiRequest) {
             });
           }
         }
-        Plotly.react('htmBodyGraphBaseModelPage', data, layout);
+        Plotly.react('htmBodyGraphBaseResultPage', data, layout);
       }
     }
   }
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqComputateResearch_time').text('');
-  searchPage('ComputateResearch', function() {
+  document.querySelector('#pageSearchVal-fqCompanyProduct_time').text('');
+  searchPage('CompanyProduct', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -911,9 +1071,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqComputateResearch_time').value = x;
-      document.querySelector('#fqComputateResearch_time').onchange();
-      searchPage('ComputateResearch');
+      document.querySelector('#fqCompanyProduct_time').value = x;
+      document.querySelector('#fqCompanyProduct_time').onchange();
+      searchPage('CompanyProduct');
     }, speedRate);
   });
 }

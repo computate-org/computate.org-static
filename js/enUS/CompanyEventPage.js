@@ -1,17 +1,17 @@
 
 // Search //
 
-async function searchComputateResearch($formFilters, success, error) {
-  var filters = searchComputateResearchFilters($formFilters);
+async function searchCompanyEvent($formFilters, success, error) {
+  var filters = searchCompanyEventFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchComputateResearchVals(filters, target, success, error);
+  searchCompanyEventVals(filters, target, success, error);
 }
 
-function searchComputateResearchFilters($formFilters) {
+function searchCompanyEventFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -51,9 +51,13 @@ function searchComputateResearchFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
+    var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
+    if(filterLocation != null && filterLocation !== '')
+      filters.push({ name: 'fq', value: 'location:' + filterLocation });
+
+    var filterEventName = $formFilters.querySelector('.valueEventName')?.value;
+    if(filterEventName != null && filterEventName !== '')
+      filters.push({ name: 'fq', value: 'eventName:' + filterEventName });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -110,14 +114,26 @@ function searchComputateResearchFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterLocationColors = $formFilters.querySelector('.valueLocationColors')?.value;
+    if(filterLocationColors != null && filterLocationColors !== '')
+      filters.push({ name: 'fq', value: 'locationColors:' + filterLocationColors });
+
+    var filterLocationTitles = $formFilters.querySelector('.valueLocationTitles')?.value;
+    if(filterLocationTitles != null && filterLocationTitles !== '')
+      filters.push({ name: 'fq', value: 'locationTitles:' + filterLocationTitles });
+
+    var filterLocationLinks = $formFilters.querySelector('.valueLocationLinks')?.value;
+    if(filterLocationLinks != null && filterLocationLinks !== '')
+      filters.push({ name: 'fq', value: 'locationLinks:' + filterLocationLinks });
   }
   return filters;
 }
 
-function searchComputateResearchVals(filters, target, success, error) {
+function searchCompanyEventVals(filters, target, success, error) {
 
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/event?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -129,11 +145,11 @@ function searchComputateResearchVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
+function suggestCompanyEventObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-school ');
+      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-map-location-dot ');
       var $span = document.querySelector('<span>').setAttribute('class', '').text(o['objectTitle']);
       var $li = document.querySelector('<li>');
       var $a = document.querySelector('<a>').setAttribute('href', o['pageUrlPk']);
@@ -144,14 +160,14 @@ function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchComputateResearchVals($formFilters, target, success, error);
+  searchCompanyEventVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getComputateResearch(pk) {
+async function getCompanyEvent(pk) {
   fetch(
-    '/api/research/' + id
+    '/api/event/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -165,8 +181,8 @@ async function getComputateResearch(pk) {
 
 // PATCH //
 
-async function patchComputateResearch($formFilters, $formValues, pk, success, error) {
-  var filters = patchComputateResearchFilters($formFilters);
+async function patchCompanyEvent($formFilters, $formValues, pk, success, error) {
+  var filters = patchCompanyEventFilters($formFilters);
 
   var vals = {};
 
@@ -248,17 +264,29 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
-  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
-  var addName = $formValues.querySelector('.addName')?.value;
-  if(removeName || setName != null && setName !== '')
-    vals['setName'] = setName;
-  if(addName != null && addName !== '')
-    vals['addName'] = addName;
-  var removeName = $formValues.querySelector('.removeName')?.value;
-  if(removeName != null && removeName !== '')
-    vals['removeName'] = removeName;
+  var valueLocation = $formValues.querySelector('.valueLocation')?.value;
+  var removeLocation = $formValues.querySelector('.removeLocation')?.value === 'true';
+  var setLocation = removeLocation ? null : $formValues.querySelector('.setLocation')?.value;
+  var addLocation = $formValues.querySelector('.addLocation')?.value;
+  if(removeLocation || setLocation != null && setLocation !== '')
+    vals['setLocation'] = JSON.parse(setLocation);
+  if(addLocation != null && addLocation !== '')
+    vals['addLocation'] = addLocation;
+  var removeLocation = $formValues.querySelector('.removeLocation')?.value;
+  if(removeLocation != null && removeLocation !== '')
+    vals['removeLocation'] = removeLocation;
+
+  var valueEventName = $formValues.querySelector('.valueEventName')?.value;
+  var removeEventName = $formValues.querySelector('.removeEventName')?.value === 'true';
+  var setEventName = removeEventName ? null : $formValues.querySelector('.setEventName')?.value;
+  var addEventName = $formValues.querySelector('.addEventName')?.value;
+  if(removeEventName || setEventName != null && setEventName !== '')
+    vals['setEventName'] = setEventName;
+  if(addEventName != null && addEventName !== '')
+    vals['addEventName'] = addEventName;
+  var removeEventName = $formValues.querySelector('.removeEventName')?.value;
+  if(removeEventName != null && removeEventName !== '')
+    vals['removeEventName'] = removeEventName;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -296,22 +324,10 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
-
-  patchComputateResearchVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
+  patchCompanyEventVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
-function patchComputateResearchFilters($formFilters) {
+function patchCompanyEventFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -352,9 +368,13 @@ function patchComputateResearchFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
+    var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
+    if(filterLocation != null && filterLocation !== '')
+      filters.push({ name: 'fq', value: 'location:' + filterLocation });
+
+    var filterEventName = $formFilters.querySelector('.valueEventName')?.value;
+    if(filterEventName != null && filterEventName !== '')
+      filters.push({ name: 'fq', value: 'eventName:' + filterEventName });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -411,19 +431,31 @@ function patchComputateResearchFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterLocationColors = $formFilters.querySelector('.valueLocationColors')?.value;
+    if(filterLocationColors != null && filterLocationColors !== '')
+      filters.push({ name: 'fq', value: 'locationColors:' + filterLocationColors });
+
+    var filterLocationTitles = $formFilters.querySelector('.valueLocationTitles')?.value;
+    if(filterLocationTitles != null && filterLocationTitles !== '')
+      filters.push({ name: 'fq', value: 'locationTitles:' + filterLocationTitles });
+
+    var filterLocationLinks = $formFilters.querySelector('.valueLocationLinks')?.value;
+    if(filterLocationLinks != null && filterLocationLinks !== '')
+      filters.push({ name: 'fq', value: 'locationLinks:' + filterLocationLinks });
   }
   return filters;
 }
 
-function patchComputateResearchVal(filters, v, val, target, success, error) {
+function patchCompanyEventVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateResearchVals(filters, vals, target, success, error);
+  patchCompanyEventVals(filters, vals, target, success, error);
 }
 
-function patchComputateResearchVals(filters, vals, target, success, error) {
+function patchCompanyEventVals(filters, vals, target, success, error) {
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/event?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -439,7 +471,7 @@ function patchComputateResearchVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postComputateResearch($formValues, target, success, error) {
+async function postCompanyEvent($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -479,9 +511,13 @@ async function postComputateResearch($formValues, target, success, error) {
   if(valueDeleted != null && valueDeleted !== '')
     vals['deleted'] = valueDeleted == 'true';
 
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  if(valueName != null && valueName !== '')
-    vals['name'] = valueName;
+  var valueLocation = $formValues.querySelector('.valueLocation')?.value;
+  if(valueLocation != null && valueLocation !== '')
+    vals['location'] = JSON.parse(valueLocation);
+
+  var valueEventName = $formValues.querySelector('.valueEventName')?.value;
+  if(valueEventName != null && valueEventName !== '')
+    vals['eventName'] = valueEventName;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -495,12 +531,8 @@ async function postComputateResearch($formValues, target, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
-
   fetch(
-    '/api/research'
+    '/api/event'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -514,9 +546,9 @@ async function postComputateResearch($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postComputateResearchVals(vals, target, success, error) {
+function postCompanyEventVals(vals, target, success, error) {
   fetch(
-    '/api/research'
+    '/api/event'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -532,15 +564,15 @@ function postComputateResearchVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportComputateResearch($formValues, pk, success, error) {
+async function putimportCompanyEvent($formValues, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateResearchVals(JSON.parse(json), target, success, error);
+    putimportCompanyEventVals(JSON.parse(json), target, success, error);
 }
 
-function putimportComputateResearchVals(json, target, success, error) {
+function putimportCompanyEventVals(json, target, success, error) {
   fetch(
-    '/api/research-import'
+    '/api/event-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -554,14 +586,14 @@ function putimportComputateResearchVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
-async function websocketComputateResearch(success) {
+async function websocketCompanyEvent(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketComputateResearch', function (error, message) {
+    window.eventBus.registerHandler('websocketCompanyEvent', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#ComputateResearchForm :input[name=pk]')?.value;
+      var pkPage = document.querySelector('#CompanyEventForm :input[name=pk]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -571,8 +603,8 @@ async function websocketComputateResearch(success) {
       var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-school w3-margin-right ').setAttribute('id', 'icon-' + id);
-      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify research in ' + json.timeRemaining);
+      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-map-location-dot w3-margin-right ').setAttribute('id', 'icon-' + id);
+      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify events in ' + json.timeRemaining);
       var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
       var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
@@ -603,7 +635,7 @@ async function websocketComputateResearch(success) {
     });
   }
 }
-async function websocketComputateResearchInner(apiRequest) {
+async function websocketCompanyEventInner(apiRequest) {
   var pk = apiRequest['pk'];
   var pks = apiRequest['pks'];
   var classes = apiRequest['classes'];
@@ -621,7 +653,8 @@ async function websocketComputateResearchInner(apiRequest) {
         var inputModified = null;
         var inputArchived = null;
         var inputDeleted = null;
-        var inputName = null;
+        var inputLocation = null;
+        var inputEventName = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -636,6 +669,9 @@ async function websocketComputateResearchInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputLocationColors = null;
+        var inputLocationTitles = null;
+        var inputLocationLinks = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
@@ -649,8 +685,10 @@ async function websocketComputateResearchInner(apiRequest) {
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.querySelector('#Page_deleted');
-        if(vars.includes('name'))
-          inputName = $response.querySelector('#Page_name');
+        if(vars.includes('location'))
+          inputLocation = $response.querySelector('#Page_location');
+        if(vars.includes('eventName'))
+          inputEventName = $response.querySelector('#Page_eventName');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -679,10 +717,16 @@ async function websocketComputateResearchInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        jsWebsocketComputateResearch(pk, vars, $response);
+        if(vars.includes('locationColors'))
+          inputLocationColors = $response.querySelector('#Page_locationColors');
+        if(vars.includes('locationTitles'))
+          inputLocationTitles = $response.querySelector('#Page_locationTitles');
+        if(vars.includes('locationLinks'))
+          inputLocationLinks = $response.querySelector('#Page_locationLinks');
+        jsWebsocketCompanyEvent(pk, vars, $response);
 
-        window.computateResearch = JSON.parse($response.querySelector('.pageForm .computateResearch')?.value);
-        window.listComputateResearch = JSON.parse($response.querySelector('.pageForm .listComputateResearch')?.value);
+        window.companyEvent = JSON.parse($response.querySelector('.pageForm .companyEvent')?.value);
+        window.listCompanyEvent = JSON.parse($response.querySelector('.pageForm .listCompanyEvent')?.value);
 
 
         if(inputPk) {
@@ -715,9 +759,14 @@ async function websocketComputateResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_deleted'));
         }
 
-        if(inputName) {
-          inputName.replaceAll('#Page_name');
-          addGlow(document.querySelector('#Page_name'));
+        if(inputLocation) {
+          inputLocation.replaceAll('#Page_location');
+          addGlow(document.querySelector('#Page_location'));
+        }
+
+        if(inputEventName) {
+          inputEventName.replaceAll('#Page_eventName');
+          addGlow(document.querySelector('#Page_eventName'));
         }
 
         if(inputInheritPk) {
@@ -790,12 +839,27 @@ async function websocketComputateResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        pageGraphComputateResearch();
+        if(inputLocationColors) {
+          inputLocationColors.replaceAll('#Page_locationColors');
+          addGlow(document.querySelector('#Page_locationColors'));
+        }
+
+        if(inputLocationTitles) {
+          inputLocationTitles.replaceAll('#Page_locationTitles');
+          addGlow(document.querySelector('#Page_locationTitles'));
+        }
+
+        if(inputLocationLinks) {
+          inputLocationLinks.replaceAll('#Page_locationLinks');
+          addGlow(document.querySelector('#Page_locationLinks'));
+        }
+
+        pageGraphCompanyEvent();
     });
   }
 }
 
-function pageGraphComputateResearch(apiRequest) {
+function pageGraphCompanyEvent(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -827,7 +891,7 @@ function pageGraphComputateResearch(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'research';
+          layout['title'] = 'events';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -894,12 +958,101 @@ function pageGraphComputateResearch(apiRequest) {
         Plotly.react('htmBodyGraphBaseModelPage', data, layout);
       }
     }
+
+    // Graph Location
+    window.mapLayers = {};
+    function onEachFeature(feature, layer) {
+      let popupContent = htmTooltipCompanyEvent(feature, layer);
+      layer.bindPopup(popupContent);
+      window.mapLayers[feature.properties.id] = layer;
+    };
+    if(window.mapCompanyEvent) {
+      window.geoJSONCompanyEvent.clearLayers();
+      window.listCompanyEvent.forEach((companyEvent, index) => {
+        if(companyEvent.location) {
+          var shapes = [];
+          if(Array.isArray(companyEvent.location))
+            shapes = shapes.concat(companyEvent.location);
+          else
+            shapes.push(companyEvent.location);
+          shapes.forEach(function(shape, index) {
+            var features = [{
+              "type": "Feature"
+              , "properties": companyEvent
+              , "geometry": shape
+              , "index": index
+            }];
+            var layer = L.geoJSON(features, {
+              onEachFeature: onEachFeature
+              , style: jsStyleCompanyEvent
+              , pointToLayer: function(feature, latlng) {
+                return L.circleMarker(latlng, jsStyleCompanyEvent(feature));
+              }
+            });
+            window.geoJSONCompanyEvent.addLayer(layer);
+          });
+        }
+      });
+    } else {
+      window.mapCompanyEvent = L.map('htmBodyGraphLocationCompanyEventPage', {closePopupOnClick: false});
+      var data = [];
+      var layout = {};
+      layout['showlegend'] = true;
+      layout['dragmode'] = 'zoom';
+      layout['uirevision'] = 'true';
+      var legend = L.control({position: 'bottomright'});
+      legend.onAdd = jsLegendCompanyEvent;
+      legend.addTo(window.mapCompanyEvent);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(window.mapCompanyEvent);
+
+      if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
+        window.mapCompanyEvent.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']], window['DEFAULT_MAP_ZOOM']);
+      else if(window['DEFAULT_MAP_ZOOM'])
+        window.mapCompanyEvent.setView(null, window['DEFAULT_MAP_ZOOM']);
+      else if(window['DEFAULT_MAP_LOCATION'])
+        window.mapCompanyEvent.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']]);
+
+      layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
+      window.geoJSONCompanyEvent = L.geoJSON().addTo(window.mapCompanyEvent);
+      window.listCompanyEvent.forEach((companyEvent, index) => {
+        if(companyEvent.location) {
+          var shapes = [];
+          if(Array.isArray(companyEvent.location))
+            shapes = shapes.concat(companyEvent.location);
+          else
+            shapes.push(companyEvent.location);
+          shapes.forEach(shape => {
+            var features = [{
+              "type": "Feature"
+              , "properties": companyEvent
+              , "geometry": shape
+              , "index": index
+            }];
+            var layer = L.geoJSON(features, {
+              onEachFeature: onEachFeature
+              , style: jsStyleCompanyEvent
+              , pointToLayer: function(feature, latlng) {
+                return L.circleMarker(latlng, jsStyleCompanyEvent(feature));
+              }
+            });
+            window.geoJSONCompanyEvent.addLayer(layer);
+          });
+        }
+      });
+      window.mapCompanyEvent.on('popupopen', function(e) {
+        var feature = e.popup._source.feature;
+        jsTooltipCompanyEvent(e, feature);
+      });
+    }
   }
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqComputateResearch_time').text('');
-  searchPage('ComputateResearch', function() {
+  document.querySelector('#pageSearchVal-fqCompanyEvent_time').text('');
+  searchPage('CompanyEvent', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -911,9 +1064,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqComputateResearch_time').value = x;
-      document.querySelector('#fqComputateResearch_time').onchange();
-      searchPage('ComputateResearch');
+      document.querySelector('#fqCompanyEvent_time').value = x;
+      document.querySelector('#fqCompanyEvent_time').onchange();
+      searchPage('CompanyEvent');
     }, speedRate);
   });
 }

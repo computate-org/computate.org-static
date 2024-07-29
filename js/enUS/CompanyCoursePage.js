@@ -1,17 +1,17 @@
 
 // Search //
 
-async function searchComputateResearch($formFilters, success, error) {
-  var filters = searchComputateResearchFilters($formFilters);
+async function searchCompanyCourse($formFilters, success, error) {
+  var filters = searchCompanyCourseFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchComputateResearchVals(filters, target, success, error);
+  searchCompanyCourseVals(filters, target, success, error);
 }
 
-function searchComputateResearchFilters($formFilters) {
+function searchCompanyCourseFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -51,9 +51,13 @@ function searchComputateResearchFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
+    var filterCourseName = $formFilters.querySelector('.valueCourseName')?.value;
+    if(filterCourseName != null && filterCourseName !== '')
+      filters.push({ name: 'fq', value: 'courseName:' + filterCourseName });
+
+    var filterCourseDescription = $formFilters.querySelector('.valueCourseDescription')?.value;
+    if(filterCourseDescription != null && filterCourseDescription !== '')
+      filters.push({ name: 'fq', value: 'courseDescription:' + filterCourseDescription });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -114,10 +118,10 @@ function searchComputateResearchFilters($formFilters) {
   return filters;
 }
 
-function searchComputateResearchVals(filters, target, success, error) {
+function searchCompanyCourseVals(filters, target, success, error) {
 
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/course?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -129,11 +133,11 @@ function searchComputateResearchVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
+function suggestCompanyCourseObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-school ');
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-notebook ');
       var $span = document.querySelector('<span>').setAttribute('class', '').text(o['objectTitle']);
       var $li = document.querySelector('<li>');
       var $a = document.querySelector('<a>').setAttribute('href', o['pageUrlPk']);
@@ -144,14 +148,14 @@ function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchComputateResearchVals($formFilters, target, success, error);
+  searchCompanyCourseVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getComputateResearch(pk) {
+async function getCompanyCourse(pk) {
   fetch(
-    '/api/research/' + id
+    '/api/course/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -165,8 +169,8 @@ async function getComputateResearch(pk) {
 
 // PATCH //
 
-async function patchComputateResearch($formFilters, $formValues, pk, success, error) {
-  var filters = patchComputateResearchFilters($formFilters);
+async function patchCompanyCourse($formFilters, $formValues, pk, success, error) {
+  var filters = patchCompanyCourseFilters($formFilters);
 
   var vals = {};
 
@@ -248,17 +252,29 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
-  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
-  var addName = $formValues.querySelector('.addName')?.value;
-  if(removeName || setName != null && setName !== '')
-    vals['setName'] = setName;
-  if(addName != null && addName !== '')
-    vals['addName'] = addName;
-  var removeName = $formValues.querySelector('.removeName')?.value;
-  if(removeName != null && removeName !== '')
-    vals['removeName'] = removeName;
+  var valueCourseName = $formValues.querySelector('.valueCourseName')?.value;
+  var removeCourseName = $formValues.querySelector('.removeCourseName')?.value === 'true';
+  var setCourseName = removeCourseName ? null : $formValues.querySelector('.setCourseName')?.value;
+  var addCourseName = $formValues.querySelector('.addCourseName')?.value;
+  if(removeCourseName || setCourseName != null && setCourseName !== '')
+    vals['setCourseName'] = setCourseName;
+  if(addCourseName != null && addCourseName !== '')
+    vals['addCourseName'] = addCourseName;
+  var removeCourseName = $formValues.querySelector('.removeCourseName')?.value;
+  if(removeCourseName != null && removeCourseName !== '')
+    vals['removeCourseName'] = removeCourseName;
+
+  var valueCourseDescription = $formValues.querySelector('.valueCourseDescription')?.value;
+  var removeCourseDescription = $formValues.querySelector('.removeCourseDescription')?.value === 'true';
+  var setCourseDescription = removeCourseDescription ? null : $formValues.querySelector('.setCourseDescription')?.value;
+  var addCourseDescription = $formValues.querySelector('.addCourseDescription')?.value;
+  if(removeCourseDescription || setCourseDescription != null && setCourseDescription !== '')
+    vals['setCourseDescription'] = setCourseDescription;
+  if(addCourseDescription != null && addCourseDescription !== '')
+    vals['addCourseDescription'] = addCourseDescription;
+  var removeCourseDescription = $formValues.querySelector('.removeCourseDescription')?.value;
+  if(removeCourseDescription != null && removeCourseDescription !== '')
+    vals['removeCourseDescription'] = removeCourseDescription;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -296,22 +312,10 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
-
-  patchComputateResearchVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
+  patchCompanyCourseVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
-function patchComputateResearchFilters($formFilters) {
+function patchCompanyCourseFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -352,9 +356,13 @@ function patchComputateResearchFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
+    var filterCourseName = $formFilters.querySelector('.valueCourseName')?.value;
+    if(filterCourseName != null && filterCourseName !== '')
+      filters.push({ name: 'fq', value: 'courseName:' + filterCourseName });
+
+    var filterCourseDescription = $formFilters.querySelector('.valueCourseDescription')?.value;
+    if(filterCourseDescription != null && filterCourseDescription !== '')
+      filters.push({ name: 'fq', value: 'courseDescription:' + filterCourseDescription });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -415,15 +423,15 @@ function patchComputateResearchFilters($formFilters) {
   return filters;
 }
 
-function patchComputateResearchVal(filters, v, val, target, success, error) {
+function patchCompanyCourseVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateResearchVals(filters, vals, target, success, error);
+  patchCompanyCourseVals(filters, vals, target, success, error);
 }
 
-function patchComputateResearchVals(filters, vals, target, success, error) {
+function patchCompanyCourseVals(filters, vals, target, success, error) {
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/course?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -439,7 +447,7 @@ function patchComputateResearchVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postComputateResearch($formValues, target, success, error) {
+async function postCompanyCourse($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -479,9 +487,13 @@ async function postComputateResearch($formValues, target, success, error) {
   if(valueDeleted != null && valueDeleted !== '')
     vals['deleted'] = valueDeleted == 'true';
 
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  if(valueName != null && valueName !== '')
-    vals['name'] = valueName;
+  var valueCourseName = $formValues.querySelector('.valueCourseName')?.value;
+  if(valueCourseName != null && valueCourseName !== '')
+    vals['courseName'] = valueCourseName;
+
+  var valueCourseDescription = $formValues.querySelector('.valueCourseDescription')?.value;
+  if(valueCourseDescription != null && valueCourseDescription !== '')
+    vals['courseDescription'] = valueCourseDescription;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -495,12 +507,8 @@ async function postComputateResearch($formValues, target, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
-
   fetch(
-    '/api/research'
+    '/api/course'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -514,9 +522,9 @@ async function postComputateResearch($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postComputateResearchVals(vals, target, success, error) {
+function postCompanyCourseVals(vals, target, success, error) {
   fetch(
-    '/api/research'
+    '/api/course'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -532,15 +540,15 @@ function postComputateResearchVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportComputateResearch($formValues, pk, success, error) {
+async function putimportCompanyCourse($formValues, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateResearchVals(JSON.parse(json), target, success, error);
+    putimportCompanyCourseVals(JSON.parse(json), target, success, error);
 }
 
-function putimportComputateResearchVals(json, target, success, error) {
+function putimportCompanyCourseVals(json, target, success, error) {
   fetch(
-    '/api/research-import'
+    '/api/course-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -554,14 +562,14 @@ function putimportComputateResearchVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
-async function websocketComputateResearch(success) {
+async function websocketCompanyCourse(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketComputateResearch', function (error, message) {
+    window.eventBus.registerHandler('websocketCompanyCourse', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#ComputateResearchForm :input[name=pk]')?.value;
+      var pkPage = document.querySelector('#CompanyCourseForm :input[name=pk]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -571,8 +579,8 @@ async function websocketComputateResearch(success) {
       var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-school w3-margin-right ').setAttribute('id', 'icon-' + id);
-      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify research in ' + json.timeRemaining);
+      var $i = document.querySelector('<i>').setAttribute('class', 'far fa-notebook w3-margin-right ').setAttribute('id', 'icon-' + id);
+      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify courses in ' + json.timeRemaining);
       var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
       var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
@@ -603,7 +611,7 @@ async function websocketComputateResearch(success) {
     });
   }
 }
-async function websocketComputateResearchInner(apiRequest) {
+async function websocketCompanyCourseInner(apiRequest) {
   var pk = apiRequest['pk'];
   var pks = apiRequest['pks'];
   var classes = apiRequest['classes'];
@@ -621,7 +629,8 @@ async function websocketComputateResearchInner(apiRequest) {
         var inputModified = null;
         var inputArchived = null;
         var inputDeleted = null;
-        var inputName = null;
+        var inputCourseName = null;
+        var inputCourseDescription = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -649,8 +658,10 @@ async function websocketComputateResearchInner(apiRequest) {
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.querySelector('#Page_deleted');
-        if(vars.includes('name'))
-          inputName = $response.querySelector('#Page_name');
+        if(vars.includes('courseName'))
+          inputCourseName = $response.querySelector('#Page_courseName');
+        if(vars.includes('courseDescription'))
+          inputCourseDescription = $response.querySelector('#Page_courseDescription');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -679,10 +690,10 @@ async function websocketComputateResearchInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        jsWebsocketComputateResearch(pk, vars, $response);
+        jsWebsocketCompanyCourse(pk, vars, $response);
 
-        window.computateResearch = JSON.parse($response.querySelector('.pageForm .computateResearch')?.value);
-        window.listComputateResearch = JSON.parse($response.querySelector('.pageForm .listComputateResearch')?.value);
+        window.companyCourse = JSON.parse($response.querySelector('.pageForm .companyCourse')?.value);
+        window.listCompanyCourse = JSON.parse($response.querySelector('.pageForm .listCompanyCourse')?.value);
 
 
         if(inputPk) {
@@ -715,9 +726,14 @@ async function websocketComputateResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_deleted'));
         }
 
-        if(inputName) {
-          inputName.replaceAll('#Page_name');
-          addGlow(document.querySelector('#Page_name'));
+        if(inputCourseName) {
+          inputCourseName.replaceAll('#Page_courseName');
+          addGlow(document.querySelector('#Page_courseName'));
+        }
+
+        if(inputCourseDescription) {
+          inputCourseDescription.replaceAll('#Page_courseDescription');
+          addGlow(document.querySelector('#Page_courseDescription'));
         }
 
         if(inputInheritPk) {
@@ -790,12 +806,12 @@ async function websocketComputateResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        pageGraphComputateResearch();
+        pageGraphCompanyCourse();
     });
   }
 }
 
-function pageGraphComputateResearch(apiRequest) {
+function pageGraphCompanyCourse(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -827,7 +843,7 @@ function pageGraphComputateResearch(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'research';
+          layout['title'] = 'courses';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -898,8 +914,8 @@ function pageGraphComputateResearch(apiRequest) {
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqComputateResearch_time').text('');
-  searchPage('ComputateResearch', function() {
+  document.querySelector('#pageSearchVal-fqCompanyCourse_time').text('');
+  searchPage('CompanyCourse', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -911,9 +927,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqComputateResearch_time').value = x;
-      document.querySelector('#fqComputateResearch_time').onchange();
-      searchPage('ComputateResearch');
+      document.querySelector('#fqCompanyCourse_time').value = x;
+      document.querySelector('#fqCompanyCourse_time').onchange();
+      searchPage('CompanyCourse');
     }, speedRate);
   });
 }

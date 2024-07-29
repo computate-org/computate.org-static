@@ -1,17 +1,17 @@
 
 // Search //
 
-async function searchComputateResearch($formFilters, success, error) {
-  var filters = searchComputateResearchFilters($formFilters);
+async function searchCompanyResearch($formFilters, success, error) {
+  var filters = searchCompanyResearchFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchComputateResearchVals(filters, target, success, error);
+  searchCompanyResearchVals(filters, target, success, error);
 }
 
-function searchComputateResearchFilters($formFilters) {
+function searchCompanyResearchFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -114,7 +114,7 @@ function searchComputateResearchFilters($formFilters) {
   return filters;
 }
 
-function searchComputateResearchVals(filters, target, success, error) {
+function searchCompanyResearchVals(filters, target, success, error) {
 
   fetch(
     '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
@@ -129,7 +129,7 @@ function searchComputateResearchVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
+function suggestCompanyResearchObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
@@ -144,12 +144,12 @@ function suggestComputateResearchObjectSuggest($formFilters, $list, target) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchComputateResearchVals($formFilters, target, success, error);
+  searchCompanyResearchVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getComputateResearch(pk) {
+async function getCompanyResearch(pk) {
   fetch(
     '/api/research/' + id
     , {
@@ -165,8 +165,8 @@ async function getComputateResearch(pk) {
 
 // PATCH //
 
-async function patchComputateResearch($formFilters, $formValues, pk, success, error) {
-  var filters = patchComputateResearchFilters($formFilters);
+async function patchCompanyResearch($formFilters, $formValues, pk, success, error) {
+  var filters = patchCompanyResearchFilters($formFilters);
 
   var vals = {};
 
@@ -296,22 +296,10 @@ async function patchComputateResearch($formFilters, $formValues, pk, success, er
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
-
-  patchComputateResearchVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
+  patchCompanyResearchVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
-function patchComputateResearchFilters($formFilters) {
+function patchCompanyResearchFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -415,13 +403,13 @@ function patchComputateResearchFilters($formFilters) {
   return filters;
 }
 
-function patchComputateResearchVal(filters, v, val, target, success, error) {
+function patchCompanyResearchVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateResearchVals(filters, vals, target, success, error);
+  patchCompanyResearchVals(filters, vals, target, success, error);
 }
 
-function patchComputateResearchVals(filters, vals, target, success, error) {
+function patchCompanyResearchVals(filters, vals, target, success, error) {
   fetch(
     '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
@@ -439,7 +427,7 @@ function patchComputateResearchVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postComputateResearch($formValues, target, success, error) {
+async function postCompanyResearch($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -495,10 +483,6 @@ async function postComputateResearch($formValues, target, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
-
   fetch(
     '/api/research'
     , {
@@ -514,7 +498,7 @@ async function postComputateResearch($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postComputateResearchVals(vals, target, success, error) {
+function postCompanyResearchVals(vals, target, success, error) {
   fetch(
     '/api/research'
     , {
@@ -532,13 +516,13 @@ function postComputateResearchVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportComputateResearch($formValues, pk, success, error) {
+async function putimportCompanyResearch($formValues, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateResearchVals(JSON.parse(json), target, success, error);
+    putimportCompanyResearchVals(JSON.parse(json), target, success, error);
 }
 
-function putimportComputateResearchVals(json, target, success, error) {
+function putimportCompanyResearchVals(json, target, success, error) {
   fetch(
     '/api/research-import'
     , {
@@ -554,14 +538,14 @@ function putimportComputateResearchVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
-async function websocketComputateResearch(success) {
+async function websocketCompanyResearch(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketComputateResearch', function (error, message) {
+    window.eventBus.registerHandler('websocketCompanyResearch', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#ComputateResearchForm :input[name=pk]')?.value;
+      var pkPage = document.querySelector('#CompanyResearchForm :input[name=pk]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -603,7 +587,7 @@ async function websocketComputateResearch(success) {
     });
   }
 }
-async function websocketComputateResearchInner(apiRequest) {
+async function websocketCompanyResearchInner(apiRequest) {
   var pk = apiRequest['pk'];
   var pks = apiRequest['pks'];
   var classes = apiRequest['classes'];
@@ -679,10 +663,10 @@ async function websocketComputateResearchInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        jsWebsocketComputateResearch(pk, vars, $response);
+        jsWebsocketCompanyResearch(pk, vars, $response);
 
-        window.computateResearch = JSON.parse($response.querySelector('.pageForm .computateResearch')?.value);
-        window.listComputateResearch = JSON.parse($response.querySelector('.pageForm .listComputateResearch')?.value);
+        window.companyResearch = JSON.parse($response.querySelector('.pageForm .companyResearch')?.value);
+        window.listCompanyResearch = JSON.parse($response.querySelector('.pageForm .listCompanyResearch')?.value);
 
 
         if(inputPk) {
@@ -790,12 +774,12 @@ async function websocketComputateResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        pageGraphComputateResearch();
+        pageGraphCompanyResearch();
     });
   }
 }
 
-function pageGraphComputateResearch(apiRequest) {
+function pageGraphCompanyResearch(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -898,8 +882,8 @@ function pageGraphComputateResearch(apiRequest) {
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqComputateResearch_time').text('');
-  searchPage('ComputateResearch', function() {
+  document.querySelector('#pageSearchVal-fqCompanyResearch_time').text('');
+  searchPage('CompanyResearch', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -911,9 +895,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqComputateResearch_time').value = x;
-      document.querySelector('#fqComputateResearch_time').onchange();
-      searchPage('ComputateResearch');
+      document.querySelector('#fqCompanyResearch_time').value = x;
+      document.querySelector('#fqCompanyResearch_time').onchange();
+      searchPage('CompanyResearch');
     }, speedRate);
   });
 }

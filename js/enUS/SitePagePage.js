@@ -8,7 +8,7 @@ async function searchSitePage($formFilters, success, error) {
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchSitePageVals(filters, success, error);
+  searchSitePageVals(filters, target, success, error);
 }
 
 function searchSitePageFilters($formFilters) {
@@ -154,16 +154,22 @@ function searchSitePageFilters($formFilters) {
   return filters;
 }
 
-function searchSitePageVals(filters, success, error) {
+function searchSitePageVals(filters, target, success, error) {
 
   fetch(
-    '/api/page?' + $.param(filters)
+    '/api/page?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
-    }).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
-function suggestSitePageObjectSuggest($formFilters, $list) {
+function suggestSitePageObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
@@ -178,7 +184,7 @@ function suggestSitePageObjectSuggest($formFilters, $list) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchSitePageVals($formFilters, success, error);
+  searchSitePageVals($formFilters, target, success, error);
 }
 
 // GET //
@@ -188,13 +194,18 @@ async function getSitePage() {
     '/api/page/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
-    }
-    ).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
 // POST //
 
-async function postSitePage($formValues, success, error) {
+async function postSitePage($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -262,10 +273,6 @@ async function postSitePage($formValues, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
-
   var valueId = $formValues.querySelector('.valueId')?.value;
   if(valueId != null && valueId !== '')
     vals['id'] = valueId;
@@ -304,18 +311,29 @@ async function postSitePage($formValues, success, error) {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
       , body: JSON.stringify(vals)
-    }
-    ).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
-function postSitePageVals(vals, success, error) {
+function postSitePageVals(vals, target, success, error) {
   fetch(
     '/api/page'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
       , body: JSON.stringify(vals)
-    }).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
 // PATCH //
@@ -487,18 +505,6 @@ async function patchSitePage($formFilters, $formValues, id, success, error) {
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
-
   var valueId = $formValues.querySelector('.valueId')?.value;
   var removeId = $formValues.querySelector('.removeId')?.value === 'true';
   var setId = removeId ? null : $formValues.querySelector('.setId')?.value;
@@ -595,7 +601,7 @@ async function patchSitePage($formFilters, $formValues, id, success, error) {
   if(removeTitle != null && removeTitle !== '')
     vals['removeTitle'] = removeTitle;
 
-  patchSitePageVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, success, error);
+  patchSitePageVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, target, success, error);
 }
 
 function patchSitePageFilters($formFilters) {
@@ -742,20 +748,26 @@ function patchSitePageFilters($formFilters) {
   return filters;
 }
 
-function patchSitePageVal(filters, v, val, success, error) {
+function patchSitePageVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchSitePageVals(filters, vals, success, error);
+  patchSitePageVals(filters, vals, target, success, error);
 }
 
-function patchSitePageVals(filters, vals, success, error) {
+function patchSitePageVals(filters, vals, target, success, error) {
   fetch(
-    '/api/page?' + $.param(filters)
+    '/api/page?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
       , body: JSON.stringify(vals)
-    }).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
 // PUTImport //
@@ -763,17 +775,23 @@ function patchSitePageVals(filters, vals, success, error) {
 async function putimportSitePage($formValues, id, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportSitePageVals(JSON.parse(json), success, error);
+    putimportSitePageVals(JSON.parse(json), target, success, error);
 }
 
-function putimportSitePageVals(json, success, error) {
+function putimportSitePageVals(json, target, success, error) {
   fetch(
     '/api/page-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
       , body: JSON.stringify(json)
-    }).then(success).catch(error);
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
 }
 
 async function websocketSitePage(success) {
