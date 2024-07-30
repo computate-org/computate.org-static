@@ -99,10 +99,6 @@ function searchCompanyCourseFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
-
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -114,6 +110,10 @@ function searchCompanyCourseFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
   }
   return filters;
 }
@@ -404,10 +404,6 @@ function patchCompanyCourseFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
-
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -419,6 +415,10 @@ function patchCompanyCourseFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
   }
   return filters;
 }
@@ -641,10 +641,10 @@ async function websocketCompanyCourseInner(apiRequest) {
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
-        var inputPageUrlId = null;
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputPageUrlId = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
@@ -682,14 +682,14 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('#Page_objectText');
-        if(vars.includes('pageUrlId'))
-          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('pageUrlPk'))
           inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
+        if(vars.includes('pageUrlId'))
+          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         jsWebsocketCompanyCourse(pk, vars, $response);
 
         window.companyCourse = JSON.parse($response.querySelector('.pageForm .companyCourse')?.value);
@@ -786,11 +786,6 @@ async function websocketCompanyCourseInner(apiRequest) {
           addGlow(document.querySelector('#Page_objectText'));
         }
 
-        if(inputPageUrlId) {
-          inputPageUrlId.replaceAll('#Page_pageUrlId');
-          addGlow(document.querySelector('#Page_pageUrlId'));
-        }
-
         if(inputPageUrlPk) {
           inputPageUrlPk.replaceAll('#Page_pageUrlPk');
           addGlow(document.querySelector('#Page_pageUrlPk'));
@@ -804,6 +799,11 @@ async function websocketCompanyCourseInner(apiRequest) {
         if(inputId) {
           inputId.replaceAll('#Page_id');
           addGlow(document.querySelector('#Page_id'));
+        }
+
+        if(inputPageUrlId) {
+          inputPageUrlId.replaceAll('#Page_pageUrlId');
+          addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         pageGraphCompanyCourse();

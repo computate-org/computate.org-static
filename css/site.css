@@ -23,6 +23,12 @@
   --site-results-gap-width-list: var(--sl-spacing-3x-small) var(--sl-spacing-small);
   --site-results-gap-width-card: var(--sl-spacing-medium);
   --site-results-icon-size: 9rem;
+  --content-width: 56rem;
+}
+@media (max-width:600px){
+  :root {
+    --content-width: 20rem;
+  }
 }
 
 /* theme css */
@@ -318,6 +324,22 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
 html, body {
   margin: 0;
   padding: 0;
+}
+.icon-heading {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-block-end: 1rem;
+}
+.icon-heading > i {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--sl-color-purple-500);
+	color: white;
+	border-radius: 0.25rem;
+	height: 2rem;
+	width: 2rem;
 }
 
 /**********/

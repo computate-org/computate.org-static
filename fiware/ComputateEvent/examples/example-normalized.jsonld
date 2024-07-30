@@ -1,0 +1,5 @@
+{
+  "id" : "urn:ngsi-ld:ComputateEvent/1",
+  "type" : "ComputateEvent",
+  "@context" : [ "https://raw.githubusercontent.com/computate-org/computate.org-static/main/fiware/ComputateEvent/context.jsonld" ]
+}

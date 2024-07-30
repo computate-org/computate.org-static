@@ -1,0 +1,189 @@
+{
+  "$schema" : "http://json-schema.org/schema#",
+  "$schemaVersion" : "0.0.1",
+  "modelTags" : "",
+  "$id" : "https://raw.githubusercontent.com/computate-org/computate.org-static/main/fiware/ComputateEvent/schema.json",
+  "title" : "ComputateEvent",
+  "description" : "ApiTag: ComputateEvent",
+  "type" : "object",
+  "allOf" : [ {
+    "$ref" : "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+  }, {
+    "$ref" : "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+  } ],
+  "required" : [ ],
+  "properties" : {
+    "address" : {
+      "type" : "object",
+      "description" : "The mailing address"
+    },
+    "airQualityIndex" : {
+      "type" : "number",
+      "description" : "Air quality index is a number used to report the quality of the air on any given day"
+    },
+    "airQualityIndexForecast" : {
+      "type" : "number",
+      "description" : "Forecasted overall Air Quality Index (AQI) over a certain duration in future"
+    },
+    "airTemperatureForecast" : {
+      "type" : "number",
+      "description" : "Forecasted value of air temperature over a certain duration in future"
+    },
+    "airTemperatureTSA" : {
+      "type" : "object",
+      "description" : "Air temperature time series aggregation"
+    },
+    "alternateName" : {
+      "type" : "string",
+      "description" : "An alternative name for this item"
+    },
+    "aqiMajorPollutant" : {
+      "type" : "string",
+      "description" : "Major pollutant in the Air Quality Index (AQI)"
+    },
+    "aqiMajorPollutantForecast" : {
+      "type" : "string",
+      "description" : "Forecasted major air pollutant in the Air Quality Index (AQI) over a certain duration in future"
+    },
+    "areaServed" : {
+      "type" : "geo:linestring",
+      "description" : "The geographic area where a service or offered item is provided"
+    },
+    "atmosphericPressure" : {
+      "type" : "number",
+      "description" : "The atmospheric pressure observed measured in Hecto Pascals"
+    },
+    "dataProvider" : {
+      "type" : "string",
+      "description" : "A sequence of characters identifying the provider of the harmonised data entity"
+    },
+    "dateCreated" : {
+      "type" : "string",
+      "description" : "Entity creation timestamp. This will usually be allocated by the storage platform"
+    },
+    "dateModified" : {
+      "type" : "string",
+      "description" : "Timestamp of the last modification of the entity. This will usually be allocated by the storage platform"
+    },
+    "dateObserved" : {
+      "type" : "string",
+      "description" : "Date of the observed entity defined by the user"
+    },
+    "description" : {
+      "type" : "string",
+      "description" : "A description of this item"
+    },
+    "dewPoint" : {
+      "type" : "number",
+      "description" : "The dew point encoded as a number. Observed temperature to which air must be cooled to become saturated with water vapor"
+    },
+    "diffuseIrradiation" : {
+      "type" : "number",
+      "description" : "Diffuse irradiance is the part of the solar irradiance that is scattered by the atmosphere"
+    },
+    "directIrradiation" : {
+      "type" : "number",
+      "description" : "Direct irradiance is the part of the solar irradiance that directly reaches a surface"
+    },
+    "feelsLikeTemperature" : {
+      "type" : "number",
+      "description" : "Temperature appreciation of the item"
+    },
+    "gustSpeed" : {
+      "type" : "number",
+      "description" : "A sudden burst of high-speed wind over the observed average wind speed lasting only for a few seconds"
+    },
+    "illuminance" : {
+      "type" : "number",
+      "description" : "(https://en.wikipedia.org/wiki/Illuminance) observed measured in lux (lx) or lumens per square metre (cd·sr·m−2)"
+    },
+    "location" : {
+      "type" : "geo:point",
+      "description" : "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
+    },
+    "name" : {
+      "type" : "string",
+      "description" : "The name of this item"
+    },
+    "owner" : {
+      "type" : "object",
+      "description" : "A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)"
+    },
+    "precipitation" : {
+      "type" : "number",
+      "description" : "Amount of water rain registered. "
+    },
+    "precipitationForecast" : {
+      "type" : "number",
+      "description" : "Forecasted rainfall over a certain duration in future"
+    },
+    "pressureTendency" : {
+      "type" : "object",
+      "description" : "Enum:'falling, raising, steady'. Is the pressure rising or falling? It can be expressed in quantitative terms or qualitative terms"
+    },
+    "refDevice" : {
+      "type" : "object",
+      "description" : "A reference to the device(s) which captured this observation"
+    },
+    "refPointOfInterest" : {
+      "type" : "string",
+      "description" : "Point of interest related to the item"
+    },
+    "relativeHumidity" : {
+      "type" : "number",
+      "description" : "Humidity in the Air. Observed instantaneous relative humidity (water vapour in air)"
+    },
+    "relativeHumidityForecast" : {
+      "type" : "number",
+      "description" : "Forecasted relative humidity (water vapour in air) over a certain duration in future"
+    },
+    "seeAlso" : {
+      "type" : "object",
+      "description" : "list of uri pointing to additional resources about the item"
+    },
+    "snowHeight" : {
+      "type" : "number",
+      "description" : "The snow height observed by generic snow depth measurement sensors, expressed in centimeters"
+    },
+    "solarRadiation" : {
+      "type" : "number",
+      "description" : "The solar radiation observed measured in Watts per square"
+    },
+    "source" : {
+      "type" : "string",
+      "description" : "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object"
+    },
+    "streamGauge" : {
+      "type" : "number",
+      "description" : "The water level surface elevation observed by Hydrometric measurement sensors, namely a [Stream Gauge](https://en.wikipedia.org/wiki/Stream_gauge) expressed in centimeters"
+    },
+    "temperature" : {
+      "type" : "number",
+      "description" : "Temperature of the item"
+    },
+    "uVIndexMax" : {
+      "type" : "number",
+      "description" : "The maximum UV index for the period, based on the World Health Organization's UV Index measure. [http://www.who.int/uv/intersunprogramme/activities/uv_index/en/](http://www.who.int/uv/intersunprogramme/activities/uv_index/en/) the values between 1 and 11 are the valid range for the index. The value 0 is for describing that no signal is detected so no value is stored"
+    },
+    "visibility" : {
+      "type" : "object",
+      "description" : "Categories of visibility"
+    },
+    "weatherType" : {
+      "type" : "string",
+      "description" : "Text description of the weather"
+    },
+    "windDirection" : {
+      "type" : "number",
+      "description" : "Direction of the wind bet"
+    },
+    "windSpeed" : {
+      "type" : "number",
+      "description" : "Intensity of the wind"
+    },
+    "entityId" : {
+      "type" : "string",
+      "description" : "A unique ID for this Smart Data Model"
+    }
+  }
+}
