@@ -263,6 +263,10 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
+
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -274,10 +278,6 @@ function searchWeatherObservedFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
-
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
 
     var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
     if(filterAreaServedColors != null && filterAreaServedColors !== '')
@@ -1237,6 +1237,10 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
+
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -1248,10 +1252,6 @@ function patchWeatherObservedFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
-
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
 
     var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
     if(filterAreaServedColors != null && filterAreaServedColors !== '')
@@ -1691,10 +1691,10 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
+        var inputPageUrlId = null;
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
-        var inputPageUrlId = null;
         var inputAreaServedColors = null;
         var inputAreaServedTitles = null;
         var inputAreaServedLinks = null;
@@ -1817,14 +1817,14 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('#Page_objectText');
+        if(vars.includes('pageUrlId'))
+          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('pageUrlPk'))
           inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        if(vars.includes('pageUrlId'))
-          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('areaServedColors'))
           inputAreaServedColors = $response.querySelector('#Page_areaServedColors');
         if(vars.includes('areaServedTitles'))
@@ -2132,6 +2132,11 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_objectText'));
         }
 
+        if(inputPageUrlId) {
+          inputPageUrlId.replaceAll('#Page_pageUrlId');
+          addGlow(document.querySelector('#Page_pageUrlId'));
+        }
+
         if(inputPageUrlPk) {
           inputPageUrlPk.replaceAll('#Page_pageUrlPk');
           addGlow(document.querySelector('#Page_pageUrlPk'));
@@ -2145,11 +2150,6 @@ async function websocketWeatherObservedInner(apiRequest) {
         if(inputId) {
           inputId.replaceAll('#Page_id');
           addGlow(document.querySelector('#Page_id'));
-        }
-
-        if(inputPageUrlId) {
-          inputPageUrlId.replaceAll('#Page_pageUrlId');
-          addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputAreaServedColors) {
