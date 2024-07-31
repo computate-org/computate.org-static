@@ -72,6 +72,7 @@ async function websocketBaseResultInner(apiRequest) {
         var inputSessionId = null;
         var inputUserKey = null;
         var inputSaves = null;
+        var inputObjectIcon = null;
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
@@ -104,6 +105,8 @@ async function websocketBaseResultInner(apiRequest) {
           inputUserKey = $response.querySelector('#Page_userKey');
         if(vars.includes('saves'))
           inputSaves = $response.querySelector('#Page_saves');
+        if(vars.includes('objectIcon'))
+          inputObjectIcon = $response.querySelector('#Page_objectIcon');
         if(vars.includes('objectTitle'))
           inputObjectTitle = $response.querySelector('#Page_objectTitle');
         if(vars.includes('objectSuggest'))
@@ -182,6 +185,11 @@ async function websocketBaseResultInner(apiRequest) {
         if(inputSaves) {
           inputSaves.replaceAll('#Page_saves');
           addGlow(document.querySelector('#Page_saves'));
+        }
+
+        if(inputObjectIcon) {
+          inputObjectIcon.replaceAll('#Page_objectIcon');
+          addGlow(document.querySelector('#Page_objectIcon'));
         }
 
         if(inputObjectTitle) {

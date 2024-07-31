@@ -87,6 +87,10 @@ function searchCompanyEventFilters($formFilters) {
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
 
+    var filterObjectIcon = $formFilters.querySelector('.valueObjectIcon')?.value;
+    if(filterObjectIcon != null && filterObjectIcon !== '')
+      filters.push({ name: 'fq', value: 'objectIcon:' + filterObjectIcon });
+
     var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
     if(filterObjectTitle != null && filterObjectTitle !== '')
       filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
@@ -149,10 +153,10 @@ function suggestCompanyEventObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-map-location-dot ');
-      var $span = document.querySelector('<span>').setAttribute('class', '').text(o['objectTitle']);
-      var $li = document.querySelector('<li>');
-      var $a = document.querySelector('<a>').setAttribute('href', o['pageUrlPk']);
+      var $i = document.querySelector('<i class="fa-duotone fa-solid fa-map-location-dot"></i>');
+      var $span = document.createElement('<span>').setAttribute('class', '').text(o['objectTitle']);
+      var $li = document.createElement('<li>');
+      var $a = document.createElement('<a>').setAttribute('href', o['pageUrlPk']);
       $a.append($i);
       $a.append($span);
       $li.append($a);
@@ -324,6 +328,18 @@ async function patchCompanyEvent($formFilters, $formValues, pk, success, error) 
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
+  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
+  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
+  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
+  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
+  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
+    vals['setObjectTitle'] = setObjectTitle;
+  if(addObjectTitle != null && addObjectTitle !== '')
+    vals['addObjectTitle'] = addObjectTitle;
+  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
+  if(removeObjectTitle != null && removeObjectTitle !== '')
+    vals['removeObjectTitle'] = removeObjectTitle;
+
   patchCompanyEventVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
@@ -403,6 +419,10 @@ function patchCompanyEventFilters($formFilters) {
     var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
+
+    var filterObjectIcon = $formFilters.querySelector('.valueObjectIcon')?.value;
+    if(filterObjectIcon != null && filterObjectIcon !== '')
+      filters.push({ name: 'fq', value: 'objectIcon:' + filterObjectIcon });
 
     var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
     if(filterObjectTitle != null && filterObjectTitle !== '')
@@ -531,6 +551,10 @@ async function postCompanyEvent($formValues, target, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
+  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
+  if(valueObjectTitle != null && valueObjectTitle !== '')
+    vals['objectTitle'] = valueObjectTitle;
+
   fetch(
     '/api/event'
     , {
@@ -599,16 +623,16 @@ async function websocketCompanyEvent(success) {
       var numFound = parseInt(json['numFound']);
       var numPATCH = parseInt(json['numPATCH']);
       var percent = Math.floor( numPATCH / numFound * 100 ) + '%';
-      var $box = document.querySelector('<div>').setAttribute('class', 'w3-quarter box-' + id + ' ').setAttribute('id', 'box-' + id).setAttribute('data-numPATCH', numPATCH);
-      var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
-      var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
-      var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-map-location-dot w3-margin-right ').setAttribute('id', 'icon-' + id);
-      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify events in ' + json.timeRemaining);
-      var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
-      var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
-      var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
-      var $progress = document.querySelector('<div>').setAttribute('class', 'w3- ').setAttribute('style', 'height: 24px; width: ' + percent + '; ').setAttribute('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+      var $box = document.createElement('<div>').setAttribute('class', 'w3-quarter box-' + id + ' ').setAttribute('id', 'box-' + id).setAttribute('data-numPATCH', numPATCH);
+      var $margin = document.createElement('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
+      var $card = document.createElement('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
+      var $header = document.createElement('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
+      var $i = document.createElement('<i class="fa-duotone fa-solid fa-map-location-dot"></i>);
+      var $headerSpan = document.createElement('<span>').setAttribute('class', '').text('modify events in ' + json.timeRemaining);
+      var $x = document.createElement('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
+      var $body = document.createElement('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
+      var $bar = document.createElement('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
+      var $progress = document.createElement('<div>').setAttribute('class', 'w3- ').setAttribute('style', 'height: 24px; width: ' + percent + '; ').setAttribute('id', 'progress-' + id).text(numPATCH + '/' + numFound);
       $card.append($header);
       $header.append($i);
       $header.append($headerSpan);
@@ -662,6 +686,7 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputSessionId = null;
         var inputUserKey = null;
         var inputSaves = null;
+        var inputObjectIcon = null;
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
@@ -703,6 +728,8 @@ async function websocketCompanyEventInner(apiRequest) {
           inputUserKey = $response.querySelector('#Page_userKey');
         if(vars.includes('saves'))
           inputSaves = $response.querySelector('#Page_saves');
+        if(vars.includes('objectIcon'))
+          inputObjectIcon = $response.querySelector('#Page_objectIcon');
         if(vars.includes('objectTitle'))
           inputObjectTitle = $response.querySelector('#Page_objectTitle');
         if(vars.includes('objectSuggest'))
@@ -802,6 +829,11 @@ async function websocketCompanyEventInner(apiRequest) {
         if(inputSaves) {
           inputSaves.replaceAll('#Page_saves');
           addGlow(document.querySelector('#Page_saves'));
+        }
+
+        if(inputObjectIcon) {
+          inputObjectIcon.replaceAll('#Page_objectIcon');
+          addGlow(document.querySelector('#Page_objectIcon'));
         }
 
         if(inputObjectTitle) {

@@ -95,6 +95,10 @@ function searchSitePageFilters($formFilters) {
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
 
+    var filterObjectIcon = $formFilters.querySelector('.valueObjectIcon')?.value;
+    if(filterObjectIcon != null && filterObjectIcon !== '')
+      filters.push({ name: 'fq', value: 'objectIcon:' + filterObjectIcon });
+
     var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
     if(filterObjectTitle != null && filterObjectTitle !== '')
       filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
@@ -173,10 +177,10 @@ function suggestSitePageObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-newspaper ');
-      var $span = document.querySelector('<span>').setAttribute('class', '').text(o['objectTitle']);
-      var $li = document.querySelector('<li>');
-      var $a = document.querySelector('<a>').setAttribute('href', o['pageUrlPk']);
+      var $i = document.querySelector('<i class="fa-duotone fa-solid fa-newspaper"></i>');
+      var $span = document.createElement('<span>').setAttribute('class', '').text(o['objectTitle']);
+      var $li = document.createElement('<li>');
+      var $a = document.createElement('<a>').setAttribute('href', o['pageUrlPk']);
       $a.append($i);
       $a.append($span);
       $li.append($a);
@@ -194,139 +198,6 @@ async function getSitePage() {
     '/api/page/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
-    }).then(response => {
-      if(response.ok)
-        success(response, target);
-      else
-        error(response, target);
-    })
-    .catch(response => error(response, target));
-}
-
-// POST //
-
-async function postSitePage($formValues, target, success, error) {
-  var vals = {};
-  if(success == null) {
-    success = function( data, textStatus, jQxhr ) {
-      addGlow($formValues.next('button'));
-      var url = data['pageUrlPk'];
-      if(url)
-        window.location.href = url;
-    };
-  }
-  if(error == null) {
-    error = function( jqXhr, textStatus, errorThrown ) {
-      addError($formValues.next('button'));
-    };
-  }
-
-  var valueCreated = $formValues.querySelector('.valueCreated')?.value;
-  if(valueCreated != null && valueCreated !== '')
-    vals['created'] = valueCreated;
-
-  var valueModified = $formValues.querySelector('.valueModified')?.value;
-  if(valueModified != null && valueModified !== '')
-    vals['modified'] = valueModified;
-
-  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
-  if(valueObjectId != null && valueObjectId !== '')
-    vals['objectId'] = valueObjectId;
-
-  var valueArchived = $formValues.querySelector('.valueArchived')?.value;
-  if(valueArchived != null && valueArchived !== '')
-    vals['archived'] = valueArchived == 'true';
-
-  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
-  if(valueDeleted != null && valueDeleted !== '')
-    vals['deleted'] = valueDeleted == 'true';
-
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  if(valuePageId != null && valuePageId !== '')
-    vals['pageId'] = valuePageId;
-
-  var valueUri = $formValues.querySelector('.valueUri')?.value;
-  if(valueUri != null && valueUri !== '')
-    vals['uri'] = valueUri;
-
-  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
-  if(valueUrl != null && valueUrl !== '')
-    vals['url'] = valueUrl;
-
-  var valueAuthor = $formValues.querySelector('.valueAuthor')?.value;
-  if(valueAuthor != null && valueAuthor !== '')
-    vals['author'] = valueAuthor;
-
-  var valuePageImageUri = $formValues.querySelector('.valuePageImageUri')?.value;
-  if(valuePageImageUri != null && valuePageImageUri !== '')
-    vals['pageImageUri'] = valuePageImageUri;
-
-  var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
-  if(valueInheritPk != null && valueInheritPk !== '')
-    vals['inheritPk'] = valueInheritPk;
-
-  var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
-  if(valueSessionId != null && valueSessionId !== '')
-    vals['sessionId'] = valueSessionId;
-
-  var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
-  if(valueUserKey != null && valueUserKey !== '')
-    vals['userKey'] = valueUserKey;
-
-  var valueId = $formValues.querySelector('.valueId')?.value;
-  if(valueId != null && valueId !== '')
-    vals['id'] = valueId;
-
-  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
-  if(valueCourseNum != null && valueCourseNum !== '')
-    vals['courseNum'] = valueCourseNum;
-
-  var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
-  if(valueLessonNum != null && valueLessonNum !== '')
-    vals['lessonNum'] = valueLessonNum;
-
-  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
-  if(valueTitle != null && valueTitle !== '')
-    vals['title'] = valueTitle;
-
-  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
-  if(valueResourceUri != null && valueResourceUri !== '')
-    vals['resourceUri'] = valueResourceUri;
-
-  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
-  if(valueTemplateUri != null && valueTemplateUri !== '')
-    vals['templateUri'] = valueTemplateUri;
-
-  var valueH1 = $formValues.querySelector('.valueH1')?.value;
-  if(valueH1 != null && valueH1 !== '')
-    vals['h1'] = valueH1;
-
-  var valueH2 = $formValues.querySelector('.valueH2')?.value;
-  if(valueH2 != null && valueH2 !== '')
-    vals['h2'] = valueH2;
-
-  fetch(
-    '/api/page'
-    , {
-      headers: {'Content-Type':'application/json; charset=utf-8'}
-      , method: 'POST'
-      , body: JSON.stringify(vals)
-    }).then(response => {
-      if(response.ok)
-        success(response, target);
-      else
-        error(response, target);
-    })
-    .catch(response => error(response, target));
-}
-
-function postSitePageVals(vals, target, success, error) {
-  fetch(
-    '/api/page'
-    , {
-      headers: {'Content-Type':'application/json; charset=utf-8'}
-      , method: 'POST'
-      , body: JSON.stringify(vals)
     }).then(response => {
       if(response.ok)
         success(response, target);
@@ -504,6 +375,18 @@ async function patchSitePage($formFilters, $formValues, id, success, error) {
   var removeUserKey = $formValues.querySelector('.removeUserKey')?.value;
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
+
+  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
+  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
+  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
+  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
+  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
+    vals['setObjectTitle'] = setObjectTitle;
+  if(addObjectTitle != null && addObjectTitle !== '')
+    vals['addObjectTitle'] = addObjectTitle;
+  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
+  if(removeObjectTitle != null && removeObjectTitle !== '')
+    vals['removeObjectTitle'] = removeObjectTitle;
 
   var valueId = $formValues.querySelector('.valueId')?.value;
   var removeId = $formValues.querySelector('.removeId')?.value === 'true';
@@ -689,6 +572,10 @@ function patchSitePageFilters($formFilters) {
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
 
+    var filterObjectIcon = $formFilters.querySelector('.valueObjectIcon')?.value;
+    if(filterObjectIcon != null && filterObjectIcon !== '')
+      filters.push({ name: 'fq', value: 'objectIcon:' + filterObjectIcon });
+
     var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
     if(filterObjectTitle != null && filterObjectTitle !== '')
       filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
@@ -770,6 +657,143 @@ function patchSitePageVals(filters, vals, target, success, error) {
     .catch(response => error(response, target));
 }
 
+// POST //
+
+async function postSitePage($formValues, target, success, error) {
+  var vals = {};
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow($formValues.next('button'));
+      var url = data['pageUrlPk'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, textStatus, errorThrown ) {
+      addError($formValues.next('button'));
+    };
+  }
+
+  var valueCreated = $formValues.querySelector('.valueCreated')?.value;
+  if(valueCreated != null && valueCreated !== '')
+    vals['created'] = valueCreated;
+
+  var valueModified = $formValues.querySelector('.valueModified')?.value;
+  if(valueModified != null && valueModified !== '')
+    vals['modified'] = valueModified;
+
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
+  if(valueObjectId != null && valueObjectId !== '')
+    vals['objectId'] = valueObjectId;
+
+  var valueArchived = $formValues.querySelector('.valueArchived')?.value;
+  if(valueArchived != null && valueArchived !== '')
+    vals['archived'] = valueArchived == 'true';
+
+  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
+  if(valueDeleted != null && valueDeleted !== '')
+    vals['deleted'] = valueDeleted == 'true';
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  if(valuePageId != null && valuePageId !== '')
+    vals['pageId'] = valuePageId;
+
+  var valueUri = $formValues.querySelector('.valueUri')?.value;
+  if(valueUri != null && valueUri !== '')
+    vals['uri'] = valueUri;
+
+  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
+  if(valueUrl != null && valueUrl !== '')
+    vals['url'] = valueUrl;
+
+  var valueAuthor = $formValues.querySelector('.valueAuthor')?.value;
+  if(valueAuthor != null && valueAuthor !== '')
+    vals['author'] = valueAuthor;
+
+  var valuePageImageUri = $formValues.querySelector('.valuePageImageUri')?.value;
+  if(valuePageImageUri != null && valuePageImageUri !== '')
+    vals['pageImageUri'] = valuePageImageUri;
+
+  var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
+  if(valueInheritPk != null && valueInheritPk !== '')
+    vals['inheritPk'] = valueInheritPk;
+
+  var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
+  if(valueSessionId != null && valueSessionId !== '')
+    vals['sessionId'] = valueSessionId;
+
+  var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
+  if(valueUserKey != null && valueUserKey !== '')
+    vals['userKey'] = valueUserKey;
+
+  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
+  if(valueObjectTitle != null && valueObjectTitle !== '')
+    vals['objectTitle'] = valueObjectTitle;
+
+  var valueId = $formValues.querySelector('.valueId')?.value;
+  if(valueId != null && valueId !== '')
+    vals['id'] = valueId;
+
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  if(valueCourseNum != null && valueCourseNum !== '')
+    vals['courseNum'] = valueCourseNum;
+
+  var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
+  if(valueLessonNum != null && valueLessonNum !== '')
+    vals['lessonNum'] = valueLessonNum;
+
+  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
+  if(valueTitle != null && valueTitle !== '')
+    vals['title'] = valueTitle;
+
+  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
+  if(valueResourceUri != null && valueResourceUri !== '')
+    vals['resourceUri'] = valueResourceUri;
+
+  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
+  if(valueTemplateUri != null && valueTemplateUri !== '')
+    vals['templateUri'] = valueTemplateUri;
+
+  var valueH1 = $formValues.querySelector('.valueH1')?.value;
+  if(valueH1 != null && valueH1 !== '')
+    vals['h1'] = valueH1;
+
+  var valueH2 = $formValues.querySelector('.valueH2')?.value;
+  if(valueH2 != null && valueH2 !== '')
+    vals['h2'] = valueH2;
+
+  fetch(
+    '/api/page'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'POST'
+      , body: JSON.stringify(vals)
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
+}
+
+function postSitePageVals(vals, target, success, error) {
+  fetch(
+    '/api/page'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'POST'
+      , body: JSON.stringify(vals)
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
+}
+
 // PUTImport //
 
 async function putimportSitePage($formValues, id, success, error) {
@@ -807,16 +831,16 @@ async function websocketSitePage(success) {
       var numFound = parseInt(json['numFound']);
       var numPATCH = parseInt(json['numPATCH']);
       var percent = Math.floor( numPATCH / numFound * 100 ) + '%';
-      var $box = document.querySelector('<div>').setAttribute('class', 'w3-quarter box-' + id + ' ').setAttribute('id', 'box-' + id).setAttribute('data-numPATCH', numPATCH);
-      var $margin = document.querySelector('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
-      var $card = document.querySelector('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
-      var $header = document.querySelector('<div>').setAttribute('class', 'w3-container fa-2017-shaded-spruce ').setAttribute('id', 'header-' + id);
-      var $i = document.querySelector('<i>').setAttribute('class', 'fad fa-newspaper w3-margin-right ').setAttribute('id', 'icon-' + id);
-      var $headerSpan = document.querySelector('<span>').setAttribute('class', '').text('modify articles in ' + json.timeRemaining);
-      var $x = document.querySelector('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
-      var $body = document.querySelector('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
-      var $bar = document.querySelector('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
-      var $progress = document.querySelector('<div>').setAttribute('class', 'w3-2017-shaded-spruce ').setAttribute('style', 'height: 24px; width: ' + percent + '; ').setAttribute('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+      var $box = document.createElement('<div>').setAttribute('class', 'w3-quarter box-' + id + ' ').setAttribute('id', 'box-' + id).setAttribute('data-numPATCH', numPATCH);
+      var $margin = document.createElement('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
+      var $card = document.createElement('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
+      var $header = document.createElement('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
+      var $i = document.createElement('<i class="fa-duotone fa-solid fa-newspaper"></i>);
+      var $headerSpan = document.createElement('<span>').setAttribute('class', '').text('modify articles in ' + json.timeRemaining);
+      var $x = document.createElement('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
+      var $body = document.createElement('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
+      var $bar = document.createElement('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
+      var $progress = document.createElement('<div>').setAttribute('class', 'w3- ').setAttribute('style', 'height: 24px; width: ' + percent + '; ').setAttribute('id', 'progress-' + id).text(numPATCH + '/' + numFound);
       $card.append($header);
       $header.append($i);
       $header.append($headerSpan);
@@ -872,6 +896,7 @@ async function websocketSitePageInner(apiRequest) {
         var inputSessionId = null;
         var inputUserKey = null;
         var inputSaves = null;
+        var inputObjectIcon = null;
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
@@ -921,6 +946,8 @@ async function websocketSitePageInner(apiRequest) {
           inputUserKey = $response.querySelector('#Page_userKey');
         if(vars.includes('saves'))
           inputSaves = $response.querySelector('#Page_saves');
+        if(vars.includes('objectIcon'))
+          inputObjectIcon = $response.querySelector('#Page_objectIcon');
         if(vars.includes('objectTitle'))
           inputObjectTitle = $response.querySelector('#Page_objectTitle');
         if(vars.includes('objectSuggest'))
@@ -1038,6 +1065,11 @@ async function websocketSitePageInner(apiRequest) {
         if(inputSaves) {
           inputSaves.replaceAll('#Page_saves');
           addGlow(document.querySelector('#Page_saves'));
+        }
+
+        if(inputObjectIcon) {
+          inputObjectIcon.replaceAll('#Page_objectIcon');
+          addGlow(document.querySelector('#Page_objectIcon'));
         }
 
         if(inputObjectTitle) {
