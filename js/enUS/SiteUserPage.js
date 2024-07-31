@@ -111,10 +111,6 @@ function searchSiteUserFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
-
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -126,6 +122,10 @@ function searchSiteUserFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
 
     var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
     if(filterUserKeys != null && filterUserKeys !== '')
@@ -342,18 +342,6 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
-
   var valueUserId = $formValues.querySelector('.valueUserId')?.value;
   var removeUserId = $formValues.querySelector('.removeUserId')?.value === 'true';
   var setUserId = removeUserId ? null : $formValues.querySelector('.setUserId')?.value;
@@ -530,10 +518,6 @@ function patchSiteUserFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
-
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -545,6 +529,10 @@ function patchSiteUserFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
 
     var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
     if(filterUserKeys != null && filterUserKeys !== '')
@@ -660,10 +648,6 @@ async function postSiteUser($formValues, target, success, error) {
   var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
-
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
 
   var valueUserId = $formValues.querySelector('.valueUserId')?.value;
   if(valueUserId != null && valueUserId !== '')
@@ -823,10 +807,10 @@ async function websocketSiteUserInner(apiRequest) {
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
-        var inputPageUrlId = null;
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputPageUrlId = null;
         var inputUserKeys = null;
         var inputUserId = null;
         var inputUserName = null;
@@ -871,14 +855,14 @@ async function websocketSiteUserInner(apiRequest) {
           inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('#Page_objectText');
-        if(vars.includes('pageUrlId'))
-          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('pageUrlPk'))
           inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
+        if(vars.includes('pageUrlId'))
+          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('userKeys'))
           inputUserKeys = $response.querySelector('#Page_userKeys');
         if(vars.includes('userId'))
@@ -989,11 +973,6 @@ async function websocketSiteUserInner(apiRequest) {
           addGlow(document.querySelector('#Page_objectText'));
         }
 
-        if(inputPageUrlId) {
-          inputPageUrlId.replaceAll('#Page_pageUrlId');
-          addGlow(document.querySelector('#Page_pageUrlId'));
-        }
-
         if(inputPageUrlPk) {
           inputPageUrlPk.replaceAll('#Page_pageUrlPk');
           addGlow(document.querySelector('#Page_pageUrlPk'));
@@ -1007,6 +986,11 @@ async function websocketSiteUserInner(apiRequest) {
         if(inputId) {
           inputId.replaceAll('#Page_id');
           addGlow(document.querySelector('#Page_id'));
+        }
+
+        if(inputPageUrlId) {
+          inputPageUrlId.replaceAll('#Page_pageUrlId');
+          addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputUserKeys) {

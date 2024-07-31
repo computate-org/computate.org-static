@@ -131,6 +131,10 @@ function searchSitePageFilters($formFilters) {
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
 
+    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
+    if(filterTitle != null && filterTitle !== '')
+      filters.push({ name: 'fq', value: 'title:' + filterTitle });
+
     var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
     if(filterResourceUri != null && filterResourceUri !== '')
       filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
@@ -146,10 +150,6 @@ function searchSitePageFilters($formFilters) {
     var filterH2 = $formFilters.querySelector('.valueH2')?.value;
     if(filterH2 != null && filterH2 !== '')
       filters.push({ name: 'fq', value: 'h2:' + filterH2 });
-
-    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
-    if(filterTitle != null && filterTitle !== '')
-      filters.push({ name: 'fq', value: 'title:' + filterTitle });
   }
   return filters;
 }
@@ -285,6 +285,10 @@ async function postSitePage($formValues, target, success, error) {
   if(valueLessonNum != null && valueLessonNum !== '')
     vals['lessonNum'] = valueLessonNum;
 
+  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
+  if(valueTitle != null && valueTitle !== '')
+    vals['title'] = valueTitle;
+
   var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
   if(valueResourceUri != null && valueResourceUri !== '')
     vals['resourceUri'] = valueResourceUri;
@@ -300,10 +304,6 @@ async function postSitePage($formValues, target, success, error) {
   var valueH2 = $formValues.querySelector('.valueH2')?.value;
   if(valueH2 != null && valueH2 !== '')
     vals['h2'] = valueH2;
-
-  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
-  if(valueTitle != null && valueTitle !== '')
-    vals['title'] = valueTitle;
 
   fetch(
     '/api/page'
@@ -541,6 +541,18 @@ async function patchSitePage($formFilters, $formValues, id, success, error) {
   if(removeLessonNum != null && removeLessonNum !== '')
     vals['removeLessonNum'] = removeLessonNum;
 
+  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
+  var removeTitle = $formValues.querySelector('.removeTitle')?.value === 'true';
+  var setTitle = removeTitle ? null : $formValues.querySelector('.setTitle')?.value;
+  var addTitle = $formValues.querySelector('.addTitle')?.value;
+  if(removeTitle || setTitle != null && setTitle !== '')
+    vals['setTitle'] = setTitle;
+  if(addTitle != null && addTitle !== '')
+    vals['addTitle'] = addTitle;
+  var removeTitle = $formValues.querySelector('.removeTitle')?.value;
+  if(removeTitle != null && removeTitle !== '')
+    vals['removeTitle'] = removeTitle;
+
   var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
   var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value === 'true';
   var setResourceUri = removeResourceUri ? null : $formValues.querySelector('.setResourceUri')?.value;
@@ -588,18 +600,6 @@ async function patchSitePage($formFilters, $formValues, id, success, error) {
   var removeH2 = $formValues.querySelector('.removeH2')?.value;
   if(removeH2 != null && removeH2 !== '')
     vals['removeH2'] = removeH2;
-
-  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
-  var removeTitle = $formValues.querySelector('.removeTitle')?.value === 'true';
-  var setTitle = removeTitle ? null : $formValues.querySelector('.setTitle')?.value;
-  var addTitle = $formValues.querySelector('.addTitle')?.value;
-  if(removeTitle || setTitle != null && setTitle !== '')
-    vals['setTitle'] = setTitle;
-  if(addTitle != null && addTitle !== '')
-    vals['addTitle'] = addTitle;
-  var removeTitle = $formValues.querySelector('.removeTitle')?.value;
-  if(removeTitle != null && removeTitle !== '')
-    vals['removeTitle'] = removeTitle;
 
   patchSitePageVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, target, success, error);
 }
@@ -725,6 +725,10 @@ function patchSitePageFilters($formFilters) {
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
 
+    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
+    if(filterTitle != null && filterTitle !== '')
+      filters.push({ name: 'fq', value: 'title:' + filterTitle });
+
     var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
     if(filterResourceUri != null && filterResourceUri !== '')
       filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
@@ -740,10 +744,6 @@ function patchSitePageFilters($formFilters) {
     var filterH2 = $formFilters.querySelector('.valueH2')?.value;
     if(filterH2 != null && filterH2 !== '')
       filters.push({ name: 'fq', value: 'h2:' + filterH2 });
-
-    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
-    if(filterTitle != null && filterTitle !== '')
-      filters.push({ name: 'fq', value: 'title:' + filterTitle });
   }
   return filters;
 }
@@ -881,11 +881,11 @@ async function websocketSitePageInner(apiRequest) {
         var inputId = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
+        var inputTitle = null;
         var inputResourceUri = null;
         var inputTemplateUri = null;
         var inputH1 = null;
         var inputH2 = null;
-        var inputTitle = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('#Page_created');
@@ -939,6 +939,8 @@ async function websocketSitePageInner(apiRequest) {
           inputCourseNum = $response.querySelector('#Page_courseNum');
         if(vars.includes('lessonNum'))
           inputLessonNum = $response.querySelector('#Page_lessonNum');
+        if(vars.includes('title'))
+          inputTitle = $response.querySelector('#Page_title');
         if(vars.includes('resourceUri'))
           inputResourceUri = $response.querySelector('#Page_resourceUri');
         if(vars.includes('templateUri'))
@@ -947,8 +949,6 @@ async function websocketSitePageInner(apiRequest) {
           inputH1 = $response.querySelector('#Page_h1');
         if(vars.includes('h2'))
           inputH2 = $response.querySelector('#Page_h2');
-        if(vars.includes('title'))
-          inputTitle = $response.querySelector('#Page_title');
         jsWebsocketSitePage(id, vars, $response);
 
         window.sitePage = JSON.parse($response.querySelector('.pageForm .sitePage')?.value);
@@ -1085,6 +1085,11 @@ async function websocketSitePageInner(apiRequest) {
           addGlow(document.querySelector('#Page_lessonNum'));
         }
 
+        if(inputTitle) {
+          inputTitle.replaceAll('#Page_title');
+          addGlow(document.querySelector('#Page_title'));
+        }
+
         if(inputResourceUri) {
           inputResourceUri.replaceAll('#Page_resourceUri');
           addGlow(document.querySelector('#Page_resourceUri'));
@@ -1103,11 +1108,6 @@ async function websocketSitePageInner(apiRequest) {
         if(inputH2) {
           inputH2.replaceAll('#Page_h2');
           addGlow(document.querySelector('#Page_h2'));
-        }
-
-        if(inputTitle) {
-          inputTitle.replaceAll('#Page_title');
-          addGlow(document.querySelector('#Page_title'));
         }
 
         pageGraphSitePage();
