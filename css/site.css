@@ -303,12 +303,9 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
 
 /* htmPaginationButtons */
 #htmPaginationButtons {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 10rem);
   align-items: center;
-  /* display: grid;
-  grid-template-columns: auto auto auto min-content auto auto auto auto min-content auto;
-  align-items: center;
-  height: 3rem; */
 }
 
 /*******/
@@ -347,8 +344,6 @@ html, body {
 /**********/
 
 footer > sl-button > div {
-  padding-block: 1rem;
-  height: 9em;
   gap: 1rem;
 }
 #footer-open-source {
