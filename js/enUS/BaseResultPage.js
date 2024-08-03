@@ -65,7 +65,6 @@ async function websocketBaseResultInner(apiRequest) {
         var inputObjectId = null;
         var inputArchived = null;
         var inputDeleted = null;
-        var inputPageUrlPk = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -78,6 +77,7 @@ async function websocketBaseResultInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputPageUrlId = null;
+        var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
 
@@ -91,8 +91,6 @@ async function websocketBaseResultInner(apiRequest) {
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.querySelector('#Page_deleted');
-        if(vars.includes('pageUrlPk'))
-          inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -117,6 +115,8 @@ async function websocketBaseResultInner(apiRequest) {
           inputObjectText = $response.querySelector('#Page_objectText');
         if(vars.includes('pageUrlId'))
           inputPageUrlId = $response.querySelector('#Page_pageUrlId');
+        if(vars.includes('pageUrlPk'))
+          inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
@@ -150,11 +150,6 @@ async function websocketBaseResultInner(apiRequest) {
         if(inputDeleted) {
           inputDeleted.replaceAll('#Page_deleted');
           addGlow(document.querySelector('#Page_deleted'));
-        }
-
-        if(inputPageUrlPk) {
-          inputPageUrlPk.replaceAll('#Page_pageUrlPk');
-          addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputInheritPk) {
@@ -215,6 +210,11 @@ async function websocketBaseResultInner(apiRequest) {
         if(inputPageUrlId) {
           inputPageUrlId.replaceAll('#Page_pageUrlId');
           addGlow(document.querySelector('#Page_pageUrlId'));
+        }
+
+        if(inputPageUrlPk) {
+          inputPageUrlPk.replaceAll('#Page_pageUrlPk');
+          addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputPageUrlApi) {

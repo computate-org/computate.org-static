@@ -59,6 +59,10 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterEntityId != null && filterEntityId !== '')
       filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
 
+    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
+    if(filterAlternateName != null && filterAlternateName !== '')
+      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
+
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -67,18 +71,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterAirQualityIndexForecast != null && filterAirQualityIndexForecast !== '')
       filters.push({ name: 'fq', value: 'airQualityIndexForecast:' + filterAirQualityIndexForecast });
 
-    var filterAirTemperatureForecast = $formFilters.querySelector('.valueAirTemperatureForecast')?.value;
-    if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
-      filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
-
-    var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
-    if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
-      filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
-
-    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
-    if(filterAlternateName != null && filterAlternateName !== '')
-      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
-
     var filterAqiMajorPollutant = $formFilters.querySelector('.valueAqiMajorPollutant')?.value;
     if(filterAqiMajorPollutant != null && filterAqiMajorPollutant !== '')
       filters.push({ name: 'fq', value: 'aqiMajorPollutant:' + filterAqiMajorPollutant });
@@ -86,6 +78,14 @@ function searchWeatherObservedFilters($formFilters) {
     var filterAqiMajorPollutantForecast = $formFilters.querySelector('.valueAqiMajorPollutantForecast')?.value;
     if(filterAqiMajorPollutantForecast != null && filterAqiMajorPollutantForecast !== '')
       filters.push({ name: 'fq', value: 'aqiMajorPollutantForecast:' + filterAqiMajorPollutantForecast });
+
+    var filterAirTemperatureForecast = $formFilters.querySelector('.valueAirTemperatureForecast')?.value;
+    if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
+      filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
+
+    var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
+    if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
+      filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
 
     var filterAreaServed = $formFilters.querySelector('.valueAreaServed')?.value;
     if(filterAreaServed != null && filterAreaServed !== '')
@@ -457,6 +457,18 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   if(removeEntityId != null && removeEntityId !== '')
     vals['removeEntityId'] = removeEntityId;
 
+  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
+  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value === 'true';
+  var setAlternateName = removeAlternateName ? null : $formValues.querySelector('.setAlternateName')?.value;
+  var addAlternateName = $formValues.querySelector('.addAlternateName')?.value;
+  if(removeAlternateName || setAlternateName != null && setAlternateName !== '')
+    vals['setAlternateName'] = setAlternateName;
+  if(addAlternateName != null && addAlternateName !== '')
+    vals['addAlternateName'] = addAlternateName;
+  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value;
+  if(removeAlternateName != null && removeAlternateName !== '')
+    vals['removeAlternateName'] = removeAlternateName;
+
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   var removeAirQualityIndex = $formValues.querySelector('.removeAirQualityIndex')?.value === 'true';
   var setAirQualityIndex = removeAirQualityIndex ? null : $formValues.querySelector('.setAirQualityIndex')?.value;
@@ -481,42 +493,6 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   if(removeAirQualityIndexForecast != null && removeAirQualityIndexForecast !== '')
     vals['removeAirQualityIndexForecast'] = removeAirQualityIndexForecast;
 
-  var valueAirTemperatureForecast = $formValues.querySelector('.valueAirTemperatureForecast')?.value;
-  var removeAirTemperatureForecast = $formValues.querySelector('.removeAirTemperatureForecast')?.value === 'true';
-  var setAirTemperatureForecast = removeAirTemperatureForecast ? null : $formValues.querySelector('.setAirTemperatureForecast')?.value;
-  var addAirTemperatureForecast = $formValues.querySelector('.addAirTemperatureForecast')?.value;
-  if(removeAirTemperatureForecast || setAirTemperatureForecast != null && setAirTemperatureForecast !== '')
-    vals['setAirTemperatureForecast'] = setAirTemperatureForecast;
-  if(addAirTemperatureForecast != null && addAirTemperatureForecast !== '')
-    vals['addAirTemperatureForecast'] = addAirTemperatureForecast;
-  var removeAirTemperatureForecast = $formValues.querySelector('.removeAirTemperatureForecast')?.value;
-  if(removeAirTemperatureForecast != null && removeAirTemperatureForecast !== '')
-    vals['removeAirTemperatureForecast'] = removeAirTemperatureForecast;
-
-  var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
-  var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value === 'true';
-  var setAirTemperatureTSA = removeAirTemperatureTSA ? null : $formValues.querySelector('.setAirTemperatureTSA')?.value;
-  var addAirTemperatureTSA = $formValues.querySelector('.addAirTemperatureTSA')?.value;
-  if(removeAirTemperatureTSA || setAirTemperatureTSA != null && setAirTemperatureTSA !== '')
-    vals['setAirTemperatureTSA'] = JSON.parse(setAirTemperatureTSA);
-  if(addAirTemperatureTSA != null && addAirTemperatureTSA !== '')
-    vals['addAirTemperatureTSA'] = addAirTemperatureTSA;
-  var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value;
-  if(removeAirTemperatureTSA != null && removeAirTemperatureTSA !== '')
-    vals['removeAirTemperatureTSA'] = removeAirTemperatureTSA;
-
-  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
-  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value === 'true';
-  var setAlternateName = removeAlternateName ? null : $formValues.querySelector('.setAlternateName')?.value;
-  var addAlternateName = $formValues.querySelector('.addAlternateName')?.value;
-  if(removeAlternateName || setAlternateName != null && setAlternateName !== '')
-    vals['setAlternateName'] = setAlternateName;
-  if(addAlternateName != null && addAlternateName !== '')
-    vals['addAlternateName'] = addAlternateName;
-  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value;
-  if(removeAlternateName != null && removeAlternateName !== '')
-    vals['removeAlternateName'] = removeAlternateName;
-
   var valueAqiMajorPollutant = $formValues.querySelector('.valueAqiMajorPollutant')?.value;
   var removeAqiMajorPollutant = $formValues.querySelector('.removeAqiMajorPollutant')?.value === 'true';
   var setAqiMajorPollutant = removeAqiMajorPollutant ? null : $formValues.querySelector('.setAqiMajorPollutant')?.value;
@@ -540,6 +516,30 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   var removeAqiMajorPollutantForecast = $formValues.querySelector('.removeAqiMajorPollutantForecast')?.value;
   if(removeAqiMajorPollutantForecast != null && removeAqiMajorPollutantForecast !== '')
     vals['removeAqiMajorPollutantForecast'] = removeAqiMajorPollutantForecast;
+
+  var valueAirTemperatureForecast = $formValues.querySelector('.valueAirTemperatureForecast')?.value;
+  var removeAirTemperatureForecast = $formValues.querySelector('.removeAirTemperatureForecast')?.value === 'true';
+  var setAirTemperatureForecast = removeAirTemperatureForecast ? null : $formValues.querySelector('.setAirTemperatureForecast')?.value;
+  var addAirTemperatureForecast = $formValues.querySelector('.addAirTemperatureForecast')?.value;
+  if(removeAirTemperatureForecast || setAirTemperatureForecast != null && setAirTemperatureForecast !== '')
+    vals['setAirTemperatureForecast'] = setAirTemperatureForecast;
+  if(addAirTemperatureForecast != null && addAirTemperatureForecast !== '')
+    vals['addAirTemperatureForecast'] = addAirTemperatureForecast;
+  var removeAirTemperatureForecast = $formValues.querySelector('.removeAirTemperatureForecast')?.value;
+  if(removeAirTemperatureForecast != null && removeAirTemperatureForecast !== '')
+    vals['removeAirTemperatureForecast'] = removeAirTemperatureForecast;
+
+  var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
+  var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value === 'true';
+  var setAirTemperatureTSA = removeAirTemperatureTSA ? null : $formValues.querySelector('.setAirTemperatureTSA')?.value;
+  var addAirTemperatureTSA = $formValues.querySelector('.addAirTemperatureTSA')?.value;
+  if(removeAirTemperatureTSA || setAirTemperatureTSA != null && setAirTemperatureTSA !== '')
+    vals['setAirTemperatureTSA'] = JSON.parse(setAirTemperatureTSA);
+  if(addAirTemperatureTSA != null && addAirTemperatureTSA !== '')
+    vals['addAirTemperatureTSA'] = addAirTemperatureTSA;
+  var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value;
+  if(removeAirTemperatureTSA != null && removeAirTemperatureTSA !== '')
+    vals['removeAirTemperatureTSA'] = removeAirTemperatureTSA;
 
   var valueAreaServed = $formValues.querySelector('.valueAreaServed')?.value;
   var removeAreaServed = $formValues.querySelector('.removeAreaServed')?.value === 'true';
@@ -1049,6 +1049,10 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterEntityId != null && filterEntityId !== '')
       filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
 
+    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
+    if(filterAlternateName != null && filterAlternateName !== '')
+      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
+
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -1057,18 +1061,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterAirQualityIndexForecast != null && filterAirQualityIndexForecast !== '')
       filters.push({ name: 'fq', value: 'airQualityIndexForecast:' + filterAirQualityIndexForecast });
 
-    var filterAirTemperatureForecast = $formFilters.querySelector('.valueAirTemperatureForecast')?.value;
-    if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
-      filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
-
-    var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
-    if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
-      filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
-
-    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
-    if(filterAlternateName != null && filterAlternateName !== '')
-      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
-
     var filterAqiMajorPollutant = $formFilters.querySelector('.valueAqiMajorPollutant')?.value;
     if(filterAqiMajorPollutant != null && filterAqiMajorPollutant !== '')
       filters.push({ name: 'fq', value: 'aqiMajorPollutant:' + filterAqiMajorPollutant });
@@ -1076,6 +1068,14 @@ function patchWeatherObservedFilters($formFilters) {
     var filterAqiMajorPollutantForecast = $formFilters.querySelector('.valueAqiMajorPollutantForecast')?.value;
     if(filterAqiMajorPollutantForecast != null && filterAqiMajorPollutantForecast !== '')
       filters.push({ name: 'fq', value: 'aqiMajorPollutantForecast:' + filterAqiMajorPollutantForecast });
+
+    var filterAirTemperatureForecast = $formFilters.querySelector('.valueAirTemperatureForecast')?.value;
+    if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
+      filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
+
+    var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
+    if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
+      filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
 
     var filterAreaServed = $formFilters.querySelector('.valueAreaServed')?.value;
     if(filterAreaServed != null && filterAreaServed !== '')
@@ -1360,6 +1360,10 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueEntityId != null && valueEntityId !== '')
     vals['entityId'] = valueEntityId;
 
+  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
+  if(valueAlternateName != null && valueAlternateName !== '')
+    vals['alternateName'] = valueAlternateName;
+
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   if(valueAirQualityIndex != null && valueAirQualityIndex !== '')
     vals['airQualityIndex'] = valueAirQualityIndex;
@@ -1368,18 +1372,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueAirQualityIndexForecast != null && valueAirQualityIndexForecast !== '')
     vals['airQualityIndexForecast'] = valueAirQualityIndexForecast;
 
-  var valueAirTemperatureForecast = $formValues.querySelector('.valueAirTemperatureForecast')?.value;
-  if(valueAirTemperatureForecast != null && valueAirTemperatureForecast !== '')
-    vals['airTemperatureForecast'] = valueAirTemperatureForecast;
-
-  var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
-  if(valueAirTemperatureTSA != null && valueAirTemperatureTSA !== '')
-    vals['airTemperatureTSA'] = JSON.parse(valueAirTemperatureTSA);
-
-  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
-  if(valueAlternateName != null && valueAlternateName !== '')
-    vals['alternateName'] = valueAlternateName;
-
   var valueAqiMajorPollutant = $formValues.querySelector('.valueAqiMajorPollutant')?.value;
   if(valueAqiMajorPollutant != null && valueAqiMajorPollutant !== '')
     vals['aqiMajorPollutant'] = valueAqiMajorPollutant;
@@ -1387,6 +1379,14 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueAqiMajorPollutantForecast = $formValues.querySelector('.valueAqiMajorPollutantForecast')?.value;
   if(valueAqiMajorPollutantForecast != null && valueAqiMajorPollutantForecast !== '')
     vals['aqiMajorPollutantForecast'] = valueAqiMajorPollutantForecast;
+
+  var valueAirTemperatureForecast = $formValues.querySelector('.valueAirTemperatureForecast')?.value;
+  if(valueAirTemperatureForecast != null && valueAirTemperatureForecast !== '')
+    vals['airTemperatureForecast'] = valueAirTemperatureForecast;
+
+  var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
+  if(valueAirTemperatureTSA != null && valueAirTemperatureTSA !== '')
+    vals['airTemperatureTSA'] = JSON.parse(valueAirTemperatureTSA);
 
   var valueAreaServed = $formValues.querySelector('.valueAreaServed')?.value;
   if(valueAreaServed != null && valueAreaServed !== '')
@@ -1664,13 +1664,13 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputDeleted = null;
         var inputAddress = null;
         var inputEntityId = null;
+        var inputAlternateName = null;
         var inputAirQualityIndex = null;
         var inputAirQualityIndexForecast = null;
-        var inputAirTemperatureForecast = null;
-        var inputAirTemperatureTSA = null;
-        var inputAlternateName = null;
         var inputAqiMajorPollutant = null;
         var inputAqiMajorPollutantForecast = null;
+        var inputAirTemperatureForecast = null;
+        var inputAirTemperatureTSA = null;
         var inputAreaServed = null;
         var inputAtmosphericPressure = null;
         var inputDataProvider = null;
@@ -1740,20 +1740,20 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputAddress = $response.querySelector('#Page_address');
         if(vars.includes('entityId'))
           inputEntityId = $response.querySelector('#Page_entityId');
+        if(vars.includes('alternateName'))
+          inputAlternateName = $response.querySelector('#Page_alternateName');
         if(vars.includes('airQualityIndex'))
           inputAirQualityIndex = $response.querySelector('#Page_airQualityIndex');
         if(vars.includes('airQualityIndexForecast'))
           inputAirQualityIndexForecast = $response.querySelector('#Page_airQualityIndexForecast');
-        if(vars.includes('airTemperatureForecast'))
-          inputAirTemperatureForecast = $response.querySelector('#Page_airTemperatureForecast');
-        if(vars.includes('airTemperatureTSA'))
-          inputAirTemperatureTSA = $response.querySelector('#Page_airTemperatureTSA');
-        if(vars.includes('alternateName'))
-          inputAlternateName = $response.querySelector('#Page_alternateName');
         if(vars.includes('aqiMajorPollutant'))
           inputAqiMajorPollutant = $response.querySelector('#Page_aqiMajorPollutant');
         if(vars.includes('aqiMajorPollutantForecast'))
           inputAqiMajorPollutantForecast = $response.querySelector('#Page_aqiMajorPollutantForecast');
+        if(vars.includes('airTemperatureForecast'))
+          inputAirTemperatureForecast = $response.querySelector('#Page_airTemperatureForecast');
+        if(vars.includes('airTemperatureTSA'))
+          inputAirTemperatureTSA = $response.querySelector('#Page_airTemperatureTSA');
         if(vars.includes('areaServed'))
           inputAreaServed = $response.querySelector('#Page_areaServed');
         if(vars.includes('atmosphericPressure'))
@@ -1904,6 +1904,11 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_entityId'));
         }
 
+        if(inputAlternateName) {
+          inputAlternateName.replaceAll('#Page_alternateName');
+          addGlow(document.querySelector('#Page_alternateName'));
+        }
+
         if(inputAirQualityIndex) {
           inputAirQualityIndex.replaceAll('#Page_airQualityIndex');
           addGlow(document.querySelector('#Page_airQualityIndex'));
@@ -1914,21 +1919,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_airQualityIndexForecast'));
         }
 
-        if(inputAirTemperatureForecast) {
-          inputAirTemperatureForecast.replaceAll('#Page_airTemperatureForecast');
-          addGlow(document.querySelector('#Page_airTemperatureForecast'));
-        }
-
-        if(inputAirTemperatureTSA) {
-          inputAirTemperatureTSA.replaceAll('#Page_airTemperatureTSA');
-          addGlow(document.querySelector('#Page_airTemperatureTSA'));
-        }
-
-        if(inputAlternateName) {
-          inputAlternateName.replaceAll('#Page_alternateName');
-          addGlow(document.querySelector('#Page_alternateName'));
-        }
-
         if(inputAqiMajorPollutant) {
           inputAqiMajorPollutant.replaceAll('#Page_aqiMajorPollutant');
           addGlow(document.querySelector('#Page_aqiMajorPollutant'));
@@ -1937,6 +1927,16 @@ async function websocketWeatherObservedInner(apiRequest) {
         if(inputAqiMajorPollutantForecast) {
           inputAqiMajorPollutantForecast.replaceAll('#Page_aqiMajorPollutantForecast');
           addGlow(document.querySelector('#Page_aqiMajorPollutantForecast'));
+        }
+
+        if(inputAirTemperatureForecast) {
+          inputAirTemperatureForecast.replaceAll('#Page_airTemperatureForecast');
+          addGlow(document.querySelector('#Page_airTemperatureForecast'));
+        }
+
+        if(inputAirTemperatureTSA) {
+          inputAirTemperatureTSA.replaceAll('#Page_airTemperatureTSA');
+          addGlow(document.querySelector('#Page_airTemperatureTSA'));
         }
 
         if(inputAreaServed) {
