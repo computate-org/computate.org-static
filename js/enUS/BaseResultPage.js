@@ -16,7 +16,7 @@ async function websocketBaseResult(success) {
       var $margin = document.createElement('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.createElement('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.createElement('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.createElement(');
+      var $i = document.createElement('');
       var $headerSpan = document.createElement('<span>').setAttribute('class', '').text('modify  in ' + json.timeRemaining);
       var $x = document.createElement('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.createElement('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
@@ -65,6 +65,7 @@ async function websocketBaseResultInner(apiRequest) {
         var inputObjectId = null;
         var inputArchived = null;
         var inputDeleted = null;
+        var inputPageUrlPk = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -77,7 +78,6 @@ async function websocketBaseResultInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputPageUrlId = null;
-        var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
 
@@ -91,6 +91,8 @@ async function websocketBaseResultInner(apiRequest) {
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.querySelector('#Page_deleted');
+        if(vars.includes('pageUrlPk'))
+          inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -115,8 +117,6 @@ async function websocketBaseResultInner(apiRequest) {
           inputObjectText = $response.querySelector('#Page_objectText');
         if(vars.includes('pageUrlId'))
           inputPageUrlId = $response.querySelector('#Page_pageUrlId');
-        if(vars.includes('pageUrlPk'))
-          inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
@@ -150,6 +150,11 @@ async function websocketBaseResultInner(apiRequest) {
         if(inputDeleted) {
           inputDeleted.replaceAll('#Page_deleted');
           addGlow(document.querySelector('#Page_deleted'));
+        }
+
+        if(inputPageUrlPk) {
+          inputPageUrlPk.replaceAll('#Page_pageUrlPk');
+          addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputInheritPk) {
@@ -210,11 +215,6 @@ async function websocketBaseResultInner(apiRequest) {
         if(inputPageUrlId) {
           inputPageUrlId.replaceAll('#Page_pageUrlId');
           addGlow(document.querySelector('#Page_pageUrlId'));
-        }
-
-        if(inputPageUrlPk) {
-          inputPageUrlPk.replaceAll('#Page_pageUrlPk');
-          addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputPageUrlApi) {

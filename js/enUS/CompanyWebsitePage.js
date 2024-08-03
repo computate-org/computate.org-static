@@ -579,7 +579,7 @@ async function websocketCompanyWebsite(success) {
       var $margin = document.createElement('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.createElement('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.createElement('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.createElement('<i class="fa-regular fa-globe-pointer"></i>);
+      var $i = document.createElement('<i class="fa-regular fa-globe-pointer"></i>');
       var $headerSpan = document.createElement('<span>').setAttribute('class', '').text('modify websites in ' + json.timeRemaining);
       var $x = document.createElement('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.createElement('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);

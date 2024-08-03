@@ -23,6 +23,7 @@
   --site-results-gap-width-list: var(--sl-spacing-3x-small) var(--sl-spacing-small);
   --site-results-gap-width-card: var(--sl-spacing-medium);
   --site-results-icon-size: 9rem;
+  --site-results-icon-card-size: 12rem;
   --content-width: 56rem;
 }
 @media (max-width:600px){
@@ -99,6 +100,21 @@ body {
 
 #site-grid > main {
   grid-area: main;
+  & > div {
+    margin-block-end: 1rem;
+  }
+  & > h1 > sl-button {
+    &::part(label) {
+      color: var(--sl-color-neutral-900);
+      font-size: var(--sl-font-size-2x-large);
+      text-decoration: underline;
+    }
+    &:hover {
+      &::part(label) {
+        text-decoration: none;
+      }
+    }
+  }
 }
 #site-grid > header {
   grid-area: header;
@@ -112,10 +128,14 @@ body {
   grid-area: asideleft;
   padding: 1rem;
 }
-#site-aside-left li {
-  list-style: none;
-}
 #site-aside-left ul {
+  & li {
+    list-style: none;
+    padding-block: .2rem;
+    & sl-button {
+      width: 100%;
+    }
+  }
   border-inline-start: var(--sl-border-width-s) solid var(--sl-color-surface-border);
   padding-inline-start: var(--sl-space-m);
 }
@@ -262,10 +282,10 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
   gap: var(--site-results-gap-width-details);
 }
 .grid-mode-details > a, .grid-mode-details > div {
-  grid-template-columns: 5ch .5fr 2fr;
-  gap: 0.5rem;
+  grid-template-columns: min-content auto auto;
+  gap: 2rem;
 
-  padding: .5rem 0;
+  padding: var(--sl-spacing-small);
 }
 /* grid list mode */
 .grid-mode-list {
@@ -273,28 +293,27 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
   gap: var(--site-results-gap-width-list);
 }
 .grid-mode-list > a, .grid-mode-list > div {
-  grid-template-columns: 5ch 1fr;
+  grid-template-columns: min-content 1fr;
   grid-gap: var(--site-results-gap-width-list);
-  padding: .5rem 0;
+  padding: var(--sl-spacing-small);
 }
 .grid-mode-list > a > div:not(:nth-child(1),:nth-child(2)) {
   display: none;
 }
 /* grid card mode */
 .grid-mode-card {
-  grid-template-columns: repeat(auto-fit, var(--site-results-icon-size));
+  grid-template-columns: repeat(auto-fit, var(--site-results-icon-card-size));
   gap: var(--site-results-gap-width-card);
 }
 .grid-mode-card > a {
   grid-template-columns: var(--site-results-icon-size);
   gap: 1rem;
-
   padding-block-end: var(--sl-spacing-small);
 }
 .site-result-icon {
   text-align: center;
 }
-.grid-mode-card > a > .site-result-icon {
+.grid-mode-card > a > i {
   font-size: var(--site-results-icon-size);
 }
 .grid-mode-card > a > div {

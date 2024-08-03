@@ -51,9 +51,9 @@ function searchCompanyProductFilters($formFilters) {
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
 
-    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
-    if(filterPageId != null && filterPageId !== '')
-      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
     var filterUri = $formFilters.querySelector('.valueUri')?.value;
     if(filterUri != null && filterUri !== '')
@@ -62,6 +62,10 @@ function searchCompanyProductFilters($formFilters) {
     var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -272,17 +276,17 @@ async function patchCompanyProduct($formFilters, $formValues, id, success, error
   if(removeName != null && removeName !== '')
     vals['removeName'] = removeName;
 
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
-  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
-  var addPageId = $formValues.querySelector('.addPageId')?.value;
-  if(removePageId || setPageId != null && setPageId !== '')
-    vals['setPageId'] = setPageId;
-  if(addPageId != null && addPageId !== '')
-    vals['addPageId'] = addPageId;
-  var removePageId = $formValues.querySelector('.removePageId')?.value;
-  if(removePageId != null && removePageId !== '')
-    vals['removePageId'] = removePageId;
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
+  var setDescription = removeDescription ? null : $formValues.querySelector('.setDescription')?.value;
+  var addDescription = $formValues.querySelector('.addDescription')?.value;
+  if(removeDescription || setDescription != null && setDescription !== '')
+    vals['setDescription'] = setDescription;
+  if(addDescription != null && addDescription !== '')
+    vals['addDescription'] = addDescription;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value;
+  if(removeDescription != null && removeDescription !== '')
+    vals['removeDescription'] = removeDescription;
 
   var valueUri = $formValues.querySelector('.valueUri')?.value;
   var removeUri = $formValues.querySelector('.removeUri')?.value === 'true';
@@ -307,6 +311,18 @@ async function patchCompanyProduct($formFilters, $formValues, id, success, error
   var removeUrl = $formValues.querySelector('.removeUrl')?.value;
   if(removeUrl != null && removeUrl !== '')
     vals['removeUrl'] = removeUrl;
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
+  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
+  var addPageId = $formValues.querySelector('.addPageId')?.value;
+  if(removePageId || setPageId != null && setPageId !== '')
+    vals['setPageId'] = setPageId;
+  if(addPageId != null && addPageId !== '')
+    vals['addPageId'] = addPageId;
+  var removePageId = $formValues.querySelector('.removePageId')?.value;
+  if(removePageId != null && removePageId !== '')
+    vals['removePageId'] = removePageId;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -343,18 +359,6 @@ async function patchCompanyProduct($formFilters, $formValues, id, success, error
   var removeUserKey = $formValues.querySelector('.removeUserKey')?.value;
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
-
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
 
   var valueId = $formValues.querySelector('.valueId')?.value;
   var removeId = $formValues.querySelector('.removeId')?.value === 'true';
@@ -448,9 +452,9 @@ function patchCompanyProductFilters($formFilters) {
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
 
-    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
-    if(filterPageId != null && filterPageId !== '')
-      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
     var filterUri = $formFilters.querySelector('.valueUri')?.value;
     if(filterUri != null && filterUri !== '')
@@ -459,6 +463,10 @@ function patchCompanyProductFilters($formFilters) {
     var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -599,9 +607,9 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueName != null && valueName !== '')
     vals['name'] = valueName;
 
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  if(valuePageId != null && valuePageId !== '')
-    vals['pageId'] = valuePageId;
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  if(valueDescription != null && valueDescription !== '')
+    vals['description'] = valueDescription;
 
   var valueUri = $formValues.querySelector('.valueUri')?.value;
   if(valueUri != null && valueUri !== '')
@@ -610,6 +618,10 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueUrl = $formValues.querySelector('.valueUrl')?.value;
   if(valueUrl != null && valueUrl !== '')
     vals['url'] = valueUrl;
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  if(valuePageId != null && valuePageId !== '')
+    vals['pageId'] = valuePageId;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -622,10 +634,6 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
-
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
 
   var valueId = $formValues.querySelector('.valueId')?.value;
   if(valueId != null && valueId !== '')
@@ -715,7 +723,7 @@ async function websocketCompanyProduct(success) {
       var $margin = document.createElement('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.createElement('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.createElement('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.createElement('<i class="fa-regular fa-conveyor-belt"></i>);
+      var $i = document.createElement('<i class="fa-regular fa-conveyor-belt"></i>');
       var $headerSpan = document.createElement('<span>').setAttribute('class', '').text('modify products in ' + json.timeRemaining);
       var $x = document.createElement('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.createElement('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
@@ -765,9 +773,10 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputArchived = null;
         var inputDeleted = null;
         var inputName = null;
-        var inputPageId = null;
+        var inputDescription = null;
         var inputUri = null;
         var inputUrl = null;
+        var inputPageId = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -799,12 +808,14 @@ async function websocketCompanyProductInner(apiRequest) {
           inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('name'))
           inputName = $response.querySelector('#Page_name');
-        if(vars.includes('pageId'))
-          inputPageId = $response.querySelector('#Page_pageId');
+        if(vars.includes('description'))
+          inputDescription = $response.querySelector('#Page_description');
         if(vars.includes('uri'))
           inputUri = $response.querySelector('#Page_uri');
         if(vars.includes('url'))
           inputUrl = $response.querySelector('#Page_url');
+        if(vars.includes('pageId'))
+          inputPageId = $response.querySelector('#Page_pageId');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -877,9 +888,9 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('#Page_name'));
         }
 
-        if(inputPageId) {
-          inputPageId.replaceAll('#Page_pageId');
-          addGlow(document.querySelector('#Page_pageId'));
+        if(inputDescription) {
+          inputDescription.replaceAll('#Page_description');
+          addGlow(document.querySelector('#Page_description'));
         }
 
         if(inputUri) {
@@ -890,6 +901,11 @@ async function websocketCompanyProductInner(apiRequest) {
         if(inputUrl) {
           inputUrl.replaceAll('#Page_url');
           addGlow(document.querySelector('#Page_url'));
+        }
+
+        if(inputPageId) {
+          inputPageId.replaceAll('#Page_pageId');
+          addGlow(document.querySelector('#Page_pageId'));
         }
 
         if(inputInheritPk) {
