@@ -651,7 +651,7 @@ async function postSitePage($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
-      addGlow($formValues.next('button'));
+      addGlow(target);
       var url = data['pageUrlPk'];
       if(url)
         window.location.href = url;
@@ -659,7 +659,7 @@ async function postSitePage($formValues, target, success, error) {
   }
   if(error == null) {
     error = function( jqXhr, textStatus, errorThrown ) {
-      addError($formValues.next('button'));
+      addError(target);
     };
   }
 

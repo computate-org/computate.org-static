@@ -100,8 +100,6 @@ body {
 
 #site-grid > main {
   grid-area: main;
-  max-width: 100ch;
-  margin-inline: auto;
   & > div {
     margin-block-end: 1rem;
   }
@@ -170,7 +168,7 @@ a:hover, a:active {
 /* top bar stuff */
 #top-bar {
   /* padding: var(--sl-space-m); */
-  padding: 1rem;
+  padding-block: 1rem;
   display: flex;
   gap: var(--sl-spacing-m);
 }

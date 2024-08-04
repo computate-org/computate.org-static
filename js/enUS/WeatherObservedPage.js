@@ -51,6 +51,18 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
+
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
+
+    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
+    if(filterAlternateName != null && filterAlternateName !== '')
+      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
+
     var filterAddress = $formFilters.querySelector('.valueAddress')?.value;
     if(filterAddress != null && filterAddress !== '')
       filters.push({ name: 'fq', value: 'address:' + filterAddress });
@@ -58,10 +70,6 @@ function searchWeatherObservedFilters($formFilters) {
     var filterEntityId = $formFilters.querySelector('.valueEntityId')?.value;
     if(filterEntityId != null && filterEntityId !== '')
       filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
-
-    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
-    if(filterAlternateName != null && filterAlternateName !== '')
-      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
 
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
@@ -111,10 +119,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterDateObserved != null && filterDateObserved !== '')
       filters.push({ name: 'fq', value: 'dateObserved:' + filterDateObserved });
 
-    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
-    if(filterDescription != null && filterDescription !== '')
-      filters.push({ name: 'fq', value: 'description:' + filterDescription });
-
     var filterDewPoint = $formFilters.querySelector('.valueDewPoint')?.value;
     if(filterDewPoint != null && filterDewPoint !== '')
       filters.push({ name: 'fq', value: 'dewPoint:' + filterDewPoint });
@@ -142,10 +146,6 @@ function searchWeatherObservedFilters($formFilters) {
     var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
     if(filterLocation != null && filterLocation !== '')
       filters.push({ name: 'fq', value: 'location:' + filterLocation });
-
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
 
     var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
     if(filterOwner != null && filterOwner !== '')
@@ -433,6 +433,42 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
+  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
+  var addName = $formValues.querySelector('.addName')?.value;
+  if(removeName || setName != null && setName !== '')
+    vals['setName'] = setName;
+  if(addName != null && addName !== '')
+    vals['addName'] = addName;
+  var removeName = $formValues.querySelector('.removeName')?.value;
+  if(removeName != null && removeName !== '')
+    vals['removeName'] = removeName;
+
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
+  var setDescription = removeDescription ? null : $formValues.querySelector('.setDescription')?.value;
+  var addDescription = $formValues.querySelector('.addDescription')?.value;
+  if(removeDescription || setDescription != null && setDescription !== '')
+    vals['setDescription'] = setDescription;
+  if(addDescription != null && addDescription !== '')
+    vals['addDescription'] = addDescription;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value;
+  if(removeDescription != null && removeDescription !== '')
+    vals['removeDescription'] = removeDescription;
+
+  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
+  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value === 'true';
+  var setAlternateName = removeAlternateName ? null : $formValues.querySelector('.setAlternateName')?.value;
+  var addAlternateName = $formValues.querySelector('.addAlternateName')?.value;
+  if(removeAlternateName || setAlternateName != null && setAlternateName !== '')
+    vals['setAlternateName'] = setAlternateName;
+  if(addAlternateName != null && addAlternateName !== '')
+    vals['addAlternateName'] = addAlternateName;
+  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value;
+  if(removeAlternateName != null && removeAlternateName !== '')
+    vals['removeAlternateName'] = removeAlternateName;
+
   var valueAddress = $formValues.querySelector('.valueAddress')?.value;
   var removeAddress = $formValues.querySelector('.removeAddress')?.value === 'true';
   var setAddress = removeAddress ? null : $formValues.querySelector('.setAddress')?.value;
@@ -456,18 +492,6 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   var removeEntityId = $formValues.querySelector('.removeEntityId')?.value;
   if(removeEntityId != null && removeEntityId !== '')
     vals['removeEntityId'] = removeEntityId;
-
-  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
-  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value === 'true';
-  var setAlternateName = removeAlternateName ? null : $formValues.querySelector('.setAlternateName')?.value;
-  var addAlternateName = $formValues.querySelector('.addAlternateName')?.value;
-  if(removeAlternateName || setAlternateName != null && setAlternateName !== '')
-    vals['setAlternateName'] = setAlternateName;
-  if(addAlternateName != null && addAlternateName !== '')
-    vals['addAlternateName'] = addAlternateName;
-  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value;
-  if(removeAlternateName != null && removeAlternateName !== '')
-    vals['removeAlternateName'] = removeAlternateName;
 
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   var removeAirQualityIndex = $formValues.querySelector('.removeAirQualityIndex')?.value === 'true';
@@ -613,18 +637,6 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   if(removeDateObserved != null && removeDateObserved !== '')
     vals['removeDateObserved'] = removeDateObserved;
 
-  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
-  var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
-  var setDescription = removeDescription ? null : $formValues.querySelector('.setDescription')?.value;
-  var addDescription = $formValues.querySelector('.addDescription')?.value;
-  if(removeDescription || setDescription != null && setDescription !== '')
-    vals['setDescription'] = setDescription;
-  if(addDescription != null && addDescription !== '')
-    vals['addDescription'] = addDescription;
-  var removeDescription = $formValues.querySelector('.removeDescription')?.value;
-  if(removeDescription != null && removeDescription !== '')
-    vals['removeDescription'] = removeDescription;
-
   var valueDewPoint = $formValues.querySelector('.valueDewPoint')?.value;
   var removeDewPoint = $formValues.querySelector('.removeDewPoint')?.value === 'true';
   var setDewPoint = removeDewPoint ? null : $formValues.querySelector('.setDewPoint')?.value;
@@ -708,18 +720,6 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   var removeLocation = $formValues.querySelector('.removeLocation')?.value;
   if(removeLocation != null && removeLocation !== '')
     vals['removeLocation'] = removeLocation;
-
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
-  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
-  var addName = $formValues.querySelector('.addName')?.value;
-  if(removeName || setName != null && setName !== '')
-    vals['setName'] = setName;
-  if(addName != null && addName !== '')
-    vals['addName'] = addName;
-  var removeName = $formValues.querySelector('.removeName')?.value;
-  if(removeName != null && removeName !== '')
-    vals['removeName'] = removeName;
 
   var valueOwner = $formValues.querySelector('.valueOwner')?.value;
   var removeOwner = $formValues.querySelector('.removeOwner')?.value === 'true';
@@ -985,18 +985,6 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
-
   patchWeatherObservedVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
@@ -1041,6 +1029,18 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
+
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
+
+    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
+    if(filterAlternateName != null && filterAlternateName !== '')
+      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
+
     var filterAddress = $formFilters.querySelector('.valueAddress')?.value;
     if(filterAddress != null && filterAddress !== '')
       filters.push({ name: 'fq', value: 'address:' + filterAddress });
@@ -1048,10 +1048,6 @@ function patchWeatherObservedFilters($formFilters) {
     var filterEntityId = $formFilters.querySelector('.valueEntityId')?.value;
     if(filterEntityId != null && filterEntityId !== '')
       filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
-
-    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
-    if(filterAlternateName != null && filterAlternateName !== '')
-      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
 
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
@@ -1101,10 +1097,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterDateObserved != null && filterDateObserved !== '')
       filters.push({ name: 'fq', value: 'dateObserved:' + filterDateObserved });
 
-    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
-    if(filterDescription != null && filterDescription !== '')
-      filters.push({ name: 'fq', value: 'description:' + filterDescription });
-
     var filterDewPoint = $formFilters.querySelector('.valueDewPoint')?.value;
     if(filterDewPoint != null && filterDewPoint !== '')
       filters.push({ name: 'fq', value: 'dewPoint:' + filterDewPoint });
@@ -1132,10 +1124,6 @@ function patchWeatherObservedFilters($formFilters) {
     var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
     if(filterLocation != null && filterLocation !== '')
       filters.push({ name: 'fq', value: 'location:' + filterLocation });
-
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
 
     var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
     if(filterOwner != null && filterOwner !== '')
@@ -1316,7 +1304,7 @@ async function postWeatherObserved($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
-      addGlow($formValues.next('button'));
+      addGlow(target);
       var url = data['pageUrlPk'];
       if(url)
         window.location.href = url;
@@ -1324,7 +1312,7 @@ async function postWeatherObserved($formValues, target, success, error) {
   }
   if(error == null) {
     error = function( jqXhr, textStatus, errorThrown ) {
-      addError($formValues.next('button'));
+      addError(target);
     };
   }
 
@@ -1352,6 +1340,18 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueDeleted != null && valueDeleted !== '')
     vals['deleted'] = valueDeleted == 'true';
 
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  if(valueName != null && valueName !== '')
+    vals['name'] = valueName;
+
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  if(valueDescription != null && valueDescription !== '')
+    vals['description'] = valueDescription;
+
+  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
+  if(valueAlternateName != null && valueAlternateName !== '')
+    vals['alternateName'] = valueAlternateName;
+
   var valueAddress = $formValues.querySelector('.valueAddress')?.value;
   if(valueAddress != null && valueAddress !== '')
     vals['address'] = JSON.parse(valueAddress);
@@ -1359,10 +1359,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueEntityId = $formValues.querySelector('.valueEntityId')?.value;
   if(valueEntityId != null && valueEntityId !== '')
     vals['entityId'] = valueEntityId;
-
-  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
-  if(valueAlternateName != null && valueAlternateName !== '')
-    vals['alternateName'] = valueAlternateName;
 
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   if(valueAirQualityIndex != null && valueAirQualityIndex !== '')
@@ -1412,10 +1408,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueDateObserved != null && valueDateObserved !== '')
     vals['dateObserved'] = valueDateObserved;
 
-  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
-  if(valueDescription != null && valueDescription !== '')
-    vals['description'] = valueDescription;
-
   var valueDewPoint = $formValues.querySelector('.valueDewPoint')?.value;
   if(valueDewPoint != null && valueDewPoint !== '')
     vals['dewPoint'] = valueDewPoint;
@@ -1443,10 +1435,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueLocation = $formValues.querySelector('.valueLocation')?.value;
   if(valueLocation != null && valueLocation !== '')
     vals['location'] = JSON.parse(valueLocation);
-
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  if(valueName != null && valueName !== '')
-    vals['name'] = valueName;
 
   var valueOwner = $formValues.querySelector('.valueOwner')?.value;
   if(valueOwner != null && valueOwner !== '')
@@ -1535,10 +1523,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
-
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
 
   fetch(
     '/api/weather-observed'
@@ -1662,9 +1646,11 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputModified = null;
         var inputArchived = null;
         var inputDeleted = null;
+        var inputName = null;
+        var inputDescription = null;
+        var inputAlternateName = null;
         var inputAddress = null;
         var inputEntityId = null;
-        var inputAlternateName = null;
         var inputAirQualityIndex = null;
         var inputAirQualityIndexForecast = null;
         var inputAqiMajorPollutant = null;
@@ -1677,7 +1663,6 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputDateCreated = null;
         var inputDateModified = null;
         var inputDateObserved = null;
-        var inputDescription = null;
         var inputDewPoint = null;
         var inputDiffuseIrradiation = null;
         var inputDirectIrradiation = null;
@@ -1685,7 +1670,6 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputGustSpeed = null;
         var inputIlluminance = null;
         var inputLocation = null;
-        var inputName = null;
         var inputOwner = null;
         var inputPrecipitation = null;
         var inputPrecipitationForecast = null;
@@ -1736,12 +1720,16 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.querySelector('#Page_deleted');
+        if(vars.includes('name'))
+          inputName = $response.querySelector('#Page_name');
+        if(vars.includes('description'))
+          inputDescription = $response.querySelector('#Page_description');
+        if(vars.includes('alternateName'))
+          inputAlternateName = $response.querySelector('#Page_alternateName');
         if(vars.includes('address'))
           inputAddress = $response.querySelector('#Page_address');
         if(vars.includes('entityId'))
           inputEntityId = $response.querySelector('#Page_entityId');
-        if(vars.includes('alternateName'))
-          inputAlternateName = $response.querySelector('#Page_alternateName');
         if(vars.includes('airQualityIndex'))
           inputAirQualityIndex = $response.querySelector('#Page_airQualityIndex');
         if(vars.includes('airQualityIndexForecast'))
@@ -1766,8 +1754,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputDateModified = $response.querySelector('#Page_dateModified');
         if(vars.includes('dateObserved'))
           inputDateObserved = $response.querySelector('#Page_dateObserved');
-        if(vars.includes('description'))
-          inputDescription = $response.querySelector('#Page_description');
         if(vars.includes('dewPoint'))
           inputDewPoint = $response.querySelector('#Page_dewPoint');
         if(vars.includes('diffuseIrradiation'))
@@ -1782,8 +1768,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputIlluminance = $response.querySelector('#Page_illuminance');
         if(vars.includes('location'))
           inputLocation = $response.querySelector('#Page_location');
-        if(vars.includes('name'))
-          inputName = $response.querySelector('#Page_name');
         if(vars.includes('owner'))
           inputOwner = $response.querySelector('#Page_owner');
         if(vars.includes('precipitation'))
@@ -1894,6 +1878,21 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_deleted'));
         }
 
+        if(inputName) {
+          inputName.replaceAll('#Page_name');
+          addGlow(document.querySelector('#Page_name'));
+        }
+
+        if(inputDescription) {
+          inputDescription.replaceAll('#Page_description');
+          addGlow(document.querySelector('#Page_description'));
+        }
+
+        if(inputAlternateName) {
+          inputAlternateName.replaceAll('#Page_alternateName');
+          addGlow(document.querySelector('#Page_alternateName'));
+        }
+
         if(inputAddress) {
           inputAddress.replaceAll('#Page_address');
           addGlow(document.querySelector('#Page_address'));
@@ -1902,11 +1901,6 @@ async function websocketWeatherObservedInner(apiRequest) {
         if(inputEntityId) {
           inputEntityId.replaceAll('#Page_entityId');
           addGlow(document.querySelector('#Page_entityId'));
-        }
-
-        if(inputAlternateName) {
-          inputAlternateName.replaceAll('#Page_alternateName');
-          addGlow(document.querySelector('#Page_alternateName'));
         }
 
         if(inputAirQualityIndex) {
@@ -1969,11 +1963,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_dateObserved'));
         }
 
-        if(inputDescription) {
-          inputDescription.replaceAll('#Page_description');
-          addGlow(document.querySelector('#Page_description'));
-        }
-
         if(inputDewPoint) {
           inputDewPoint.replaceAll('#Page_dewPoint');
           addGlow(document.querySelector('#Page_dewPoint'));
@@ -2007,11 +1996,6 @@ async function websocketWeatherObservedInner(apiRequest) {
         if(inputLocation) {
           inputLocation.replaceAll('#Page_location');
           addGlow(document.querySelector('#Page_location'));
-        }
-
-        if(inputName) {
-          inputName.replaceAll('#Page_name');
-          addGlow(document.querySelector('#Page_name'));
         }
 
         if(inputOwner) {
