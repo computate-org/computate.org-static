@@ -167,7 +167,6 @@ a:hover, a:active {
 /* mobile menu close button stuff (copied from web awesome documentation page) */
 /* top bar stuff */
 #top-bar {
-  /* padding: var(--sl-space-m); */
   padding-block: 1rem;
   display: flex;
   gap: var(--sl-spacing-m);
