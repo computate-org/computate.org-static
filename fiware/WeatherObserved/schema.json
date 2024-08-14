@@ -13,9 +13,25 @@
   } ],
   "required" : [ ],
   "properties" : {
+    "name" : {
+      "type" : "string",
+      "description" : "The name of this item"
+    },
+    "description" : {
+      "type" : "string",
+      "description" : "A description of this item"
+    },
     "address" : {
       "type" : "object",
       "description" : "The mailing address"
+    },
+    "alternateName" : {
+      "type" : "string",
+      "description" : "An alternative name for this item"
+    },
+    "areaServed" : {
+      "type" : "geo:linestring",
+      "description" : "The geographic area where a service or offered item is provided"
     },
     "airQualityIndex" : {
       "type" : "number",
@@ -25,18 +41,6 @@
       "type" : "number",
       "description" : "Forecasted overall Air Quality Index (AQI) over a certain duration in future"
     },
-    "airTemperatureForecast" : {
-      "type" : "number",
-      "description" : "Forecasted value of air temperature over a certain duration in future"
-    },
-    "airTemperatureTSA" : {
-      "type" : "object",
-      "description" : "Air temperature time series aggregation"
-    },
-    "alternateName" : {
-      "type" : "string",
-      "description" : "An alternative name for this item"
-    },
     "aqiMajorPollutant" : {
       "type" : "string",
       "description" : "Major pollutant in the Air Quality Index (AQI)"
@@ -45,9 +49,13 @@
       "type" : "string",
       "description" : "Forecasted major air pollutant in the Air Quality Index (AQI) over a certain duration in future"
     },
-    "areaServed" : {
-      "type" : "geo:linestring",
-      "description" : "The geographic area where a service or offered item is provided"
+    "airTemperatureForecast" : {
+      "type" : "number",
+      "description" : "Forecasted value of air temperature over a certain duration in future"
+    },
+    "airTemperatureTSA" : {
+      "type" : "object",
+      "description" : "Air temperature time series aggregation"
     },
     "atmosphericPressure" : {
       "type" : "number",
@@ -68,10 +76,6 @@
     "dateObserved" : {
       "type" : "string",
       "description" : "Date of the observed entity defined by the user"
-    },
-    "description" : {
-      "type" : "string",
-      "description" : "A description of this item"
     },
     "dewPoint" : {
       "type" : "number",
@@ -100,10 +104,6 @@
     "location" : {
       "type" : "geo:point",
       "description" : "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
-    },
-    "name" : {
-      "type" : "string",
-      "description" : "The name of this item"
     },
     "owner" : {
       "type" : "object",

@@ -1,17 +1,17 @@
 
 // Search //
 
-async function searchCompanyEvent($formFilters, success, error) {
-  var filters = searchCompanyEventFilters($formFilters);
+async function searchCompanyService($formFilters, success, error) {
+  var filters = searchCompanyServiceFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchCompanyEventVals(filters, target, success, error);
+  searchCompanyServiceVals(filters, target, success, error);
 }
 
-function searchCompanyEventFilters($formFilters) {
+function searchCompanyServiceFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -50,10 +50,6 @@ function searchCompanyEventFilters($formFilters) {
     var filterName = $formFilters.querySelector('.valueName')?.value;
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
-
-    var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
-    if(filterLocation != null && filterLocation !== '')
-      filters.push({ name: 'fq', value: 'location:' + filterLocation });
 
     var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
     if(filterDescription != null && filterDescription !== '')
@@ -142,26 +138,14 @@ function searchCompanyEventFilters($formFilters) {
     var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
-
-    var filterLocationColors = $formFilters.querySelector('.valueLocationColors')?.value;
-    if(filterLocationColors != null && filterLocationColors !== '')
-      filters.push({ name: 'fq', value: 'locationColors:' + filterLocationColors });
-
-    var filterLocationTitles = $formFilters.querySelector('.valueLocationTitles')?.value;
-    if(filterLocationTitles != null && filterLocationTitles !== '')
-      filters.push({ name: 'fq', value: 'locationTitles:' + filterLocationTitles });
-
-    var filterLocationLinks = $formFilters.querySelector('.valueLocationLinks')?.value;
-    if(filterLocationLinks != null && filterLocationLinks !== '')
-      filters.push({ name: 'fq', value: 'locationLinks:' + filterLocationLinks });
   }
   return filters;
 }
 
-function searchCompanyEventVals(filters, target, success, error) {
+function searchCompanyServiceVals(filters, target, success, error) {
 
   fetch(
-    '/api/event?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/service?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -173,11 +157,11 @@ function searchCompanyEventVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestCompanyEventObjectSuggest($formFilters, $list, target) {
+function suggestCompanyServiceObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i class="fa-duotone fa-solid fa-map-location-dot"></i>');
+      var $i = document.querySelector('<i class="fa-regular fa-conveyor-belt"></i>');
       var $span = document.createElement('<span>').setAttribute('class', '').text(o['objectTitle']);
       var $li = document.createElement('<li>');
       var $a = document.createElement('<a>').setAttribute('href', o['pageUrlPk']);
@@ -188,14 +172,14 @@ function suggestCompanyEventObjectSuggest($formFilters, $list, target) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchCompanyEventVals($formFilters, target, success, error);
+  searchCompanyServiceVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getCompanyEvent() {
+async function getCompanyService() {
   fetch(
-    '/api/event/' + id
+    '/api/service/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -209,8 +193,8 @@ async function getCompanyEvent() {
 
 // PATCH //
 
-async function patchCompanyEvent($formFilters, $formValues, id, success, error) {
-  var filters = patchCompanyEventFilters($formFilters);
+async function patchCompanyService($formFilters, $formValues, id, success, error) {
+  var filters = patchCompanyServiceFilters($formFilters);
 
   var vals = {};
 
@@ -291,18 +275,6 @@ async function patchCompanyEvent($formFilters, $formValues, id, success, error) 
   var removeName = $formValues.querySelector('.removeName')?.value;
   if(removeName != null && removeName !== '')
     vals['removeName'] = removeName;
-
-  var valueLocation = $formValues.querySelector('.valueLocation')?.value;
-  var removeLocation = $formValues.querySelector('.removeLocation')?.value === 'true';
-  var setLocation = removeLocation ? null : $formValues.querySelector('.setLocation')?.value;
-  var addLocation = $formValues.querySelector('.addLocation')?.value;
-  if(removeLocation || setLocation != null && setLocation !== '')
-    vals['setLocation'] = JSON.parse(setLocation);
-  if(addLocation != null && addLocation !== '')
-    vals['addLocation'] = addLocation;
-  var removeLocation = $formValues.querySelector('.removeLocation')?.value;
-  if(removeLocation != null && removeLocation !== '')
-    vals['removeLocation'] = removeLocation;
 
   var valueDescription = $formValues.querySelector('.valueDescription')?.value;
   var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
@@ -436,10 +408,10 @@ async function patchCompanyEvent($formFilters, $formValues, id, success, error) 
   if(removeTitle != null && removeTitle !== '')
     vals['removeTitle'] = removeTitle;
 
-  patchCompanyEventVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, target, success, error);
+  patchCompanyServiceVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, target, success, error);
 }
 
-function patchCompanyEventFilters($formFilters) {
+function patchCompanyServiceFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -479,10 +451,6 @@ function patchCompanyEventFilters($formFilters) {
     var filterName = $formFilters.querySelector('.valueName')?.value;
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
-
-    var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
-    if(filterLocation != null && filterLocation !== '')
-      filters.push({ name: 'fq', value: 'location:' + filterLocation });
 
     var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
     if(filterDescription != null && filterDescription !== '')
@@ -571,31 +539,19 @@ function patchCompanyEventFilters($formFilters) {
     var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
-
-    var filterLocationColors = $formFilters.querySelector('.valueLocationColors')?.value;
-    if(filterLocationColors != null && filterLocationColors !== '')
-      filters.push({ name: 'fq', value: 'locationColors:' + filterLocationColors });
-
-    var filterLocationTitles = $formFilters.querySelector('.valueLocationTitles')?.value;
-    if(filterLocationTitles != null && filterLocationTitles !== '')
-      filters.push({ name: 'fq', value: 'locationTitles:' + filterLocationTitles });
-
-    var filterLocationLinks = $formFilters.querySelector('.valueLocationLinks')?.value;
-    if(filterLocationLinks != null && filterLocationLinks !== '')
-      filters.push({ name: 'fq', value: 'locationLinks:' + filterLocationLinks });
   }
   return filters;
 }
 
-function patchCompanyEventVal(filters, v, val, target, success, error) {
+function patchCompanyServiceVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchCompanyEventVals(filters, vals, target, success, error);
+  patchCompanyServiceVals(filters, vals, target, success, error);
 }
 
-function patchCompanyEventVals(filters, vals, target, success, error) {
+function patchCompanyServiceVals(filters, vals, target, success, error) {
   fetch(
-    '/api/event?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/service?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -611,7 +567,7 @@ function patchCompanyEventVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postCompanyEvent($formValues, target, success, error) {
+async function postCompanyService($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -650,10 +606,6 @@ async function postCompanyEvent($formValues, target, success, error) {
   var valueName = $formValues.querySelector('.valueName')?.value;
   if(valueName != null && valueName !== '')
     vals['name'] = valueName;
-
-  var valueLocation = $formValues.querySelector('.valueLocation')?.value;
-  if(valueLocation != null && valueLocation !== '')
-    vals['location'] = JSON.parse(valueLocation);
 
   var valueDescription = $formValues.querySelector('.valueDescription')?.value;
   if(valueDescription != null && valueDescription !== '')
@@ -700,7 +652,7 @@ async function postCompanyEvent($formValues, target, success, error) {
     vals['title'] = valueTitle;
 
   fetch(
-    '/api/event'
+    '/api/service'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -714,9 +666,9 @@ async function postCompanyEvent($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postCompanyEventVals(vals, target, success, error) {
+function postCompanyServiceVals(vals, target, success, error) {
   fetch(
-    '/api/event'
+    '/api/service'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -732,15 +684,15 @@ function postCompanyEventVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportCompanyEvent($formValues, id, success, error) {
+async function putimportCompanyService($formValues, id, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportCompanyEventVals(JSON.parse(json), target, success, error);
+    putimportCompanyServiceVals(JSON.parse(json), target, success, error);
 }
 
-function putimportCompanyEventVals(json, target, success, error) {
+function putimportCompanyServiceVals(json, target, success, error) {
   fetch(
-    '/api/event-import'
+    '/api/service-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -754,14 +706,14 @@ function putimportCompanyEventVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
-async function websocketCompanyEvent(success) {
+async function websocketCompanyService(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketCompanyEvent', function (error, message) {
+    window.eventBus.registerHandler('websocketCompanyService', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#CompanyEventForm :input[name=id]')?.value;
+      var pkPage = document.querySelector('#CompanyServiceForm :input[name=id]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -771,8 +723,8 @@ async function websocketCompanyEvent(success) {
       var $margin = document.createElement('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
       var $card = document.createElement('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
       var $header = document.createElement('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.createElement('<i class="fa-duotone fa-solid fa-map-location-dot"></i>');
-      var $headerSpan = document.createElement('<span>').setAttribute('class', '').text('modify events in ' + json.timeRemaining);
+      var $i = document.createElement('<i class="fa-regular fa-conveyor-belt"></i>');
+      var $headerSpan = document.createElement('<span>').setAttribute('class', '').text('modify services in ' + json.timeRemaining);
       var $x = document.createElement('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
       var $body = document.createElement('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
       var $bar = document.createElement('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
@@ -803,7 +755,7 @@ async function websocketCompanyEvent(success) {
     });
   }
 }
-async function websocketCompanyEventInner(apiRequest) {
+async function websocketCompanyServiceInner(apiRequest) {
   var id = apiRequest['id'];
   var ids = apiRequest['ids'];
   var classes = apiRequest['classes'];
@@ -821,7 +773,6 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputArchived = null;
         var inputDeleted = null;
         var inputName = null;
-        var inputLocation = null;
         var inputDescription = null;
         var inputUri = null;
         var inputUrl = null;
@@ -844,9 +795,6 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputResourceUri = null;
         var inputTemplateUri = null;
         var inputTitle = null;
-        var inputLocationColors = null;
-        var inputLocationTitles = null;
-        var inputLocationLinks = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('#Page_created');
@@ -860,8 +808,6 @@ async function websocketCompanyEventInner(apiRequest) {
           inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('name'))
           inputName = $response.querySelector('#Page_name');
-        if(vars.includes('location'))
-          inputLocation = $response.querySelector('#Page_location');
         if(vars.includes('description'))
           inputDescription = $response.querySelector('#Page_description');
         if(vars.includes('uri'))
@@ -906,16 +852,10 @@ async function websocketCompanyEventInner(apiRequest) {
           inputTemplateUri = $response.querySelector('#Page_templateUri');
         if(vars.includes('title'))
           inputTitle = $response.querySelector('#Page_title');
-        if(vars.includes('locationColors'))
-          inputLocationColors = $response.querySelector('#Page_locationColors');
-        if(vars.includes('locationTitles'))
-          inputLocationTitles = $response.querySelector('#Page_locationTitles');
-        if(vars.includes('locationLinks'))
-          inputLocationLinks = $response.querySelector('#Page_locationLinks');
-        jsWebsocketCompanyEvent(id, vars, $response);
+        jsWebsocketCompanyService(id, vars, $response);
 
-        window.companyEvent = JSON.parse($response.querySelector('.pageForm .companyEvent')?.value);
-        window.listCompanyEvent = JSON.parse($response.querySelector('.pageForm .listCompanyEvent')?.value);
+        window.companyService = JSON.parse($response.querySelector('.pageForm .companyService')?.value);
+        window.listCompanyService = JSON.parse($response.querySelector('.pageForm .listCompanyService')?.value);
 
 
         if(inputCreated) {
@@ -946,11 +886,6 @@ async function websocketCompanyEventInner(apiRequest) {
         if(inputName) {
           inputName.replaceAll('#Page_name');
           addGlow(document.querySelector('#Page_name'));
-        }
-
-        if(inputLocation) {
-          inputLocation.replaceAll('#Page_location');
-          addGlow(document.querySelector('#Page_location'));
         }
 
         if(inputDescription) {
@@ -1063,27 +998,12 @@ async function websocketCompanyEventInner(apiRequest) {
           addGlow(document.querySelector('#Page_title'));
         }
 
-        if(inputLocationColors) {
-          inputLocationColors.replaceAll('#Page_locationColors');
-          addGlow(document.querySelector('#Page_locationColors'));
-        }
-
-        if(inputLocationTitles) {
-          inputLocationTitles.replaceAll('#Page_locationTitles');
-          addGlow(document.querySelector('#Page_locationTitles'));
-        }
-
-        if(inputLocationLinks) {
-          inputLocationLinks.replaceAll('#Page_locationLinks');
-          addGlow(document.querySelector('#Page_locationLinks'));
-        }
-
-        pageGraphCompanyEvent();
+        pageGraphCompanyService();
     });
   }
 }
 
-function pageGraphCompanyEvent(apiRequest) {
+function pageGraphCompanyService(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -1115,7 +1035,7 @@ function pageGraphCompanyEvent(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'events';
+          layout['title'] = 'services';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -1182,101 +1102,12 @@ function pageGraphCompanyEvent(apiRequest) {
         Plotly.react('htmBodyGraphBaseResultPage', data, layout);
       }
     }
-
-    // Graph Location
-    window.mapLayers = {};
-    function onEachFeature(feature, layer) {
-      let popupContent = htmTooltipCompanyEvent(feature, layer);
-      layer.bindPopup(popupContent);
-      window.mapLayers[feature.properties.id] = layer;
-    };
-    if(window.mapCompanyEvent) {
-      window.geoJSONCompanyEvent.clearLayers();
-      window.listCompanyEvent.forEach((companyEvent, index) => {
-        if(companyEvent.location) {
-          var shapes = [];
-          if(Array.isArray(companyEvent.location))
-            shapes = shapes.concat(companyEvent.location);
-          else
-            shapes.push(companyEvent.location);
-          shapes.forEach(function(shape, index) {
-            var features = [{
-              "type": "Feature"
-              , "properties": companyEvent
-              , "geometry": shape
-              , "index": index
-            }];
-            var layer = L.geoJSON(features, {
-              onEachFeature: onEachFeature
-              , style: jsStyleCompanyEvent
-              , pointToLayer: function(feature, latlng) {
-                return L.circleMarker(latlng, jsStyleCompanyEvent(feature));
-              }
-            });
-            window.geoJSONCompanyEvent.addLayer(layer);
-          });
-        }
-      });
-    } else {
-      window.mapCompanyEvent = L.map('htmBodyGraphLocationCompanyEventPage', {closePopupOnClick: false});
-      var data = [];
-      var layout = {};
-      layout['showlegend'] = true;
-      layout['dragmode'] = 'zoom';
-      layout['uirevision'] = 'true';
-      var legend = L.control({position: 'bottomright'});
-      legend.onAdd = jsLegendCompanyEvent;
-      legend.addTo(window.mapCompanyEvent);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(window.mapCompanyEvent);
-
-      if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
-        window.mapCompanyEvent.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']], window['DEFAULT_MAP_ZOOM']);
-      else if(window['DEFAULT_MAP_ZOOM'])
-        window.mapCompanyEvent.setView(null, window['DEFAULT_MAP_ZOOM']);
-      else if(window['DEFAULT_MAP_LOCATION'])
-        window.mapCompanyEvent.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']]);
-
-      layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
-      window.geoJSONCompanyEvent = L.geoJSON().addTo(window.mapCompanyEvent);
-      window.listCompanyEvent.forEach((companyEvent, index) => {
-        if(companyEvent.location) {
-          var shapes = [];
-          if(Array.isArray(companyEvent.location))
-            shapes = shapes.concat(companyEvent.location);
-          else
-            shapes.push(companyEvent.location);
-          shapes.forEach(shape => {
-            var features = [{
-              "type": "Feature"
-              , "properties": companyEvent
-              , "geometry": shape
-              , "index": index
-            }];
-            var layer = L.geoJSON(features, {
-              onEachFeature: onEachFeature
-              , style: jsStyleCompanyEvent
-              , pointToLayer: function(feature, latlng) {
-                return L.circleMarker(latlng, jsStyleCompanyEvent(feature));
-              }
-            });
-            window.geoJSONCompanyEvent.addLayer(layer);
-          });
-        }
-      });
-      window.mapCompanyEvent.on('popupopen', function(e) {
-        var feature = e.popup._source.feature;
-        jsTooltipCompanyEvent(e, feature);
-      });
-    }
   }
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqCompanyEvent_time').text('');
-  searchPage('CompanyEvent', function() {
+  document.querySelector('#pageSearchVal-fqCompanyService_time').text('');
+  searchPage('CompanyService', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -1288,9 +1119,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqCompanyEvent_time').value = x;
-      document.querySelector('#fqCompanyEvent_time').onchange();
-      searchPage('CompanyEvent');
+      document.querySelector('#fqCompanyService_time').value = x;
+      document.querySelector('#fqCompanyService_time').onchange();
+      searchPage('CompanyService');
     }, speedRate);
   });
 }

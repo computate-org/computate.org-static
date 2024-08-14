@@ -15,14 +15,6 @@ function searchCompanyCourseFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
-    var filterPk = $formFilters.querySelector('.valuePk')?.value;
-    if(filterPk != null && filterPk !== '')
-      filters.push({ name: 'fq', value: 'pk:' + filterPk });
-
-    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
-    if(filterObjectId != null && filterObjectId !== '')
-      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
-
     var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
     if(filterCreated != null && filterCreated !== '')
       filters.push({ name: 'fq', value: 'created:' + filterCreated });
@@ -30,6 +22,10 @@ function searchCompanyCourseFilters($formFilters) {
     var filterModified = $formFilters.querySelector('.valueModified')?.value;
     if(filterModified != null && filterModified !== '')
       filters.push({ name: 'fq', value: 'modified:' + filterModified });
+
+    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
+    if(filterObjectId != null && filterObjectId !== '')
+      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
     var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
@@ -51,13 +47,25 @@ function searchCompanyCourseFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var filterCourseName = $formFilters.querySelector('.valueCourseName')?.value;
-    if(filterCourseName != null && filterCourseName !== '')
-      filters.push({ name: 'fq', value: 'courseName:' + filterCourseName });
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
 
-    var filterCourseDescription = $formFilters.querySelector('.valueCourseDescription')?.value;
-    if(filterCourseDescription != null && filterCourseDescription !== '')
-      filters.push({ name: 'fq', value: 'courseDescription:' + filterCourseDescription });
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
+
+    var filterUri = $formFilters.querySelector('.valueUri')?.value;
+    if(filterUri != null && filterUri !== '')
+      filters.push({ name: 'fq', value: 'uri:' + filterUri });
+
+    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
+    if(filterUrl != null && filterUrl !== '')
+      filters.push({ name: 'fq', value: 'url:' + filterUrl });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -118,6 +126,22 @@ function searchCompanyCourseFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
+    if(filterResourceUri != null && filterResourceUri !== '')
+      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
+
+    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
+    if(filterTemplateUri != null && filterTemplateUri !== '')
+      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
+    if(filterTitle != null && filterTitle !== '')
+      filters.push({ name: 'fq', value: 'title:' + filterTitle });
+
+    var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
+    if(filterCourseNum != null && filterCourseNum !== '')
+      filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
   }
   return filters;
 }
@@ -157,7 +181,7 @@ function suggestCompanyCourseObjectSuggest($formFilters, $list, target) {
 
 // GET //
 
-async function getCompanyCourse(pk) {
+async function getCompanyCourse() {
   fetch(
     '/api/course/' + id
     , {
@@ -173,34 +197,10 @@ async function getCompanyCourse(pk) {
 
 // PATCH //
 
-async function patchCompanyCourse($formFilters, $formValues, pk, success, error) {
+async function patchCompanyCourse($formFilters, $formValues, id, success, error) {
   var filters = patchCompanyCourseFilters($formFilters);
 
   var vals = {};
-
-  var valuePk = $formValues.querySelector('.valuePk')?.value;
-  var removePk = $formValues.querySelector('.removePk')?.value === 'true';
-  var setPk = removePk ? null : $formValues.querySelector('.setPk')?.value;
-  var addPk = $formValues.querySelector('.addPk')?.value;
-  if(removePk || setPk != null && setPk !== '')
-    vals['setPk'] = setPk;
-  if(addPk != null && addPk !== '')
-    vals['addPk'] = addPk;
-  var removePk = $formValues.querySelector('.removePk')?.value;
-  if(removePk != null && removePk !== '')
-    vals['removePk'] = removePk;
-
-  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
-  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value === 'true';
-  var setObjectId = removeObjectId ? null : $formValues.querySelector('.setObjectId')?.value;
-  var addObjectId = $formValues.querySelector('.addObjectId')?.value;
-  if(removeObjectId || setObjectId != null && setObjectId !== '')
-    vals['setObjectId'] = setObjectId;
-  if(addObjectId != null && addObjectId !== '')
-    vals['addObjectId'] = addObjectId;
-  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value;
-  if(removeObjectId != null && removeObjectId !== '')
-    vals['removeObjectId'] = removeObjectId;
 
   var valueCreated = $formValues.querySelector('.valueCreated')?.value;
   var removeCreated = $formValues.querySelector('.removeCreated')?.value === 'true';
@@ -225,6 +225,18 @@ async function patchCompanyCourse($formFilters, $formValues, pk, success, error)
   var removeModified = $formValues.querySelector('.removeModified')?.value;
   if(removeModified != null && removeModified !== '')
     vals['removeModified'] = removeModified;
+
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
+  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value === 'true';
+  var setObjectId = removeObjectId ? null : $formValues.querySelector('.setObjectId')?.value;
+  var addObjectId = $formValues.querySelector('.addObjectId')?.value;
+  if(removeObjectId || setObjectId != null && setObjectId !== '')
+    vals['setObjectId'] = setObjectId;
+  if(addObjectId != null && addObjectId !== '')
+    vals['addObjectId'] = addObjectId;
+  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value;
+  if(removeObjectId != null && removeObjectId !== '')
+    vals['removeObjectId'] = removeObjectId;
 
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   var removeArchived = $formValues.querySelector('.removeArchived')?.value === 'true';
@@ -256,29 +268,65 @@ async function patchCompanyCourse($formFilters, $formValues, pk, success, error)
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
-  var valueCourseName = $formValues.querySelector('.valueCourseName')?.value;
-  var removeCourseName = $formValues.querySelector('.removeCourseName')?.value === 'true';
-  var setCourseName = removeCourseName ? null : $formValues.querySelector('.setCourseName')?.value;
-  var addCourseName = $formValues.querySelector('.addCourseName')?.value;
-  if(removeCourseName || setCourseName != null && setCourseName !== '')
-    vals['setCourseName'] = setCourseName;
-  if(addCourseName != null && addCourseName !== '')
-    vals['addCourseName'] = addCourseName;
-  var removeCourseName = $formValues.querySelector('.removeCourseName')?.value;
-  if(removeCourseName != null && removeCourseName !== '')
-    vals['removeCourseName'] = removeCourseName;
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
+  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
+  var addName = $formValues.querySelector('.addName')?.value;
+  if(removeName || setName != null && setName !== '')
+    vals['setName'] = setName;
+  if(addName != null && addName !== '')
+    vals['addName'] = addName;
+  var removeName = $formValues.querySelector('.removeName')?.value;
+  if(removeName != null && removeName !== '')
+    vals['removeName'] = removeName;
 
-  var valueCourseDescription = $formValues.querySelector('.valueCourseDescription')?.value;
-  var removeCourseDescription = $formValues.querySelector('.removeCourseDescription')?.value === 'true';
-  var setCourseDescription = removeCourseDescription ? null : $formValues.querySelector('.setCourseDescription')?.value;
-  var addCourseDescription = $formValues.querySelector('.addCourseDescription')?.value;
-  if(removeCourseDescription || setCourseDescription != null && setCourseDescription !== '')
-    vals['setCourseDescription'] = setCourseDescription;
-  if(addCourseDescription != null && addCourseDescription !== '')
-    vals['addCourseDescription'] = addCourseDescription;
-  var removeCourseDescription = $formValues.querySelector('.removeCourseDescription')?.value;
-  if(removeCourseDescription != null && removeCourseDescription !== '')
-    vals['removeCourseDescription'] = removeCourseDescription;
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
+  var setDescription = removeDescription ? null : $formValues.querySelector('.setDescription')?.value;
+  var addDescription = $formValues.querySelector('.addDescription')?.value;
+  if(removeDescription || setDescription != null && setDescription !== '')
+    vals['setDescription'] = setDescription;
+  if(addDescription != null && addDescription !== '')
+    vals['addDescription'] = addDescription;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value;
+  if(removeDescription != null && removeDescription !== '')
+    vals['removeDescription'] = removeDescription;
+
+  var valueUri = $formValues.querySelector('.valueUri')?.value;
+  var removeUri = $formValues.querySelector('.removeUri')?.value === 'true';
+  var setUri = removeUri ? null : $formValues.querySelector('.setUri')?.value;
+  var addUri = $formValues.querySelector('.addUri')?.value;
+  if(removeUri || setUri != null && setUri !== '')
+    vals['setUri'] = setUri;
+  if(addUri != null && addUri !== '')
+    vals['addUri'] = addUri;
+  var removeUri = $formValues.querySelector('.removeUri')?.value;
+  if(removeUri != null && removeUri !== '')
+    vals['removeUri'] = removeUri;
+
+  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
+  var removeUrl = $formValues.querySelector('.removeUrl')?.value === 'true';
+  var setUrl = removeUrl ? null : $formValues.querySelector('.setUrl')?.value;
+  var addUrl = $formValues.querySelector('.addUrl')?.value;
+  if(removeUrl || setUrl != null && setUrl !== '')
+    vals['setUrl'] = setUrl;
+  if(addUrl != null && addUrl !== '')
+    vals['addUrl'] = addUrl;
+  var removeUrl = $formValues.querySelector('.removeUrl')?.value;
+  if(removeUrl != null && removeUrl !== '')
+    vals['removeUrl'] = removeUrl;
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
+  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
+  var addPageId = $formValues.querySelector('.addPageId')?.value;
+  if(removePageId || setPageId != null && setPageId !== '')
+    vals['setPageId'] = setPageId;
+  if(addPageId != null && addPageId !== '')
+    vals['addPageId'] = addPageId;
+  var removePageId = $formValues.querySelector('.removePageId')?.value;
+  if(removePageId != null && removePageId !== '')
+    vals['removePageId'] = removePageId;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -316,21 +364,73 @@ async function patchCompanyCourse($formFilters, $formValues, pk, success, error)
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  patchCompanyCourseVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
+  var valueId = $formValues.querySelector('.valueId')?.value;
+  var removeId = $formValues.querySelector('.removeId')?.value === 'true';
+  var setId = removeId ? null : $formValues.querySelector('.setId')?.value;
+  var addId = $formValues.querySelector('.addId')?.value;
+  if(removeId || setId != null && setId !== '')
+    vals['setId'] = setId;
+  if(addId != null && addId !== '')
+    vals['addId'] = addId;
+  var removeId = $formValues.querySelector('.removeId')?.value;
+  if(removeId != null && removeId !== '')
+    vals['removeId'] = removeId;
+
+  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
+  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value === 'true';
+  var setResourceUri = removeResourceUri ? null : $formValues.querySelector('.setResourceUri')?.value;
+  var addResourceUri = $formValues.querySelector('.addResourceUri')?.value;
+  if(removeResourceUri || setResourceUri != null && setResourceUri !== '')
+    vals['setResourceUri'] = setResourceUri;
+  if(addResourceUri != null && addResourceUri !== '')
+    vals['addResourceUri'] = addResourceUri;
+  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value;
+  if(removeResourceUri != null && removeResourceUri !== '')
+    vals['removeResourceUri'] = removeResourceUri;
+
+  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
+  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value === 'true';
+  var setTemplateUri = removeTemplateUri ? null : $formValues.querySelector('.setTemplateUri')?.value;
+  var addTemplateUri = $formValues.querySelector('.addTemplateUri')?.value;
+  if(removeTemplateUri || setTemplateUri != null && setTemplateUri !== '')
+    vals['setTemplateUri'] = setTemplateUri;
+  if(addTemplateUri != null && addTemplateUri !== '')
+    vals['addTemplateUri'] = addTemplateUri;
+  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value;
+  if(removeTemplateUri != null && removeTemplateUri !== '')
+    vals['removeTemplateUri'] = removeTemplateUri;
+
+  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
+  var removeTitle = $formValues.querySelector('.removeTitle')?.value === 'true';
+  var setTitle = removeTitle ? null : $formValues.querySelector('.setTitle')?.value;
+  var addTitle = $formValues.querySelector('.addTitle')?.value;
+  if(removeTitle || setTitle != null && setTitle !== '')
+    vals['setTitle'] = setTitle;
+  if(addTitle != null && addTitle !== '')
+    vals['addTitle'] = addTitle;
+  var removeTitle = $formValues.querySelector('.removeTitle')?.value;
+  if(removeTitle != null && removeTitle !== '')
+    vals['removeTitle'] = removeTitle;
+
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
+  var setCourseNum = removeCourseNum ? null : $formValues.querySelector('.setCourseNum')?.value;
+  var addCourseNum = $formValues.querySelector('.addCourseNum')?.value;
+  if(removeCourseNum || setCourseNum != null && setCourseNum !== '')
+    vals['setCourseNum'] = setCourseNum;
+  if(addCourseNum != null && addCourseNum !== '')
+    vals['addCourseNum'] = addCourseNum;
+  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value;
+  if(removeCourseNum != null && removeCourseNum !== '')
+    vals['removeCourseNum'] = removeCourseNum;
+
+  patchCompanyCourseVals(id == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, target, success, error);
 }
 
 function patchCompanyCourseFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
-
-    var filterPk = $formFilters.querySelector('.valuePk')?.value;
-    if(filterPk != null && filterPk !== '')
-      filters.push({ name: 'fq', value: 'pk:' + filterPk });
-
-    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
-    if(filterObjectId != null && filterObjectId !== '')
-      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
     if(filterCreated != null && filterCreated !== '')
@@ -339,6 +439,10 @@ function patchCompanyCourseFilters($formFilters) {
     var filterModified = $formFilters.querySelector('.valueModified')?.value;
     if(filterModified != null && filterModified !== '')
       filters.push({ name: 'fq', value: 'modified:' + filterModified });
+
+    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
+    if(filterObjectId != null && filterObjectId !== '')
+      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
     var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
@@ -360,13 +464,25 @@ function patchCompanyCourseFilters($formFilters) {
     if(filterDeleted != null && filterDeleted === true)
       filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
 
-    var filterCourseName = $formFilters.querySelector('.valueCourseName')?.value;
-    if(filterCourseName != null && filterCourseName !== '')
-      filters.push({ name: 'fq', value: 'courseName:' + filterCourseName });
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
 
-    var filterCourseDescription = $formFilters.querySelector('.valueCourseDescription')?.value;
-    if(filterCourseDescription != null && filterCourseDescription !== '')
-      filters.push({ name: 'fq', value: 'courseDescription:' + filterCourseDescription });
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
+
+    var filterUri = $formFilters.querySelector('.valueUri')?.value;
+    if(filterUri != null && filterUri !== '')
+      filters.push({ name: 'fq', value: 'uri:' + filterUri });
+
+    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
+    if(filterUrl != null && filterUrl !== '')
+      filters.push({ name: 'fq', value: 'url:' + filterUrl });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -427,6 +543,22 @@ function patchCompanyCourseFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
+    if(filterResourceUri != null && filterResourceUri !== '')
+      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
+
+    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
+    if(filterTemplateUri != null && filterTemplateUri !== '')
+      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
+    if(filterTitle != null && filterTitle !== '')
+      filters.push({ name: 'fq', value: 'title:' + filterTitle });
+
+    var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
+    if(filterCourseNum != null && filterCourseNum !== '')
+      filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
   }
   return filters;
 }
@@ -471,14 +603,6 @@ async function postCompanyCourse($formValues, target, success, error) {
     };
   }
 
-  var valuePk = $formValues.querySelector('.valuePk')?.value;
-  if(valuePk != null && valuePk !== '')
-    vals['pk'] = valuePk;
-
-  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
-  if(valueObjectId != null && valueObjectId !== '')
-    vals['objectId'] = valueObjectId;
-
   var valueCreated = $formValues.querySelector('.valueCreated')?.value;
   if(valueCreated != null && valueCreated !== '')
     vals['created'] = valueCreated;
@@ -486,6 +610,10 @@ async function postCompanyCourse($formValues, target, success, error) {
   var valueModified = $formValues.querySelector('.valueModified')?.value;
   if(valueModified != null && valueModified !== '')
     vals['modified'] = valueModified;
+
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
+  if(valueObjectId != null && valueObjectId !== '')
+    vals['objectId'] = valueObjectId;
 
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   if(valueArchived != null && valueArchived !== '')
@@ -495,13 +623,25 @@ async function postCompanyCourse($formValues, target, success, error) {
   if(valueDeleted != null && valueDeleted !== '')
     vals['deleted'] = valueDeleted == 'true';
 
-  var valueCourseName = $formValues.querySelector('.valueCourseName')?.value;
-  if(valueCourseName != null && valueCourseName !== '')
-    vals['courseName'] = valueCourseName;
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  if(valueName != null && valueName !== '')
+    vals['name'] = valueName;
 
-  var valueCourseDescription = $formValues.querySelector('.valueCourseDescription')?.value;
-  if(valueCourseDescription != null && valueCourseDescription !== '')
-    vals['courseDescription'] = valueCourseDescription;
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  if(valueDescription != null && valueDescription !== '')
+    vals['description'] = valueDescription;
+
+  var valueUri = $formValues.querySelector('.valueUri')?.value;
+  if(valueUri != null && valueUri !== '')
+    vals['uri'] = valueUri;
+
+  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
+  if(valueUrl != null && valueUrl !== '')
+    vals['url'] = valueUrl;
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  if(valuePageId != null && valuePageId !== '')
+    vals['pageId'] = valuePageId;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -514,6 +654,26 @@ async function postCompanyCourse($formValues, target, success, error) {
   var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
+
+  var valueId = $formValues.querySelector('.valueId')?.value;
+  if(valueId != null && valueId !== '')
+    vals['id'] = valueId;
+
+  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
+  if(valueResourceUri != null && valueResourceUri !== '')
+    vals['resourceUri'] = valueResourceUri;
+
+  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
+  if(valueTemplateUri != null && valueTemplateUri !== '')
+    vals['templateUri'] = valueTemplateUri;
+
+  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
+  if(valueTitle != null && valueTitle !== '')
+    vals['title'] = valueTitle;
+
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  if(valueCourseNum != null && valueCourseNum !== '')
+    vals['courseNum'] = valueCourseNum;
 
   fetch(
     '/api/course'
@@ -548,7 +708,7 @@ function postCompanyCourseVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportCompanyCourse($formValues, pk, success, error) {
+async function putimportCompanyCourse($formValues, id, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
     putimportCompanyCourseVals(JSON.parse(json), target, success, error);
@@ -577,7 +737,7 @@ async function websocketCompanyCourse(success) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#CompanyCourseForm :input[name=pk]')?.value;
+      var pkPage = document.querySelector('#CompanyCourseForm :input[name=id]')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -620,25 +780,27 @@ async function websocketCompanyCourse(success) {
   }
 }
 async function websocketCompanyCourseInner(apiRequest) {
-  var pk = apiRequest['pk'];
-  var pks = apiRequest['pks'];
+  var id = apiRequest['id'];
+  var ids = apiRequest['ids'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
   var empty = apiRequest['empty'];
 
-  if(pk != null && vars.length > 0) {
+  if(id != null && vars.length > 0) {
     var queryParams = "?" + $(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
     $.get(uri, {}, function(data) {
       var $response = $("<html/>").html(data);
-        var inputPk = null;
-        var inputObjectId = null;
         var inputCreated = null;
         var inputModified = null;
+        var inputObjectId = null;
         var inputArchived = null;
         var inputDeleted = null;
-        var inputCourseName = null;
-        var inputCourseDescription = null;
+        var inputName = null;
+        var inputDescription = null;
+        var inputUri = null;
+        var inputUrl = null;
+        var inputPageId = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -654,23 +816,31 @@ async function websocketCompanyCourseInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputResourceUri = null;
+        var inputTemplateUri = null;
+        var inputTitle = null;
+        var inputCourseNum = null;
 
-        if(vars.includes('pk'))
-          inputPk = $response.querySelector('#Page_pk');
-        if(vars.includes('objectId'))
-          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('created'))
           inputCreated = $response.querySelector('#Page_created');
         if(vars.includes('modified'))
           inputModified = $response.querySelector('#Page_modified');
+        if(vars.includes('objectId'))
+          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('deleted'))
           inputDeleted = $response.querySelector('#Page_deleted');
-        if(vars.includes('courseName'))
-          inputCourseName = $response.querySelector('#Page_courseName');
-        if(vars.includes('courseDescription'))
-          inputCourseDescription = $response.querySelector('#Page_courseDescription');
+        if(vars.includes('name'))
+          inputName = $response.querySelector('#Page_name');
+        if(vars.includes('description'))
+          inputDescription = $response.querySelector('#Page_description');
+        if(vars.includes('uri'))
+          inputUri = $response.querySelector('#Page_uri');
+        if(vars.includes('url'))
+          inputUrl = $response.querySelector('#Page_url');
+        if(vars.includes('pageId'))
+          inputPageId = $response.querySelector('#Page_pageId');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -701,21 +871,19 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        jsWebsocketCompanyCourse(pk, vars, $response);
+        if(vars.includes('resourceUri'))
+          inputResourceUri = $response.querySelector('#Page_resourceUri');
+        if(vars.includes('templateUri'))
+          inputTemplateUri = $response.querySelector('#Page_templateUri');
+        if(vars.includes('title'))
+          inputTitle = $response.querySelector('#Page_title');
+        if(vars.includes('courseNum'))
+          inputCourseNum = $response.querySelector('#Page_courseNum');
+        jsWebsocketCompanyCourse(id, vars, $response);
 
         window.companyCourse = JSON.parse($response.querySelector('.pageForm .companyCourse')?.value);
         window.listCompanyCourse = JSON.parse($response.querySelector('.pageForm .listCompanyCourse')?.value);
 
-
-        if(inputPk) {
-          inputPk.replaceAll('#Page_pk');
-          addGlow(document.querySelector('#Page_pk'));
-        }
-
-        if(inputObjectId) {
-          inputObjectId.replaceAll('#Page_objectId');
-          addGlow(document.querySelector('#Page_objectId'));
-        }
 
         if(inputCreated) {
           inputCreated.replaceAll('#Page_created');
@@ -725,6 +893,11 @@ async function websocketCompanyCourseInner(apiRequest) {
         if(inputModified) {
           inputModified.replaceAll('#Page_modified');
           addGlow(document.querySelector('#Page_modified'));
+        }
+
+        if(inputObjectId) {
+          inputObjectId.replaceAll('#Page_objectId');
+          addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputArchived) {
@@ -737,14 +910,29 @@ async function websocketCompanyCourseInner(apiRequest) {
           addGlow(document.querySelector('#Page_deleted'));
         }
 
-        if(inputCourseName) {
-          inputCourseName.replaceAll('#Page_courseName');
-          addGlow(document.querySelector('#Page_courseName'));
+        if(inputName) {
+          inputName.replaceAll('#Page_name');
+          addGlow(document.querySelector('#Page_name'));
         }
 
-        if(inputCourseDescription) {
-          inputCourseDescription.replaceAll('#Page_courseDescription');
-          addGlow(document.querySelector('#Page_courseDescription'));
+        if(inputDescription) {
+          inputDescription.replaceAll('#Page_description');
+          addGlow(document.querySelector('#Page_description'));
+        }
+
+        if(inputUri) {
+          inputUri.replaceAll('#Page_uri');
+          addGlow(document.querySelector('#Page_uri'));
+        }
+
+        if(inputUrl) {
+          inputUrl.replaceAll('#Page_url');
+          addGlow(document.querySelector('#Page_url'));
+        }
+
+        if(inputPageId) {
+          inputPageId.replaceAll('#Page_pageId');
+          addGlow(document.querySelector('#Page_pageId'));
         }
 
         if(inputInheritPk) {
@@ -820,6 +1008,26 @@ async function websocketCompanyCourseInner(apiRequest) {
         if(inputId) {
           inputId.replaceAll('#Page_id');
           addGlow(document.querySelector('#Page_id'));
+        }
+
+        if(inputResourceUri) {
+          inputResourceUri.replaceAll('#Page_resourceUri');
+          addGlow(document.querySelector('#Page_resourceUri'));
+        }
+
+        if(inputTemplateUri) {
+          inputTemplateUri.replaceAll('#Page_templateUri');
+          addGlow(document.querySelector('#Page_templateUri'));
+        }
+
+        if(inputTitle) {
+          inputTitle.replaceAll('#Page_title');
+          addGlow(document.querySelector('#Page_title'));
+        }
+
+        if(inputCourseNum) {
+          inputCourseNum.replaceAll('#Page_courseNum');
+          addGlow(document.querySelector('#Page_courseNum'));
         }
 
         pageGraphCompanyCourse();
@@ -923,7 +1131,7 @@ function pageGraphCompanyCourse(apiRequest) {
             });
           }
         }
-        Plotly.react('htmBodyGraphBaseModelPage', data, layout);
+        Plotly.react('htmBodyGraphBaseResultPage', data, layout);
       }
     }
   }

@@ -18,20 +18,6 @@
 //    $input.addClass('glowError');
 //}
 
-//(() => {
-Promise.all([
-  customElements.whenDefined('sl-button')
-  , customElements.whenDefined('sl-input')
-]).then(() => {
-  document.querySelector('#nav-toggle-button').addEventListener('click', event => {
-    document.querySelector('#site-aside-left').classList.toggle('hide-mobile');
-  });
-  document.querySelector('#site-aside-left-close-button').addEventListener('click', event => {
-    document.querySelector('#site-aside-left').classList.toggle('hide-mobile');
-  });
-});
-//})();
-
 //$(window).on('load', function() {
 //    $(document).click(function(e) {
 //            var $target = $(e.target);
@@ -132,171 +118,170 @@ Promise.all([
 //		}
 //	});
 //});
-//
-//function paramChange(classSimpleName, elem) {
-//	var $elem = $(elem);
-//	if($elem.val())
-//		$elem.next().text($elem.attr('data-var') + "=" + encodeURIComponent($elem.val()));
-//	else
-//		$elem.next().text("");
-//	searchPage(classSimpleName);
-//}
-//
-//function qChange(classSimpleName, elem) {
-//	var $elem = $(elem);
-//	if($elem.val())
-//		$elem.next().text("q=" + $elem.attr('data-var') + ":" + encodeURIComponent($elem.val()));
-//	else
-//		$elem.next().text("");
-//	searchPage(classSimpleName);
-//}
-//
-//function fqChange(classSimpleName, elem) {
-//	var $elem = $(elem);
-//	if($elem.val())
-//		$("#pageSearchVal-" + $(elem).attr("id")).text("fq=" + $elem.attr('data-var') + ":" + encodeURIComponent($elem.val()));
-//	else
-//		$("#pageSearchVal-" + $(elem).attr("id")).text("");
-//	searchPage(classSimpleName);
-//}
-//
-//function fqReplace(classSimpleName, elem) {
-//	var $fq = $('#fq' + elem.getAttribute('data-class') + '_' + elem.getAttribute('data-var'));
-//	$fq.val(elem.getAttribute('data-val'));
-//	fqChange(classSimpleName, $fq[0]);
-//}
-//
-//function facetFieldChange(classSimpleName, elem) {
-//	var $elem = $(elem);
-//	if($elem.attr("data-clear") === "false") {
-//		$("#pageSearchVal-" + $(elem).attr("id")).text("facet.field=" + $elem.attr('data-var'));
-//		$elem.attr("data-clear", "true");
-//	} else {
-//		$("#pageSearchVal-" + $(elem).attr("id")).text("");
-//		$elem.attr("data-clear", "false");
-//	}
-//	searchPage(classSimpleName);
-//}
-//
-//function facetRangeChange(classSimpleName, elem) {
-//	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
-//	if(facetRangeVal) {
-//		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-//		$("#pageSearchVal-pageFacetRangeGap-" + classSimpleName).text("facet.range.gap=" + encodeURIComponent($("#pageFacetRangeGap-" + classSimpleName).val()));
-//	} else {
-//		$("#pageSearchVal-pageFacetRangeGap-" + classSimpleName).text("");
-//	}
-//	searchPage(classSimpleName);
-//}
-//
-//function facetRangeStartChange(classSimpleName, elem, classSimpleName) {
-//	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
-//	if(facetRangeVal) {
-//		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-//		$("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).text("facet.range.start=" + encodeURIComponent($("#pageFacetRangeStart-" + classSimpleName).val() + ":00.000[" + timeZone + "]"));
-//	} else {
-//		$("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).text("");
-//	}
-//	searchPage(classSimpleName);
-//}
-//
-//function facetRangeEndChange(classSimpleName, elem, classSimpleName) {
-//	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
-//	if(facetRangeVal) {
-//		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-//		$("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).text("facet.range.end=" + encodeURIComponent($("#pageFacetRangeEnd-" + classSimpleName).val() + ":00.000[" + timeZone + "]"));
-//	} else {
-//		$("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).text("");
-//	}
-//	searchPage(classSimpleName);
-//}
-//
-//function facetRangeChange(classSimpleName, elem, classSimpleName) {
-//	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
-//	if(facetRangeVal) {
-//		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-//		$("#pageSearchVal-pageFacetRangeVar-" + classSimpleName).text("facet.range={!tag=r1}" + encodeURIComponent(facetRangeVal));
-//	} else {
-//		$("#pageSearchVal-pageFacetRangeVar-" + classSimpleName).text("");
-//	}
-//	searchPage(classSimpleName);
-//}
-//
-//function facetPivotChange(classSimpleName, elem) {
-//	var $elem = $(elem);
-//	var $listHidden = $("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
-//	if($elem.is(":checked")) {
-//		$listHidden.append($("<div>")
-//				.attr("id", "pageSearchVal-Pivot" + classSimpleName + "Hidden_" + $elem.val())
-//				.attr("class", "pageSearchVal-Pivot" + classSimpleName + "Hidden ")
-//				.text($elem.val())
-//				)
-//				;
-//	} else {
-//		$("#pageSearchVal-Pivot" + classSimpleName + "Hidden_" + $elem.val()).remove();
-//	}
-//	$("#pageSearchVal-Pivot" + classSimpleName + "_1").remove();
-//	var $list = $("#pageSearchVal-Pivot" + classSimpleName);
-//	var $listHidden = $("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
-//	if($listHidden.children().length > 0) {
-//		var pivotVal = '';
-//		$listHidden.children().each(function(index, pivotElem) {
-//			if(pivotVal)
-//				pivotVal += ",";
-//			pivotVal += pivotElem.innerText;
-//		});
-//		$list.append($("<div>")
-//				.attr("id", "pageSearchVal-Pivot" + classSimpleName + "_1")
-//				.attr("class", "pageSearchVal pageSearchVal-Pivot" + classSimpleName + " ")
-//				.text("facet.pivot={!range=r1}" + pivotVal)
-//				)
-//				;
-//	}
-//	searchPage(classSimpleName);
-//}
-//
-//function facetFieldListChange(classSimpleName, elem) {
-//	var $elem = $(elem);
-//	var $listHidden = $("#pageSearchVal-FieldList" + classSimpleName + "Hidden");
-//	if($elem.is(":checked")) {
-//		$listHidden.append($("<div>")
-//				.attr("id", "pageSearchVal-FieldList" + classSimpleName + "Hidden_" + $elem.val())
-//				.attr("class", "pageSearchVal-FieldList" + classSimpleName + "Hidden ")
-//				.text($elem.val())
-//				)
-//				;
-//	} else {
-//		$("#pageSearchVal-FieldList" + classSimpleName + "Hidden_" + $elem.val()).remove();
-//	}
-//	$("#pageSearchVal-FieldList" + classSimpleName + "_1").remove();
-//	var $list = $("#pageSearchVal-FieldList" + classSimpleName);
-//	var $listHidden = $("#pageSearchVal-FieldList" + classSimpleName + "Hidden");
-//	if($listHidden.children().length > 0) {
-//		$list.append($("<div>")
-//				.attr("id", "pageSearchVal-FieldList" + classSimpleName + "_1")
-//				.attr("class", "pageSearchVal pageSearchVal-FieldList" + classSimpleName + " ")
-//				.text("fl=" + $listHidden.children().toArray().map(elem => elem.innerText).join(","))
-//				)
-//				;
-//	}
-//	searchPage(classSimpleName);
-//}
-//
-//function facetStatsChange(classSimpleName, elem) {
-//	var $elem = $(elem);
-//	var $list = $("#pageSearchVal-Stats" + classSimpleName);
-//	if($elem.is(":checked")) {
-//		$list.append($("<div>")
-//				.attr("id", "pageSearchVal-Stats" + classSimpleName + "_" + $elem.val())
-//				.attr("class", "pageSearchVal pageSearchVal-Stats" + classSimpleName + "_" + $elem.val() + " ")
-//				.text("stats.field=" + $elem.val())
-//				)
-//				;
-//	} else {
-//		$("#pageSearchVal-Stats" + classSimpleName + "_" + $elem.val()).remove();
-//	}
-//	searchPage(classSimpleName);
-//}
+
+function paramChange(classSimpleName, elem) {
+	var $elem = $(elem);
+	if($elem.val())
+		$elem.next().text($elem.attr('data-var') + "=" + encodeURIComponent($elem.val()));
+	else
+		$elem.next().text("");
+	searchPage(classSimpleName);
+}
+
+function qChange(classSimpleName, elem) {
+	var $elem = $(elem);
+	if($elem.val())
+		$elem.next().text("q=" + $elem.attr('data-var') + ":" + encodeURIComponent($elem.val()));
+	else
+		$elem.next().text("");
+	searchPage(classSimpleName);
+}
+
+function fqChange(classSimpleName, elem) {
+	var $elem = $(elem);
+	if($elem.val())
+		$("#pageSearchVal-" + $(elem).attr("id")).text("fq=" + $elem.attr('data-var') + ":" + encodeURIComponent($elem.val()));
+	else
+		$("#pageSearchVal-" + $(elem).attr("id")).text("");
+	searchPage(classSimpleName);
+}
+
+function fqReplace(classSimpleName, elem) {
+	var $fq = $('#fq' + elem.getAttribute('data-class') + '_' + elem.getAttribute('data-var'));
+	$fq.val(elem.getAttribute('data-val'));
+	fqChange(classSimpleName, $fq[0]);
+}
+
+function facetFieldChange(classSimpleName, elem) {
+	if(elem.getAttribute("data-clear") === "false") {
+		document.querySelector("#pageSearchVal-" + elem.getAttribute("id")).text("facet.field=" + elem.getAttribute('data-var'));
+		elem.setAttribute("data-clear", "true");
+	} else {
+		$("#pageSearchVal-" + $(elem).attr("id")).text("");
+		elem.setAttribute("data-clear", "false");
+	}
+	searchPage(classSimpleName);
+}
+
+function facetRangeChange(classSimpleName, elem) {
+	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
+	if(facetRangeVal) {
+		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		$("#pageSearchVal-pageFacetRangeGap-" + classSimpleName).text("facet.range.gap=" + encodeURIComponent($("#pageFacetRangeGap-" + classSimpleName).val()));
+	} else {
+		$("#pageSearchVal-pageFacetRangeGap-" + classSimpleName).text("");
+	}
+	searchPage(classSimpleName);
+}
+
+function facetRangeStartChange(classSimpleName, elem, classSimpleName) {
+	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
+	if(facetRangeVal) {
+		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		$("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).text("facet.range.start=" + encodeURIComponent($("#pageFacetRangeStart-" + classSimpleName).val() + ":00.000[" + timeZone + "]"));
+	} else {
+		$("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).text("");
+	}
+	searchPage(classSimpleName);
+}
+
+function facetRangeEndChange(classSimpleName, elem, classSimpleName) {
+	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
+	if(facetRangeVal) {
+		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		$("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).text("facet.range.end=" + encodeURIComponent($("#pageFacetRangeEnd-" + classSimpleName).val() + ":00.000[" + timeZone + "]"));
+	} else {
+		$("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).text("");
+	}
+	searchPage(classSimpleName);
+}
+
+function facetRangeChange(classSimpleName, elem, classSimpleName) {
+	facetRangeVal = $("input[name='pageFacetRange']:checked").val();
+	if(facetRangeVal) {
+		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		$("#pageSearchVal-pageFacetRangeVar-" + classSimpleName).text("facet.range={!tag=r1}" + encodeURIComponent(facetRangeVal));
+	} else {
+		$("#pageSearchVal-pageFacetRangeVar-" + classSimpleName).text("");
+	}
+	searchPage(classSimpleName);
+}
+
+function facetPivotChange(classSimpleName, elem) {
+	var $elem = $(elem);
+	var $listHidden = $("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
+	if($elem.is(":checked")) {
+		$listHidden.append($("<div>")
+				.attr("id", "pageSearchVal-Pivot" + classSimpleName + "Hidden_" + $elem.val())
+				.attr("class", "pageSearchVal-Pivot" + classSimpleName + "Hidden ")
+				.text($elem.val())
+				)
+				;
+	} else {
+		$("#pageSearchVal-Pivot" + classSimpleName + "Hidden_" + $elem.val()).remove();
+	}
+	$("#pageSearchVal-Pivot" + classSimpleName + "_1").remove();
+	var $list = $("#pageSearchVal-Pivot" + classSimpleName);
+	var $listHidden = $("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
+	if($listHidden.children().length > 0) {
+		var pivotVal = '';
+		$listHidden.children().each(function(index, pivotElem) {
+			if(pivotVal)
+				pivotVal += ",";
+			pivotVal += pivotElem.innerText;
+		});
+		$list.append($("<div>")
+				.attr("id", "pageSearchVal-Pivot" + classSimpleName + "_1")
+				.attr("class", "pageSearchVal pageSearchVal-Pivot" + classSimpleName + " ")
+				.text("facet.pivot={!range=r1}" + pivotVal)
+				)
+				;
+	}
+	searchPage(classSimpleName);
+}
+
+function facetFieldListChange(classSimpleName, elem) {
+	var $elem = $(elem);
+	var $listHidden = $("#pageSearchVal-FieldList" + classSimpleName + "Hidden");
+	if($elem.is(":checked")) {
+		$listHidden.append($("<div>")
+				.attr("id", "pageSearchVal-FieldList" + classSimpleName + "Hidden_" + $elem.val())
+				.attr("class", "pageSearchVal-FieldList" + classSimpleName + "Hidden ")
+				.text($elem.val())
+				)
+				;
+	} else {
+		$("#pageSearchVal-FieldList" + classSimpleName + "Hidden_" + $elem.val()).remove();
+	}
+	$("#pageSearchVal-FieldList" + classSimpleName + "_1").remove();
+	var $list = $("#pageSearchVal-FieldList" + classSimpleName);
+	var $listHidden = $("#pageSearchVal-FieldList" + classSimpleName + "Hidden");
+	if($listHidden.children().length > 0) {
+		$list.append($("<div>")
+				.attr("id", "pageSearchVal-FieldList" + classSimpleName + "_1")
+				.attr("class", "pageSearchVal pageSearchVal-FieldList" + classSimpleName + " ")
+				.text("fl=" + $listHidden.children().toArray().map(elem => elem.innerText).join(","))
+				)
+				;
+	}
+	searchPage(classSimpleName);
+}
+
+function facetStatsChange(classSimpleName, elem) {
+	var $elem = $(elem);
+	var $list = $("#pageSearchVal-Stats" + classSimpleName);
+	if($elem.is(":checked")) {
+		$list.append($("<div>")
+				.attr("id", "pageSearchVal-Stats" + classSimpleName + "_" + $elem.val())
+				.attr("class", "pageSearchVal pageSearchVal-Stats" + classSimpleName + "_" + $elem.val() + " ")
+				.text("stats.field=" + $elem.val())
+				)
+				;
+	} else {
+		$("#pageSearchVal-Stats" + classSimpleName + "_" + $elem.val()).remove();
+	}
+	searchPage(classSimpleName);
+}
 //
 //function searchPage(classSimpleName, success, error) {
 //	if(success == null)

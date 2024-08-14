@@ -15,7 +15,7 @@ Promise.all([
               var t = moment(t3);
               if(t) {
                 var s = t.tz(timeZone).format('YYYY-MM-DDTHH:mm:ss.000') + '[' + timeZone + ']';
-                patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+                patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                     , 'setCreated', s
                     , event.currentTarget
                     , function(response, target) { addGlow(target); }
@@ -36,7 +36,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_objectId');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setObjectId', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -58,7 +58,7 @@ Promise.all([
             if(valid) {
               var confirmResponse = confirm('Are you sure you want to archive that?'); 
               if(confirmResponse) { 
-                patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+                patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                     , 'setArchived', event.currentTarget.checked
                     , event.currentTarget
                     , function(response, target) { addGlow(target); }
@@ -81,7 +81,7 @@ Promise.all([
             if(valid) {
               var confirmResponse = confirm('Are you sure you want to delete that?'); 
               if(confirmResponse) { 
-                patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+                patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                     , 'setDeleted', event.currentTarget.checked
                     , event.currentTarget
                     , function(response, target) { addGlow(target); }
@@ -102,7 +102,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_name');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setName', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -117,32 +117,12 @@ Promise.all([
             const form = document.querySelector('#PageForm_name');
             const valid = form.reportValidity();
           });
-          // PATCH location
-          document.querySelector('#Page_location')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_location');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
-                  , 'setLocation', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_location')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_location')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_location');
-            const valid = form.reportValidity();
-          });
           // PATCH description
           document.querySelector('#Page_description')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_description');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setDescription', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -162,7 +142,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_uri');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setUri', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -182,7 +162,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_url');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setUrl', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -202,7 +182,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setPageId', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -222,7 +202,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_inheritPk');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setInheritPk', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -242,7 +222,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_sessionId');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setSessionId', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -262,7 +242,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_userKey');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setUserKey', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -282,7 +262,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_id');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setId', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -302,7 +282,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_resourceUri');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setResourceUri', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -322,7 +302,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_templateUri');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setTemplateUri', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
@@ -342,7 +322,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_title');
             const valid = form.checkValidity();
             if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
                   , 'setTitle', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }

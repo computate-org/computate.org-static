@@ -2,6 +2,18 @@ WeatherObserved:
   description: >+
     ApiTag: weather observed
   properties:
+    name:
+      type: string
+      description: >+
+        The name of this item
+      x-ngsi:
+        type: Property
+    description:
+      type: string
+      description: >+
+        A description of this item
+      x-ngsi:
+        type: Property
     address:
       type: object
       description: >+
@@ -9,6 +21,18 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/address
         type: Property
+    alternateName:
+      type: string
+      description: >+
+        An alternative name for this item
+      x-ngsi:
+        type: Property
+    areaServed:
+      type: geo:linestring
+      description: >+
+        The geographic area where a service or offered item is provided
+      x-ngsi:
+        type: GeoProperty
     airQualityIndex:
       type: number
       description: >+
@@ -25,25 +49,6 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/Number
         type: Property
-    airTemperatureForecast:
-      type: number
-      description: >+
-        Forecasted value of air temperature over a certain duration in future
-      x-ngsi:
-        model: https://schema.org/Number
-        type: Property
-    airTemperatureTSA:
-      type: object
-      description: >+
-        Air temperature time series aggregation
-      x-ngsi:
-        type: Property
-    alternateName:
-      type: string
-      description: >+
-        An alternative name for this item
-      x-ngsi:
-        type: Property
     aqiMajorPollutant:
       type: string
       description: >+
@@ -57,12 +62,19 @@ WeatherObserved:
         certain duration in future
       x-ngsi:
         type: Property
-    areaServed:
-      type: geo:linestring
+    airTemperatureForecast:
+      type: number
       description: >+
-        The geographic area where a service or offered item is provided
+        Forecasted value of air temperature over a certain duration in future
       x-ngsi:
-        type: GeoProperty
+        model: https://schema.org/Number
+        type: Property
+    airTemperatureTSA:
+      type: object
+      description: >+
+        Air temperature time series aggregation
+      x-ngsi:
+        type: Property
     atmosphericPressure:
       type: number
       description: >+
@@ -95,12 +107,6 @@ WeatherObserved:
       type: string
       description: >+
         Date of the observed entity defined by the user
-      x-ngsi:
-        type: Property
-    description:
-      type: string
-      description: >+
-        A description of this item
       x-ngsi:
         type: Property
     dewPoint:
@@ -157,12 +163,6 @@ WeatherObserved:
         MultiPoint, MultiLineString or MultiPolygon
       x-ngsi:
         type: GeoProperty
-    name:
-      type: string
-      description: >+
-        The name of this item
-      x-ngsi:
-        type: Property
     owner:
       type: object
       description: >+

@@ -325,6 +325,14 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
   align-items: center;
 }
 
+/***************/
+/* site search */
+/***************/
+
+#siteSearchDropdown > sl-menu-item {
+  background-color: green;
+}
+
 /*******/
 /* CSS */
 /*******/
