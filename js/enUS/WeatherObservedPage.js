@@ -350,7 +350,7 @@ async function getWeatherObserved(pk) {
 
 // PATCH //
 
-async function patchWeatherObserved($formFilters, $formValues, pk, success, error) {
+async function patchWeatherObserved($formFilters, $formValues, target, pk, success, error) {
   var filters = patchWeatherObservedFilters($formFilters);
 
   var vals = {};
@@ -405,31 +405,39 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
 
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   var removeArchived = $formValues.querySelector('.removeArchived')?.value === 'true';
+  if(valueArchived != null)
+    valueArchived = valueArchived === 'true';
   var valueArchivedSelectVal = $formValues.querySelector('select.setArchived')?.value;
+  if(valueArchivedSelectVal != null)
+    valueArchivedSelectVal = valueArchivedSelectVal === 'true';
   if(valueArchivedSelectVal != null && valueArchivedSelectVal !== '')
     valueArchived = valueArchivedSelectVal == 'true';
   var setArchived = removeArchived ? null : valueArchived;
-  var addArchived = $formValues.querySelector('.addArchived').checked;
+  var addArchived = $formValues.querySelector('.addArchived')?.checked;
   if(removeArchived || setArchived != null && setArchived !== '')
     vals['setArchived'] = setArchived;
   if(addArchived != null && addArchived !== '')
     vals['addArchived'] = addArchived;
-  var removeArchived = $formValues.querySelector('.removeArchived').checked;
+  var removeArchived = $formValues.querySelector('.removeArchived')?.checked;
   if(removeArchived != null && removeArchived !== '')
     vals['removeArchived'] = removeArchived;
 
   var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
   var removeDeleted = $formValues.querySelector('.removeDeleted')?.value === 'true';
+  if(valueDeleted != null)
+    valueDeleted = valueDeleted === 'true';
   var valueDeletedSelectVal = $formValues.querySelector('select.setDeleted')?.value;
+  if(valueDeletedSelectVal != null)
+    valueDeletedSelectVal = valueDeletedSelectVal === 'true';
   if(valueDeletedSelectVal != null && valueDeletedSelectVal !== '')
     valueDeleted = valueDeletedSelectVal == 'true';
   var setDeleted = removeDeleted ? null : valueDeleted;
-  var addDeleted = $formValues.querySelector('.addDeleted').checked;
+  var addDeleted = $formValues.querySelector('.addDeleted')?.checked;
   if(removeDeleted || setDeleted != null && setDeleted !== '')
     vals['setDeleted'] = setDeleted;
   if(addDeleted != null && addDeleted !== '')
     vals['addDeleted'] = addDeleted;
-  var removeDeleted = $formValues.querySelector('.removeDeleted').checked;
+  var removeDeleted = $formValues.querySelector('.removeDeleted')?.checked;
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
@@ -985,7 +993,7 @@ async function patchWeatherObserved($formFilters, $formValues, pk, success, erro
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  patchWeatherObservedVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
+  patchWeatherObservedVals(pk == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
 function patchWeatherObservedFilters($formFilters) {
@@ -1557,7 +1565,7 @@ function postWeatherObservedVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportWeatherObserved($formValues, pk, success, error) {
+async function putimportWeatherObserved($formValues, target, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
     putimportWeatherObservedVals(JSON.parse(json), target, success, error);

@@ -119,21 +119,19 @@
 //	});
 //});
 
-function paramChange(classSimpleName, elem) {
-	var $elem = $(elem);
-	if($elem.val())
-		$elem.next().text($elem.attr('data-var') + "=" + encodeURIComponent($elem.val()));
+function paramChange(classSimpleName, input, div) {
+	if(input.value)
+		div.innerText = input.getAttribute('data-var') + "=" + encodeURIComponent(input.value);
 	else
-		$elem.next().text("");
+		div.innerText = "";
 	searchPage(classSimpleName);
 }
 
-function qChange(classSimpleName, elem) {
-	var $elem = $(elem);
-	if($elem.val())
-		$elem.next().text("q=" + $elem.attr('data-var') + ":" + encodeURIComponent($elem.val()));
+function qChange(classSimpleName, input, div) {
+	if(input.value)
+		div.innerText = "q=" + input.getAttribute('data-var') + ":" + encodeURIComponent(input.value);
 	else
-		$elem.next().text("");
+		div.innerText = "";
 	searchPage(classSimpleName);
 }
 
@@ -154,10 +152,10 @@ function fqReplace(classSimpleName, elem) {
 
 function facetFieldChange(classSimpleName, elem) {
 	if(elem.getAttribute("data-clear") === "false") {
-		document.querySelector("#pageSearchVal-" + elem.getAttribute("id")).text("facet.field=" + elem.getAttribute('data-var'));
+		document.querySelector("#pageSearchVal-" + elem.getAttribute("id")).innerText = "facet.field=" + elem.getAttribute('data-var');
 		elem.setAttribute("data-clear", "true");
 	} else {
-		$("#pageSearchVal-" + $(elem).attr("id")).text("");
+		document.querySelector("#pageSearchVal-" + elem.getAttribute("id")).innerText = "";
 		elem.setAttribute("data-clear", "false");
 	}
 	searchPage(classSimpleName);
@@ -282,45 +280,49 @@ function facetStatsChange(classSimpleName, elem) {
 	}
 	searchPage(classSimpleName);
 }
-//
-//function searchPage(classSimpleName, success, error) {
-//	if(success == null)
-//		success = function( data, textStatus, jQxhr ) {};
-//	if(error == null)
-//		error = function( jqXhr, textStatus, errorThrown ) {};
-//	var queryParams = "?" + $(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
-//	var uri = location.pathname + queryParams;
-//	$.get(uri, {}, function(data) {
-//		var $response = $("<html/>").html(data);
-//		$('.pageFacetField').each(function(index, facetField) {
-//			var $facetField = $(facetField);
-//			$facetField.replaceWith($response.find("." + $facetField.attr("id")));
-//		});
-//		$('.pageStatsField').each(function(index, statsField) {
-//			var $statsField = $(statsField);
-//			$statsField.replaceWith($response.find("." + $statsField.attr("id")));
-//		});
-//		$(".pageContent").replaceWith($response.find(".pageContent"));
-//		window['pageGraph' + classSimpleName](classSimpleName)
-//		success(data);
-//	}, 'html');
-//	window.history.replaceState('', '', uri);
-//}
-//
-//function searchEscapeQueryChars(s) {
-//	var sb = "";
-//	for (let i = 0; i < s.length; i++) {
-//		var c = s[i];
-//		// These characters are part of the query syntax and must be escaped
-//		if (c == '\\' || c == '+' || c == '-' || c == '!' || c == '(' || c == ')' || c == ':' || c == '^'
-//				|| c == '[' || c == ']' || c == '\"' || c == '{' || c == '}' || c == '~' || c == '*' || c == '?'
-//				|| c == '|' || c == '&' || c == ';' || c == '/' || /\s/.test(c)) {
-//			sb += '\\';
-//		}
-//		sb += c;
-//	}
-//	return sb;
-//}
+
+function searchPage(classSimpleName, success, error) {
+	if(success == null)
+		success = function( data, textStatus, jQxhr ) {};
+	if(error == null)
+		error = function( jqXhr, textStatus, errorThrown ) {};
+	var queryParams = "?" + Array.from(document.querySelectorAll(".pageSearchVal")).filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
+	var uri = location.pathname + queryParams;
+	fetch(uri).then(response => {
+		response.text().then((body) => {
+			//var template = document.createElement("template");
+			//template.innerHTML = body.substring(body.indexOf("<body"), body.indexOf("</html>"));
+			var templateStr = body.substring(body);
+			var template = new DOMParser().parseFromString(body, "text/html");
+			//var template = document.createElement("<template>" + body.substring(body.indexOf("<body"), body.indexOf("</html>")) + "</template>");
+			document.querySelectorAll('.pageFacetField').forEach((facetField, index) => {
+				facetField.replaceWith(template.querySelector("." + facetField.getAttribute("id")));
+			});
+			document.querySelectorAll('.pageStatsField').forEach((statsField, index) => {
+				statsField.replaceWith(template.querySelector("." + statsField.getAttribute("id")));
+			});
+			document.querySelector(".pageContent").replaceWith(template.querySelector(".pageContent"));
+			window['pageGraph' + classSimpleName](classSimpleName)
+			success(document.querySelector(".pageContent"));
+		});
+	});
+	window.history.replaceState('', '', uri);
+}
+
+function searchEscapeQueryChars(s) {
+	var sb = "";
+	for (let i = 0; i < s.length; i++) {
+		var c = s[i];
+		// These characters are part of the query syntax and must be escaped
+		if (c == '\\' || c == '+' || c == '-' || c == '!' || c == '(' || c == ')' || c == ':' || c == '^'
+				|| c == '[' || c == ']' || c == '\"' || c == '{' || c == '}' || c == '~' || c == '*' || c == '?'
+				|| c == '|' || c == '&' || c == ';' || c == '/' || /\s/.test(c)) {
+			sb += '\\';
+		}
+		sb += c;
+	}
+	return sb;
+}
 //
 /////////////
 //// other //
@@ -705,53 +707,51 @@ function facetStatsChange(classSimpleName, elem) {
 //jQuery deparam is an extraction of the deparam method from Ben Alman's jQuery BBQ
 //http://benalman.com/projects/jquery-bbq-plugin/
 //*/
-//(function ($) {
-//$.deparam = function (params, coerce) {
-//var obj = [],
-//  coerce_types = { 'true': !0, 'false': !1, 'null': null };
-//
-//// Iterate over all name=value pairs.
-//$.each(params.replace(/\+/g, ' ').split('&'), function (j,v) {
-//var param = v.split('='),
-//    key = decodeURIComponent(param[0]),
-//    val,
-//    cur = obj,
-//    i = 0,
-//      
-//    // If key is more complex than 'foo', like 'a[]' or 'a[b][c]', split it
-//    // into its component parts.
-//    keys = key.split(']['),
-//    keys_last = keys.length - 1;
-//  
-//// Basic 'foo' style key.
-//keys_last = 0;
-//
-//// Are we dealing with a name=value pair, or just a name?
-//if (param.length === 2) {
-//  val = decodeURIComponent(param[1]);
-//    
-//  // Coerce values.
-//  if (coerce) {
-//    val = val && !isNaN(val)              ? +val              // number
-//        : val === 'undefined'             ? undefined         // undefined
-//        : coerce_types[val] !== undefined ? coerce_types[val] // true, false, null
-//        : val;                                                // string
-//  }
-//
-//  // Simple key, even simpler rules, since only scalars and shallow
-//  // arrays are allowed.
-//
-//  // val is a scalar.
-//  obj.push({name: key, 'value': val});
-//} else if (key) {
-//  // No value was defined, so set something meaningful.
-//  obj.push({name: key, value: (coerce ? undefined : '')});
-//}
-//});
-//
-//return obj;
-//};
-//})(jQuery);
+function deparam(params, coerce) {
+  var obj = [],
+    coerce_types = { 'true': !0, 'false': !1, 'null': null };
+  
+  // Iterate over all name=value pairs.
+  params.replace(/\+/g, ' ').split('&').forEach(function (v,j) {
+  	var param = v.split('='),
+  	    key = decodeURIComponent(param[0]),
+  	    val,
+  	    cur = obj,
+  	    i = 0,
+	
+  	    // If key is more complex than 'foo', like 'a[]' or 'a[b][c]', split it
+  	    // into its component parts.
+  	    keys = key.split(']['),
+  	    keys_last = keys.length - 1;
+	
+  	// Basic 'foo' style key.
+  	keys_last = 0;
+  
+  	// Are we dealing with a name=value pair, or just a name?
+  	if (param.length === 2) {
+  	  val = decodeURIComponent(param[1]);
+	
+  	  // Coerce values.
+  	  if (coerce) {
+  	    val = val && !isNaN(val)              ? +val              // number
+  	        : val === 'undefined'             ? undefined         // undefined
+  	        : coerce_types[val] !== undefined ? coerce_types[val] // true, false, null
+  	        : val;                                                // string
+  	  }
+  
+  	  // Simple key, even simpler rules, since only scalars and shallow
+  	  // arrays are allowed.
+  
+  	  // val is a scalar.
+  	  obj.push({name: key, 'value': val});
+  	} else if (key) {
+  	  // No value was defined, so set something meaningful.
+  	  obj.push({name: key, value: (coerce ? undefined : '')});
+  	}
+  });
+
+return obj;
+}
 //
 //function unpack(rows, key) {
 //    return rows.map(function(row) { return row[key]; });
