@@ -197,7 +197,7 @@ function suggestSiteUserObjectSuggest($formFilters, $list, target) {
 
 // PATCH //
 
-async function patchSiteUser($formFilters, $formValues, pk, success, error) {
+async function patchSiteUser($formFilters, $formValues, target, pk, success, error) {
   var filters = patchSiteUserFilters($formFilters);
 
   var vals = {};
@@ -252,61 +252,77 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
 
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   var removeArchived = $formValues.querySelector('.removeArchived')?.value === 'true';
+  if(valueArchived != null)
+    valueArchived = valueArchived === 'true';
   var valueArchivedSelectVal = $formValues.querySelector('select.setArchived')?.value;
+  if(valueArchivedSelectVal != null)
+    valueArchivedSelectVal = valueArchivedSelectVal === 'true';
   if(valueArchivedSelectVal != null && valueArchivedSelectVal !== '')
     valueArchived = valueArchivedSelectVal == 'true';
   var setArchived = removeArchived ? null : valueArchived;
-  var addArchived = $formValues.querySelector('.addArchived').checked;
+  var addArchived = $formValues.querySelector('.addArchived')?.checked;
   if(removeArchived || setArchived != null && setArchived !== '')
     vals['setArchived'] = setArchived;
   if(addArchived != null && addArchived !== '')
     vals['addArchived'] = addArchived;
-  var removeArchived = $formValues.querySelector('.removeArchived').checked;
+  var removeArchived = $formValues.querySelector('.removeArchived')?.checked;
   if(removeArchived != null && removeArchived !== '')
     vals['removeArchived'] = removeArchived;
 
   var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
   var removeDeleted = $formValues.querySelector('.removeDeleted')?.value === 'true';
+  if(valueDeleted != null)
+    valueDeleted = valueDeleted === 'true';
   var valueDeletedSelectVal = $formValues.querySelector('select.setDeleted')?.value;
+  if(valueDeletedSelectVal != null)
+    valueDeletedSelectVal = valueDeletedSelectVal === 'true';
   if(valueDeletedSelectVal != null && valueDeletedSelectVal !== '')
     valueDeleted = valueDeletedSelectVal == 'true';
   var setDeleted = removeDeleted ? null : valueDeleted;
-  var addDeleted = $formValues.querySelector('.addDeleted').checked;
+  var addDeleted = $formValues.querySelector('.addDeleted')?.checked;
   if(removeDeleted || setDeleted != null && setDeleted !== '')
     vals['setDeleted'] = setDeleted;
   if(addDeleted != null && addDeleted !== '')
     vals['addDeleted'] = addDeleted;
-  var removeDeleted = $formValues.querySelector('.removeDeleted').checked;
+  var removeDeleted = $formValues.querySelector('.removeDeleted')?.checked;
   if(removeDeleted != null && removeDeleted !== '')
     vals['removeDeleted'] = removeDeleted;
 
   var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
   var removeSeeArchived = $formValues.querySelector('.removeSeeArchived')?.value === 'true';
+  if(valueSeeArchived != null)
+    valueSeeArchived = valueSeeArchived === 'true';
   var valueSeeArchivedSelectVal = $formValues.querySelector('select.setSeeArchived')?.value;
+  if(valueSeeArchivedSelectVal != null)
+    valueSeeArchivedSelectVal = valueSeeArchivedSelectVal === 'true';
   if(valueSeeArchivedSelectVal != null && valueSeeArchivedSelectVal !== '')
     valueSeeArchived = valueSeeArchivedSelectVal == 'true';
   var setSeeArchived = removeSeeArchived ? null : valueSeeArchived;
-  var addSeeArchived = $formValues.querySelector('.addSeeArchived').checked;
+  var addSeeArchived = $formValues.querySelector('.addSeeArchived')?.checked;
   if(removeSeeArchived || setSeeArchived != null && setSeeArchived !== '')
     vals['setSeeArchived'] = setSeeArchived;
   if(addSeeArchived != null && addSeeArchived !== '')
     vals['addSeeArchived'] = addSeeArchived;
-  var removeSeeArchived = $formValues.querySelector('.removeSeeArchived').checked;
+  var removeSeeArchived = $formValues.querySelector('.removeSeeArchived')?.checked;
   if(removeSeeArchived != null && removeSeeArchived !== '')
     vals['removeSeeArchived'] = removeSeeArchived;
 
   var valueSeeDeleted = $formValues.querySelector('.valueSeeDeleted')?.value;
   var removeSeeDeleted = $formValues.querySelector('.removeSeeDeleted')?.value === 'true';
+  if(valueSeeDeleted != null)
+    valueSeeDeleted = valueSeeDeleted === 'true';
   var valueSeeDeletedSelectVal = $formValues.querySelector('select.setSeeDeleted')?.value;
+  if(valueSeeDeletedSelectVal != null)
+    valueSeeDeletedSelectVal = valueSeeDeletedSelectVal === 'true';
   if(valueSeeDeletedSelectVal != null && valueSeeDeletedSelectVal !== '')
     valueSeeDeleted = valueSeeDeletedSelectVal == 'true';
   var setSeeDeleted = removeSeeDeleted ? null : valueSeeDeleted;
-  var addSeeDeleted = $formValues.querySelector('.addSeeDeleted').checked;
+  var addSeeDeleted = $formValues.querySelector('.addSeeDeleted')?.checked;
   if(removeSeeDeleted || setSeeDeleted != null && setSeeDeleted !== '')
     vals['setSeeDeleted'] = setSeeDeleted;
   if(addSeeDeleted != null && addSeeDeleted !== '')
     vals['addSeeDeleted'] = addSeeDeleted;
-  var removeSeeDeleted = $formValues.querySelector('.removeSeeDeleted').checked;
+  var removeSeeDeleted = $formValues.querySelector('.removeSeeDeleted')?.checked;
   if(removeSeeDeleted != null && removeSeeDeleted !== '')
     vals['removeSeeDeleted'] = removeSeeDeleted;
 
@@ -418,7 +434,7 @@ async function patchSiteUser($formFilters, $formValues, pk, success, error) {
   if(removeUserFullName != null && removeUserFullName !== '')
     vals['removeUserFullName'] = removeUserFullName;
 
-  patchSiteUserVals(pk == null ? $.deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
+  patchSiteUserVals(pk == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
 function patchSiteUserFilters($formFilters) {
@@ -714,7 +730,7 @@ function postSiteUserVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportSiteUser($formValues, pk, success, error) {
+async function putimportSiteUser($formValues, target, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
     putimportSiteUserVals(JSON.parse(json), target, success, error);

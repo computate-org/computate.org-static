@@ -52,14 +52,14 @@ Promise.all([
             const valid = form.reportValidity();
           });
           // PATCH archived
-          document.querySelector('#Page_archived')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_archived')?.addEventListener('click', (event) => {
             const form = document.querySelector('#PageForm_archived');
             const valid = form.checkValidity();
             if(valid) {
               var confirmResponse = confirm('Are you sure you want to archive that?'); 
               if(confirmResponse) { 
                 patchBaseResultVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
-                    , 'setArchived', event.currentTarget.checked
+                    , 'setArchived', !(event.currentTarget.getAttribute('data-val') === 'true')
                     , event.currentTarget
                     , function(response, target) { addGlow(target); }
                     , function(response, target) { addError(target); }
@@ -75,14 +75,14 @@ Promise.all([
             const valid = form.reportValidity();
           });
           // PATCH deleted
-          document.querySelector('#Page_deleted')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_deleted')?.addEventListener('click', (event) => {
             const form = document.querySelector('#PageForm_deleted');
             const valid = form.checkValidity();
             if(valid) {
               var confirmResponse = confirm('Are you sure you want to delete that?'); 
               if(confirmResponse) { 
                 patchBaseResultVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
-                    , 'setDeleted', event.currentTarget.checked
+                    , 'setDeleted', !(event.currentTarget.getAttribute('data-val') === 'true')
                     , event.currentTarget
                     , function(response, target) { addGlow(target); }
                     , function(response, target) { addError(target); }
