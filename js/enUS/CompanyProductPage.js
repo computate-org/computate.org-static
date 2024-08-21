@@ -135,6 +135,18 @@ function searchCompanyProductFilters($formFilters) {
     if(filterTemplateUri != null && filterTemplateUri !== '')
       filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
 
+    var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
+    if(filterDownloadUri != null && filterDownloadUri !== '')
+      filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
+
+    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
+    if(filterUserUri != null && filterUserUri !== '')
+      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
+
+    var filterStoreUrl = $formFilters.querySelector('.valueStoreUrl')?.value;
+    if(filterStoreUrl != null && filterStoreUrl !== '')
+      filters.push({ name: 'fq', value: 'storeUrl:' + filterStoreUrl });
+
     var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
@@ -404,6 +416,42 @@ async function patchCompanyProduct($formFilters, $formValues, target, id, succes
   if(removeTemplateUri != null && removeTemplateUri !== '')
     vals['removeTemplateUri'] = removeTemplateUri;
 
+  var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
+  var removeDownloadUri = $formValues.querySelector('.removeDownloadUri')?.value === 'true';
+  var setDownloadUri = removeDownloadUri ? null : $formValues.querySelector('.setDownloadUri')?.value;
+  var addDownloadUri = $formValues.querySelector('.addDownloadUri')?.value;
+  if(removeDownloadUri || setDownloadUri != null && setDownloadUri !== '')
+    vals['setDownloadUri'] = setDownloadUri;
+  if(addDownloadUri != null && addDownloadUri !== '')
+    vals['addDownloadUri'] = addDownloadUri;
+  var removeDownloadUri = $formValues.querySelector('.removeDownloadUri')?.value;
+  if(removeDownloadUri != null && removeDownloadUri !== '')
+    vals['removeDownloadUri'] = removeDownloadUri;
+
+  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
+  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value === 'true';
+  var setUserUri = removeUserUri ? null : $formValues.querySelector('.setUserUri')?.value;
+  var addUserUri = $formValues.querySelector('.addUserUri')?.value;
+  if(removeUserUri || setUserUri != null && setUserUri !== '')
+    vals['setUserUri'] = setUserUri;
+  if(addUserUri != null && addUserUri !== '')
+    vals['addUserUri'] = addUserUri;
+  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value;
+  if(removeUserUri != null && removeUserUri !== '')
+    vals['removeUserUri'] = removeUserUri;
+
+  var valueStoreUrl = $formValues.querySelector('.valueStoreUrl')?.value;
+  var removeStoreUrl = $formValues.querySelector('.removeStoreUrl')?.value === 'true';
+  var setStoreUrl = removeStoreUrl ? null : $formValues.querySelector('.setStoreUrl')?.value;
+  var addStoreUrl = $formValues.querySelector('.addStoreUrl')?.value;
+  if(removeStoreUrl || setStoreUrl != null && setStoreUrl !== '')
+    vals['setStoreUrl'] = setStoreUrl;
+  if(addStoreUrl != null && addStoreUrl !== '')
+    vals['addStoreUrl'] = addStoreUrl;
+  var removeStoreUrl = $formValues.querySelector('.removeStoreUrl')?.value;
+  if(removeStoreUrl != null && removeStoreUrl !== '')
+    vals['removeStoreUrl'] = removeStoreUrl;
+
   var valueTitle = $formValues.querySelector('.valueTitle')?.value;
   var removeTitle = $formValues.querySelector('.removeTitle')?.value === 'true';
   var setTitle = removeTitle ? null : $formValues.querySelector('.setTitle')?.value;
@@ -544,6 +592,18 @@ function patchCompanyProductFilters($formFilters) {
     if(filterTemplateUri != null && filterTemplateUri !== '')
       filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
 
+    var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
+    if(filterDownloadUri != null && filterDownloadUri !== '')
+      filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
+
+    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
+    if(filterUserUri != null && filterUserUri !== '')
+      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
+
+    var filterStoreUrl = $formFilters.querySelector('.valueStoreUrl')?.value;
+    if(filterStoreUrl != null && filterStoreUrl !== '')
+      filters.push({ name: 'fq', value: 'storeUrl:' + filterStoreUrl });
+
     var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
@@ -654,6 +714,18 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
   if(valueTemplateUri != null && valueTemplateUri !== '')
     vals['templateUri'] = valueTemplateUri;
+
+  var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
+  if(valueDownloadUri != null && valueDownloadUri !== '')
+    vals['downloadUri'] = valueDownloadUri;
+
+  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
+  if(valueUserUri != null && valueUserUri !== '')
+    vals['userUri'] = valueUserUri;
+
+  var valueStoreUrl = $formValues.querySelector('.valueStoreUrl')?.value;
+  if(valueStoreUrl != null && valueStoreUrl !== '')
+    vals['storeUrl'] = valueStoreUrl;
 
   var valueTitle = $formValues.querySelector('.valueTitle')?.value;
   if(valueTitle != null && valueTitle !== '')
@@ -802,6 +874,9 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputId = null;
         var inputResourceUri = null;
         var inputTemplateUri = null;
+        var inputDownloadUri = null;
+        var inputUserUri = null;
+        var inputStoreUrl = null;
         var inputTitle = null;
 
         if(vars.includes('created'))
@@ -858,6 +933,12 @@ async function websocketCompanyProductInner(apiRequest) {
           inputResourceUri = $response.querySelector('#Page_resourceUri');
         if(vars.includes('templateUri'))
           inputTemplateUri = $response.querySelector('#Page_templateUri');
+        if(vars.includes('downloadUri'))
+          inputDownloadUri = $response.querySelector('#Page_downloadUri');
+        if(vars.includes('userUri'))
+          inputUserUri = $response.querySelector('#Page_userUri');
+        if(vars.includes('storeUrl'))
+          inputStoreUrl = $response.querySelector('#Page_storeUrl');
         if(vars.includes('title'))
           inputTitle = $response.querySelector('#Page_title');
         jsWebsocketCompanyProduct(id, vars, $response);
@@ -999,6 +1080,21 @@ async function websocketCompanyProductInner(apiRequest) {
         if(inputTemplateUri) {
           inputTemplateUri.replaceAll('#Page_templateUri');
           addGlow(document.querySelector('#Page_templateUri'));
+        }
+
+        if(inputDownloadUri) {
+          inputDownloadUri.replaceAll('#Page_downloadUri');
+          addGlow(document.querySelector('#Page_downloadUri'));
+        }
+
+        if(inputUserUri) {
+          inputUserUri.replaceAll('#Page_userUri');
+          addGlow(document.querySelector('#Page_userUri'));
+        }
+
+        if(inputStoreUrl) {
+          inputStoreUrl.replaceAll('#Page_storeUrl');
+          addGlow(document.querySelector('#Page_storeUrl'));
         }
 
         if(inputTitle) {
