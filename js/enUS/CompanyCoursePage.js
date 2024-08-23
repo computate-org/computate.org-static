@@ -63,6 +63,10 @@ function searchCompanyCourseFilters($formFilters) {
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
+    var filterPrice = $formFilters.querySelector('.valuePrice')?.value;
+    if(filterPrice != null && filterPrice !== '')
+      filters.push({ name: 'fq', value: 'price:' + filterPrice });
+
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
       filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
@@ -135,6 +139,18 @@ function searchCompanyCourseFilters($formFilters) {
     if(filterTemplateUri != null && filterTemplateUri !== '')
       filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
 
+    var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
+    if(filterDownloadUri != null && filterDownloadUri !== '')
+      filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
+
+    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
+    if(filterUserUri != null && filterUserUri !== '')
+      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
+
+    var filterStoreUrl = $formFilters.querySelector('.valueStoreUrl')?.value;
+    if(filterStoreUrl != null && filterStoreUrl !== '')
+      filters.push({ name: 'fq', value: 'storeUrl:' + filterStoreUrl });
+
     var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
@@ -166,9 +182,9 @@ function suggestCompanyCourseObjectSuggest($formFilters, $list, target) {
     $list.empty();
     data['list'].forEach((o, i) => {
       var $i = document.querySelector('<i class="fa-regular fa-notebook"></i>');
-      var $span = document.createElement('<span>').setAttribute('class', '').text(o['objectTitle']);
-      var $li = document.createElement('<li>');
-      var $a = document.createElement('<a>').setAttribute('href', o['pageUrlPk']);
+      var $span = document.createElement('span');      $span.setAttribute('class', '');      $span.innerText = o['objectTitle'];
+      var $li = document.createElement('li');
+      var $a = document.createElement('a').setAttribute('href', o['pageUrlPk']);
       $a.append($i);
       $a.append($span);
       $li.append($a);
@@ -324,6 +340,18 @@ async function patchCompanyCourse($formFilters, $formValues, target, id, success
   if(removeUrl != null && removeUrl !== '')
     vals['removeUrl'] = removeUrl;
 
+  var valuePrice = $formValues.querySelector('.valuePrice')?.value;
+  var removePrice = $formValues.querySelector('.removePrice')?.value === 'true';
+  var setPrice = removePrice ? null : $formValues.querySelector('.setPrice')?.value;
+  var addPrice = $formValues.querySelector('.addPrice')?.value;
+  if(removePrice || setPrice != null && setPrice !== '')
+    vals['setPrice'] = setPrice;
+  if(addPrice != null && addPrice !== '')
+    vals['addPrice'] = addPrice;
+  var removePrice = $formValues.querySelector('.removePrice')?.value;
+  if(removePrice != null && removePrice !== '')
+    vals['removePrice'] = removePrice;
+
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
   var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
@@ -408,6 +436,42 @@ async function patchCompanyCourse($formFilters, $formValues, target, id, success
   if(removeTemplateUri != null && removeTemplateUri !== '')
     vals['removeTemplateUri'] = removeTemplateUri;
 
+  var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
+  var removeDownloadUri = $formValues.querySelector('.removeDownloadUri')?.value === 'true';
+  var setDownloadUri = removeDownloadUri ? null : $formValues.querySelector('.setDownloadUri')?.value;
+  var addDownloadUri = $formValues.querySelector('.addDownloadUri')?.value;
+  if(removeDownloadUri || setDownloadUri != null && setDownloadUri !== '')
+    vals['setDownloadUri'] = setDownloadUri;
+  if(addDownloadUri != null && addDownloadUri !== '')
+    vals['addDownloadUri'] = addDownloadUri;
+  var removeDownloadUri = $formValues.querySelector('.removeDownloadUri')?.value;
+  if(removeDownloadUri != null && removeDownloadUri !== '')
+    vals['removeDownloadUri'] = removeDownloadUri;
+
+  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
+  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value === 'true';
+  var setUserUri = removeUserUri ? null : $formValues.querySelector('.setUserUri')?.value;
+  var addUserUri = $formValues.querySelector('.addUserUri')?.value;
+  if(removeUserUri || setUserUri != null && setUserUri !== '')
+    vals['setUserUri'] = setUserUri;
+  if(addUserUri != null && addUserUri !== '')
+    vals['addUserUri'] = addUserUri;
+  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value;
+  if(removeUserUri != null && removeUserUri !== '')
+    vals['removeUserUri'] = removeUserUri;
+
+  var valueStoreUrl = $formValues.querySelector('.valueStoreUrl')?.value;
+  var removeStoreUrl = $formValues.querySelector('.removeStoreUrl')?.value === 'true';
+  var setStoreUrl = removeStoreUrl ? null : $formValues.querySelector('.setStoreUrl')?.value;
+  var addStoreUrl = $formValues.querySelector('.addStoreUrl')?.value;
+  if(removeStoreUrl || setStoreUrl != null && setStoreUrl !== '')
+    vals['setStoreUrl'] = setStoreUrl;
+  if(addStoreUrl != null && addStoreUrl !== '')
+    vals['addStoreUrl'] = addStoreUrl;
+  var removeStoreUrl = $formValues.querySelector('.removeStoreUrl')?.value;
+  if(removeStoreUrl != null && removeStoreUrl !== '')
+    vals['removeStoreUrl'] = removeStoreUrl;
+
   var valueTitle = $formValues.querySelector('.valueTitle')?.value;
   var removeTitle = $formValues.querySelector('.removeTitle')?.value === 'true';
   var setTitle = removeTitle ? null : $formValues.querySelector('.setTitle')?.value;
@@ -488,6 +552,10 @@ function patchCompanyCourseFilters($formFilters) {
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
+    var filterPrice = $formFilters.querySelector('.valuePrice')?.value;
+    if(filterPrice != null && filterPrice !== '')
+      filters.push({ name: 'fq', value: 'price:' + filterPrice });
+
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
       filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
@@ -559,6 +627,18 @@ function patchCompanyCourseFilters($formFilters) {
     var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
     if(filterTemplateUri != null && filterTemplateUri !== '')
       filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
+    if(filterDownloadUri != null && filterDownloadUri !== '')
+      filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
+
+    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
+    if(filterUserUri != null && filterUserUri !== '')
+      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
+
+    var filterStoreUrl = $formFilters.querySelector('.valueStoreUrl')?.value;
+    if(filterStoreUrl != null && filterStoreUrl !== '')
+      filters.push({ name: 'fq', value: 'storeUrl:' + filterStoreUrl });
 
     var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
     if(filterTitle != null && filterTitle !== '')
@@ -647,6 +727,10 @@ async function postCompanyCourse($formValues, target, success, error) {
   if(valueUrl != null && valueUrl !== '')
     vals['url'] = valueUrl;
 
+  var valuePrice = $formValues.querySelector('.valuePrice')?.value;
+  if(valuePrice != null && valuePrice !== '')
+    vals['price'] = valuePrice;
+
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   if(valuePageId != null && valuePageId !== '')
     vals['pageId'] = valuePageId;
@@ -674,6 +758,18 @@ async function postCompanyCourse($formValues, target, success, error) {
   var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
   if(valueTemplateUri != null && valueTemplateUri !== '')
     vals['templateUri'] = valueTemplateUri;
+
+  var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
+  if(valueDownloadUri != null && valueDownloadUri !== '')
+    vals['downloadUri'] = valueDownloadUri;
+
+  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
+  if(valueUserUri != null && valueUserUri !== '')
+    vals['userUri'] = valueUserUri;
+
+  var valueStoreUrl = $formValues.querySelector('.valueStoreUrl')?.value;
+  if(valueStoreUrl != null && valueStoreUrl !== '')
+    vals['storeUrl'] = valueStoreUrl;
 
   var valueTitle = $formValues.querySelector('.valueTitle')?.value;
   if(valueTitle != null && valueTitle !== '')
@@ -745,22 +841,47 @@ async function websocketCompanyCourse(success) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#CompanyCourseForm :input[name=id]')?.value;
+      var pkPage = document.querySelector('#Page_id')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
       var numPATCH = parseInt(json['numPATCH']);
       var percent = Math.floor( numPATCH / numFound * 100 ) + '%';
-      var $box = document.createElement('<div>').setAttribute('class', 'w3-quarter box-' + id + ' ').setAttribute('id', 'box-' + id).setAttribute('data-numPATCH', numPATCH);
-      var $margin = document.createElement('<div>').setAttribute('class', 'w3-margin ').setAttribute('id', 'margin-' + id);
-      var $card = document.createElement('<div>').setAttribute('class', 'w3-card w3-white ').setAttribute('id', 'card-' + id);
-      var $header = document.createElement('<div>').setAttribute('class', 'w3-container fa- ').setAttribute('id', 'header-' + id);
-      var $i = document.createElement('<i class="fa-regular fa-notebook"></i>');
-      var $headerSpan = document.createElement('<span>').setAttribute('class', '').text('modify courses in ' + json.timeRemaining);
-      var $x = document.createElement('<span>').setAttribute('class', 'w3-button w3-display-topright ').setAttribute('onclick', '$("#card-' + id + '").classList.add("display-none"); ').setAttribute('id', 'x-' + id);
-      var $body = document.createElement('<div>').setAttribute('class', 'w3-container w3-padding ').setAttribute('id', 'text-' + id);
-      var $bar = document.createElement('<div>').setAttribute('class', 'w3-light-gray ').setAttribute('id', 'bar-' + id);
-      var $progress = document.createElement('<div>').setAttribute('class', 'w3- ').setAttribute('style', 'height: 24px; width: ' + percent + '; ').setAttribute('id', 'progress-' + id).text(numPATCH + '/' + numFound);
+      var $box = document.createElement('div');
+      $box.setAttribute('class', 'w3-quarter box-' + id + ' ');
+      $box.setAttribute('id', 'box-' + id);
+      $box.setAttribute('data-numPATCH', numPATCH);
+      var $margin = document.createElement('div');
+      $margin.setAttribute('class', 'w3-margin ');
+      $margin.setAttribute('id', 'margin-' + id);
+      var $card = document.createElement('div');
+      $card.setAttribute('class', 'w3-card w3-white ');
+      $card.setAttribute('id', 'card-' + id);
+      var $header = document.createElement('div');
+      $header.setAttribute('class', 'w3-container fa- ');
+      $header.setAttribute('id', 'header-' + id);
+      var iTemplate = document.createElement('template');
+      iTemplate.innerHTML = '<i class="fa-regular fa-notebook"></i>';
+      var $i = iTemplate.content;
+      var $headerSpan = document.createElement('span');
+      $headerSpan.setAttribute('class', '');
+      $headerSpan.innerText = 'modify courses in ' + json.timeRemaining;
+      var $x = document.createElement('span');
+      $x.setAttribute('class', 'w3-button w3-display-topright ');
+      $x.setAttribute('onclick', 'document.querySelector("#card-' + id + '");');
+      $x.classList.add("display-none");
+      $x.setAttribute('id', 'x-' + id);
+      var $body = document.createElement('div');
+      $body.setAttribute('class', 'w3-container w3-padding ');
+      $body.setAttribute('id', 'text-' + id);
+      var $bar = document.createElement('div');
+      $bar.setAttribute('class', 'w3-light-gray ');
+      $bar.setAttribute('id', 'bar-' + id);
+      var $progress = document.createElement('div');
+      $progress.setAttribute('class', 'w3- ');
+      $progress.setAttribute('style', 'height: 24px; width: ' + percent + '; ');
+      $progress.setAttribute('id', 'progress-' + id);
+      $progress.innerText = numPATCH + '/' + numFound;
       $card.append($header);
       $header.append($i);
       $header.append($headerSpan);
@@ -772,13 +893,8 @@ async function websocketCompanyCourse(success) {
       $margin.append($card);
       if(numPATCH < numFound) {
         var $old_box = document.querySelector('.box-' + id);
-        if(!$old_box.size()) {
-          document.querySelector('.top-box').append($box);
-        } else if($old_box && $old_box.getAttribute('data-numPATCH') < numFound) {
-          document.querySelector('.box-' + id).html($margin);
-        }
       } else {
-        document.querySelector('.box-' + id).remove();
+        document.querySelector('.box-' + id)?.remove();
       }
       if(pk && pkPage && pk == pkPage) {
         if(success)
@@ -795,7 +911,7 @@ async function websocketCompanyCourseInner(apiRequest) {
   var empty = apiRequest['empty'];
 
   if(id != null && vars.length > 0) {
-    var queryParams = "?" + $(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
+    var queryParams = "?" + document.querySelector(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
     $.get(uri, {}, function(data) {
       var $response = $("<html/>").html(data);
@@ -808,6 +924,7 @@ async function websocketCompanyCourseInner(apiRequest) {
         var inputDescription = null;
         var inputUri = null;
         var inputUrl = null;
+        var inputPrice = null;
         var inputPageId = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
@@ -826,6 +943,9 @@ async function websocketCompanyCourseInner(apiRequest) {
         var inputId = null;
         var inputResourceUri = null;
         var inputTemplateUri = null;
+        var inputDownloadUri = null;
+        var inputUserUri = null;
+        var inputStoreUrl = null;
         var inputTitle = null;
         var inputCourseNum = null;
 
@@ -847,6 +967,8 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputUri = $response.querySelector('#Page_uri');
         if(vars.includes('url'))
           inputUrl = $response.querySelector('#Page_url');
+        if(vars.includes('price'))
+          inputPrice = $response.querySelector('#Page_price');
         if(vars.includes('pageId'))
           inputPageId = $response.querySelector('#Page_pageId');
         if(vars.includes('inheritPk'))
@@ -883,6 +1005,12 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputResourceUri = $response.querySelector('#Page_resourceUri');
         if(vars.includes('templateUri'))
           inputTemplateUri = $response.querySelector('#Page_templateUri');
+        if(vars.includes('downloadUri'))
+          inputDownloadUri = $response.querySelector('#Page_downloadUri');
+        if(vars.includes('userUri'))
+          inputUserUri = $response.querySelector('#Page_userUri');
+        if(vars.includes('storeUrl'))
+          inputStoreUrl = $response.querySelector('#Page_storeUrl');
         if(vars.includes('title'))
           inputTitle = $response.querySelector('#Page_title');
         if(vars.includes('courseNum'))
@@ -936,6 +1064,11 @@ async function websocketCompanyCourseInner(apiRequest) {
         if(inputUrl) {
           inputUrl.replaceAll('#Page_url');
           addGlow(document.querySelector('#Page_url'));
+        }
+
+        if(inputPrice) {
+          inputPrice.replaceAll('#Page_price');
+          addGlow(document.querySelector('#Page_price'));
         }
 
         if(inputPageId) {
@@ -1026,6 +1159,21 @@ async function websocketCompanyCourseInner(apiRequest) {
         if(inputTemplateUri) {
           inputTemplateUri.replaceAll('#Page_templateUri');
           addGlow(document.querySelector('#Page_templateUri'));
+        }
+
+        if(inputDownloadUri) {
+          inputDownloadUri.replaceAll('#Page_downloadUri');
+          addGlow(document.querySelector('#Page_downloadUri'));
+        }
+
+        if(inputUserUri) {
+          inputUserUri.replaceAll('#Page_userUri');
+          addGlow(document.querySelector('#Page_userUri'));
+        }
+
+        if(inputStoreUrl) {
+          inputStoreUrl.replaceAll('#Page_storeUrl');
+          addGlow(document.querySelector('#Page_storeUrl'));
         }
 
         if(inputTitle) {
@@ -1146,7 +1294,7 @@ function pageGraphCompanyCourse(apiRequest) {
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqCompanyCourse_time').text('');
+  document.querySelector('#pageSearchVal-fqCompanyCourse_time').innerText = '';
   searchPage('CompanyCourse', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
