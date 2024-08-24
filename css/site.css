@@ -88,7 +88,7 @@ body {
   transition: 0.1s opacity;
 }
 /* main page padding */
-@media (max-width:800px){
+@media (max-width:800px) {
   #site-grid {
     display: grid;
     grid-template-areas:
@@ -103,7 +103,7 @@ body {
      --width: 100vw;
   }
 }
-@media (min-width:801px){
+@media (min-width:801px) {
   #site-grid {
     display: grid;
     grid-template-areas:
@@ -162,7 +162,7 @@ body {
   right: 1rem;
 }
 img#site-aside-left-img-logo {
-  width: 200px;
+  width: 300px;
   object-fit: cover;
 }
 
@@ -185,7 +185,7 @@ img{ max-width: 100%; }
 /* mobile menu close button stuff (copied from web awesome documentation page) */
 /* top bar stuff */
 #top-bar {
-  padding-block-start: 1rem;
+  padding-block: 1rem;
   display: flex;
   gap: var(--sl-spacing-m);
 }
@@ -408,10 +408,23 @@ html, body {
 	height: 2rem;
 	width: 2rem;
 }
+.round-button::part(base) {
+  border-radius: var(--sl-border-radius-x-large);
+}
 
 /***********/
 /* article */
 /***********/
+
+.max-width-content-width {
+  max-width: var(--content-width);
+}
+.margin-inline-auto {
+  margin-inline: auto;
+}
+.margin-block-spacing-medium {
+  margin-block: var(--sl-spacing-medium);
+}
 
 .article-section {
   max-width: var(--content-width);
@@ -430,8 +443,12 @@ html, body {
 /* FOOTER */
 /**********/
 
-footer > sl-button > div {
-  gap: 1rem;
+#site-footer {
+  margin-block: var(--sl-spacing-large);
+  & > sl-button::part(base) {
+    height: 10rem;
+    align-items: center;
+  }
 }
 #footer-open-source {
   text-align: center;
