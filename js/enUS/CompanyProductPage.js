@@ -135,6 +135,10 @@ function searchCompanyProductFilters($formFilters) {
     if(filterTemplateUri != null && filterTemplateUri !== '')
       filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
 
+    var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
+    if(filterEmailTemplate != null && filterEmailTemplate !== '')
+      filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
+
     var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
     if(filterDownloadUri != null && filterDownloadUri !== '')
       filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
@@ -416,6 +420,18 @@ async function patchCompanyProduct($formFilters, $formValues, target, id, succes
   if(removeTemplateUri != null && removeTemplateUri !== '')
     vals['removeTemplateUri'] = removeTemplateUri;
 
+  var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
+  var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value === 'true';
+  var setEmailTemplate = removeEmailTemplate ? null : $formValues.querySelector('.setEmailTemplate')?.value;
+  var addEmailTemplate = $formValues.querySelector('.addEmailTemplate')?.value;
+  if(removeEmailTemplate || setEmailTemplate != null && setEmailTemplate !== '')
+    vals['setEmailTemplate'] = setEmailTemplate;
+  if(addEmailTemplate != null && addEmailTemplate !== '')
+    vals['addEmailTemplate'] = addEmailTemplate;
+  var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value;
+  if(removeEmailTemplate != null && removeEmailTemplate !== '')
+    vals['removeEmailTemplate'] = removeEmailTemplate;
+
   var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
   var removeDownloadUri = $formValues.querySelector('.removeDownloadUri')?.value === 'true';
   var setDownloadUri = removeDownloadUri ? null : $formValues.querySelector('.setDownloadUri')?.value;
@@ -592,6 +608,10 @@ function patchCompanyProductFilters($formFilters) {
     if(filterTemplateUri != null && filterTemplateUri !== '')
       filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
 
+    var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
+    if(filterEmailTemplate != null && filterEmailTemplate !== '')
+      filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
+
     var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
     if(filterDownloadUri != null && filterDownloadUri !== '')
       filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
@@ -714,6 +734,10 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
   if(valueTemplateUri != null && valueTemplateUri !== '')
     vals['templateUri'] = valueTemplateUri;
+
+  var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
+  if(valueEmailTemplate != null && valueEmailTemplate !== '')
+    vals['emailTemplate'] = valueEmailTemplate;
 
   var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
   if(valueDownloadUri != null && valueDownloadUri !== '')
@@ -894,6 +918,7 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputId = null;
         var inputResourceUri = null;
         var inputTemplateUri = null;
+        var inputEmailTemplate = null;
         var inputDownloadUri = null;
         var inputUserUri = null;
         var inputStoreUrl = null;
@@ -953,6 +978,8 @@ async function websocketCompanyProductInner(apiRequest) {
           inputResourceUri = $response.querySelector('#Page_resourceUri');
         if(vars.includes('templateUri'))
           inputTemplateUri = $response.querySelector('#Page_templateUri');
+        if(vars.includes('emailTemplate'))
+          inputEmailTemplate = $response.querySelector('#Page_emailTemplate');
         if(vars.includes('downloadUri'))
           inputDownloadUri = $response.querySelector('#Page_downloadUri');
         if(vars.includes('userUri'))
@@ -1100,6 +1127,11 @@ async function websocketCompanyProductInner(apiRequest) {
         if(inputTemplateUri) {
           inputTemplateUri.replaceAll('#Page_templateUri');
           addGlow(document.querySelector('#Page_templateUri'));
+        }
+
+        if(inputEmailTemplate) {
+          inputEmailTemplate.replaceAll('#Page_emailTemplate');
+          addGlow(document.querySelector('#Page_emailTemplate'));
         }
 
         if(inputDownloadUri) {
