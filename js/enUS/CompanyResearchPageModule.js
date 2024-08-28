@@ -2,6 +2,22 @@ Promise.all([
     customElements.whenDefined('sl-button')
     , customElements.whenDefined('sl-input')
     ]).then(() => {
+
+          document.querySelector('#htmButton_patchCompanyResearch')?.addEventListener('click', (event) => {
+            document.querySelector('#patchCompanyResearchDialog').show();
+          });
+
+          document.querySelector('#htmButton_postCompanyResearch')?.addEventListener('click', (event) => {
+            document.querySelector('#postCompanyResearchDialog').show();
+          });
+
+          document.querySelector('#htmButton_putimportCompanyResearch')?.addEventListener('click', (event) => {
+            document.querySelector('#putimportCompanyResearchDialog').show();
+          });
+
+          document.querySelector('#htmButton_searchpageCompanyResearch')?.addEventListener('click', (event) => {
+            document.querySelector('#searchpageCompanyResearchDialog').show();
+          });
           // PATCH created
           document.querySelector('#Page_created')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_created');
@@ -72,29 +88,6 @@ Promise.all([
           });
           document.querySelector('#Page_archived')?.addEventListener('sl-blur', (event) => {
             const form = document.querySelector('#PageForm_archived');
-            const valid = form.reportValidity();
-          });
-          // PATCH deleted
-          document.querySelector('#Page_deleted')?.addEventListener('click', (event) => {
-            const form = document.querySelector('#PageForm_deleted');
-            const valid = form.checkValidity();
-            if(valid) {
-              var confirmResponse = confirm('Are you sure you want to delete that?'); 
-              if(confirmResponse) { 
-                patchCompanyResearchVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
-                    , 'setDeleted', !(event.currentTarget.getAttribute('data-val') === 'true')
-                    , event.currentTarget
-                    , function(response, target) { addGlow(target); }
-                    , function(response, target) { addError(target); }
-                    );
-              }
-            }
-          });
-          document.querySelector('#Page_deleted')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_deleted')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_deleted');
             const valid = form.reportValidity();
           });
           // PATCH name

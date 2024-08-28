@@ -74,29 +74,6 @@ Promise.all([
             const form = document.querySelector('#PageForm_archived');
             const valid = form.reportValidity();
           });
-          // PATCH deleted
-          document.querySelector('#Page_deleted')?.addEventListener('click', (event) => {
-            const form = document.querySelector('#PageForm_deleted');
-            const valid = form.checkValidity();
-            if(valid) {
-              var confirmResponse = confirm('Are you sure you want to delete that?'); 
-              if(confirmResponse) { 
-                patchBaseResultVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
-                    , 'setDeleted', !(event.currentTarget.getAttribute('data-val') === 'true')
-                    , event.currentTarget
-                    , function(response, target) { addGlow(target); }
-                    , function(response, target) { addError(target); }
-                    );
-              }
-            }
-          });
-          document.querySelector('#Page_deleted')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_deleted')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_deleted');
-            const valid = form.reportValidity();
-          });
           // PATCH inheritPk
           document.querySelector('#Page_inheritPk')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_inheritPk');

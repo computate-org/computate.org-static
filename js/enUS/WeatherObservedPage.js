@@ -41,16 +41,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
 
-    var $filterDeletedCheckbox = $formFilters.querySelector('input.valueDeleted[type = "checkbox"]');
-    var $filterDeletedSelect = $formFilters.querySelector('select.valueDeleted');
-    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.value : $filterDeletedCheckbox.checked;
-    var filterDeletedSelectVal = $formFilters.querySelector('select.filterDeleted')?.value;
-    var filterDeleted = null;
-    if(filterDeletedSelectVal !== '')
-      filterDeleted = filterDeletedSelectVal == 'true';
-    if(filterDeleted != null && filterDeleted === true)
-      filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
-
     var filterName = $formFilters.querySelector('.valueName')?.value;
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
@@ -283,10 +273,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
-    var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
-    if(filterAreaServedColors != null && filterAreaServedColors !== '')
-      filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
-
     var filterAreaServedTitles = $formFilters.querySelector('.valueAreaServedTitles')?.value;
     if(filterAreaServedTitles != null && filterAreaServedTitles !== '')
       filters.push({ name: 'fq', value: 'areaServedTitles:' + filterAreaServedTitles });
@@ -294,6 +280,10 @@ function searchWeatherObservedFilters($formFilters) {
     var filterAreaServedLinks = $formFilters.querySelector('.valueAreaServedLinks')?.value;
     if(filterAreaServedLinks != null && filterAreaServedLinks !== '')
       filters.push({ name: 'fq', value: 'areaServedLinks:' + filterAreaServedLinks });
+
+    var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
+    if(filterAreaServedColors != null && filterAreaServedColors !== '')
+      filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
   }
   return filters;
 }
@@ -421,25 +411,6 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   var removeArchived = $formValues.querySelector('.removeArchived')?.checked;
   if(removeArchived != null && removeArchived !== '')
     vals['removeArchived'] = removeArchived;
-
-  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
-  var removeDeleted = $formValues.querySelector('.removeDeleted')?.value === 'true';
-  if(valueDeleted != null)
-    valueDeleted = valueDeleted === 'true';
-  var valueDeletedSelectVal = $formValues.querySelector('select.setDeleted')?.value;
-  if(valueDeletedSelectVal != null)
-    valueDeletedSelectVal = valueDeletedSelectVal === 'true';
-  if(valueDeletedSelectVal != null && valueDeletedSelectVal !== '')
-    valueDeleted = valueDeletedSelectVal == 'true';
-  var setDeleted = removeDeleted ? null : valueDeleted;
-  var addDeleted = $formValues.querySelector('.addDeleted')?.checked;
-  if(removeDeleted || setDeleted != null && setDeleted !== '')
-    vals['setDeleted'] = setDeleted;
-  if(addDeleted != null && addDeleted !== '')
-    vals['addDeleted'] = addDeleted;
-  var removeDeleted = $formValues.querySelector('.removeDeleted')?.checked;
-  if(removeDeleted != null && removeDeleted !== '')
-    vals['removeDeleted'] = removeDeleted;
 
   var valueName = $formValues.querySelector('.valueName')?.value;
   var removeName = $formValues.querySelector('.removeName')?.value === 'true';
@@ -1027,16 +998,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
 
-    var $filterDeletedCheckbox = $formFilters.querySelector('input.valueDeleted[type = "checkbox"]');
-    var $filterDeletedSelect = $formFilters.querySelector('select.valueDeleted');
-    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.value : $filterDeletedCheckbox.checked;
-    var filterDeletedSelectVal = $formFilters.querySelector('select.filterDeleted')?.value;
-    var filterDeleted = null;
-    if(filterDeletedSelectVal !== '')
-      filterDeleted = filterDeletedSelectVal == 'true';
-    if(filterDeleted != null && filterDeleted === true)
-      filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
-
     var filterName = $formFilters.querySelector('.valueName')?.value;
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
@@ -1269,10 +1230,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
-    var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
-    if(filterAreaServedColors != null && filterAreaServedColors !== '')
-      filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
-
     var filterAreaServedTitles = $formFilters.querySelector('.valueAreaServedTitles')?.value;
     if(filterAreaServedTitles != null && filterAreaServedTitles !== '')
       filters.push({ name: 'fq', value: 'areaServedTitles:' + filterAreaServedTitles });
@@ -1280,6 +1237,10 @@ function patchWeatherObservedFilters($formFilters) {
     var filterAreaServedLinks = $formFilters.querySelector('.valueAreaServedLinks')?.value;
     if(filterAreaServedLinks != null && filterAreaServedLinks !== '')
       filters.push({ name: 'fq', value: 'areaServedLinks:' + filterAreaServedLinks });
+
+    var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
+    if(filterAreaServedColors != null && filterAreaServedColors !== '')
+      filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
   }
   return filters;
 }
@@ -1343,10 +1304,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   if(valueArchived != null && valueArchived !== '')
     vals['archived'] = valueArchived == 'true';
-
-  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
-  if(valueDeleted != null && valueDeleted !== '')
-    vals['deleted'] = valueDeleted == 'true';
 
   var valueName = $formValues.querySelector('.valueName')?.value;
   if(valueName != null && valueName !== '')
@@ -1563,6 +1520,37 @@ function postWeatherObservedVals(vals, target, success, error) {
     .catch(response => error(response, target));
 }
 
+// DELETE //
+
+async function deleteWeatherObserved(filters, target, pk, success, error) {
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target);
+      var url = data['pageUrlPk'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, textStatus, errorThrown ) {
+      addError(target);
+    };
+  }
+
+  fetch(
+    '/api/weather-observed?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'DELETE'
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
+}
+
 // PUTImport //
 
 async function putimportWeatherObserved($formValues, target, pk, success, error) {
@@ -1673,7 +1661,6 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputCreated = null;
         var inputModified = null;
         var inputArchived = null;
-        var inputDeleted = null;
         var inputName = null;
         var inputDescription = null;
         var inputAlternateName = null;
@@ -1732,9 +1719,9 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
-        var inputAreaServedColors = null;
         var inputAreaServedTitles = null;
         var inputAreaServedLinks = null;
+        var inputAreaServedColors = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
@@ -1746,8 +1733,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputModified = $response.querySelector('#Page_modified');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
-        if(vars.includes('deleted'))
-          inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('name'))
           inputName = $response.querySelector('#Page_name');
         if(vars.includes('description'))
@@ -1864,12 +1849,12 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        if(vars.includes('areaServedColors'))
-          inputAreaServedColors = $response.querySelector('#Page_areaServedColors');
         if(vars.includes('areaServedTitles'))
           inputAreaServedTitles = $response.querySelector('#Page_areaServedTitles');
         if(vars.includes('areaServedLinks'))
           inputAreaServedLinks = $response.querySelector('#Page_areaServedLinks');
+        if(vars.includes('areaServedColors'))
+          inputAreaServedColors = $response.querySelector('#Page_areaServedColors');
         jsWebsocketWeatherObserved(pk, vars, $response);
 
         window.weatherObserved = JSON.parse($response.querySelector('.pageForm .weatherObserved')?.value);
@@ -1899,11 +1884,6 @@ async function websocketWeatherObservedInner(apiRequest) {
         if(inputArchived) {
           inputArchived.replaceAll('#Page_archived');
           addGlow(document.querySelector('#Page_archived'));
-        }
-
-        if(inputDeleted) {
-          inputDeleted.replaceAll('#Page_deleted');
-          addGlow(document.querySelector('#Page_deleted'));
         }
 
         if(inputName) {
@@ -2196,11 +2176,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        if(inputAreaServedColors) {
-          inputAreaServedColors.replaceAll('#Page_areaServedColors');
-          addGlow(document.querySelector('#Page_areaServedColors'));
-        }
-
         if(inputAreaServedTitles) {
           inputAreaServedTitles.replaceAll('#Page_areaServedTitles');
           addGlow(document.querySelector('#Page_areaServedTitles'));
@@ -2209,6 +2184,11 @@ async function websocketWeatherObservedInner(apiRequest) {
         if(inputAreaServedLinks) {
           inputAreaServedLinks.replaceAll('#Page_areaServedLinks');
           addGlow(document.querySelector('#Page_areaServedLinks'));
+        }
+
+        if(inputAreaServedColors) {
+          inputAreaServedColors.replaceAll('#Page_areaServedColors');
+          addGlow(document.querySelector('#Page_areaServedColors'));
         }
 
         pageGraphWeatherObserved();

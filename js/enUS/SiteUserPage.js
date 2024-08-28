@@ -41,16 +41,6 @@ function searchSiteUserFilters($formFilters) {
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
 
-    var $filterDeletedCheckbox = $formFilters.querySelector('input.valueDeleted[type = "checkbox"]');
-    var $filterDeletedSelect = $formFilters.querySelector('select.valueDeleted');
-    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.value : $filterDeletedCheckbox.checked;
-    var filterDeletedSelectVal = $formFilters.querySelector('select.filterDeleted')?.value;
-    var filterDeleted = null;
-    if(filterDeletedSelectVal !== '')
-      filterDeleted = filterDeletedSelectVal == 'true';
-    if(filterDeleted != null && filterDeleted === true)
-      filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
-
     var $filterSeeArchivedCheckbox = $formFilters.querySelector('input.valueSeeArchived[type = "checkbox"]');
     var $filterSeeArchivedSelect = $formFilters.querySelector('select.valueSeeArchived');
     var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.value : $filterSeeArchivedCheckbox.checked;
@@ -269,25 +259,6 @@ async function patchSiteUser($formFilters, $formValues, target, pk, success, err
   if(removeArchived != null && removeArchived !== '')
     vals['removeArchived'] = removeArchived;
 
-  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
-  var removeDeleted = $formValues.querySelector('.removeDeleted')?.value === 'true';
-  if(valueDeleted != null)
-    valueDeleted = valueDeleted === 'true';
-  var valueDeletedSelectVal = $formValues.querySelector('select.setDeleted')?.value;
-  if(valueDeletedSelectVal != null)
-    valueDeletedSelectVal = valueDeletedSelectVal === 'true';
-  if(valueDeletedSelectVal != null && valueDeletedSelectVal !== '')
-    valueDeleted = valueDeletedSelectVal == 'true';
-  var setDeleted = removeDeleted ? null : valueDeleted;
-  var addDeleted = $formValues.querySelector('.addDeleted')?.checked;
-  if(removeDeleted || setDeleted != null && setDeleted !== '')
-    vals['setDeleted'] = setDeleted;
-  if(addDeleted != null && addDeleted !== '')
-    vals['addDeleted'] = addDeleted;
-  var removeDeleted = $formValues.querySelector('.removeDeleted')?.checked;
-  if(removeDeleted != null && removeDeleted !== '')
-    vals['removeDeleted'] = removeDeleted;
-
   var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
   var removeSeeArchived = $formValues.querySelector('.removeSeeArchived')?.value === 'true';
   if(valueSeeArchived != null)
@@ -468,16 +439,6 @@ function patchSiteUserFilters($formFilters) {
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
 
-    var $filterDeletedCheckbox = $formFilters.querySelector('input.valueDeleted[type = "checkbox"]');
-    var $filterDeletedSelect = $formFilters.querySelector('select.valueDeleted');
-    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.value : $filterDeletedCheckbox.checked;
-    var filterDeletedSelectVal = $formFilters.querySelector('select.filterDeleted')?.value;
-    var filterDeleted = null;
-    if(filterDeletedSelectVal !== '')
-      filterDeleted = filterDeletedSelectVal == 'true';
-    if(filterDeleted != null && filterDeleted === true)
-      filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
-
     var $filterSeeArchivedCheckbox = $formFilters.querySelector('input.valueSeeArchived[type = "checkbox"]');
     var $filterSeeArchivedSelect = $formFilters.querySelector('select.valueSeeArchived');
     var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.value : $filterSeeArchivedCheckbox.checked;
@@ -648,10 +609,6 @@ async function postSiteUser($formValues, target, success, error) {
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   if(valueArchived != null && valueArchived !== '')
     vals['archived'] = valueArchived == 'true';
-
-  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
-  if(valueDeleted != null && valueDeleted !== '')
-    vals['deleted'] = valueDeleted == 'true';
 
   var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
   if(valueSeeArchived != null && valueSeeArchived !== '')
@@ -838,7 +795,6 @@ async function websocketSiteUserInner(apiRequest) {
         var inputCreated = null;
         var inputModified = null;
         var inputArchived = null;
-        var inputDeleted = null;
         var inputSeeArchived = null;
         var inputSeeDeleted = null;
         var inputInheritPk = null;
@@ -874,8 +830,6 @@ async function websocketSiteUserInner(apiRequest) {
           inputModified = $response.querySelector('#Page_modified');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
-        if(vars.includes('deleted'))
-          inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('seeArchived'))
           inputSeeArchived = $response.querySelector('#Page_seeArchived');
         if(vars.includes('seeDeleted'))
@@ -953,11 +907,6 @@ async function websocketSiteUserInner(apiRequest) {
         if(inputArchived) {
           inputArchived.replaceAll('#Page_archived');
           addGlow(document.querySelector('#Page_archived'));
-        }
-
-        if(inputDeleted) {
-          inputDeleted.replaceAll('#Page_deleted');
-          addGlow(document.querySelector('#Page_deleted'));
         }
 
         if(inputSeeArchived) {

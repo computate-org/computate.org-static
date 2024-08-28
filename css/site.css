@@ -253,12 +253,16 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
 }
 
 .glowSuccess {
-        box-shadow: 0 0 5px 3px var(--sl-color-success-500);
-        border: 1px solid var(--sl-color-success-500);
+  &:is(sl-input)::part(base) {
+    border: 1px solid var(--sl-color-success-500);
+    border-radius: var(--sl-border-width-medium);
+  }
 }
-.glowError {
-        box-shadow: 0 0 5px 3px var(--sl-color-danger-500);
-        border: 1px solid var(--sl-color-danger-500);
+.glowError:not() {
+  &:not(sl-button,sl-menu-item,sl-input,sl-option,sl-select), &:is(sl-button, sl-menu-item)::part(label), &:is(sl-input::part(base)), sl-option::part(base), sl-select::part(display-input) {
+    border: 1px solid var(--sl-color-danger-500);
+    border-radius: var(--sl-border-width-medium);
+  }
 }
 
 /* site-results-grid */
@@ -376,6 +380,7 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
 }
 #htmButtonGroup {
   margin-bottom: var(--sl-spacing-medium);
+  text-align: center  ;
 }
 
 /*******/

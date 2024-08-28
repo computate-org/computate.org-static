@@ -2,6 +2,22 @@ Promise.all([
     customElements.whenDefined('sl-button')
     , customElements.whenDefined('sl-input')
     ]).then(() => {
+
+          document.querySelector('#htmButton_patchSiteUser')?.addEventListener('click', (event) => {
+            document.querySelector('#patchSiteUserDialog').show();
+          });
+
+          document.querySelector('#htmButton_postSiteUser')?.addEventListener('click', (event) => {
+            document.querySelector('#postSiteUserDialog').show();
+          });
+
+          document.querySelector('#htmButton_putimportSiteUser')?.addEventListener('click', (event) => {
+            document.querySelector('#putimportSiteUserDialog').show();
+          });
+
+          document.querySelector('#htmButton_searchpageSiteUser')?.addEventListener('click', (event) => {
+            document.querySelector('#searchpageSiteUserDialog').show();
+          });
           // PATCH created
           document.querySelector('#Page_created')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_created');
@@ -52,29 +68,6 @@ Promise.all([
           });
           document.querySelector('#Page_archived')?.addEventListener('sl-blur', (event) => {
             const form = document.querySelector('#PageForm_archived');
-            const valid = form.reportValidity();
-          });
-          // PATCH deleted
-          document.querySelector('#Page_deleted')?.addEventListener('click', (event) => {
-            const form = document.querySelector('#PageForm_deleted');
-            const valid = form.checkValidity();
-            if(valid) {
-              var confirmResponse = confirm('Are you sure you want to delete that?'); 
-              if(confirmResponse) { 
-                patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                    , 'setDeleted', !(event.currentTarget.getAttribute('data-val') === 'true')
-                    , event.currentTarget
-                    , function(response, target) { addGlow(target); }
-                    , function(response, target) { addError(target); }
-                    );
-              }
-            }
-          });
-          document.querySelector('#Page_deleted')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_deleted')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_deleted');
             const valid = form.reportValidity();
           });
           // PATCH seeArchived

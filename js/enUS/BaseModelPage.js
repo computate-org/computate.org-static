@@ -25,14 +25,16 @@ async function websocketBaseModel(success) {
       var $header = document.createElement('div');
       $header.setAttribute('class', 'w3-container fa- ');
       $header.setAttribute('id', 'header-' + id);
-      var $i = document.createElement('');
-      var $headerSpan = document.createElement('<span>');
+      var iTemplate = document.createElement('template');
+      iTemplate.innerHTML = '';
+      var $i = iTemplate.content;
+      var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.text('modify  in ' + json.timeRemaining);
-      var $x = document.createElement('<span>');
+      $headerSpan.innerText = 'modify  in ' + json.timeRemaining;
+      var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
-      $x.setAttribute('onclick', '$("#card-' + id + '");
-      $x.classList.add("display-none"); ');
+      $x.setAttribute('onclick', 'document.querySelector("#card-' + id + '");');
+      $x.classList.add("display-none");
       $x.setAttribute('id', 'x-' + id);
       var $body = document.createElement('div');
       $body.setAttribute('class', 'w3-container w3-padding ');
@@ -44,7 +46,7 @@ async function websocketBaseModel(success) {
       $progress.setAttribute('class', 'w3- ');
       $progress.setAttribute('style', 'height: 24px; width: ' + percent + '; ');
       $progress.setAttribute('id', 'progress-' + id);
-      $progress.text(numPATCH + '/' + numFound);
+      $progress.innerText = numPATCH + '/' + numFound;
       $card.append($header);
       $header.append($i);
       $header.append($headerSpan);
@@ -56,13 +58,8 @@ async function websocketBaseModel(success) {
       $margin.append($card);
       if(numPATCH < numFound) {
         var $old_box = document.querySelector('.box-' + id);
-        if(!$old_box.size()) {
-          document.querySelector('.top-box').append($box);
-        } else if($old_box && $old_box.getAttribute('data-numPATCH') < numFound) {
-          document.querySelector('.box-' + id).html($margin);
-        }
       } else {
-        document.querySelector('.box-' + id).remove();
+        document.querySelector('.box-' + id)?.remove();
       }
       if(pk && pkPage && pk == pkPage) {
         if(success)
@@ -79,7 +76,7 @@ async function websocketBaseModelInner(apiRequest) {
   var empty = apiRequest['empty'];
 
   if(pk != null && vars.length > 0) {
-    var queryParams = "?" + $(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
+    var queryParams = "?" + document.querySelector(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
     $.get(uri, {}, function(data) {
       var $response = $("<html/>").html(data);
@@ -88,7 +85,6 @@ async function websocketBaseModelInner(apiRequest) {
         var inputCreated = null;
         var inputModified = null;
         var inputArchived = null;
-        var inputDeleted = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -115,8 +111,6 @@ async function websocketBaseModelInner(apiRequest) {
           inputModified = $response.querySelector('#Page_modified');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
-        if(vars.includes('deleted'))
-          inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -176,11 +170,6 @@ async function websocketBaseModelInner(apiRequest) {
         if(inputArchived) {
           inputArchived.replaceAll('#Page_archived');
           addGlow(document.querySelector('#Page_archived'));
-        }
-
-        if(inputDeleted) {
-          inputDeleted.replaceAll('#Page_deleted');
-          addGlow(document.querySelector('#Page_deleted'));
         }
 
         if(inputInheritPk) {
@@ -366,7 +355,7 @@ function pageGraphBaseModel(apiRequest) {
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqBaseModel_time').text('');
+  document.querySelector('#pageSearchVal-fqBaseModel_time').innerText = '';
   searchPage('BaseModel', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);

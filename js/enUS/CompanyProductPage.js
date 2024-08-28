@@ -37,16 +37,6 @@ function searchCompanyProductFilters($formFilters) {
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
 
-    var $filterDeletedCheckbox = $formFilters.querySelector('input.valueDeleted[type = "checkbox"]');
-    var $filterDeletedSelect = $formFilters.querySelector('select.valueDeleted');
-    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.value : $filterDeletedCheckbox.checked;
-    var filterDeletedSelectVal = $formFilters.querySelector('select.filterDeleted')?.value;
-    var filterDeleted = null;
-    if(filterDeletedSelectVal !== '')
-      filterDeleted = filterDeletedSelectVal == 'true';
-    if(filterDeleted != null && filterDeleted === true)
-      filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
-
     var filterName = $formFilters.querySelector('.valueName')?.value;
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
@@ -268,25 +258,6 @@ async function patchCompanyProduct($formFilters, $formValues, target, id, succes
   var removeArchived = $formValues.querySelector('.removeArchived')?.checked;
   if(removeArchived != null && removeArchived !== '')
     vals['removeArchived'] = removeArchived;
-
-  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
-  var removeDeleted = $formValues.querySelector('.removeDeleted')?.value === 'true';
-  if(valueDeleted != null)
-    valueDeleted = valueDeleted === 'true';
-  var valueDeletedSelectVal = $formValues.querySelector('select.setDeleted')?.value;
-  if(valueDeletedSelectVal != null)
-    valueDeletedSelectVal = valueDeletedSelectVal === 'true';
-  if(valueDeletedSelectVal != null && valueDeletedSelectVal !== '')
-    valueDeleted = valueDeletedSelectVal == 'true';
-  var setDeleted = removeDeleted ? null : valueDeleted;
-  var addDeleted = $formValues.querySelector('.addDeleted')?.checked;
-  if(removeDeleted || setDeleted != null && setDeleted !== '')
-    vals['setDeleted'] = setDeleted;
-  if(addDeleted != null && addDeleted !== '')
-    vals['addDeleted'] = addDeleted;
-  var removeDeleted = $formValues.querySelector('.removeDeleted')?.checked;
-  if(removeDeleted != null && removeDeleted !== '')
-    vals['removeDeleted'] = removeDeleted;
 
   var valueName = $formValues.querySelector('.valueName')?.value;
   var removeName = $formValues.querySelector('.removeName')?.value === 'true';
@@ -510,16 +481,6 @@ function patchCompanyProductFilters($formFilters) {
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
 
-    var $filterDeletedCheckbox = $formFilters.querySelector('input.valueDeleted[type = "checkbox"]');
-    var $filterDeletedSelect = $formFilters.querySelector('select.valueDeleted');
-    var filterDeleted = $filterDeletedSelect.length ? $filterDeletedSelect.value : $filterDeletedCheckbox.checked;
-    var filterDeletedSelectVal = $formFilters.querySelector('select.filterDeleted')?.value;
-    var filterDeleted = null;
-    if(filterDeletedSelectVal !== '')
-      filterDeleted = filterDeletedSelectVal == 'true';
-    if(filterDeleted != null && filterDeleted === true)
-      filters.push({ name: 'fq', value: 'deleted:' + filterDeleted });
-
     var filterName = $formFilters.querySelector('.valueName')?.value;
     if(filterName != null && filterName !== '')
       filters.push({ name: 'fq', value: 'name:' + filterName });
@@ -686,10 +647,6 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   if(valueArchived != null && valueArchived !== '')
     vals['archived'] = valueArchived == 'true';
-
-  var valueDeleted = $formValues.querySelector('.valueDeleted')?.value;
-  if(valueDeleted != null && valueDeleted !== '')
-    vals['deleted'] = valueDeleted == 'true';
 
   var valueName = $formValues.querySelector('.valueName')?.value;
   if(valueName != null && valueName !== '')
@@ -895,7 +852,6 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputModified = null;
         var inputObjectId = null;
         var inputArchived = null;
-        var inputDeleted = null;
         var inputName = null;
         var inputDescription = null;
         var inputUri = null;
@@ -932,8 +888,6 @@ async function websocketCompanyProductInner(apiRequest) {
           inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
-        if(vars.includes('deleted'))
-          inputDeleted = $response.querySelector('#Page_deleted');
         if(vars.includes('name'))
           inputName = $response.querySelector('#Page_name');
         if(vars.includes('description'))
@@ -1012,11 +966,6 @@ async function websocketCompanyProductInner(apiRequest) {
         if(inputArchived) {
           inputArchived.replaceAll('#Page_archived');
           addGlow(document.querySelector('#Page_archived'));
-        }
-
-        if(inputDeleted) {
-          inputDeleted.replaceAll('#Page_deleted');
-          addGlow(document.querySelector('#Page_deleted'));
         }
 
         if(inputName) {
