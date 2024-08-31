@@ -76,10 +76,11 @@ async function websocketBaseResultInner(apiRequest) {
   var empty = apiRequest['empty'];
 
   if(id != null && vars.length > 0) {
-    var queryParams = "?" + document.querySelector(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
+    var queryParams = "?" + Array.from(document.querySelectorAll(".pageSearchVal")).filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
-    $.get(uri, {}, function(data) {
-      var $response = $("<html/>").html(data);
+    fetch(uri).then(response => {
+      response.text().then(text => {
+        var $response = new DOMParser().parseFromString(text, 'text/html');
         var inputCreated = null;
         var inputModified = null;
         var inputObjectId = null;
@@ -138,108 +139,147 @@ async function websocketBaseResultInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        jsWebsocketBaseResult(id, vars, $response);
+          jsWebsocketBaseResult(id, vars, $response);
 
-        window.baseResult = JSON.parse($response.querySelector('.pageForm .baseResult')?.value);
-        window.listBaseResult = JSON.parse($response.querySelector('.pageForm .listBaseResult')?.value);
+          window.baseResult = JSON.parse($response.querySelector('.pageForm .baseResult')?.value);
+          window.listBaseResult = JSON.parse($response.querySelector('.pageForm .listBaseResult')?.value);
 
 
         if(inputCreated) {
-          inputCreated.replaceAll('#Page_created');
+          document.querySelectorAll('#Page_created').forEach((item, index) => {
+            item.setAttribute('value', inputCreated.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_created'));
         }
 
         if(inputModified) {
-          inputModified.replaceAll('#Page_modified');
+          document.querySelectorAll('#Page_modified').forEach((item, index) => {
+            item.setAttribute('value', inputModified.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_modified'));
         }
 
         if(inputObjectId) {
-          inputObjectId.replaceAll('#Page_objectId');
+          document.querySelectorAll('#Page_objectId').forEach((item, index) => {
+            item.setAttribute('value', inputObjectId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputArchived) {
-          inputArchived.replaceAll('#Page_archived');
+          document.querySelectorAll('#Page_archived').forEach((item, index) => {
+            item.setAttribute('value', inputArchived.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_archived'));
         }
 
         if(inputInheritPk) {
-          inputInheritPk.replaceAll('#Page_inheritPk');
+          document.querySelectorAll('#Page_inheritPk').forEach((item, index) => {
+            item.setAttribute('value', inputInheritPk.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_inheritPk'));
         }
 
         if(inputClassCanonicalName) {
-          inputClassCanonicalName.replaceAll('#Page_classCanonicalName');
+          document.querySelectorAll('#Page_classCanonicalName').forEach((item, index) => {
+            item.setAttribute('value', inputClassCanonicalName.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
-          inputClassSimpleName.replaceAll('#Page_classSimpleName');
+          document.querySelectorAll('#Page_classSimpleName').forEach((item, index) => {
+            item.setAttribute('value', inputClassSimpleName.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
-          inputClassCanonicalNames.replaceAll('#Page_classCanonicalNames');
+          document.querySelectorAll('#Page_classCanonicalNames').forEach((item, index) => {
+            item.setAttribute('value', inputClassCanonicalNames.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classCanonicalNames'));
         }
 
         if(inputSessionId) {
-          inputSessionId.replaceAll('#Page_sessionId');
+          document.querySelectorAll('#Page_sessionId').forEach((item, index) => {
+            item.setAttribute('value', inputSessionId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_sessionId'));
         }
 
         if(inputUserKey) {
-          inputUserKey.replaceAll('#Page_userKey');
+          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
+            item.setAttribute('value', inputUserKey.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_userKey'));
         }
 
         if(inputSaves) {
-          inputSaves.replaceAll('#Page_saves');
+          document.querySelectorAll('#Page_saves').forEach((item, index) => {
+            item.setAttribute('value', inputSaves.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_saves'));
         }
 
         if(inputObjectIcon) {
-          inputObjectIcon.replaceAll('#Page_objectIcon');
+          document.querySelectorAll('#Page_objectIcon').forEach((item, index) => {
+            item.setAttribute('value', inputObjectIcon.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectIcon'));
         }
 
         if(inputObjectTitle) {
-          inputObjectTitle.replaceAll('#Page_objectTitle');
+          document.querySelectorAll('#Page_objectTitle').forEach((item, index) => {
+            item.setAttribute('value', inputObjectTitle.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectTitle'));
         }
 
         if(inputObjectSuggest) {
-          inputObjectSuggest.replaceAll('#Page_objectSuggest');
+          document.querySelectorAll('#Page_objectSuggest').forEach((item, index) => {
+            item.setAttribute('value', inputObjectSuggest.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectSuggest'));
         }
 
         if(inputObjectText) {
-          inputObjectText.replaceAll('#Page_objectText');
+          document.querySelectorAll('#Page_objectText').forEach((item, index) => {
+            item.setAttribute('value', inputObjectText.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectText'));
         }
 
         if(inputPageUrlId) {
-          inputPageUrlId.replaceAll('#Page_pageUrlId');
+          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputPageUrlPk) {
-          inputPageUrlPk.replaceAll('#Page_pageUrlPk');
+          document.querySelectorAll('#Page_pageUrlPk').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlPk.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputPageUrlApi) {
-          inputPageUrlApi.replaceAll('#Page_pageUrlApi');
+          document.querySelectorAll('#Page_pageUrlApi').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlApi.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlApi'));
         }
 
         if(inputId) {
-          inputId.replaceAll('#Page_id');
+          document.querySelectorAll('#Page_id').forEach((item, index) => {
+            item.setAttribute('value', inputId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_id'));
         }
 
-        pageGraphBaseResult();
+          pageGraphBaseResult();
+      });
     });
   }
 }

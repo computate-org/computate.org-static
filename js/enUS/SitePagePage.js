@@ -844,10 +844,11 @@ async function websocketSitePageInner(apiRequest) {
   var empty = apiRequest['empty'];
 
   if(id != null && vars.length > 0) {
-    var queryParams = "?" + document.querySelector(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
+    var queryParams = "?" + Array.from(document.querySelectorAll(".pageSearchVal")).filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
-    $.get(uri, {}, function(data) {
-      var $response = $("<html/>").html(data);
+    fetch(uri).then(response => {
+      response.text().then(text => {
+        var $response = new DOMParser().parseFromString(text, 'text/html');
         var inputCreated = null;
         var inputModified = null;
         var inputObjectId = null;
@@ -942,168 +943,231 @@ async function websocketSitePageInner(apiRequest) {
           inputH1 = $response.querySelector('#Page_h1');
         if(vars.includes('h2'))
           inputH2 = $response.querySelector('#Page_h2');
-        jsWebsocketSitePage(id, vars, $response);
+          jsWebsocketSitePage(id, vars, $response);
 
-        window.sitePage = JSON.parse($response.querySelector('.pageForm .sitePage')?.value);
-        window.listSitePage = JSON.parse($response.querySelector('.pageForm .listSitePage')?.value);
+          window.sitePage = JSON.parse($response.querySelector('.pageForm .sitePage')?.value);
+          window.listSitePage = JSON.parse($response.querySelector('.pageForm .listSitePage')?.value);
 
 
         if(inputCreated) {
-          inputCreated.replaceAll('#Page_created');
+          document.querySelectorAll('#Page_created').forEach((item, index) => {
+            item.setAttribute('value', inputCreated.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_created'));
         }
 
         if(inputModified) {
-          inputModified.replaceAll('#Page_modified');
+          document.querySelectorAll('#Page_modified').forEach((item, index) => {
+            item.setAttribute('value', inputModified.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_modified'));
         }
 
         if(inputObjectId) {
-          inputObjectId.replaceAll('#Page_objectId');
+          document.querySelectorAll('#Page_objectId').forEach((item, index) => {
+            item.setAttribute('value', inputObjectId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputArchived) {
-          inputArchived.replaceAll('#Page_archived');
+          document.querySelectorAll('#Page_archived').forEach((item, index) => {
+            item.setAttribute('value', inputArchived.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_archived'));
         }
 
         if(inputPageId) {
-          inputPageId.replaceAll('#Page_pageId');
+          document.querySelectorAll('#Page_pageId').forEach((item, index) => {
+            item.setAttribute('value', inputPageId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageId'));
         }
 
         if(inputUri) {
-          inputUri.replaceAll('#Page_uri');
+          document.querySelectorAll('#Page_uri').forEach((item, index) => {
+            item.setAttribute('value', inputUri.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_uri'));
         }
 
         if(inputUrl) {
-          inputUrl.replaceAll('#Page_url');
+          document.querySelectorAll('#Page_url').forEach((item, index) => {
+            item.setAttribute('value', inputUrl.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_url'));
         }
 
         if(inputAuthor) {
-          inputAuthor.replaceAll('#Page_author');
+          document.querySelectorAll('#Page_author').forEach((item, index) => {
+            item.setAttribute('value', inputAuthor.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_author'));
         }
 
         if(inputPageImageUri) {
-          inputPageImageUri.replaceAll('#Page_pageImageUri');
+          document.querySelectorAll('#Page_pageImageUri').forEach((item, index) => {
+            item.setAttribute('value', inputPageImageUri.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageImageUri'));
         }
 
         if(inputInheritPk) {
-          inputInheritPk.replaceAll('#Page_inheritPk');
+          document.querySelectorAll('#Page_inheritPk').forEach((item, index) => {
+            item.setAttribute('value', inputInheritPk.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_inheritPk'));
         }
 
         if(inputClassCanonicalName) {
-          inputClassCanonicalName.replaceAll('#Page_classCanonicalName');
+          document.querySelectorAll('#Page_classCanonicalName').forEach((item, index) => {
+            item.setAttribute('value', inputClassCanonicalName.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
-          inputClassSimpleName.replaceAll('#Page_classSimpleName');
+          document.querySelectorAll('#Page_classSimpleName').forEach((item, index) => {
+            item.setAttribute('value', inputClassSimpleName.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
-          inputClassCanonicalNames.replaceAll('#Page_classCanonicalNames');
+          document.querySelectorAll('#Page_classCanonicalNames').forEach((item, index) => {
+            item.setAttribute('value', inputClassCanonicalNames.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classCanonicalNames'));
         }
 
         if(inputSessionId) {
-          inputSessionId.replaceAll('#Page_sessionId');
+          document.querySelectorAll('#Page_sessionId').forEach((item, index) => {
+            item.setAttribute('value', inputSessionId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_sessionId'));
         }
 
         if(inputUserKey) {
-          inputUserKey.replaceAll('#Page_userKey');
+          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
+            item.setAttribute('value', inputUserKey.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_userKey'));
         }
 
         if(inputSaves) {
-          inputSaves.replaceAll('#Page_saves');
+          document.querySelectorAll('#Page_saves').forEach((item, index) => {
+            item.setAttribute('value', inputSaves.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_saves'));
         }
 
         if(inputObjectIcon) {
-          inputObjectIcon.replaceAll('#Page_objectIcon');
+          document.querySelectorAll('#Page_objectIcon').forEach((item, index) => {
+            item.setAttribute('value', inputObjectIcon.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectIcon'));
         }
 
         if(inputObjectTitle) {
-          inputObjectTitle.replaceAll('#Page_objectTitle');
+          document.querySelectorAll('#Page_objectTitle').forEach((item, index) => {
+            item.setAttribute('value', inputObjectTitle.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectTitle'));
         }
 
         if(inputObjectSuggest) {
-          inputObjectSuggest.replaceAll('#Page_objectSuggest');
+          document.querySelectorAll('#Page_objectSuggest').forEach((item, index) => {
+            item.setAttribute('value', inputObjectSuggest.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectSuggest'));
         }
 
         if(inputObjectText) {
-          inputObjectText.replaceAll('#Page_objectText');
+          document.querySelectorAll('#Page_objectText').forEach((item, index) => {
+            item.setAttribute('value', inputObjectText.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectText'));
         }
 
         if(inputPageUrlId) {
-          inputPageUrlId.replaceAll('#Page_pageUrlId');
+          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputPageUrlPk) {
-          inputPageUrlPk.replaceAll('#Page_pageUrlPk');
+          document.querySelectorAll('#Page_pageUrlPk').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlPk.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputPageUrlApi) {
-          inputPageUrlApi.replaceAll('#Page_pageUrlApi');
+          document.querySelectorAll('#Page_pageUrlApi').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlApi.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlApi'));
         }
 
         if(inputId) {
-          inputId.replaceAll('#Page_id');
+          document.querySelectorAll('#Page_id').forEach((item, index) => {
+            item.setAttribute('value', inputId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_id'));
         }
 
         if(inputCourseNum) {
-          inputCourseNum.replaceAll('#Page_courseNum');
+          document.querySelectorAll('#Page_courseNum').forEach((item, index) => {
+            item.setAttribute('value', inputCourseNum.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_courseNum'));
         }
 
         if(inputLessonNum) {
-          inputLessonNum.replaceAll('#Page_lessonNum');
+          document.querySelectorAll('#Page_lessonNum').forEach((item, index) => {
+            item.setAttribute('value', inputLessonNum.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_lessonNum'));
         }
 
         if(inputTitle) {
-          inputTitle.replaceAll('#Page_title');
+          document.querySelectorAll('#Page_title').forEach((item, index) => {
+            item.setAttribute('value', inputTitle.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_title'));
         }
 
         if(inputResourceUri) {
-          inputResourceUri.replaceAll('#Page_resourceUri');
+          document.querySelectorAll('#Page_resourceUri').forEach((item, index) => {
+            item.setAttribute('value', inputResourceUri.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_resourceUri'));
         }
 
         if(inputTemplateUri) {
-          inputTemplateUri.replaceAll('#Page_templateUri');
+          document.querySelectorAll('#Page_templateUri').forEach((item, index) => {
+            item.setAttribute('value', inputTemplateUri.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_templateUri'));
         }
 
         if(inputH1) {
-          inputH1.replaceAll('#Page_h1');
+          document.querySelectorAll('#Page_h1').forEach((item, index) => {
+            item.setAttribute('value', inputH1.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_h1'));
         }
 
         if(inputH2) {
-          inputH2.replaceAll('#Page_h2');
+          document.querySelectorAll('#Page_h2').forEach((item, index) => {
+            item.setAttribute('value', inputH2.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_h2'));
         }
 
-        pageGraphSitePage();
+          pageGraphSitePage();
+      });
     });
   }
 }

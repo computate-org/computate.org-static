@@ -273,6 +273,10 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
+    var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
+    if(filterAreaServedColors != null && filterAreaServedColors !== '')
+      filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
+
     var filterAreaServedTitles = $formFilters.querySelector('.valueAreaServedTitles')?.value;
     if(filterAreaServedTitles != null && filterAreaServedTitles !== '')
       filters.push({ name: 'fq', value: 'areaServedTitles:' + filterAreaServedTitles });
@@ -280,10 +284,6 @@ function searchWeatherObservedFilters($formFilters) {
     var filterAreaServedLinks = $formFilters.querySelector('.valueAreaServedLinks')?.value;
     if(filterAreaServedLinks != null && filterAreaServedLinks !== '')
       filters.push({ name: 'fq', value: 'areaServedLinks:' + filterAreaServedLinks });
-
-    var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
-    if(filterAreaServedColors != null && filterAreaServedColors !== '')
-      filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
   }
   return filters;
 }
@@ -1230,6 +1230,10 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
+    var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
+    if(filterAreaServedColors != null && filterAreaServedColors !== '')
+      filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
+
     var filterAreaServedTitles = $formFilters.querySelector('.valueAreaServedTitles')?.value;
     if(filterAreaServedTitles != null && filterAreaServedTitles !== '')
       filters.push({ name: 'fq', value: 'areaServedTitles:' + filterAreaServedTitles });
@@ -1237,10 +1241,6 @@ function patchWeatherObservedFilters($formFilters) {
     var filterAreaServedLinks = $formFilters.querySelector('.valueAreaServedLinks')?.value;
     if(filterAreaServedLinks != null && filterAreaServedLinks !== '')
       filters.push({ name: 'fq', value: 'areaServedLinks:' + filterAreaServedLinks });
-
-    var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
-    if(filterAreaServedColors != null && filterAreaServedColors !== '')
-      filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
   }
   return filters;
 }
@@ -1652,10 +1652,11 @@ async function websocketWeatherObservedInner(apiRequest) {
   var empty = apiRequest['empty'];
 
   if(pk != null && vars.length > 0) {
-    var queryParams = "?" + document.querySelector(".pageSearchVal").get().filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
+    var queryParams = "?" + Array.from(document.querySelectorAll(".pageSearchVal")).filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
-    $.get(uri, {}, function(data) {
-      var $response = $("<html/>").html(data);
+    fetch(uri).then(response => {
+      response.text().then(text => {
+        var $response = new DOMParser().parseFromString(text, 'text/html');
         var inputPk = null;
         var inputObjectId = null;
         var inputCreated = null;
@@ -1719,9 +1720,9 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputAreaServedColors = null;
         var inputAreaServedTitles = null;
         var inputAreaServedLinks = null;
-        var inputAreaServedColors = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
@@ -1849,349 +1850,482 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
+        if(vars.includes('areaServedColors'))
+          inputAreaServedColors = $response.querySelector('#Page_areaServedColors');
         if(vars.includes('areaServedTitles'))
           inputAreaServedTitles = $response.querySelector('#Page_areaServedTitles');
         if(vars.includes('areaServedLinks'))
           inputAreaServedLinks = $response.querySelector('#Page_areaServedLinks');
-        if(vars.includes('areaServedColors'))
-          inputAreaServedColors = $response.querySelector('#Page_areaServedColors');
-        jsWebsocketWeatherObserved(pk, vars, $response);
+          jsWebsocketWeatherObserved(pk, vars, $response);
 
-        window.weatherObserved = JSON.parse($response.querySelector('.pageForm .weatherObserved')?.value);
-        window.listWeatherObserved = JSON.parse($response.querySelector('.pageForm .listWeatherObserved')?.value);
+          window.weatherObserved = JSON.parse($response.querySelector('.pageForm .weatherObserved')?.value);
+          window.listWeatherObserved = JSON.parse($response.querySelector('.pageForm .listWeatherObserved')?.value);
 
 
         if(inputPk) {
-          inputPk.replaceAll('#Page_pk');
+          document.querySelectorAll('#Page_pk').forEach((item, index) => {
+            item.setAttribute('value', inputPk.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pk'));
         }
 
         if(inputObjectId) {
-          inputObjectId.replaceAll('#Page_objectId');
+          document.querySelectorAll('#Page_objectId').forEach((item, index) => {
+            item.setAttribute('value', inputObjectId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputCreated) {
-          inputCreated.replaceAll('#Page_created');
+          document.querySelectorAll('#Page_created').forEach((item, index) => {
+            item.setAttribute('value', inputCreated.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_created'));
         }
 
         if(inputModified) {
-          inputModified.replaceAll('#Page_modified');
+          document.querySelectorAll('#Page_modified').forEach((item, index) => {
+            item.setAttribute('value', inputModified.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_modified'));
         }
 
         if(inputArchived) {
-          inputArchived.replaceAll('#Page_archived');
+          document.querySelectorAll('#Page_archived').forEach((item, index) => {
+            item.setAttribute('value', inputArchived.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_archived'));
         }
 
         if(inputName) {
-          inputName.replaceAll('#Page_name');
+          document.querySelectorAll('#Page_name').forEach((item, index) => {
+            item.setAttribute('value', inputName.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_name'));
         }
 
         if(inputDescription) {
-          inputDescription.replaceAll('#Page_description');
+          document.querySelectorAll('#Page_description').forEach((item, index) => {
+            item.setAttribute('value', inputDescription.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_description'));
         }
 
         if(inputAlternateName) {
-          inputAlternateName.replaceAll('#Page_alternateName');
+          document.querySelectorAll('#Page_alternateName').forEach((item, index) => {
+            item.setAttribute('value', inputAlternateName.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_alternateName'));
         }
 
         if(inputAddress) {
-          inputAddress.replaceAll('#Page_address');
+          document.querySelectorAll('#Page_address').forEach((item, index) => {
+            item.setAttribute('value', inputAddress.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_address'));
         }
 
         if(inputEntityId) {
-          inputEntityId.replaceAll('#Page_entityId');
+          document.querySelectorAll('#Page_entityId').forEach((item, index) => {
+            item.setAttribute('value', inputEntityId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_entityId'));
         }
 
         if(inputAirQualityIndex) {
-          inputAirQualityIndex.replaceAll('#Page_airQualityIndex');
+          document.querySelectorAll('#Page_airQualityIndex').forEach((item, index) => {
+            item.setAttribute('value', inputAirQualityIndex.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_airQualityIndex'));
         }
 
         if(inputAirQualityIndexForecast) {
-          inputAirQualityIndexForecast.replaceAll('#Page_airQualityIndexForecast');
+          document.querySelectorAll('#Page_airQualityIndexForecast').forEach((item, index) => {
+            item.setAttribute('value', inputAirQualityIndexForecast.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_airQualityIndexForecast'));
         }
 
         if(inputAqiMajorPollutant) {
-          inputAqiMajorPollutant.replaceAll('#Page_aqiMajorPollutant');
+          document.querySelectorAll('#Page_aqiMajorPollutant').forEach((item, index) => {
+            item.setAttribute('value', inputAqiMajorPollutant.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_aqiMajorPollutant'));
         }
 
         if(inputAqiMajorPollutantForecast) {
-          inputAqiMajorPollutantForecast.replaceAll('#Page_aqiMajorPollutantForecast');
+          document.querySelectorAll('#Page_aqiMajorPollutantForecast').forEach((item, index) => {
+            item.setAttribute('value', inputAqiMajorPollutantForecast.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_aqiMajorPollutantForecast'));
         }
 
         if(inputAirTemperatureForecast) {
-          inputAirTemperatureForecast.replaceAll('#Page_airTemperatureForecast');
+          document.querySelectorAll('#Page_airTemperatureForecast').forEach((item, index) => {
+            item.setAttribute('value', inputAirTemperatureForecast.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_airTemperatureForecast'));
         }
 
         if(inputAirTemperatureTSA) {
-          inputAirTemperatureTSA.replaceAll('#Page_airTemperatureTSA');
+          document.querySelectorAll('#Page_airTemperatureTSA').forEach((item, index) => {
+            item.setAttribute('value', inputAirTemperatureTSA.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_airTemperatureTSA'));
         }
 
         if(inputAreaServed) {
-          inputAreaServed.replaceAll('#Page_areaServed');
+          document.querySelectorAll('#Page_areaServed').forEach((item, index) => {
+            item.setAttribute('value', inputAreaServed.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_areaServed'));
         }
 
         if(inputAtmosphericPressure) {
-          inputAtmosphericPressure.replaceAll('#Page_atmosphericPressure');
+          document.querySelectorAll('#Page_atmosphericPressure').forEach((item, index) => {
+            item.setAttribute('value', inputAtmosphericPressure.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_atmosphericPressure'));
         }
 
         if(inputDataProvider) {
-          inputDataProvider.replaceAll('#Page_dataProvider');
+          document.querySelectorAll('#Page_dataProvider').forEach((item, index) => {
+            item.setAttribute('value', inputDataProvider.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_dataProvider'));
         }
 
         if(inputDateCreated) {
-          inputDateCreated.replaceAll('#Page_dateCreated');
+          document.querySelectorAll('#Page_dateCreated').forEach((item, index) => {
+            item.setAttribute('value', inputDateCreated.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_dateCreated'));
         }
 
         if(inputDateModified) {
-          inputDateModified.replaceAll('#Page_dateModified');
+          document.querySelectorAll('#Page_dateModified').forEach((item, index) => {
+            item.setAttribute('value', inputDateModified.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_dateModified'));
         }
 
         if(inputDateObserved) {
-          inputDateObserved.replaceAll('#Page_dateObserved');
+          document.querySelectorAll('#Page_dateObserved').forEach((item, index) => {
+            item.setAttribute('value', inputDateObserved.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_dateObserved'));
         }
 
         if(inputDewPoint) {
-          inputDewPoint.replaceAll('#Page_dewPoint');
+          document.querySelectorAll('#Page_dewPoint').forEach((item, index) => {
+            item.setAttribute('value', inputDewPoint.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_dewPoint'));
         }
 
         if(inputDiffuseIrradiation) {
-          inputDiffuseIrradiation.replaceAll('#Page_diffuseIrradiation');
+          document.querySelectorAll('#Page_diffuseIrradiation').forEach((item, index) => {
+            item.setAttribute('value', inputDiffuseIrradiation.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_diffuseIrradiation'));
         }
 
         if(inputDirectIrradiation) {
-          inputDirectIrradiation.replaceAll('#Page_directIrradiation');
+          document.querySelectorAll('#Page_directIrradiation').forEach((item, index) => {
+            item.setAttribute('value', inputDirectIrradiation.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_directIrradiation'));
         }
 
         if(inputFeelsLikeTemperature) {
-          inputFeelsLikeTemperature.replaceAll('#Page_feelsLikeTemperature');
+          document.querySelectorAll('#Page_feelsLikeTemperature').forEach((item, index) => {
+            item.setAttribute('value', inputFeelsLikeTemperature.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_feelsLikeTemperature'));
         }
 
         if(inputGustSpeed) {
-          inputGustSpeed.replaceAll('#Page_gustSpeed');
+          document.querySelectorAll('#Page_gustSpeed').forEach((item, index) => {
+            item.setAttribute('value', inputGustSpeed.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_gustSpeed'));
         }
 
         if(inputIlluminance) {
-          inputIlluminance.replaceAll('#Page_illuminance');
+          document.querySelectorAll('#Page_illuminance').forEach((item, index) => {
+            item.setAttribute('value', inputIlluminance.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_illuminance'));
         }
 
         if(inputLocation) {
-          inputLocation.replaceAll('#Page_location');
+          document.querySelectorAll('#Page_location').forEach((item, index) => {
+            item.setAttribute('value', inputLocation.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_location'));
         }
 
         if(inputOwner) {
-          inputOwner.replaceAll('#Page_owner');
+          document.querySelectorAll('#Page_owner').forEach((item, index) => {
+            item.setAttribute('value', inputOwner.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_owner'));
         }
 
         if(inputPrecipitation) {
-          inputPrecipitation.replaceAll('#Page_precipitation');
+          document.querySelectorAll('#Page_precipitation').forEach((item, index) => {
+            item.setAttribute('value', inputPrecipitation.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_precipitation'));
         }
 
         if(inputPrecipitationForecast) {
-          inputPrecipitationForecast.replaceAll('#Page_precipitationForecast');
+          document.querySelectorAll('#Page_precipitationForecast').forEach((item, index) => {
+            item.setAttribute('value', inputPrecipitationForecast.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_precipitationForecast'));
         }
 
         if(inputPressureTendency) {
-          inputPressureTendency.replaceAll('#Page_pressureTendency');
+          document.querySelectorAll('#Page_pressureTendency').forEach((item, index) => {
+            item.setAttribute('value', inputPressureTendency.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pressureTendency'));
         }
 
         if(inputRefDevice) {
-          inputRefDevice.replaceAll('#Page_refDevice');
+          document.querySelectorAll('#Page_refDevice').forEach((item, index) => {
+            item.setAttribute('value', inputRefDevice.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_refDevice'));
         }
 
         if(inputRefPointOfInterest) {
-          inputRefPointOfInterest.replaceAll('#Page_refPointOfInterest');
+          document.querySelectorAll('#Page_refPointOfInterest').forEach((item, index) => {
+            item.setAttribute('value', inputRefPointOfInterest.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_refPointOfInterest'));
         }
 
         if(inputRelativeHumidity) {
-          inputRelativeHumidity.replaceAll('#Page_relativeHumidity');
+          document.querySelectorAll('#Page_relativeHumidity').forEach((item, index) => {
+            item.setAttribute('value', inputRelativeHumidity.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_relativeHumidity'));
         }
 
         if(inputRelativeHumidityForecast) {
-          inputRelativeHumidityForecast.replaceAll('#Page_relativeHumidityForecast');
+          document.querySelectorAll('#Page_relativeHumidityForecast').forEach((item, index) => {
+            item.setAttribute('value', inputRelativeHumidityForecast.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_relativeHumidityForecast'));
         }
 
         if(inputSeeAlso) {
-          inputSeeAlso.replaceAll('#Page_seeAlso');
+          document.querySelectorAll('#Page_seeAlso').forEach((item, index) => {
+            item.setAttribute('value', inputSeeAlso.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_seeAlso'));
         }
 
         if(inputSnowHeight) {
-          inputSnowHeight.replaceAll('#Page_snowHeight');
+          document.querySelectorAll('#Page_snowHeight').forEach((item, index) => {
+            item.setAttribute('value', inputSnowHeight.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_snowHeight'));
         }
 
         if(inputSolarRadiation) {
-          inputSolarRadiation.replaceAll('#Page_solarRadiation');
+          document.querySelectorAll('#Page_solarRadiation').forEach((item, index) => {
+            item.setAttribute('value', inputSolarRadiation.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_solarRadiation'));
         }
 
         if(inputSource) {
-          inputSource.replaceAll('#Page_source');
+          document.querySelectorAll('#Page_source').forEach((item, index) => {
+            item.setAttribute('value', inputSource.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_source'));
         }
 
         if(inputStreamGauge) {
-          inputStreamGauge.replaceAll('#Page_streamGauge');
+          document.querySelectorAll('#Page_streamGauge').forEach((item, index) => {
+            item.setAttribute('value', inputStreamGauge.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_streamGauge'));
         }
 
         if(inputTemperature) {
-          inputTemperature.replaceAll('#Page_temperature');
+          document.querySelectorAll('#Page_temperature').forEach((item, index) => {
+            item.setAttribute('value', inputTemperature.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_temperature'));
         }
 
         if(inputUVIndexMax) {
-          inputUVIndexMax.replaceAll('#Page_uVIndexMax');
+          document.querySelectorAll('#Page_uVIndexMax').forEach((item, index) => {
+            item.setAttribute('value', inputUVIndexMax.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_uVIndexMax'));
         }
 
         if(inputVisibility) {
-          inputVisibility.replaceAll('#Page_visibility');
+          document.querySelectorAll('#Page_visibility').forEach((item, index) => {
+            item.setAttribute('value', inputVisibility.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_visibility'));
         }
 
         if(inputWeatherType) {
-          inputWeatherType.replaceAll('#Page_weatherType');
+          document.querySelectorAll('#Page_weatherType').forEach((item, index) => {
+            item.setAttribute('value', inputWeatherType.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_weatherType'));
         }
 
         if(inputWindDirection) {
-          inputWindDirection.replaceAll('#Page_windDirection');
+          document.querySelectorAll('#Page_windDirection').forEach((item, index) => {
+            item.setAttribute('value', inputWindDirection.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_windDirection'));
         }
 
         if(inputWindSpeed) {
-          inputWindSpeed.replaceAll('#Page_windSpeed');
+          document.querySelectorAll('#Page_windSpeed').forEach((item, index) => {
+            item.setAttribute('value', inputWindSpeed.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_windSpeed'));
         }
 
         if(inputInheritPk) {
-          inputInheritPk.replaceAll('#Page_inheritPk');
+          document.querySelectorAll('#Page_inheritPk').forEach((item, index) => {
+            item.setAttribute('value', inputInheritPk.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_inheritPk'));
         }
 
         if(inputClassCanonicalName) {
-          inputClassCanonicalName.replaceAll('#Page_classCanonicalName');
+          document.querySelectorAll('#Page_classCanonicalName').forEach((item, index) => {
+            item.setAttribute('value', inputClassCanonicalName.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
-          inputClassSimpleName.replaceAll('#Page_classSimpleName');
+          document.querySelectorAll('#Page_classSimpleName').forEach((item, index) => {
+            item.setAttribute('value', inputClassSimpleName.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
-          inputClassCanonicalNames.replaceAll('#Page_classCanonicalNames');
+          document.querySelectorAll('#Page_classCanonicalNames').forEach((item, index) => {
+            item.setAttribute('value', inputClassCanonicalNames.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_classCanonicalNames'));
         }
 
         if(inputSessionId) {
-          inputSessionId.replaceAll('#Page_sessionId');
+          document.querySelectorAll('#Page_sessionId').forEach((item, index) => {
+            item.setAttribute('value', inputSessionId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_sessionId'));
         }
 
         if(inputUserKey) {
-          inputUserKey.replaceAll('#Page_userKey');
+          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
+            item.setAttribute('value', inputUserKey.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_userKey'));
         }
 
         if(inputSaves) {
-          inputSaves.replaceAll('#Page_saves');
+          document.querySelectorAll('#Page_saves').forEach((item, index) => {
+            item.setAttribute('value', inputSaves.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_saves'));
         }
 
         if(inputObjectIcon) {
-          inputObjectIcon.replaceAll('#Page_objectIcon');
+          document.querySelectorAll('#Page_objectIcon').forEach((item, index) => {
+            item.setAttribute('value', inputObjectIcon.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectIcon'));
         }
 
         if(inputObjectTitle) {
-          inputObjectTitle.replaceAll('#Page_objectTitle');
+          document.querySelectorAll('#Page_objectTitle').forEach((item, index) => {
+            item.setAttribute('value', inputObjectTitle.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectTitle'));
         }
 
         if(inputObjectSuggest) {
-          inputObjectSuggest.replaceAll('#Page_objectSuggest');
+          document.querySelectorAll('#Page_objectSuggest').forEach((item, index) => {
+            item.setAttribute('value', inputObjectSuggest.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectSuggest'));
         }
 
         if(inputObjectText) {
-          inputObjectText.replaceAll('#Page_objectText');
+          document.querySelectorAll('#Page_objectText').forEach((item, index) => {
+            item.setAttribute('value', inputObjectText.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_objectText'));
         }
 
         if(inputPageUrlId) {
-          inputPageUrlId.replaceAll('#Page_pageUrlId');
+          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputPageUrlPk) {
-          inputPageUrlPk.replaceAll('#Page_pageUrlPk');
+          document.querySelectorAll('#Page_pageUrlPk').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlPk.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlPk'));
         }
 
         if(inputPageUrlApi) {
-          inputPageUrlApi.replaceAll('#Page_pageUrlApi');
+          document.querySelectorAll('#Page_pageUrlApi').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlApi.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_pageUrlApi'));
         }
 
         if(inputId) {
-          inputId.replaceAll('#Page_id');
+          document.querySelectorAll('#Page_id').forEach((item, index) => {
+            item.setAttribute('value', inputId.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_id'));
         }
 
+        if(inputAreaServedColors) {
+          document.querySelectorAll('#Page_areaServedColors').forEach((item, index) => {
+            item.setAttribute('value', inputAreaServedColors.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_areaServedColors'));
+        }
+
         if(inputAreaServedTitles) {
-          inputAreaServedTitles.replaceAll('#Page_areaServedTitles');
+          document.querySelectorAll('#Page_areaServedTitles').forEach((item, index) => {
+            item.setAttribute('value', inputAreaServedTitles.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_areaServedTitles'));
         }
 
         if(inputAreaServedLinks) {
-          inputAreaServedLinks.replaceAll('#Page_areaServedLinks');
+          document.querySelectorAll('#Page_areaServedLinks').forEach((item, index) => {
+            item.setAttribute('value', inputAreaServedLinks.getAttribute('value'));
+          });
           addGlow(document.querySelector('#Page_areaServedLinks'));
         }
 
-        if(inputAreaServedColors) {
-          inputAreaServedColors.replaceAll('#Page_areaServedColors');
-          addGlow(document.querySelector('#Page_areaServedColors'));
-        }
-
-        pageGraphWeatherObserved();
+          pageGraphWeatherObserved();
+      });
     });
   }
 }

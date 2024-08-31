@@ -1,19 +1,27 @@
 
 // Search //
 
-async function searchCompanyResearch($formFilters, success, error) {
-  var filters = searchCompanyResearchFilters($formFilters);
+async function searchCompanyWebinar($formFilters, success, error) {
+  var filters = searchCompanyWebinarFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, textStatus, errorThrown ) {};
 
-  searchCompanyResearchVals(filters, target, success, error);
+  searchCompanyWebinarVals(filters, target, success, error);
 }
 
-function searchCompanyResearchFilters($formFilters) {
+function searchCompanyWebinarFilters($formFilters) {
   var filters = [];
   if($formFilters) {
+
+    var filterPk = $formFilters.querySelector('.valuePk')?.value;
+    if(filterPk != null && filterPk !== '')
+      filters.push({ name: 'fq', value: 'pk:' + filterPk });
+
+    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
+    if(filterObjectId != null && filterObjectId !== '')
+      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
     if(filterCreated != null && filterCreated !== '')
@@ -22,10 +30,6 @@ function searchCompanyResearchFilters($formFilters) {
     var filterModified = $formFilters.querySelector('.valueModified')?.value;
     if(filterModified != null && filterModified !== '')
       filters.push({ name: 'fq', value: 'modified:' + filterModified });
-
-    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
-    if(filterObjectId != null && filterObjectId !== '')
-      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
     var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
@@ -45,17 +49,9 @@ function searchCompanyResearchFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
-    var filterUri = $formFilters.querySelector('.valueUri')?.value;
-    if(filterUri != null && filterUri !== '')
-      filters.push({ name: 'fq', value: 'uri:' + filterUri });
-
-    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
-    if(filterUrl != null && filterUrl !== '')
-      filters.push({ name: 'fq', value: 'url:' + filterUrl });
-
-    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
-    if(filterPageId != null && filterPageId !== '')
-      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+    var filterWebinarUrl = $formFilters.querySelector('.valueWebinarUrl')?.value;
+    if(filterWebinarUrl != null && filterWebinarUrl !== '')
+      filters.push({ name: 'fq', value: 'webinarUrl:' + filterWebinarUrl });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -116,26 +112,14 @@ function searchCompanyResearchFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
-
-    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
-    if(filterResourceUri != null && filterResourceUri !== '')
-      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
-
-    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
-    if(filterTemplateUri != null && filterTemplateUri !== '')
-      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
-
-    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
-    if(filterTitle != null && filterTitle !== '')
-      filters.push({ name: 'fq', value: 'title:' + filterTitle });
   }
   return filters;
 }
 
-function searchCompanyResearchVals(filters, target, success, error) {
+function searchCompanyWebinarVals(filters, target, success, error) {
 
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/webinar?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -147,11 +131,11 @@ function searchCompanyResearchVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestCompanyResearchObjectSuggest($formFilters, $list, target) {
+function suggestCompanyWebinarObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i class="fa-duotone fa-solid fa-school"></i>');
+      var $i = document.querySelector('<i class="fa-regular fa-video"></i>');
       var $span = document.createElement('span');      $span.setAttribute('class', '');      $span.innerText = o['objectTitle'];
       var $li = document.createElement('li');
       var $a = document.createElement('a').setAttribute('href', o['pageUrlPk']);
@@ -162,14 +146,14 @@ function suggestCompanyResearchObjectSuggest($formFilters, $list, target) {
     });
   };
   error = function( jqXhr, textStatus, errorThrown ) {};
-  searchCompanyResearchVals($formFilters, target, success, error);
+  searchCompanyWebinarVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getCompanyResearch() {
+async function getCompanyWebinar(pk) {
   fetch(
-    '/api/research/' + id
+    '/api/webinar/' + id
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -183,10 +167,34 @@ async function getCompanyResearch() {
 
 // PATCH //
 
-async function patchCompanyResearch($formFilters, $formValues, target, id, success, error) {
-  var filters = patchCompanyResearchFilters($formFilters);
+async function patchCompanyWebinar($formFilters, $formValues, target, pk, success, error) {
+  var filters = patchCompanyWebinarFilters($formFilters);
 
   var vals = {};
+
+  var valuePk = $formValues.querySelector('.valuePk')?.value;
+  var removePk = $formValues.querySelector('.removePk')?.value === 'true';
+  var setPk = removePk ? null : $formValues.querySelector('.setPk')?.value;
+  var addPk = $formValues.querySelector('.addPk')?.value;
+  if(removePk || setPk != null && setPk !== '')
+    vals['setPk'] = setPk;
+  if(addPk != null && addPk !== '')
+    vals['addPk'] = addPk;
+  var removePk = $formValues.querySelector('.removePk')?.value;
+  if(removePk != null && removePk !== '')
+    vals['removePk'] = removePk;
+
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
+  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value === 'true';
+  var setObjectId = removeObjectId ? null : $formValues.querySelector('.setObjectId')?.value;
+  var addObjectId = $formValues.querySelector('.addObjectId')?.value;
+  if(removeObjectId || setObjectId != null && setObjectId !== '')
+    vals['setObjectId'] = setObjectId;
+  if(addObjectId != null && addObjectId !== '')
+    vals['addObjectId'] = addObjectId;
+  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value;
+  if(removeObjectId != null && removeObjectId !== '')
+    vals['removeObjectId'] = removeObjectId;
 
   var valueCreated = $formValues.querySelector('.valueCreated')?.value;
   var removeCreated = $formValues.querySelector('.removeCreated')?.value === 'true';
@@ -211,18 +219,6 @@ async function patchCompanyResearch($formFilters, $formValues, target, id, succe
   var removeModified = $formValues.querySelector('.removeModified')?.value;
   if(removeModified != null && removeModified !== '')
     vals['removeModified'] = removeModified;
-
-  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
-  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value === 'true';
-  var setObjectId = removeObjectId ? null : $formValues.querySelector('.setObjectId')?.value;
-  var addObjectId = $formValues.querySelector('.addObjectId')?.value;
-  if(removeObjectId || setObjectId != null && setObjectId !== '')
-    vals['setObjectId'] = setObjectId;
-  if(addObjectId != null && addObjectId !== '')
-    vals['addObjectId'] = addObjectId;
-  var removeObjectId = $formValues.querySelector('.removeObjectId')?.value;
-  if(removeObjectId != null && removeObjectId !== '')
-    vals['removeObjectId'] = removeObjectId;
 
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   var removeArchived = $formValues.querySelector('.removeArchived')?.value === 'true';
@@ -267,41 +263,17 @@ async function patchCompanyResearch($formFilters, $formValues, target, id, succe
   if(removeDescription != null && removeDescription !== '')
     vals['removeDescription'] = removeDescription;
 
-  var valueUri = $formValues.querySelector('.valueUri')?.value;
-  var removeUri = $formValues.querySelector('.removeUri')?.value === 'true';
-  var setUri = removeUri ? null : $formValues.querySelector('.setUri')?.value;
-  var addUri = $formValues.querySelector('.addUri')?.value;
-  if(removeUri || setUri != null && setUri !== '')
-    vals['setUri'] = setUri;
-  if(addUri != null && addUri !== '')
-    vals['addUri'] = addUri;
-  var removeUri = $formValues.querySelector('.removeUri')?.value;
-  if(removeUri != null && removeUri !== '')
-    vals['removeUri'] = removeUri;
-
-  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
-  var removeUrl = $formValues.querySelector('.removeUrl')?.value === 'true';
-  var setUrl = removeUrl ? null : $formValues.querySelector('.setUrl')?.value;
-  var addUrl = $formValues.querySelector('.addUrl')?.value;
-  if(removeUrl || setUrl != null && setUrl !== '')
-    vals['setUrl'] = setUrl;
-  if(addUrl != null && addUrl !== '')
-    vals['addUrl'] = addUrl;
-  var removeUrl = $formValues.querySelector('.removeUrl')?.value;
-  if(removeUrl != null && removeUrl !== '')
-    vals['removeUrl'] = removeUrl;
-
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
-  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
-  var addPageId = $formValues.querySelector('.addPageId')?.value;
-  if(removePageId || setPageId != null && setPageId !== '')
-    vals['setPageId'] = setPageId;
-  if(addPageId != null && addPageId !== '')
-    vals['addPageId'] = addPageId;
-  var removePageId = $formValues.querySelector('.removePageId')?.value;
-  if(removePageId != null && removePageId !== '')
-    vals['removePageId'] = removePageId;
+  var valueWebinarUrl = $formValues.querySelector('.valueWebinarUrl')?.value;
+  var removeWebinarUrl = $formValues.querySelector('.removeWebinarUrl')?.value === 'true';
+  var setWebinarUrl = removeWebinarUrl ? null : $formValues.querySelector('.setWebinarUrl')?.value;
+  var addWebinarUrl = $formValues.querySelector('.addWebinarUrl')?.value;
+  if(removeWebinarUrl || setWebinarUrl != null && setWebinarUrl !== '')
+    vals['setWebinarUrl'] = setWebinarUrl;
+  if(addWebinarUrl != null && addWebinarUrl !== '')
+    vals['addWebinarUrl'] = addWebinarUrl;
+  var removeWebinarUrl = $formValues.querySelector('.removeWebinarUrl')?.value;
+  if(removeWebinarUrl != null && removeWebinarUrl !== '')
+    vals['removeWebinarUrl'] = removeWebinarUrl;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -339,61 +311,21 @@ async function patchCompanyResearch($formFilters, $formValues, target, id, succe
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueId = $formValues.querySelector('.valueId')?.value;
-  var removeId = $formValues.querySelector('.removeId')?.value === 'true';
-  var setId = removeId ? null : $formValues.querySelector('.setId')?.value;
-  var addId = $formValues.querySelector('.addId')?.value;
-  if(removeId || setId != null && setId !== '')
-    vals['setId'] = setId;
-  if(addId != null && addId !== '')
-    vals['addId'] = addId;
-  var removeId = $formValues.querySelector('.removeId')?.value;
-  if(removeId != null && removeId !== '')
-    vals['removeId'] = removeId;
-
-  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
-  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value === 'true';
-  var setResourceUri = removeResourceUri ? null : $formValues.querySelector('.setResourceUri')?.value;
-  var addResourceUri = $formValues.querySelector('.addResourceUri')?.value;
-  if(removeResourceUri || setResourceUri != null && setResourceUri !== '')
-    vals['setResourceUri'] = setResourceUri;
-  if(addResourceUri != null && addResourceUri !== '')
-    vals['addResourceUri'] = addResourceUri;
-  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value;
-  if(removeResourceUri != null && removeResourceUri !== '')
-    vals['removeResourceUri'] = removeResourceUri;
-
-  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
-  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value === 'true';
-  var setTemplateUri = removeTemplateUri ? null : $formValues.querySelector('.setTemplateUri')?.value;
-  var addTemplateUri = $formValues.querySelector('.addTemplateUri')?.value;
-  if(removeTemplateUri || setTemplateUri != null && setTemplateUri !== '')
-    vals['setTemplateUri'] = setTemplateUri;
-  if(addTemplateUri != null && addTemplateUri !== '')
-    vals['addTemplateUri'] = addTemplateUri;
-  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value;
-  if(removeTemplateUri != null && removeTemplateUri !== '')
-    vals['removeTemplateUri'] = removeTemplateUri;
-
-  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
-  var removeTitle = $formValues.querySelector('.removeTitle')?.value === 'true';
-  var setTitle = removeTitle ? null : $formValues.querySelector('.setTitle')?.value;
-  var addTitle = $formValues.querySelector('.addTitle')?.value;
-  if(removeTitle || setTitle != null && setTitle !== '')
-    vals['setTitle'] = setTitle;
-  if(addTitle != null && addTitle !== '')
-    vals['addTitle'] = addTitle;
-  var removeTitle = $formValues.querySelector('.removeTitle')?.value;
-  if(removeTitle != null && removeTitle !== '')
-    vals['removeTitle'] = removeTitle;
-
-  patchCompanyResearchVals(id == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, target, success, error);
+  patchCompanyWebinarVals(pk == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
-function patchCompanyResearchFilters($formFilters) {
+function patchCompanyWebinarFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
+
+    var filterPk = $formFilters.querySelector('.valuePk')?.value;
+    if(filterPk != null && filterPk !== '')
+      filters.push({ name: 'fq', value: 'pk:' + filterPk });
+
+    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
+    if(filterObjectId != null && filterObjectId !== '')
+      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
     if(filterCreated != null && filterCreated !== '')
@@ -402,10 +334,6 @@ function patchCompanyResearchFilters($formFilters) {
     var filterModified = $formFilters.querySelector('.valueModified')?.value;
     if(filterModified != null && filterModified !== '')
       filters.push({ name: 'fq', value: 'modified:' + filterModified });
-
-    var filterObjectId = $formFilters.querySelector('.valueObjectId')?.value;
-    if(filterObjectId != null && filterObjectId !== '')
-      filters.push({ name: 'fq', value: 'objectId:' + filterObjectId });
 
     var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
     var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
@@ -425,17 +353,9 @@ function patchCompanyResearchFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
-    var filterUri = $formFilters.querySelector('.valueUri')?.value;
-    if(filterUri != null && filterUri !== '')
-      filters.push({ name: 'fq', value: 'uri:' + filterUri });
-
-    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
-    if(filterUrl != null && filterUrl !== '')
-      filters.push({ name: 'fq', value: 'url:' + filterUrl });
-
-    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
-    if(filterPageId != null && filterPageId !== '')
-      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+    var filterWebinarUrl = $formFilters.querySelector('.valueWebinarUrl')?.value;
+    if(filterWebinarUrl != null && filterWebinarUrl !== '')
+      filters.push({ name: 'fq', value: 'webinarUrl:' + filterWebinarUrl });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -496,31 +416,19 @@ function patchCompanyResearchFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
-
-    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
-    if(filterResourceUri != null && filterResourceUri !== '')
-      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
-
-    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
-    if(filterTemplateUri != null && filterTemplateUri !== '')
-      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
-
-    var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
-    if(filterTitle != null && filterTitle !== '')
-      filters.push({ name: 'fq', value: 'title:' + filterTitle });
   }
   return filters;
 }
 
-function patchCompanyResearchVal(filters, v, val, target, success, error) {
+function patchCompanyWebinarVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchCompanyResearchVals(filters, vals, target, success, error);
+  patchCompanyWebinarVals(filters, vals, target, success, error);
 }
 
-function patchCompanyResearchVals(filters, vals, target, success, error) {
+function patchCompanyWebinarVals(filters, vals, target, success, error) {
   fetch(
-    '/api/research?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/api/webinar?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -536,7 +444,7 @@ function patchCompanyResearchVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postCompanyResearch($formValues, target, success, error) {
+async function postCompanyWebinar($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -552,6 +460,14 @@ async function postCompanyResearch($formValues, target, success, error) {
     };
   }
 
+  var valuePk = $formValues.querySelector('.valuePk')?.value;
+  if(valuePk != null && valuePk !== '')
+    vals['pk'] = valuePk;
+
+  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
+  if(valueObjectId != null && valueObjectId !== '')
+    vals['objectId'] = valueObjectId;
+
   var valueCreated = $formValues.querySelector('.valueCreated')?.value;
   if(valueCreated != null && valueCreated !== '')
     vals['created'] = valueCreated;
@@ -559,10 +475,6 @@ async function postCompanyResearch($formValues, target, success, error) {
   var valueModified = $formValues.querySelector('.valueModified')?.value;
   if(valueModified != null && valueModified !== '')
     vals['modified'] = valueModified;
-
-  var valueObjectId = $formValues.querySelector('.valueObjectId')?.value;
-  if(valueObjectId != null && valueObjectId !== '')
-    vals['objectId'] = valueObjectId;
 
   var valueArchived = $formValues.querySelector('.valueArchived')?.value;
   if(valueArchived != null && valueArchived !== '')
@@ -576,17 +488,9 @@ async function postCompanyResearch($formValues, target, success, error) {
   if(valueDescription != null && valueDescription !== '')
     vals['description'] = valueDescription;
 
-  var valueUri = $formValues.querySelector('.valueUri')?.value;
-  if(valueUri != null && valueUri !== '')
-    vals['uri'] = valueUri;
-
-  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
-  if(valueUrl != null && valueUrl !== '')
-    vals['url'] = valueUrl;
-
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  if(valuePageId != null && valuePageId !== '')
-    vals['pageId'] = valuePageId;
+  var valueWebinarUrl = $formValues.querySelector('.valueWebinarUrl')?.value;
+  if(valueWebinarUrl != null && valueWebinarUrl !== '')
+    vals['webinarUrl'] = valueWebinarUrl;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -600,24 +504,8 @@ async function postCompanyResearch($formValues, target, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueId = $formValues.querySelector('.valueId')?.value;
-  if(valueId != null && valueId !== '')
-    vals['id'] = valueId;
-
-  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
-  if(valueResourceUri != null && valueResourceUri !== '')
-    vals['resourceUri'] = valueResourceUri;
-
-  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
-  if(valueTemplateUri != null && valueTemplateUri !== '')
-    vals['templateUri'] = valueTemplateUri;
-
-  var valueTitle = $formValues.querySelector('.valueTitle')?.value;
-  if(valueTitle != null && valueTitle !== '')
-    vals['title'] = valueTitle;
-
   fetch(
-    '/api/research'
+    '/api/webinar'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -631,9 +519,9 @@ async function postCompanyResearch($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postCompanyResearchVals(vals, target, success, error) {
+function postCompanyWebinarVals(vals, target, success, error) {
   fetch(
-    '/api/research'
+    '/api/webinar'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -649,15 +537,15 @@ function postCompanyResearchVals(vals, target, success, error) {
 
 // PUTImport //
 
-async function putimportCompanyResearch($formValues, target, id, success, error) {
+async function putimportCompanyWebinar($formValues, target, pk, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportCompanyResearchVals(JSON.parse(json), target, success, error);
+    putimportCompanyWebinarVals(JSON.parse(json), target, success, error);
 }
 
-function putimportCompanyResearchVals(json, target, success, error) {
+function putimportCompanyWebinarVals(json, target, success, error) {
   fetch(
-    '/api/research-import'
+    '/api/webinar-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -671,14 +559,14 @@ function putimportCompanyResearchVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
-async function websocketCompanyResearch(success) {
+async function websocketCompanyWebinar(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketCompanyResearch', function (error, message) {
+    window.eventBus.registerHandler('websocketCompanyWebinar', function (error, message) {
       var json = JSON.parse(message['body']);
       var id = json['id'];
       var pk = json['pk'];
-      var pkPage = document.querySelector('#Page_id')?.value;
+      var pkPage = document.querySelector('#Page_pk')?.value;
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -698,11 +586,11 @@ async function websocketCompanyResearch(success) {
       $header.setAttribute('class', 'w3-container fa- ');
       $header.setAttribute('id', 'header-' + id);
       var iTemplate = document.createElement('template');
-      iTemplate.innerHTML = '<i class="fa-duotone fa-solid fa-school"></i>';
+      iTemplate.innerHTML = '<i class="fa-regular fa-video"></i>';
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify research in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify webinars in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
       $x.setAttribute('onclick', 'document.querySelector("#card-' + id + '");');
@@ -740,28 +628,27 @@ async function websocketCompanyResearch(success) {
     });
   }
 }
-async function websocketCompanyResearchInner(apiRequest) {
-  var id = apiRequest['id'];
-  var ids = apiRequest['ids'];
+async function websocketCompanyWebinarInner(apiRequest) {
+  var pk = apiRequest['pk'];
+  var pks = apiRequest['pks'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
   var empty = apiRequest['empty'];
 
-  if(id != null && vars.length > 0) {
+  if(pk != null && vars.length > 0) {
     var queryParams = "?" + Array.from(document.querySelectorAll(".pageSearchVal")).filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
     fetch(uri).then(response => {
       response.text().then(text => {
         var $response = new DOMParser().parseFromString(text, 'text/html');
+        var inputPk = null;
+        var inputObjectId = null;
         var inputCreated = null;
         var inputModified = null;
-        var inputObjectId = null;
         var inputArchived = null;
         var inputName = null;
         var inputDescription = null;
-        var inputUri = null;
-        var inputUrl = null;
-        var inputPageId = null;
+        var inputWebinarUrl = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -777,28 +664,23 @@ async function websocketCompanyResearchInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
-        var inputResourceUri = null;
-        var inputTemplateUri = null;
-        var inputTitle = null;
 
+        if(vars.includes('pk'))
+          inputPk = $response.querySelector('#Page_pk');
+        if(vars.includes('objectId'))
+          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('created'))
           inputCreated = $response.querySelector('#Page_created');
         if(vars.includes('modified'))
           inputModified = $response.querySelector('#Page_modified');
-        if(vars.includes('objectId'))
-          inputObjectId = $response.querySelector('#Page_objectId');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
         if(vars.includes('name'))
           inputName = $response.querySelector('#Page_name');
         if(vars.includes('description'))
           inputDescription = $response.querySelector('#Page_description');
-        if(vars.includes('uri'))
-          inputUri = $response.querySelector('#Page_uri');
-        if(vars.includes('url'))
-          inputUrl = $response.querySelector('#Page_url');
-        if(vars.includes('pageId'))
-          inputPageId = $response.querySelector('#Page_pageId');
+        if(vars.includes('webinarUrl'))
+          inputWebinarUrl = $response.querySelector('#Page_webinarUrl');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -829,17 +711,25 @@ async function websocketCompanyResearchInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        if(vars.includes('resourceUri'))
-          inputResourceUri = $response.querySelector('#Page_resourceUri');
-        if(vars.includes('templateUri'))
-          inputTemplateUri = $response.querySelector('#Page_templateUri');
-        if(vars.includes('title'))
-          inputTitle = $response.querySelector('#Page_title');
-          jsWebsocketCompanyResearch(id, vars, $response);
+          jsWebsocketCompanyWebinar(pk, vars, $response);
 
-          window.companyResearch = JSON.parse($response.querySelector('.pageForm .companyResearch')?.value);
-          window.listCompanyResearch = JSON.parse($response.querySelector('.pageForm .listCompanyResearch')?.value);
+          window.companyWebinar = JSON.parse($response.querySelector('.pageForm .companyWebinar')?.value);
+          window.listCompanyWebinar = JSON.parse($response.querySelector('.pageForm .listCompanyWebinar')?.value);
 
+
+        if(inputPk) {
+          document.querySelectorAll('#Page_pk').forEach((item, index) => {
+            item.setAttribute('value', inputPk.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_pk'));
+        }
+
+        if(inputObjectId) {
+          document.querySelectorAll('#Page_objectId').forEach((item, index) => {
+            item.setAttribute('value', inputObjectId.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_objectId'));
+        }
 
         if(inputCreated) {
           document.querySelectorAll('#Page_created').forEach((item, index) => {
@@ -853,13 +743,6 @@ async function websocketCompanyResearchInner(apiRequest) {
             item.setAttribute('value', inputModified.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_modified'));
-        }
-
-        if(inputObjectId) {
-          document.querySelectorAll('#Page_objectId').forEach((item, index) => {
-            item.setAttribute('value', inputObjectId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_objectId'));
         }
 
         if(inputArchived) {
@@ -883,25 +766,11 @@ async function websocketCompanyResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_description'));
         }
 
-        if(inputUri) {
-          document.querySelectorAll('#Page_uri').forEach((item, index) => {
-            item.setAttribute('value', inputUri.getAttribute('value'));
+        if(inputWebinarUrl) {
+          document.querySelectorAll('#Page_webinarUrl').forEach((item, index) => {
+            item.setAttribute('value', inputWebinarUrl.getAttribute('value'));
           });
-          addGlow(document.querySelector('#Page_uri'));
-        }
-
-        if(inputUrl) {
-          document.querySelectorAll('#Page_url').forEach((item, index) => {
-            item.setAttribute('value', inputUrl.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_url'));
-        }
-
-        if(inputPageId) {
-          document.querySelectorAll('#Page_pageId').forEach((item, index) => {
-            item.setAttribute('value', inputPageId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_pageId'));
+          addGlow(document.querySelector('#Page_webinarUrl'));
         }
 
         if(inputInheritPk) {
@@ -1009,34 +878,13 @@ async function websocketCompanyResearchInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        if(inputResourceUri) {
-          document.querySelectorAll('#Page_resourceUri').forEach((item, index) => {
-            item.setAttribute('value', inputResourceUri.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_resourceUri'));
-        }
-
-        if(inputTemplateUri) {
-          document.querySelectorAll('#Page_templateUri').forEach((item, index) => {
-            item.setAttribute('value', inputTemplateUri.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_templateUri'));
-        }
-
-        if(inputTitle) {
-          document.querySelectorAll('#Page_title').forEach((item, index) => {
-            item.setAttribute('value', inputTitle.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_title'));
-        }
-
-          pageGraphCompanyResearch();
+          pageGraphCompanyWebinar();
       });
     });
   }
 }
 
-function pageGraphCompanyResearch(apiRequest) {
+function pageGraphCompanyWebinar(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -1068,7 +916,7 @@ function pageGraphCompanyResearch(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'research';
+          layout['title'] = 'webinars';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -1132,15 +980,15 @@ function pageGraphCompanyResearch(apiRequest) {
             });
           }
         }
-        Plotly.react('htmBodyGraphBaseResultPage', data, layout);
+        Plotly.react('htmBodyGraphBaseModelPage', data, layout);
       }
     }
   }
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqCompanyResearch_time').innerText = '';
-  searchPage('CompanyResearch', function() {
+  document.querySelector('#pageSearchVal-fqCompanyWebinar_time').innerText = '';
+  searchPage('CompanyWebinar', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -1152,9 +1000,9 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqCompanyResearch_time').value = x;
-      document.querySelector('#fqCompanyResearch_time').onchange();
-      searchPage('CompanyResearch');
+      document.querySelector('#fqCompanyWebinar_time').value = x;
+      document.querySelector('#fqCompanyWebinar_time').onchange();
+      searchPage('CompanyWebinar');
     }, speedRate);
   });
 }
