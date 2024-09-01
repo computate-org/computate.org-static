@@ -121,6 +121,10 @@ function searchSiteUserFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
+    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
+    if(filterUserKeys != null && filterUserKeys !== '')
+      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
+
     var filterUserId = $formFilters.querySelector('.valueUserId')?.value;
     if(filterUserId != null && filterUserId !== '')
       filters.push({ name: 'fq', value: 'userId:' + filterUserId });
@@ -144,10 +148,6 @@ function searchSiteUserFilters($formFilters) {
     var filterUserFullName = $formFilters.querySelector('.valueUserFullName')?.value;
     if(filterUserFullName != null && filterUserFullName !== '')
       filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
-
-    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
-    if(filterUserKeys != null && filterUserKeys !== '')
-      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
   }
   return filters;
 }
@@ -519,6 +519,10 @@ function patchSiteUserFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
+    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
+    if(filterUserKeys != null && filterUserKeys !== '')
+      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
+
     var filterUserId = $formFilters.querySelector('.valueUserId')?.value;
     if(filterUserId != null && filterUserId !== '')
       filters.push({ name: 'fq', value: 'userId:' + filterUserId });
@@ -542,10 +546,6 @@ function patchSiteUserFilters($formFilters) {
     var filterUserFullName = $formFilters.querySelector('.valueUserFullName')?.value;
     if(filterUserFullName != null && filterUserFullName !== '')
       filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
-
-    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
-    if(filterUserKeys != null && filterUserKeys !== '')
-      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
   }
   return filters;
 }
@@ -813,13 +813,13 @@ async function websocketSiteUserInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputUserKeys = null;
         var inputUserId = null;
         var inputUserName = null;
         var inputUserEmail = null;
         var inputUserFirstName = null;
         var inputUserLastName = null;
         var inputUserFullName = null;
-        var inputUserKeys = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
@@ -865,6 +865,8 @@ async function websocketSiteUserInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
+        if(vars.includes('userKeys'))
+          inputUserKeys = $response.querySelector('#Page_userKeys');
         if(vars.includes('userId'))
           inputUserId = $response.querySelector('#Page_userId');
         if(vars.includes('userName'))
@@ -877,8 +879,6 @@ async function websocketSiteUserInner(apiRequest) {
           inputUserLastName = $response.querySelector('#Page_userLastName');
         if(vars.includes('userFullName'))
           inputUserFullName = $response.querySelector('#Page_userFullName');
-        if(vars.includes('userKeys'))
-          inputUserKeys = $response.querySelector('#Page_userKeys');
           jsWebsocketSiteUser(pk, vars, $response);
 
           window.siteUser = JSON.parse($response.querySelector('.pageForm .siteUser')?.value);
@@ -1039,6 +1039,13 @@ async function websocketSiteUserInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
+        if(inputUserKeys) {
+          document.querySelectorAll('#Page_userKeys').forEach((item, index) => {
+            item.setAttribute('value', inputUserKeys.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_userKeys'));
+        }
+
         if(inputUserId) {
           document.querySelectorAll('#Page_userId').forEach((item, index) => {
             item.setAttribute('value', inputUserId.getAttribute('value'));
@@ -1079,13 +1086,6 @@ async function websocketSiteUserInner(apiRequest) {
             item.setAttribute('value', inputUserFullName.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_userFullName'));
-        }
-
-        if(inputUserKeys) {
-          document.querySelectorAll('#Page_userKeys').forEach((item, index) => {
-            item.setAttribute('value', inputUserKeys.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_userKeys'));
         }
 
           pageGraphSiteUser();
