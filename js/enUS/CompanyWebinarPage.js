@@ -57,13 +57,21 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
-    var filterWebinarUrl = $formFilters.querySelector('.valueWebinarUrl')?.value;
-    if(filterWebinarUrl != null && filterWebinarUrl !== '')
-      filters.push({ name: 'fq', value: 'webinarUrl:' + filterWebinarUrl });
-
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
       filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+
+    var filterWebinarUrlAmericas = $formFilters.querySelector('.valueWebinarUrlAmericas')?.value;
+    if(filterWebinarUrlAmericas != null && filterWebinarUrlAmericas !== '')
+      filters.push({ name: 'fq', value: 'webinarUrlAmericas:' + filterWebinarUrlAmericas });
+
+    var filterWebinarUrlApac = $formFilters.querySelector('.valueWebinarUrlApac')?.value;
+    if(filterWebinarUrlApac != null && filterWebinarUrlApac !== '')
+      filters.push({ name: 'fq', value: 'webinarUrlApac:' + filterWebinarUrlApac });
+
+    var filterWebinarUrlEmea = $formFilters.querySelector('.valueWebinarUrlEmea')?.value;
+    if(filterWebinarUrlEmea != null && filterWebinarUrlEmea !== '')
+      filters.push({ name: 'fq', value: 'webinarUrlEmea:' + filterWebinarUrlEmea });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -85,10 +93,6 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterSessionId != null && filterSessionId !== '')
       filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
 
-    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
-    if(filterUserKey != null && filterUserKey !== '')
-      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
-
     var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
@@ -109,10 +113,6 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
-
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -125,6 +125,14 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
+    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
+    if(filterUserKey != null && filterUserKey !== '')
+      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
+
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
+
     var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
     if(filterResourceUri != null && filterResourceUri !== '')
       filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
@@ -132,6 +140,10 @@ function searchCompanyWebinarFilters($formFilters) {
     var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
     if(filterTemplateUri != null && filterTemplateUri !== '')
       filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
+    if(filterUserUri != null && filterUserUri !== '')
+      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
   }
   return filters;
 }
@@ -307,18 +319,6 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pk, succes
   if(removeUrl != null && removeUrl !== '')
     vals['removeUrl'] = removeUrl;
 
-  var valueWebinarUrl = $formValues.querySelector('.valueWebinarUrl')?.value;
-  var removeWebinarUrl = $formValues.querySelector('.removeWebinarUrl')?.value === 'true';
-  var setWebinarUrl = removeWebinarUrl ? null : $formValues.querySelector('.setWebinarUrl')?.value;
-  var addWebinarUrl = $formValues.querySelector('.addWebinarUrl')?.value;
-  if(removeWebinarUrl || setWebinarUrl != null && setWebinarUrl !== '')
-    vals['setWebinarUrl'] = setWebinarUrl;
-  if(addWebinarUrl != null && addWebinarUrl !== '')
-    vals['addWebinarUrl'] = addWebinarUrl;
-  var removeWebinarUrl = $formValues.querySelector('.removeWebinarUrl')?.value;
-  if(removeWebinarUrl != null && removeWebinarUrl !== '')
-    vals['removeWebinarUrl'] = removeWebinarUrl;
-
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
   var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
@@ -330,6 +330,42 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pk, succes
   var removePageId = $formValues.querySelector('.removePageId')?.value;
   if(removePageId != null && removePageId !== '')
     vals['removePageId'] = removePageId;
+
+  var valueWebinarUrlAmericas = $formValues.querySelector('.valueWebinarUrlAmericas')?.value;
+  var removeWebinarUrlAmericas = $formValues.querySelector('.removeWebinarUrlAmericas')?.value === 'true';
+  var setWebinarUrlAmericas = removeWebinarUrlAmericas ? null : $formValues.querySelector('.setWebinarUrlAmericas')?.value;
+  var addWebinarUrlAmericas = $formValues.querySelector('.addWebinarUrlAmericas')?.value;
+  if(removeWebinarUrlAmericas || setWebinarUrlAmericas != null && setWebinarUrlAmericas !== '')
+    vals['setWebinarUrlAmericas'] = setWebinarUrlAmericas;
+  if(addWebinarUrlAmericas != null && addWebinarUrlAmericas !== '')
+    vals['addWebinarUrlAmericas'] = addWebinarUrlAmericas;
+  var removeWebinarUrlAmericas = $formValues.querySelector('.removeWebinarUrlAmericas')?.value;
+  if(removeWebinarUrlAmericas != null && removeWebinarUrlAmericas !== '')
+    vals['removeWebinarUrlAmericas'] = removeWebinarUrlAmericas;
+
+  var valueWebinarUrlApac = $formValues.querySelector('.valueWebinarUrlApac')?.value;
+  var removeWebinarUrlApac = $formValues.querySelector('.removeWebinarUrlApac')?.value === 'true';
+  var setWebinarUrlApac = removeWebinarUrlApac ? null : $formValues.querySelector('.setWebinarUrlApac')?.value;
+  var addWebinarUrlApac = $formValues.querySelector('.addWebinarUrlApac')?.value;
+  if(removeWebinarUrlApac || setWebinarUrlApac != null && setWebinarUrlApac !== '')
+    vals['setWebinarUrlApac'] = setWebinarUrlApac;
+  if(addWebinarUrlApac != null && addWebinarUrlApac !== '')
+    vals['addWebinarUrlApac'] = addWebinarUrlApac;
+  var removeWebinarUrlApac = $formValues.querySelector('.removeWebinarUrlApac')?.value;
+  if(removeWebinarUrlApac != null && removeWebinarUrlApac !== '')
+    vals['removeWebinarUrlApac'] = removeWebinarUrlApac;
+
+  var valueWebinarUrlEmea = $formValues.querySelector('.valueWebinarUrlEmea')?.value;
+  var removeWebinarUrlEmea = $formValues.querySelector('.removeWebinarUrlEmea')?.value === 'true';
+  var setWebinarUrlEmea = removeWebinarUrlEmea ? null : $formValues.querySelector('.setWebinarUrlEmea')?.value;
+  var addWebinarUrlEmea = $formValues.querySelector('.addWebinarUrlEmea')?.value;
+  if(removeWebinarUrlEmea || setWebinarUrlEmea != null && setWebinarUrlEmea !== '')
+    vals['setWebinarUrlEmea'] = setWebinarUrlEmea;
+  if(addWebinarUrlEmea != null && addWebinarUrlEmea !== '')
+    vals['addWebinarUrlEmea'] = addWebinarUrlEmea;
+  var removeWebinarUrlEmea = $formValues.querySelector('.removeWebinarUrlEmea')?.value;
+  if(removeWebinarUrlEmea != null && removeWebinarUrlEmea !== '')
+    vals['removeWebinarUrlEmea'] = removeWebinarUrlEmea;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -391,6 +427,18 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pk, succes
   if(removeTemplateUri != null && removeTemplateUri !== '')
     vals['removeTemplateUri'] = removeTemplateUri;
 
+  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
+  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value === 'true';
+  var setUserUri = removeUserUri ? null : $formValues.querySelector('.setUserUri')?.value;
+  var addUserUri = $formValues.querySelector('.addUserUri')?.value;
+  if(removeUserUri || setUserUri != null && setUserUri !== '')
+    vals['setUserUri'] = setUserUri;
+  if(addUserUri != null && addUserUri !== '')
+    vals['addUserUri'] = addUserUri;
+  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value;
+  if(removeUserUri != null && removeUserUri !== '')
+    vals['removeUserUri'] = removeUserUri;
+
   patchCompanyWebinarVals(pk == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
 
@@ -441,13 +489,21 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
-    var filterWebinarUrl = $formFilters.querySelector('.valueWebinarUrl')?.value;
-    if(filterWebinarUrl != null && filterWebinarUrl !== '')
-      filters.push({ name: 'fq', value: 'webinarUrl:' + filterWebinarUrl });
-
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
       filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+
+    var filterWebinarUrlAmericas = $formFilters.querySelector('.valueWebinarUrlAmericas')?.value;
+    if(filterWebinarUrlAmericas != null && filterWebinarUrlAmericas !== '')
+      filters.push({ name: 'fq', value: 'webinarUrlAmericas:' + filterWebinarUrlAmericas });
+
+    var filterWebinarUrlApac = $formFilters.querySelector('.valueWebinarUrlApac')?.value;
+    if(filterWebinarUrlApac != null && filterWebinarUrlApac !== '')
+      filters.push({ name: 'fq', value: 'webinarUrlApac:' + filterWebinarUrlApac });
+
+    var filterWebinarUrlEmea = $formFilters.querySelector('.valueWebinarUrlEmea')?.value;
+    if(filterWebinarUrlEmea != null && filterWebinarUrlEmea !== '')
+      filters.push({ name: 'fq', value: 'webinarUrlEmea:' + filterWebinarUrlEmea });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -469,10 +525,6 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterSessionId != null && filterSessionId !== '')
       filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
 
-    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
-    if(filterUserKey != null && filterUserKey !== '')
-      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
-
     var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
@@ -493,10 +545,6 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
-
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -509,6 +557,14 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
+    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
+    if(filterUserKey != null && filterUserKey !== '')
+      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
+
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
+
     var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
     if(filterResourceUri != null && filterResourceUri !== '')
       filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
@@ -516,6 +572,10 @@ function patchCompanyWebinarFilters($formFilters) {
     var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
     if(filterTemplateUri != null && filterTemplateUri !== '')
       filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
+    if(filterUserUri != null && filterUserUri !== '')
+      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
   }
   return filters;
 }
@@ -596,13 +656,21 @@ async function postCompanyWebinar($formValues, target, success, error) {
   if(valueUrl != null && valueUrl !== '')
     vals['url'] = valueUrl;
 
-  var valueWebinarUrl = $formValues.querySelector('.valueWebinarUrl')?.value;
-  if(valueWebinarUrl != null && valueWebinarUrl !== '')
-    vals['webinarUrl'] = valueWebinarUrl;
-
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   if(valuePageId != null && valuePageId !== '')
     vals['pageId'] = valuePageId;
+
+  var valueWebinarUrlAmericas = $formValues.querySelector('.valueWebinarUrlAmericas')?.value;
+  if(valueWebinarUrlAmericas != null && valueWebinarUrlAmericas !== '')
+    vals['webinarUrlAmericas'] = valueWebinarUrlAmericas;
+
+  var valueWebinarUrlApac = $formValues.querySelector('.valueWebinarUrlApac')?.value;
+  if(valueWebinarUrlApac != null && valueWebinarUrlApac !== '')
+    vals['webinarUrlApac'] = valueWebinarUrlApac;
+
+  var valueWebinarUrlEmea = $formValues.querySelector('.valueWebinarUrlEmea')?.value;
+  if(valueWebinarUrlEmea != null && valueWebinarUrlEmea !== '')
+    vals['webinarUrlEmea'] = valueWebinarUrlEmea;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -623,6 +691,10 @@ async function postCompanyWebinar($formValues, target, success, error) {
   var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
   if(valueTemplateUri != null && valueTemplateUri !== '')
     vals['templateUri'] = valueTemplateUri;
+
+  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
+  if(valueUserUri != null && valueUserUri !== '')
+    vals['userUri'] = valueUserUri;
 
   fetch(
     '/api/webinar'
@@ -770,25 +842,28 @@ async function websocketCompanyWebinarInner(apiRequest) {
         var inputDescription = null;
         var inputUri = null;
         var inputUrl = null;
-        var inputWebinarUrl = null;
         var inputPageId = null;
+        var inputWebinarUrlAmericas = null;
+        var inputWebinarUrlApac = null;
+        var inputWebinarUrlEmea = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
         var inputClassCanonicalNames = null;
         var inputSessionId = null;
-        var inputUserKey = null;
         var inputSaves = null;
         var inputObjectIcon = null;
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
-        var inputPageUrlId = null;
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputUserKey = null;
+        var inputPageUrlId = null;
         var inputResourceUri = null;
         var inputTemplateUri = null;
+        var inputUserUri = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
@@ -808,10 +883,14 @@ async function websocketCompanyWebinarInner(apiRequest) {
           inputUri = $response.querySelector('#Page_uri');
         if(vars.includes('url'))
           inputUrl = $response.querySelector('#Page_url');
-        if(vars.includes('webinarUrl'))
-          inputWebinarUrl = $response.querySelector('#Page_webinarUrl');
         if(vars.includes('pageId'))
           inputPageId = $response.querySelector('#Page_pageId');
+        if(vars.includes('webinarUrlAmericas'))
+          inputWebinarUrlAmericas = $response.querySelector('#Page_webinarUrlAmericas');
+        if(vars.includes('webinarUrlApac'))
+          inputWebinarUrlApac = $response.querySelector('#Page_webinarUrlApac');
+        if(vars.includes('webinarUrlEmea'))
+          inputWebinarUrlEmea = $response.querySelector('#Page_webinarUrlEmea');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -822,8 +901,6 @@ async function websocketCompanyWebinarInner(apiRequest) {
           inputClassCanonicalNames = $response.querySelector('#Page_classCanonicalNames');
         if(vars.includes('sessionId'))
           inputSessionId = $response.querySelector('#Page_sessionId');
-        if(vars.includes('userKey'))
-          inputUserKey = $response.querySelector('#Page_userKey');
         if(vars.includes('saves'))
           inputSaves = $response.querySelector('#Page_saves');
         if(vars.includes('objectIcon'))
@@ -834,18 +911,22 @@ async function websocketCompanyWebinarInner(apiRequest) {
           inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('#Page_objectText');
-        if(vars.includes('pageUrlId'))
-          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('pageUrlPk'))
           inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
+        if(vars.includes('userKey'))
+          inputUserKey = $response.querySelector('#Page_userKey');
+        if(vars.includes('pageUrlId'))
+          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('resourceUri'))
           inputResourceUri = $response.querySelector('#Page_resourceUri');
         if(vars.includes('templateUri'))
           inputTemplateUri = $response.querySelector('#Page_templateUri');
+        if(vars.includes('userUri'))
+          inputUserUri = $response.querySelector('#Page_userUri');
           jsWebsocketCompanyWebinar(pk, vars, $response);
 
           window.companyWebinar = JSON.parse($response.querySelector('.pageForm .companyWebinar')?.value);
@@ -915,18 +996,32 @@ async function websocketCompanyWebinarInner(apiRequest) {
           addGlow(document.querySelector('#Page_url'));
         }
 
-        if(inputWebinarUrl) {
-          document.querySelectorAll('#Page_webinarUrl').forEach((item, index) => {
-            item.setAttribute('value', inputWebinarUrl.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_webinarUrl'));
-        }
-
         if(inputPageId) {
           document.querySelectorAll('#Page_pageId').forEach((item, index) => {
             item.setAttribute('value', inputPageId.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_pageId'));
+        }
+
+        if(inputWebinarUrlAmericas) {
+          document.querySelectorAll('#Page_webinarUrlAmericas').forEach((item, index) => {
+            item.setAttribute('value', inputWebinarUrlAmericas.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_webinarUrlAmericas'));
+        }
+
+        if(inputWebinarUrlApac) {
+          document.querySelectorAll('#Page_webinarUrlApac').forEach((item, index) => {
+            item.setAttribute('value', inputWebinarUrlApac.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_webinarUrlApac'));
+        }
+
+        if(inputWebinarUrlEmea) {
+          document.querySelectorAll('#Page_webinarUrlEmea').forEach((item, index) => {
+            item.setAttribute('value', inputWebinarUrlEmea.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_webinarUrlEmea'));
         }
 
         if(inputInheritPk) {
@@ -964,13 +1059,6 @@ async function websocketCompanyWebinarInner(apiRequest) {
           addGlow(document.querySelector('#Page_sessionId'));
         }
 
-        if(inputUserKey) {
-          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
-            item.setAttribute('value', inputUserKey.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_userKey'));
-        }
-
         if(inputSaves) {
           document.querySelectorAll('#Page_saves').forEach((item, index) => {
             item.setAttribute('value', inputSaves.getAttribute('value'));
@@ -1006,13 +1094,6 @@ async function websocketCompanyWebinarInner(apiRequest) {
           addGlow(document.querySelector('#Page_objectText'));
         }
 
-        if(inputPageUrlId) {
-          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
-            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_pageUrlId'));
-        }
-
         if(inputPageUrlPk) {
           document.querySelectorAll('#Page_pageUrlPk').forEach((item, index) => {
             item.setAttribute('value', inputPageUrlPk.getAttribute('value'));
@@ -1034,6 +1115,20 @@ async function websocketCompanyWebinarInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
+        if(inputUserKey) {
+          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
+            item.setAttribute('value', inputUserKey.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_userKey'));
+        }
+
+        if(inputPageUrlId) {
+          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_pageUrlId'));
+        }
+
         if(inputResourceUri) {
           document.querySelectorAll('#Page_resourceUri').forEach((item, index) => {
             item.setAttribute('value', inputResourceUri.getAttribute('value'));
@@ -1046,6 +1141,13 @@ async function websocketCompanyWebinarInner(apiRequest) {
             item.setAttribute('value', inputTemplateUri.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_templateUri'));
+        }
+
+        if(inputUserUri) {
+          document.querySelectorAll('#Page_userUri').forEach((item, index) => {
+            item.setAttribute('value', inputUserUri.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_userUri'));
         }
 
           pageGraphCompanyWebinar();
