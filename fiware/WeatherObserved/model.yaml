@@ -62,19 +62,6 @@ WeatherObserved:
         certain duration in future
       x-ngsi:
         type: Property
-    airTemperatureForecast:
-      type: number
-      description: >+
-        Forecasted value of air temperature over a certain duration in future
-      x-ngsi:
-        model: https://schema.org/Number
-        type: Property
-    airTemperatureTSA:
-      type: object
-      description: >+
-        Air temperature time series aggregation
-      x-ngsi:
-        type: Property
     atmosphericPressure:
       type: number
       description: >+
@@ -130,13 +117,6 @@ WeatherObserved:
       description: >+
         Direct irradiance is the part of the solar irradiance that directly
         reaches a surface
-      x-ngsi:
-        model: https://schema.org/Number
-        type: Property
-    feelsLikeTemperature:
-      type: number
-      description: >+
-        Temperature appreciation of the item
       x-ngsi:
         model: https://schema.org/Number
         type: Property
@@ -265,6 +245,26 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/Number
         type: Property
+    airTemperatureForecast:
+      type: number
+      description: >+
+        Forecasted value of air temperature over a certain duration in future
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+    airTemperatureTSA:
+      type: object
+      description: >+
+        Air temperature time series aggregation
+      x-ngsi:
+        type: Property
+    feelsLikeTemperature:
+      type: number
+      description: >+
+        Temperature appreciation of the item
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
     uVIndexMax:
       type: number
       description: >+
@@ -307,5 +307,17 @@ WeatherObserved:
       type: string
       description: >+
         A unique ID for this Smart Data Model
+      x-ngsi:
+        type: Property
+    ngsildTenant:
+      type: string
+      description: >+
+        The NGSILD-Tenant or Fiware-Service
+      x-ngsi:
+        type: Property
+    ngsildPath:
+      type: string
+      description: >+
+        The NGSILD-Path or Fiware-ServicePath
       x-ngsi:
         type: Property

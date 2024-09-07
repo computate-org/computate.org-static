@@ -183,6 +183,66 @@ Promise.all([
             const form = document.querySelector('#PageForm_entityId');
             const valid = form.reportValidity();
           });
+          // PATCH ngsildTenant
+          document.querySelector('#Page_ngsildTenant')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_ngsildTenant');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setNgsildTenant', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_ngsildTenant')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_ngsildTenant')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_ngsildTenant');
+            const valid = form.reportValidity();
+          });
+          // PATCH ngsildPath
+          document.querySelector('#Page_ngsildPath')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_ngsildPath');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setNgsildPath', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_ngsildPath')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_ngsildPath')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_ngsildPath');
+            const valid = form.reportValidity();
+          });
+          // PATCH ngsildData
+          document.querySelector('#Page_ngsildData')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_ngsildData');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setNgsildData', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_ngsildData')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_ngsildData')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_ngsildData');
+            const valid = form.reportValidity();
+          });
           // PATCH airQualityIndex
           document.querySelector('#Page_airQualityIndex')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_airQualityIndex');

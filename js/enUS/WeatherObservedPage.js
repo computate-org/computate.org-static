@@ -61,6 +61,18 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterEntityId != null && filterEntityId !== '')
       filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
 
+    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
+    if(filterNgsildTenant != null && filterNgsildTenant !== '')
+      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
+
+    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
+    if(filterNgsildPath != null && filterNgsildPath !== '')
+      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+
+    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
+    if(filterNgsildData != null && filterNgsildData !== '')
+      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
+
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -233,10 +245,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterSessionId != null && filterSessionId !== '')
       filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
 
-    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
-    if(filterUserKey != null && filterUserKey !== '')
-      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
-
     var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
@@ -257,10 +265,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
-
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -272,6 +276,14 @@ function searchWeatherObservedFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
+    if(filterUserKey != null && filterUserKey !== '')
+      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
+
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
 
     var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
     if(filterAreaServedColors != null && filterAreaServedColors !== '')
@@ -471,6 +483,42 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   var removeEntityId = $formValues.querySelector('.removeEntityId')?.value;
   if(removeEntityId != null && removeEntityId !== '')
     vals['removeEntityId'] = removeEntityId;
+
+  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
+  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value === 'true';
+  var setNgsildTenant = removeNgsildTenant ? null : $formValues.querySelector('.setNgsildTenant')?.value;
+  var addNgsildTenant = $formValues.querySelector('.addNgsildTenant')?.value;
+  if(removeNgsildTenant || setNgsildTenant != null && setNgsildTenant !== '')
+    vals['setNgsildTenant'] = setNgsildTenant;
+  if(addNgsildTenant != null && addNgsildTenant !== '')
+    vals['addNgsildTenant'] = addNgsildTenant;
+  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value;
+  if(removeNgsildTenant != null && removeNgsildTenant !== '')
+    vals['removeNgsildTenant'] = removeNgsildTenant;
+
+  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
+  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value === 'true';
+  var setNgsildPath = removeNgsildPath ? null : $formValues.querySelector('.setNgsildPath')?.value;
+  var addNgsildPath = $formValues.querySelector('.addNgsildPath')?.value;
+  if(removeNgsildPath || setNgsildPath != null && setNgsildPath !== '')
+    vals['setNgsildPath'] = setNgsildPath;
+  if(addNgsildPath != null && addNgsildPath !== '')
+    vals['addNgsildPath'] = addNgsildPath;
+  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value;
+  if(removeNgsildPath != null && removeNgsildPath !== '')
+    vals['removeNgsildPath'] = removeNgsildPath;
+
+  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
+  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value === 'true';
+  var setNgsildData = removeNgsildData ? null : $formValues.querySelector('.setNgsildData')?.value;
+  var addNgsildData = $formValues.querySelector('.addNgsildData')?.value;
+  if(removeNgsildData || setNgsildData != null && setNgsildData !== '')
+    vals['setNgsildData'] = JSON.parse(setNgsildData);
+  if(addNgsildData != null && addNgsildData !== '')
+    vals['addNgsildData'] = addNgsildData;
+  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value;
+  if(removeNgsildData != null && removeNgsildData !== '')
+    vals['removeNgsildData'] = removeNgsildData;
 
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   var removeAirQualityIndex = $formValues.querySelector('.removeAirQualityIndex')?.value === 'true';
@@ -1018,6 +1066,18 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterEntityId != null && filterEntityId !== '')
       filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
 
+    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
+    if(filterNgsildTenant != null && filterNgsildTenant !== '')
+      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
+
+    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
+    if(filterNgsildPath != null && filterNgsildPath !== '')
+      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+
+    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
+    if(filterNgsildData != null && filterNgsildData !== '')
+      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
+
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -1190,10 +1250,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterSessionId != null && filterSessionId !== '')
       filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
 
-    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
-    if(filterUserKey != null && filterUserKey !== '')
-      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
-
     var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
@@ -1214,10 +1270,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
-    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
-    if(filterPageUrlId != null && filterPageUrlId !== '')
-      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
-
     var filterPageUrlPk = $formFilters.querySelector('.valuePageUrlPk')?.value;
     if(filterPageUrlPk != null && filterPageUrlPk !== '')
       filters.push({ name: 'fq', value: 'pageUrlPk:' + filterPageUrlPk });
@@ -1229,6 +1281,14 @@ function patchWeatherObservedFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
+    if(filterUserKey != null && filterUserKey !== '')
+      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
+
+    var filterPageUrlId = $formFilters.querySelector('.valuePageUrlId')?.value;
+    if(filterPageUrlId != null && filterPageUrlId !== '')
+      filters.push({ name: 'fq', value: 'pageUrlId:' + filterPageUrlId });
 
     var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
     if(filterAreaServedColors != null && filterAreaServedColors !== '')
@@ -1324,6 +1384,18 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueEntityId = $formValues.querySelector('.valueEntityId')?.value;
   if(valueEntityId != null && valueEntityId !== '')
     vals['entityId'] = valueEntityId;
+
+  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
+  if(valueNgsildTenant != null && valueNgsildTenant !== '')
+    vals['ngsildTenant'] = valueNgsildTenant;
+
+  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
+  if(valueNgsildPath != null && valueNgsildPath !== '')
+    vals['ngsildPath'] = valueNgsildPath;
+
+  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
+  if(valueNgsildData != null && valueNgsildData !== '')
+    vals['ngsildData'] = JSON.parse(valueNgsildData);
 
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   if(valueAirQualityIndex != null && valueAirQualityIndex !== '')
@@ -1667,6 +1739,9 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputAlternateName = null;
         var inputAddress = null;
         var inputEntityId = null;
+        var inputNgsildTenant = null;
+        var inputNgsildPath = null;
+        var inputNgsildData = null;
         var inputAirQualityIndex = null;
         var inputAirQualityIndexForecast = null;
         var inputAqiMajorPollutant = null;
@@ -1710,16 +1785,16 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputClassSimpleName = null;
         var inputClassCanonicalNames = null;
         var inputSessionId = null;
-        var inputUserKey = null;
         var inputSaves = null;
         var inputObjectIcon = null;
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
-        var inputPageUrlId = null;
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputUserKey = null;
+        var inputPageUrlId = null;
         var inputAreaServedColors = null;
         var inputAreaServedTitles = null;
         var inputAreaServedLinks = null;
@@ -1744,6 +1819,12 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputAddress = $response.querySelector('#Page_address');
         if(vars.includes('entityId'))
           inputEntityId = $response.querySelector('#Page_entityId');
+        if(vars.includes('ngsildTenant'))
+          inputNgsildTenant = $response.querySelector('#Page_ngsildTenant');
+        if(vars.includes('ngsildPath'))
+          inputNgsildPath = $response.querySelector('#Page_ngsildPath');
+        if(vars.includes('ngsildData'))
+          inputNgsildData = $response.querySelector('#Page_ngsildData');
         if(vars.includes('airQualityIndex'))
           inputAirQualityIndex = $response.querySelector('#Page_airQualityIndex');
         if(vars.includes('airQualityIndexForecast'))
@@ -1830,8 +1911,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputClassCanonicalNames = $response.querySelector('#Page_classCanonicalNames');
         if(vars.includes('sessionId'))
           inputSessionId = $response.querySelector('#Page_sessionId');
-        if(vars.includes('userKey'))
-          inputUserKey = $response.querySelector('#Page_userKey');
         if(vars.includes('saves'))
           inputSaves = $response.querySelector('#Page_saves');
         if(vars.includes('objectIcon'))
@@ -1842,14 +1921,16 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('#Page_objectText');
-        if(vars.includes('pageUrlId'))
-          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('pageUrlPk'))
           inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
+        if(vars.includes('userKey'))
+          inputUserKey = $response.querySelector('#Page_userKey');
+        if(vars.includes('pageUrlId'))
+          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('areaServedColors'))
           inputAreaServedColors = $response.querySelector('#Page_areaServedColors');
         if(vars.includes('areaServedTitles'))
@@ -1930,6 +2011,27 @@ async function websocketWeatherObservedInner(apiRequest) {
             item.setAttribute('value', inputEntityId.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_entityId'));
+        }
+
+        if(inputNgsildTenant) {
+          document.querySelectorAll('#Page_ngsildTenant').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildTenant.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_ngsildTenant'));
+        }
+
+        if(inputNgsildPath) {
+          document.querySelectorAll('#Page_ngsildPath').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildPath.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_ngsildPath'));
+        }
+
+        if(inputNgsildData) {
+          document.querySelectorAll('#Page_ngsildData').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildData.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_ngsildData'));
         }
 
         if(inputAirQualityIndex) {
@@ -2233,13 +2335,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_sessionId'));
         }
 
-        if(inputUserKey) {
-          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
-            item.setAttribute('value', inputUserKey.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_userKey'));
-        }
-
         if(inputSaves) {
           document.querySelectorAll('#Page_saves').forEach((item, index) => {
             item.setAttribute('value', inputSaves.getAttribute('value'));
@@ -2275,13 +2370,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_objectText'));
         }
 
-        if(inputPageUrlId) {
-          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
-            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_pageUrlId'));
-        }
-
         if(inputPageUrlPk) {
           document.querySelectorAll('#Page_pageUrlPk').forEach((item, index) => {
             item.setAttribute('value', inputPageUrlPk.getAttribute('value'));
@@ -2301,6 +2389,20 @@ async function websocketWeatherObservedInner(apiRequest) {
             item.setAttribute('value', inputId.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_id'));
+        }
+
+        if(inputUserKey) {
+          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
+            item.setAttribute('value', inputUserKey.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_userKey'));
+        }
+
+        if(inputPageUrlId) {
+          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputAreaServedColors) {

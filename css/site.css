@@ -529,6 +529,20 @@ html, body {
     color: white;
   }
 }
+.blue-purple-background {
+  &:not(sl-button), &:is(sl-button)::part(base) {
+    background: linear-gradient(130deg, var(--sl-color-blue-300), var(--sl-color-purple-300));
+    border: solid 1px var(--sl-color-blue-300);
+    color: white;
+  }
+}
+.purple-red-background {
+  &:not(sl-button), &:is(sl-button)::part(base) {
+    background: linear-gradient(130deg, var(--sl-color-purple-300), var(--sl-color-red-300));
+    border: solid 1px var(--sl-color-purple-300);
+    color: white;
+  }
+}
 .gradient-button {
   &:not(sl-button), &:is(sl-button)::part(base) {
     transition: transform 100ms, box-shadow 100ms;

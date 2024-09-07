@@ -49,14 +49,6 @@
       "type" : "string",
       "description" : "Forecasted major air pollutant in the Air Quality Index (AQI) over a certain duration in future"
     },
-    "airTemperatureForecast" : {
-      "type" : "number",
-      "description" : "Forecasted value of air temperature over a certain duration in future"
-    },
-    "airTemperatureTSA" : {
-      "type" : "object",
-      "description" : "Air temperature time series aggregation"
-    },
     "atmosphericPressure" : {
       "type" : "number",
       "description" : "The atmospheric pressure observed measured in Hecto Pascals"
@@ -88,10 +80,6 @@
     "directIrradiation" : {
       "type" : "number",
       "description" : "Direct irradiance is the part of the solar irradiance that directly reaches a surface"
-    },
-    "feelsLikeTemperature" : {
-      "type" : "number",
-      "description" : "Temperature appreciation of the item"
     },
     "gustSpeed" : {
       "type" : "number",
@@ -161,6 +149,18 @@
       "type" : "number",
       "description" : "Temperature of the item"
     },
+    "airTemperatureForecast" : {
+      "type" : "number",
+      "description" : "Forecasted value of air temperature over a certain duration in future"
+    },
+    "airTemperatureTSA" : {
+      "type" : "object",
+      "description" : "Air temperature time series aggregation"
+    },
+    "feelsLikeTemperature" : {
+      "type" : "number",
+      "description" : "Temperature appreciation of the item"
+    },
     "uVIndexMax" : {
       "type" : "number",
       "description" : "The maximum UV index for the period, based on the World Health Organization's UV Index measure. [http://www.who.int/uv/intersunprogramme/activities/uv_index/en/](http://www.who.int/uv/intersunprogramme/activities/uv_index/en/) the values between 1 and 11 are the valid range for the index. The value 0 is for describing that no signal is detected so no value is stored"
@@ -184,6 +184,14 @@
     "entityId" : {
       "type" : "string",
       "description" : "A unique ID for this Smart Data Model"
+    },
+    "ngsildTenant" : {
+      "type" : "string",
+      "description" : "The NGSILD-Tenant or Fiware-Service"
+    },
+    "ngsildPath" : {
+      "type" : "string",
+      "description" : "The NGSILD-Path or Fiware-ServicePath"
     }
   }
 }
