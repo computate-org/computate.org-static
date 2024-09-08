@@ -73,6 +73,10 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterNgsildData != null && filterNgsildData !== '')
       filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
 
+    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
+    if(filterNgsildContext != null && filterNgsildContext !== '')
+      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
+
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -519,6 +523,18 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value;
   if(removeNgsildData != null && removeNgsildData !== '')
     vals['removeNgsildData'] = removeNgsildData;
+
+  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
+  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value === 'true';
+  var setNgsildContext = removeNgsildContext ? null : $formValues.querySelector('.setNgsildContext')?.value;
+  var addNgsildContext = $formValues.querySelector('.addNgsildContext')?.value;
+  if(removeNgsildContext || setNgsildContext != null && setNgsildContext !== '')
+    vals['setNgsildContext'] = setNgsildContext;
+  if(addNgsildContext != null && addNgsildContext !== '')
+    vals['addNgsildContext'] = addNgsildContext;
+  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value;
+  if(removeNgsildContext != null && removeNgsildContext !== '')
+    vals['removeNgsildContext'] = removeNgsildContext;
 
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   var removeAirQualityIndex = $formValues.querySelector('.removeAirQualityIndex')?.value === 'true';
@@ -1078,6 +1094,10 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterNgsildData != null && filterNgsildData !== '')
       filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
 
+    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
+    if(filterNgsildContext != null && filterNgsildContext !== '')
+      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
+
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -1396,6 +1416,10 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
   if(valueNgsildData != null && valueNgsildData !== '')
     vals['ngsildData'] = JSON.parse(valueNgsildData);
+
+  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
+  if(valueNgsildContext != null && valueNgsildContext !== '')
+    vals['ngsildContext'] = valueNgsildContext;
 
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   if(valueAirQualityIndex != null && valueAirQualityIndex !== '')
@@ -1742,6 +1766,7 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputNgsildTenant = null;
         var inputNgsildPath = null;
         var inputNgsildData = null;
+        var inputNgsildContext = null;
         var inputAirQualityIndex = null;
         var inputAirQualityIndexForecast = null;
         var inputAqiMajorPollutant = null;
@@ -1825,6 +1850,8 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputNgsildPath = $response.querySelector('#Page_ngsildPath');
         if(vars.includes('ngsildData'))
           inputNgsildData = $response.querySelector('#Page_ngsildData');
+        if(vars.includes('ngsildContext'))
+          inputNgsildContext = $response.querySelector('#Page_ngsildContext');
         if(vars.includes('airQualityIndex'))
           inputAirQualityIndex = $response.querySelector('#Page_airQualityIndex');
         if(vars.includes('airQualityIndexForecast'))
@@ -2032,6 +2059,13 @@ async function websocketWeatherObservedInner(apiRequest) {
             item.setAttribute('value', inputNgsildData.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_ngsildData'));
+        }
+
+        if(inputNgsildContext) {
+          document.querySelectorAll('#Page_ngsildContext').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildContext.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_ngsildContext'));
         }
 
         if(inputAirQualityIndex) {

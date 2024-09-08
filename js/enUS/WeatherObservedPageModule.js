@@ -243,6 +243,26 @@ Promise.all([
             const form = document.querySelector('#PageForm_ngsildData');
             const valid = form.reportValidity();
           });
+          // PATCH ngsildContext
+          document.querySelector('#Page_ngsildContext')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_ngsildContext');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setNgsildContext', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_ngsildContext')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_ngsildContext')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_ngsildContext');
+            const valid = form.reportValidity();
+          });
           // PATCH airQualityIndex
           document.querySelector('#Page_airQualityIndex')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_airQualityIndex');

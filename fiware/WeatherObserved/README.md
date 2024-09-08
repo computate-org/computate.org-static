@@ -56,3 +56,5 @@ https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherOb
 - [entityId](https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/entityId.md)
 - [ngsildTenant](https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildTenant.md)
 - [ngsildPath](https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildPath.md)
+- [ngsildData](https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildData.md)
+- [ngsildContext](https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildContext.md)
