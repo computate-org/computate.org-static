@@ -34,7 +34,9 @@
 sl-dialog {
    --width: 70vw;
 }
-
+sl-card::part(base) {
+  border-radius: var(--sl-border-radius-x-large);
+}
 sl-carousel {
   margin-block-end: 2rem;
 }
@@ -235,6 +237,9 @@ sl-carousel {
       }
     }
   }
+}
+sl-dialog::part(panel) {
+  border-radius: var(--sl-border-radius-x-large);
 }
 /* theme css */
 :root,
@@ -576,7 +581,7 @@ html, body {
 /* article */
 /***********/
 .pink-purple-background {
-  &:not(sl-button), &:is(sl-button)::part(base) {
+  &:not(sl-button), &:is(sl-button, sl-details)::part(base) {
     background: linear-gradient(130deg, var(--sl-color-pink-300), var(--sl-color-purple-300));
     color: white;
     &:is(sl-button, sl-dialog)::part(base) {
@@ -585,7 +590,7 @@ html, body {
   }
 }
 .blue-teal-background {
-  &:not(sl-button), &:is(sl-button)::part(base) {
+  &:not(sl-button), &:is(sl-button, sl-details)::part(base) {
     background: linear-gradient(130deg, var(--sl-color-blue-300), var(--sl-color-teal-300));
     color: white;
     &:is(sl-button, sl-dialog)::part(base) {
@@ -594,7 +599,7 @@ html, body {
   }
 }
 .red-pink-background {
-  &:not(sl-button), &:is(sl-button)::part(base) {
+  &:not(sl-button), &:is(sl-button, sl-details)::part(base) {
     background: linear-gradient(130deg, var(--sl-color-red-300), var(--sl-color-pink-300));
     color: white;
     &:is(sl-button, sl-dialog)::part(base) {
@@ -603,7 +608,7 @@ html, body {
   }
 }
 .blue-purple-background {
-  &:not(sl-button), &:is(sl-button)::part(base) {
+  &:not(sl-button), &:is(sl-button, sl-details)::part(base) {
     background: linear-gradient(130deg, var(--sl-color-blue-300), var(--sl-color-purple-300));
     color: white;
     &:is(sl-button, sl-dialog)::part(base) {
@@ -612,7 +617,7 @@ html, body {
   }
 }
 .purple-red-background {
-  &:not(sl-button), &:is(sl-button)::part(base) {
+  &:not(sl-button), &:is(sl-button, sl-details)::part(base) {
     background: linear-gradient(130deg, var(--sl-color-purple-300), var(--sl-color-red-300));
     color: white;
     &:is(sl-button, sl-dialog)::part(base) {
@@ -704,7 +709,6 @@ html, body {
 .margin-block-spacing-medium {
   margin-block: var(--sl-spacing-medium);
 }
-
 .article-section {
   max-width: var(--content-width);
   margin-inline: auto;
