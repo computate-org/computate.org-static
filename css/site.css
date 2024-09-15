@@ -334,22 +334,9 @@ body {
 #site-grid > aside#site-aside-left {
   padding: 1rem;
 }
-#site-aside-left ul {
-  padding: 0;
-  & li {
-    list-style-type: none;
-    sl-button {
-      width: 100%;
-    }
-    & > sl-tooltip > sl-button::part(base), & > sl-button::part(base) {
-      border-radius: 0;
-    }
-    &:first-child > :is(sl-button, sl-details)::part(base) {
-      border-radius: var(--sl-border-radius-x-large) var(--sl-border-radius-x-large) 0 0;
-    }
-    &:last-child > :is(sl-button, sl-details)::part(base) {
-      border-radius: 0 0 var(--sl-border-radius-x-large) var(--sl-border-radius-x-large);
-    }
+#site-aside-left {
+  sl-button {
+    width: 100%;
   }
 }
 #site-aside-left-close-button {
@@ -455,15 +442,13 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
 }
 
 .glowSuccess {
-  &:is(sl-input)::part(base) {
-    border: 1px solid var(--sl-color-success-500);
-    border-radius: var(--sl-border-width-medium);
+  &:not(sl-button, sl-input), &:is(sl-button, sl-input)::part(base) {
+    outline: solid .2rem var(--sl-color-success-500);
   }
 }
-.glowError:not() {
-  &:not(sl-button,sl-menu-item,sl-input,sl-option,sl-select), &:is(sl-button, sl-menu-item)::part(label), &:is(sl-input::part(base)), sl-option::part(base), sl-select::part(display-input) {
-    border: 1px solid var(--sl-color-danger-500);
-    border-radius: var(--sl-border-width-medium);
+.glowError {
+  &:not(sl-button, sl-input), &:is(sl-button, sl-input)::part(base) {
+    outline: solid .2rem var(--sl-color-danger-500);
   }
 }
 
