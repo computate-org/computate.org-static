@@ -555,8 +555,8 @@ html, body {
 	background-color: var(--sl-color-purple-500);
 	color: white;
 	border-radius: 0.25rem;
-	height: 2rem;
-	width: 2rem;
+	min-height: 2em;
+	min-width: 2em;
 }
 .round-button::part(base) {
   border-radius: var(--sl-border-radius-x-large);
