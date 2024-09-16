@@ -45,10 +45,6 @@ function searchCompanyEventFilters($formFilters) {
     if(filterLocation != null && filterLocation !== '')
       filters.push({ name: 'fq', value: 'location:' + filterLocation });
 
-    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
-    if(filterDescription != null && filterDescription !== '')
-      filters.push({ name: 'fq', value: 'description:' + filterDescription });
-
     var filterUri = $formFilters.querySelector('.valueUri')?.value;
     if(filterUri != null && filterUri !== '')
       filters.push({ name: 'fq', value: 'uri:' + filterUri });
@@ -56,6 +52,10 @@ function searchCompanyEventFilters($formFilters) {
     var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
+
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
@@ -283,18 +283,6 @@ async function patchCompanyEvent($formFilters, $formValues, target, id, success,
   if(removeLocation != null && removeLocation !== '')
     vals['removeLocation'] = removeLocation;
 
-  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
-  var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
-  var setDescription = removeDescription ? null : $formValues.querySelector('.setDescription')?.value;
-  var addDescription = $formValues.querySelector('.addDescription')?.value;
-  if(removeDescription || setDescription != null && setDescription !== '')
-    vals['setDescription'] = setDescription;
-  if(addDescription != null && addDescription !== '')
-    vals['addDescription'] = addDescription;
-  var removeDescription = $formValues.querySelector('.removeDescription')?.value;
-  if(removeDescription != null && removeDescription !== '')
-    vals['removeDescription'] = removeDescription;
-
   var valueUri = $formValues.querySelector('.valueUri')?.value;
   var removeUri = $formValues.querySelector('.removeUri')?.value === 'true';
   var setUri = removeUri ? null : $formValues.querySelector('.setUri')?.value;
@@ -318,6 +306,18 @@ async function patchCompanyEvent($formFilters, $formValues, target, id, success,
   var removeUrl = $formValues.querySelector('.removeUrl')?.value;
   if(removeUrl != null && removeUrl !== '')
     vals['removeUrl'] = removeUrl;
+
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
+  var setDescription = removeDescription ? null : $formValues.querySelector('.setDescription')?.value;
+  var addDescription = $formValues.querySelector('.addDescription')?.value;
+  if(removeDescription || setDescription != null && setDescription !== '')
+    vals['setDescription'] = setDescription;
+  if(addDescription != null && addDescription !== '')
+    vals['addDescription'] = addDescription;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value;
+  if(removeDescription != null && removeDescription !== '')
+    vals['removeDescription'] = removeDescription;
 
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
@@ -453,10 +453,6 @@ function patchCompanyEventFilters($formFilters) {
     if(filterLocation != null && filterLocation !== '')
       filters.push({ name: 'fq', value: 'location:' + filterLocation });
 
-    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
-    if(filterDescription != null && filterDescription !== '')
-      filters.push({ name: 'fq', value: 'description:' + filterDescription });
-
     var filterUri = $formFilters.querySelector('.valueUri')?.value;
     if(filterUri != null && filterUri !== '')
       filters.push({ name: 'fq', value: 'uri:' + filterUri });
@@ -464,6 +460,10 @@ function patchCompanyEventFilters($formFilters) {
     var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
+
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
@@ -620,10 +620,6 @@ async function postCompanyEvent($formValues, target, success, error) {
   if(valueLocation != null && valueLocation !== '')
     vals['location'] = JSON.parse(valueLocation);
 
-  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
-  if(valueDescription != null && valueDescription !== '')
-    vals['description'] = valueDescription;
-
   var valueUri = $formValues.querySelector('.valueUri')?.value;
   if(valueUri != null && valueUri !== '')
     vals['uri'] = valueUri;
@@ -631,6 +627,10 @@ async function postCompanyEvent($formValues, target, success, error) {
   var valueUrl = $formValues.querySelector('.valueUrl')?.value;
   if(valueUrl != null && valueUrl !== '')
     vals['url'] = valueUrl;
+
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  if(valueDescription != null && valueDescription !== '')
+    vals['description'] = valueDescription;
 
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   if(valuePageId != null && valuePageId !== '')
@@ -807,9 +807,9 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputArchived = null;
         var inputName = null;
         var inputLocation = null;
-        var inputDescription = null;
         var inputUri = null;
         var inputUrl = null;
+        var inputDescription = null;
         var inputPageId = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
@@ -845,12 +845,12 @@ async function websocketCompanyEventInner(apiRequest) {
           inputName = $response.querySelector('#Page_name');
         if(vars.includes('location'))
           inputLocation = $response.querySelector('#Page_location');
-        if(vars.includes('description'))
-          inputDescription = $response.querySelector('#Page_description');
         if(vars.includes('uri'))
           inputUri = $response.querySelector('#Page_uri');
         if(vars.includes('url'))
           inputUrl = $response.querySelector('#Page_url');
+        if(vars.includes('description'))
+          inputDescription = $response.querySelector('#Page_description');
         if(vars.includes('pageId'))
           inputPageId = $response.querySelector('#Page_pageId');
         if(vars.includes('inheritPk'))
@@ -943,13 +943,6 @@ async function websocketCompanyEventInner(apiRequest) {
           addGlow(document.querySelector('#Page_location'));
         }
 
-        if(inputDescription) {
-          document.querySelectorAll('#Page_description').forEach((item, index) => {
-            item.setAttribute('value', inputDescription.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_description'));
-        }
-
         if(inputUri) {
           document.querySelectorAll('#Page_uri').forEach((item, index) => {
             item.setAttribute('value', inputUri.getAttribute('value'));
@@ -962,6 +955,13 @@ async function websocketCompanyEventInner(apiRequest) {
             item.setAttribute('value', inputUrl.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_url'));
+        }
+
+        if(inputDescription) {
+          document.querySelectorAll('#Page_description').forEach((item, index) => {
+            item.setAttribute('value', inputDescription.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_description'));
         }
 
         if(inputPageId) {

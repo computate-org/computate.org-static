@@ -86,18 +86,18 @@ async function websocketBaseModelInner(apiRequest) {
         var inputCreated = null;
         var inputModified = null;
         var inputArchived = null;
-        var inputUserKey = null;
-        var inputPageUrlId = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
         var inputClassCanonicalNames = null;
         var inputSessionId = null;
+        var inputUserKey = null;
         var inputSaves = null;
         var inputObjectIcon = null;
         var inputObjectTitle = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
+        var inputPageUrlId = null;
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
@@ -112,10 +112,6 @@ async function websocketBaseModelInner(apiRequest) {
           inputModified = $response.querySelector('#Page_modified');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('#Page_archived');
-        if(vars.includes('userKey'))
-          inputUserKey = $response.querySelector('#Page_userKey');
-        if(vars.includes('pageUrlId'))
-          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -126,6 +122,8 @@ async function websocketBaseModelInner(apiRequest) {
           inputClassCanonicalNames = $response.querySelector('#Page_classCanonicalNames');
         if(vars.includes('sessionId'))
           inputSessionId = $response.querySelector('#Page_sessionId');
+        if(vars.includes('userKey'))
+          inputUserKey = $response.querySelector('#Page_userKey');
         if(vars.includes('saves'))
           inputSaves = $response.querySelector('#Page_saves');
         if(vars.includes('objectIcon'))
@@ -136,6 +134,8 @@ async function websocketBaseModelInner(apiRequest) {
           inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('#Page_objectText');
+        if(vars.includes('pageUrlId'))
+          inputPageUrlId = $response.querySelector('#Page_pageUrlId');
         if(vars.includes('pageUrlPk'))
           inputPageUrlPk = $response.querySelector('#Page_pageUrlPk');
         if(vars.includes('pageUrlApi'))
@@ -183,20 +183,6 @@ async function websocketBaseModelInner(apiRequest) {
           addGlow(document.querySelector('#Page_archived'));
         }
 
-        if(inputUserKey) {
-          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
-            item.setAttribute('value', inputUserKey.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_userKey'));
-        }
-
-        if(inputPageUrlId) {
-          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
-            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_pageUrlId'));
-        }
-
         if(inputInheritPk) {
           document.querySelectorAll('#Page_inheritPk').forEach((item, index) => {
             item.setAttribute('value', inputInheritPk.getAttribute('value'));
@@ -232,6 +218,13 @@ async function websocketBaseModelInner(apiRequest) {
           addGlow(document.querySelector('#Page_sessionId'));
         }
 
+        if(inputUserKey) {
+          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
+            item.setAttribute('value', inputUserKey.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_userKey'));
+        }
+
         if(inputSaves) {
           document.querySelectorAll('#Page_saves').forEach((item, index) => {
             item.setAttribute('value', inputSaves.getAttribute('value'));
@@ -265,6 +258,13 @@ async function websocketBaseModelInner(apiRequest) {
             item.setAttribute('value', inputObjectText.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_objectText'));
+        }
+
+        if(inputPageUrlId) {
+          document.querySelectorAll('#Page_pageUrlId').forEach((item, index) => {
+            item.setAttribute('value', inputPageUrlId.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_pageUrlId'));
         }
 
         if(inputPageUrlPk) {

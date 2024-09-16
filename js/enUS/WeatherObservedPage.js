@@ -61,22 +61,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterEntityId != null && filterEntityId !== '')
       filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
 
-    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
-    if(filterNgsildTenant != null && filterNgsildTenant !== '')
-      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
-
-    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
-    if(filterNgsildPath != null && filterNgsildPath !== '')
-      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
-
-    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
-    if(filterNgsildData != null && filterNgsildData !== '')
-      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
-
-    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
-    if(filterNgsildContext != null && filterNgsildContext !== '')
-      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
-
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -97,13 +81,29 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
       filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
 
+    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
+    if(filterNgsildTenant != null && filterNgsildTenant !== '')
+      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
+
     var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
     if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
       filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
 
+    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
+    if(filterNgsildPath != null && filterNgsildPath !== '')
+      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+
     var filterAreaServed = $formFilters.querySelector('.valueAreaServed')?.value;
     if(filterAreaServed != null && filterAreaServed !== '')
       filters.push({ name: 'fq', value: 'areaServed:' + filterAreaServed });
+
+    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
+    if(filterNgsildData != null && filterNgsildData !== '')
+      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
+
+    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
+    if(filterNgsildContext != null && filterNgsildContext !== '')
+      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
 
     var filterAtmosphericPressure = $formFilters.querySelector('.valueAtmosphericPressure')?.value;
     if(filterAtmosphericPressure != null && filterAtmosphericPressure !== '')
@@ -488,54 +488,6 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   if(removeEntityId != null && removeEntityId !== '')
     vals['removeEntityId'] = removeEntityId;
 
-  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
-  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value === 'true';
-  var setNgsildTenant = removeNgsildTenant ? null : $formValues.querySelector('.setNgsildTenant')?.value;
-  var addNgsildTenant = $formValues.querySelector('.addNgsildTenant')?.value;
-  if(removeNgsildTenant || setNgsildTenant != null && setNgsildTenant !== '')
-    vals['setNgsildTenant'] = setNgsildTenant;
-  if(addNgsildTenant != null && addNgsildTenant !== '')
-    vals['addNgsildTenant'] = addNgsildTenant;
-  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value;
-  if(removeNgsildTenant != null && removeNgsildTenant !== '')
-    vals['removeNgsildTenant'] = removeNgsildTenant;
-
-  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
-  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value === 'true';
-  var setNgsildPath = removeNgsildPath ? null : $formValues.querySelector('.setNgsildPath')?.value;
-  var addNgsildPath = $formValues.querySelector('.addNgsildPath')?.value;
-  if(removeNgsildPath || setNgsildPath != null && setNgsildPath !== '')
-    vals['setNgsildPath'] = setNgsildPath;
-  if(addNgsildPath != null && addNgsildPath !== '')
-    vals['addNgsildPath'] = addNgsildPath;
-  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value;
-  if(removeNgsildPath != null && removeNgsildPath !== '')
-    vals['removeNgsildPath'] = removeNgsildPath;
-
-  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
-  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value === 'true';
-  var setNgsildData = removeNgsildData ? null : $formValues.querySelector('.setNgsildData')?.value;
-  var addNgsildData = $formValues.querySelector('.addNgsildData')?.value;
-  if(removeNgsildData || setNgsildData != null && setNgsildData !== '')
-    vals['setNgsildData'] = JSON.parse(setNgsildData);
-  if(addNgsildData != null && addNgsildData !== '')
-    vals['addNgsildData'] = addNgsildData;
-  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value;
-  if(removeNgsildData != null && removeNgsildData !== '')
-    vals['removeNgsildData'] = removeNgsildData;
-
-  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
-  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value === 'true';
-  var setNgsildContext = removeNgsildContext ? null : $formValues.querySelector('.setNgsildContext')?.value;
-  var addNgsildContext = $formValues.querySelector('.addNgsildContext')?.value;
-  if(removeNgsildContext || setNgsildContext != null && setNgsildContext !== '')
-    vals['setNgsildContext'] = setNgsildContext;
-  if(addNgsildContext != null && addNgsildContext !== '')
-    vals['addNgsildContext'] = addNgsildContext;
-  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value;
-  if(removeNgsildContext != null && removeNgsildContext !== '')
-    vals['removeNgsildContext'] = removeNgsildContext;
-
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   var removeAirQualityIndex = $formValues.querySelector('.removeAirQualityIndex')?.value === 'true';
   var setAirQualityIndex = removeAirQualityIndex ? null : $formValues.querySelector('.setAirQualityIndex')?.value;
@@ -596,6 +548,18 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   if(removeAirTemperatureForecast != null && removeAirTemperatureForecast !== '')
     vals['removeAirTemperatureForecast'] = removeAirTemperatureForecast;
 
+  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
+  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value === 'true';
+  var setNgsildTenant = removeNgsildTenant ? null : $formValues.querySelector('.setNgsildTenant')?.value;
+  var addNgsildTenant = $formValues.querySelector('.addNgsildTenant')?.value;
+  if(removeNgsildTenant || setNgsildTenant != null && setNgsildTenant !== '')
+    vals['setNgsildTenant'] = setNgsildTenant;
+  if(addNgsildTenant != null && addNgsildTenant !== '')
+    vals['addNgsildTenant'] = addNgsildTenant;
+  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value;
+  if(removeNgsildTenant != null && removeNgsildTenant !== '')
+    vals['removeNgsildTenant'] = removeNgsildTenant;
+
   var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
   var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value === 'true';
   var setAirTemperatureTSA = removeAirTemperatureTSA ? null : $formValues.querySelector('.setAirTemperatureTSA')?.value;
@@ -608,6 +572,18 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   if(removeAirTemperatureTSA != null && removeAirTemperatureTSA !== '')
     vals['removeAirTemperatureTSA'] = removeAirTemperatureTSA;
 
+  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
+  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value === 'true';
+  var setNgsildPath = removeNgsildPath ? null : $formValues.querySelector('.setNgsildPath')?.value;
+  var addNgsildPath = $formValues.querySelector('.addNgsildPath')?.value;
+  if(removeNgsildPath || setNgsildPath != null && setNgsildPath !== '')
+    vals['setNgsildPath'] = setNgsildPath;
+  if(addNgsildPath != null && addNgsildPath !== '')
+    vals['addNgsildPath'] = addNgsildPath;
+  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value;
+  if(removeNgsildPath != null && removeNgsildPath !== '')
+    vals['removeNgsildPath'] = removeNgsildPath;
+
   var valueAreaServed = $formValues.querySelector('.valueAreaServed')?.value;
   var removeAreaServed = $formValues.querySelector('.removeAreaServed')?.value === 'true';
   var setAreaServed = removeAreaServed ? null : $formValues.querySelector('.setAreaServed')?.value;
@@ -619,6 +595,30 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   var removeAreaServed = $formValues.querySelector('.removeAreaServed')?.value;
   if(removeAreaServed != null && removeAreaServed !== '')
     vals['removeAreaServed'] = removeAreaServed;
+
+  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
+  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value === 'true';
+  var setNgsildData = removeNgsildData ? null : $formValues.querySelector('.setNgsildData')?.value;
+  var addNgsildData = $formValues.querySelector('.addNgsildData')?.value;
+  if(removeNgsildData || setNgsildData != null && setNgsildData !== '')
+    vals['setNgsildData'] = JSON.parse(setNgsildData);
+  if(addNgsildData != null && addNgsildData !== '')
+    vals['addNgsildData'] = addNgsildData;
+  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value;
+  if(removeNgsildData != null && removeNgsildData !== '')
+    vals['removeNgsildData'] = removeNgsildData;
+
+  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
+  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value === 'true';
+  var setNgsildContext = removeNgsildContext ? null : $formValues.querySelector('.setNgsildContext')?.value;
+  var addNgsildContext = $formValues.querySelector('.addNgsildContext')?.value;
+  if(removeNgsildContext || setNgsildContext != null && setNgsildContext !== '')
+    vals['setNgsildContext'] = setNgsildContext;
+  if(addNgsildContext != null && addNgsildContext !== '')
+    vals['addNgsildContext'] = addNgsildContext;
+  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value;
+  if(removeNgsildContext != null && removeNgsildContext !== '')
+    vals['removeNgsildContext'] = removeNgsildContext;
 
   var valueAtmosphericPressure = $formValues.querySelector('.valueAtmosphericPressure')?.value;
   var removeAtmosphericPressure = $formValues.querySelector('.removeAtmosphericPressure')?.value === 'true';
@@ -1082,22 +1082,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterEntityId != null && filterEntityId !== '')
       filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
 
-    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
-    if(filterNgsildTenant != null && filterNgsildTenant !== '')
-      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
-
-    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
-    if(filterNgsildPath != null && filterNgsildPath !== '')
-      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
-
-    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
-    if(filterNgsildData != null && filterNgsildData !== '')
-      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
-
-    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
-    if(filterNgsildContext != null && filterNgsildContext !== '')
-      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
-
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -1118,13 +1102,29 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
       filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
 
+    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
+    if(filterNgsildTenant != null && filterNgsildTenant !== '')
+      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
+
     var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
     if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
       filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
 
+    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
+    if(filterNgsildPath != null && filterNgsildPath !== '')
+      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+
     var filterAreaServed = $formFilters.querySelector('.valueAreaServed')?.value;
     if(filterAreaServed != null && filterAreaServed !== '')
       filters.push({ name: 'fq', value: 'areaServed:' + filterAreaServed });
+
+    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
+    if(filterNgsildData != null && filterNgsildData !== '')
+      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
+
+    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
+    if(filterNgsildContext != null && filterNgsildContext !== '')
+      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
 
     var filterAtmosphericPressure = $formFilters.querySelector('.valueAtmosphericPressure')?.value;
     if(filterAtmosphericPressure != null && filterAtmosphericPressure !== '')
@@ -1405,22 +1405,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueEntityId != null && valueEntityId !== '')
     vals['entityId'] = valueEntityId;
 
-  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
-  if(valueNgsildTenant != null && valueNgsildTenant !== '')
-    vals['ngsildTenant'] = valueNgsildTenant;
-
-  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
-  if(valueNgsildPath != null && valueNgsildPath !== '')
-    vals['ngsildPath'] = valueNgsildPath;
-
-  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
-  if(valueNgsildData != null && valueNgsildData !== '')
-    vals['ngsildData'] = JSON.parse(valueNgsildData);
-
-  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
-  if(valueNgsildContext != null && valueNgsildContext !== '')
-    vals['ngsildContext'] = valueNgsildContext;
-
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   if(valueAirQualityIndex != null && valueAirQualityIndex !== '')
     vals['airQualityIndex'] = valueAirQualityIndex;
@@ -1441,13 +1425,29 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueAirTemperatureForecast != null && valueAirTemperatureForecast !== '')
     vals['airTemperatureForecast'] = valueAirTemperatureForecast;
 
+  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
+  if(valueNgsildTenant != null && valueNgsildTenant !== '')
+    vals['ngsildTenant'] = valueNgsildTenant;
+
   var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
   if(valueAirTemperatureTSA != null && valueAirTemperatureTSA !== '')
     vals['airTemperatureTSA'] = JSON.parse(valueAirTemperatureTSA);
 
+  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
+  if(valueNgsildPath != null && valueNgsildPath !== '')
+    vals['ngsildPath'] = valueNgsildPath;
+
   var valueAreaServed = $formValues.querySelector('.valueAreaServed')?.value;
   if(valueAreaServed != null && valueAreaServed !== '')
     vals['areaServed'] = JSON.parse(valueAreaServed);
+
+  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
+  if(valueNgsildData != null && valueNgsildData !== '')
+    vals['ngsildData'] = JSON.parse(valueNgsildData);
+
+  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
+  if(valueNgsildContext != null && valueNgsildContext !== '')
+    vals['ngsildContext'] = valueNgsildContext;
 
   var valueAtmosphericPressure = $formValues.querySelector('.valueAtmosphericPressure')?.value;
   if(valueAtmosphericPressure != null && valueAtmosphericPressure !== '')
@@ -1763,17 +1763,17 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputAlternateName = null;
         var inputAddress = null;
         var inputEntityId = null;
-        var inputNgsildTenant = null;
-        var inputNgsildPath = null;
-        var inputNgsildData = null;
-        var inputNgsildContext = null;
         var inputAirQualityIndex = null;
         var inputAirQualityIndexForecast = null;
         var inputAqiMajorPollutant = null;
         var inputAqiMajorPollutantForecast = null;
         var inputAirTemperatureForecast = null;
+        var inputNgsildTenant = null;
         var inputAirTemperatureTSA = null;
+        var inputNgsildPath = null;
         var inputAreaServed = null;
+        var inputNgsildData = null;
+        var inputNgsildContext = null;
         var inputAtmosphericPressure = null;
         var inputDataProvider = null;
         var inputDateCreated = null;
@@ -1844,14 +1844,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputAddress = $response.querySelector('#Page_address');
         if(vars.includes('entityId'))
           inputEntityId = $response.querySelector('#Page_entityId');
-        if(vars.includes('ngsildTenant'))
-          inputNgsildTenant = $response.querySelector('#Page_ngsildTenant');
-        if(vars.includes('ngsildPath'))
-          inputNgsildPath = $response.querySelector('#Page_ngsildPath');
-        if(vars.includes('ngsildData'))
-          inputNgsildData = $response.querySelector('#Page_ngsildData');
-        if(vars.includes('ngsildContext'))
-          inputNgsildContext = $response.querySelector('#Page_ngsildContext');
         if(vars.includes('airQualityIndex'))
           inputAirQualityIndex = $response.querySelector('#Page_airQualityIndex');
         if(vars.includes('airQualityIndexForecast'))
@@ -1862,10 +1854,18 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputAqiMajorPollutantForecast = $response.querySelector('#Page_aqiMajorPollutantForecast');
         if(vars.includes('airTemperatureForecast'))
           inputAirTemperatureForecast = $response.querySelector('#Page_airTemperatureForecast');
+        if(vars.includes('ngsildTenant'))
+          inputNgsildTenant = $response.querySelector('#Page_ngsildTenant');
         if(vars.includes('airTemperatureTSA'))
           inputAirTemperatureTSA = $response.querySelector('#Page_airTemperatureTSA');
+        if(vars.includes('ngsildPath'))
+          inputNgsildPath = $response.querySelector('#Page_ngsildPath');
         if(vars.includes('areaServed'))
           inputAreaServed = $response.querySelector('#Page_areaServed');
+        if(vars.includes('ngsildData'))
+          inputNgsildData = $response.querySelector('#Page_ngsildData');
+        if(vars.includes('ngsildContext'))
+          inputNgsildContext = $response.querySelector('#Page_ngsildContext');
         if(vars.includes('atmosphericPressure'))
           inputAtmosphericPressure = $response.querySelector('#Page_atmosphericPressure');
         if(vars.includes('dataProvider'))
@@ -2040,34 +2040,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_entityId'));
         }
 
-        if(inputNgsildTenant) {
-          document.querySelectorAll('#Page_ngsildTenant').forEach((item, index) => {
-            item.setAttribute('value', inputNgsildTenant.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_ngsildTenant'));
-        }
-
-        if(inputNgsildPath) {
-          document.querySelectorAll('#Page_ngsildPath').forEach((item, index) => {
-            item.setAttribute('value', inputNgsildPath.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_ngsildPath'));
-        }
-
-        if(inputNgsildData) {
-          document.querySelectorAll('#Page_ngsildData').forEach((item, index) => {
-            item.setAttribute('value', inputNgsildData.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_ngsildData'));
-        }
-
-        if(inputNgsildContext) {
-          document.querySelectorAll('#Page_ngsildContext').forEach((item, index) => {
-            item.setAttribute('value', inputNgsildContext.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_ngsildContext'));
-        }
-
         if(inputAirQualityIndex) {
           document.querySelectorAll('#Page_airQualityIndex').forEach((item, index) => {
             item.setAttribute('value', inputAirQualityIndex.getAttribute('value'));
@@ -2103,6 +2075,13 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_airTemperatureForecast'));
         }
 
+        if(inputNgsildTenant) {
+          document.querySelectorAll('#Page_ngsildTenant').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildTenant.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_ngsildTenant'));
+        }
+
         if(inputAirTemperatureTSA) {
           document.querySelectorAll('#Page_airTemperatureTSA').forEach((item, index) => {
             item.setAttribute('value', inputAirTemperatureTSA.getAttribute('value'));
@@ -2110,11 +2089,32 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_airTemperatureTSA'));
         }
 
+        if(inputNgsildPath) {
+          document.querySelectorAll('#Page_ngsildPath').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildPath.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_ngsildPath'));
+        }
+
         if(inputAreaServed) {
           document.querySelectorAll('#Page_areaServed').forEach((item, index) => {
             item.setAttribute('value', inputAreaServed.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_areaServed'));
+        }
+
+        if(inputNgsildData) {
+          document.querySelectorAll('#Page_ngsildData').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildData.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_ngsildData'));
+        }
+
+        if(inputNgsildContext) {
+          document.querySelectorAll('#Page_ngsildContext').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildContext.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_ngsildContext'));
         }
 
         if(inputAtmosphericPressure) {

@@ -130,26 +130,6 @@ Promise.all([
             const form = document.querySelector('#PageForm_location');
             const valid = form.reportValidity();
           });
-          // PATCH description
-          document.querySelector('#Page_description')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_description');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
-                  , 'setDescription', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_description')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_description')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_description');
-            const valid = form.reportValidity();
-          });
           // PATCH uri
           document.querySelector('#Page_uri')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_uri');
@@ -188,6 +168,26 @@ Promise.all([
           });
           document.querySelector('#Page_url')?.addEventListener('sl-blur', (event) => {
             const form = document.querySelector('#PageForm_url');
+            const valid = form.reportValidity();
+          });
+          // PATCH description
+          document.querySelector('#Page_description')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_description');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+                  , 'setDescription', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_description')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_description')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_description');
             const valid = form.reportValidity();
           });
           // PATCH pageId

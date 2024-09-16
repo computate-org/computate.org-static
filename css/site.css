@@ -610,6 +610,15 @@ html, body {
     }
   }
 }
+.orange-blue-background {
+  &:not(sl-button), &:is(sl-button, sl-details)::part(base) {
+    background: linear-gradient(130deg, var(--sl-color-orange-300), var(--sl-color-blue-300));
+    color: white;
+    &:is(sl-button, sl-dialog)::part(base) {
+      border: solid 1px var(--sl-color-orange-300);
+    }
+  }
+}
 .gradient-button {
   &:not(sl-button), &:is(sl-button)::part(base) {
     transition: transform 100ms, box-shadow 100ms;
