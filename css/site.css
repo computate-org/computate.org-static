@@ -312,6 +312,9 @@ body {
   .hide-desktop{display:none!important}
 }
 
+.margin-block-end-1rem {
+  margin-block-end: 1rem;
+}
 #site-grid > main {
   padding-inline: 1rem;
   & > div {
