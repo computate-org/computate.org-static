@@ -144,6 +144,10 @@ function searchCompanyProductFilters($formFilters) {
     var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
+
+    var filterProductNum = $formFilters.querySelector('.valueProductNum')?.value;
+    if(filterProductNum != null && filterProductNum !== '')
+      filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
   }
   return filters;
 }
@@ -451,6 +455,18 @@ async function patchCompanyProduct($formFilters, $formValues, target, id, succes
   if(removeTitle != null && removeTitle !== '')
     vals['removeTitle'] = removeTitle;
 
+  var valueProductNum = $formValues.querySelector('.valueProductNum')?.value;
+  var removeProductNum = $formValues.querySelector('.removeProductNum')?.value === 'true';
+  var setProductNum = removeProductNum ? null : $formValues.querySelector('.setProductNum')?.value;
+  var addProductNum = $formValues.querySelector('.addProductNum')?.value;
+  if(removeProductNum || setProductNum != null && setProductNum !== '')
+    vals['setProductNum'] = setProductNum;
+  if(addProductNum != null && addProductNum !== '')
+    vals['addProductNum'] = addProductNum;
+  var removeProductNum = $formValues.querySelector('.removeProductNum')?.value;
+  if(removeProductNum != null && removeProductNum !== '')
+    vals['removeProductNum'] = removeProductNum;
+
   patchCompanyProductVals(id == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'id:' + id}], vals, target, success, error);
 }
 
@@ -588,6 +604,10 @@ function patchCompanyProductFilters($formFilters) {
     var filterTitle = $formFilters.querySelector('.valueTitle')?.value;
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
+
+    var filterProductNum = $formFilters.querySelector('.valueProductNum')?.value;
+    if(filterProductNum != null && filterProductNum !== '')
+      filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
   }
   return filters;
 }
@@ -711,6 +731,10 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueTitle = $formValues.querySelector('.valueTitle')?.value;
   if(valueTitle != null && valueTitle !== '')
     vals['title'] = valueTitle;
+
+  var valueProductNum = $formValues.querySelector('.valueProductNum')?.value;
+  if(valueProductNum != null && valueProductNum !== '')
+    vals['productNum'] = valueProductNum;
 
   fetch(
     '/api/product'
@@ -880,6 +904,7 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputUserUri = null;
         var inputStoreUrl = null;
         var inputTitle = null;
+        var inputProductNum = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('#Page_created');
@@ -943,6 +968,8 @@ async function websocketCompanyProductInner(apiRequest) {
           inputStoreUrl = $response.querySelector('#Page_storeUrl');
         if(vars.includes('title'))
           inputTitle = $response.querySelector('#Page_title');
+        if(vars.includes('productNum'))
+          inputProductNum = $response.querySelector('#Page_productNum');
           jsWebsocketCompanyProduct(id, vars, $response);
 
           window.companyProduct = JSON.parse($response.querySelector('.pageForm .companyProduct')?.value);
@@ -1166,6 +1193,13 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('#Page_title'));
         }
 
+        if(inputProductNum) {
+          document.querySelectorAll('#Page_productNum').forEach((item, index) => {
+            item.setAttribute('value', inputProductNum.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_productNum'));
+        }
+
           pageGraphCompanyProduct();
       });
     });
@@ -1197,7 +1231,7 @@ function pageGraphCompanyProduct(apiRequest) {
         var pivot1VarIndexed = pivot1Name;
         if(pivot1VarIndexed.includes(','))
           pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
-        var pivot1VarObj = Object.values(window.varsFq).querySelector(o => o.varIndexed === pivot1VarIndexed);
+        var pivot1VarObj = Object.values(window.varsFq).filter(o => o.varIndexed === pivot1VarIndexed)[0];
         var pivot1VarFq = pivot1VarObj ? pivot1VarObj.var : 'classSimpleName';
         var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
         var pivot1Vals = Object.keys(pivot1Map);
@@ -1210,7 +1244,7 @@ function pageGraphCompanyProduct(apiRequest) {
           }
           if(pivot1Vals.length > 0 && pivot1Map[pivot1Vals[0]].pivotMap && Object.keys(pivot1Map[pivot1Vals[0]].pivotMap).length > 0) {
             var pivot2VarIndexed = pivot1Map[pivot1Vals[0]].pivotMap[Object.keys(pivot1Map[pivot1Vals[0]].pivotMap)[0]].field;
-            var pivot2VarObj = Object.values(window.varsFq).querySelector(o => o.varIndexed === pivot2VarIndexed);
+            var pivot2VarObj = Object.values(window.varsFq).filter(o => o.varIndexed === pivot2VarIndexed)[0];
             var pivot2VarFq = pivot2VarObj ? pivot2VarObj.var : 'classSimpleName';
             layout['yaxis'] = {
               title: pivot2VarObj.displayName
@@ -1267,8 +1301,8 @@ function pageGraphCompanyProduct(apiRequest) {
               data.push(trace);
             });
           }
+          Plotly.react('htmBodyGraphCompanyProductPage', data, layout);
         }
-        Plotly.react('htmBodyGraphBaseResultPage', data, layout);
       }
     }
   }

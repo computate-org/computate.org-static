@@ -73,13 +73,13 @@ function searchIotServiceFilters($formFilters) {
     if(filterAttributes != null && filterAttributes !== '')
       filters.push({ name: 'fq', value: 'attributes:' + filterAttributes });
 
-    var filterService = $formFilters.querySelector('.valueService')?.value;
-    if(filterService != null && filterService !== '')
-      filters.push({ name: 'fq', value: 'service:' + filterService });
+    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
+    if(filterNgsildTenant != null && filterNgsildTenant !== '')
+      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
 
-    var filterServicePath = $formFilters.querySelector('.valueServicePath')?.value;
-    if(filterServicePath != null && filterServicePath !== '')
-      filters.push({ name: 'fq', value: 'servicePath:' + filterServicePath });
+    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
+    if(filterNgsildPath != null && filterNgsildPath !== '')
+      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -375,29 +375,29 @@ async function patchIotService($formFilters, $formValues, target, pk, success, e
   if(removeAttributes != null && removeAttributes !== '')
     vals['removeAttributes'] = removeAttributes;
 
-  var valueService = $formValues.querySelector('.valueService')?.value;
-  var removeService = $formValues.querySelector('.removeService')?.value === 'true';
-  var setService = removeService ? null : $formValues.querySelector('.setService')?.value;
-  var addService = $formValues.querySelector('.addService')?.value;
-  if(removeService || setService != null && setService !== '')
-    vals['setService'] = setService;
-  if(addService != null && addService !== '')
-    vals['addService'] = addService;
-  var removeService = $formValues.querySelector('.removeService')?.value;
-  if(removeService != null && removeService !== '')
-    vals['removeService'] = removeService;
+  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
+  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value === 'true';
+  var setNgsildTenant = removeNgsildTenant ? null : $formValues.querySelector('.setNgsildTenant')?.value;
+  var addNgsildTenant = $formValues.querySelector('.addNgsildTenant')?.value;
+  if(removeNgsildTenant || setNgsildTenant != null && setNgsildTenant !== '')
+    vals['setNgsildTenant'] = setNgsildTenant;
+  if(addNgsildTenant != null && addNgsildTenant !== '')
+    vals['addNgsildTenant'] = addNgsildTenant;
+  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value;
+  if(removeNgsildTenant != null && removeNgsildTenant !== '')
+    vals['removeNgsildTenant'] = removeNgsildTenant;
 
-  var valueServicePath = $formValues.querySelector('.valueServicePath')?.value;
-  var removeServicePath = $formValues.querySelector('.removeServicePath')?.value === 'true';
-  var setServicePath = removeServicePath ? null : $formValues.querySelector('.setServicePath')?.value;
-  var addServicePath = $formValues.querySelector('.addServicePath')?.value;
-  if(removeServicePath || setServicePath != null && setServicePath !== '')
-    vals['setServicePath'] = setServicePath;
-  if(addServicePath != null && addServicePath !== '')
-    vals['addServicePath'] = addServicePath;
-  var removeServicePath = $formValues.querySelector('.removeServicePath')?.value;
-  if(removeServicePath != null && removeServicePath !== '')
-    vals['removeServicePath'] = removeServicePath;
+  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
+  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value === 'true';
+  var setNgsildPath = removeNgsildPath ? null : $formValues.querySelector('.setNgsildPath')?.value;
+  var addNgsildPath = $formValues.querySelector('.addNgsildPath')?.value;
+  if(removeNgsildPath || setNgsildPath != null && setNgsildPath !== '')
+    vals['setNgsildPath'] = setNgsildPath;
+  if(addNgsildPath != null && addNgsildPath !== '')
+    vals['addNgsildPath'] = addNgsildPath;
+  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value;
+  if(removeNgsildPath != null && removeNgsildPath !== '')
+    vals['removeNgsildPath'] = removeNgsildPath;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -537,13 +537,13 @@ function patchIotServiceFilters($formFilters) {
     if(filterAttributes != null && filterAttributes !== '')
       filters.push({ name: 'fq', value: 'attributes:' + filterAttributes });
 
-    var filterService = $formFilters.querySelector('.valueService')?.value;
-    if(filterService != null && filterService !== '')
-      filters.push({ name: 'fq', value: 'service:' + filterService });
+    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
+    if(filterNgsildTenant != null && filterNgsildTenant !== '')
+      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
 
-    var filterServicePath = $formFilters.querySelector('.valueServicePath')?.value;
-    if(filterServicePath != null && filterServicePath !== '')
-      filters.push({ name: 'fq', value: 'servicePath:' + filterServicePath });
+    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
+    if(filterNgsildPath != null && filterNgsildPath !== '')
+      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -712,13 +712,13 @@ async function postIotService($formValues, target, success, error) {
   if(valueAttributes != null && valueAttributes !== '')
     vals['attributes'] = JSON.parse(valueAttributes);
 
-  var valueService = $formValues.querySelector('.valueService')?.value;
-  if(valueService != null && valueService !== '')
-    vals['service'] = valueService;
+  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
+  if(valueNgsildTenant != null && valueNgsildTenant !== '')
+    vals['ngsildTenant'] = valueNgsildTenant;
 
-  var valueServicePath = $formValues.querySelector('.valueServicePath')?.value;
-  if(valueServicePath != null && valueServicePath !== '')
-    vals['servicePath'] = valueServicePath;
+  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
+  if(valueNgsildPath != null && valueNgsildPath !== '')
+    vals['ngsildPath'] = valueNgsildPath;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -925,8 +925,8 @@ async function websocketIotServiceInner(apiRequest) {
         var inputResource = null;
         var inputPageId = null;
         var inputAttributes = null;
-        var inputService = null;
-        var inputServicePath = null;
+        var inputNgsildTenant = null;
+        var inputNgsildPath = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -972,10 +972,10 @@ async function websocketIotServiceInner(apiRequest) {
           inputPageId = $response.querySelector('#Page_pageId');
         if(vars.includes('attributes'))
           inputAttributes = $response.querySelector('#Page_attributes');
-        if(vars.includes('service'))
-          inputService = $response.querySelector('#Page_service');
-        if(vars.includes('servicePath'))
-          inputServicePath = $response.querySelector('#Page_servicePath');
+        if(vars.includes('ngsildTenant'))
+          inputNgsildTenant = $response.querySelector('#Page_ngsildTenant');
+        if(vars.includes('ngsildPath'))
+          inputNgsildPath = $response.querySelector('#Page_ngsildPath');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -1109,18 +1109,18 @@ async function websocketIotServiceInner(apiRequest) {
           addGlow(document.querySelector('#Page_attributes'));
         }
 
-        if(inputService) {
-          document.querySelectorAll('#Page_service').forEach((item, index) => {
-            item.setAttribute('value', inputService.getAttribute('value'));
+        if(inputNgsildTenant) {
+          document.querySelectorAll('#Page_ngsildTenant').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildTenant.getAttribute('value'));
           });
-          addGlow(document.querySelector('#Page_service'));
+          addGlow(document.querySelector('#Page_ngsildTenant'));
         }
 
-        if(inputServicePath) {
-          document.querySelectorAll('#Page_servicePath').forEach((item, index) => {
-            item.setAttribute('value', inputServicePath.getAttribute('value'));
+        if(inputNgsildPath) {
+          document.querySelectorAll('#Page_ngsildPath').forEach((item, index) => {
+            item.setAttribute('value', inputNgsildPath.getAttribute('value'));
           });
-          addGlow(document.querySelector('#Page_servicePath'));
+          addGlow(document.querySelector('#Page_ngsildPath'));
         }
 
         if(inputInheritPk) {
@@ -1280,7 +1280,7 @@ function pageGraphIotService(apiRequest) {
         var pivot1VarIndexed = pivot1Name;
         if(pivot1VarIndexed.includes(','))
           pivot1VarIndexed = pivot1VarIndexed.substring(0, pivot1VarIndexed.indexOf(','));
-        var pivot1VarObj = Object.values(window.varsFq).querySelector(o => o.varIndexed === pivot1VarIndexed);
+        var pivot1VarObj = Object.values(window.varsFq).filter(o => o.varIndexed === pivot1VarIndexed)[0];
         var pivot1VarFq = pivot1VarObj ? pivot1VarObj.var : 'classSimpleName';
         var pivot1Map = facetCounts.facetPivot.pivotMap[pivot1Name].pivotMap;
         var pivot1Vals = Object.keys(pivot1Map);
@@ -1293,7 +1293,7 @@ function pageGraphIotService(apiRequest) {
           }
           if(pivot1Vals.length > 0 && pivot1Map[pivot1Vals[0]].pivotMap && Object.keys(pivot1Map[pivot1Vals[0]].pivotMap).length > 0) {
             var pivot2VarIndexed = pivot1Map[pivot1Vals[0]].pivotMap[Object.keys(pivot1Map[pivot1Vals[0]].pivotMap)[0]].field;
-            var pivot2VarObj = Object.values(window.varsFq).querySelector(o => o.varIndexed === pivot2VarIndexed);
+            var pivot2VarObj = Object.values(window.varsFq).filter(o => o.varIndexed === pivot2VarIndexed)[0];
             var pivot2VarFq = pivot2VarObj ? pivot2VarObj.var : 'classSimpleName';
             layout['yaxis'] = {
               title: pivot2VarObj.displayName
@@ -1350,8 +1350,8 @@ function pageGraphIotService(apiRequest) {
               data.push(trace);
             });
           }
+          Plotly.react('htmBodyGraphIotServicePage', data, layout);
         }
-        Plotly.react('htmBodyGraphBaseModelPage', data, layout);
       }
     }
   }

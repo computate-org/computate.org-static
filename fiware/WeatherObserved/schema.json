@@ -4,7 +4,7 @@
   "modelTags" : "",
   "$id" : "https://raw.githubusercontent.com/computate-org/computate.org-static/main/fiware/WeatherObserved/schema.json",
   "title" : "WeatherObserved",
-  "description" : "ApiTag: weather observed",
+  "description" : "For keeping track of temperature, humidity, and other weather related details. ",
   "type" : "object",
   "allOf" : [ {
     "$ref" : "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
@@ -29,9 +29,49 @@
       "type" : "string",
       "description" : "An alternative name for this item"
     },
+    "location" : {
+      "type" : "geo:point",
+      "description" : "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
+    },
     "areaServed" : {
       "type" : "geo:linestring",
       "description" : "The geographic area where a service or offered item is provided"
+    },
+    "dataProvider" : {
+      "type" : "string",
+      "description" : "A sequence of characters identifying the provider of the harmonised data entity"
+    },
+    "dateCreated" : {
+      "type" : "string",
+      "description" : "Entity creation timestamp. This will usually be allocated by the storage platform"
+    },
+    "dateModified" : {
+      "type" : "string",
+      "description" : "Timestamp of the last modification of the entity. This will usually be allocated by the storage platform"
+    },
+    "dateObserved" : {
+      "type" : "string",
+      "description" : "Date of the observed entity defined by the user"
+    },
+    "owner" : {
+      "type" : "object",
+      "description" : "A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)"
+    },
+    "refDevice" : {
+      "type" : "object",
+      "description" : "A reference to the device(s) which captured this observation"
+    },
+    "refPointOfInterest" : {
+      "type" : "string",
+      "description" : "Point of interest related to the item"
+    },
+    "source" : {
+      "type" : "string",
+      "description" : "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object"
+    },
+    "seeAlso" : {
+      "type" : "object",
+      "description" : "list of uri pointing to additional resources about the item"
     },
     "airQualityIndex" : {
       "type" : "number",
@@ -53,49 +93,21 @@
       "type" : "number",
       "description" : "The atmospheric pressure observed measured in Hecto Pascals"
     },
-    "dataProvider" : {
-      "type" : "string",
-      "description" : "A sequence of characters identifying the provider of the harmonised data entity"
-    },
-    "dateCreated" : {
-      "type" : "string",
-      "description" : "Entity creation timestamp. This will usually be allocated by the storage platform"
-    },
-    "dateModified" : {
-      "type" : "string",
-      "description" : "Timestamp of the last modification of the entity. This will usually be allocated by the storage platform"
-    },
-    "dateObserved" : {
-      "type" : "string",
-      "description" : "Date of the observed entity defined by the user"
-    },
-    "dewPoint" : {
-      "type" : "number",
-      "description" : "The dew point encoded as a number. Observed temperature to which air must be cooled to become saturated with water vapor"
-    },
-    "diffuseIrradiation" : {
-      "type" : "number",
-      "description" : "Diffuse irradiance is the part of the solar irradiance that is scattered by the atmosphere"
-    },
-    "directIrradiation" : {
-      "type" : "number",
-      "description" : "Direct irradiance is the part of the solar irradiance that directly reaches a surface"
+    "pressureTendency" : {
+      "type" : "object",
+      "description" : "Enum:'falling, raising, steady'. Is the pressure rising or falling? It can be expressed in quantitative terms or qualitative terms"
     },
     "gustSpeed" : {
       "type" : "number",
       "description" : "A sudden burst of high-speed wind over the observed average wind speed lasting only for a few seconds"
     },
-    "illuminance" : {
+    "windDirection" : {
       "type" : "number",
-      "description" : "(https://en.wikipedia.org/wiki/Illuminance) observed measured in lux (lx) or lumens per square metre (cd·sr·m−2)"
+      "description" : "Direction of the wind bet"
     },
-    "location" : {
-      "type" : "geo:point",
-      "description" : "Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygon"
-    },
-    "owner" : {
-      "type" : "object",
-      "description" : "A List containing a JSON encoded sequence of characters referencing the unique Ids of the owner(s)"
+    "windSpeed" : {
+      "type" : "number",
+      "description" : "Intensity of the wind"
     },
     "precipitation" : {
       "type" : "number",
@@ -105,18 +117,6 @@
       "type" : "number",
       "description" : "Forecasted rainfall over a certain duration in future"
     },
-    "pressureTendency" : {
-      "type" : "object",
-      "description" : "Enum:'falling, raising, steady'. Is the pressure rising or falling? It can be expressed in quantitative terms or qualitative terms"
-    },
-    "refDevice" : {
-      "type" : "object",
-      "description" : "A reference to the device(s) which captured this observation"
-    },
-    "refPointOfInterest" : {
-      "type" : "string",
-      "description" : "Point of interest related to the item"
-    },
     "relativeHumidity" : {
       "type" : "number",
       "description" : "Humidity in the Air. Observed instantaneous relative humidity (water vapour in air)"
@@ -125,25 +125,9 @@
       "type" : "number",
       "description" : "Forecasted relative humidity (water vapour in air) over a certain duration in future"
     },
-    "seeAlso" : {
-      "type" : "object",
-      "description" : "list of uri pointing to additional resources about the item"
-    },
     "snowHeight" : {
       "type" : "number",
       "description" : "The snow height observed by generic snow depth measurement sensors, expressed in centimeters"
-    },
-    "solarRadiation" : {
-      "type" : "number",
-      "description" : "The solar radiation observed measured in Watts per square"
-    },
-    "source" : {
-      "type" : "string",
-      "description" : "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source provider, or the URL to the source object"
-    },
-    "streamGauge" : {
-      "type" : "number",
-      "description" : "The water level surface elevation observed by Hydrometric measurement sensors, namely a [Stream Gauge](https://en.wikipedia.org/wiki/Stream_gauge) expressed in centimeters"
     },
     "temperature" : {
       "type" : "number",
@@ -161,6 +145,14 @@
       "type" : "number",
       "description" : "Temperature appreciation of the item"
     },
+    "solarRadiation" : {
+      "type" : "number",
+      "description" : "The solar radiation observed measured in Watts per square"
+    },
+    "streamGauge" : {
+      "type" : "number",
+      "description" : "The water level surface elevation observed by Hydrometric measurement sensors, namely a [Stream Gauge](https://en.wikipedia.org/wiki/Stream_gauge) expressed in centimeters"
+    },
     "uVIndexMax" : {
       "type" : "number",
       "description" : "The maximum UV index for the period, based on the World Health Organization's UV Index measure. [http://www.who.int/uv/intersunprogramme/activities/uv_index/en/](http://www.who.int/uv/intersunprogramme/activities/uv_index/en/) the values between 1 and 11 are the valid range for the index. The value 0 is for describing that no signal is detected so no value is stored"
@@ -173,13 +165,25 @@
       "type" : "string",
       "description" : "Text description of the weather"
     },
-    "windDirection" : {
+    "dewPoint" : {
       "type" : "number",
-      "description" : "Direction of the wind bet"
+      "description" : "The dew point encoded as a number. Observed temperature to which air must be cooled to become saturated with water vapor"
     },
-    "windSpeed" : {
+    "diffuseIrradiation" : {
       "type" : "number",
-      "description" : "Intensity of the wind"
+      "description" : "Diffuse irradiance is the part of the solar irradiance that is scattered by the atmosphere"
+    },
+    "directIrradiation" : {
+      "type" : "number",
+      "description" : "Direct irradiance is the part of the solar irradiance that directly reaches a surface"
+    },
+    "illuminance" : {
+      "type" : "number",
+      "description" : "(https://en.wikipedia.org/wiki/Illuminance) observed measured in lux (lx) or lumens per square metre (cd·sr·m−2)"
+    },
+    "ngsildData" : {
+      "type" : "object",
+      "description" : "The NGSILD data with @context from the context broker"
     },
     "entityId" : {
       "type" : "string",
@@ -192,10 +196,6 @@
     "ngsildPath" : {
       "type" : "string",
       "description" : "The NGSILD-Path or Fiware-ServicePath"
-    },
-    "ngsildData" : {
-      "type" : "object",
-      "description" : "The NGSILD data with @context from the context broker"
     },
     "ngsildContext" : {
       "type" : "string",

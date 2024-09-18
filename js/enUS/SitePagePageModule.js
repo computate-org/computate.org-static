@@ -18,7 +18,14 @@ Promise.all([
           document.querySelector('#htmButton_searchpageSitePage')?.addEventListener('click', (event) => {
             document.querySelector('#searchpageSitePageDialog').show();
           });
+
           // PATCH created
+          document.querySelector('#buttonFacetSitePage_created')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_created')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_created')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_created');
             const valid = form.checkValidity();
@@ -47,6 +54,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_created');
             const valid = form.reportValidity();
           });
+
           // PATCH objectId
           document.querySelector('#Page_objectId')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_objectId');
@@ -67,6 +75,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_objectId');
             const valid = form.reportValidity();
           });
+
           // PATCH archived
           document.querySelector('#Page_archived')?.addEventListener('click', (event) => {
             const form = document.querySelector('#PageForm_archived');
@@ -90,7 +99,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_archived');
             const valid = form.reportValidity();
           });
+
           // PATCH pageId
+          document.querySelector('#buttonFacetSitePage_pageId')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_pageId')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_pageId')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.checkValidity();
@@ -110,7 +126,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.reportValidity();
           });
+
           // PATCH uri
+          document.querySelector('#buttonFacetSitePage_uri')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_uri')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_uri')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_uri');
             const valid = form.checkValidity();
@@ -130,7 +153,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_uri');
             const valid = form.reportValidity();
           });
+
           // PATCH url
+          document.querySelector('#buttonFacetSitePage_url')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_url')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_url')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_url');
             const valid = form.checkValidity();
@@ -150,7 +180,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_url');
             const valid = form.reportValidity();
           });
+
           // PATCH author
+          document.querySelector('#buttonFacetSitePage_author')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_author')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_author')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_author');
             const valid = form.checkValidity();
@@ -170,7 +207,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_author');
             const valid = form.reportValidity();
           });
+
           // PATCH pageImageUri
+          document.querySelector('#buttonFacetSitePage_pageImageUri')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_pageImageUri')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_pageImageUri')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_pageImageUri');
             const valid = form.checkValidity();
@@ -190,6 +234,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_pageImageUri');
             const valid = form.reportValidity();
           });
+
           // PATCH inheritPk
           document.querySelector('#Page_inheritPk')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_inheritPk');
@@ -210,6 +255,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_inheritPk');
             const valid = form.reportValidity();
           });
+
           // PATCH sessionId
           document.querySelector('#Page_sessionId')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_sessionId');
@@ -230,6 +276,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_sessionId');
             const valid = form.reportValidity();
           });
+
           // PATCH userKey
           document.querySelector('#Page_userKey')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_userKey');
@@ -250,6 +297,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_userKey');
             const valid = form.reportValidity();
           });
+
           // PATCH id
           document.querySelector('#Page_id')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_id');
@@ -270,7 +318,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_id');
             const valid = form.reportValidity();
           });
+
           // PATCH courseNum
+          document.querySelector('#buttonFacetSitePage_courseNum')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_courseNum')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_courseNum')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_courseNum');
             const valid = form.checkValidity();
@@ -290,7 +345,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_courseNum');
             const valid = form.reportValidity();
           });
+
           // PATCH lessonNum
+          document.querySelector('#buttonFacetSitePage_lessonNum')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_lessonNum')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_lessonNum')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_lessonNum');
             const valid = form.checkValidity();
@@ -310,6 +372,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_lessonNum');
             const valid = form.reportValidity();
           });
+
           // PATCH title
           document.querySelector('#Page_title')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_title');
@@ -330,7 +393,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_title');
             const valid = form.reportValidity();
           });
+
           // PATCH resourceUri
+          document.querySelector('#buttonFacetSitePage_resourceUri')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_resourceUri')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_resourceUri')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_resourceUri');
             const valid = form.checkValidity();
@@ -350,7 +420,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_resourceUri');
             const valid = form.reportValidity();
           });
+
           // PATCH templateUri
+          document.querySelector('#buttonFacetSitePage_templateUri')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.target);
+          });
+          document.querySelector('#pageFacetPivotSitePage_templateUri')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('SitePage', event.target);
+          });
           document.querySelector('#Page_templateUri')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_templateUri');
             const valid = form.checkValidity();
@@ -370,6 +447,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_templateUri');
             const valid = form.reportValidity();
           });
+
           // PATCH h1
           document.querySelector('#Page_h1')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_h1');
@@ -390,6 +468,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_h1');
             const valid = form.reportValidity();
           });
+
           // PATCH h2
           document.querySelector('#Page_h2')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_h2');

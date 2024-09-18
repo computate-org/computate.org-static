@@ -776,3 +776,11 @@ html, body {
 #footer-powered-by img {
   height: 5em;
 }
+
+/*******/
+/* MAP */
+/*******/
+
+.htmBodyGraphLocation {
+  height: 40em;
+}

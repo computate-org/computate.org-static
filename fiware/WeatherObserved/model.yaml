@@ -1,6 +1,7 @@
 WeatherObserved:
   description: >+
-    ApiTag: weather observed
+    For keeping track of temperature, humidity, and other weather related
+    details. 
   properties:
     name:
       type: string
@@ -27,12 +28,79 @@ WeatherObserved:
         An alternative name for this item
       x-ngsi:
         type: Property
+    location:
+      type: geo:point
+      description: >+
+        Geojson reference to the item. It can be Point, LineString, Polygon,
+        MultiPoint, MultiLineString or MultiPolygon
+      x-ngsi:
+        type: GeoProperty
     areaServed:
       type: geo:linestring
       description: >+
         The geographic area where a service or offered item is provided
       x-ngsi:
         type: GeoProperty
+    dataProvider:
+      type: string
+      description: >+
+        A sequence of characters identifying the provider of the harmonised
+        data entity
+      x-ngsi:
+        type: Property
+    dateCreated:
+      type: string
+      description: >+
+        Entity creation timestamp. This will usually be allocated by the
+        storage platform
+      x-ngsi:
+        type: Property
+    dateModified:
+      type: string
+      description: >+
+        Timestamp of the last modification of the entity. This will usually be
+        allocated by the storage platform
+      x-ngsi:
+        type: Property
+    dateObserved:
+      type: string
+      description: >+
+        Date of the observed entity defined by the user
+      x-ngsi:
+        type: Property
+    owner:
+      type: object
+      description: >+
+        A List containing a JSON encoded sequence of characters referencing
+        the unique Ids of the owner(s)
+      x-ngsi:
+        type: Property
+    refDevice:
+      type: object
+      description: >+
+        A reference to the device(s) which captured this observation
+      x-ngsi:
+        type: Property
+    refPointOfInterest:
+      type: string
+      description: >+
+        Point of interest related to the item
+      x-ngsi:
+        type: Property
+    source:
+      type: string
+      description: >+
+        A sequence of characters giving the original source of the entity data
+        as a URL. Recommended to be the fully qualified domain name of the
+        source provider, or the URL to the source object
+      x-ngsi:
+        type: Property
+    seeAlso:
+      type: object
+      description: >+
+        list of uri pointing to additional resources about the item
+      x-ngsi:
+        type: Property
     airQualityIndex:
       type: number
       description: >+
@@ -69,56 +137,12 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/Number
         type: Property
-    dataProvider:
-      type: string
+    pressureTendency:
+      type: object
       description: >+
-        A sequence of characters identifying the provider of the harmonised
-        data entity
+        Enum:'falling, raising, steady'. Is the pressure rising or falling? It
+        can be expressed in quantitative terms or qualitative terms
       x-ngsi:
-        type: Property
-    dateCreated:
-      type: string
-      description: >+
-        Entity creation timestamp. This will usually be allocated by the
-        storage platform
-      x-ngsi:
-        type: Property
-    dateModified:
-      type: string
-      description: >+
-        Timestamp of the last modification of the entity. This will usually be
-        allocated by the storage platform
-      x-ngsi:
-        type: Property
-    dateObserved:
-      type: string
-      description: >+
-        Date of the observed entity defined by the user
-      x-ngsi:
-        type: Property
-    dewPoint:
-      type: number
-      description: >+
-        The dew point encoded as a number. Observed temperature to which air
-        must be cooled to become saturated with water vapor
-      x-ngsi:
-        model: https://schema.org/Number
-        type: Property
-    diffuseIrradiation:
-      type: number
-      description: >+
-        Diffuse irradiance is the part of the solar irradiance that is
-        scattered by the atmosphere
-      x-ngsi:
-        model: https://schema.org/Number
-        type: Property
-    directIrradiation:
-      type: number
-      description: >+
-        Direct irradiance is the part of the solar irradiance that directly
-        reaches a surface
-      x-ngsi:
-        model: https://schema.org/Number
         type: Property
     gustSpeed:
       type: number
@@ -128,27 +152,19 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/Number
         type: Property
-    illuminance:
+    windDirection:
       type: number
       description: >+
-        (https://en.wikipedia.org/wiki/Illuminance) observed measured in lux
-        (lx) or lumens per square metre (cd·sr·m−2)
+        Direction of the wind bet
       x-ngsi:
         model: https://schema.org/Number
         type: Property
-    location:
-      type: geo:point
+    windSpeed:
+      type: number
       description: >+
-        Geojson reference to the item. It can be Point, LineString, Polygon,
-        MultiPoint, MultiLineString or MultiPolygon
+        Intensity of the wind
       x-ngsi:
-        type: GeoProperty
-    owner:
-      type: object
-      description: >+
-        A List containing a JSON encoded sequence of characters referencing
-        the unique Ids of the owner(s)
-      x-ngsi:
+        model: https://schema.org/Number
         type: Property
     precipitation:
       type: number
@@ -163,25 +179,6 @@ WeatherObserved:
         Forecasted rainfall over a certain duration in future
       x-ngsi:
         model: https://schema.org/Number
-        type: Property
-    pressureTendency:
-      type: object
-      description: >+
-        Enum:'falling, raising, steady'. Is the pressure rising or falling? It
-        can be expressed in quantitative terms or qualitative terms
-      x-ngsi:
-        type: Property
-    refDevice:
-      type: object
-      description: >+
-        A reference to the device(s) which captured this observation
-      x-ngsi:
-        type: Property
-    refPointOfInterest:
-      type: string
-      description: >+
-        Point of interest related to the item
-      x-ngsi:
         type: Property
     relativeHumidity:
       type: number
@@ -199,42 +196,11 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/Number
         type: Property
-    seeAlso:
-      type: object
-      description: >+
-        list of uri pointing to additional resources about the item
-      x-ngsi:
-        type: Property
     snowHeight:
       type: number
       description: >+
         The snow height observed by generic snow depth measurement sensors,
         expressed in centimeters
-      x-ngsi:
-        model: https://schema.org/Number
-        type: Property
-    solarRadiation:
-      type: number
-      description: >+
-        The solar radiation observed measured in Watts per square
-      x-ngsi:
-        model: https://schema.org/Number
-        type: Property
-    source:
-      type: string
-      description: >+
-        A sequence of characters giving the original source of the entity data
-        as a URL. Recommended to be the fully qualified domain name of the
-        source provider, or the URL to the source object
-      x-ngsi:
-        type: Property
-    streamGauge:
-      type: number
-      description: >+
-        The water level surface elevation observed by Hydrometric measurement
-        sensors, namely a [Stream
-        Gauge](https://en.wikipedia.org/wiki/Stream_gauge) expressed in
-        centimeters
       x-ngsi:
         model: https://schema.org/Number
         type: Property
@@ -265,6 +231,23 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/Number
         type: Property
+    solarRadiation:
+      type: number
+      description: >+
+        The solar radiation observed measured in Watts per square
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+    streamGauge:
+      type: number
+      description: >+
+        The water level surface elevation observed by Hydrometric measurement
+        sensors, namely a [Stream
+        Gauge](https://en.wikipedia.org/wiki/Stream_gauge) expressed in
+        centimeters
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
     uVIndexMax:
       type: number
       description: >+
@@ -289,19 +272,43 @@ WeatherObserved:
         Text description of the weather
       x-ngsi:
         type: Property
-    windDirection:
+    dewPoint:
       type: number
       description: >+
-        Direction of the wind bet
+        The dew point encoded as a number. Observed temperature to which air
+        must be cooled to become saturated with water vapor
       x-ngsi:
         model: https://schema.org/Number
         type: Property
-    windSpeed:
+    diffuseIrradiation:
       type: number
       description: >+
-        Intensity of the wind
+        Diffuse irradiance is the part of the solar irradiance that is
+        scattered by the atmosphere
       x-ngsi:
         model: https://schema.org/Number
+        type: Property
+    directIrradiation:
+      type: number
+      description: >+
+        Direct irradiance is the part of the solar irradiance that directly
+        reaches a surface
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+    illuminance:
+      type: number
+      description: >+
+        (https://en.wikipedia.org/wiki/Illuminance) observed measured in lux
+        (lx) or lumens per square metre (cd·sr·m−2)
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+    ngsildData:
+      type: object
+      description: >+
+        The NGSILD data with @context from the context broker
+      x-ngsi:
         type: Property
     entityId:
       type: string
@@ -319,12 +326,6 @@ WeatherObserved:
       type: string
       description: >+
         The NGSILD-Path or Fiware-ServicePath
-      x-ngsi:
-        type: Property
-    ngsildData:
-      type: object
-      description: >+
-        The NGSILD data with @context from the context broker
       x-ngsi:
         type: Property
     ngsildContext:

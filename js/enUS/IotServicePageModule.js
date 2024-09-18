@@ -31,7 +31,14 @@ Promise.all([
           document.querySelector('#htmButton_searchpageIotService')?.addEventListener('click', (event) => {
             document.querySelector('#searchpageIotServiceDialog').show();
           });
+
           // PATCH created
+          document.querySelector('#buttonFacetIotService_created')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_created')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_created')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_created');
             const valid = form.checkValidity();
@@ -60,7 +67,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_created');
             const valid = form.reportValidity();
           });
+
           // PATCH archived
+          document.querySelector('#buttonFacetIotService_archived')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_archived')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_archived')?.addEventListener('click', (event) => {
             const form = document.querySelector('#PageForm_archived');
             const valid = form.checkValidity();
@@ -83,7 +97,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_archived');
             const valid = form.reportValidity();
           });
+
           // PATCH entityType
+          document.querySelector('#buttonFacetIotService_entityType')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_entityType')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_entityType')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_entityType');
             const valid = form.checkValidity();
@@ -103,7 +124,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_entityType');
             const valid = form.reportValidity();
           });
+
           // PATCH apiKey
+          document.querySelector('#buttonFacetIotService_apiKey')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_apiKey')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_apiKey')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_apiKey');
             const valid = form.checkValidity();
@@ -123,7 +151,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_apiKey');
             const valid = form.reportValidity();
           });
+
           // PATCH uri
+          document.querySelector('#buttonFacetIotService_uri')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_uri')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_uri')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_uri');
             const valid = form.checkValidity();
@@ -143,7 +178,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_uri');
             const valid = form.reportValidity();
           });
+
           // PATCH url
+          document.querySelector('#buttonFacetIotService_url')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_url')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_url')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_url');
             const valid = form.checkValidity();
@@ -163,7 +205,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_url');
             const valid = form.reportValidity();
           });
+
           // PATCH cbHost
+          document.querySelector('#buttonFacetIotService_cbHost')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_cbHost')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_cbHost')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_cbHost');
             const valid = form.checkValidity();
@@ -183,7 +232,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_cbHost');
             const valid = form.reportValidity();
           });
+
           // PATCH resource
+          document.querySelector('#buttonFacetIotService_resource')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_resource')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_resource')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_resource');
             const valid = form.checkValidity();
@@ -203,7 +259,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_resource');
             const valid = form.reportValidity();
           });
+
           // PATCH pageId
+          document.querySelector('#buttonFacetIotService_pageId')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_pageId')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_pageId')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.checkValidity();
@@ -223,7 +286,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.reportValidity();
           });
+
           // PATCH attributes
+          document.querySelector('#buttonFacetIotService_attributes')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_attributes')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_attributes')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_attributes');
             const valid = form.checkValidity();
@@ -243,46 +313,61 @@ Promise.all([
             const form = document.querySelector('#PageForm_attributes');
             const valid = form.reportValidity();
           });
-          // PATCH service
-          document.querySelector('#Page_service')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_service');
+
+          // PATCH ngsildTenant
+          document.querySelector('#buttonFacetIotService_ngsildTenant')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_ngsildTenant')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
+          document.querySelector('#Page_ngsildTenant')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_ngsildTenant');
             const valid = form.checkValidity();
             if(valid) {
               patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                  , 'setService', event.currentTarget.value
+                  , 'setNgsildTenant', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#Page_service')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_ngsildTenant')?.addEventListener('sl-focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_service')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_service');
+          document.querySelector('#Page_ngsildTenant')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_ngsildTenant');
             const valid = form.reportValidity();
           });
-          // PATCH servicePath
-          document.querySelector('#Page_servicePath')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_servicePath');
+
+          // PATCH ngsildPath
+          document.querySelector('#buttonFacetIotService_ngsildPath')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_ngsildPath')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
+          document.querySelector('#Page_ngsildPath')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_ngsildPath');
             const valid = form.checkValidity();
             if(valid) {
               patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                  , 'setServicePath', event.currentTarget.value
+                  , 'setNgsildPath', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#Page_servicePath')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_ngsildPath')?.addEventListener('sl-focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_servicePath')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_servicePath');
+          document.querySelector('#Page_ngsildPath')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_ngsildPath');
             const valid = form.reportValidity();
           });
+
           // PATCH inheritPk
           document.querySelector('#Page_inheritPk')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_inheritPk');
@@ -303,6 +388,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_inheritPk');
             const valid = form.reportValidity();
           });
+
           // PATCH sessionId
           document.querySelector('#Page_sessionId')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_sessionId');
@@ -323,6 +409,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_sessionId');
             const valid = form.reportValidity();
           });
+
           // PATCH userKey
           document.querySelector('#Page_userKey')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_userKey');
@@ -343,7 +430,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_userKey');
             const valid = form.reportValidity();
           });
+
           // PATCH resourceUri
+          document.querySelector('#buttonFacetIotService_resourceUri')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_resourceUri')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_resourceUri')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_resourceUri');
             const valid = form.checkValidity();
@@ -363,7 +457,14 @@ Promise.all([
             const form = document.querySelector('#PageForm_resourceUri');
             const valid = form.reportValidity();
           });
+
           // PATCH templateUri
+          document.querySelector('#buttonFacetIotService_templateUri')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_templateUri')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
           document.querySelector('#Page_templateUri')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_templateUri');
             const valid = form.checkValidity();
@@ -383,6 +484,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_templateUri');
             const valid = form.reportValidity();
           });
+
           // PATCH title
           document.querySelector('#Page_title')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_title');

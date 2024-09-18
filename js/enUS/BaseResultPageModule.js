@@ -2,7 +2,14 @@ Promise.all([
     customElements.whenDefined('sl-button')
     , customElements.whenDefined('sl-input')
     ]).then(() => {
+
           // PATCH created
+          document.querySelector('#buttonFacetBaseResult_created')?.addEventListener('click', (event) => {
+            facetFieldChange('BaseResult', event.target);
+          });
+          document.querySelector('#pageFacetPivotBaseResult_created')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('BaseResult', event.target);
+          });
           document.querySelector('#Page_created')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_created');
             const valid = form.checkValidity();
@@ -31,6 +38,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_created');
             const valid = form.reportValidity();
           });
+
           // PATCH objectId
           document.querySelector('#Page_objectId')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_objectId');
@@ -51,6 +59,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_objectId');
             const valid = form.reportValidity();
           });
+
           // PATCH archived
           document.querySelector('#Page_archived')?.addEventListener('click', (event) => {
             const form = document.querySelector('#PageForm_archived');
@@ -74,6 +83,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_archived');
             const valid = form.reportValidity();
           });
+
           // PATCH inheritPk
           document.querySelector('#Page_inheritPk')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_inheritPk');
@@ -94,6 +104,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_inheritPk');
             const valid = form.reportValidity();
           });
+
           // PATCH sessionId
           document.querySelector('#Page_sessionId')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_sessionId');
@@ -114,6 +125,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_sessionId');
             const valid = form.reportValidity();
           });
+
           // PATCH userKey
           document.querySelector('#Page_userKey')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_userKey');
@@ -134,6 +146,7 @@ Promise.all([
             const form = document.querySelector('#PageForm_userKey');
             const valid = form.reportValidity();
           });
+
           // PATCH id
           document.querySelector('#Page_id')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_id');

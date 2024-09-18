@@ -152,10 +152,14 @@ function fqReplace(classSimpleName, elem) {
 
 function facetFieldChange(classSimpleName, elem) {
 	if(elem.getAttribute("data-clear") === "false") {
-		document.querySelector("#pageSearchVal-" + elem.getAttribute("id")).innerText = "facet.field=" + elem.getAttribute('data-var');
+		var item = document.querySelector("#pageSearchVal-" + elem.getAttribute("id"));
+		if(item)
+			item.innerText = "facet.field=" + elem.getAttribute('data-var');
 		elem.setAttribute("data-clear", "true");
 	} else {
-		document.querySelector("#pageSearchVal-" + elem.getAttribute("id")).innerText = "";
+		var item = document.querySelector("#pageSearchVal-" + elem.getAttribute("id"));
+		if(item)
+			item.innerText = "";
 		elem.setAttribute("data-clear", "false");
 	}
 	searchPage(classSimpleName);
@@ -205,35 +209,46 @@ function facetRangeChange(classSimpleName, elem, classSimpleName) {
 	searchPage(classSimpleName);
 }
 
-function facetPivotChange(classSimpleName, elem) {
-	var $elem = $(elem);
-	var $listHidden = $("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
-	if($elem.is(":checked")) {
-		$listHidden.append($("<div>")
-				.attr("id", "pageSearchVal-Pivot" + classSimpleName + "Hidden_" + $elem.val())
-				.attr("class", "pageSearchVal-Pivot" + classSimpleName + "Hidden ")
-				.text($elem.val())
-				)
-				;
+function facetFieldChange(classSimpleName, elem) {
+	if(elem.getAttribute("data-clear") === "false") {
+		var item = document.querySelector("#pageSearchVal-" + elem.getAttribute("id"));
+		if(item)
+			item.innerText = "facet.field=" + elem.getAttribute('data-var');
+		elem.setAttribute("data-clear", "true");
 	} else {
-		$("#pageSearchVal-Pivot" + classSimpleName + "Hidden_" + $elem.val()).remove();
+		var item = document.querySelector("#pageSearchVal-" + elem.getAttribute("id"));
+		if(item)
+			item.innerText = "";
+		elem.setAttribute("data-clear", "false");
 	}
-	$("#pageSearchVal-Pivot" + classSimpleName + "_1").remove();
-	var $list = $("#pageSearchVal-Pivot" + classSimpleName);
-	var $listHidden = $("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
-	if($listHidden.children().length > 0) {
+	searchPage(classSimpleName);
+}
+function facetPivotChange(classSimpleName, elem) {
+	var $listHidden = document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
+	if(elem.checked) {
+		var div = document.createElement('div');
+		div.setAttribute("id", "pageSearchVal-Pivot" + classSimpleName + "Hidden_" + elem.value);
+		div.setAttribute("class", "pageSearchVal-Pivot" + classSimpleName + "Hidden ");
+		div.innerText = elem.value;
+		$listHidden.append(div);
+	} else {
+		document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "Hidden_" + elem.value)?.remove();
+	}
+	document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "_1")?.remove();
+	var $list = document.querySelector("#pageSearchVal-Pivot" + classSimpleName);
+	var $listHidden = document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
+	if($listHidden.children.length > 0) {
 		var pivotVal = '';
-		$listHidden.children().each(function(index, pivotElem) {
+		Array.from($listHidden.children).forEach(function(pivotElem, index) {
 			if(pivotVal)
 				pivotVal += ",";
 			pivotVal += pivotElem.innerText;
 		});
-		$list.append($("<div>")
-				.attr("id", "pageSearchVal-Pivot" + classSimpleName + "_1")
-				.attr("class", "pageSearchVal pageSearchVal-Pivot" + classSimpleName + " ")
-				.text("facet.pivot={!range=r1}" + pivotVal)
-				)
-				;
+		var div = document.createElement('div');
+		div.setAttribute("id", "pageSearchVal-Pivot" + classSimpleName + "_1")
+		div.setAttribute("class", "pageSearchVal pageSearchVal-Pivot" + classSimpleName + " ")
+		div.innerText = "facet.pivot={!range=r1}" + pivotVal;
+		$list.append(div);
 	}
 	searchPage(classSimpleName);
 }
@@ -241,7 +256,7 @@ function facetPivotChange(classSimpleName, elem) {
 function facetFieldListChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	var $listHidden = $("#pageSearchVal-FieldList" + classSimpleName + "Hidden");
-	if($elem.is(":checked")) {
+	if(elem.checked) {
 		$listHidden.append($("<div>")
 				.attr("id", "pageSearchVal-FieldList" + classSimpleName + "Hidden_" + $elem.val())
 				.attr("class", "pageSearchVal-FieldList" + classSimpleName + "Hidden ")
@@ -268,7 +283,7 @@ function facetFieldListChange(classSimpleName, elem) {
 function facetStatsChange(classSimpleName, elem) {
 	var $elem = $(elem);
 	var $list = $("#pageSearchVal-Stats" + classSimpleName);
-	if($elem.is(":checked")) {
+	if(elem.checked) {
 		$list.append($("<div>")
 				.attr("id", "pageSearchVal-Stats" + classSimpleName + "_" + $elem.val())
 				.attr("class", "pageSearchVal pageSearchVal-Stats" + classSimpleName + "_" + $elem.val() + " ")
@@ -854,3 +869,21 @@ return obj;
 //
 //	Plotly.react('htmBodyGraphMapResultPage2', data, layout);
 //}
+
+function quoteattr(s, preserveCR) {
+    preserveCR = preserveCR ? '&#13;' : '\n';
+    return ('' + s) /* Forces the conversion to string. */
+        .replace(/&/g, '&amp;') /* This MUST be the 1st replacement. */
+        .replace(/'/g, '&apos;') /* The 4 other predefined entities, required. */
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        /*
+        You may add other replacements here for HTML only 
+        (but it's not necessary).
+        Or for XML, only if the named entities are defined in its DTD.
+        */
+        .replace(/\r\n/g, preserveCR) /* Must be before the next replacement. */
+        .replace(/[\r\n]/g, preserveCR);
+        ;
+}
