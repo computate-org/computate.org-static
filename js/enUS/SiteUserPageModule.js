@@ -20,6 +20,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqSiteUser_created')?.addEventListener('sl-change', (event) => {
+            fqChange('SiteUser', event.target);
+          });
           document.querySelector('#buttonFacetSiteUser_created')?.addEventListener('click', (event) => {
             facetFieldChange('SiteUser', event.target);
           });
@@ -56,6 +59,9 @@ Promise.all([
           });
 
           // PATCH archived
+          document.querySelector('#fqSiteUser_archived')?.addEventListener('sl-change', (event) => {
+            fqChange('SiteUser', event.target);
+          });
           document.querySelector('#buttonFacetSiteUser_archived')?.addEventListener('click', (event) => {
             facetFieldChange('SiteUser', event.target);
           });

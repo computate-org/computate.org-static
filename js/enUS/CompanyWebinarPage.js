@@ -73,18 +73,6 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterWebinarUrlEmea != null && filterWebinarUrlEmea !== '')
       filters.push({ name: 'fq', value: 'webinarUrlEmea:' + filterWebinarUrlEmea });
 
-    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
-    if(filterResourceUri != null && filterResourceUri !== '')
-      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
-
-    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
-    if(filterTemplateUri != null && filterTemplateUri !== '')
-      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
-
-    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
-    if(filterUserUri != null && filterUserUri !== '')
-      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
-
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
       filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
@@ -144,6 +132,18 @@ function searchCompanyWebinarFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
+    if(filterResourceUri != null && filterResourceUri !== '')
+      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
+
+    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
+    if(filterTemplateUri != null && filterTemplateUri !== '')
+      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
+    if(filterUserUri != null && filterUserUri !== '')
+      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
   }
   return filters;
 }
@@ -367,42 +367,6 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pk, succes
   if(removeWebinarUrlEmea != null && removeWebinarUrlEmea !== '')
     vals['removeWebinarUrlEmea'] = removeWebinarUrlEmea;
 
-  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
-  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value === 'true';
-  var setResourceUri = removeResourceUri ? null : $formValues.querySelector('.setResourceUri')?.value;
-  var addResourceUri = $formValues.querySelector('.addResourceUri')?.value;
-  if(removeResourceUri || setResourceUri != null && setResourceUri !== '')
-    vals['setResourceUri'] = setResourceUri;
-  if(addResourceUri != null && addResourceUri !== '')
-    vals['addResourceUri'] = addResourceUri;
-  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value;
-  if(removeResourceUri != null && removeResourceUri !== '')
-    vals['removeResourceUri'] = removeResourceUri;
-
-  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
-  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value === 'true';
-  var setTemplateUri = removeTemplateUri ? null : $formValues.querySelector('.setTemplateUri')?.value;
-  var addTemplateUri = $formValues.querySelector('.addTemplateUri')?.value;
-  if(removeTemplateUri || setTemplateUri != null && setTemplateUri !== '')
-    vals['setTemplateUri'] = setTemplateUri;
-  if(addTemplateUri != null && addTemplateUri !== '')
-    vals['addTemplateUri'] = addTemplateUri;
-  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value;
-  if(removeTemplateUri != null && removeTemplateUri !== '')
-    vals['removeTemplateUri'] = removeTemplateUri;
-
-  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
-  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value === 'true';
-  var setUserUri = removeUserUri ? null : $formValues.querySelector('.setUserUri')?.value;
-  var addUserUri = $formValues.querySelector('.addUserUri')?.value;
-  if(removeUserUri || setUserUri != null && setUserUri !== '')
-    vals['setUserUri'] = setUserUri;
-  if(addUserUri != null && addUserUri !== '')
-    vals['addUserUri'] = addUserUri;
-  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value;
-  if(removeUserUri != null && removeUserUri !== '')
-    vals['removeUserUri'] = removeUserUri;
-
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
   var setInheritPk = removeInheritPk ? null : $formValues.querySelector('.setInheritPk')?.value;
@@ -438,6 +402,42 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pk, succes
   var removeUserKey = $formValues.querySelector('.removeUserKey')?.value;
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
+
+  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
+  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value === 'true';
+  var setResourceUri = removeResourceUri ? null : $formValues.querySelector('.setResourceUri')?.value;
+  var addResourceUri = $formValues.querySelector('.addResourceUri')?.value;
+  if(removeResourceUri || setResourceUri != null && setResourceUri !== '')
+    vals['setResourceUri'] = setResourceUri;
+  if(addResourceUri != null && addResourceUri !== '')
+    vals['addResourceUri'] = addResourceUri;
+  var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value;
+  if(removeResourceUri != null && removeResourceUri !== '')
+    vals['removeResourceUri'] = removeResourceUri;
+
+  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
+  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value === 'true';
+  var setTemplateUri = removeTemplateUri ? null : $formValues.querySelector('.setTemplateUri')?.value;
+  var addTemplateUri = $formValues.querySelector('.addTemplateUri')?.value;
+  if(removeTemplateUri || setTemplateUri != null && setTemplateUri !== '')
+    vals['setTemplateUri'] = setTemplateUri;
+  if(addTemplateUri != null && addTemplateUri !== '')
+    vals['addTemplateUri'] = addTemplateUri;
+  var removeTemplateUri = $formValues.querySelector('.removeTemplateUri')?.value;
+  if(removeTemplateUri != null && removeTemplateUri !== '')
+    vals['removeTemplateUri'] = removeTemplateUri;
+
+  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
+  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value === 'true';
+  var setUserUri = removeUserUri ? null : $formValues.querySelector('.setUserUri')?.value;
+  var addUserUri = $formValues.querySelector('.addUserUri')?.value;
+  if(removeUserUri || setUserUri != null && setUserUri !== '')
+    vals['setUserUri'] = setUserUri;
+  if(addUserUri != null && addUserUri !== '')
+    vals['addUserUri'] = addUserUri;
+  var removeUserUri = $formValues.querySelector('.removeUserUri')?.value;
+  if(removeUserUri != null && removeUserUri !== '')
+    vals['removeUserUri'] = removeUserUri;
 
   patchCompanyWebinarVals(pk == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pk:' + pk}], vals, target, success, error);
 }
@@ -505,18 +505,6 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterWebinarUrlEmea != null && filterWebinarUrlEmea !== '')
       filters.push({ name: 'fq', value: 'webinarUrlEmea:' + filterWebinarUrlEmea });
 
-    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
-    if(filterResourceUri != null && filterResourceUri !== '')
-      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
-
-    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
-    if(filterTemplateUri != null && filterTemplateUri !== '')
-      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
-
-    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
-    if(filterUserUri != null && filterUserUri !== '')
-      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
-
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
       filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
@@ -576,6 +564,18 @@ function patchCompanyWebinarFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
+    if(filterResourceUri != null && filterResourceUri !== '')
+      filters.push({ name: 'fq', value: 'resourceUri:' + filterResourceUri });
+
+    var filterTemplateUri = $formFilters.querySelector('.valueTemplateUri')?.value;
+    if(filterTemplateUri != null && filterTemplateUri !== '')
+      filters.push({ name: 'fq', value: 'templateUri:' + filterTemplateUri });
+
+    var filterUserUri = $formFilters.querySelector('.valueUserUri')?.value;
+    if(filterUserUri != null && filterUserUri !== '')
+      filters.push({ name: 'fq', value: 'userUri:' + filterUserUri });
   }
   return filters;
 }
@@ -672,18 +672,6 @@ async function postCompanyWebinar($formValues, target, success, error) {
   if(valueWebinarUrlEmea != null && valueWebinarUrlEmea !== '')
     vals['webinarUrlEmea'] = valueWebinarUrlEmea;
 
-  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
-  if(valueResourceUri != null && valueResourceUri !== '')
-    vals['resourceUri'] = valueResourceUri;
-
-  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
-  if(valueTemplateUri != null && valueTemplateUri !== '')
-    vals['templateUri'] = valueTemplateUri;
-
-  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
-  if(valueUserUri != null && valueUserUri !== '')
-    vals['userUri'] = valueUserUri;
-
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
     vals['inheritPk'] = valueInheritPk;
@@ -695,6 +683,18 @@ async function postCompanyWebinar($formValues, target, success, error) {
   var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
+
+  var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
+  if(valueResourceUri != null && valueResourceUri !== '')
+    vals['resourceUri'] = valueResourceUri;
+
+  var valueTemplateUri = $formValues.querySelector('.valueTemplateUri')?.value;
+  if(valueTemplateUri != null && valueTemplateUri !== '')
+    vals['templateUri'] = valueTemplateUri;
+
+  var valueUserUri = $formValues.querySelector('.valueUserUri')?.value;
+  if(valueUserUri != null && valueUserUri !== '')
+    vals['userUri'] = valueUserUri;
 
   fetch(
     '/api/webinar'
@@ -846,9 +846,6 @@ async function websocketCompanyWebinarInner(apiRequest) {
         var inputWebinarUrlAmericas = null;
         var inputWebinarUrlApac = null;
         var inputWebinarUrlEmea = null;
-        var inputResourceUri = null;
-        var inputTemplateUri = null;
-        var inputUserUri = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -864,6 +861,9 @@ async function websocketCompanyWebinarInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputResourceUri = null;
+        var inputTemplateUri = null;
+        var inputUserUri = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('#Page_pk');
@@ -891,12 +891,6 @@ async function websocketCompanyWebinarInner(apiRequest) {
           inputWebinarUrlApac = $response.querySelector('#Page_webinarUrlApac');
         if(vars.includes('webinarUrlEmea'))
           inputWebinarUrlEmea = $response.querySelector('#Page_webinarUrlEmea');
-        if(vars.includes('resourceUri'))
-          inputResourceUri = $response.querySelector('#Page_resourceUri');
-        if(vars.includes('templateUri'))
-          inputTemplateUri = $response.querySelector('#Page_templateUri');
-        if(vars.includes('userUri'))
-          inputUserUri = $response.querySelector('#Page_userUri');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -927,6 +921,12 @@ async function websocketCompanyWebinarInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
+        if(vars.includes('resourceUri'))
+          inputResourceUri = $response.querySelector('#Page_resourceUri');
+        if(vars.includes('templateUri'))
+          inputTemplateUri = $response.querySelector('#Page_templateUri');
+        if(vars.includes('userUri'))
+          inputUserUri = $response.querySelector('#Page_userUri');
           jsWebsocketCompanyWebinar(pk, vars, $response);
 
           window.companyWebinar = JSON.parse($response.querySelector('.pageForm .companyWebinar')?.value);
@@ -1022,27 +1022,6 @@ async function websocketCompanyWebinarInner(apiRequest) {
             item.setAttribute('value', inputWebinarUrlEmea.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_webinarUrlEmea'));
-        }
-
-        if(inputResourceUri) {
-          document.querySelectorAll('#Page_resourceUri').forEach((item, index) => {
-            item.setAttribute('value', inputResourceUri.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_resourceUri'));
-        }
-
-        if(inputTemplateUri) {
-          document.querySelectorAll('#Page_templateUri').forEach((item, index) => {
-            item.setAttribute('value', inputTemplateUri.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_templateUri'));
-        }
-
-        if(inputUserUri) {
-          document.querySelectorAll('#Page_userUri').forEach((item, index) => {
-            item.setAttribute('value', inputUserUri.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_userUri'));
         }
 
         if(inputInheritPk) {
@@ -1148,6 +1127,27 @@ async function websocketCompanyWebinarInner(apiRequest) {
             item.setAttribute('value', inputId.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_id'));
+        }
+
+        if(inputResourceUri) {
+          document.querySelectorAll('#Page_resourceUri').forEach((item, index) => {
+            item.setAttribute('value', inputResourceUri.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_resourceUri'));
+        }
+
+        if(inputTemplateUri) {
+          document.querySelectorAll('#Page_templateUri').forEach((item, index) => {
+            item.setAttribute('value', inputTemplateUri.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_templateUri'));
+        }
+
+        if(inputUserUri) {
+          document.querySelectorAll('#Page_userUri').forEach((item, index) => {
+            item.setAttribute('value', inputUserUri.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_userUri'));
         }
 
           pageGraphCompanyWebinar();

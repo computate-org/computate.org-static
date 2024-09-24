@@ -33,6 +33,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqWeatherObserved_created')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_created')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -69,6 +72,9 @@ Promise.all([
           });
 
           // PATCH archived
+          document.querySelector('#fqWeatherObserved_archived')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_archived')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -99,6 +105,9 @@ Promise.all([
           });
 
           // PATCH name
+          document.querySelector('#fqWeatherObserved_name')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_name')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -126,6 +135,9 @@ Promise.all([
           });
 
           // PATCH description
+          document.querySelector('#fqWeatherObserved_description')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_description')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -153,6 +165,9 @@ Promise.all([
           });
 
           // PATCH address
+          document.querySelector('#fqWeatherObserved_address')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_address')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -180,6 +195,9 @@ Promise.all([
           });
 
           // PATCH location
+          document.querySelector('#fqWeatherObserved_location')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_location')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -207,6 +225,9 @@ Promise.all([
           });
 
           // PATCH areaServed
+          document.querySelector('#fqWeatherObserved_areaServed')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_areaServed')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -234,6 +255,9 @@ Promise.all([
           });
 
           // PATCH airQualityIndex
+          document.querySelector('#fqWeatherObserved_airQualityIndex')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_airQualityIndex')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -261,6 +285,9 @@ Promise.all([
           });
 
           // PATCH airQualityIndexForecast
+          document.querySelector('#fqWeatherObserved_airQualityIndexForecast')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_airQualityIndexForecast')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -288,6 +315,9 @@ Promise.all([
           });
 
           // PATCH aqiMajorPollutant
+          document.querySelector('#fqWeatherObserved_aqiMajorPollutant')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_aqiMajorPollutant')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -315,6 +345,9 @@ Promise.all([
           });
 
           // PATCH aqiMajorPollutantForecast
+          document.querySelector('#fqWeatherObserved_aqiMajorPollutantForecast')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_aqiMajorPollutantForecast')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -342,6 +375,9 @@ Promise.all([
           });
 
           // PATCH atmosphericPressure
+          document.querySelector('#fqWeatherObserved_atmosphericPressure')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_atmosphericPressure')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -369,6 +405,9 @@ Promise.all([
           });
 
           // PATCH pressureTendency
+          document.querySelector('#fqWeatherObserved_pressureTendency')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_pressureTendency')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -396,6 +435,9 @@ Promise.all([
           });
 
           // PATCH gustSpeed
+          document.querySelector('#fqWeatherObserved_gustSpeed')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_gustSpeed')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -423,6 +465,9 @@ Promise.all([
           });
 
           // PATCH windDirection
+          document.querySelector('#fqWeatherObserved_windDirection')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_windDirection')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -450,6 +495,9 @@ Promise.all([
           });
 
           // PATCH windSpeed
+          document.querySelector('#fqWeatherObserved_windSpeed')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_windSpeed')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -477,6 +525,9 @@ Promise.all([
           });
 
           // PATCH precipitation
+          document.querySelector('#fqWeatherObserved_precipitation')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_precipitation')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -504,6 +555,9 @@ Promise.all([
           });
 
           // PATCH precipitationForecast
+          document.querySelector('#fqWeatherObserved_precipitationForecast')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_precipitationForecast')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -531,6 +585,9 @@ Promise.all([
           });
 
           // PATCH relativeHumidity
+          document.querySelector('#fqWeatherObserved_relativeHumidity')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_relativeHumidity')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -558,6 +615,9 @@ Promise.all([
           });
 
           // PATCH relativeHumidityForecast
+          document.querySelector('#fqWeatherObserved_relativeHumidityForecast')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_relativeHumidityForecast')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -585,6 +645,9 @@ Promise.all([
           });
 
           // PATCH snowHeight
+          document.querySelector('#fqWeatherObserved_snowHeight')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_snowHeight')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -612,6 +675,9 @@ Promise.all([
           });
 
           // PATCH airTemperatureForecast
+          document.querySelector('#fqWeatherObserved_airTemperatureForecast')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_airTemperatureForecast')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -639,6 +705,9 @@ Promise.all([
           });
 
           // PATCH airTemperatureTSA
+          document.querySelector('#fqWeatherObserved_airTemperatureTSA')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_airTemperatureTSA')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -666,6 +735,9 @@ Promise.all([
           });
 
           // PATCH feelsLikeTemperature
+          document.querySelector('#fqWeatherObserved_feelsLikeTemperature')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_feelsLikeTemperature')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -693,6 +765,9 @@ Promise.all([
           });
 
           // PATCH temperature
+          document.querySelector('#fqWeatherObserved_temperature')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_temperature')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -720,6 +795,9 @@ Promise.all([
           });
 
           // PATCH solarRadiation
+          document.querySelector('#fqWeatherObserved_solarRadiation')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_solarRadiation')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -747,6 +825,9 @@ Promise.all([
           });
 
           // PATCH streamGauge
+          document.querySelector('#fqWeatherObserved_streamGauge')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_streamGauge')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -774,6 +855,9 @@ Promise.all([
           });
 
           // PATCH uVIndexMax
+          document.querySelector('#fqWeatherObserved_uVIndexMax')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_uVIndexMax')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -801,6 +885,9 @@ Promise.all([
           });
 
           // PATCH visibility
+          document.querySelector('#fqWeatherObserved_visibility')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_visibility')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -828,6 +915,9 @@ Promise.all([
           });
 
           // PATCH weatherType
+          document.querySelector('#fqWeatherObserved_weatherType')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_weatherType')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -855,6 +945,9 @@ Promise.all([
           });
 
           // PATCH dewPoint
+          document.querySelector('#fqWeatherObserved_dewPoint')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_dewPoint')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -882,6 +975,9 @@ Promise.all([
           });
 
           // PATCH diffuseIrradiation
+          document.querySelector('#fqWeatherObserved_diffuseIrradiation')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_diffuseIrradiation')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -909,6 +1005,9 @@ Promise.all([
           });
 
           // PATCH directIrradiation
+          document.querySelector('#fqWeatherObserved_directIrradiation')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_directIrradiation')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -936,6 +1035,9 @@ Promise.all([
           });
 
           // PATCH illuminance
+          document.querySelector('#fqWeatherObserved_illuminance')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_illuminance')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -963,6 +1065,9 @@ Promise.all([
           });
 
           // PATCH ngsildData
+          document.querySelector('#fqWeatherObserved_ngsildData')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_ngsildData')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -990,6 +1095,9 @@ Promise.all([
           });
 
           // PATCH entityId
+          document.querySelector('#fqWeatherObserved_entityId')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_entityId')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1017,6 +1125,9 @@ Promise.all([
           });
 
           // PATCH ngsildTenant
+          document.querySelector('#fqWeatherObserved_ngsildTenant')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_ngsildTenant')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1044,6 +1155,9 @@ Promise.all([
           });
 
           // PATCH ngsildPath
+          document.querySelector('#fqWeatherObserved_ngsildPath')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_ngsildPath')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1071,6 +1185,9 @@ Promise.all([
           });
 
           // PATCH ngsildContext
+          document.querySelector('#fqWeatherObserved_ngsildContext')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_ngsildContext')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1098,6 +1215,9 @@ Promise.all([
           });
 
           // PATCH seeAlso
+          document.querySelector('#fqWeatherObserved_seeAlso')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_seeAlso')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1187,34 +1307,10 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH owner
-          document.querySelector('#buttonFacetWeatherObserved_owner')?.addEventListener('click', (event) => {
-            facetFieldChange('WeatherObserved', event.target);
-          });
-          document.querySelector('#pageFacetPivotWeatherObserved_owner')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('WeatherObserved', event.target);
-          });
-          document.querySelector('#Page_owner')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_owner');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                  , 'setOwner', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_owner')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_owner')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_owner');
-            const valid = form.reportValidity();
-          });
-
           // PATCH alternateName
+          document.querySelector('#fqWeatherObserved_alternateName')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_alternateName')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1242,6 +1338,9 @@ Promise.all([
           });
 
           // PATCH dataProvider
+          document.querySelector('#fqWeatherObserved_dataProvider')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_dataProvider')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1269,6 +1368,9 @@ Promise.all([
           });
 
           // PATCH dateCreated
+          document.querySelector('#fqWeatherObserved_dateCreated')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_dateCreated')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1296,6 +1398,9 @@ Promise.all([
           });
 
           // PATCH dateModified
+          document.querySelector('#fqWeatherObserved_dateModified')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_dateModified')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1323,6 +1428,9 @@ Promise.all([
           });
 
           // PATCH dateObserved
+          document.querySelector('#fqWeatherObserved_dateObserved')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_dateObserved')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1349,7 +1457,40 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH owner
+          document.querySelector('#fqWeatherObserved_owner')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
+          document.querySelector('#buttonFacetWeatherObserved_owner')?.addEventListener('click', (event) => {
+            facetFieldChange('WeatherObserved', event.target);
+          });
+          document.querySelector('#pageFacetPivotWeatherObserved_owner')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('WeatherObserved', event.target);
+          });
+          document.querySelector('#Page_owner')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_owner');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setOwner', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_owner')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_owner')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_owner');
+            const valid = form.reportValidity();
+          });
+
           // PATCH refDevice
+          document.querySelector('#fqWeatherObserved_refDevice')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_refDevice')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1377,6 +1518,9 @@ Promise.all([
           });
 
           // PATCH refPointOfInterest
+          document.querySelector('#fqWeatherObserved_refPointOfInterest')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_refPointOfInterest')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });
@@ -1404,6 +1548,9 @@ Promise.all([
           });
 
           // PATCH source
+          document.querySelector('#fqWeatherObserved_source')?.addEventListener('sl-change', (event) => {
+            fqChange('WeatherObserved', event.target);
+          });
           document.querySelector('#buttonFacetWeatherObserved_source')?.addEventListener('click', (event) => {
             facetFieldChange('WeatherObserved', event.target);
           });

@@ -20,6 +20,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqCompanyWebsite_created')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_created')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });
@@ -101,6 +104,9 @@ Promise.all([
           });
 
           // PATCH name
+          document.querySelector('#fqCompanyWebsite_name')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_name')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });
@@ -128,6 +134,9 @@ Promise.all([
           });
 
           // PATCH description
+          document.querySelector('#fqCompanyWebsite_description')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_description')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });
@@ -155,6 +164,9 @@ Promise.all([
           });
 
           // PATCH uri
+          document.querySelector('#fqCompanyWebsite_uri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_uri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });
@@ -182,6 +194,9 @@ Promise.all([
           });
 
           // PATCH url
+          document.querySelector('#fqCompanyWebsite_url')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_url')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });
@@ -209,6 +224,9 @@ Promise.all([
           });
 
           // PATCH pageId
+          document.querySelector('#fqCompanyWebsite_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });
@@ -320,6 +338,9 @@ Promise.all([
           });
 
           // PATCH resourceUri
+          document.querySelector('#fqCompanyWebsite_resourceUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_resourceUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });
@@ -347,6 +368,9 @@ Promise.all([
           });
 
           // PATCH templateUri
+          document.querySelector('#fqCompanyWebsite_templateUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_templateUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });
@@ -395,6 +419,9 @@ Promise.all([
           });
 
           // PATCH websiteNum
+          document.querySelector('#fqCompanyWebsite_websiteNum')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyWebsite', event.target);
+          });
           document.querySelector('#buttonFacetCompanyWebsite_websiteNum')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyWebsite', event.target);
           });

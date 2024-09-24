@@ -20,6 +20,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqCompanyProduct_created')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_created')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -101,6 +104,9 @@ Promise.all([
           });
 
           // PATCH name
+          document.querySelector('#fqCompanyProduct_name')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_name')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -128,6 +134,9 @@ Promise.all([
           });
 
           // PATCH description
+          document.querySelector('#fqCompanyProduct_description')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_description')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -155,6 +164,9 @@ Promise.all([
           });
 
           // PATCH uri
+          document.querySelector('#fqCompanyProduct_uri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_uri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -182,6 +194,9 @@ Promise.all([
           });
 
           // PATCH url
+          document.querySelector('#fqCompanyProduct_url')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_url')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -209,6 +224,9 @@ Promise.all([
           });
 
           // PATCH pageId
+          document.querySelector('#fqCompanyProduct_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -320,6 +338,9 @@ Promise.all([
           });
 
           // PATCH resourceUri
+          document.querySelector('#fqCompanyProduct_resourceUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_resourceUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -347,6 +368,9 @@ Promise.all([
           });
 
           // PATCH templateUri
+          document.querySelector('#fqCompanyProduct_templateUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_templateUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -374,6 +398,9 @@ Promise.all([
           });
 
           // PATCH emailTemplate
+          document.querySelector('#fqCompanyProduct_emailTemplate')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_emailTemplate')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -401,6 +428,9 @@ Promise.all([
           });
 
           // PATCH downloadUri
+          document.querySelector('#fqCompanyProduct_downloadUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_downloadUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -428,6 +458,9 @@ Promise.all([
           });
 
           // PATCH userUri
+          document.querySelector('#fqCompanyProduct_userUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_userUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -455,6 +488,9 @@ Promise.all([
           });
 
           // PATCH storeUrl
+          document.querySelector('#fqCompanyProduct_storeUrl')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_storeUrl')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });
@@ -503,6 +539,9 @@ Promise.all([
           });
 
           // PATCH productNum
+          document.querySelector('#fqCompanyProduct_productNum')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
           document.querySelector('#buttonFacetCompanyProduct_productNum')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.target);
           });

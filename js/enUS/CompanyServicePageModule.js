@@ -20,6 +20,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqCompanyService_created')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyService', event.target);
+          });
           document.querySelector('#buttonFacetCompanyService_created')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.target);
           });
@@ -101,6 +104,9 @@ Promise.all([
           });
 
           // PATCH name
+          document.querySelector('#fqCompanyService_name')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyService', event.target);
+          });
           document.querySelector('#buttonFacetCompanyService_name')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.target);
           });
@@ -128,6 +134,9 @@ Promise.all([
           });
 
           // PATCH description
+          document.querySelector('#fqCompanyService_description')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyService', event.target);
+          });
           document.querySelector('#buttonFacetCompanyService_description')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.target);
           });
@@ -155,6 +164,9 @@ Promise.all([
           });
 
           // PATCH uri
+          document.querySelector('#fqCompanyService_uri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyService', event.target);
+          });
           document.querySelector('#buttonFacetCompanyService_uri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.target);
           });
@@ -182,6 +194,9 @@ Promise.all([
           });
 
           // PATCH url
+          document.querySelector('#fqCompanyService_url')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyService', event.target);
+          });
           document.querySelector('#buttonFacetCompanyService_url')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.target);
           });
@@ -209,6 +224,9 @@ Promise.all([
           });
 
           // PATCH pageId
+          document.querySelector('#fqCompanyService_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyService', event.target);
+          });
           document.querySelector('#buttonFacetCompanyService_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.target);
           });
@@ -320,6 +338,9 @@ Promise.all([
           });
 
           // PATCH resourceUri
+          document.querySelector('#fqCompanyService_resourceUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyService', event.target);
+          });
           document.querySelector('#buttonFacetCompanyService_resourceUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.target);
           });
@@ -347,6 +368,9 @@ Promise.all([
           });
 
           // PATCH templateUri
+          document.querySelector('#fqCompanyService_templateUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyService', event.target);
+          });
           document.querySelector('#buttonFacetCompanyService_templateUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.target);
           });

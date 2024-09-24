@@ -136,18 +136,17 @@ function qChange(classSimpleName, input, div) {
 }
 
 function fqChange(classSimpleName, elem) {
-	var $elem = $(elem);
-	if($elem.val())
-		$("#pageSearchVal-" + $(elem).attr("id")).text("fq=" + $elem.attr('data-var') + ":" + encodeURIComponent($elem.val()));
+	if(elem.value)
+		document.querySelector("#pageSearchVal-" + elem.getAttribute("id")).innerText = "fq=" + elem.getAttribute('data-var') + ":" + encodeURIComponent(elem.value);
 	else
-		$("#pageSearchVal-" + $(elem).attr("id")).text("");
+		document.querySelector("#pageSearchVal-" + elem.getAttribute("id")).innerText = "";
 	searchPage(classSimpleName);
 }
 
 function fqReplace(classSimpleName, elem) {
-	var $fq = $('#fq' + elem.getAttribute('data-class') + '_' + elem.getAttribute('data-var'));
-	$fq.val(elem.getAttribute('data-val'));
-	fqChange(classSimpleName, $fq[0]);
+	var fqInput = document.querySelector('#fq' + elem.getAttribute('data-class') + '_' + elem.getAttribute('data-var'));
+	fqInput.value = elem.getAttribute('data-val');
+	fqChange(classSimpleName, fqInput);
 }
 
 function facetFieldChange(classSimpleName, elem) {

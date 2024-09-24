@@ -253,10 +253,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
-    var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
-    if(filterOwner != null && filterOwner !== '')
-      filters.push({ name: 'fq', value: 'owner:' + filterOwner });
-
     var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
     if(filterAlternateName != null && filterAlternateName !== '')
       filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
@@ -288,6 +284,10 @@ function searchWeatherObservedFilters($formFilters) {
     var filterDateObserved = $formFilters.querySelector('.valueDateObserved')?.value;
     if(filterDateObserved != null && filterDateObserved !== '')
       filters.push({ name: 'fq', value: 'dateObserved:' + filterDateObserved });
+
+    var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
+    if(filterOwner != null && filterOwner !== '')
+      filters.push({ name: 'fq', value: 'owner:' + filterOwner });
 
     var filterRefDevice = $formFilters.querySelector('.valueRefDevice')?.value;
     if(filterRefDevice != null && filterRefDevice !== '')
@@ -920,18 +920,6 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   if(removeUserKey != null && removeUserKey !== '')
     vals['removeUserKey'] = removeUserKey;
 
-  var valueOwner = $formValues.querySelector('.valueOwner')?.value;
-  var removeOwner = $formValues.querySelector('.removeOwner')?.value === 'true';
-  var setOwner = removeOwner ? null : $formValues.querySelector('.setOwner')?.value;
-  var addOwner = $formValues.querySelector('.addOwner')?.value;
-  if(removeOwner || setOwner != null && setOwner !== '')
-    vals['setOwner'] = JSON.parse(setOwner);
-  if(addOwner != null && addOwner !== '')
-    vals['addOwner'] = addOwner;
-  var removeOwner = $formValues.querySelector('.removeOwner')?.value;
-  if(removeOwner != null && removeOwner !== '')
-    vals['removeOwner'] = removeOwner;
-
   var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
   var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value === 'true';
   var setAlternateName = removeAlternateName ? null : $formValues.querySelector('.setAlternateName')?.value;
@@ -991,6 +979,18 @@ async function patchWeatherObserved($formFilters, $formValues, target, pk, succe
   var removeDateObserved = $formValues.querySelector('.removeDateObserved')?.value;
   if(removeDateObserved != null && removeDateObserved !== '')
     vals['removeDateObserved'] = removeDateObserved;
+
+  var valueOwner = $formValues.querySelector('.valueOwner')?.value;
+  var removeOwner = $formValues.querySelector('.removeOwner')?.value === 'true';
+  var setOwner = removeOwner ? null : $formValues.querySelector('.setOwner')?.value;
+  var addOwner = $formValues.querySelector('.addOwner')?.value;
+  if(removeOwner || setOwner != null && setOwner !== '')
+    vals['setOwner'] = JSON.parse(setOwner);
+  if(addOwner != null && addOwner !== '')
+    vals['addOwner'] = addOwner;
+  var removeOwner = $formValues.querySelector('.removeOwner')?.value;
+  if(removeOwner != null && removeOwner !== '')
+    vals['removeOwner'] = removeOwner;
 
   var valueRefDevice = $formValues.querySelector('.valueRefDevice')?.value;
   var removeRefDevice = $formValues.querySelector('.removeRefDevice')?.value === 'true';
@@ -1274,10 +1274,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
 
-    var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
-    if(filterOwner != null && filterOwner !== '')
-      filters.push({ name: 'fq', value: 'owner:' + filterOwner });
-
     var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
     if(filterAlternateName != null && filterAlternateName !== '')
       filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
@@ -1309,6 +1305,10 @@ function patchWeatherObservedFilters($formFilters) {
     var filterDateObserved = $formFilters.querySelector('.valueDateObserved')?.value;
     if(filterDateObserved != null && filterDateObserved !== '')
       filters.push({ name: 'fq', value: 'dateObserved:' + filterDateObserved });
+
+    var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
+    if(filterOwner != null && filterOwner !== '')
+      filters.push({ name: 'fq', value: 'owner:' + filterOwner });
 
     var filterRefDevice = $formFilters.querySelector('.valueRefDevice')?.value;
     if(filterRefDevice != null && filterRefDevice !== '')
@@ -1549,10 +1549,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueUserKey != null && valueUserKey !== '')
     vals['userKey'] = valueUserKey;
 
-  var valueOwner = $formValues.querySelector('.valueOwner')?.value;
-  if(valueOwner != null && valueOwner !== '')
-    vals['owner'] = JSON.parse(valueOwner);
-
   var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
   if(valueAlternateName != null && valueAlternateName !== '')
     vals['alternateName'] = valueAlternateName;
@@ -1572,6 +1568,10 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueDateObserved = $formValues.querySelector('.valueDateObserved')?.value;
   if(valueDateObserved != null && valueDateObserved !== '')
     vals['dateObserved'] = valueDateObserved;
+
+  var valueOwner = $formValues.querySelector('.valueOwner')?.value;
+  if(valueOwner != null && valueOwner !== '')
+    vals['owner'] = JSON.parse(valueOwner);
 
   var valueRefDevice = $formValues.querySelector('.valueRefDevice')?.value;
   if(valueRefDevice != null && valueRefDevice !== '')
@@ -1811,7 +1811,6 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
-        var inputOwner = null;
         var inputAlternateName = null;
         var inputAreaServedColors = null;
         var inputAreaServedTitles = null;
@@ -1820,6 +1819,7 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputDateCreated = null;
         var inputDateModified = null;
         var inputDateObserved = null;
+        var inputOwner = null;
         var inputRefDevice = null;
         var inputRefPointOfInterest = null;
         var inputSource = null;
@@ -1940,8 +1940,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
-        if(vars.includes('owner'))
-          inputOwner = $response.querySelector('#Page_owner');
         if(vars.includes('alternateName'))
           inputAlternateName = $response.querySelector('#Page_alternateName');
         if(vars.includes('areaServedColors'))
@@ -1958,6 +1956,8 @@ async function websocketWeatherObservedInner(apiRequest) {
           inputDateModified = $response.querySelector('#Page_dateModified');
         if(vars.includes('dateObserved'))
           inputDateObserved = $response.querySelector('#Page_dateObserved');
+        if(vars.includes('owner'))
+          inputOwner = $response.querySelector('#Page_owner');
         if(vars.includes('refDevice'))
           inputRefDevice = $response.querySelector('#Page_refDevice');
         if(vars.includes('refPointOfInterest'))
@@ -2376,13 +2376,6 @@ async function websocketWeatherObservedInner(apiRequest) {
           addGlow(document.querySelector('#Page_id'));
         }
 
-        if(inputOwner) {
-          document.querySelectorAll('#Page_owner').forEach((item, index) => {
-            item.setAttribute('value', inputOwner.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_owner'));
-        }
-
         if(inputAlternateName) {
           document.querySelectorAll('#Page_alternateName').forEach((item, index) => {
             item.setAttribute('value', inputAlternateName.getAttribute('value'));
@@ -2437,6 +2430,13 @@ async function websocketWeatherObservedInner(apiRequest) {
             item.setAttribute('value', inputDateObserved.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_dateObserved'));
+        }
+
+        if(inputOwner) {
+          document.querySelectorAll('#Page_owner').forEach((item, index) => {
+            item.setAttribute('value', inputOwner.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_owner'));
         }
 
         if(inputRefDevice) {

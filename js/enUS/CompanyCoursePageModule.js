@@ -20,6 +20,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqCompanyCourse_created')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_created')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -101,6 +104,9 @@ Promise.all([
           });
 
           // PATCH name
+          document.querySelector('#fqCompanyCourse_name')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_name')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -128,6 +134,9 @@ Promise.all([
           });
 
           // PATCH description
+          document.querySelector('#fqCompanyCourse_description')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_description')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -155,6 +164,9 @@ Promise.all([
           });
 
           // PATCH uri
+          document.querySelector('#fqCompanyCourse_uri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_uri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -182,6 +194,9 @@ Promise.all([
           });
 
           // PATCH url
+          document.querySelector('#fqCompanyCourse_url')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_url')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -209,6 +224,9 @@ Promise.all([
           });
 
           // PATCH price
+          document.querySelector('#fqCompanyCourse_price')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_price')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -236,6 +254,9 @@ Promise.all([
           });
 
           // PATCH pageId
+          document.querySelector('#fqCompanyCourse_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -347,6 +368,9 @@ Promise.all([
           });
 
           // PATCH resourceUri
+          document.querySelector('#fqCompanyCourse_resourceUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_resourceUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -374,6 +398,9 @@ Promise.all([
           });
 
           // PATCH templateUri
+          document.querySelector('#fqCompanyCourse_templateUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_templateUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -401,6 +428,9 @@ Promise.all([
           });
 
           // PATCH emailTemplate
+          document.querySelector('#fqCompanyCourse_emailTemplate')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_emailTemplate')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -428,6 +458,9 @@ Promise.all([
           });
 
           // PATCH downloadUri
+          document.querySelector('#fqCompanyCourse_downloadUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_downloadUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -455,6 +488,9 @@ Promise.all([
           });
 
           // PATCH userUri
+          document.querySelector('#fqCompanyCourse_userUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_userUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -482,6 +518,9 @@ Promise.all([
           });
 
           // PATCH storeUrl
+          document.querySelector('#fqCompanyCourse_storeUrl')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_storeUrl')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });
@@ -530,6 +569,9 @@ Promise.all([
           });
 
           // PATCH courseNum
+          document.querySelector('#fqCompanyCourse_courseNum')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyCourse', event.target);
+          });
           document.querySelector('#buttonFacetCompanyCourse_courseNum')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyCourse', event.target);
           });

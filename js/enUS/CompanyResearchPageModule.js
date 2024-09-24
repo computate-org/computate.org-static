@@ -20,6 +20,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqCompanyResearch_created')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyResearch', event.target);
+          });
           document.querySelector('#buttonFacetCompanyResearch_created')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.target);
           });
@@ -101,6 +104,9 @@ Promise.all([
           });
 
           // PATCH name
+          document.querySelector('#fqCompanyResearch_name')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyResearch', event.target);
+          });
           document.querySelector('#buttonFacetCompanyResearch_name')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.target);
           });
@@ -128,6 +134,9 @@ Promise.all([
           });
 
           // PATCH description
+          document.querySelector('#fqCompanyResearch_description')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyResearch', event.target);
+          });
           document.querySelector('#buttonFacetCompanyResearch_description')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.target);
           });
@@ -155,6 +164,9 @@ Promise.all([
           });
 
           // PATCH uri
+          document.querySelector('#fqCompanyResearch_uri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyResearch', event.target);
+          });
           document.querySelector('#buttonFacetCompanyResearch_uri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.target);
           });
@@ -182,6 +194,9 @@ Promise.all([
           });
 
           // PATCH url
+          document.querySelector('#fqCompanyResearch_url')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyResearch', event.target);
+          });
           document.querySelector('#buttonFacetCompanyResearch_url')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.target);
           });
@@ -209,6 +224,9 @@ Promise.all([
           });
 
           // PATCH pageId
+          document.querySelector('#fqCompanyResearch_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyResearch', event.target);
+          });
           document.querySelector('#buttonFacetCompanyResearch_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.target);
           });
@@ -320,6 +338,9 @@ Promise.all([
           });
 
           // PATCH resourceUri
+          document.querySelector('#fqCompanyResearch_resourceUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyResearch', event.target);
+          });
           document.querySelector('#buttonFacetCompanyResearch_resourceUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.target);
           });
@@ -347,6 +368,9 @@ Promise.all([
           });
 
           // PATCH templateUri
+          document.querySelector('#fqCompanyResearch_templateUri')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyResearch', event.target);
+          });
           document.querySelector('#buttonFacetCompanyResearch_templateUri')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.target);
           });

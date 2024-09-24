@@ -4,6 +4,9 @@ Promise.all([
     ]).then(() => {
 
           // PATCH created
+          document.querySelector('#fqBaseModel_created')?.addEventListener('sl-change', (event) => {
+            fqChange('BaseModel', event.target);
+          });
           document.querySelector('#buttonFacetBaseModel_created')?.addEventListener('click', (event) => {
             facetFieldChange('BaseModel', event.target);
           });
@@ -40,6 +43,9 @@ Promise.all([
           });
 
           // PATCH archived
+          document.querySelector('#fqBaseModel_archived')?.addEventListener('sl-change', (event) => {
+            fqChange('BaseModel', event.target);
+          });
           document.querySelector('#buttonFacetBaseModel_archived')?.addEventListener('click', (event) => {
             facetFieldChange('BaseModel', event.target);
           });

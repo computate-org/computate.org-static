@@ -20,6 +20,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqSitePage_created')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_created')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -101,6 +104,9 @@ Promise.all([
           });
 
           // PATCH pageId
+          document.querySelector('#fqSitePage_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -128,6 +134,9 @@ Promise.all([
           });
 
           // PATCH uri
+          document.querySelector('#fqSitePage_uri')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_uri')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -155,6 +164,9 @@ Promise.all([
           });
 
           // PATCH url
+          document.querySelector('#fqSitePage_url')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_url')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -182,6 +194,9 @@ Promise.all([
           });
 
           // PATCH author
+          document.querySelector('#fqSitePage_author')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_author')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -209,6 +224,9 @@ Promise.all([
           });
 
           // PATCH pageImageUri
+          document.querySelector('#fqSitePage_pageImageUri')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_pageImageUri')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -320,6 +338,9 @@ Promise.all([
           });
 
           // PATCH courseNum
+          document.querySelector('#fqSitePage_courseNum')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_courseNum')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -347,6 +368,9 @@ Promise.all([
           });
 
           // PATCH lessonNum
+          document.querySelector('#fqSitePage_lessonNum')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_lessonNum')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -395,6 +419,9 @@ Promise.all([
           });
 
           // PATCH resourceUri
+          document.querySelector('#fqSitePage_resourceUri')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_resourceUri')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });
@@ -422,6 +449,9 @@ Promise.all([
           });
 
           // PATCH templateUri
+          document.querySelector('#fqSitePage_templateUri')?.addEventListener('sl-change', (event) => {
+            fqChange('SitePage', event.target);
+          });
           document.querySelector('#buttonFacetSitePage_templateUri')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.target);
           });

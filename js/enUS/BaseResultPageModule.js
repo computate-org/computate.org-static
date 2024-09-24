@@ -4,6 +4,9 @@ Promise.all([
     ]).then(() => {
 
           // PATCH created
+          document.querySelector('#fqBaseResult_created')?.addEventListener('sl-change', (event) => {
+            fqChange('BaseResult', event.target);
+          });
           document.querySelector('#buttonFacetBaseResult_created')?.addEventListener('click', (event) => {
             facetFieldChange('BaseResult', event.target);
           });

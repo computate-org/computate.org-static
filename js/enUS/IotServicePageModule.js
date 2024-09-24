@@ -33,6 +33,9 @@ Promise.all([
           });
 
           // PATCH created
+          document.querySelector('#fqIotService_created')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_created')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -69,6 +72,9 @@ Promise.all([
           });
 
           // PATCH archived
+          document.querySelector('#fqIotService_archived')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_archived')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -99,6 +105,9 @@ Promise.all([
           });
 
           // PATCH entityType
+          document.querySelector('#fqIotService_entityType')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_entityType')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -126,6 +135,9 @@ Promise.all([
           });
 
           // PATCH apiKey
+          document.querySelector('#fqIotService_apiKey')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_apiKey')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -153,6 +165,9 @@ Promise.all([
           });
 
           // PATCH uri
+          document.querySelector('#fqIotService_uri')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_uri')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -180,6 +195,9 @@ Promise.all([
           });
 
           // PATCH url
+          document.querySelector('#fqIotService_url')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_url')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -207,6 +225,9 @@ Promise.all([
           });
 
           // PATCH cbHost
+          document.querySelector('#fqIotService_cbHost')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_cbHost')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -234,6 +255,9 @@ Promise.all([
           });
 
           // PATCH resource
+          document.querySelector('#fqIotService_resource')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_resource')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -261,6 +285,9 @@ Promise.all([
           });
 
           // PATCH pageId
+          document.querySelector('#fqIotService_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -288,6 +315,9 @@ Promise.all([
           });
 
           // PATCH attributes
+          document.querySelector('#fqIotService_attributes')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_attributes')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -315,6 +345,9 @@ Promise.all([
           });
 
           // PATCH ngsildTenant
+          document.querySelector('#fqIotService_ngsildTenant')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_ngsildTenant')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -342,6 +375,9 @@ Promise.all([
           });
 
           // PATCH ngsildPath
+          document.querySelector('#fqIotService_ngsildPath')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_ngsildPath')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -432,6 +468,9 @@ Promise.all([
           });
 
           // PATCH resourceUri
+          document.querySelector('#fqIotService_resourceUri')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_resourceUri')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
@@ -459,6 +498,9 @@ Promise.all([
           });
 
           // PATCH templateUri
+          document.querySelector('#fqIotService_templateUri')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
           document.querySelector('#buttonFacetIotService_templateUri')?.addEventListener('click', (event) => {
             facetFieldChange('IotService', event.target);
           });
