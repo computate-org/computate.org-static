@@ -342,13 +342,6 @@ body {
     width: 100%;
   }
 }
-#site-aside-left-close-button {
-  margin-block-start: 1rem;
-  float: right;
-  &::part(base) {
-    border-radius: var(--sl-border-radius-large) var(--sl-border-radius-large) 0 0;
-  }
-}
 /* anchor style */
 a {
   color: var(--sl-color-brand-on-normal);
@@ -403,6 +396,20 @@ html.sl-theme-dark .only-light, html:not(.sl-theme-dark) .only-dark {
 .flex-align-center {
   display: flex;
   align-items: center;
+}
+.padding-2x-large {
+	padding: var(--sl-spacing-2x-large);
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-item-left {
+  flex: 50%;
+}
+.flex-item-right {
+  flex: 50%;
 }
 
 .label-on-left {

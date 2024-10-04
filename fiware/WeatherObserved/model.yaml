@@ -204,13 +204,6 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/Number
         type: Property
-    temperature:
-      type: number
-      description: >+
-        Temperature of the item
-      x-ngsi:
-        model: https://schema.org/Number
-        type: Property
     airTemperatureForecast:
       type: number
       description: >+
@@ -228,6 +221,13 @@ WeatherObserved:
       type: number
       description: >+
         Temperature appreciation of the item
+      x-ngsi:
+        model: https://schema.org/Number
+        type: Property
+    temperature:
+      type: number
+      description: >+
+        Temperature of the item
       x-ngsi:
         model: https://schema.org/Number
         type: Property
@@ -304,18 +304,6 @@ WeatherObserved:
       x-ngsi:
         model: https://schema.org/Number
         type: Property
-    ngsildData:
-      type: object
-      description: >+
-        The NGSILD data with @context from the context broker
-      x-ngsi:
-        type: Property
-    entityId:
-      type: string
-      description: >+
-        A unique ID for this Smart Data Model
-      x-ngsi:
-        type: Property
     ngsildTenant:
       type: string
       description: >+
@@ -326,6 +314,18 @@ WeatherObserved:
       type: string
       description: >+
         The NGSILD-Path or Fiware-ServicePath
+      x-ngsi:
+        type: Property
+    ngsildData:
+      type: object
+      description: >+
+        The NGSILD data with @context from the context broker
+      x-ngsi:
+        type: Property
+    entityId:
+      type: string
+      description: >+
+        A unique ID for this Smart Data Model
       x-ngsi:
         type: Property
     ngsildContext:

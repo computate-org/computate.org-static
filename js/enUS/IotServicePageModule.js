@@ -164,96 +164,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH uri
-          document.querySelector('#fqIotService_uri')?.addEventListener('sl-change', (event) => {
-            fqChange('IotService', event.target);
-          });
-          document.querySelector('#buttonFacetIotService_uri')?.addEventListener('click', (event) => {
-            facetFieldChange('IotService', event.target);
-          });
-          document.querySelector('#pageFacetPivotIotService_uri')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('IotService', event.target);
-          });
-          document.querySelector('#Page_uri')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_uri');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                  , 'setUri', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_uri')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_uri')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_uri');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH url
-          document.querySelector('#fqIotService_url')?.addEventListener('sl-change', (event) => {
-            fqChange('IotService', event.target);
-          });
-          document.querySelector('#buttonFacetIotService_url')?.addEventListener('click', (event) => {
-            facetFieldChange('IotService', event.target);
-          });
-          document.querySelector('#pageFacetPivotIotService_url')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('IotService', event.target);
-          });
-          document.querySelector('#Page_url')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_url');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                  , 'setUrl', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_url')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_url')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_url');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH cbHost
-          document.querySelector('#fqIotService_cbHost')?.addEventListener('sl-change', (event) => {
-            fqChange('IotService', event.target);
-          });
-          document.querySelector('#buttonFacetIotService_cbHost')?.addEventListener('click', (event) => {
-            facetFieldChange('IotService', event.target);
-          });
-          document.querySelector('#pageFacetPivotIotService_cbHost')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('IotService', event.target);
-          });
-          document.querySelector('#Page_cbHost')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_cbHost');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                  , 'setCbHost', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_cbHost')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_cbHost')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_cbHost');
-            const valid = form.reportValidity();
-          });
-
           // PATCH resource
           document.querySelector('#fqIotService_resource')?.addEventListener('sl-change', (event) => {
             fqChange('IotService', event.target);
@@ -281,66 +191,6 @@ Promise.all([
           });
           document.querySelector('#Page_resource')?.addEventListener('sl-blur', (event) => {
             const form = document.querySelector('#PageForm_resource');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH pageId
-          document.querySelector('#fqIotService_pageId')?.addEventListener('sl-change', (event) => {
-            fqChange('IotService', event.target);
-          });
-          document.querySelector('#buttonFacetIotService_pageId')?.addEventListener('click', (event) => {
-            facetFieldChange('IotService', event.target);
-          });
-          document.querySelector('#pageFacetPivotIotService_pageId')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('IotService', event.target);
-          });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_pageId');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                  , 'setPageId', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_pageId');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH attributes
-          document.querySelector('#fqIotService_attributes')?.addEventListener('sl-change', (event) => {
-            fqChange('IotService', event.target);
-          });
-          document.querySelector('#buttonFacetIotService_attributes')?.addEventListener('click', (event) => {
-            facetFieldChange('IotService', event.target);
-          });
-          document.querySelector('#pageFacetPivotIotService_attributes')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('IotService', event.target);
-          });
-          document.querySelector('#Page_attributes')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_attributes');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
-                  , 'setAttributes', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_attributes')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_attributes')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_attributes');
             const valid = form.reportValidity();
           });
 
@@ -401,6 +251,156 @@ Promise.all([
           });
           document.querySelector('#Page_ngsildPath')?.addEventListener('sl-blur', (event) => {
             const form = document.querySelector('#PageForm_ngsildPath');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH cbHost
+          document.querySelector('#fqIotService_cbHost')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
+          document.querySelector('#buttonFacetIotService_cbHost')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_cbHost')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
+          document.querySelector('#Page_cbHost')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_cbHost');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setCbHost', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_cbHost')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_cbHost')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_cbHost');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH attributes
+          document.querySelector('#fqIotService_attributes')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
+          document.querySelector('#buttonFacetIotService_attributes')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_attributes')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
+          document.querySelector('#Page_attributes')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_attributes');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setAttributes', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_attributes')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_attributes')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_attributes');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH pageId
+          document.querySelector('#fqIotService_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
+          document.querySelector('#buttonFacetIotService_pageId')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_pageId')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
+          document.querySelector('#Page_pageId')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_pageId');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setPageId', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_pageId')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_pageId')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_pageId');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH uri
+          document.querySelector('#fqIotService_uri')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
+          document.querySelector('#buttonFacetIotService_uri')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_uri')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
+          document.querySelector('#Page_uri')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_uri');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setUri', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_uri')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_uri')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_uri');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH url
+          document.querySelector('#fqIotService_url')?.addEventListener('sl-change', (event) => {
+            fqChange('IotService', event.target);
+          });
+          document.querySelector('#buttonFacetIotService_url')?.addEventListener('click', (event) => {
+            facetFieldChange('IotService', event.target);
+          });
+          document.querySelector('#pageFacetPivotIotService_url')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('IotService', event.target);
+          });
+          document.querySelector('#Page_url')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_url');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchIotServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pk:' + event.currentTarget.getAttribute('data-pk') }]
+                  , 'setUrl', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_url')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_url')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_url');
             const valid = form.reportValidity();
           });
 

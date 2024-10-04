@@ -49,29 +49,9 @@ function searchIotServiceFilters($formFilters) {
     if(filterApiKey != null && filterApiKey !== '')
       filters.push({ name: 'fq', value: 'apiKey:' + filterApiKey });
 
-    var filterUri = $formFilters.querySelector('.valueUri')?.value;
-    if(filterUri != null && filterUri !== '')
-      filters.push({ name: 'fq', value: 'uri:' + filterUri });
-
-    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
-    if(filterUrl != null && filterUrl !== '')
-      filters.push({ name: 'fq', value: 'url:' + filterUrl });
-
-    var filterCbHost = $formFilters.querySelector('.valueCbHost')?.value;
-    if(filterCbHost != null && filterCbHost !== '')
-      filters.push({ name: 'fq', value: 'cbHost:' + filterCbHost });
-
     var filterResource = $formFilters.querySelector('.valueResource')?.value;
     if(filterResource != null && filterResource !== '')
       filters.push({ name: 'fq', value: 'resource:' + filterResource });
-
-    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
-    if(filterPageId != null && filterPageId !== '')
-      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
-
-    var filterAttributes = $formFilters.querySelector('.valueAttributes')?.value;
-    if(filterAttributes != null && filterAttributes !== '')
-      filters.push({ name: 'fq', value: 'attributes:' + filterAttributes });
 
     var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
     if(filterNgsildTenant != null && filterNgsildTenant !== '')
@@ -80,6 +60,26 @@ function searchIotServiceFilters($formFilters) {
     var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
     if(filterNgsildPath != null && filterNgsildPath !== '')
       filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+
+    var filterCbHost = $formFilters.querySelector('.valueCbHost')?.value;
+    if(filterCbHost != null && filterCbHost !== '')
+      filters.push({ name: 'fq', value: 'cbHost:' + filterCbHost });
+
+    var filterAttributes = $formFilters.querySelector('.valueAttributes')?.value;
+    if(filterAttributes != null && filterAttributes !== '')
+      filters.push({ name: 'fq', value: 'attributes:' + filterAttributes });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+
+    var filterUri = $formFilters.querySelector('.valueUri')?.value;
+    if(filterUri != null && filterUri !== '')
+      filters.push({ name: 'fq', value: 'uri:' + filterUri });
+
+    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
+    if(filterUrl != null && filterUrl !== '')
+      filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -303,42 +303,6 @@ async function patchIotService($formFilters, $formValues, target, pk, success, e
   if(removeApiKey != null && removeApiKey !== '')
     vals['removeApiKey'] = removeApiKey;
 
-  var valueUri = $formValues.querySelector('.valueUri')?.value;
-  var removeUri = $formValues.querySelector('.removeUri')?.value === 'true';
-  var setUri = removeUri ? null : $formValues.querySelector('.setUri')?.value;
-  var addUri = $formValues.querySelector('.addUri')?.value;
-  if(removeUri || setUri != null && setUri !== '')
-    vals['setUri'] = setUri;
-  if(addUri != null && addUri !== '')
-    vals['addUri'] = addUri;
-  var removeUri = $formValues.querySelector('.removeUri')?.value;
-  if(removeUri != null && removeUri !== '')
-    vals['removeUri'] = removeUri;
-
-  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
-  var removeUrl = $formValues.querySelector('.removeUrl')?.value === 'true';
-  var setUrl = removeUrl ? null : $formValues.querySelector('.setUrl')?.value;
-  var addUrl = $formValues.querySelector('.addUrl')?.value;
-  if(removeUrl || setUrl != null && setUrl !== '')
-    vals['setUrl'] = setUrl;
-  if(addUrl != null && addUrl !== '')
-    vals['addUrl'] = addUrl;
-  var removeUrl = $formValues.querySelector('.removeUrl')?.value;
-  if(removeUrl != null && removeUrl !== '')
-    vals['removeUrl'] = removeUrl;
-
-  var valueCbHost = $formValues.querySelector('.valueCbHost')?.value;
-  var removeCbHost = $formValues.querySelector('.removeCbHost')?.value === 'true';
-  var setCbHost = removeCbHost ? null : $formValues.querySelector('.setCbHost')?.value;
-  var addCbHost = $formValues.querySelector('.addCbHost')?.value;
-  if(removeCbHost || setCbHost != null && setCbHost !== '')
-    vals['setCbHost'] = setCbHost;
-  if(addCbHost != null && addCbHost !== '')
-    vals['addCbHost'] = addCbHost;
-  var removeCbHost = $formValues.querySelector('.removeCbHost')?.value;
-  if(removeCbHost != null && removeCbHost !== '')
-    vals['removeCbHost'] = removeCbHost;
-
   var valueResource = $formValues.querySelector('.valueResource')?.value;
   var removeResource = $formValues.querySelector('.removeResource')?.value === 'true';
   var setResource = removeResource ? null : $formValues.querySelector('.setResource')?.value;
@@ -350,30 +314,6 @@ async function patchIotService($formFilters, $formValues, target, pk, success, e
   var removeResource = $formValues.querySelector('.removeResource')?.value;
   if(removeResource != null && removeResource !== '')
     vals['removeResource'] = removeResource;
-
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
-  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
-  var addPageId = $formValues.querySelector('.addPageId')?.value;
-  if(removePageId || setPageId != null && setPageId !== '')
-    vals['setPageId'] = setPageId;
-  if(addPageId != null && addPageId !== '')
-    vals['addPageId'] = addPageId;
-  var removePageId = $formValues.querySelector('.removePageId')?.value;
-  if(removePageId != null && removePageId !== '')
-    vals['removePageId'] = removePageId;
-
-  var valueAttributes = $formValues.querySelector('.valueAttributes')?.value;
-  var removeAttributes = $formValues.querySelector('.removeAttributes')?.value === 'true';
-  var setAttributes = removeAttributes ? null : $formValues.querySelector('.setAttributes')?.value;
-  var addAttributes = $formValues.querySelector('.addAttributes')?.value;
-  if(removeAttributes || setAttributes != null && setAttributes !== '')
-    vals['setAttributes'] = JSON.parse(setAttributes);
-  if(addAttributes != null && addAttributes !== '')
-    vals['addAttributes'] = addAttributes;
-  var removeAttributes = $formValues.querySelector('.removeAttributes')?.value;
-  if(removeAttributes != null && removeAttributes !== '')
-    vals['removeAttributes'] = removeAttributes;
 
   var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
   var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value === 'true';
@@ -398,6 +338,66 @@ async function patchIotService($formFilters, $formValues, target, pk, success, e
   var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value;
   if(removeNgsildPath != null && removeNgsildPath !== '')
     vals['removeNgsildPath'] = removeNgsildPath;
+
+  var valueCbHost = $formValues.querySelector('.valueCbHost')?.value;
+  var removeCbHost = $formValues.querySelector('.removeCbHost')?.value === 'true';
+  var setCbHost = removeCbHost ? null : $formValues.querySelector('.setCbHost')?.value;
+  var addCbHost = $formValues.querySelector('.addCbHost')?.value;
+  if(removeCbHost || setCbHost != null && setCbHost !== '')
+    vals['setCbHost'] = setCbHost;
+  if(addCbHost != null && addCbHost !== '')
+    vals['addCbHost'] = addCbHost;
+  var removeCbHost = $formValues.querySelector('.removeCbHost')?.value;
+  if(removeCbHost != null && removeCbHost !== '')
+    vals['removeCbHost'] = removeCbHost;
+
+  var valueAttributes = $formValues.querySelector('.valueAttributes')?.value;
+  var removeAttributes = $formValues.querySelector('.removeAttributes')?.value === 'true';
+  var setAttributes = removeAttributes ? null : $formValues.querySelector('.setAttributes')?.value;
+  var addAttributes = $formValues.querySelector('.addAttributes')?.value;
+  if(removeAttributes || setAttributes != null && setAttributes !== '')
+    vals['setAttributes'] = JSON.parse(setAttributes);
+  if(addAttributes != null && addAttributes !== '')
+    vals['addAttributes'] = addAttributes;
+  var removeAttributes = $formValues.querySelector('.removeAttributes')?.value;
+  if(removeAttributes != null && removeAttributes !== '')
+    vals['removeAttributes'] = removeAttributes;
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
+  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
+  var addPageId = $formValues.querySelector('.addPageId')?.value;
+  if(removePageId || setPageId != null && setPageId !== '')
+    vals['setPageId'] = setPageId;
+  if(addPageId != null && addPageId !== '')
+    vals['addPageId'] = addPageId;
+  var removePageId = $formValues.querySelector('.removePageId')?.value;
+  if(removePageId != null && removePageId !== '')
+    vals['removePageId'] = removePageId;
+
+  var valueUri = $formValues.querySelector('.valueUri')?.value;
+  var removeUri = $formValues.querySelector('.removeUri')?.value === 'true';
+  var setUri = removeUri ? null : $formValues.querySelector('.setUri')?.value;
+  var addUri = $formValues.querySelector('.addUri')?.value;
+  if(removeUri || setUri != null && setUri !== '')
+    vals['setUri'] = setUri;
+  if(addUri != null && addUri !== '')
+    vals['addUri'] = addUri;
+  var removeUri = $formValues.querySelector('.removeUri')?.value;
+  if(removeUri != null && removeUri !== '')
+    vals['removeUri'] = removeUri;
+
+  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
+  var removeUrl = $formValues.querySelector('.removeUrl')?.value === 'true';
+  var setUrl = removeUrl ? null : $formValues.querySelector('.setUrl')?.value;
+  var addUrl = $formValues.querySelector('.addUrl')?.value;
+  if(removeUrl || setUrl != null && setUrl !== '')
+    vals['setUrl'] = setUrl;
+  if(addUrl != null && addUrl !== '')
+    vals['addUrl'] = addUrl;
+  var removeUrl = $formValues.querySelector('.removeUrl')?.value;
+  if(removeUrl != null && removeUrl !== '')
+    vals['removeUrl'] = removeUrl;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
@@ -513,29 +513,9 @@ function patchIotServiceFilters($formFilters) {
     if(filterApiKey != null && filterApiKey !== '')
       filters.push({ name: 'fq', value: 'apiKey:' + filterApiKey });
 
-    var filterUri = $formFilters.querySelector('.valueUri')?.value;
-    if(filterUri != null && filterUri !== '')
-      filters.push({ name: 'fq', value: 'uri:' + filterUri });
-
-    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
-    if(filterUrl != null && filterUrl !== '')
-      filters.push({ name: 'fq', value: 'url:' + filterUrl });
-
-    var filterCbHost = $formFilters.querySelector('.valueCbHost')?.value;
-    if(filterCbHost != null && filterCbHost !== '')
-      filters.push({ name: 'fq', value: 'cbHost:' + filterCbHost });
-
     var filterResource = $formFilters.querySelector('.valueResource')?.value;
     if(filterResource != null && filterResource !== '')
       filters.push({ name: 'fq', value: 'resource:' + filterResource });
-
-    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
-    if(filterPageId != null && filterPageId !== '')
-      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
-
-    var filterAttributes = $formFilters.querySelector('.valueAttributes')?.value;
-    if(filterAttributes != null && filterAttributes !== '')
-      filters.push({ name: 'fq', value: 'attributes:' + filterAttributes });
 
     var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
     if(filterNgsildTenant != null && filterNgsildTenant !== '')
@@ -544,6 +524,26 @@ function patchIotServiceFilters($formFilters) {
     var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
     if(filterNgsildPath != null && filterNgsildPath !== '')
       filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+
+    var filterCbHost = $formFilters.querySelector('.valueCbHost')?.value;
+    if(filterCbHost != null && filterCbHost !== '')
+      filters.push({ name: 'fq', value: 'cbHost:' + filterCbHost });
+
+    var filterAttributes = $formFilters.querySelector('.valueAttributes')?.value;
+    if(filterAttributes != null && filterAttributes !== '')
+      filters.push({ name: 'fq', value: 'attributes:' + filterAttributes });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
+
+    var filterUri = $formFilters.querySelector('.valueUri')?.value;
+    if(filterUri != null && filterUri !== '')
+      filters.push({ name: 'fq', value: 'uri:' + filterUri });
+
+    var filterUrl = $formFilters.querySelector('.valueUrl')?.value;
+    if(filterUrl != null && filterUrl !== '')
+      filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
@@ -688,29 +688,9 @@ async function postIotService($formValues, target, success, error) {
   if(valueApiKey != null && valueApiKey !== '')
     vals['apiKey'] = valueApiKey;
 
-  var valueUri = $formValues.querySelector('.valueUri')?.value;
-  if(valueUri != null && valueUri !== '')
-    vals['uri'] = valueUri;
-
-  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
-  if(valueUrl != null && valueUrl !== '')
-    vals['url'] = valueUrl;
-
-  var valueCbHost = $formValues.querySelector('.valueCbHost')?.value;
-  if(valueCbHost != null && valueCbHost !== '')
-    vals['cbHost'] = valueCbHost;
-
   var valueResource = $formValues.querySelector('.valueResource')?.value;
   if(valueResource != null && valueResource !== '')
     vals['resource'] = valueResource;
-
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  if(valuePageId != null && valuePageId !== '')
-    vals['pageId'] = valuePageId;
-
-  var valueAttributes = $formValues.querySelector('.valueAttributes')?.value;
-  if(valueAttributes != null && valueAttributes !== '')
-    vals['attributes'] = JSON.parse(valueAttributes);
 
   var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
   if(valueNgsildTenant != null && valueNgsildTenant !== '')
@@ -719,6 +699,26 @@ async function postIotService($formValues, target, success, error) {
   var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
   if(valueNgsildPath != null && valueNgsildPath !== '')
     vals['ngsildPath'] = valueNgsildPath;
+
+  var valueCbHost = $formValues.querySelector('.valueCbHost')?.value;
+  if(valueCbHost != null && valueCbHost !== '')
+    vals['cbHost'] = valueCbHost;
+
+  var valueAttributes = $formValues.querySelector('.valueAttributes')?.value;
+  if(valueAttributes != null && valueAttributes !== '')
+    vals['attributes'] = JSON.parse(valueAttributes);
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  if(valuePageId != null && valuePageId !== '')
+    vals['pageId'] = valuePageId;
+
+  var valueUri = $formValues.querySelector('.valueUri')?.value;
+  if(valueUri != null && valueUri !== '')
+    vals['uri'] = valueUri;
+
+  var valueUrl = $formValues.querySelector('.valueUrl')?.value;
+  if(valueUrl != null && valueUrl !== '')
+    vals['url'] = valueUrl;
 
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
@@ -919,14 +919,14 @@ async function websocketIotServiceInner(apiRequest) {
         var inputArchived = null;
         var inputEntityType = null;
         var inputApiKey = null;
-        var inputUri = null;
-        var inputUrl = null;
-        var inputCbHost = null;
         var inputResource = null;
-        var inputPageId = null;
-        var inputAttributes = null;
         var inputNgsildTenant = null;
         var inputNgsildPath = null;
+        var inputCbHost = null;
+        var inputAttributes = null;
+        var inputPageId = null;
+        var inputUri = null;
+        var inputUrl = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -960,22 +960,22 @@ async function websocketIotServiceInner(apiRequest) {
           inputEntityType = $response.querySelector('#Page_entityType');
         if(vars.includes('apiKey'))
           inputApiKey = $response.querySelector('#Page_apiKey');
-        if(vars.includes('uri'))
-          inputUri = $response.querySelector('#Page_uri');
-        if(vars.includes('url'))
-          inputUrl = $response.querySelector('#Page_url');
-        if(vars.includes('cbHost'))
-          inputCbHost = $response.querySelector('#Page_cbHost');
         if(vars.includes('resource'))
           inputResource = $response.querySelector('#Page_resource');
-        if(vars.includes('pageId'))
-          inputPageId = $response.querySelector('#Page_pageId');
-        if(vars.includes('attributes'))
-          inputAttributes = $response.querySelector('#Page_attributes');
         if(vars.includes('ngsildTenant'))
           inputNgsildTenant = $response.querySelector('#Page_ngsildTenant');
         if(vars.includes('ngsildPath'))
           inputNgsildPath = $response.querySelector('#Page_ngsildPath');
+        if(vars.includes('cbHost'))
+          inputCbHost = $response.querySelector('#Page_cbHost');
+        if(vars.includes('attributes'))
+          inputAttributes = $response.querySelector('#Page_attributes');
+        if(vars.includes('pageId'))
+          inputPageId = $response.querySelector('#Page_pageId');
+        if(vars.includes('uri'))
+          inputUri = $response.querySelector('#Page_uri');
+        if(vars.includes('url'))
+          inputUrl = $response.querySelector('#Page_url');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -1067,46 +1067,11 @@ async function websocketIotServiceInner(apiRequest) {
           addGlow(document.querySelector('#Page_apiKey'));
         }
 
-        if(inputUri) {
-          document.querySelectorAll('#Page_uri').forEach((item, index) => {
-            item.setAttribute('value', inputUri.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_uri'));
-        }
-
-        if(inputUrl) {
-          document.querySelectorAll('#Page_url').forEach((item, index) => {
-            item.setAttribute('value', inputUrl.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_url'));
-        }
-
-        if(inputCbHost) {
-          document.querySelectorAll('#Page_cbHost').forEach((item, index) => {
-            item.setAttribute('value', inputCbHost.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_cbHost'));
-        }
-
         if(inputResource) {
           document.querySelectorAll('#Page_resource').forEach((item, index) => {
             item.setAttribute('value', inputResource.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_resource'));
-        }
-
-        if(inputPageId) {
-          document.querySelectorAll('#Page_pageId').forEach((item, index) => {
-            item.setAttribute('value', inputPageId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_pageId'));
-        }
-
-        if(inputAttributes) {
-          document.querySelectorAll('#Page_attributes').forEach((item, index) => {
-            item.setAttribute('value', inputAttributes.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_attributes'));
         }
 
         if(inputNgsildTenant) {
@@ -1121,6 +1086,41 @@ async function websocketIotServiceInner(apiRequest) {
             item.setAttribute('value', inputNgsildPath.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_ngsildPath'));
+        }
+
+        if(inputCbHost) {
+          document.querySelectorAll('#Page_cbHost').forEach((item, index) => {
+            item.setAttribute('value', inputCbHost.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_cbHost'));
+        }
+
+        if(inputAttributes) {
+          document.querySelectorAll('#Page_attributes').forEach((item, index) => {
+            item.setAttribute('value', inputAttributes.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_attributes'));
+        }
+
+        if(inputPageId) {
+          document.querySelectorAll('#Page_pageId').forEach((item, index) => {
+            item.setAttribute('value', inputPageId.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_pageId'));
+        }
+
+        if(inputUri) {
+          document.querySelectorAll('#Page_uri').forEach((item, index) => {
+            item.setAttribute('value', inputUri.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_uri'));
+        }
+
+        if(inputUrl) {
+          document.querySelectorAll('#Page_url').forEach((item, index) => {
+            item.setAttribute('value', inputUrl.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_url'));
         }
 
         if(inputInheritPk) {

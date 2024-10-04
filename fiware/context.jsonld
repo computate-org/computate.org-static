@@ -34,10 +34,10 @@
     "relativeHumidity" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/relativeHumidity.md",
     "relativeHumidityForecast" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/relativeHumidityForecast.md",
     "snowHeight" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/snowHeight.md",
-    "temperature" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/temperature.md",
     "airTemperatureForecast" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/airTemperatureForecast.md",
     "airTemperatureTSA" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/airTemperatureTSA.md",
     "feelsLikeTemperature" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/feelsLikeTemperature.md",
+    "temperature" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/temperature.md",
     "solarRadiation" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/solarRadiation.md",
     "streamGauge" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/streamGauge.md",
     "uVIndexMax" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/uVIndexMax.md",
@@ -47,10 +47,10 @@
     "diffuseIrradiation" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/diffuseIrradiation.md",
     "directIrradiation" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/directIrradiation.md",
     "illuminance" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/illuminance.md",
-    "ngsildData" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildData.md",
-    "entityId" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/entityId.md",
     "ngsildTenant" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildTenant.md",
     "ngsildPath" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildPath.md",
+    "ngsildData" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildData.md",
+    "entityId" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/entityId.md",
     "ngsildContext" : "https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/attributes/ngsildContext.md"
   }
 }

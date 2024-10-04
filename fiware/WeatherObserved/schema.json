@@ -129,10 +129,6 @@
       "type" : "number",
       "description" : "The snow height observed by generic snow depth measurement sensors, expressed in centimeters"
     },
-    "temperature" : {
-      "type" : "number",
-      "description" : "Temperature of the item"
-    },
     "airTemperatureForecast" : {
       "type" : "number",
       "description" : "Forecasted value of air temperature over a certain duration in future"
@@ -144,6 +140,10 @@
     "feelsLikeTemperature" : {
       "type" : "number",
       "description" : "Temperature appreciation of the item"
+    },
+    "temperature" : {
+      "type" : "number",
+      "description" : "Temperature of the item"
     },
     "solarRadiation" : {
       "type" : "number",
@@ -181,14 +181,6 @@
       "type" : "number",
       "description" : "(https://en.wikipedia.org/wiki/Illuminance) observed measured in lux (lx) or lumens per square metre (cd·sr·m−2)"
     },
-    "ngsildData" : {
-      "type" : "object",
-      "description" : "The NGSILD data with @context from the context broker"
-    },
-    "entityId" : {
-      "type" : "string",
-      "description" : "A unique ID for this Smart Data Model"
-    },
     "ngsildTenant" : {
       "type" : "string",
       "description" : "The NGSILD-Tenant or Fiware-Service"
@@ -196,6 +188,14 @@
     "ngsildPath" : {
       "type" : "string",
       "description" : "The NGSILD-Path or Fiware-ServicePath"
+    },
+    "ngsildData" : {
+      "type" : "object",
+      "description" : "The NGSILD data with @context from the context broker"
+    },
+    "entityId" : {
+      "type" : "string",
+      "description" : "A unique ID for this Smart Data Model"
     },
     "ngsildContext" : {
       "type" : "string",
