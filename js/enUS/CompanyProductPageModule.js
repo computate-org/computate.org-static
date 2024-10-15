@@ -223,36 +223,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH pageId
-          document.querySelector('#fqCompanyProduct_pageId')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_pageId')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_pageId')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_pageId');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
-                  , 'setPageId', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_pageId');
-            const valid = form.reportValidity();
-          });
-
           // PATCH inheritPk
           document.querySelector('#Page_inheritPk')?.addEventListener('sl-change', (event) => {
             const form = document.querySelector('#PageForm_inheritPk');
@@ -334,6 +304,36 @@ Promise.all([
           });
           document.querySelector('#Page_id')?.addEventListener('sl-blur', (event) => {
             const form = document.querySelector('#PageForm_id');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH pageId
+          document.querySelector('#fqCompanyProduct_pageId')?.addEventListener('sl-change', (event) => {
+            fqChange('CompanyProduct', event.target);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_pageId')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.target);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_pageId')?.addEventListener('sl-change', (event) => {
+            facetPivotChange('CompanyProduct', event.target);
+          });
+          document.querySelector('#Page_pageId')?.addEventListener('sl-change', (event) => {
+            const form = document.querySelector('#PageForm_pageId');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'id:' + event.currentTarget.getAttribute('data-id') }]
+                  , 'setPageId', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_pageId')?.addEventListener('sl-focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_pageId')?.addEventListener('sl-blur', (event) => {
+            const form = document.querySelector('#PageForm_pageId');
             const valid = form.reportValidity();
           });
 

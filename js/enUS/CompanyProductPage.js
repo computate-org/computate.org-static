@@ -53,10 +53,6 @@ function searchCompanyProductFilters($formFilters) {
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
-    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
-    if(filterPageId != null && filterPageId !== '')
-      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
-
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
       filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
@@ -116,6 +112,10 @@ function searchCompanyProductFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
 
     var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
     if(filterResourceUri != null && filterResourceUri !== '')
@@ -311,18 +311,6 @@ async function patchCompanyProduct($formFilters, $formValues, target, id, succes
   if(removeUrl != null && removeUrl !== '')
     vals['removeUrl'] = removeUrl;
 
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
-  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
-  var addPageId = $formValues.querySelector('.addPageId')?.value;
-  if(removePageId || setPageId != null && setPageId !== '')
-    vals['setPageId'] = setPageId;
-  if(addPageId != null && addPageId !== '')
-    vals['addPageId'] = addPageId;
-  var removePageId = $formValues.querySelector('.removePageId')?.value;
-  if(removePageId != null && removePageId !== '')
-    vals['removePageId'] = removePageId;
-
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   var removeInheritPk = $formValues.querySelector('.removeInheritPk')?.value === 'true';
   var setInheritPk = removeInheritPk ? null : $formValues.querySelector('.setInheritPk')?.value;
@@ -370,6 +358,18 @@ async function patchCompanyProduct($formFilters, $formValues, target, id, succes
   var removeId = $formValues.querySelector('.removeId')?.value;
   if(removeId != null && removeId !== '')
     vals['removeId'] = removeId;
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
+  var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
+  var addPageId = $formValues.querySelector('.addPageId')?.value;
+  if(removePageId || setPageId != null && setPageId !== '')
+    vals['setPageId'] = setPageId;
+  if(addPageId != null && addPageId !== '')
+    vals['addPageId'] = addPageId;
+  var removePageId = $formValues.querySelector('.removePageId')?.value;
+  if(removePageId != null && removePageId !== '')
+    vals['removePageId'] = removePageId;
 
   var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
   var removeResourceUri = $formValues.querySelector('.removeResourceUri')?.value === 'true';
@@ -513,10 +513,6 @@ function patchCompanyProductFilters($formFilters) {
     if(filterUrl != null && filterUrl !== '')
       filters.push({ name: 'fq', value: 'url:' + filterUrl });
 
-    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
-    if(filterPageId != null && filterPageId !== '')
-      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
-
     var filterInheritPk = $formFilters.querySelector('.valueInheritPk')?.value;
     if(filterInheritPk != null && filterInheritPk !== '')
       filters.push({ name: 'fq', value: 'inheritPk:' + filterInheritPk });
@@ -576,6 +572,10 @@ function patchCompanyProductFilters($formFilters) {
     var filterId = $formFilters.querySelector('.valueId')?.value;
     if(filterId != null && filterId !== '')
       filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
+    if(filterPageId != null && filterPageId !== '')
+      filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
 
     var filterResourceUri = $formFilters.querySelector('.valueResourceUri')?.value;
     if(filterResourceUri != null && filterResourceUri !== '')
@@ -684,10 +684,6 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueUrl != null && valueUrl !== '')
     vals['url'] = valueUrl;
 
-  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
-  if(valuePageId != null && valuePageId !== '')
-    vals['pageId'] = valuePageId;
-
   var valueInheritPk = $formValues.querySelector('.valueInheritPk')?.value;
   if(valueInheritPk != null && valueInheritPk !== '')
     vals['inheritPk'] = valueInheritPk;
@@ -703,6 +699,10 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueId = $formValues.querySelector('.valueId')?.value;
   if(valueId != null && valueId !== '')
     vals['id'] = valueId;
+
+  var valuePageId = $formValues.querySelector('.valuePageId')?.value;
+  if(valuePageId != null && valuePageId !== '')
+    vals['pageId'] = valuePageId;
 
   var valueResourceUri = $formValues.querySelector('.valueResourceUri')?.value;
   if(valueResourceUri != null && valueResourceUri !== '')
@@ -881,7 +881,6 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputDescription = null;
         var inputUri = null;
         var inputUrl = null;
-        var inputPageId = null;
         var inputInheritPk = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
@@ -897,6 +896,7 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputPageUrlPk = null;
         var inputPageUrlApi = null;
         var inputId = null;
+        var inputPageId = null;
         var inputResourceUri = null;
         var inputTemplateUri = null;
         var inputEmailTemplate = null;
@@ -922,8 +922,6 @@ async function websocketCompanyProductInner(apiRequest) {
           inputUri = $response.querySelector('#Page_uri');
         if(vars.includes('url'))
           inputUrl = $response.querySelector('#Page_url');
-        if(vars.includes('pageId'))
-          inputPageId = $response.querySelector('#Page_pageId');
         if(vars.includes('inheritPk'))
           inputInheritPk = $response.querySelector('#Page_inheritPk');
         if(vars.includes('classCanonicalName'))
@@ -954,6 +952,8 @@ async function websocketCompanyProductInner(apiRequest) {
           inputPageUrlApi = $response.querySelector('#Page_pageUrlApi');
         if(vars.includes('id'))
           inputId = $response.querySelector('#Page_id');
+        if(vars.includes('pageId'))
+          inputPageId = $response.querySelector('#Page_pageId');
         if(vars.includes('resourceUri'))
           inputResourceUri = $response.querySelector('#Page_resourceUri');
         if(vars.includes('templateUri'))
@@ -1030,13 +1030,6 @@ async function websocketCompanyProductInner(apiRequest) {
             item.setAttribute('value', inputUrl.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_url'));
-        }
-
-        if(inputPageId) {
-          document.querySelectorAll('#Page_pageId').forEach((item, index) => {
-            item.setAttribute('value', inputPageId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_pageId'));
         }
 
         if(inputInheritPk) {
@@ -1142,6 +1135,13 @@ async function websocketCompanyProductInner(apiRequest) {
             item.setAttribute('value', inputId.getAttribute('value'));
           });
           addGlow(document.querySelector('#Page_id'));
+        }
+
+        if(inputPageId) {
+          document.querySelectorAll('#Page_pageId').forEach((item, index) => {
+            item.setAttribute('value', inputPageId.getAttribute('value'));
+          });
+          addGlow(document.querySelector('#Page_pageId'));
         }
 
         if(inputResourceUri) {
