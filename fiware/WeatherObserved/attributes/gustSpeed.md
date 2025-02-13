@@ -7,4 +7,4 @@ A sudden burst of high-speed wind over the observed average wind speed lasting o
 1.0.0
 
 ## Original Schema
-https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/schema.json
+http://localhost:10200/static/fiware/WeatherObserved/schema.json

@@ -1,19 +1,10 @@
 Promise.all([
-    customElements.whenDefined('sl-button')
-    , customElements.whenDefined('sl-input')
+    customElements.whenDefined('wa-button')
+    , customElements.whenDefined('wa-input')
     ]).then(() => {
 
           // PATCH created
-          document.querySelector('#fqCompanyProduct_created')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_created')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_created')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_created')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_created')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_created');
             const valid = form.checkValidity();
             if(valid) {
@@ -34,10 +25,10 @@ Promise.all([
               }
             }
           });
-          document.querySelector('#Page_created')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_created')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_created')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_created')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_created');
             const valid = form.reportValidity();
           });
@@ -58,25 +49,16 @@ Promise.all([
               }
             }
           });
-          document.querySelector('#Page_archived')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_archived')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_archived')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_archived')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_archived');
             const valid = form.reportValidity();
           });
 
           // PATCH name
-          document.querySelector('#fqCompanyProduct_name')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_name')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_name')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_name')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_name')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_name');
             const valid = form.checkValidity();
             if(valid) {
@@ -88,25 +70,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_name')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_name')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_name')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_name')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_name');
             const valid = form.reportValidity();
           });
 
           // PATCH description
-          document.querySelector('#fqCompanyProduct_description')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_description')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_description')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_description')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_description')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_description');
             const valid = form.checkValidity();
             if(valid) {
@@ -118,25 +91,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_description')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_description')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_description')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_description')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_description');
             const valid = form.reportValidity();
           });
 
           // PATCH price
-          document.querySelector('#fqCompanyProduct_price')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_price')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_price')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_price')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_price')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_price');
             const valid = form.checkValidity();
             if(valid) {
@@ -148,25 +112,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_price')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_price')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_price')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_price')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_price');
             const valid = form.reportValidity();
           });
 
           // PATCH pageId
-          document.querySelector('#fqCompanyProduct_pageId')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_pageId')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_pageId')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_pageId')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.checkValidity();
             if(valid) {
@@ -178,25 +133,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_pageId')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_pageId')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.reportValidity();
           });
 
           // PATCH displayPage
-          document.querySelector('#fqCompanyProduct_displayPage')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_displayPage')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_displayPage')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_displayPage')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_displayPage')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_displayPage');
             const valid = form.checkValidity();
             if(valid) {
@@ -208,16 +154,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_displayPage')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_displayPage')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_displayPage')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_displayPage')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_displayPage');
             const valid = form.reportValidity();
           });
 
           // PATCH title
-          document.querySelector('#Page_title')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_title')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_title');
             const valid = form.checkValidity();
             if(valid) {
@@ -229,16 +175,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_title')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_title')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_title')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_title')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_title');
             const valid = form.reportValidity();
           });
 
           // PATCH solrId
-          document.querySelector('#Page_solrId')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_solrId')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_solrId');
             const valid = form.checkValidity();
             if(valid) {
@@ -250,25 +196,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_solrId')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_solrId')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_solrId')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_solrId')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_solrId');
             const valid = form.reportValidity();
           });
 
           // PATCH emailTemplate
-          document.querySelector('#fqCompanyProduct_emailTemplate')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_emailTemplate')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_emailTemplate')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_emailTemplate')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_emailTemplate')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_emailTemplate');
             const valid = form.checkValidity();
             if(valid) {
@@ -280,25 +217,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_emailTemplate')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_emailTemplate')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_emailTemplate')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_emailTemplate')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_emailTemplate');
             const valid = form.reportValidity();
           });
 
           // PATCH storeUrl
-          document.querySelector('#fqCompanyProduct_storeUrl')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_storeUrl')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_storeUrl')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_storeUrl')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_storeUrl')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_storeUrl');
             const valid = form.checkValidity();
             if(valid) {
@@ -310,25 +238,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_storeUrl')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_storeUrl')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_storeUrl')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_storeUrl')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_storeUrl');
             const valid = form.reportValidity();
           });
 
           // PATCH downloadUri
-          document.querySelector('#fqCompanyProduct_downloadUri')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_downloadUri')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_downloadUri')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_downloadUri')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_downloadUri')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_downloadUri');
             const valid = form.checkValidity();
             if(valid) {
@@ -340,25 +259,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_downloadUri')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_downloadUri')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_downloadUri')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_downloadUri')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_downloadUri');
             const valid = form.reportValidity();
           });
 
           // PATCH productNum
-          document.querySelector('#fqCompanyProduct_productNum')?.addEventListener('sl-change', (event) => {
-            fqChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_productNum')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_productNum')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('CompanyProduct', event.target);
-          });
-          document.querySelector('#Page_productNum')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_productNum')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_productNum');
             const valid = form.checkValidity();
             if(valid) {
@@ -370,10 +280,10 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_productNum')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_productNum')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_productNum')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_productNum')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_productNum');
             const valid = form.reportValidity();
           });

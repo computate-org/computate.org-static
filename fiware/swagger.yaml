@@ -2,7 +2,7 @@
 components:
   schemas:
     WeatherObserved
-      "$ref": "https://raw.githubusercontent.com/computate-org/computate.org-static/main/fiware/WeatherObserved/model.yaml#/WeatherObserved
+      "$ref": "http://localhost:10200/static/fiware/WeatherObserved/model.yaml#/WeatherObserved
 info:
   description: >+
 openapi: "3.0.0"
@@ -26,11 +26,11 @@ paths:
                 keyvalues:
                   summary: "Key-Values Pairs"
                   value:
-                    - "$ref": "https://raw.githubusercontent.com/computate-org/computate.org-static/main/fiware/WeatherObserved/examples/example.json"
+                    - "$ref": "http://localhost:10200/static/fiware/WeatherObserved/examples/example.json"
                 normalized:
                   summary: "Normalized NGSI-LD"
                   value:
-                    - $ref: "https://raw.githubusercontent.com/computate-org/computate.org-static/main/fiware/WeatherObserved/examples/example-normalized.json"
+                    - $ref: "http://localhost:10200/static/fiware/WeatherObserved/examples/example-normalized.json"
           description: OK
       tags:
         - ngsi-ld

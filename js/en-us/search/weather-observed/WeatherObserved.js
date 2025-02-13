@@ -45,10 +45,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
-    var filterAddress = $formFilters.querySelector('.valueAddress')?.value;
-    if(filterAddress != null && filterAddress !== '')
-      filters.push({ name: 'fq', value: 'address:' + filterAddress });
-
     var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
     if(filterLocation != null && filterLocation !== '')
       filters.push({ name: 'fq', value: 'location:' + filterLocation });
@@ -57,6 +53,30 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterAreaServed != null && filterAreaServed !== '')
       filters.push({ name: 'fq', value: 'areaServed:' + filterAreaServed });
 
+    var filterId = $formFilters.querySelector('.valueId')?.value;
+    if(filterId != null && filterId !== '')
+      filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
+    if(filterNgsildTenant != null && filterNgsildTenant !== '')
+      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
+
+    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
+    if(filterNgsildPath != null && filterNgsildPath !== '')
+      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+
+    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
+    if(filterNgsildContext != null && filterNgsildContext !== '')
+      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
+
+    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
+    if(filterNgsildData != null && filterNgsildData !== '')
+      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
+
+    var filterAddress = $formFilters.querySelector('.valueAddress')?.value;
+    if(filterAddress != null && filterAddress !== '')
+      filters.push({ name: 'fq', value: 'address:' + filterAddress });
+
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -64,6 +84,18 @@ function searchWeatherObservedFilters($formFilters) {
     var filterAirQualityIndexForecast = $formFilters.querySelector('.valueAirQualityIndexForecast')?.value;
     if(filterAirQualityIndexForecast != null && filterAirQualityIndexForecast !== '')
       filters.push({ name: 'fq', value: 'airQualityIndexForecast:' + filterAirQualityIndexForecast });
+
+    var filterAirTemperatureForecast = $formFilters.querySelector('.valueAirTemperatureForecast')?.value;
+    if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
+      filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
+
+    var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
+    if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
+      filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
+
+    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
+    if(filterAlternateName != null && filterAlternateName !== '')
+      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
 
     var filterAqiMajorPollutant = $formFilters.querySelector('.valueAqiMajorPollutant')?.value;
     if(filterAqiMajorPollutant != null && filterAqiMajorPollutant !== '')
@@ -77,77 +109,21 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterAtmosphericPressure != null && filterAtmosphericPressure !== '')
       filters.push({ name: 'fq', value: 'atmosphericPressure:' + filterAtmosphericPressure });
 
-    var filterPressureTendency = $formFilters.querySelector('.valuePressureTendency')?.value;
-    if(filterPressureTendency != null && filterPressureTendency !== '')
-      filters.push({ name: 'fq', value: 'pressureTendency:' + filterPressureTendency });
+    var filterDataProvider = $formFilters.querySelector('.valueDataProvider')?.value;
+    if(filterDataProvider != null && filterDataProvider !== '')
+      filters.push({ name: 'fq', value: 'dataProvider:' + filterDataProvider });
 
-    var filterGustSpeed = $formFilters.querySelector('.valueGustSpeed')?.value;
-    if(filterGustSpeed != null && filterGustSpeed !== '')
-      filters.push({ name: 'fq', value: 'gustSpeed:' + filterGustSpeed });
+    var filterDateCreated = $formFilters.querySelector('.valueDateCreated')?.value;
+    if(filterDateCreated != null && filterDateCreated !== '')
+      filters.push({ name: 'fq', value: 'dateCreated:' + filterDateCreated });
 
-    var filterWindDirection = $formFilters.querySelector('.valueWindDirection')?.value;
-    if(filterWindDirection != null && filterWindDirection !== '')
-      filters.push({ name: 'fq', value: 'windDirection:' + filterWindDirection });
+    var filterDateModified = $formFilters.querySelector('.valueDateModified')?.value;
+    if(filterDateModified != null && filterDateModified !== '')
+      filters.push({ name: 'fq', value: 'dateModified:' + filterDateModified });
 
-    var filterWindSpeed = $formFilters.querySelector('.valueWindSpeed')?.value;
-    if(filterWindSpeed != null && filterWindSpeed !== '')
-      filters.push({ name: 'fq', value: 'windSpeed:' + filterWindSpeed });
-
-    var filterPrecipitation = $formFilters.querySelector('.valuePrecipitation')?.value;
-    if(filterPrecipitation != null && filterPrecipitation !== '')
-      filters.push({ name: 'fq', value: 'precipitation:' + filterPrecipitation });
-
-    var filterPrecipitationForecast = $formFilters.querySelector('.valuePrecipitationForecast')?.value;
-    if(filterPrecipitationForecast != null && filterPrecipitationForecast !== '')
-      filters.push({ name: 'fq', value: 'precipitationForecast:' + filterPrecipitationForecast });
-
-    var filterRelativeHumidity = $formFilters.querySelector('.valueRelativeHumidity')?.value;
-    if(filterRelativeHumidity != null && filterRelativeHumidity !== '')
-      filters.push({ name: 'fq', value: 'relativeHumidity:' + filterRelativeHumidity });
-
-    var filterRelativeHumidityForecast = $formFilters.querySelector('.valueRelativeHumidityForecast')?.value;
-    if(filterRelativeHumidityForecast != null && filterRelativeHumidityForecast !== '')
-      filters.push({ name: 'fq', value: 'relativeHumidityForecast:' + filterRelativeHumidityForecast });
-
-    var filterSnowHeight = $formFilters.querySelector('.valueSnowHeight')?.value;
-    if(filterSnowHeight != null && filterSnowHeight !== '')
-      filters.push({ name: 'fq', value: 'snowHeight:' + filterSnowHeight });
-
-    var filterAirTemperatureForecast = $formFilters.querySelector('.valueAirTemperatureForecast')?.value;
-    if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
-      filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
-
-    var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
-    if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
-      filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
-
-    var filterFeelsLikeTemperature = $formFilters.querySelector('.valueFeelsLikeTemperature')?.value;
-    if(filterFeelsLikeTemperature != null && filterFeelsLikeTemperature !== '')
-      filters.push({ name: 'fq', value: 'feelsLikeTemperature:' + filterFeelsLikeTemperature });
-
-    var filterTemperature = $formFilters.querySelector('.valueTemperature')?.value;
-    if(filterTemperature != null && filterTemperature !== '')
-      filters.push({ name: 'fq', value: 'temperature:' + filterTemperature });
-
-    var filterSolarRadiation = $formFilters.querySelector('.valueSolarRadiation')?.value;
-    if(filterSolarRadiation != null && filterSolarRadiation !== '')
-      filters.push({ name: 'fq', value: 'solarRadiation:' + filterSolarRadiation });
-
-    var filterStreamGauge = $formFilters.querySelector('.valueStreamGauge')?.value;
-    if(filterStreamGauge != null && filterStreamGauge !== '')
-      filters.push({ name: 'fq', value: 'streamGauge:' + filterStreamGauge });
-
-    var filterUVIndexMax = $formFilters.querySelector('.valueUVIndexMax')?.value;
-    if(filterUVIndexMax != null && filterUVIndexMax !== '')
-      filters.push({ name: 'fq', value: 'uVIndexMax:' + filterUVIndexMax });
-
-    var filterVisibility = $formFilters.querySelector('.valueVisibility')?.value;
-    if(filterVisibility != null && filterVisibility !== '')
-      filters.push({ name: 'fq', value: 'visibility:' + filterVisibility });
-
-    var filterWeatherType = $formFilters.querySelector('.valueWeatherType')?.value;
-    if(filterWeatherType != null && filterWeatherType !== '')
-      filters.push({ name: 'fq', value: 'weatherType:' + filterWeatherType });
+    var filterDateObserved = $formFilters.querySelector('.valueDateObserved')?.value;
+    if(filterDateObserved != null && filterDateObserved !== '')
+      filters.push({ name: 'fq', value: 'dateObserved:' + filterDateObserved });
 
     var filterDewPoint = $formFilters.querySelector('.valueDewPoint')?.value;
     if(filterDewPoint != null && filterDewPoint !== '')
@@ -161,37 +137,93 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterDirectIrradiation != null && filterDirectIrradiation !== '')
       filters.push({ name: 'fq', value: 'directIrradiation:' + filterDirectIrradiation });
 
+    var filterFeelsLikeTemperature = $formFilters.querySelector('.valueFeelsLikeTemperature')?.value;
+    if(filterFeelsLikeTemperature != null && filterFeelsLikeTemperature !== '')
+      filters.push({ name: 'fq', value: 'feelsLikeTemperature:' + filterFeelsLikeTemperature });
+
+    var filterGustSpeed = $formFilters.querySelector('.valueGustSpeed')?.value;
+    if(filterGustSpeed != null && filterGustSpeed !== '')
+      filters.push({ name: 'fq', value: 'gustSpeed:' + filterGustSpeed });
+
     var filterIlluminance = $formFilters.querySelector('.valueIlluminance')?.value;
     if(filterIlluminance != null && filterIlluminance !== '')
       filters.push({ name: 'fq', value: 'illuminance:' + filterIlluminance });
 
-    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
-    if(filterNgsildTenant != null && filterNgsildTenant !== '')
-      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
+    var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
+    if(filterOwner != null && filterOwner !== '')
+      filters.push({ name: 'fq', value: 'owner:' + filterOwner });
 
-    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
-    if(filterNgsildPath != null && filterNgsildPath !== '')
-      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+    var filterPrecipitation = $formFilters.querySelector('.valuePrecipitation')?.value;
+    if(filterPrecipitation != null && filterPrecipitation !== '')
+      filters.push({ name: 'fq', value: 'precipitation:' + filterPrecipitation });
 
-    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
-    if(filterNgsildData != null && filterNgsildData !== '')
-      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
+    var filterPrecipitationForecast = $formFilters.querySelector('.valuePrecipitationForecast')?.value;
+    if(filterPrecipitationForecast != null && filterPrecipitationForecast !== '')
+      filters.push({ name: 'fq', value: 'precipitationForecast:' + filterPrecipitationForecast });
+
+    var filterPressureTendency = $formFilters.querySelector('.valuePressureTendency')?.value;
+    if(filterPressureTendency != null && filterPressureTendency !== '')
+      filters.push({ name: 'fq', value: 'pressureTendency:' + filterPressureTendency });
+
+    var filterRefDevice = $formFilters.querySelector('.valueRefDevice')?.value;
+    if(filterRefDevice != null && filterRefDevice !== '')
+      filters.push({ name: 'fq', value: 'refDevice:' + filterRefDevice });
+
+    var filterRefPointOfInterest = $formFilters.querySelector('.valueRefPointOfInterest')?.value;
+    if(filterRefPointOfInterest != null && filterRefPointOfInterest !== '')
+      filters.push({ name: 'fq', value: 'refPointOfInterest:' + filterRefPointOfInterest });
+
+    var filterRelativeHumidity = $formFilters.querySelector('.valueRelativeHumidity')?.value;
+    if(filterRelativeHumidity != null && filterRelativeHumidity !== '')
+      filters.push({ name: 'fq', value: 'relativeHumidity:' + filterRelativeHumidity });
+
+    var filterRelativeHumidityForecast = $formFilters.querySelector('.valueRelativeHumidityForecast')?.value;
+    if(filterRelativeHumidityForecast != null && filterRelativeHumidityForecast !== '')
+      filters.push({ name: 'fq', value: 'relativeHumidityForecast:' + filterRelativeHumidityForecast });
 
     var filterSeeAlso = $formFilters.querySelector('.valueSeeAlso')?.value;
     if(filterSeeAlso != null && filterSeeAlso !== '')
       filters.push({ name: 'fq', value: 'seeAlso:' + filterSeeAlso });
 
-    var filterEntityId = $formFilters.querySelector('.valueEntityId')?.value;
-    if(filterEntityId != null && filterEntityId !== '')
-      filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
+    var filterSnowHeight = $formFilters.querySelector('.valueSnowHeight')?.value;
+    if(filterSnowHeight != null && filterSnowHeight !== '')
+      filters.push({ name: 'fq', value: 'snowHeight:' + filterSnowHeight });
 
-    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
-    if(filterNgsildContext != null && filterNgsildContext !== '')
-      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
+    var filterSolarRadiation = $formFilters.querySelector('.valueSolarRadiation')?.value;
+    if(filterSolarRadiation != null && filterSolarRadiation !== '')
+      filters.push({ name: 'fq', value: 'solarRadiation:' + filterSolarRadiation });
 
-    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
-    if(filterDisplayPage != null && filterDisplayPage !== '')
-      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
+    var filterSource = $formFilters.querySelector('.valueSource')?.value;
+    if(filterSource != null && filterSource !== '')
+      filters.push({ name: 'fq', value: 'source:' + filterSource });
+
+    var filterStreamGauge = $formFilters.querySelector('.valueStreamGauge')?.value;
+    if(filterStreamGauge != null && filterStreamGauge !== '')
+      filters.push({ name: 'fq', value: 'streamGauge:' + filterStreamGauge });
+
+    var filterTemperature = $formFilters.querySelector('.valueTemperature')?.value;
+    if(filterTemperature != null && filterTemperature !== '')
+      filters.push({ name: 'fq', value: 'temperature:' + filterTemperature });
+
+    var filterUVIndexMax = $formFilters.querySelector('.valueUVIndexMax')?.value;
+    if(filterUVIndexMax != null && filterUVIndexMax !== '')
+      filters.push({ name: 'fq', value: 'uVIndexMax:' + filterUVIndexMax });
+
+    var filterVisibility = $formFilters.querySelector('.valueVisibility')?.value;
+    if(filterVisibility != null && filterVisibility !== '')
+      filters.push({ name: 'fq', value: 'visibility:' + filterVisibility });
+
+    var filterWeatherType = $formFilters.querySelector('.valueWeatherType')?.value;
+    if(filterWeatherType != null && filterWeatherType !== '')
+      filters.push({ name: 'fq', value: 'weatherType:' + filterWeatherType });
+
+    var filterWindDirection = $formFilters.querySelector('.valueWindDirection')?.value;
+    if(filterWindDirection != null && filterWindDirection !== '')
+      filters.push({ name: 'fq', value: 'windDirection:' + filterWindDirection });
+
+    var filterWindSpeed = $formFilters.querySelector('.valueWindSpeed')?.value;
+    if(filterWindSpeed != null && filterWindSpeed !== '')
+      filters.push({ name: 'fq', value: 'windSpeed:' + filterWindSpeed });
 
     var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
@@ -221,9 +253,17 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
 
+    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
+    if(filterDisplayPage != null && filterDisplayPage !== '')
+      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
+
     var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
     if(filterEditPage != null && filterEditPage !== '')
       filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
+    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
+    if(filterUserPage != null && filterUserPage !== '')
+      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
 
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
@@ -237,10 +277,6 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
-    if(filterAlternateName != null && filterAlternateName !== '')
-      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
-
     var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
     if(filterAreaServedColors != null && filterAreaServedColors !== '')
       filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
@@ -253,37 +289,9 @@ function searchWeatherObservedFilters($formFilters) {
     if(filterAreaServedLinks != null && filterAreaServedLinks !== '')
       filters.push({ name: 'fq', value: 'areaServedLinks:' + filterAreaServedLinks });
 
-    var filterDataProvider = $formFilters.querySelector('.valueDataProvider')?.value;
-    if(filterDataProvider != null && filterDataProvider !== '')
-      filters.push({ name: 'fq', value: 'dataProvider:' + filterDataProvider });
-
-    var filterDateCreated = $formFilters.querySelector('.valueDateCreated')?.value;
-    if(filterDateCreated != null && filterDateCreated !== '')
-      filters.push({ name: 'fq', value: 'dateCreated:' + filterDateCreated });
-
-    var filterDateModified = $formFilters.querySelector('.valueDateModified')?.value;
-    if(filterDateModified != null && filterDateModified !== '')
-      filters.push({ name: 'fq', value: 'dateModified:' + filterDateModified });
-
-    var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
-    if(filterOwner != null && filterOwner !== '')
-      filters.push({ name: 'fq', value: 'owner:' + filterOwner });
-
-    var filterRefPointOfInterest = $formFilters.querySelector('.valueRefPointOfInterest')?.value;
-    if(filterRefPointOfInterest != null && filterRefPointOfInterest !== '')
-      filters.push({ name: 'fq', value: 'refPointOfInterest:' + filterRefPointOfInterest });
-
-    var filterDateObserved = $formFilters.querySelector('.valueDateObserved')?.value;
-    if(filterDateObserved != null && filterDateObserved !== '')
-      filters.push({ name: 'fq', value: 'dateObserved:' + filterDateObserved });
-
-    var filterRefDevice = $formFilters.querySelector('.valueRefDevice')?.value;
-    if(filterRefDevice != null && filterRefDevice !== '')
-      filters.push({ name: 'fq', value: 'refDevice:' + filterRefDevice });
-
-    var filterSource = $formFilters.querySelector('.valueSource')?.value;
-    if(filterSource != null && filterSource !== '')
-      filters.push({ name: 'fq', value: 'source:' + filterSource });
+    var filterEntityShortId = $formFilters.querySelector('.valueEntityShortId')?.value;
+    if(filterEntityShortId != null && filterEntityShortId !== '')
+      filters.push({ name: 'fq', value: 'entityShortId:' + filterEntityShortId });
   }
   return filters;
 }
@@ -326,7 +334,7 @@ function suggestWeatherObservedObjectSuggest($formFilters, $list, target) {
 
 async function getWeatherObserved(pk) {
   fetch(
-    '/en-us/api/weather-observed/' + entityId
+    '/en-us/api/weather-observed/' + entityShortId
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -340,7 +348,7 @@ async function getWeatherObserved(pk) {
 
 // PATCH //
 
-async function patchWeatherObserved($formFilters, $formValues, target, entityId, success, error) {
+async function patchWeatherObserved($formFilters, $formValues, target, entityShortId, success, error) {
   var filters = patchWeatherObservedFilters($formFilters);
 
   var vals = {};
@@ -424,18 +432,6 @@ async function patchWeatherObserved($formFilters, $formValues, target, entityId,
   if(removeDescription != null && removeDescription !== '')
     vals['removeDescription'] = removeDescription;
 
-  var valueAddress = $formValues.querySelector('.valueAddress')?.value;
-  var removeAddress = $formValues.querySelector('.removeAddress')?.value === 'true';
-  var setAddress = removeAddress ? null : $formValues.querySelector('.setAddress')?.value;
-  var addAddress = $formValues.querySelector('.addAddress')?.value;
-  if(removeAddress || setAddress != null && setAddress !== '')
-    vals['setAddress'] = JSON.parse(setAddress);
-  if(addAddress != null && addAddress !== '')
-    vals['addAddress'] = addAddress;
-  var removeAddress = $formValues.querySelector('.removeAddress')?.value;
-  if(removeAddress != null && removeAddress !== '')
-    vals['removeAddress'] = removeAddress;
-
   var valueLocation = $formValues.querySelector('.valueLocation')?.value;
   var removeLocation = $formValues.querySelector('.removeLocation')?.value === 'true';
   var setLocation = removeLocation ? null : $formValues.querySelector('.setLocation')?.value;
@@ -460,6 +456,78 @@ async function patchWeatherObserved($formFilters, $formValues, target, entityId,
   if(removeAreaServed != null && removeAreaServed !== '')
     vals['removeAreaServed'] = removeAreaServed;
 
+  var valueId = $formValues.querySelector('.valueId')?.value;
+  var removeId = $formValues.querySelector('.removeId')?.value === 'true';
+  var setId = removeId ? null : $formValues.querySelector('.setId')?.value;
+  var addId = $formValues.querySelector('.addId')?.value;
+  if(removeId || setId != null && setId !== '')
+    vals['setId'] = setId;
+  if(addId != null && addId !== '')
+    vals['addId'] = addId;
+  var removeId = $formValues.querySelector('.removeId')?.value;
+  if(removeId != null && removeId !== '')
+    vals['removeId'] = removeId;
+
+  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
+  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value === 'true';
+  var setNgsildTenant = removeNgsildTenant ? null : $formValues.querySelector('.setNgsildTenant')?.value;
+  var addNgsildTenant = $formValues.querySelector('.addNgsildTenant')?.value;
+  if(removeNgsildTenant || setNgsildTenant != null && setNgsildTenant !== '')
+    vals['setNgsildTenant'] = setNgsildTenant;
+  if(addNgsildTenant != null && addNgsildTenant !== '')
+    vals['addNgsildTenant'] = addNgsildTenant;
+  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value;
+  if(removeNgsildTenant != null && removeNgsildTenant !== '')
+    vals['removeNgsildTenant'] = removeNgsildTenant;
+
+  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
+  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value === 'true';
+  var setNgsildPath = removeNgsildPath ? null : $formValues.querySelector('.setNgsildPath')?.value;
+  var addNgsildPath = $formValues.querySelector('.addNgsildPath')?.value;
+  if(removeNgsildPath || setNgsildPath != null && setNgsildPath !== '')
+    vals['setNgsildPath'] = setNgsildPath;
+  if(addNgsildPath != null && addNgsildPath !== '')
+    vals['addNgsildPath'] = addNgsildPath;
+  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value;
+  if(removeNgsildPath != null && removeNgsildPath !== '')
+    vals['removeNgsildPath'] = removeNgsildPath;
+
+  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
+  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value === 'true';
+  var setNgsildContext = removeNgsildContext ? null : $formValues.querySelector('.setNgsildContext')?.value;
+  var addNgsildContext = $formValues.querySelector('.addNgsildContext')?.value;
+  if(removeNgsildContext || setNgsildContext != null && setNgsildContext !== '')
+    vals['setNgsildContext'] = setNgsildContext;
+  if(addNgsildContext != null && addNgsildContext !== '')
+    vals['addNgsildContext'] = addNgsildContext;
+  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value;
+  if(removeNgsildContext != null && removeNgsildContext !== '')
+    vals['removeNgsildContext'] = removeNgsildContext;
+
+  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
+  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value === 'true';
+  var setNgsildData = removeNgsildData ? null : $formValues.querySelector('.setNgsildData')?.value;
+  var addNgsildData = $formValues.querySelector('.addNgsildData')?.value;
+  if(removeNgsildData || setNgsildData != null && setNgsildData !== '')
+    vals['setNgsildData'] = JSON.parse(setNgsildData);
+  if(addNgsildData != null && addNgsildData !== '')
+    vals['addNgsildData'] = addNgsildData;
+  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value;
+  if(removeNgsildData != null && removeNgsildData !== '')
+    vals['removeNgsildData'] = removeNgsildData;
+
+  var valueAddress = $formValues.querySelector('.valueAddress')?.value;
+  var removeAddress = $formValues.querySelector('.removeAddress')?.value === 'true';
+  var setAddress = removeAddress ? null : $formValues.querySelector('.setAddress')?.value;
+  var addAddress = $formValues.querySelector('.addAddress')?.value;
+  if(removeAddress || setAddress != null && setAddress !== '')
+    vals['setAddress'] = JSON.parse(setAddress);
+  if(addAddress != null && addAddress !== '')
+    vals['addAddress'] = addAddress;
+  var removeAddress = $formValues.querySelector('.removeAddress')?.value;
+  if(removeAddress != null && removeAddress !== '')
+    vals['removeAddress'] = removeAddress;
+
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   var removeAirQualityIndex = $formValues.querySelector('.removeAirQualityIndex')?.value === 'true';
   var setAirQualityIndex = removeAirQualityIndex ? null : $formValues.querySelector('.setAirQualityIndex')?.value;
@@ -483,6 +551,42 @@ async function patchWeatherObserved($formFilters, $formValues, target, entityId,
   var removeAirQualityIndexForecast = $formValues.querySelector('.removeAirQualityIndexForecast')?.value;
   if(removeAirQualityIndexForecast != null && removeAirQualityIndexForecast !== '')
     vals['removeAirQualityIndexForecast'] = removeAirQualityIndexForecast;
+
+  var valueAirTemperatureForecast = $formValues.querySelector('.valueAirTemperatureForecast')?.value;
+  var removeAirTemperatureForecast = $formValues.querySelector('.removeAirTemperatureForecast')?.value === 'true';
+  var setAirTemperatureForecast = removeAirTemperatureForecast ? null : $formValues.querySelector('.setAirTemperatureForecast')?.value;
+  var addAirTemperatureForecast = $formValues.querySelector('.addAirTemperatureForecast')?.value;
+  if(removeAirTemperatureForecast || setAirTemperatureForecast != null && setAirTemperatureForecast !== '')
+    vals['setAirTemperatureForecast'] = setAirTemperatureForecast;
+  if(addAirTemperatureForecast != null && addAirTemperatureForecast !== '')
+    vals['addAirTemperatureForecast'] = addAirTemperatureForecast;
+  var removeAirTemperatureForecast = $formValues.querySelector('.removeAirTemperatureForecast')?.value;
+  if(removeAirTemperatureForecast != null && removeAirTemperatureForecast !== '')
+    vals['removeAirTemperatureForecast'] = removeAirTemperatureForecast;
+
+  var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
+  var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value === 'true';
+  var setAirTemperatureTSA = removeAirTemperatureTSA ? null : $formValues.querySelector('.setAirTemperatureTSA')?.value;
+  var addAirTemperatureTSA = $formValues.querySelector('.addAirTemperatureTSA')?.value;
+  if(removeAirTemperatureTSA || setAirTemperatureTSA != null && setAirTemperatureTSA !== '')
+    vals['setAirTemperatureTSA'] = JSON.parse(setAirTemperatureTSA);
+  if(addAirTemperatureTSA != null && addAirTemperatureTSA !== '')
+    vals['addAirTemperatureTSA'] = addAirTemperatureTSA;
+  var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value;
+  if(removeAirTemperatureTSA != null && removeAirTemperatureTSA !== '')
+    vals['removeAirTemperatureTSA'] = removeAirTemperatureTSA;
+
+  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
+  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value === 'true';
+  var setAlternateName = removeAlternateName ? null : $formValues.querySelector('.setAlternateName')?.value;
+  var addAlternateName = $formValues.querySelector('.addAlternateName')?.value;
+  if(removeAlternateName || setAlternateName != null && setAlternateName !== '')
+    vals['setAlternateName'] = setAlternateName;
+  if(addAlternateName != null && addAlternateName !== '')
+    vals['addAlternateName'] = addAlternateName;
+  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value;
+  if(removeAlternateName != null && removeAlternateName !== '')
+    vals['removeAlternateName'] = removeAlternateName;
 
   var valueAqiMajorPollutant = $formValues.querySelector('.valueAqiMajorPollutant')?.value;
   var removeAqiMajorPollutant = $formValues.querySelector('.removeAqiMajorPollutant')?.value === 'true';
@@ -520,221 +624,53 @@ async function patchWeatherObserved($formFilters, $formValues, target, entityId,
   if(removeAtmosphericPressure != null && removeAtmosphericPressure !== '')
     vals['removeAtmosphericPressure'] = removeAtmosphericPressure;
 
-  var valuePressureTendency = $formValues.querySelector('.valuePressureTendency')?.value;
-  var removePressureTendency = $formValues.querySelector('.removePressureTendency')?.value === 'true';
-  var setPressureTendency = removePressureTendency ? null : $formValues.querySelector('.setPressureTendency')?.value;
-  var addPressureTendency = $formValues.querySelector('.addPressureTendency')?.value;
-  if(removePressureTendency || setPressureTendency != null && setPressureTendency !== '')
-    vals['setPressureTendency'] = JSON.parse(setPressureTendency);
-  if(addPressureTendency != null && addPressureTendency !== '')
-    vals['addPressureTendency'] = addPressureTendency;
-  var removePressureTendency = $formValues.querySelector('.removePressureTendency')?.value;
-  if(removePressureTendency != null && removePressureTendency !== '')
-    vals['removePressureTendency'] = removePressureTendency;
+  var valueDataProvider = $formValues.querySelector('.valueDataProvider')?.value;
+  var removeDataProvider = $formValues.querySelector('.removeDataProvider')?.value === 'true';
+  var setDataProvider = removeDataProvider ? null : $formValues.querySelector('.setDataProvider')?.value;
+  var addDataProvider = $formValues.querySelector('.addDataProvider')?.value;
+  if(removeDataProvider || setDataProvider != null && setDataProvider !== '')
+    vals['setDataProvider'] = setDataProvider;
+  if(addDataProvider != null && addDataProvider !== '')
+    vals['addDataProvider'] = addDataProvider;
+  var removeDataProvider = $formValues.querySelector('.removeDataProvider')?.value;
+  if(removeDataProvider != null && removeDataProvider !== '')
+    vals['removeDataProvider'] = removeDataProvider;
 
-  var valueGustSpeed = $formValues.querySelector('.valueGustSpeed')?.value;
-  var removeGustSpeed = $formValues.querySelector('.removeGustSpeed')?.value === 'true';
-  var setGustSpeed = removeGustSpeed ? null : $formValues.querySelector('.setGustSpeed')?.value;
-  var addGustSpeed = $formValues.querySelector('.addGustSpeed')?.value;
-  if(removeGustSpeed || setGustSpeed != null && setGustSpeed !== '')
-    vals['setGustSpeed'] = setGustSpeed;
-  if(addGustSpeed != null && addGustSpeed !== '')
-    vals['addGustSpeed'] = addGustSpeed;
-  var removeGustSpeed = $formValues.querySelector('.removeGustSpeed')?.value;
-  if(removeGustSpeed != null && removeGustSpeed !== '')
-    vals['removeGustSpeed'] = removeGustSpeed;
+  var valueDateCreated = $formValues.querySelector('.valueDateCreated')?.value;
+  var removeDateCreated = $formValues.querySelector('.removeDateCreated')?.value === 'true';
+  var setDateCreated = removeDateCreated ? null : $formValues.querySelector('.setDateCreated')?.value;
+  var addDateCreated = $formValues.querySelector('.addDateCreated')?.value;
+  if(removeDateCreated || setDateCreated != null && setDateCreated !== '')
+    vals['setDateCreated'] = setDateCreated;
+  if(addDateCreated != null && addDateCreated !== '')
+    vals['addDateCreated'] = addDateCreated;
+  var removeDateCreated = $formValues.querySelector('.removeDateCreated')?.value;
+  if(removeDateCreated != null && removeDateCreated !== '')
+    vals['removeDateCreated'] = removeDateCreated;
 
-  var valueWindDirection = $formValues.querySelector('.valueWindDirection')?.value;
-  var removeWindDirection = $formValues.querySelector('.removeWindDirection')?.value === 'true';
-  var setWindDirection = removeWindDirection ? null : $formValues.querySelector('.setWindDirection')?.value;
-  var addWindDirection = $formValues.querySelector('.addWindDirection')?.value;
-  if(removeWindDirection || setWindDirection != null && setWindDirection !== '')
-    vals['setWindDirection'] = setWindDirection;
-  if(addWindDirection != null && addWindDirection !== '')
-    vals['addWindDirection'] = addWindDirection;
-  var removeWindDirection = $formValues.querySelector('.removeWindDirection')?.value;
-  if(removeWindDirection != null && removeWindDirection !== '')
-    vals['removeWindDirection'] = removeWindDirection;
+  var valueDateModified = $formValues.querySelector('.valueDateModified')?.value;
+  var removeDateModified = $formValues.querySelector('.removeDateModified')?.value === 'true';
+  var setDateModified = removeDateModified ? null : $formValues.querySelector('.setDateModified')?.value;
+  var addDateModified = $formValues.querySelector('.addDateModified')?.value;
+  if(removeDateModified || setDateModified != null && setDateModified !== '')
+    vals['setDateModified'] = setDateModified;
+  if(addDateModified != null && addDateModified !== '')
+    vals['addDateModified'] = addDateModified;
+  var removeDateModified = $formValues.querySelector('.removeDateModified')?.value;
+  if(removeDateModified != null && removeDateModified !== '')
+    vals['removeDateModified'] = removeDateModified;
 
-  var valueWindSpeed = $formValues.querySelector('.valueWindSpeed')?.value;
-  var removeWindSpeed = $formValues.querySelector('.removeWindSpeed')?.value === 'true';
-  var setWindSpeed = removeWindSpeed ? null : $formValues.querySelector('.setWindSpeed')?.value;
-  var addWindSpeed = $formValues.querySelector('.addWindSpeed')?.value;
-  if(removeWindSpeed || setWindSpeed != null && setWindSpeed !== '')
-    vals['setWindSpeed'] = setWindSpeed;
-  if(addWindSpeed != null && addWindSpeed !== '')
-    vals['addWindSpeed'] = addWindSpeed;
-  var removeWindSpeed = $formValues.querySelector('.removeWindSpeed')?.value;
-  if(removeWindSpeed != null && removeWindSpeed !== '')
-    vals['removeWindSpeed'] = removeWindSpeed;
-
-  var valuePrecipitation = $formValues.querySelector('.valuePrecipitation')?.value;
-  var removePrecipitation = $formValues.querySelector('.removePrecipitation')?.value === 'true';
-  var setPrecipitation = removePrecipitation ? null : $formValues.querySelector('.setPrecipitation')?.value;
-  var addPrecipitation = $formValues.querySelector('.addPrecipitation')?.value;
-  if(removePrecipitation || setPrecipitation != null && setPrecipitation !== '')
-    vals['setPrecipitation'] = setPrecipitation;
-  if(addPrecipitation != null && addPrecipitation !== '')
-    vals['addPrecipitation'] = addPrecipitation;
-  var removePrecipitation = $formValues.querySelector('.removePrecipitation')?.value;
-  if(removePrecipitation != null && removePrecipitation !== '')
-    vals['removePrecipitation'] = removePrecipitation;
-
-  var valuePrecipitationForecast = $formValues.querySelector('.valuePrecipitationForecast')?.value;
-  var removePrecipitationForecast = $formValues.querySelector('.removePrecipitationForecast')?.value === 'true';
-  var setPrecipitationForecast = removePrecipitationForecast ? null : $formValues.querySelector('.setPrecipitationForecast')?.value;
-  var addPrecipitationForecast = $formValues.querySelector('.addPrecipitationForecast')?.value;
-  if(removePrecipitationForecast || setPrecipitationForecast != null && setPrecipitationForecast !== '')
-    vals['setPrecipitationForecast'] = setPrecipitationForecast;
-  if(addPrecipitationForecast != null && addPrecipitationForecast !== '')
-    vals['addPrecipitationForecast'] = addPrecipitationForecast;
-  var removePrecipitationForecast = $formValues.querySelector('.removePrecipitationForecast')?.value;
-  if(removePrecipitationForecast != null && removePrecipitationForecast !== '')
-    vals['removePrecipitationForecast'] = removePrecipitationForecast;
-
-  var valueRelativeHumidity = $formValues.querySelector('.valueRelativeHumidity')?.value;
-  var removeRelativeHumidity = $formValues.querySelector('.removeRelativeHumidity')?.value === 'true';
-  var setRelativeHumidity = removeRelativeHumidity ? null : $formValues.querySelector('.setRelativeHumidity')?.value;
-  var addRelativeHumidity = $formValues.querySelector('.addRelativeHumidity')?.value;
-  if(removeRelativeHumidity || setRelativeHumidity != null && setRelativeHumidity !== '')
-    vals['setRelativeHumidity'] = setRelativeHumidity;
-  if(addRelativeHumidity != null && addRelativeHumidity !== '')
-    vals['addRelativeHumidity'] = addRelativeHumidity;
-  var removeRelativeHumidity = $formValues.querySelector('.removeRelativeHumidity')?.value;
-  if(removeRelativeHumidity != null && removeRelativeHumidity !== '')
-    vals['removeRelativeHumidity'] = removeRelativeHumidity;
-
-  var valueRelativeHumidityForecast = $formValues.querySelector('.valueRelativeHumidityForecast')?.value;
-  var removeRelativeHumidityForecast = $formValues.querySelector('.removeRelativeHumidityForecast')?.value === 'true';
-  var setRelativeHumidityForecast = removeRelativeHumidityForecast ? null : $formValues.querySelector('.setRelativeHumidityForecast')?.value;
-  var addRelativeHumidityForecast = $formValues.querySelector('.addRelativeHumidityForecast')?.value;
-  if(removeRelativeHumidityForecast || setRelativeHumidityForecast != null && setRelativeHumidityForecast !== '')
-    vals['setRelativeHumidityForecast'] = setRelativeHumidityForecast;
-  if(addRelativeHumidityForecast != null && addRelativeHumidityForecast !== '')
-    vals['addRelativeHumidityForecast'] = addRelativeHumidityForecast;
-  var removeRelativeHumidityForecast = $formValues.querySelector('.removeRelativeHumidityForecast')?.value;
-  if(removeRelativeHumidityForecast != null && removeRelativeHumidityForecast !== '')
-    vals['removeRelativeHumidityForecast'] = removeRelativeHumidityForecast;
-
-  var valueSnowHeight = $formValues.querySelector('.valueSnowHeight')?.value;
-  var removeSnowHeight = $formValues.querySelector('.removeSnowHeight')?.value === 'true';
-  var setSnowHeight = removeSnowHeight ? null : $formValues.querySelector('.setSnowHeight')?.value;
-  var addSnowHeight = $formValues.querySelector('.addSnowHeight')?.value;
-  if(removeSnowHeight || setSnowHeight != null && setSnowHeight !== '')
-    vals['setSnowHeight'] = setSnowHeight;
-  if(addSnowHeight != null && addSnowHeight !== '')
-    vals['addSnowHeight'] = addSnowHeight;
-  var removeSnowHeight = $formValues.querySelector('.removeSnowHeight')?.value;
-  if(removeSnowHeight != null && removeSnowHeight !== '')
-    vals['removeSnowHeight'] = removeSnowHeight;
-
-  var valueAirTemperatureForecast = $formValues.querySelector('.valueAirTemperatureForecast')?.value;
-  var removeAirTemperatureForecast = $formValues.querySelector('.removeAirTemperatureForecast')?.value === 'true';
-  var setAirTemperatureForecast = removeAirTemperatureForecast ? null : $formValues.querySelector('.setAirTemperatureForecast')?.value;
-  var addAirTemperatureForecast = $formValues.querySelector('.addAirTemperatureForecast')?.value;
-  if(removeAirTemperatureForecast || setAirTemperatureForecast != null && setAirTemperatureForecast !== '')
-    vals['setAirTemperatureForecast'] = setAirTemperatureForecast;
-  if(addAirTemperatureForecast != null && addAirTemperatureForecast !== '')
-    vals['addAirTemperatureForecast'] = addAirTemperatureForecast;
-  var removeAirTemperatureForecast = $formValues.querySelector('.removeAirTemperatureForecast')?.value;
-  if(removeAirTemperatureForecast != null && removeAirTemperatureForecast !== '')
-    vals['removeAirTemperatureForecast'] = removeAirTemperatureForecast;
-
-  var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
-  var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value === 'true';
-  var setAirTemperatureTSA = removeAirTemperatureTSA ? null : $formValues.querySelector('.setAirTemperatureTSA')?.value;
-  var addAirTemperatureTSA = $formValues.querySelector('.addAirTemperatureTSA')?.value;
-  if(removeAirTemperatureTSA || setAirTemperatureTSA != null && setAirTemperatureTSA !== '')
-    vals['setAirTemperatureTSA'] = JSON.parse(setAirTemperatureTSA);
-  if(addAirTemperatureTSA != null && addAirTemperatureTSA !== '')
-    vals['addAirTemperatureTSA'] = addAirTemperatureTSA;
-  var removeAirTemperatureTSA = $formValues.querySelector('.removeAirTemperatureTSA')?.value;
-  if(removeAirTemperatureTSA != null && removeAirTemperatureTSA !== '')
-    vals['removeAirTemperatureTSA'] = removeAirTemperatureTSA;
-
-  var valueFeelsLikeTemperature = $formValues.querySelector('.valueFeelsLikeTemperature')?.value;
-  var removeFeelsLikeTemperature = $formValues.querySelector('.removeFeelsLikeTemperature')?.value === 'true';
-  var setFeelsLikeTemperature = removeFeelsLikeTemperature ? null : $formValues.querySelector('.setFeelsLikeTemperature')?.value;
-  var addFeelsLikeTemperature = $formValues.querySelector('.addFeelsLikeTemperature')?.value;
-  if(removeFeelsLikeTemperature || setFeelsLikeTemperature != null && setFeelsLikeTemperature !== '')
-    vals['setFeelsLikeTemperature'] = setFeelsLikeTemperature;
-  if(addFeelsLikeTemperature != null && addFeelsLikeTemperature !== '')
-    vals['addFeelsLikeTemperature'] = addFeelsLikeTemperature;
-  var removeFeelsLikeTemperature = $formValues.querySelector('.removeFeelsLikeTemperature')?.value;
-  if(removeFeelsLikeTemperature != null && removeFeelsLikeTemperature !== '')
-    vals['removeFeelsLikeTemperature'] = removeFeelsLikeTemperature;
-
-  var valueTemperature = $formValues.querySelector('.valueTemperature')?.value;
-  var removeTemperature = $formValues.querySelector('.removeTemperature')?.value === 'true';
-  var setTemperature = removeTemperature ? null : $formValues.querySelector('.setTemperature')?.value;
-  var addTemperature = $formValues.querySelector('.addTemperature')?.value;
-  if(removeTemperature || setTemperature != null && setTemperature !== '')
-    vals['setTemperature'] = setTemperature;
-  if(addTemperature != null && addTemperature !== '')
-    vals['addTemperature'] = addTemperature;
-  var removeTemperature = $formValues.querySelector('.removeTemperature')?.value;
-  if(removeTemperature != null && removeTemperature !== '')
-    vals['removeTemperature'] = removeTemperature;
-
-  var valueSolarRadiation = $formValues.querySelector('.valueSolarRadiation')?.value;
-  var removeSolarRadiation = $formValues.querySelector('.removeSolarRadiation')?.value === 'true';
-  var setSolarRadiation = removeSolarRadiation ? null : $formValues.querySelector('.setSolarRadiation')?.value;
-  var addSolarRadiation = $formValues.querySelector('.addSolarRadiation')?.value;
-  if(removeSolarRadiation || setSolarRadiation != null && setSolarRadiation !== '')
-    vals['setSolarRadiation'] = setSolarRadiation;
-  if(addSolarRadiation != null && addSolarRadiation !== '')
-    vals['addSolarRadiation'] = addSolarRadiation;
-  var removeSolarRadiation = $formValues.querySelector('.removeSolarRadiation')?.value;
-  if(removeSolarRadiation != null && removeSolarRadiation !== '')
-    vals['removeSolarRadiation'] = removeSolarRadiation;
-
-  var valueStreamGauge = $formValues.querySelector('.valueStreamGauge')?.value;
-  var removeStreamGauge = $formValues.querySelector('.removeStreamGauge')?.value === 'true';
-  var setStreamGauge = removeStreamGauge ? null : $formValues.querySelector('.setStreamGauge')?.value;
-  var addStreamGauge = $formValues.querySelector('.addStreamGauge')?.value;
-  if(removeStreamGauge || setStreamGauge != null && setStreamGauge !== '')
-    vals['setStreamGauge'] = setStreamGauge;
-  if(addStreamGauge != null && addStreamGauge !== '')
-    vals['addStreamGauge'] = addStreamGauge;
-  var removeStreamGauge = $formValues.querySelector('.removeStreamGauge')?.value;
-  if(removeStreamGauge != null && removeStreamGauge !== '')
-    vals['removeStreamGauge'] = removeStreamGauge;
-
-  var valueUVIndexMax = $formValues.querySelector('.valueUVIndexMax')?.value;
-  var removeUVIndexMax = $formValues.querySelector('.removeUVIndexMax')?.value === 'true';
-  var setUVIndexMax = removeUVIndexMax ? null : $formValues.querySelector('.setUVIndexMax')?.value;
-  var addUVIndexMax = $formValues.querySelector('.addUVIndexMax')?.value;
-  if(removeUVIndexMax || setUVIndexMax != null && setUVIndexMax !== '')
-    vals['setUVIndexMax'] = setUVIndexMax;
-  if(addUVIndexMax != null && addUVIndexMax !== '')
-    vals['addUVIndexMax'] = addUVIndexMax;
-  var removeUVIndexMax = $formValues.querySelector('.removeUVIndexMax')?.value;
-  if(removeUVIndexMax != null && removeUVIndexMax !== '')
-    vals['removeUVIndexMax'] = removeUVIndexMax;
-
-  var valueVisibility = $formValues.querySelector('.valueVisibility')?.value;
-  var removeVisibility = $formValues.querySelector('.removeVisibility')?.value === 'true';
-  var setVisibility = removeVisibility ? null : $formValues.querySelector('.setVisibility')?.value;
-  var addVisibility = $formValues.querySelector('.addVisibility')?.value;
-  if(removeVisibility || setVisibility != null && setVisibility !== '')
-    vals['setVisibility'] = JSON.parse(setVisibility);
-  if(addVisibility != null && addVisibility !== '')
-    vals['addVisibility'] = addVisibility;
-  var removeVisibility = $formValues.querySelector('.removeVisibility')?.value;
-  if(removeVisibility != null && removeVisibility !== '')
-    vals['removeVisibility'] = removeVisibility;
-
-  var valueWeatherType = $formValues.querySelector('.valueWeatherType')?.value;
-  var removeWeatherType = $formValues.querySelector('.removeWeatherType')?.value === 'true';
-  var setWeatherType = removeWeatherType ? null : $formValues.querySelector('.setWeatherType')?.value;
-  var addWeatherType = $formValues.querySelector('.addWeatherType')?.value;
-  if(removeWeatherType || setWeatherType != null && setWeatherType !== '')
-    vals['setWeatherType'] = setWeatherType;
-  if(addWeatherType != null && addWeatherType !== '')
-    vals['addWeatherType'] = addWeatherType;
-  var removeWeatherType = $formValues.querySelector('.removeWeatherType')?.value;
-  if(removeWeatherType != null && removeWeatherType !== '')
-    vals['removeWeatherType'] = removeWeatherType;
+  var valueDateObserved = $formValues.querySelector('.valueDateObserved')?.value;
+  var removeDateObserved = $formValues.querySelector('.removeDateObserved')?.value === 'true';
+  var setDateObserved = removeDateObserved ? null : $formValues.querySelector('.setDateObserved')?.value;
+  var addDateObserved = $formValues.querySelector('.addDateObserved')?.value;
+  if(removeDateObserved || setDateObserved != null && setDateObserved !== '')
+    vals['setDateObserved'] = setDateObserved;
+  if(addDateObserved != null && addDateObserved !== '')
+    vals['addDateObserved'] = addDateObserved;
+  var removeDateObserved = $formValues.querySelector('.removeDateObserved')?.value;
+  if(removeDateObserved != null && removeDateObserved !== '')
+    vals['removeDateObserved'] = removeDateObserved;
 
   var valueDewPoint = $formValues.querySelector('.valueDewPoint')?.value;
   var removeDewPoint = $formValues.querySelector('.removeDewPoint')?.value === 'true';
@@ -772,6 +708,30 @@ async function patchWeatherObserved($formFilters, $formValues, target, entityId,
   if(removeDirectIrradiation != null && removeDirectIrradiation !== '')
     vals['removeDirectIrradiation'] = removeDirectIrradiation;
 
+  var valueFeelsLikeTemperature = $formValues.querySelector('.valueFeelsLikeTemperature')?.value;
+  var removeFeelsLikeTemperature = $formValues.querySelector('.removeFeelsLikeTemperature')?.value === 'true';
+  var setFeelsLikeTemperature = removeFeelsLikeTemperature ? null : $formValues.querySelector('.setFeelsLikeTemperature')?.value;
+  var addFeelsLikeTemperature = $formValues.querySelector('.addFeelsLikeTemperature')?.value;
+  if(removeFeelsLikeTemperature || setFeelsLikeTemperature != null && setFeelsLikeTemperature !== '')
+    vals['setFeelsLikeTemperature'] = setFeelsLikeTemperature;
+  if(addFeelsLikeTemperature != null && addFeelsLikeTemperature !== '')
+    vals['addFeelsLikeTemperature'] = addFeelsLikeTemperature;
+  var removeFeelsLikeTemperature = $formValues.querySelector('.removeFeelsLikeTemperature')?.value;
+  if(removeFeelsLikeTemperature != null && removeFeelsLikeTemperature !== '')
+    vals['removeFeelsLikeTemperature'] = removeFeelsLikeTemperature;
+
+  var valueGustSpeed = $formValues.querySelector('.valueGustSpeed')?.value;
+  var removeGustSpeed = $formValues.querySelector('.removeGustSpeed')?.value === 'true';
+  var setGustSpeed = removeGustSpeed ? null : $formValues.querySelector('.setGustSpeed')?.value;
+  var addGustSpeed = $formValues.querySelector('.addGustSpeed')?.value;
+  if(removeGustSpeed || setGustSpeed != null && setGustSpeed !== '')
+    vals['setGustSpeed'] = setGustSpeed;
+  if(addGustSpeed != null && addGustSpeed !== '')
+    vals['addGustSpeed'] = addGustSpeed;
+  var removeGustSpeed = $formValues.querySelector('.removeGustSpeed')?.value;
+  if(removeGustSpeed != null && removeGustSpeed !== '')
+    vals['removeGustSpeed'] = removeGustSpeed;
+
   var valueIlluminance = $formValues.querySelector('.valueIlluminance')?.value;
   var removeIlluminance = $formValues.querySelector('.removeIlluminance')?.value === 'true';
   var setIlluminance = removeIlluminance ? null : $formValues.querySelector('.setIlluminance')?.value;
@@ -784,89 +744,233 @@ async function patchWeatherObserved($formFilters, $formValues, target, entityId,
   if(removeIlluminance != null && removeIlluminance !== '')
     vals['removeIlluminance'] = removeIlluminance;
 
-  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
-  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value === 'true';
-  var setNgsildTenant = removeNgsildTenant ? null : $formValues.querySelector('.setNgsildTenant')?.value;
-  var addNgsildTenant = $formValues.querySelector('.addNgsildTenant')?.value;
-  if(removeNgsildTenant || setNgsildTenant != null && setNgsildTenant !== '')
-    vals['setNgsildTenant'] = setNgsildTenant;
-  if(addNgsildTenant != null && addNgsildTenant !== '')
-    vals['addNgsildTenant'] = addNgsildTenant;
-  var removeNgsildTenant = $formValues.querySelector('.removeNgsildTenant')?.value;
-  if(removeNgsildTenant != null && removeNgsildTenant !== '')
-    vals['removeNgsildTenant'] = removeNgsildTenant;
+  var valueOwner = $formValues.querySelector('.valueOwner')?.value;
+  var removeOwner = $formValues.querySelector('.removeOwner')?.value === 'true';
+  var setOwner = removeOwner ? null : $formValues.querySelector('.setOwner')?.value;
+  var addOwner = $formValues.querySelector('.addOwner')?.value;
+  if(removeOwner || setOwner != null && setOwner !== '')
+    vals['setOwner'] = JSON.parse(setOwner);
+  if(addOwner != null && addOwner !== '')
+    vals['addOwner'] = addOwner;
+  var removeOwner = $formValues.querySelector('.removeOwner')?.value;
+  if(removeOwner != null && removeOwner !== '')
+    vals['removeOwner'] = removeOwner;
 
-  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
-  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value === 'true';
-  var setNgsildPath = removeNgsildPath ? null : $formValues.querySelector('.setNgsildPath')?.value;
-  var addNgsildPath = $formValues.querySelector('.addNgsildPath')?.value;
-  if(removeNgsildPath || setNgsildPath != null && setNgsildPath !== '')
-    vals['setNgsildPath'] = setNgsildPath;
-  if(addNgsildPath != null && addNgsildPath !== '')
-    vals['addNgsildPath'] = addNgsildPath;
-  var removeNgsildPath = $formValues.querySelector('.removeNgsildPath')?.value;
-  if(removeNgsildPath != null && removeNgsildPath !== '')
-    vals['removeNgsildPath'] = removeNgsildPath;
+  var valuePrecipitation = $formValues.querySelector('.valuePrecipitation')?.value;
+  var removePrecipitation = $formValues.querySelector('.removePrecipitation')?.value === 'true';
+  var setPrecipitation = removePrecipitation ? null : $formValues.querySelector('.setPrecipitation')?.value;
+  var addPrecipitation = $formValues.querySelector('.addPrecipitation')?.value;
+  if(removePrecipitation || setPrecipitation != null && setPrecipitation !== '')
+    vals['setPrecipitation'] = setPrecipitation;
+  if(addPrecipitation != null && addPrecipitation !== '')
+    vals['addPrecipitation'] = addPrecipitation;
+  var removePrecipitation = $formValues.querySelector('.removePrecipitation')?.value;
+  if(removePrecipitation != null && removePrecipitation !== '')
+    vals['removePrecipitation'] = removePrecipitation;
 
-  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
-  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value === 'true';
-  var setNgsildData = removeNgsildData ? null : $formValues.querySelector('.setNgsildData')?.value;
-  var addNgsildData = $formValues.querySelector('.addNgsildData')?.value;
-  if(removeNgsildData || setNgsildData != null && setNgsildData !== '')
-    vals['setNgsildData'] = JSON.parse(setNgsildData);
-  if(addNgsildData != null && addNgsildData !== '')
-    vals['addNgsildData'] = addNgsildData;
-  var removeNgsildData = $formValues.querySelector('.removeNgsildData')?.value;
-  if(removeNgsildData != null && removeNgsildData !== '')
-    vals['removeNgsildData'] = removeNgsildData;
+  var valuePrecipitationForecast = $formValues.querySelector('.valuePrecipitationForecast')?.value;
+  var removePrecipitationForecast = $formValues.querySelector('.removePrecipitationForecast')?.value === 'true';
+  var setPrecipitationForecast = removePrecipitationForecast ? null : $formValues.querySelector('.setPrecipitationForecast')?.value;
+  var addPrecipitationForecast = $formValues.querySelector('.addPrecipitationForecast')?.value;
+  if(removePrecipitationForecast || setPrecipitationForecast != null && setPrecipitationForecast !== '')
+    vals['setPrecipitationForecast'] = setPrecipitationForecast;
+  if(addPrecipitationForecast != null && addPrecipitationForecast !== '')
+    vals['addPrecipitationForecast'] = addPrecipitationForecast;
+  var removePrecipitationForecast = $formValues.querySelector('.removePrecipitationForecast')?.value;
+  if(removePrecipitationForecast != null && removePrecipitationForecast !== '')
+    vals['removePrecipitationForecast'] = removePrecipitationForecast;
+
+  var valuePressureTendency = $formValues.querySelector('.valuePressureTendency')?.value;
+  var removePressureTendency = $formValues.querySelector('.removePressureTendency')?.value === 'true';
+  var setPressureTendency = removePressureTendency ? null : $formValues.querySelector('.setPressureTendency')?.value;
+  var addPressureTendency = $formValues.querySelector('.addPressureTendency')?.value;
+  if(removePressureTendency || setPressureTendency != null && setPressureTendency !== '')
+    vals['setPressureTendency'] = setPressureTendency;
+  if(addPressureTendency != null && addPressureTendency !== '')
+    vals['addPressureTendency'] = addPressureTendency;
+  var removePressureTendency = $formValues.querySelector('.removePressureTendency')?.value;
+  if(removePressureTendency != null && removePressureTendency !== '')
+    vals['removePressureTendency'] = removePressureTendency;
+
+  var valueRefDevice = $formValues.querySelector('.valueRefDevice')?.value;
+  var removeRefDevice = $formValues.querySelector('.removeRefDevice')?.value === 'true';
+  var setRefDevice = removeRefDevice ? null : $formValues.querySelector('.setRefDevice')?.value;
+  var addRefDevice = $formValues.querySelector('.addRefDevice')?.value;
+  if(removeRefDevice || setRefDevice != null && setRefDevice !== '')
+    vals['setRefDevice'] = setRefDevice;
+  if(addRefDevice != null && addRefDevice !== '')
+    vals['addRefDevice'] = addRefDevice;
+  var removeRefDevice = $formValues.querySelector('.removeRefDevice')?.value;
+  if(removeRefDevice != null && removeRefDevice !== '')
+    vals['removeRefDevice'] = removeRefDevice;
+
+  var valueRefPointOfInterest = $formValues.querySelector('.valueRefPointOfInterest')?.value;
+  var removeRefPointOfInterest = $formValues.querySelector('.removeRefPointOfInterest')?.value === 'true';
+  var setRefPointOfInterest = removeRefPointOfInterest ? null : $formValues.querySelector('.setRefPointOfInterest')?.value;
+  var addRefPointOfInterest = $formValues.querySelector('.addRefPointOfInterest')?.value;
+  if(removeRefPointOfInterest || setRefPointOfInterest != null && setRefPointOfInterest !== '')
+    vals['setRefPointOfInterest'] = setRefPointOfInterest;
+  if(addRefPointOfInterest != null && addRefPointOfInterest !== '')
+    vals['addRefPointOfInterest'] = addRefPointOfInterest;
+  var removeRefPointOfInterest = $formValues.querySelector('.removeRefPointOfInterest')?.value;
+  if(removeRefPointOfInterest != null && removeRefPointOfInterest !== '')
+    vals['removeRefPointOfInterest'] = removeRefPointOfInterest;
+
+  var valueRelativeHumidity = $formValues.querySelector('.valueRelativeHumidity')?.value;
+  var removeRelativeHumidity = $formValues.querySelector('.removeRelativeHumidity')?.value === 'true';
+  var setRelativeHumidity = removeRelativeHumidity ? null : $formValues.querySelector('.setRelativeHumidity')?.value;
+  var addRelativeHumidity = $formValues.querySelector('.addRelativeHumidity')?.value;
+  if(removeRelativeHumidity || setRelativeHumidity != null && setRelativeHumidity !== '')
+    vals['setRelativeHumidity'] = setRelativeHumidity;
+  if(addRelativeHumidity != null && addRelativeHumidity !== '')
+    vals['addRelativeHumidity'] = addRelativeHumidity;
+  var removeRelativeHumidity = $formValues.querySelector('.removeRelativeHumidity')?.value;
+  if(removeRelativeHumidity != null && removeRelativeHumidity !== '')
+    vals['removeRelativeHumidity'] = removeRelativeHumidity;
+
+  var valueRelativeHumidityForecast = $formValues.querySelector('.valueRelativeHumidityForecast')?.value;
+  var removeRelativeHumidityForecast = $formValues.querySelector('.removeRelativeHumidityForecast')?.value === 'true';
+  var setRelativeHumidityForecast = removeRelativeHumidityForecast ? null : $formValues.querySelector('.setRelativeHumidityForecast')?.value;
+  var addRelativeHumidityForecast = $formValues.querySelector('.addRelativeHumidityForecast')?.value;
+  if(removeRelativeHumidityForecast || setRelativeHumidityForecast != null && setRelativeHumidityForecast !== '')
+    vals['setRelativeHumidityForecast'] = setRelativeHumidityForecast;
+  if(addRelativeHumidityForecast != null && addRelativeHumidityForecast !== '')
+    vals['addRelativeHumidityForecast'] = addRelativeHumidityForecast;
+  var removeRelativeHumidityForecast = $formValues.querySelector('.removeRelativeHumidityForecast')?.value;
+  if(removeRelativeHumidityForecast != null && removeRelativeHumidityForecast !== '')
+    vals['removeRelativeHumidityForecast'] = removeRelativeHumidityForecast;
 
   var valueSeeAlso = $formValues.querySelector('.valueSeeAlso')?.value;
   var removeSeeAlso = $formValues.querySelector('.removeSeeAlso')?.value === 'true';
   var setSeeAlso = removeSeeAlso ? null : $formValues.querySelector('.setSeeAlso')?.value;
   var addSeeAlso = $formValues.querySelector('.addSeeAlso')?.value;
   if(removeSeeAlso || setSeeAlso != null && setSeeAlso !== '')
-    vals['setSeeAlso'] = JSON.parse(setSeeAlso);
+    vals['setSeeAlso'] = setSeeAlso;
   if(addSeeAlso != null && addSeeAlso !== '')
     vals['addSeeAlso'] = addSeeAlso;
   var removeSeeAlso = $formValues.querySelector('.removeSeeAlso')?.value;
   if(removeSeeAlso != null && removeSeeAlso !== '')
     vals['removeSeeAlso'] = removeSeeAlso;
 
-  var valueEntityId = $formValues.querySelector('.valueEntityId')?.value;
-  var removeEntityId = $formValues.querySelector('.removeEntityId')?.value === 'true';
-  var setEntityId = removeEntityId ? null : $formValues.querySelector('.setEntityId')?.value;
-  var addEntityId = $formValues.querySelector('.addEntityId')?.value;
-  if(removeEntityId || setEntityId != null && setEntityId !== '')
-    vals['setEntityId'] = setEntityId;
-  if(addEntityId != null && addEntityId !== '')
-    vals['addEntityId'] = addEntityId;
-  var removeEntityId = $formValues.querySelector('.removeEntityId')?.value;
-  if(removeEntityId != null && removeEntityId !== '')
-    vals['removeEntityId'] = removeEntityId;
+  var valueSnowHeight = $formValues.querySelector('.valueSnowHeight')?.value;
+  var removeSnowHeight = $formValues.querySelector('.removeSnowHeight')?.value === 'true';
+  var setSnowHeight = removeSnowHeight ? null : $formValues.querySelector('.setSnowHeight')?.value;
+  var addSnowHeight = $formValues.querySelector('.addSnowHeight')?.value;
+  if(removeSnowHeight || setSnowHeight != null && setSnowHeight !== '')
+    vals['setSnowHeight'] = setSnowHeight;
+  if(addSnowHeight != null && addSnowHeight !== '')
+    vals['addSnowHeight'] = addSnowHeight;
+  var removeSnowHeight = $formValues.querySelector('.removeSnowHeight')?.value;
+  if(removeSnowHeight != null && removeSnowHeight !== '')
+    vals['removeSnowHeight'] = removeSnowHeight;
 
-  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
-  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value === 'true';
-  var setNgsildContext = removeNgsildContext ? null : $formValues.querySelector('.setNgsildContext')?.value;
-  var addNgsildContext = $formValues.querySelector('.addNgsildContext')?.value;
-  if(removeNgsildContext || setNgsildContext != null && setNgsildContext !== '')
-    vals['setNgsildContext'] = setNgsildContext;
-  if(addNgsildContext != null && addNgsildContext !== '')
-    vals['addNgsildContext'] = addNgsildContext;
-  var removeNgsildContext = $formValues.querySelector('.removeNgsildContext')?.value;
-  if(removeNgsildContext != null && removeNgsildContext !== '')
-    vals['removeNgsildContext'] = removeNgsildContext;
+  var valueSolarRadiation = $formValues.querySelector('.valueSolarRadiation')?.value;
+  var removeSolarRadiation = $formValues.querySelector('.removeSolarRadiation')?.value === 'true';
+  var setSolarRadiation = removeSolarRadiation ? null : $formValues.querySelector('.setSolarRadiation')?.value;
+  var addSolarRadiation = $formValues.querySelector('.addSolarRadiation')?.value;
+  if(removeSolarRadiation || setSolarRadiation != null && setSolarRadiation !== '')
+    vals['setSolarRadiation'] = setSolarRadiation;
+  if(addSolarRadiation != null && addSolarRadiation !== '')
+    vals['addSolarRadiation'] = addSolarRadiation;
+  var removeSolarRadiation = $formValues.querySelector('.removeSolarRadiation')?.value;
+  if(removeSolarRadiation != null && removeSolarRadiation !== '')
+    vals['removeSolarRadiation'] = removeSolarRadiation;
 
-  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
-  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value === 'true';
-  var setDisplayPage = removeDisplayPage ? null : $formValues.querySelector('.setDisplayPage')?.value;
-  var addDisplayPage = $formValues.querySelector('.addDisplayPage')?.value;
-  if(removeDisplayPage || setDisplayPage != null && setDisplayPage !== '')
-    vals['setDisplayPage'] = setDisplayPage;
-  if(addDisplayPage != null && addDisplayPage !== '')
-    vals['addDisplayPage'] = addDisplayPage;
-  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value;
-  if(removeDisplayPage != null && removeDisplayPage !== '')
-    vals['removeDisplayPage'] = removeDisplayPage;
+  var valueSource = $formValues.querySelector('.valueSource')?.value;
+  var removeSource = $formValues.querySelector('.removeSource')?.value === 'true';
+  var setSource = removeSource ? null : $formValues.querySelector('.setSource')?.value;
+  var addSource = $formValues.querySelector('.addSource')?.value;
+  if(removeSource || setSource != null && setSource !== '')
+    vals['setSource'] = setSource;
+  if(addSource != null && addSource !== '')
+    vals['addSource'] = addSource;
+  var removeSource = $formValues.querySelector('.removeSource')?.value;
+  if(removeSource != null && removeSource !== '')
+    vals['removeSource'] = removeSource;
+
+  var valueStreamGauge = $formValues.querySelector('.valueStreamGauge')?.value;
+  var removeStreamGauge = $formValues.querySelector('.removeStreamGauge')?.value === 'true';
+  var setStreamGauge = removeStreamGauge ? null : $formValues.querySelector('.setStreamGauge')?.value;
+  var addStreamGauge = $formValues.querySelector('.addStreamGauge')?.value;
+  if(removeStreamGauge || setStreamGauge != null && setStreamGauge !== '')
+    vals['setStreamGauge'] = setStreamGauge;
+  if(addStreamGauge != null && addStreamGauge !== '')
+    vals['addStreamGauge'] = addStreamGauge;
+  var removeStreamGauge = $formValues.querySelector('.removeStreamGauge')?.value;
+  if(removeStreamGauge != null && removeStreamGauge !== '')
+    vals['removeStreamGauge'] = removeStreamGauge;
+
+  var valueTemperature = $formValues.querySelector('.valueTemperature')?.value;
+  var removeTemperature = $formValues.querySelector('.removeTemperature')?.value === 'true';
+  var setTemperature = removeTemperature ? null : $formValues.querySelector('.setTemperature')?.value;
+  var addTemperature = $formValues.querySelector('.addTemperature')?.value;
+  if(removeTemperature || setTemperature != null && setTemperature !== '')
+    vals['setTemperature'] = setTemperature;
+  if(addTemperature != null && addTemperature !== '')
+    vals['addTemperature'] = addTemperature;
+  var removeTemperature = $formValues.querySelector('.removeTemperature')?.value;
+  if(removeTemperature != null && removeTemperature !== '')
+    vals['removeTemperature'] = removeTemperature;
+
+  var valueUVIndexMax = $formValues.querySelector('.valueUVIndexMax')?.value;
+  var removeUVIndexMax = $formValues.querySelector('.removeUVIndexMax')?.value === 'true';
+  var setUVIndexMax = removeUVIndexMax ? null : $formValues.querySelector('.setUVIndexMax')?.value;
+  var addUVIndexMax = $formValues.querySelector('.addUVIndexMax')?.value;
+  if(removeUVIndexMax || setUVIndexMax != null && setUVIndexMax !== '')
+    vals['setUVIndexMax'] = setUVIndexMax;
+  if(addUVIndexMax != null && addUVIndexMax !== '')
+    vals['addUVIndexMax'] = addUVIndexMax;
+  var removeUVIndexMax = $formValues.querySelector('.removeUVIndexMax')?.value;
+  if(removeUVIndexMax != null && removeUVIndexMax !== '')
+    vals['removeUVIndexMax'] = removeUVIndexMax;
+
+  var valueVisibility = $formValues.querySelector('.valueVisibility')?.value;
+  var removeVisibility = $formValues.querySelector('.removeVisibility')?.value === 'true';
+  var setVisibility = removeVisibility ? null : $formValues.querySelector('.setVisibility')?.value;
+  var addVisibility = $formValues.querySelector('.addVisibility')?.value;
+  if(removeVisibility || setVisibility != null && setVisibility !== '')
+    vals['setVisibility'] = setVisibility;
+  if(addVisibility != null && addVisibility !== '')
+    vals['addVisibility'] = addVisibility;
+  var removeVisibility = $formValues.querySelector('.removeVisibility')?.value;
+  if(removeVisibility != null && removeVisibility !== '')
+    vals['removeVisibility'] = removeVisibility;
+
+  var valueWeatherType = $formValues.querySelector('.valueWeatherType')?.value;
+  var removeWeatherType = $formValues.querySelector('.removeWeatherType')?.value === 'true';
+  var setWeatherType = removeWeatherType ? null : $formValues.querySelector('.setWeatherType')?.value;
+  var addWeatherType = $formValues.querySelector('.addWeatherType')?.value;
+  if(removeWeatherType || setWeatherType != null && setWeatherType !== '')
+    vals['setWeatherType'] = setWeatherType;
+  if(addWeatherType != null && addWeatherType !== '')
+    vals['addWeatherType'] = addWeatherType;
+  var removeWeatherType = $formValues.querySelector('.removeWeatherType')?.value;
+  if(removeWeatherType != null && removeWeatherType !== '')
+    vals['removeWeatherType'] = removeWeatherType;
+
+  var valueWindDirection = $formValues.querySelector('.valueWindDirection')?.value;
+  var removeWindDirection = $formValues.querySelector('.removeWindDirection')?.value === 'true';
+  var setWindDirection = removeWindDirection ? null : $formValues.querySelector('.setWindDirection')?.value;
+  var addWindDirection = $formValues.querySelector('.addWindDirection')?.value;
+  if(removeWindDirection || setWindDirection != null && setWindDirection !== '')
+    vals['setWindDirection'] = setWindDirection;
+  if(addWindDirection != null && addWindDirection !== '')
+    vals['addWindDirection'] = addWindDirection;
+  var removeWindDirection = $formValues.querySelector('.removeWindDirection')?.value;
+  if(removeWindDirection != null && removeWindDirection !== '')
+    vals['removeWindDirection'] = removeWindDirection;
+
+  var valueWindSpeed = $formValues.querySelector('.valueWindSpeed')?.value;
+  var removeWindSpeed = $formValues.querySelector('.removeWindSpeed')?.value === 'true';
+  var setWindSpeed = removeWindSpeed ? null : $formValues.querySelector('.setWindSpeed')?.value;
+  var addWindSpeed = $formValues.querySelector('.addWindSpeed')?.value;
+  if(removeWindSpeed || setWindSpeed != null && setWindSpeed !== '')
+    vals['setWindSpeed'] = setWindSpeed;
+  if(addWindSpeed != null && addWindSpeed !== '')
+    vals['addWindSpeed'] = addWindSpeed;
+  var removeWindSpeed = $formValues.querySelector('.removeWindSpeed')?.value;
+  if(removeWindSpeed != null && removeWindSpeed !== '')
+    vals['removeWindSpeed'] = removeWindSpeed;
 
   var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
   var removeSessionId = $formValues.querySelector('.removeSessionId')?.value === 'true';
@@ -904,6 +1008,18 @@ async function patchWeatherObserved($formFilters, $formValues, target, entityId,
   if(removeTitle != null && removeTitle !== '')
     vals['removeTitle'] = removeTitle;
 
+  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
+  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value === 'true';
+  var setDisplayPage = removeDisplayPage ? null : $formValues.querySelector('.setDisplayPage')?.value;
+  var addDisplayPage = $formValues.querySelector('.addDisplayPage')?.value;
+  if(removeDisplayPage || setDisplayPage != null && setDisplayPage !== '')
+    vals['setDisplayPage'] = setDisplayPage;
+  if(addDisplayPage != null && addDisplayPage !== '')
+    vals['addDisplayPage'] = addDisplayPage;
+  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value;
+  if(removeDisplayPage != null && removeDisplayPage !== '')
+    vals['removeDisplayPage'] = removeDisplayPage;
+
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
   var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
@@ -916,115 +1032,7 @@ async function patchWeatherObserved($formFilters, $formValues, target, entityId,
   if(removeEditPage != null && removeEditPage !== '')
     vals['removeEditPage'] = removeEditPage;
 
-  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
-  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value === 'true';
-  var setAlternateName = removeAlternateName ? null : $formValues.querySelector('.setAlternateName')?.value;
-  var addAlternateName = $formValues.querySelector('.addAlternateName')?.value;
-  if(removeAlternateName || setAlternateName != null && setAlternateName !== '')
-    vals['setAlternateName'] = setAlternateName;
-  if(addAlternateName != null && addAlternateName !== '')
-    vals['addAlternateName'] = addAlternateName;
-  var removeAlternateName = $formValues.querySelector('.removeAlternateName')?.value;
-  if(removeAlternateName != null && removeAlternateName !== '')
-    vals['removeAlternateName'] = removeAlternateName;
-
-  var valueDataProvider = $formValues.querySelector('.valueDataProvider')?.value;
-  var removeDataProvider = $formValues.querySelector('.removeDataProvider')?.value === 'true';
-  var setDataProvider = removeDataProvider ? null : $formValues.querySelector('.setDataProvider')?.value;
-  var addDataProvider = $formValues.querySelector('.addDataProvider')?.value;
-  if(removeDataProvider || setDataProvider != null && setDataProvider !== '')
-    vals['setDataProvider'] = setDataProvider;
-  if(addDataProvider != null && addDataProvider !== '')
-    vals['addDataProvider'] = addDataProvider;
-  var removeDataProvider = $formValues.querySelector('.removeDataProvider')?.value;
-  if(removeDataProvider != null && removeDataProvider !== '')
-    vals['removeDataProvider'] = removeDataProvider;
-
-  var valueDateCreated = $formValues.querySelector('.valueDateCreated')?.value;
-  var removeDateCreated = $formValues.querySelector('.removeDateCreated')?.value === 'true';
-  var setDateCreated = removeDateCreated ? null : $formValues.querySelector('.setDateCreated')?.value;
-  var addDateCreated = $formValues.querySelector('.addDateCreated')?.value;
-  if(removeDateCreated || setDateCreated != null && setDateCreated !== '')
-    vals['setDateCreated'] = setDateCreated;
-  if(addDateCreated != null && addDateCreated !== '')
-    vals['addDateCreated'] = addDateCreated;
-  var removeDateCreated = $formValues.querySelector('.removeDateCreated')?.value;
-  if(removeDateCreated != null && removeDateCreated !== '')
-    vals['removeDateCreated'] = removeDateCreated;
-
-  var valueDateModified = $formValues.querySelector('.valueDateModified')?.value;
-  var removeDateModified = $formValues.querySelector('.removeDateModified')?.value === 'true';
-  var setDateModified = removeDateModified ? null : $formValues.querySelector('.setDateModified')?.value;
-  var addDateModified = $formValues.querySelector('.addDateModified')?.value;
-  if(removeDateModified || setDateModified != null && setDateModified !== '')
-    vals['setDateModified'] = setDateModified;
-  if(addDateModified != null && addDateModified !== '')
-    vals['addDateModified'] = addDateModified;
-  var removeDateModified = $formValues.querySelector('.removeDateModified')?.value;
-  if(removeDateModified != null && removeDateModified !== '')
-    vals['removeDateModified'] = removeDateModified;
-
-  var valueOwner = $formValues.querySelector('.valueOwner')?.value;
-  var removeOwner = $formValues.querySelector('.removeOwner')?.value === 'true';
-  var setOwner = removeOwner ? null : $formValues.querySelector('.setOwner')?.value;
-  var addOwner = $formValues.querySelector('.addOwner')?.value;
-  if(removeOwner || setOwner != null && setOwner !== '')
-    vals['setOwner'] = JSON.parse(setOwner);
-  if(addOwner != null && addOwner !== '')
-    vals['addOwner'] = addOwner;
-  var removeOwner = $formValues.querySelector('.removeOwner')?.value;
-  if(removeOwner != null && removeOwner !== '')
-    vals['removeOwner'] = removeOwner;
-
-  var valueRefPointOfInterest = $formValues.querySelector('.valueRefPointOfInterest')?.value;
-  var removeRefPointOfInterest = $formValues.querySelector('.removeRefPointOfInterest')?.value === 'true';
-  var setRefPointOfInterest = removeRefPointOfInterest ? null : $formValues.querySelector('.setRefPointOfInterest')?.value;
-  var addRefPointOfInterest = $formValues.querySelector('.addRefPointOfInterest')?.value;
-  if(removeRefPointOfInterest || setRefPointOfInterest != null && setRefPointOfInterest !== '')
-    vals['setRefPointOfInterest'] = setRefPointOfInterest;
-  if(addRefPointOfInterest != null && addRefPointOfInterest !== '')
-    vals['addRefPointOfInterest'] = addRefPointOfInterest;
-  var removeRefPointOfInterest = $formValues.querySelector('.removeRefPointOfInterest')?.value;
-  if(removeRefPointOfInterest != null && removeRefPointOfInterest !== '')
-    vals['removeRefPointOfInterest'] = removeRefPointOfInterest;
-
-  var valueDateObserved = $formValues.querySelector('.valueDateObserved')?.value;
-  var removeDateObserved = $formValues.querySelector('.removeDateObserved')?.value === 'true';
-  var setDateObserved = removeDateObserved ? null : $formValues.querySelector('.setDateObserved')?.value;
-  var addDateObserved = $formValues.querySelector('.addDateObserved')?.value;
-  if(removeDateObserved || setDateObserved != null && setDateObserved !== '')
-    vals['setDateObserved'] = setDateObserved;
-  if(addDateObserved != null && addDateObserved !== '')
-    vals['addDateObserved'] = addDateObserved;
-  var removeDateObserved = $formValues.querySelector('.removeDateObserved')?.value;
-  if(removeDateObserved != null && removeDateObserved !== '')
-    vals['removeDateObserved'] = removeDateObserved;
-
-  var valueRefDevice = $formValues.querySelector('.valueRefDevice')?.value;
-  var removeRefDevice = $formValues.querySelector('.removeRefDevice')?.value === 'true';
-  var setRefDevice = removeRefDevice ? null : $formValues.querySelector('.setRefDevice')?.value;
-  var addRefDevice = $formValues.querySelector('.addRefDevice')?.value;
-  if(removeRefDevice || setRefDevice != null && setRefDevice !== '')
-    vals['setRefDevice'] = JSON.parse(setRefDevice);
-  if(addRefDevice != null && addRefDevice !== '')
-    vals['addRefDevice'] = addRefDevice;
-  var removeRefDevice = $formValues.querySelector('.removeRefDevice')?.value;
-  if(removeRefDevice != null && removeRefDevice !== '')
-    vals['removeRefDevice'] = removeRefDevice;
-
-  var valueSource = $formValues.querySelector('.valueSource')?.value;
-  var removeSource = $formValues.querySelector('.removeSource')?.value === 'true';
-  var setSource = removeSource ? null : $formValues.querySelector('.setSource')?.value;
-  var addSource = $formValues.querySelector('.addSource')?.value;
-  if(removeSource || setSource != null && setSource !== '')
-    vals['setSource'] = setSource;
-  if(addSource != null && addSource !== '')
-    vals['addSource'] = addSource;
-  var removeSource = $formValues.querySelector('.removeSource')?.value;
-  if(removeSource != null && removeSource !== '')
-    vals['removeSource'] = removeSource;
-
-  patchWeatherObservedVals(entityId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'entityId:' + entityId}], vals, target, success, error);
+  patchWeatherObservedVals(entityShortId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'entityShortId:' + entityShortId}], vals, target, success, error);
 }
 
 function patchWeatherObservedFilters($formFilters) {
@@ -1062,10 +1070,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
-    var filterAddress = $formFilters.querySelector('.valueAddress')?.value;
-    if(filterAddress != null && filterAddress !== '')
-      filters.push({ name: 'fq', value: 'address:' + filterAddress });
-
     var filterLocation = $formFilters.querySelector('.valueLocation')?.value;
     if(filterLocation != null && filterLocation !== '')
       filters.push({ name: 'fq', value: 'location:' + filterLocation });
@@ -1074,6 +1078,30 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterAreaServed != null && filterAreaServed !== '')
       filters.push({ name: 'fq', value: 'areaServed:' + filterAreaServed });
 
+    var filterId = $formFilters.querySelector('.valueId')?.value;
+    if(filterId != null && filterId !== '')
+      filters.push({ name: 'fq', value: 'id:' + filterId });
+
+    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
+    if(filterNgsildTenant != null && filterNgsildTenant !== '')
+      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
+
+    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
+    if(filterNgsildPath != null && filterNgsildPath !== '')
+      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+
+    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
+    if(filterNgsildContext != null && filterNgsildContext !== '')
+      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
+
+    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
+    if(filterNgsildData != null && filterNgsildData !== '')
+      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
+
+    var filterAddress = $formFilters.querySelector('.valueAddress')?.value;
+    if(filterAddress != null && filterAddress !== '')
+      filters.push({ name: 'fq', value: 'address:' + filterAddress });
+
     var filterAirQualityIndex = $formFilters.querySelector('.valueAirQualityIndex')?.value;
     if(filterAirQualityIndex != null && filterAirQualityIndex !== '')
       filters.push({ name: 'fq', value: 'airQualityIndex:' + filterAirQualityIndex });
@@ -1081,6 +1109,18 @@ function patchWeatherObservedFilters($formFilters) {
     var filterAirQualityIndexForecast = $formFilters.querySelector('.valueAirQualityIndexForecast')?.value;
     if(filterAirQualityIndexForecast != null && filterAirQualityIndexForecast !== '')
       filters.push({ name: 'fq', value: 'airQualityIndexForecast:' + filterAirQualityIndexForecast });
+
+    var filterAirTemperatureForecast = $formFilters.querySelector('.valueAirTemperatureForecast')?.value;
+    if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
+      filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
+
+    var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
+    if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
+      filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
+
+    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
+    if(filterAlternateName != null && filterAlternateName !== '')
+      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
 
     var filterAqiMajorPollutant = $formFilters.querySelector('.valueAqiMajorPollutant')?.value;
     if(filterAqiMajorPollutant != null && filterAqiMajorPollutant !== '')
@@ -1094,77 +1134,21 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterAtmosphericPressure != null && filterAtmosphericPressure !== '')
       filters.push({ name: 'fq', value: 'atmosphericPressure:' + filterAtmosphericPressure });
 
-    var filterPressureTendency = $formFilters.querySelector('.valuePressureTendency')?.value;
-    if(filterPressureTendency != null && filterPressureTendency !== '')
-      filters.push({ name: 'fq', value: 'pressureTendency:' + filterPressureTendency });
+    var filterDataProvider = $formFilters.querySelector('.valueDataProvider')?.value;
+    if(filterDataProvider != null && filterDataProvider !== '')
+      filters.push({ name: 'fq', value: 'dataProvider:' + filterDataProvider });
 
-    var filterGustSpeed = $formFilters.querySelector('.valueGustSpeed')?.value;
-    if(filterGustSpeed != null && filterGustSpeed !== '')
-      filters.push({ name: 'fq', value: 'gustSpeed:' + filterGustSpeed });
+    var filterDateCreated = $formFilters.querySelector('.valueDateCreated')?.value;
+    if(filterDateCreated != null && filterDateCreated !== '')
+      filters.push({ name: 'fq', value: 'dateCreated:' + filterDateCreated });
 
-    var filterWindDirection = $formFilters.querySelector('.valueWindDirection')?.value;
-    if(filterWindDirection != null && filterWindDirection !== '')
-      filters.push({ name: 'fq', value: 'windDirection:' + filterWindDirection });
+    var filterDateModified = $formFilters.querySelector('.valueDateModified')?.value;
+    if(filterDateModified != null && filterDateModified !== '')
+      filters.push({ name: 'fq', value: 'dateModified:' + filterDateModified });
 
-    var filterWindSpeed = $formFilters.querySelector('.valueWindSpeed')?.value;
-    if(filterWindSpeed != null && filterWindSpeed !== '')
-      filters.push({ name: 'fq', value: 'windSpeed:' + filterWindSpeed });
-
-    var filterPrecipitation = $formFilters.querySelector('.valuePrecipitation')?.value;
-    if(filterPrecipitation != null && filterPrecipitation !== '')
-      filters.push({ name: 'fq', value: 'precipitation:' + filterPrecipitation });
-
-    var filterPrecipitationForecast = $formFilters.querySelector('.valuePrecipitationForecast')?.value;
-    if(filterPrecipitationForecast != null && filterPrecipitationForecast !== '')
-      filters.push({ name: 'fq', value: 'precipitationForecast:' + filterPrecipitationForecast });
-
-    var filterRelativeHumidity = $formFilters.querySelector('.valueRelativeHumidity')?.value;
-    if(filterRelativeHumidity != null && filterRelativeHumidity !== '')
-      filters.push({ name: 'fq', value: 'relativeHumidity:' + filterRelativeHumidity });
-
-    var filterRelativeHumidityForecast = $formFilters.querySelector('.valueRelativeHumidityForecast')?.value;
-    if(filterRelativeHumidityForecast != null && filterRelativeHumidityForecast !== '')
-      filters.push({ name: 'fq', value: 'relativeHumidityForecast:' + filterRelativeHumidityForecast });
-
-    var filterSnowHeight = $formFilters.querySelector('.valueSnowHeight')?.value;
-    if(filterSnowHeight != null && filterSnowHeight !== '')
-      filters.push({ name: 'fq', value: 'snowHeight:' + filterSnowHeight });
-
-    var filterAirTemperatureForecast = $formFilters.querySelector('.valueAirTemperatureForecast')?.value;
-    if(filterAirTemperatureForecast != null && filterAirTemperatureForecast !== '')
-      filters.push({ name: 'fq', value: 'airTemperatureForecast:' + filterAirTemperatureForecast });
-
-    var filterAirTemperatureTSA = $formFilters.querySelector('.valueAirTemperatureTSA')?.value;
-    if(filterAirTemperatureTSA != null && filterAirTemperatureTSA !== '')
-      filters.push({ name: 'fq', value: 'airTemperatureTSA:' + filterAirTemperatureTSA });
-
-    var filterFeelsLikeTemperature = $formFilters.querySelector('.valueFeelsLikeTemperature')?.value;
-    if(filterFeelsLikeTemperature != null && filterFeelsLikeTemperature !== '')
-      filters.push({ name: 'fq', value: 'feelsLikeTemperature:' + filterFeelsLikeTemperature });
-
-    var filterTemperature = $formFilters.querySelector('.valueTemperature')?.value;
-    if(filterTemperature != null && filterTemperature !== '')
-      filters.push({ name: 'fq', value: 'temperature:' + filterTemperature });
-
-    var filterSolarRadiation = $formFilters.querySelector('.valueSolarRadiation')?.value;
-    if(filterSolarRadiation != null && filterSolarRadiation !== '')
-      filters.push({ name: 'fq', value: 'solarRadiation:' + filterSolarRadiation });
-
-    var filterStreamGauge = $formFilters.querySelector('.valueStreamGauge')?.value;
-    if(filterStreamGauge != null && filterStreamGauge !== '')
-      filters.push({ name: 'fq', value: 'streamGauge:' + filterStreamGauge });
-
-    var filterUVIndexMax = $formFilters.querySelector('.valueUVIndexMax')?.value;
-    if(filterUVIndexMax != null && filterUVIndexMax !== '')
-      filters.push({ name: 'fq', value: 'uVIndexMax:' + filterUVIndexMax });
-
-    var filterVisibility = $formFilters.querySelector('.valueVisibility')?.value;
-    if(filterVisibility != null && filterVisibility !== '')
-      filters.push({ name: 'fq', value: 'visibility:' + filterVisibility });
-
-    var filterWeatherType = $formFilters.querySelector('.valueWeatherType')?.value;
-    if(filterWeatherType != null && filterWeatherType !== '')
-      filters.push({ name: 'fq', value: 'weatherType:' + filterWeatherType });
+    var filterDateObserved = $formFilters.querySelector('.valueDateObserved')?.value;
+    if(filterDateObserved != null && filterDateObserved !== '')
+      filters.push({ name: 'fq', value: 'dateObserved:' + filterDateObserved });
 
     var filterDewPoint = $formFilters.querySelector('.valueDewPoint')?.value;
     if(filterDewPoint != null && filterDewPoint !== '')
@@ -1178,37 +1162,93 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterDirectIrradiation != null && filterDirectIrradiation !== '')
       filters.push({ name: 'fq', value: 'directIrradiation:' + filterDirectIrradiation });
 
+    var filterFeelsLikeTemperature = $formFilters.querySelector('.valueFeelsLikeTemperature')?.value;
+    if(filterFeelsLikeTemperature != null && filterFeelsLikeTemperature !== '')
+      filters.push({ name: 'fq', value: 'feelsLikeTemperature:' + filterFeelsLikeTemperature });
+
+    var filterGustSpeed = $formFilters.querySelector('.valueGustSpeed')?.value;
+    if(filterGustSpeed != null && filterGustSpeed !== '')
+      filters.push({ name: 'fq', value: 'gustSpeed:' + filterGustSpeed });
+
     var filterIlluminance = $formFilters.querySelector('.valueIlluminance')?.value;
     if(filterIlluminance != null && filterIlluminance !== '')
       filters.push({ name: 'fq', value: 'illuminance:' + filterIlluminance });
 
-    var filterNgsildTenant = $formFilters.querySelector('.valueNgsildTenant')?.value;
-    if(filterNgsildTenant != null && filterNgsildTenant !== '')
-      filters.push({ name: 'fq', value: 'ngsildTenant:' + filterNgsildTenant });
+    var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
+    if(filterOwner != null && filterOwner !== '')
+      filters.push({ name: 'fq', value: 'owner:' + filterOwner });
 
-    var filterNgsildPath = $formFilters.querySelector('.valueNgsildPath')?.value;
-    if(filterNgsildPath != null && filterNgsildPath !== '')
-      filters.push({ name: 'fq', value: 'ngsildPath:' + filterNgsildPath });
+    var filterPrecipitation = $formFilters.querySelector('.valuePrecipitation')?.value;
+    if(filterPrecipitation != null && filterPrecipitation !== '')
+      filters.push({ name: 'fq', value: 'precipitation:' + filterPrecipitation });
 
-    var filterNgsildData = $formFilters.querySelector('.valueNgsildData')?.value;
-    if(filterNgsildData != null && filterNgsildData !== '')
-      filters.push({ name: 'fq', value: 'ngsildData:' + filterNgsildData });
+    var filterPrecipitationForecast = $formFilters.querySelector('.valuePrecipitationForecast')?.value;
+    if(filterPrecipitationForecast != null && filterPrecipitationForecast !== '')
+      filters.push({ name: 'fq', value: 'precipitationForecast:' + filterPrecipitationForecast });
+
+    var filterPressureTendency = $formFilters.querySelector('.valuePressureTendency')?.value;
+    if(filterPressureTendency != null && filterPressureTendency !== '')
+      filters.push({ name: 'fq', value: 'pressureTendency:' + filterPressureTendency });
+
+    var filterRefDevice = $formFilters.querySelector('.valueRefDevice')?.value;
+    if(filterRefDevice != null && filterRefDevice !== '')
+      filters.push({ name: 'fq', value: 'refDevice:' + filterRefDevice });
+
+    var filterRefPointOfInterest = $formFilters.querySelector('.valueRefPointOfInterest')?.value;
+    if(filterRefPointOfInterest != null && filterRefPointOfInterest !== '')
+      filters.push({ name: 'fq', value: 'refPointOfInterest:' + filterRefPointOfInterest });
+
+    var filterRelativeHumidity = $formFilters.querySelector('.valueRelativeHumidity')?.value;
+    if(filterRelativeHumidity != null && filterRelativeHumidity !== '')
+      filters.push({ name: 'fq', value: 'relativeHumidity:' + filterRelativeHumidity });
+
+    var filterRelativeHumidityForecast = $formFilters.querySelector('.valueRelativeHumidityForecast')?.value;
+    if(filterRelativeHumidityForecast != null && filterRelativeHumidityForecast !== '')
+      filters.push({ name: 'fq', value: 'relativeHumidityForecast:' + filterRelativeHumidityForecast });
 
     var filterSeeAlso = $formFilters.querySelector('.valueSeeAlso')?.value;
     if(filterSeeAlso != null && filterSeeAlso !== '')
       filters.push({ name: 'fq', value: 'seeAlso:' + filterSeeAlso });
 
-    var filterEntityId = $formFilters.querySelector('.valueEntityId')?.value;
-    if(filterEntityId != null && filterEntityId !== '')
-      filters.push({ name: 'fq', value: 'entityId:' + filterEntityId });
+    var filterSnowHeight = $formFilters.querySelector('.valueSnowHeight')?.value;
+    if(filterSnowHeight != null && filterSnowHeight !== '')
+      filters.push({ name: 'fq', value: 'snowHeight:' + filterSnowHeight });
 
-    var filterNgsildContext = $formFilters.querySelector('.valueNgsildContext')?.value;
-    if(filterNgsildContext != null && filterNgsildContext !== '')
-      filters.push({ name: 'fq', value: 'ngsildContext:' + filterNgsildContext });
+    var filterSolarRadiation = $formFilters.querySelector('.valueSolarRadiation')?.value;
+    if(filterSolarRadiation != null && filterSolarRadiation !== '')
+      filters.push({ name: 'fq', value: 'solarRadiation:' + filterSolarRadiation });
 
-    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
-    if(filterDisplayPage != null && filterDisplayPage !== '')
-      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
+    var filterSource = $formFilters.querySelector('.valueSource')?.value;
+    if(filterSource != null && filterSource !== '')
+      filters.push({ name: 'fq', value: 'source:' + filterSource });
+
+    var filterStreamGauge = $formFilters.querySelector('.valueStreamGauge')?.value;
+    if(filterStreamGauge != null && filterStreamGauge !== '')
+      filters.push({ name: 'fq', value: 'streamGauge:' + filterStreamGauge });
+
+    var filterTemperature = $formFilters.querySelector('.valueTemperature')?.value;
+    if(filterTemperature != null && filterTemperature !== '')
+      filters.push({ name: 'fq', value: 'temperature:' + filterTemperature });
+
+    var filterUVIndexMax = $formFilters.querySelector('.valueUVIndexMax')?.value;
+    if(filterUVIndexMax != null && filterUVIndexMax !== '')
+      filters.push({ name: 'fq', value: 'uVIndexMax:' + filterUVIndexMax });
+
+    var filterVisibility = $formFilters.querySelector('.valueVisibility')?.value;
+    if(filterVisibility != null && filterVisibility !== '')
+      filters.push({ name: 'fq', value: 'visibility:' + filterVisibility });
+
+    var filterWeatherType = $formFilters.querySelector('.valueWeatherType')?.value;
+    if(filterWeatherType != null && filterWeatherType !== '')
+      filters.push({ name: 'fq', value: 'weatherType:' + filterWeatherType });
+
+    var filterWindDirection = $formFilters.querySelector('.valueWindDirection')?.value;
+    if(filterWindDirection != null && filterWindDirection !== '')
+      filters.push({ name: 'fq', value: 'windDirection:' + filterWindDirection });
+
+    var filterWindSpeed = $formFilters.querySelector('.valueWindSpeed')?.value;
+    if(filterWindSpeed != null && filterWindSpeed !== '')
+      filters.push({ name: 'fq', value: 'windSpeed:' + filterWindSpeed });
 
     var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
@@ -1238,9 +1278,17 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
 
+    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
+    if(filterDisplayPage != null && filterDisplayPage !== '')
+      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
+
     var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
     if(filterEditPage != null && filterEditPage !== '')
       filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
+    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
+    if(filterUserPage != null && filterUserPage !== '')
+      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
 
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
@@ -1254,10 +1302,6 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterAlternateName = $formFilters.querySelector('.valueAlternateName')?.value;
-    if(filterAlternateName != null && filterAlternateName !== '')
-      filters.push({ name: 'fq', value: 'alternateName:' + filterAlternateName });
-
     var filterAreaServedColors = $formFilters.querySelector('.valueAreaServedColors')?.value;
     if(filterAreaServedColors != null && filterAreaServedColors !== '')
       filters.push({ name: 'fq', value: 'areaServedColors:' + filterAreaServedColors });
@@ -1270,37 +1314,9 @@ function patchWeatherObservedFilters($formFilters) {
     if(filterAreaServedLinks != null && filterAreaServedLinks !== '')
       filters.push({ name: 'fq', value: 'areaServedLinks:' + filterAreaServedLinks });
 
-    var filterDataProvider = $formFilters.querySelector('.valueDataProvider')?.value;
-    if(filterDataProvider != null && filterDataProvider !== '')
-      filters.push({ name: 'fq', value: 'dataProvider:' + filterDataProvider });
-
-    var filterDateCreated = $formFilters.querySelector('.valueDateCreated')?.value;
-    if(filterDateCreated != null && filterDateCreated !== '')
-      filters.push({ name: 'fq', value: 'dateCreated:' + filterDateCreated });
-
-    var filterDateModified = $formFilters.querySelector('.valueDateModified')?.value;
-    if(filterDateModified != null && filterDateModified !== '')
-      filters.push({ name: 'fq', value: 'dateModified:' + filterDateModified });
-
-    var filterOwner = $formFilters.querySelector('.valueOwner')?.value;
-    if(filterOwner != null && filterOwner !== '')
-      filters.push({ name: 'fq', value: 'owner:' + filterOwner });
-
-    var filterRefPointOfInterest = $formFilters.querySelector('.valueRefPointOfInterest')?.value;
-    if(filterRefPointOfInterest != null && filterRefPointOfInterest !== '')
-      filters.push({ name: 'fq', value: 'refPointOfInterest:' + filterRefPointOfInterest });
-
-    var filterDateObserved = $formFilters.querySelector('.valueDateObserved')?.value;
-    if(filterDateObserved != null && filterDateObserved !== '')
-      filters.push({ name: 'fq', value: 'dateObserved:' + filterDateObserved });
-
-    var filterRefDevice = $formFilters.querySelector('.valueRefDevice')?.value;
-    if(filterRefDevice != null && filterRefDevice !== '')
-      filters.push({ name: 'fq', value: 'refDevice:' + filterRefDevice });
-
-    var filterSource = $formFilters.querySelector('.valueSource')?.value;
-    if(filterSource != null && filterSource !== '')
-      filters.push({ name: 'fq', value: 'source:' + filterSource });
+    var filterEntityShortId = $formFilters.querySelector('.valueEntityShortId')?.value;
+    if(filterEntityShortId != null && filterEntityShortId !== '')
+      filters.push({ name: 'fq', value: 'entityShortId:' + filterEntityShortId });
   }
   return filters;
 }
@@ -1369,10 +1385,6 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueDescription != null && valueDescription !== '')
     vals['description'] = valueDescription;
 
-  var valueAddress = $formValues.querySelector('.valueAddress')?.value;
-  if(valueAddress != null && valueAddress !== '')
-    vals['address'] = JSON.parse(valueAddress);
-
   var valueLocation = $formValues.querySelector('.valueLocation')?.value;
   if(valueLocation != null && valueLocation !== '')
     vals['location'] = JSON.parse(valueLocation);
@@ -1381,6 +1393,30 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueAreaServed != null && valueAreaServed !== '')
     vals['areaServed'] = JSON.parse(valueAreaServed);
 
+  var valueId = $formValues.querySelector('.valueId')?.value;
+  if(valueId != null && valueId !== '')
+    vals['id'] = valueId;
+
+  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
+  if(valueNgsildTenant != null && valueNgsildTenant !== '')
+    vals['ngsildTenant'] = valueNgsildTenant;
+
+  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
+  if(valueNgsildPath != null && valueNgsildPath !== '')
+    vals['ngsildPath'] = valueNgsildPath;
+
+  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
+  if(valueNgsildContext != null && valueNgsildContext !== '')
+    vals['ngsildContext'] = valueNgsildContext;
+
+  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
+  if(valueNgsildData != null && valueNgsildData !== '')
+    vals['ngsildData'] = JSON.parse(valueNgsildData);
+
+  var valueAddress = $formValues.querySelector('.valueAddress')?.value;
+  if(valueAddress != null && valueAddress !== '')
+    vals['address'] = JSON.parse(valueAddress);
+
   var valueAirQualityIndex = $formValues.querySelector('.valueAirQualityIndex')?.value;
   if(valueAirQualityIndex != null && valueAirQualityIndex !== '')
     vals['airQualityIndex'] = valueAirQualityIndex;
@@ -1388,6 +1424,18 @@ async function postWeatherObserved($formValues, target, success, error) {
   var valueAirQualityIndexForecast = $formValues.querySelector('.valueAirQualityIndexForecast')?.value;
   if(valueAirQualityIndexForecast != null && valueAirQualityIndexForecast !== '')
     vals['airQualityIndexForecast'] = valueAirQualityIndexForecast;
+
+  var valueAirTemperatureForecast = $formValues.querySelector('.valueAirTemperatureForecast')?.value;
+  if(valueAirTemperatureForecast != null && valueAirTemperatureForecast !== '')
+    vals['airTemperatureForecast'] = valueAirTemperatureForecast;
+
+  var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
+  if(valueAirTemperatureTSA != null && valueAirTemperatureTSA !== '')
+    vals['airTemperatureTSA'] = JSON.parse(valueAirTemperatureTSA);
+
+  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
+  if(valueAlternateName != null && valueAlternateName !== '')
+    vals['alternateName'] = valueAlternateName;
 
   var valueAqiMajorPollutant = $formValues.querySelector('.valueAqiMajorPollutant')?.value;
   if(valueAqiMajorPollutant != null && valueAqiMajorPollutant !== '')
@@ -1401,77 +1449,21 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueAtmosphericPressure != null && valueAtmosphericPressure !== '')
     vals['atmosphericPressure'] = valueAtmosphericPressure;
 
-  var valuePressureTendency = $formValues.querySelector('.valuePressureTendency')?.value;
-  if(valuePressureTendency != null && valuePressureTendency !== '')
-    vals['pressureTendency'] = JSON.parse(valuePressureTendency);
+  var valueDataProvider = $formValues.querySelector('.valueDataProvider')?.value;
+  if(valueDataProvider != null && valueDataProvider !== '')
+    vals['dataProvider'] = valueDataProvider;
 
-  var valueGustSpeed = $formValues.querySelector('.valueGustSpeed')?.value;
-  if(valueGustSpeed != null && valueGustSpeed !== '')
-    vals['gustSpeed'] = valueGustSpeed;
+  var valueDateCreated = $formValues.querySelector('.valueDateCreated')?.value;
+  if(valueDateCreated != null && valueDateCreated !== '')
+    vals['dateCreated'] = valueDateCreated;
 
-  var valueWindDirection = $formValues.querySelector('.valueWindDirection')?.value;
-  if(valueWindDirection != null && valueWindDirection !== '')
-    vals['windDirection'] = valueWindDirection;
+  var valueDateModified = $formValues.querySelector('.valueDateModified')?.value;
+  if(valueDateModified != null && valueDateModified !== '')
+    vals['dateModified'] = valueDateModified;
 
-  var valueWindSpeed = $formValues.querySelector('.valueWindSpeed')?.value;
-  if(valueWindSpeed != null && valueWindSpeed !== '')
-    vals['windSpeed'] = valueWindSpeed;
-
-  var valuePrecipitation = $formValues.querySelector('.valuePrecipitation')?.value;
-  if(valuePrecipitation != null && valuePrecipitation !== '')
-    vals['precipitation'] = valuePrecipitation;
-
-  var valuePrecipitationForecast = $formValues.querySelector('.valuePrecipitationForecast')?.value;
-  if(valuePrecipitationForecast != null && valuePrecipitationForecast !== '')
-    vals['precipitationForecast'] = valuePrecipitationForecast;
-
-  var valueRelativeHumidity = $formValues.querySelector('.valueRelativeHumidity')?.value;
-  if(valueRelativeHumidity != null && valueRelativeHumidity !== '')
-    vals['relativeHumidity'] = valueRelativeHumidity;
-
-  var valueRelativeHumidityForecast = $formValues.querySelector('.valueRelativeHumidityForecast')?.value;
-  if(valueRelativeHumidityForecast != null && valueRelativeHumidityForecast !== '')
-    vals['relativeHumidityForecast'] = valueRelativeHumidityForecast;
-
-  var valueSnowHeight = $formValues.querySelector('.valueSnowHeight')?.value;
-  if(valueSnowHeight != null && valueSnowHeight !== '')
-    vals['snowHeight'] = valueSnowHeight;
-
-  var valueAirTemperatureForecast = $formValues.querySelector('.valueAirTemperatureForecast')?.value;
-  if(valueAirTemperatureForecast != null && valueAirTemperatureForecast !== '')
-    vals['airTemperatureForecast'] = valueAirTemperatureForecast;
-
-  var valueAirTemperatureTSA = $formValues.querySelector('.valueAirTemperatureTSA')?.value;
-  if(valueAirTemperatureTSA != null && valueAirTemperatureTSA !== '')
-    vals['airTemperatureTSA'] = JSON.parse(valueAirTemperatureTSA);
-
-  var valueFeelsLikeTemperature = $formValues.querySelector('.valueFeelsLikeTemperature')?.value;
-  if(valueFeelsLikeTemperature != null && valueFeelsLikeTemperature !== '')
-    vals['feelsLikeTemperature'] = valueFeelsLikeTemperature;
-
-  var valueTemperature = $formValues.querySelector('.valueTemperature')?.value;
-  if(valueTemperature != null && valueTemperature !== '')
-    vals['temperature'] = valueTemperature;
-
-  var valueSolarRadiation = $formValues.querySelector('.valueSolarRadiation')?.value;
-  if(valueSolarRadiation != null && valueSolarRadiation !== '')
-    vals['solarRadiation'] = valueSolarRadiation;
-
-  var valueStreamGauge = $formValues.querySelector('.valueStreamGauge')?.value;
-  if(valueStreamGauge != null && valueStreamGauge !== '')
-    vals['streamGauge'] = valueStreamGauge;
-
-  var valueUVIndexMax = $formValues.querySelector('.valueUVIndexMax')?.value;
-  if(valueUVIndexMax != null && valueUVIndexMax !== '')
-    vals['uVIndexMax'] = valueUVIndexMax;
-
-  var valueVisibility = $formValues.querySelector('.valueVisibility')?.value;
-  if(valueVisibility != null && valueVisibility !== '')
-    vals['visibility'] = JSON.parse(valueVisibility);
-
-  var valueWeatherType = $formValues.querySelector('.valueWeatherType')?.value;
-  if(valueWeatherType != null && valueWeatherType !== '')
-    vals['weatherType'] = valueWeatherType;
+  var valueDateObserved = $formValues.querySelector('.valueDateObserved')?.value;
+  if(valueDateObserved != null && valueDateObserved !== '')
+    vals['dateObserved'] = valueDateObserved;
 
   var valueDewPoint = $formValues.querySelector('.valueDewPoint')?.value;
   if(valueDewPoint != null && valueDewPoint !== '')
@@ -1485,37 +1477,93 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueDirectIrradiation != null && valueDirectIrradiation !== '')
     vals['directIrradiation'] = valueDirectIrradiation;
 
+  var valueFeelsLikeTemperature = $formValues.querySelector('.valueFeelsLikeTemperature')?.value;
+  if(valueFeelsLikeTemperature != null && valueFeelsLikeTemperature !== '')
+    vals['feelsLikeTemperature'] = valueFeelsLikeTemperature;
+
+  var valueGustSpeed = $formValues.querySelector('.valueGustSpeed')?.value;
+  if(valueGustSpeed != null && valueGustSpeed !== '')
+    vals['gustSpeed'] = valueGustSpeed;
+
   var valueIlluminance = $formValues.querySelector('.valueIlluminance')?.value;
   if(valueIlluminance != null && valueIlluminance !== '')
     vals['illuminance'] = valueIlluminance;
 
-  var valueNgsildTenant = $formValues.querySelector('.valueNgsildTenant')?.value;
-  if(valueNgsildTenant != null && valueNgsildTenant !== '')
-    vals['ngsildTenant'] = valueNgsildTenant;
+  var valueOwner = $formValues.querySelector('.valueOwner')?.value;
+  if(valueOwner != null && valueOwner !== '')
+    vals['owner'] = JSON.parse(valueOwner);
 
-  var valueNgsildPath = $formValues.querySelector('.valueNgsildPath')?.value;
-  if(valueNgsildPath != null && valueNgsildPath !== '')
-    vals['ngsildPath'] = valueNgsildPath;
+  var valuePrecipitation = $formValues.querySelector('.valuePrecipitation')?.value;
+  if(valuePrecipitation != null && valuePrecipitation !== '')
+    vals['precipitation'] = valuePrecipitation;
 
-  var valueNgsildData = $formValues.querySelector('.valueNgsildData')?.value;
-  if(valueNgsildData != null && valueNgsildData !== '')
-    vals['ngsildData'] = JSON.parse(valueNgsildData);
+  var valuePrecipitationForecast = $formValues.querySelector('.valuePrecipitationForecast')?.value;
+  if(valuePrecipitationForecast != null && valuePrecipitationForecast !== '')
+    vals['precipitationForecast'] = valuePrecipitationForecast;
+
+  var valuePressureTendency = $formValues.querySelector('.valuePressureTendency')?.value;
+  if(valuePressureTendency != null && valuePressureTendency !== '')
+    vals['pressureTendency'] = valuePressureTendency;
+
+  var valueRefDevice = $formValues.querySelector('.valueRefDevice')?.value;
+  if(valueRefDevice != null && valueRefDevice !== '')
+    vals['refDevice'] = valueRefDevice;
+
+  var valueRefPointOfInterest = $formValues.querySelector('.valueRefPointOfInterest')?.value;
+  if(valueRefPointOfInterest != null && valueRefPointOfInterest !== '')
+    vals['refPointOfInterest'] = valueRefPointOfInterest;
+
+  var valueRelativeHumidity = $formValues.querySelector('.valueRelativeHumidity')?.value;
+  if(valueRelativeHumidity != null && valueRelativeHumidity !== '')
+    vals['relativeHumidity'] = valueRelativeHumidity;
+
+  var valueRelativeHumidityForecast = $formValues.querySelector('.valueRelativeHumidityForecast')?.value;
+  if(valueRelativeHumidityForecast != null && valueRelativeHumidityForecast !== '')
+    vals['relativeHumidityForecast'] = valueRelativeHumidityForecast;
 
   var valueSeeAlso = $formValues.querySelector('.valueSeeAlso')?.value;
   if(valueSeeAlso != null && valueSeeAlso !== '')
-    vals['seeAlso'] = JSON.parse(valueSeeAlso);
+    vals['seeAlso'] = valueSeeAlso;
 
-  var valueEntityId = $formValues.querySelector('.valueEntityId')?.value;
-  if(valueEntityId != null && valueEntityId !== '')
-    vals['entityId'] = valueEntityId;
+  var valueSnowHeight = $formValues.querySelector('.valueSnowHeight')?.value;
+  if(valueSnowHeight != null && valueSnowHeight !== '')
+    vals['snowHeight'] = valueSnowHeight;
 
-  var valueNgsildContext = $formValues.querySelector('.valueNgsildContext')?.value;
-  if(valueNgsildContext != null && valueNgsildContext !== '')
-    vals['ngsildContext'] = valueNgsildContext;
+  var valueSolarRadiation = $formValues.querySelector('.valueSolarRadiation')?.value;
+  if(valueSolarRadiation != null && valueSolarRadiation !== '')
+    vals['solarRadiation'] = valueSolarRadiation;
 
-  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
-  if(valueDisplayPage != null && valueDisplayPage !== '')
-    vals['displayPage'] = valueDisplayPage;
+  var valueSource = $formValues.querySelector('.valueSource')?.value;
+  if(valueSource != null && valueSource !== '')
+    vals['source'] = valueSource;
+
+  var valueStreamGauge = $formValues.querySelector('.valueStreamGauge')?.value;
+  if(valueStreamGauge != null && valueStreamGauge !== '')
+    vals['streamGauge'] = valueStreamGauge;
+
+  var valueTemperature = $formValues.querySelector('.valueTemperature')?.value;
+  if(valueTemperature != null && valueTemperature !== '')
+    vals['temperature'] = valueTemperature;
+
+  var valueUVIndexMax = $formValues.querySelector('.valueUVIndexMax')?.value;
+  if(valueUVIndexMax != null && valueUVIndexMax !== '')
+    vals['uVIndexMax'] = valueUVIndexMax;
+
+  var valueVisibility = $formValues.querySelector('.valueVisibility')?.value;
+  if(valueVisibility != null && valueVisibility !== '')
+    vals['visibility'] = valueVisibility;
+
+  var valueWeatherType = $formValues.querySelector('.valueWeatherType')?.value;
+  if(valueWeatherType != null && valueWeatherType !== '')
+    vals['weatherType'] = valueWeatherType;
+
+  var valueWindDirection = $formValues.querySelector('.valueWindDirection')?.value;
+  if(valueWindDirection != null && valueWindDirection !== '')
+    vals['windDirection'] = valueWindDirection;
+
+  var valueWindSpeed = $formValues.querySelector('.valueWindSpeed')?.value;
+  if(valueWindSpeed != null && valueWindSpeed !== '')
+    vals['windSpeed'] = valueWindSpeed;
 
   var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
   if(valueSessionId != null && valueSessionId !== '')
@@ -1529,45 +1577,13 @@ async function postWeatherObserved($formValues, target, success, error) {
   if(valueTitle != null && valueTitle !== '')
     vals['title'] = valueTitle;
 
+  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
+  if(valueDisplayPage != null && valueDisplayPage !== '')
+    vals['displayPage'] = valueDisplayPage;
+
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   if(valueEditPage != null && valueEditPage !== '')
     vals['editPage'] = valueEditPage;
-
-  var valueAlternateName = $formValues.querySelector('.valueAlternateName')?.value;
-  if(valueAlternateName != null && valueAlternateName !== '')
-    vals['alternateName'] = valueAlternateName;
-
-  var valueDataProvider = $formValues.querySelector('.valueDataProvider')?.value;
-  if(valueDataProvider != null && valueDataProvider !== '')
-    vals['dataProvider'] = valueDataProvider;
-
-  var valueDateCreated = $formValues.querySelector('.valueDateCreated')?.value;
-  if(valueDateCreated != null && valueDateCreated !== '')
-    vals['dateCreated'] = valueDateCreated;
-
-  var valueDateModified = $formValues.querySelector('.valueDateModified')?.value;
-  if(valueDateModified != null && valueDateModified !== '')
-    vals['dateModified'] = valueDateModified;
-
-  var valueOwner = $formValues.querySelector('.valueOwner')?.value;
-  if(valueOwner != null && valueOwner !== '')
-    vals['owner'] = JSON.parse(valueOwner);
-
-  var valueRefPointOfInterest = $formValues.querySelector('.valueRefPointOfInterest')?.value;
-  if(valueRefPointOfInterest != null && valueRefPointOfInterest !== '')
-    vals['refPointOfInterest'] = valueRefPointOfInterest;
-
-  var valueDateObserved = $formValues.querySelector('.valueDateObserved')?.value;
-  if(valueDateObserved != null && valueDateObserved !== '')
-    vals['dateObserved'] = valueDateObserved;
-
-  var valueRefDevice = $formValues.querySelector('.valueRefDevice')?.value;
-  if(valueRefDevice != null && valueRefDevice !== '')
-    vals['refDevice'] = JSON.parse(valueRefDevice);
-
-  var valueSource = $formValues.querySelector('.valueSource')?.value;
-  if(valueSource != null && valueSource !== '')
-    vals['source'] = valueSource;
 
   fetch(
     '/en-us/api/weather-observed'
@@ -1602,7 +1618,7 @@ function postWeatherObservedVals(vals, target, success, error) {
 
 // DELETE //
 
-async function deleteWeatherObserved(target, entityId, success, error) {
+async function deleteWeatherObserved(target, entityShortId, success, error) {
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
       addGlow(target);
@@ -1618,7 +1634,7 @@ async function deleteWeatherObserved(target, entityId, success, error) {
   }
 
   fetch(
-    '/en-us/api/weather-observed/' + encodeURIComponent(entityId)
+    '/en-us/api/weather-observed/' + encodeURIComponent(entityShortId)
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'DELETE'
@@ -1633,7 +1649,7 @@ async function deleteWeatherObserved(target, entityId, success, error) {
 
 // PUTImport //
 
-async function putimportWeatherObserved($formValues, target, entityId, success, error) {
+async function putimportWeatherObserved($formValues, target, entityShortId, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
     putimportWeatherObservedVals(JSON.parse(json), target, success, error);
@@ -1655,52 +1671,82 @@ function putimportWeatherObservedVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
+// DELETEFilter //
+
+async function deletefilterWeatherObserved(target, success, error) {
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target);
+      var url = data['editPage'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, textStatus, errorThrown ) {
+      addError(target);
+    };
+  }
+
+  fetch(
+    '/en-us/api/weather-observed'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'DELETE'
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
+}
+
 async function websocketWeatherObserved(success) {
   window.eventBus.onopen = function () {
 
     window.eventBus.registerHandler('websocketWeatherObserved', function (error, message) {
       var json = JSON.parse(message['body']);
-      var entityId = json['entityId'];
-      var entityIdPage = document.querySelector('#Page_entityId')?.value;
+      var entityShortId = json['id'];
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
       var numPATCH = parseInt(json['numPATCH']);
       var percent = Math.floor( numPATCH / numFound * 100 ) + '%';
       var $box = document.createElement('div');
-      $box.setAttribute('class', 'w3-quarter box-' + entityId + ' ');
-      $box.setAttribute('id', 'box-' + entityId);
+      $box.setAttribute('class', 'w3-quarter box-' + entityShortId + ' ');
+      $box.setAttribute('id', 'box-' + entityShortId);
       $box.setAttribute('data-numPATCH', numPATCH);
       var $margin = document.createElement('div');
       $margin.setAttribute('class', 'w3-margin ');
-      $margin.setAttribute('id', 'margin-' + entityId);
+      $margin.setAttribute('id', 'margin-' + entityShortId);
       var $card = document.createElement('div');
       $card.setAttribute('class', 'w3-card w3-white ');
-      $card.setAttribute('id', 'card-' + entityId);
+      $card.setAttribute('id', 'card-' + entityShortId);
       var $header = document.createElement('div');
-      $header.setAttribute('class', 'w3-container fa-2017-shaded-spruce ');
-      $header.setAttribute('id', 'header-' + entityId);
+      $header.setAttribute('class', 'w3-container fa- ');
+      $header.setAttribute('id', 'header-' + entityShortId);
       var iTemplate = document.createElement('template');
       iTemplate.innerHTML = '<i class="fa-regular fa-cloud-bolt-sun"></i>';
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify weather observed devices in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify WeatherObserveds in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
-      $x.setAttribute('onclick', 'document.querySelector("#card-' + entityId + '");');
+      $x.setAttribute('onclick', 'document.querySelector("#card-' + entityShortId + '");');
       $x.classList.add("display-none");
-      $x.setAttribute('id', 'x-' + entityId);
+      $x.setAttribute('id', 'x-' + entityShortId);
       var $body = document.createElement('div');
       $body.setAttribute('class', 'w3-container w3-padding ');
-      $body.setAttribute('id', 'text-' + entityId);
+      $body.setAttribute('id', 'text-' + entityShortId);
       var $bar = document.createElement('div');
       $bar.setAttribute('class', 'w3-light-gray ');
-      $bar.setAttribute('id', 'bar-' + entityId);
+      $bar.setAttribute('id', 'bar-' + entityShortId);
       var $progress = document.createElement('div');
-      $progress.setAttribute('class', 'w3-2017-shaded-spruce ');
+      $progress.setAttribute('class', 'w3- ');
       $progress.setAttribute('style', 'height: 24px; width: ' + percent + '; ');
-      $progress.setAttribute('id', 'progress-' + entityId);
+      $progress.setAttribute('id', 'progress-' + entityShortId);
       $progress.innerText = numPATCH + '/' + numFound;
       $card.append($header);
       $header.append($i);
@@ -1712,11 +1758,11 @@ async function websocketWeatherObserved(success) {
       $box.append($margin);
       $margin.append($card);
       if(numPATCH < numFound) {
-        var $old_box = document.querySelector('.box-' + entityId);
+        var $old_box = document.querySelector('.box-' + entityShortId);
       } else {
-        document.querySelector('.box-' + entityId)?.remove();
+        document.querySelector('.box-' + entityShortId)?.remove();
       }
-      if(entityId && entityIdPage && entityId == entityIdPage) {
+      if(entityShortId) {
         if(success)
           success(json);
       }
@@ -1724,13 +1770,12 @@ async function websocketWeatherObserved(success) {
   }
 }
 async function websocketWeatherObservedInner(apiRequest) {
-  var pk = apiRequest['pk'];
-  var pks = apiRequest['pks'];
+  var entityShortId = apiRequest['id'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
   var empty = apiRequest['empty'];
 
-  if(pk != null && vars.length > 0) {
+  if(entityShortId != null && vars.length > 0) {
     var queryParams = "?" + Array.from(document.querySelectorAll(".pageSearchVal")).filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
     fetch(uri).then(response => {
@@ -1742,43 +1787,51 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputArchived = null;
         var inputName = null;
         var inputDescription = null;
-        var inputAddress = null;
         var inputLocation = null;
         var inputAreaServed = null;
+        var inputId = null;
+        var inputNgsildTenant = null;
+        var inputNgsildPath = null;
+        var inputNgsildContext = null;
+        var inputNgsildData = null;
+        var inputAddress = null;
         var inputAirQualityIndex = null;
         var inputAirQualityIndexForecast = null;
+        var inputAirTemperatureForecast = null;
+        var inputAirTemperatureTSA = null;
+        var inputAlternateName = null;
         var inputAqiMajorPollutant = null;
         var inputAqiMajorPollutantForecast = null;
         var inputAtmosphericPressure = null;
-        var inputPressureTendency = null;
-        var inputGustSpeed = null;
-        var inputWindDirection = null;
-        var inputWindSpeed = null;
-        var inputPrecipitation = null;
-        var inputPrecipitationForecast = null;
-        var inputRelativeHumidity = null;
-        var inputRelativeHumidityForecast = null;
-        var inputSnowHeight = null;
-        var inputAirTemperatureForecast = null;
-        var inputAirTemperatureTSA = null;
-        var inputFeelsLikeTemperature = null;
-        var inputTemperature = null;
-        var inputSolarRadiation = null;
-        var inputStreamGauge = null;
-        var inputUVIndexMax = null;
-        var inputVisibility = null;
-        var inputWeatherType = null;
+        var inputDataProvider = null;
+        var inputDateCreated = null;
+        var inputDateModified = null;
+        var inputDateObserved = null;
         var inputDewPoint = null;
         var inputDiffuseIrradiation = null;
         var inputDirectIrradiation = null;
+        var inputFeelsLikeTemperature = null;
+        var inputGustSpeed = null;
         var inputIlluminance = null;
-        var inputNgsildTenant = null;
-        var inputNgsildPath = null;
-        var inputNgsildData = null;
+        var inputOwner = null;
+        var inputPrecipitation = null;
+        var inputPrecipitationForecast = null;
+        var inputPressureTendency = null;
+        var inputRefDevice = null;
+        var inputRefPointOfInterest = null;
+        var inputRelativeHumidity = null;
+        var inputRelativeHumidityForecast = null;
         var inputSeeAlso = null;
-        var inputEntityId = null;
-        var inputNgsildContext = null;
-        var inputDisplayPage = null;
+        var inputSnowHeight = null;
+        var inputSolarRadiation = null;
+        var inputSource = null;
+        var inputStreamGauge = null;
+        var inputTemperature = null;
+        var inputUVIndexMax = null;
+        var inputVisibility = null;
+        var inputWeatherType = null;
+        var inputWindDirection = null;
+        var inputWindSpeed = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
         var inputClassCanonicalNames = null;
@@ -1786,621 +1839,837 @@ async function websocketWeatherObservedInner(apiRequest) {
         var inputUserKey = null;
         var inputSaves = null;
         var inputTitle = null;
+        var inputDisplayPage = null;
         var inputEditPage = null;
+        var inputUserPage = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
-        var inputAlternateName = null;
         var inputAreaServedColors = null;
         var inputAreaServedTitles = null;
         var inputAreaServedLinks = null;
-        var inputDataProvider = null;
-        var inputDateCreated = null;
-        var inputDateModified = null;
-        var inputOwner = null;
-        var inputRefPointOfInterest = null;
-        var inputDateObserved = null;
-        var inputRefDevice = null;
-        var inputSource = null;
+        var inputEntityShortId = null;
 
         if(vars.includes('pk'))
-          inputPk = $response.querySelector('#Page_pk');
+          inputPk = $response.querySelector('.Page_pk');
         if(vars.includes('created'))
-          inputCreated = $response.querySelector('#Page_created');
+          inputCreated = $response.querySelector('.Page_created');
         if(vars.includes('modified'))
-          inputModified = $response.querySelector('#Page_modified');
+          inputModified = $response.querySelector('.Page_modified');
         if(vars.includes('archived'))
-          inputArchived = $response.querySelector('#Page_archived');
+          inputArchived = $response.querySelector('.Page_archived');
         if(vars.includes('name'))
-          inputName = $response.querySelector('#Page_name');
+          inputName = $response.querySelector('.Page_name');
         if(vars.includes('description'))
-          inputDescription = $response.querySelector('#Page_description');
-        if(vars.includes('address'))
-          inputAddress = $response.querySelector('#Page_address');
+          inputDescription = $response.querySelector('.Page_description');
         if(vars.includes('location'))
-          inputLocation = $response.querySelector('#Page_location');
+          inputLocation = $response.querySelector('.Page_location');
         if(vars.includes('areaServed'))
-          inputAreaServed = $response.querySelector('#Page_areaServed');
-        if(vars.includes('airQualityIndex'))
-          inputAirQualityIndex = $response.querySelector('#Page_airQualityIndex');
-        if(vars.includes('airQualityIndexForecast'))
-          inputAirQualityIndexForecast = $response.querySelector('#Page_airQualityIndexForecast');
-        if(vars.includes('aqiMajorPollutant'))
-          inputAqiMajorPollutant = $response.querySelector('#Page_aqiMajorPollutant');
-        if(vars.includes('aqiMajorPollutantForecast'))
-          inputAqiMajorPollutantForecast = $response.querySelector('#Page_aqiMajorPollutantForecast');
-        if(vars.includes('atmosphericPressure'))
-          inputAtmosphericPressure = $response.querySelector('#Page_atmosphericPressure');
-        if(vars.includes('pressureTendency'))
-          inputPressureTendency = $response.querySelector('#Page_pressureTendency');
-        if(vars.includes('gustSpeed'))
-          inputGustSpeed = $response.querySelector('#Page_gustSpeed');
-        if(vars.includes('windDirection'))
-          inputWindDirection = $response.querySelector('#Page_windDirection');
-        if(vars.includes('windSpeed'))
-          inputWindSpeed = $response.querySelector('#Page_windSpeed');
-        if(vars.includes('precipitation'))
-          inputPrecipitation = $response.querySelector('#Page_precipitation');
-        if(vars.includes('precipitationForecast'))
-          inputPrecipitationForecast = $response.querySelector('#Page_precipitationForecast');
-        if(vars.includes('relativeHumidity'))
-          inputRelativeHumidity = $response.querySelector('#Page_relativeHumidity');
-        if(vars.includes('relativeHumidityForecast'))
-          inputRelativeHumidityForecast = $response.querySelector('#Page_relativeHumidityForecast');
-        if(vars.includes('snowHeight'))
-          inputSnowHeight = $response.querySelector('#Page_snowHeight');
-        if(vars.includes('airTemperatureForecast'))
-          inputAirTemperatureForecast = $response.querySelector('#Page_airTemperatureForecast');
-        if(vars.includes('airTemperatureTSA'))
-          inputAirTemperatureTSA = $response.querySelector('#Page_airTemperatureTSA');
-        if(vars.includes('feelsLikeTemperature'))
-          inputFeelsLikeTemperature = $response.querySelector('#Page_feelsLikeTemperature');
-        if(vars.includes('temperature'))
-          inputTemperature = $response.querySelector('#Page_temperature');
-        if(vars.includes('solarRadiation'))
-          inputSolarRadiation = $response.querySelector('#Page_solarRadiation');
-        if(vars.includes('streamGauge'))
-          inputStreamGauge = $response.querySelector('#Page_streamGauge');
-        if(vars.includes('uVIndexMax'))
-          inputUVIndexMax = $response.querySelector('#Page_uVIndexMax');
-        if(vars.includes('visibility'))
-          inputVisibility = $response.querySelector('#Page_visibility');
-        if(vars.includes('weatherType'))
-          inputWeatherType = $response.querySelector('#Page_weatherType');
-        if(vars.includes('dewPoint'))
-          inputDewPoint = $response.querySelector('#Page_dewPoint');
-        if(vars.includes('diffuseIrradiation'))
-          inputDiffuseIrradiation = $response.querySelector('#Page_diffuseIrradiation');
-        if(vars.includes('directIrradiation'))
-          inputDirectIrradiation = $response.querySelector('#Page_directIrradiation');
-        if(vars.includes('illuminance'))
-          inputIlluminance = $response.querySelector('#Page_illuminance');
+          inputAreaServed = $response.querySelector('.Page_areaServed');
+        if(vars.includes('id'))
+          inputId = $response.querySelector('.Page_id');
         if(vars.includes('ngsildTenant'))
-          inputNgsildTenant = $response.querySelector('#Page_ngsildTenant');
+          inputNgsildTenant = $response.querySelector('.Page_ngsildTenant');
         if(vars.includes('ngsildPath'))
-          inputNgsildPath = $response.querySelector('#Page_ngsildPath');
-        if(vars.includes('ngsildData'))
-          inputNgsildData = $response.querySelector('#Page_ngsildData');
-        if(vars.includes('seeAlso'))
-          inputSeeAlso = $response.querySelector('#Page_seeAlso');
-        if(vars.includes('entityId'))
-          inputEntityId = $response.querySelector('#Page_entityId');
+          inputNgsildPath = $response.querySelector('.Page_ngsildPath');
         if(vars.includes('ngsildContext'))
-          inputNgsildContext = $response.querySelector('#Page_ngsildContext');
-        if(vars.includes('displayPage'))
-          inputDisplayPage = $response.querySelector('#Page_displayPage');
-        if(vars.includes('classCanonicalName'))
-          inputClassCanonicalName = $response.querySelector('#Page_classCanonicalName');
-        if(vars.includes('classSimpleName'))
-          inputClassSimpleName = $response.querySelector('#Page_classSimpleName');
-        if(vars.includes('classCanonicalNames'))
-          inputClassCanonicalNames = $response.querySelector('#Page_classCanonicalNames');
-        if(vars.includes('sessionId'))
-          inputSessionId = $response.querySelector('#Page_sessionId');
-        if(vars.includes('userKey'))
-          inputUserKey = $response.querySelector('#Page_userKey');
-        if(vars.includes('saves'))
-          inputSaves = $response.querySelector('#Page_saves');
-        if(vars.includes('title'))
-          inputTitle = $response.querySelector('#Page_title');
-        if(vars.includes('editPage'))
-          inputEditPage = $response.querySelector('#Page_editPage');
-        if(vars.includes('objectSuggest'))
-          inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
-        if(vars.includes('objectText'))
-          inputObjectText = $response.querySelector('#Page_objectText');
-        if(vars.includes('solrId'))
-          inputSolrId = $response.querySelector('#Page_solrId');
+          inputNgsildContext = $response.querySelector('.Page_ngsildContext');
+        if(vars.includes('ngsildData'))
+          inputNgsildData = $response.querySelector('.Page_ngsildData');
+        if(vars.includes('address'))
+          inputAddress = $response.querySelector('.Page_address');
+        if(vars.includes('airQualityIndex'))
+          inputAirQualityIndex = $response.querySelector('.Page_airQualityIndex');
+        if(vars.includes('airQualityIndexForecast'))
+          inputAirQualityIndexForecast = $response.querySelector('.Page_airQualityIndexForecast');
+        if(vars.includes('airTemperatureForecast'))
+          inputAirTemperatureForecast = $response.querySelector('.Page_airTemperatureForecast');
+        if(vars.includes('airTemperatureTSA'))
+          inputAirTemperatureTSA = $response.querySelector('.Page_airTemperatureTSA');
         if(vars.includes('alternateName'))
-          inputAlternateName = $response.querySelector('#Page_alternateName');
-        if(vars.includes('areaServedColors'))
-          inputAreaServedColors = $response.querySelector('#Page_areaServedColors');
-        if(vars.includes('areaServedTitles'))
-          inputAreaServedTitles = $response.querySelector('#Page_areaServedTitles');
-        if(vars.includes('areaServedLinks'))
-          inputAreaServedLinks = $response.querySelector('#Page_areaServedLinks');
+          inputAlternateName = $response.querySelector('.Page_alternateName');
+        if(vars.includes('aqiMajorPollutant'))
+          inputAqiMajorPollutant = $response.querySelector('.Page_aqiMajorPollutant');
+        if(vars.includes('aqiMajorPollutantForecast'))
+          inputAqiMajorPollutantForecast = $response.querySelector('.Page_aqiMajorPollutantForecast');
+        if(vars.includes('atmosphericPressure'))
+          inputAtmosphericPressure = $response.querySelector('.Page_atmosphericPressure');
         if(vars.includes('dataProvider'))
-          inputDataProvider = $response.querySelector('#Page_dataProvider');
+          inputDataProvider = $response.querySelector('.Page_dataProvider');
         if(vars.includes('dateCreated'))
-          inputDateCreated = $response.querySelector('#Page_dateCreated');
+          inputDateCreated = $response.querySelector('.Page_dateCreated');
         if(vars.includes('dateModified'))
-          inputDateModified = $response.querySelector('#Page_dateModified');
-        if(vars.includes('owner'))
-          inputOwner = $response.querySelector('#Page_owner');
-        if(vars.includes('refPointOfInterest'))
-          inputRefPointOfInterest = $response.querySelector('#Page_refPointOfInterest');
+          inputDateModified = $response.querySelector('.Page_dateModified');
         if(vars.includes('dateObserved'))
-          inputDateObserved = $response.querySelector('#Page_dateObserved');
+          inputDateObserved = $response.querySelector('.Page_dateObserved');
+        if(vars.includes('dewPoint'))
+          inputDewPoint = $response.querySelector('.Page_dewPoint');
+        if(vars.includes('diffuseIrradiation'))
+          inputDiffuseIrradiation = $response.querySelector('.Page_diffuseIrradiation');
+        if(vars.includes('directIrradiation'))
+          inputDirectIrradiation = $response.querySelector('.Page_directIrradiation');
+        if(vars.includes('feelsLikeTemperature'))
+          inputFeelsLikeTemperature = $response.querySelector('.Page_feelsLikeTemperature');
+        if(vars.includes('gustSpeed'))
+          inputGustSpeed = $response.querySelector('.Page_gustSpeed');
+        if(vars.includes('illuminance'))
+          inputIlluminance = $response.querySelector('.Page_illuminance');
+        if(vars.includes('owner'))
+          inputOwner = $response.querySelector('.Page_owner');
+        if(vars.includes('precipitation'))
+          inputPrecipitation = $response.querySelector('.Page_precipitation');
+        if(vars.includes('precipitationForecast'))
+          inputPrecipitationForecast = $response.querySelector('.Page_precipitationForecast');
+        if(vars.includes('pressureTendency'))
+          inputPressureTendency = $response.querySelector('.Page_pressureTendency');
         if(vars.includes('refDevice'))
-          inputRefDevice = $response.querySelector('#Page_refDevice');
+          inputRefDevice = $response.querySelector('.Page_refDevice');
+        if(vars.includes('refPointOfInterest'))
+          inputRefPointOfInterest = $response.querySelector('.Page_refPointOfInterest');
+        if(vars.includes('relativeHumidity'))
+          inputRelativeHumidity = $response.querySelector('.Page_relativeHumidity');
+        if(vars.includes('relativeHumidityForecast'))
+          inputRelativeHumidityForecast = $response.querySelector('.Page_relativeHumidityForecast');
+        if(vars.includes('seeAlso'))
+          inputSeeAlso = $response.querySelector('.Page_seeAlso');
+        if(vars.includes('snowHeight'))
+          inputSnowHeight = $response.querySelector('.Page_snowHeight');
+        if(vars.includes('solarRadiation'))
+          inputSolarRadiation = $response.querySelector('.Page_solarRadiation');
         if(vars.includes('source'))
-          inputSource = $response.querySelector('#Page_source');
-          jsWebsocketWeatherObserved(pk, vars, $response);
+          inputSource = $response.querySelector('.Page_source');
+        if(vars.includes('streamGauge'))
+          inputStreamGauge = $response.querySelector('.Page_streamGauge');
+        if(vars.includes('temperature'))
+          inputTemperature = $response.querySelector('.Page_temperature');
+        if(vars.includes('uVIndexMax'))
+          inputUVIndexMax = $response.querySelector('.Page_uVIndexMax');
+        if(vars.includes('visibility'))
+          inputVisibility = $response.querySelector('.Page_visibility');
+        if(vars.includes('weatherType'))
+          inputWeatherType = $response.querySelector('.Page_weatherType');
+        if(vars.includes('windDirection'))
+          inputWindDirection = $response.querySelector('.Page_windDirection');
+        if(vars.includes('windSpeed'))
+          inputWindSpeed = $response.querySelector('.Page_windSpeed');
+        if(vars.includes('classCanonicalName'))
+          inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
+        if(vars.includes('classSimpleName'))
+          inputClassSimpleName = $response.querySelector('.Page_classSimpleName');
+        if(vars.includes('classCanonicalNames'))
+          inputClassCanonicalNames = $response.querySelector('.Page_classCanonicalNames');
+        if(vars.includes('sessionId'))
+          inputSessionId = $response.querySelector('.Page_sessionId');
+        if(vars.includes('userKey'))
+          inputUserKey = $response.querySelector('.Page_userKey');
+        if(vars.includes('saves'))
+          inputSaves = $response.querySelector('.Page_saves');
+        if(vars.includes('title'))
+          inputTitle = $response.querySelector('.Page_title');
+        if(vars.includes('displayPage'))
+          inputDisplayPage = $response.querySelector('.Page_displayPage');
+        if(vars.includes('editPage'))
+          inputEditPage = $response.querySelector('.Page_editPage');
+        if(vars.includes('userPage'))
+          inputUserPage = $response.querySelector('.Page_userPage');
+        if(vars.includes('objectSuggest'))
+          inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
+        if(vars.includes('objectText'))
+          inputObjectText = $response.querySelector('.Page_objectText');
+        if(vars.includes('solrId'))
+          inputSolrId = $response.querySelector('.Page_solrId');
+        if(vars.includes('areaServedColors'))
+          inputAreaServedColors = $response.querySelector('.Page_areaServedColors');
+        if(vars.includes('areaServedTitles'))
+          inputAreaServedTitles = $response.querySelector('.Page_areaServedTitles');
+        if(vars.includes('areaServedLinks'))
+          inputAreaServedLinks = $response.querySelector('.Page_areaServedLinks');
+        if(vars.includes('entityShortId'))
+          inputEntityShortId = $response.querySelector('.Page_entityShortId');
 
-          window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
-          window.listWeatherObserved = JSON.parse($response.querySelector('.pageForm .listWeatherObserved')?.value);
+        jsWebsocketWeatherObserved(entityShortId, vars, $response);
+        window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
+        window.listWeatherObserved = JSON.parse($response.querySelector('.pageForm .listWeatherObserved')?.value);
 
 
         if(inputPk) {
-          document.querySelectorAll('#Page_pk').forEach((item, index) => {
-            item.setAttribute('value', inputPk.getAttribute('value'));
+          document.querySelectorAll('.Page_pk').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPk.getAttribute('value');
+            else
+              item.textContent = inputPk.textContent;
           });
-          addGlow(document.querySelector('#Page_pk'));
+          addGlow(document.querySelector('.Page_pk'));
         }
 
         if(inputCreated) {
-          document.querySelectorAll('#Page_created').forEach((item, index) => {
-            item.setAttribute('value', inputCreated.getAttribute('value'));
+          document.querySelectorAll('.Page_created').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCreated.getAttribute('value');
+            else
+              item.textContent = inputCreated.textContent;
           });
-          addGlow(document.querySelector('#Page_created'));
+          addGlow(document.querySelector('.Page_created'));
         }
 
         if(inputModified) {
-          document.querySelectorAll('#Page_modified').forEach((item, index) => {
-            item.setAttribute('value', inputModified.getAttribute('value'));
+          document.querySelectorAll('.Page_modified').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputModified.getAttribute('value');
+            else
+              item.textContent = inputModified.textContent;
           });
-          addGlow(document.querySelector('#Page_modified'));
+          addGlow(document.querySelector('.Page_modified'));
         }
 
         if(inputArchived) {
-          document.querySelectorAll('#Page_archived').forEach((item, index) => {
-            item.setAttribute('value', inputArchived.getAttribute('value'));
+          document.querySelectorAll('.Page_archived').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputArchived.getAttribute('value');
+            else
+              item.textContent = inputArchived.textContent;
           });
-          addGlow(document.querySelector('#Page_archived'));
+          addGlow(document.querySelector('.Page_archived'));
         }
 
         if(inputName) {
-          document.querySelectorAll('#Page_name').forEach((item, index) => {
-            item.setAttribute('value', inputName.getAttribute('value'));
+          document.querySelectorAll('.Page_name').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputName.getAttribute('value');
+            else
+              item.textContent = inputName.textContent;
           });
-          addGlow(document.querySelector('#Page_name'));
+          addGlow(document.querySelector('.Page_name'));
         }
 
         if(inputDescription) {
-          document.querySelectorAll('#Page_description').forEach((item, index) => {
-            item.setAttribute('value', inputDescription.getAttribute('value'));
+          document.querySelectorAll('.Page_description').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDescription.getAttribute('value');
+            else
+              item.textContent = inputDescription.textContent;
           });
-          addGlow(document.querySelector('#Page_description'));
-        }
-
-        if(inputAddress) {
-          document.querySelectorAll('#Page_address').forEach((item, index) => {
-            item.setAttribute('value', inputAddress.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_address'));
+          addGlow(document.querySelector('.Page_description'));
         }
 
         if(inputLocation) {
-          document.querySelectorAll('#Page_location').forEach((item, index) => {
-            item.setAttribute('value', inputLocation.getAttribute('value'));
+          document.querySelectorAll('.Page_location').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLocation.getAttribute('value');
+            else
+              item.textContent = inputLocation.textContent;
           });
-          addGlow(document.querySelector('#Page_location'));
+          addGlow(document.querySelector('.Page_location'));
         }
 
         if(inputAreaServed) {
-          document.querySelectorAll('#Page_areaServed').forEach((item, index) => {
-            item.setAttribute('value', inputAreaServed.getAttribute('value'));
+          document.querySelectorAll('.Page_areaServed').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAreaServed.getAttribute('value');
+            else
+              item.textContent = inputAreaServed.textContent;
           });
-          addGlow(document.querySelector('#Page_areaServed'));
+          addGlow(document.querySelector('.Page_areaServed'));
         }
 
-        if(inputAirQualityIndex) {
-          document.querySelectorAll('#Page_airQualityIndex').forEach((item, index) => {
-            item.setAttribute('value', inputAirQualityIndex.getAttribute('value'));
+        if(inputId) {
+          document.querySelectorAll('.Page_id').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputId.getAttribute('value');
+            else
+              item.textContent = inputId.textContent;
           });
-          addGlow(document.querySelector('#Page_airQualityIndex'));
-        }
-
-        if(inputAirQualityIndexForecast) {
-          document.querySelectorAll('#Page_airQualityIndexForecast').forEach((item, index) => {
-            item.setAttribute('value', inputAirQualityIndexForecast.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_airQualityIndexForecast'));
-        }
-
-        if(inputAqiMajorPollutant) {
-          document.querySelectorAll('#Page_aqiMajorPollutant').forEach((item, index) => {
-            item.setAttribute('value', inputAqiMajorPollutant.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_aqiMajorPollutant'));
-        }
-
-        if(inputAqiMajorPollutantForecast) {
-          document.querySelectorAll('#Page_aqiMajorPollutantForecast').forEach((item, index) => {
-            item.setAttribute('value', inputAqiMajorPollutantForecast.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_aqiMajorPollutantForecast'));
-        }
-
-        if(inputAtmosphericPressure) {
-          document.querySelectorAll('#Page_atmosphericPressure').forEach((item, index) => {
-            item.setAttribute('value', inputAtmosphericPressure.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_atmosphericPressure'));
-        }
-
-        if(inputPressureTendency) {
-          document.querySelectorAll('#Page_pressureTendency').forEach((item, index) => {
-            item.setAttribute('value', inputPressureTendency.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_pressureTendency'));
-        }
-
-        if(inputGustSpeed) {
-          document.querySelectorAll('#Page_gustSpeed').forEach((item, index) => {
-            item.setAttribute('value', inputGustSpeed.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_gustSpeed'));
-        }
-
-        if(inputWindDirection) {
-          document.querySelectorAll('#Page_windDirection').forEach((item, index) => {
-            item.setAttribute('value', inputWindDirection.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_windDirection'));
-        }
-
-        if(inputWindSpeed) {
-          document.querySelectorAll('#Page_windSpeed').forEach((item, index) => {
-            item.setAttribute('value', inputWindSpeed.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_windSpeed'));
-        }
-
-        if(inputPrecipitation) {
-          document.querySelectorAll('#Page_precipitation').forEach((item, index) => {
-            item.setAttribute('value', inputPrecipitation.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_precipitation'));
-        }
-
-        if(inputPrecipitationForecast) {
-          document.querySelectorAll('#Page_precipitationForecast').forEach((item, index) => {
-            item.setAttribute('value', inputPrecipitationForecast.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_precipitationForecast'));
-        }
-
-        if(inputRelativeHumidity) {
-          document.querySelectorAll('#Page_relativeHumidity').forEach((item, index) => {
-            item.setAttribute('value', inputRelativeHumidity.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_relativeHumidity'));
-        }
-
-        if(inputRelativeHumidityForecast) {
-          document.querySelectorAll('#Page_relativeHumidityForecast').forEach((item, index) => {
-            item.setAttribute('value', inputRelativeHumidityForecast.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_relativeHumidityForecast'));
-        }
-
-        if(inputSnowHeight) {
-          document.querySelectorAll('#Page_snowHeight').forEach((item, index) => {
-            item.setAttribute('value', inputSnowHeight.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_snowHeight'));
-        }
-
-        if(inputAirTemperatureForecast) {
-          document.querySelectorAll('#Page_airTemperatureForecast').forEach((item, index) => {
-            item.setAttribute('value', inputAirTemperatureForecast.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_airTemperatureForecast'));
-        }
-
-        if(inputAirTemperatureTSA) {
-          document.querySelectorAll('#Page_airTemperatureTSA').forEach((item, index) => {
-            item.setAttribute('value', inputAirTemperatureTSA.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_airTemperatureTSA'));
-        }
-
-        if(inputFeelsLikeTemperature) {
-          document.querySelectorAll('#Page_feelsLikeTemperature').forEach((item, index) => {
-            item.setAttribute('value', inputFeelsLikeTemperature.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_feelsLikeTemperature'));
-        }
-
-        if(inputTemperature) {
-          document.querySelectorAll('#Page_temperature').forEach((item, index) => {
-            item.setAttribute('value', inputTemperature.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_temperature'));
-        }
-
-        if(inputSolarRadiation) {
-          document.querySelectorAll('#Page_solarRadiation').forEach((item, index) => {
-            item.setAttribute('value', inputSolarRadiation.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_solarRadiation'));
-        }
-
-        if(inputStreamGauge) {
-          document.querySelectorAll('#Page_streamGauge').forEach((item, index) => {
-            item.setAttribute('value', inputStreamGauge.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_streamGauge'));
-        }
-
-        if(inputUVIndexMax) {
-          document.querySelectorAll('#Page_uVIndexMax').forEach((item, index) => {
-            item.setAttribute('value', inputUVIndexMax.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_uVIndexMax'));
-        }
-
-        if(inputVisibility) {
-          document.querySelectorAll('#Page_visibility').forEach((item, index) => {
-            item.setAttribute('value', inputVisibility.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_visibility'));
-        }
-
-        if(inputWeatherType) {
-          document.querySelectorAll('#Page_weatherType').forEach((item, index) => {
-            item.setAttribute('value', inputWeatherType.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_weatherType'));
-        }
-
-        if(inputDewPoint) {
-          document.querySelectorAll('#Page_dewPoint').forEach((item, index) => {
-            item.setAttribute('value', inputDewPoint.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_dewPoint'));
-        }
-
-        if(inputDiffuseIrradiation) {
-          document.querySelectorAll('#Page_diffuseIrradiation').forEach((item, index) => {
-            item.setAttribute('value', inputDiffuseIrradiation.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_diffuseIrradiation'));
-        }
-
-        if(inputDirectIrradiation) {
-          document.querySelectorAll('#Page_directIrradiation').forEach((item, index) => {
-            item.setAttribute('value', inputDirectIrradiation.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_directIrradiation'));
-        }
-
-        if(inputIlluminance) {
-          document.querySelectorAll('#Page_illuminance').forEach((item, index) => {
-            item.setAttribute('value', inputIlluminance.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_illuminance'));
+          addGlow(document.querySelector('.Page_id'));
         }
 
         if(inputNgsildTenant) {
-          document.querySelectorAll('#Page_ngsildTenant').forEach((item, index) => {
-            item.setAttribute('value', inputNgsildTenant.getAttribute('value'));
+          document.querySelectorAll('.Page_ngsildTenant').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNgsildTenant.getAttribute('value');
+            else
+              item.textContent = inputNgsildTenant.textContent;
           });
-          addGlow(document.querySelector('#Page_ngsildTenant'));
+          addGlow(document.querySelector('.Page_ngsildTenant'));
         }
 
         if(inputNgsildPath) {
-          document.querySelectorAll('#Page_ngsildPath').forEach((item, index) => {
-            item.setAttribute('value', inputNgsildPath.getAttribute('value'));
+          document.querySelectorAll('.Page_ngsildPath').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNgsildPath.getAttribute('value');
+            else
+              item.textContent = inputNgsildPath.textContent;
           });
-          addGlow(document.querySelector('#Page_ngsildPath'));
-        }
-
-        if(inputNgsildData) {
-          document.querySelectorAll('#Page_ngsildData').forEach((item, index) => {
-            item.setAttribute('value', inputNgsildData.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_ngsildData'));
-        }
-
-        if(inputSeeAlso) {
-          document.querySelectorAll('#Page_seeAlso').forEach((item, index) => {
-            item.setAttribute('value', inputSeeAlso.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_seeAlso'));
-        }
-
-        if(inputEntityId) {
-          document.querySelectorAll('#Page_entityId').forEach((item, index) => {
-            item.setAttribute('value', inputEntityId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_entityId'));
+          addGlow(document.querySelector('.Page_ngsildPath'));
         }
 
         if(inputNgsildContext) {
-          document.querySelectorAll('#Page_ngsildContext').forEach((item, index) => {
-            item.setAttribute('value', inputNgsildContext.getAttribute('value'));
+          document.querySelectorAll('.Page_ngsildContext').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNgsildContext.getAttribute('value');
+            else
+              item.textContent = inputNgsildContext.textContent;
           });
-          addGlow(document.querySelector('#Page_ngsildContext'));
+          addGlow(document.querySelector('.Page_ngsildContext'));
         }
 
-        if(inputDisplayPage) {
-          document.querySelectorAll('#Page_displayPage').forEach((item, index) => {
-            item.setAttribute('value', inputDisplayPage.getAttribute('value'));
+        if(inputNgsildData) {
+          document.querySelectorAll('.Page_ngsildData').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNgsildData.getAttribute('value');
+            else
+              item.textContent = inputNgsildData.textContent;
           });
-          addGlow(document.querySelector('#Page_displayPage'));
+          addGlow(document.querySelector('.Page_ngsildData'));
         }
 
-        if(inputClassCanonicalName) {
-          document.querySelectorAll('#Page_classCanonicalName').forEach((item, index) => {
-            item.setAttribute('value', inputClassCanonicalName.getAttribute('value'));
+        if(inputAddress) {
+          document.querySelectorAll('.Page_address').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAddress.getAttribute('value');
+            else
+              item.textContent = inputAddress.textContent;
           });
-          addGlow(document.querySelector('#Page_classCanonicalName'));
+          addGlow(document.querySelector('.Page_address'));
         }
 
-        if(inputClassSimpleName) {
-          document.querySelectorAll('#Page_classSimpleName').forEach((item, index) => {
-            item.setAttribute('value', inputClassSimpleName.getAttribute('value'));
+        if(inputAirQualityIndex) {
+          document.querySelectorAll('.Page_airQualityIndex').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAirQualityIndex.getAttribute('value');
+            else
+              item.textContent = inputAirQualityIndex.textContent;
           });
-          addGlow(document.querySelector('#Page_classSimpleName'));
+          addGlow(document.querySelector('.Page_airQualityIndex'));
         }
 
-        if(inputClassCanonicalNames) {
-          document.querySelectorAll('#Page_classCanonicalNames').forEach((item, index) => {
-            item.setAttribute('value', inputClassCanonicalNames.getAttribute('value'));
+        if(inputAirQualityIndexForecast) {
+          document.querySelectorAll('.Page_airQualityIndexForecast').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAirQualityIndexForecast.getAttribute('value');
+            else
+              item.textContent = inputAirQualityIndexForecast.textContent;
           });
-          addGlow(document.querySelector('#Page_classCanonicalNames'));
+          addGlow(document.querySelector('.Page_airQualityIndexForecast'));
         }
 
-        if(inputSessionId) {
-          document.querySelectorAll('#Page_sessionId').forEach((item, index) => {
-            item.setAttribute('value', inputSessionId.getAttribute('value'));
+        if(inputAirTemperatureForecast) {
+          document.querySelectorAll('.Page_airTemperatureForecast').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAirTemperatureForecast.getAttribute('value');
+            else
+              item.textContent = inputAirTemperatureForecast.textContent;
           });
-          addGlow(document.querySelector('#Page_sessionId'));
+          addGlow(document.querySelector('.Page_airTemperatureForecast'));
         }
 
-        if(inputUserKey) {
-          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
-            item.setAttribute('value', inputUserKey.getAttribute('value'));
+        if(inputAirTemperatureTSA) {
+          document.querySelectorAll('.Page_airTemperatureTSA').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAirTemperatureTSA.getAttribute('value');
+            else
+              item.textContent = inputAirTemperatureTSA.textContent;
           });
-          addGlow(document.querySelector('#Page_userKey'));
-        }
-
-        if(inputSaves) {
-          document.querySelectorAll('#Page_saves').forEach((item, index) => {
-            item.setAttribute('value', inputSaves.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_saves'));
-        }
-
-        if(inputTitle) {
-          document.querySelectorAll('#Page_title').forEach((item, index) => {
-            item.setAttribute('value', inputTitle.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_title'));
-        }
-
-        if(inputEditPage) {
-          document.querySelectorAll('#Page_editPage').forEach((item, index) => {
-            item.setAttribute('value', inputEditPage.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_editPage'));
-        }
-
-        if(inputObjectSuggest) {
-          document.querySelectorAll('#Page_objectSuggest').forEach((item, index) => {
-            item.setAttribute('value', inputObjectSuggest.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_objectSuggest'));
-        }
-
-        if(inputObjectText) {
-          document.querySelectorAll('#Page_objectText').forEach((item, index) => {
-            item.setAttribute('value', inputObjectText.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_objectText'));
-        }
-
-        if(inputSolrId) {
-          document.querySelectorAll('#Page_solrId').forEach((item, index) => {
-            item.setAttribute('value', inputSolrId.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_solrId'));
+          addGlow(document.querySelector('.Page_airTemperatureTSA'));
         }
 
         if(inputAlternateName) {
-          document.querySelectorAll('#Page_alternateName').forEach((item, index) => {
-            item.setAttribute('value', inputAlternateName.getAttribute('value'));
+          document.querySelectorAll('.Page_alternateName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAlternateName.getAttribute('value');
+            else
+              item.textContent = inputAlternateName.textContent;
           });
-          addGlow(document.querySelector('#Page_alternateName'));
+          addGlow(document.querySelector('.Page_alternateName'));
         }
 
-        if(inputAreaServedColors) {
-          document.querySelectorAll('#Page_areaServedColors').forEach((item, index) => {
-            item.setAttribute('value', inputAreaServedColors.getAttribute('value'));
+        if(inputAqiMajorPollutant) {
+          document.querySelectorAll('.Page_aqiMajorPollutant').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAqiMajorPollutant.getAttribute('value');
+            else
+              item.textContent = inputAqiMajorPollutant.textContent;
           });
-          addGlow(document.querySelector('#Page_areaServedColors'));
+          addGlow(document.querySelector('.Page_aqiMajorPollutant'));
         }
 
-        if(inputAreaServedTitles) {
-          document.querySelectorAll('#Page_areaServedTitles').forEach((item, index) => {
-            item.setAttribute('value', inputAreaServedTitles.getAttribute('value'));
+        if(inputAqiMajorPollutantForecast) {
+          document.querySelectorAll('.Page_aqiMajorPollutantForecast').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAqiMajorPollutantForecast.getAttribute('value');
+            else
+              item.textContent = inputAqiMajorPollutantForecast.textContent;
           });
-          addGlow(document.querySelector('#Page_areaServedTitles'));
+          addGlow(document.querySelector('.Page_aqiMajorPollutantForecast'));
         }
 
-        if(inputAreaServedLinks) {
-          document.querySelectorAll('#Page_areaServedLinks').forEach((item, index) => {
-            item.setAttribute('value', inputAreaServedLinks.getAttribute('value'));
+        if(inputAtmosphericPressure) {
+          document.querySelectorAll('.Page_atmosphericPressure').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAtmosphericPressure.getAttribute('value');
+            else
+              item.textContent = inputAtmosphericPressure.textContent;
           });
-          addGlow(document.querySelector('#Page_areaServedLinks'));
+          addGlow(document.querySelector('.Page_atmosphericPressure'));
         }
 
         if(inputDataProvider) {
-          document.querySelectorAll('#Page_dataProvider').forEach((item, index) => {
-            item.setAttribute('value', inputDataProvider.getAttribute('value'));
+          document.querySelectorAll('.Page_dataProvider').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDataProvider.getAttribute('value');
+            else
+              item.textContent = inputDataProvider.textContent;
           });
-          addGlow(document.querySelector('#Page_dataProvider'));
+          addGlow(document.querySelector('.Page_dataProvider'));
         }
 
         if(inputDateCreated) {
-          document.querySelectorAll('#Page_dateCreated').forEach((item, index) => {
-            item.setAttribute('value', inputDateCreated.getAttribute('value'));
+          document.querySelectorAll('.Page_dateCreated').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDateCreated.getAttribute('value');
+            else
+              item.textContent = inputDateCreated.textContent;
           });
-          addGlow(document.querySelector('#Page_dateCreated'));
+          addGlow(document.querySelector('.Page_dateCreated'));
         }
 
         if(inputDateModified) {
-          document.querySelectorAll('#Page_dateModified').forEach((item, index) => {
-            item.setAttribute('value', inputDateModified.getAttribute('value'));
+          document.querySelectorAll('.Page_dateModified').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDateModified.getAttribute('value');
+            else
+              item.textContent = inputDateModified.textContent;
           });
-          addGlow(document.querySelector('#Page_dateModified'));
-        }
-
-        if(inputOwner) {
-          document.querySelectorAll('#Page_owner').forEach((item, index) => {
-            item.setAttribute('value', inputOwner.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_owner'));
-        }
-
-        if(inputRefPointOfInterest) {
-          document.querySelectorAll('#Page_refPointOfInterest').forEach((item, index) => {
-            item.setAttribute('value', inputRefPointOfInterest.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_refPointOfInterest'));
+          addGlow(document.querySelector('.Page_dateModified'));
         }
 
         if(inputDateObserved) {
-          document.querySelectorAll('#Page_dateObserved').forEach((item, index) => {
-            item.setAttribute('value', inputDateObserved.getAttribute('value'));
+          document.querySelectorAll('.Page_dateObserved').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDateObserved.getAttribute('value');
+            else
+              item.textContent = inputDateObserved.textContent;
           });
-          addGlow(document.querySelector('#Page_dateObserved'));
+          addGlow(document.querySelector('.Page_dateObserved'));
+        }
+
+        if(inputDewPoint) {
+          document.querySelectorAll('.Page_dewPoint').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDewPoint.getAttribute('value');
+            else
+              item.textContent = inputDewPoint.textContent;
+          });
+          addGlow(document.querySelector('.Page_dewPoint'));
+        }
+
+        if(inputDiffuseIrradiation) {
+          document.querySelectorAll('.Page_diffuseIrradiation').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDiffuseIrradiation.getAttribute('value');
+            else
+              item.textContent = inputDiffuseIrradiation.textContent;
+          });
+          addGlow(document.querySelector('.Page_diffuseIrradiation'));
+        }
+
+        if(inputDirectIrradiation) {
+          document.querySelectorAll('.Page_directIrradiation').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDirectIrradiation.getAttribute('value');
+            else
+              item.textContent = inputDirectIrradiation.textContent;
+          });
+          addGlow(document.querySelector('.Page_directIrradiation'));
+        }
+
+        if(inputFeelsLikeTemperature) {
+          document.querySelectorAll('.Page_feelsLikeTemperature').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputFeelsLikeTemperature.getAttribute('value');
+            else
+              item.textContent = inputFeelsLikeTemperature.textContent;
+          });
+          addGlow(document.querySelector('.Page_feelsLikeTemperature'));
+        }
+
+        if(inputGustSpeed) {
+          document.querySelectorAll('.Page_gustSpeed').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputGustSpeed.getAttribute('value');
+            else
+              item.textContent = inputGustSpeed.textContent;
+          });
+          addGlow(document.querySelector('.Page_gustSpeed'));
+        }
+
+        if(inputIlluminance) {
+          document.querySelectorAll('.Page_illuminance').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputIlluminance.getAttribute('value');
+            else
+              item.textContent = inputIlluminance.textContent;
+          });
+          addGlow(document.querySelector('.Page_illuminance'));
+        }
+
+        if(inputOwner) {
+          document.querySelectorAll('.Page_owner').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputOwner.getAttribute('value');
+            else
+              item.textContent = inputOwner.textContent;
+          });
+          addGlow(document.querySelector('.Page_owner'));
+        }
+
+        if(inputPrecipitation) {
+          document.querySelectorAll('.Page_precipitation').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrecipitation.getAttribute('value');
+            else
+              item.textContent = inputPrecipitation.textContent;
+          });
+          addGlow(document.querySelector('.Page_precipitation'));
+        }
+
+        if(inputPrecipitationForecast) {
+          document.querySelectorAll('.Page_precipitationForecast').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrecipitationForecast.getAttribute('value');
+            else
+              item.textContent = inputPrecipitationForecast.textContent;
+          });
+          addGlow(document.querySelector('.Page_precipitationForecast'));
+        }
+
+        if(inputPressureTendency) {
+          document.querySelectorAll('.Page_pressureTendency').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPressureTendency.getAttribute('value');
+            else
+              item.textContent = inputPressureTendency.textContent;
+          });
+          addGlow(document.querySelector('.Page_pressureTendency'));
         }
 
         if(inputRefDevice) {
-          document.querySelectorAll('#Page_refDevice').forEach((item, index) => {
-            item.setAttribute('value', inputRefDevice.getAttribute('value'));
+          document.querySelectorAll('.Page_refDevice').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRefDevice.getAttribute('value');
+            else
+              item.textContent = inputRefDevice.textContent;
           });
-          addGlow(document.querySelector('#Page_refDevice'));
+          addGlow(document.querySelector('.Page_refDevice'));
+        }
+
+        if(inputRefPointOfInterest) {
+          document.querySelectorAll('.Page_refPointOfInterest').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRefPointOfInterest.getAttribute('value');
+            else
+              item.textContent = inputRefPointOfInterest.textContent;
+          });
+          addGlow(document.querySelector('.Page_refPointOfInterest'));
+        }
+
+        if(inputRelativeHumidity) {
+          document.querySelectorAll('.Page_relativeHumidity').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelativeHumidity.getAttribute('value');
+            else
+              item.textContent = inputRelativeHumidity.textContent;
+          });
+          addGlow(document.querySelector('.Page_relativeHumidity'));
+        }
+
+        if(inputRelativeHumidityForecast) {
+          document.querySelectorAll('.Page_relativeHumidityForecast').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelativeHumidityForecast.getAttribute('value');
+            else
+              item.textContent = inputRelativeHumidityForecast.textContent;
+          });
+          addGlow(document.querySelector('.Page_relativeHumidityForecast'));
+        }
+
+        if(inputSeeAlso) {
+          document.querySelectorAll('.Page_seeAlso').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSeeAlso.getAttribute('value');
+            else
+              item.textContent = inputSeeAlso.textContent;
+          });
+          addGlow(document.querySelector('.Page_seeAlso'));
+        }
+
+        if(inputSnowHeight) {
+          document.querySelectorAll('.Page_snowHeight').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSnowHeight.getAttribute('value');
+            else
+              item.textContent = inputSnowHeight.textContent;
+          });
+          addGlow(document.querySelector('.Page_snowHeight'));
+        }
+
+        if(inputSolarRadiation) {
+          document.querySelectorAll('.Page_solarRadiation').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolarRadiation.getAttribute('value');
+            else
+              item.textContent = inputSolarRadiation.textContent;
+          });
+          addGlow(document.querySelector('.Page_solarRadiation'));
         }
 
         if(inputSource) {
-          document.querySelectorAll('#Page_source').forEach((item, index) => {
-            item.setAttribute('value', inputSource.getAttribute('value'));
+          document.querySelectorAll('.Page_source').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSource.getAttribute('value');
+            else
+              item.textContent = inputSource.textContent;
           });
-          addGlow(document.querySelector('#Page_source'));
+          addGlow(document.querySelector('.Page_source'));
+        }
+
+        if(inputStreamGauge) {
+          document.querySelectorAll('.Page_streamGauge').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputStreamGauge.getAttribute('value');
+            else
+              item.textContent = inputStreamGauge.textContent;
+          });
+          addGlow(document.querySelector('.Page_streamGauge'));
+        }
+
+        if(inputTemperature) {
+          document.querySelectorAll('.Page_temperature').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputTemperature.getAttribute('value');
+            else
+              item.textContent = inputTemperature.textContent;
+          });
+          addGlow(document.querySelector('.Page_temperature'));
+        }
+
+        if(inputUVIndexMax) {
+          document.querySelectorAll('.Page_uVIndexMax').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputUVIndexMax.getAttribute('value');
+            else
+              item.textContent = inputUVIndexMax.textContent;
+          });
+          addGlow(document.querySelector('.Page_uVIndexMax'));
+        }
+
+        if(inputVisibility) {
+          document.querySelectorAll('.Page_visibility').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputVisibility.getAttribute('value');
+            else
+              item.textContent = inputVisibility.textContent;
+          });
+          addGlow(document.querySelector('.Page_visibility'));
+        }
+
+        if(inputWeatherType) {
+          document.querySelectorAll('.Page_weatherType').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputWeatherType.getAttribute('value');
+            else
+              item.textContent = inputWeatherType.textContent;
+          });
+          addGlow(document.querySelector('.Page_weatherType'));
+        }
+
+        if(inputWindDirection) {
+          document.querySelectorAll('.Page_windDirection').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputWindDirection.getAttribute('value');
+            else
+              item.textContent = inputWindDirection.textContent;
+          });
+          addGlow(document.querySelector('.Page_windDirection'));
+        }
+
+        if(inputWindSpeed) {
+          document.querySelectorAll('.Page_windSpeed').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputWindSpeed.getAttribute('value');
+            else
+              item.textContent = inputWindSpeed.textContent;
+          });
+          addGlow(document.querySelector('.Page_windSpeed'));
+        }
+
+        if(inputClassCanonicalName) {
+          document.querySelectorAll('.Page_classCanonicalName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalName.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalName.textContent;
+          });
+          addGlow(document.querySelector('.Page_classCanonicalName'));
+        }
+
+        if(inputClassSimpleName) {
+          document.querySelectorAll('.Page_classSimpleName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassSimpleName.getAttribute('value');
+            else
+              item.textContent = inputClassSimpleName.textContent;
+          });
+          addGlow(document.querySelector('.Page_classSimpleName'));
+        }
+
+        if(inputClassCanonicalNames) {
+          document.querySelectorAll('.Page_classCanonicalNames').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalNames.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalNames.textContent;
+          });
+          addGlow(document.querySelector('.Page_classCanonicalNames'));
+        }
+
+        if(inputSessionId) {
+          document.querySelectorAll('.Page_sessionId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSessionId.getAttribute('value');
+            else
+              item.textContent = inputSessionId.textContent;
+          });
+          addGlow(document.querySelector('.Page_sessionId'));
+        }
+
+        if(inputUserKey) {
+          document.querySelectorAll('.Page_userKey').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputUserKey.getAttribute('value');
+            else
+              item.textContent = inputUserKey.textContent;
+          });
+          addGlow(document.querySelector('.Page_userKey'));
+        }
+
+        if(inputSaves) {
+          document.querySelectorAll('.Page_saves').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSaves.getAttribute('value');
+            else
+              item.textContent = inputSaves.textContent;
+          });
+          addGlow(document.querySelector('.Page_saves'));
+        }
+
+        if(inputTitle) {
+          document.querySelectorAll('.Page_title').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputTitle.getAttribute('value');
+            else
+              item.textContent = inputTitle.textContent;
+          });
+          addGlow(document.querySelector('.Page_title'));
+        }
+
+        if(inputDisplayPage) {
+          document.querySelectorAll('.Page_displayPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDisplayPage.getAttribute('value');
+            else
+              item.textContent = inputDisplayPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_displayPage'));
+        }
+
+        if(inputEditPage) {
+          document.querySelectorAll('.Page_editPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEditPage.getAttribute('value');
+            else
+              item.textContent = inputEditPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_editPage'));
+        }
+
+        if(inputUserPage) {
+          document.querySelectorAll('.Page_userPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputUserPage.getAttribute('value');
+            else
+              item.textContent = inputUserPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_userPage'));
+        }
+
+        if(inputObjectSuggest) {
+          document.querySelectorAll('.Page_objectSuggest').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectSuggest.getAttribute('value');
+            else
+              item.textContent = inputObjectSuggest.textContent;
+          });
+          addGlow(document.querySelector('.Page_objectSuggest'));
+        }
+
+        if(inputObjectText) {
+          document.querySelectorAll('.Page_objectText').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectText.getAttribute('value');
+            else
+              item.textContent = inputObjectText.textContent;
+          });
+          addGlow(document.querySelector('.Page_objectText'));
+        }
+
+        if(inputSolrId) {
+          document.querySelectorAll('.Page_solrId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolrId.getAttribute('value');
+            else
+              item.textContent = inputSolrId.textContent;
+          });
+          addGlow(document.querySelector('.Page_solrId'));
+        }
+
+        if(inputAreaServedColors) {
+          document.querySelectorAll('.Page_areaServedColors').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAreaServedColors.getAttribute('value');
+            else
+              item.textContent = inputAreaServedColors.textContent;
+          });
+          addGlow(document.querySelector('.Page_areaServedColors'));
+        }
+
+        if(inputAreaServedTitles) {
+          document.querySelectorAll('.Page_areaServedTitles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAreaServedTitles.getAttribute('value');
+            else
+              item.textContent = inputAreaServedTitles.textContent;
+          });
+          addGlow(document.querySelector('.Page_areaServedTitles'));
+        }
+
+        if(inputAreaServedLinks) {
+          document.querySelectorAll('.Page_areaServedLinks').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAreaServedLinks.getAttribute('value');
+            else
+              item.textContent = inputAreaServedLinks.textContent;
+          });
+          addGlow(document.querySelector('.Page_areaServedLinks'));
+        }
+
+        if(inputEntityShortId) {
+          document.querySelectorAll('.Page_entityShortId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEntityShortId.getAttribute('value');
+            else
+              item.textContent = inputEntityShortId.textContent;
+          });
+          addGlow(document.querySelector('.Page_entityShortId'));
         }
 
           pageGraphWeatherObserved();
@@ -2441,7 +2710,7 @@ function pageGraphWeatherObserved(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'weather observed devices';
+          layout['title'] = 'WeatherObserveds';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -2511,6 +2780,12 @@ function pageGraphWeatherObserved(apiRequest) {
 
     // Graph Location
     window.mapLayers = {};
+    window.bounds = null;
+    if(listWeatherObserved.filter(o => o.location)) {
+      window.bounds = L.latLngBounds(listWeatherObserved.filter(o => o.location).map((c) => {
+        return [c.location.coordinates[1], c.location.coordinates[0]];
+      }));
+    }
     function onEachFeature(feature, layer) {
       let popupContent = htmTooltipWeatherObserved(feature, layer);
       layer.bindPopup(popupContent);
@@ -2519,6 +2794,29 @@ function pageGraphWeatherObserved(apiRequest) {
     if(window.mapWeatherObserved) {
       window.geoJSONWeatherObserved.clearLayers();
       window.listWeatherObserved.forEach((result, index) => {
+        if(result.location) {
+          var shapes = [];
+          if(Array.isArray(result.location))
+            shapes = shapes.concat(result.location);
+          else
+            shapes.push(result.location);
+          shapes.forEach(function(shape, index) {
+            var features = [{
+              "type": "Feature"
+              , "properties": result
+              , "geometry": shape
+              , "index": index
+            }];
+            var layer = L.geoJSON(features, {
+              onEachFeature: onEachFeature
+              , style: jsStyleWeatherObserved
+              , pointToLayer: function(feature, latlng) {
+                return L.circleMarker(latlng, jsStyleWeatherObserved(feature));
+              }
+            });
+            window.geoJSONWeatherObserved.addLayer(layer);
+          });
+        }
         if(result.areaServed) {
           var shapes = [];
           if(Array.isArray(result.areaServed))
@@ -2544,7 +2842,22 @@ function pageGraphWeatherObserved(apiRequest) {
         }
       });
     } else {
-      window.mapWeatherObserved = L.map('htmBodyGraphLocationWeatherObservedPage', {closePopupOnClick: false});
+      window.mapWeatherObserved = L.map('htmBodyGraphLocationWeatherObservedPage', {
+        position: 'topright'
+        , zoomControl: true
+        , closePopupOnClick: false
+        , contextmenu: true
+        , contextmenuWidth: 140
+        , contextmenuItems: [
+          {
+            text: 'Show coordinates'
+            , callback: function(event) {
+              alert(event.latlng);
+            }
+          }
+          ]
+      });
+      window.mapWeatherObserved.zoomControl.setPosition('topright');
       var data = [];
       var layout = {};
       layout['showlegend'] = true;
@@ -2558,16 +2871,43 @@ function pageGraphWeatherObserved(apiRequest) {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(window.mapWeatherObserved);
 
-      if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
-        window.mapWeatherObserved.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']], window['DEFAULT_MAP_ZOOM']);
-      else if(window['DEFAULT_MAP_ZOOM'])
-        window.mapWeatherObserved.setView(null, window['DEFAULT_MAP_ZOOM']);
-      else if(window['DEFAULT_MAP_LOCATION'])
-        window.mapWeatherObserved.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']]);
+      if(window.bounds) {
+        window.mapWeatherObserved.fitBounds(window.bounds);
+      } else {
+        if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
+          window.mapWeatherObserved.setView([window['DEFAULT_MAP_LOCATION']['coordinates'][1], window['DEFAULT_MAP_LOCATION']['coordinates'][0]], window['DEFAULT_MAP_ZOOM']);
+        else if(window['DEFAULT_MAP_ZOOM'])
+          window.mapWeatherObserved.setView(null, window['DEFAULT_MAP_ZOOM']);
+        else if(window['DEFAULT_MAP_LOCATION'])
+          window.mapWeatherObserved.setView([window['DEFAULT_MAP_LOCATION']['coordinates'][1], window['DEFAULT_MAP_LOCATION']['coordinates'][0]]);
+      }
 
       layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
       window.geoJSONWeatherObserved = L.geoJSON().addTo(window.mapWeatherObserved);
       window.listWeatherObserved.forEach((result, index) => {
+        if(result.location) {
+          var shapes = [];
+          if(Array.isArray(result.location))
+            shapes = shapes.concat(result.location);
+          else
+            shapes.push(result.location);
+          shapes.forEach(shape => {
+            var features = [{
+              "type": "Feature"
+              , "properties": result
+              , "geometry": shape
+              , "index": index
+            }];
+            var layer = L.geoJSON(features, {
+              onEachFeature: onEachFeature
+              , style: jsStyleWeatherObserved
+              , pointToLayer: function(feature, latlng) {
+                return L.circleMarker(latlng, jsStyleWeatherObserved(feature));
+              }
+            });
+            window.geoJSONWeatherObserved.addLayer(layer);
+          });
+        }
         if(result.areaServed) {
           var shapes = [];
           if(Array.isArray(result.areaServed))
@@ -2592,18 +2932,6 @@ function pageGraphWeatherObserved(apiRequest) {
           });
         }
       });
-      window.mapWeatherObserved.on('contextmenu', function(e) {
-        var htm = '';
-        if(window.listWeatherObserved.length == 1) {
-          window.listWeatherObserved.forEach((result, index) => {
-            htm += '<div><button onclick="patchLocation(event.target, { &quot;coordinates&quot;: [ ' + e.latlng.lng + ', ' + e.latlng.lat + ' ], &quot;type&quot;: &quot;Point&quot; });">Set areaServed of ' + result.title + '</button></div>';
-          });
-        }
-        var popup = L.popup()
-            .setLatLng(e.latlng)
-            .openOn(window.mapWeatherObserved)
-            .setContent(htm);
-      });
       window.mapWeatherObserved.on('popupopen', function(e) {
         if(e.popup._source) {
           var feature = e.popup._source.feature;
@@ -2613,12 +2941,12 @@ function pageGraphWeatherObserved(apiRequest) {
       const drawnItems = new L.FeatureGroup();
       window.mapWeatherObserved.addLayer(drawnItems);
       const drawControl = new L.Control.Draw({
-        edit: {
+        position: 'topright'
+        , edit: {
           featureGroup: drawnItems
-        },
-        draw: {
+        }
+        , draw: {
           polygon: true
-          , polygon: true
           , polyline: true
           , rectangle: true
           , circle: true
@@ -2628,12 +2956,50 @@ function pageGraphWeatherObserved(apiRequest) {
       window.mapWeatherObserved.addControl(drawControl);
       window.mapWeatherObserved.on(L.Draw.Event.CREATED, function (event) {
         drawnItems.addLayer(event.layer);
+        var contextmenuItems = [];
+        if(event.layerType == 'marker') {
+          contextmenuItems.push({
+            text: 'Set location of ' + result.title
+            , callback: function(event2) {
+              patchLocation(event.layer, { coordinates: [event.layer.getLatLng()['lng'], event.layer.getLatLng()['lat']], type: "Point" });
+            }
+          });
+        }
+        if(event.layerType == 'polygon') {
+          contextmenuItems.push({
+            text: 'Set areaServed of ' + result.title
+            , callback: function(event2) {
+              var latLngs = [];
+              event.layer.getLatLngs().forEach(ll1 => {
+                var latLngs1 = [];
+                ll1.forEach(ll2 => {
+                  var latLngs2 = [ll2['lng'], ll2['lat']];
+                  latLngs1.push(latLngs2);
+                });
+                latLngs.push(latLngs1);
+              });
+              patchArea(event.layer, { coordinates: latLngs, type: "Polygon" });
+            }
+          });
+        }
+        event.layer.bindContextMenu({
+          contextmenu: true
+          , contextmenuItems: contextmenuItems
+        });
       });
     }
   }
 }
-function patchLocation(target, areaServed) {
-  patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'entityId:' + result.entityId }]
+function patchLocation(target, location) {
+  patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'entityShortId:' + result.entityShortId }]
+      , 'setLocation', location
+      , target
+      , function(response, e) { addGlow(target); }
+      , function(response, e) { addError(target); }
+      );
+}
+function patchArea(target, areaServed) {
+  patchWeatherObservedVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'entityShortId:' + result.entityShortId }]
       , 'setAreaServed', areaServed
       , target
       , function(response, e) { addGlow(target); }

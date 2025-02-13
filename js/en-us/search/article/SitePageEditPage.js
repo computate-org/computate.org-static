@@ -1,19 +1,10 @@
 Promise.all([
-    customElements.whenDefined('sl-button')
-    , customElements.whenDefined('sl-input')
+    customElements.whenDefined('wa-button')
+    , customElements.whenDefined('wa-input')
     ]).then(() => {
 
           // PATCH created
-          document.querySelector('#fqSitePage_created')?.addEventListener('sl-change', (event) => {
-            fqChange('SitePage', event.target);
-          });
-          document.querySelector('#buttonFacetSitePage_created')?.addEventListener('click', (event) => {
-            facetFieldChange('SitePage', event.target);
-          });
-          document.querySelector('#pageFacetPivotSitePage_created')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('SitePage', event.target);
-          });
-          document.querySelector('#Page_created')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_created')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_created');
             const valid = form.checkValidity();
             if(valid) {
@@ -34,10 +25,10 @@ Promise.all([
               }
             }
           });
-          document.querySelector('#Page_created')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_created')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_created')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_created')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_created');
             const valid = form.reportValidity();
           });
@@ -58,25 +49,16 @@ Promise.all([
               }
             }
           });
-          document.querySelector('#Page_archived')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_archived')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_archived')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_archived')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_archived');
             const valid = form.reportValidity();
           });
 
           // PATCH author
-          document.querySelector('#fqSitePage_author')?.addEventListener('sl-change', (event) => {
-            fqChange('SitePage', event.target);
-          });
-          document.querySelector('#buttonFacetSitePage_author')?.addEventListener('click', (event) => {
-            facetFieldChange('SitePage', event.target);
-          });
-          document.querySelector('#pageFacetPivotSitePage_author')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('SitePage', event.target);
-          });
-          document.querySelector('#Page_author')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_author')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_author');
             const valid = form.checkValidity();
             if(valid) {
@@ -88,25 +70,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_author')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_author')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_author')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_author')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_author');
             const valid = form.reportValidity();
           });
 
           // PATCH pageImageUri
-          document.querySelector('#fqSitePage_pageImageUri')?.addEventListener('sl-change', (event) => {
-            fqChange('SitePage', event.target);
-          });
-          document.querySelector('#buttonFacetSitePage_pageImageUri')?.addEventListener('click', (event) => {
-            facetFieldChange('SitePage', event.target);
-          });
-          document.querySelector('#pageFacetPivotSitePage_pageImageUri')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('SitePage', event.target);
-          });
-          document.querySelector('#Page_pageImageUri')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_pageImageUri')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_pageImageUri');
             const valid = form.checkValidity();
             if(valid) {
@@ -118,25 +91,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_pageImageUri')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_pageImageUri')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_pageImageUri')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_pageImageUri')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_pageImageUri');
             const valid = form.reportValidity();
           });
 
           // PATCH pageId
-          document.querySelector('#fqSitePage_pageId')?.addEventListener('sl-change', (event) => {
-            fqChange('SitePage', event.target);
-          });
-          document.querySelector('#buttonFacetSitePage_pageId')?.addEventListener('click', (event) => {
-            facetFieldChange('SitePage', event.target);
-          });
-          document.querySelector('#pageFacetPivotSitePage_pageId')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('SitePage', event.target);
-          });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_pageId')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.checkValidity();
             if(valid) {
@@ -148,25 +112,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_pageId')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_pageId')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_pageId')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_pageId');
             const valid = form.reportValidity();
           });
 
           // PATCH displayPage
-          document.querySelector('#fqSitePage_displayPage')?.addEventListener('sl-change', (event) => {
-            fqChange('SitePage', event.target);
-          });
-          document.querySelector('#buttonFacetSitePage_displayPage')?.addEventListener('click', (event) => {
-            facetFieldChange('SitePage', event.target);
-          });
-          document.querySelector('#pageFacetPivotSitePage_displayPage')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('SitePage', event.target);
-          });
-          document.querySelector('#Page_displayPage')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_displayPage')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_displayPage');
             const valid = form.checkValidity();
             if(valid) {
@@ -178,16 +133,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_displayPage')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_displayPage')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_displayPage')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_displayPage')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_displayPage');
             const valid = form.reportValidity();
           });
 
           // PATCH title
-          document.querySelector('#Page_title')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_title')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_title');
             const valid = form.checkValidity();
             if(valid) {
@@ -199,16 +154,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_title')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_title')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_title')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_title')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_title');
             const valid = form.reportValidity();
           });
 
           // PATCH solrId
-          document.querySelector('#Page_solrId')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_solrId')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_solrId');
             const valid = form.checkValidity();
             if(valid) {
@@ -220,46 +175,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_solrId')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_solrId')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_solrId')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_solrId')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_solrId');
             const valid = form.reportValidity();
           });
 
-          // PATCH name
-          document.querySelector('#Page_name')?.addEventListener('sl-change', (event) => {
-            const form = document.querySelector('#PageForm_name');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSitePageVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setName', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_name')?.addEventListener('sl-focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_name')?.addEventListener('sl-blur', (event) => {
-            const form = document.querySelector('#PageForm_name');
-            const valid = form.reportValidity();
-          });
-
           // PATCH courseNum
-          document.querySelector('#fqSitePage_courseNum')?.addEventListener('sl-change', (event) => {
-            fqChange('SitePage', event.target);
-          });
-          document.querySelector('#buttonFacetSitePage_courseNum')?.addEventListener('click', (event) => {
-            facetFieldChange('SitePage', event.target);
-          });
-          document.querySelector('#pageFacetPivotSitePage_courseNum')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('SitePage', event.target);
-          });
-          document.querySelector('#Page_courseNum')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_courseNum')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_courseNum');
             const valid = form.checkValidity();
             if(valid) {
@@ -271,25 +196,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_courseNum')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_courseNum')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_courseNum')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_courseNum')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_courseNum');
             const valid = form.reportValidity();
           });
 
           // PATCH lessonNum
-          document.querySelector('#fqSitePage_lessonNum')?.addEventListener('sl-change', (event) => {
-            fqChange('SitePage', event.target);
-          });
-          document.querySelector('#buttonFacetSitePage_lessonNum')?.addEventListener('click', (event) => {
-            facetFieldChange('SitePage', event.target);
-          });
-          document.querySelector('#pageFacetPivotSitePage_lessonNum')?.addEventListener('sl-change', (event) => {
-            facetPivotChange('SitePage', event.target);
-          });
-          document.querySelector('#Page_lessonNum')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_lessonNum')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_lessonNum');
             const valid = form.checkValidity();
             if(valid) {
@@ -301,16 +217,37 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_lessonNum')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_lessonNum')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_lessonNum')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_lessonNum')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_lessonNum');
             const valid = form.reportValidity();
           });
 
+          // PATCH name
+          document.querySelector('#Page_name')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_name');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSitePageVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setName', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_name')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_name')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_name');
+            const valid = form.reportValidity();
+          });
+
           // PATCH h1
-          document.querySelector('#Page_h1')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_h1')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_h1');
             const valid = form.checkValidity();
             if(valid) {
@@ -322,16 +259,16 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_h1')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_h1')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_h1')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_h1')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_h1');
             const valid = form.reportValidity();
           });
 
           // PATCH h2
-          document.querySelector('#Page_h2')?.addEventListener('sl-change', (event) => {
+          document.querySelector('#Page_h2')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_h2');
             const valid = form.checkValidity();
             if(valid) {
@@ -343,10 +280,10 @@ Promise.all([
                   );
             }
           });
-          document.querySelector('#Page_h2')?.addEventListener('sl-focus', (event) => {
+          document.querySelector('#Page_h2')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_h2')?.addEventListener('sl-blur', (event) => {
+          document.querySelector('#Page_h2')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_h2');
             const valid = form.reportValidity();
           });

@@ -59,6 +59,15 @@ function facetFieldChange(classSimpleName, elem) {
 	searchPage(classSimpleName);
 }
 
+function sort(classSimpleName, sortVar, sortOrder) {
+	if(sortOrder == '') {
+		document.querySelector("#pageSearchVal-pageSort-" + classSimpleName + "-" + sortVar).innerText = "";
+	} else {
+		document.querySelector("#pageSearchVal-pageSort-" + classSimpleName + "-" + sortVar).innerText = "sort=" + encodeURIComponent(sortVar) + " " + sortOrder;
+	}
+	searchPage(classSimpleName);
+}
+
 function facetRangeStartChange(classSimpleName, elem, classSimpleName) {
 	facetRangeVal = document.querySelector("input[name='pageFacetRange']:checked").value;
 	if(facetRangeVal) {

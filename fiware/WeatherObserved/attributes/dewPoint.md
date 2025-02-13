@@ -7,4 +7,4 @@ The dew point encoded as a number. Observed temperature to which air must be coo
 1.0.0
 
 ## Original Schema
-https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/schema.json
+http://localhost:10200/static/fiware/WeatherObserved/schema.json

@@ -7,4 +7,4 @@ Diffuse irradiance is the part of the solar irradiance that is scattered by the 
 1.0.0
 
 ## Original Schema
-https://github.com/computate-org/computate.org-static/blob/main/fiware/WeatherObserved/schema.json
+http://localhost:10200/static/fiware/WeatherObserved/schema.json

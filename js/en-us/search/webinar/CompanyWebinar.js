@@ -57,13 +57,17 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterWebinarUrlEmea != null && filterWebinarUrlEmea !== '')
       filters.push({ name: 'fq', value: 'webinarUrlEmea:' + filterWebinarUrlEmea });
 
+    var filterIcalUrl = $formFilters.querySelector('.valueIcalUrl')?.value;
+    if(filterIcalUrl != null && filterIcalUrl !== '')
+      filters.push({ name: 'fq', value: 'icalUrl:' + filterIcalUrl });
+
+    var filterNextWebinar = $formFilters.querySelector('.valueNextWebinar')?.value;
+    if(filterNextWebinar != null && filterNextWebinar !== '')
+      filters.push({ name: 'fq', value: 'nextWebinar:' + filterNextWebinar });
+
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
       filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
-
-    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
-    if(filterDisplayPage != null && filterDisplayPage !== '')
-      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
 
     var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
@@ -93,9 +97,17 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
 
+    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
+    if(filterDisplayPage != null && filterDisplayPage !== '')
+      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
+
     var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
     if(filterEditPage != null && filterEditPage !== '')
       filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
+    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
+    if(filterUserPage != null && filterUserPage !== '')
+      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
 
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
@@ -291,6 +303,30 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pageId, su
   if(removeWebinarUrlEmea != null && removeWebinarUrlEmea !== '')
     vals['removeWebinarUrlEmea'] = removeWebinarUrlEmea;
 
+  var valueIcalUrl = $formValues.querySelector('.valueIcalUrl')?.value;
+  var removeIcalUrl = $formValues.querySelector('.removeIcalUrl')?.value === 'true';
+  var setIcalUrl = removeIcalUrl ? null : $formValues.querySelector('.setIcalUrl')?.value;
+  var addIcalUrl = $formValues.querySelector('.addIcalUrl')?.value;
+  if(removeIcalUrl || setIcalUrl != null && setIcalUrl !== '')
+    vals['setIcalUrl'] = setIcalUrl;
+  if(addIcalUrl != null && addIcalUrl !== '')
+    vals['addIcalUrl'] = addIcalUrl;
+  var removeIcalUrl = $formValues.querySelector('.removeIcalUrl')?.value;
+  if(removeIcalUrl != null && removeIcalUrl !== '')
+    vals['removeIcalUrl'] = removeIcalUrl;
+
+  var valueNextWebinar = $formValues.querySelector('.valueNextWebinar')?.value;
+  var removeNextWebinar = $formValues.querySelector('.removeNextWebinar')?.value === 'true';
+  var setNextWebinar = removeNextWebinar ? null : $formValues.querySelector('.setNextWebinar')?.value;
+  var addNextWebinar = $formValues.querySelector('.addNextWebinar')?.value;
+  if(removeNextWebinar || setNextWebinar != null && setNextWebinar !== '')
+    vals['setNextWebinar'] = setNextWebinar;
+  if(addNextWebinar != null && addNextWebinar !== '')
+    vals['addNextWebinar'] = addNextWebinar;
+  var removeNextWebinar = $formValues.querySelector('.removeNextWebinar')?.value;
+  if(removeNextWebinar != null && removeNextWebinar !== '')
+    vals['removeNextWebinar'] = removeNextWebinar;
+
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
   var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
@@ -302,18 +338,6 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pageId, su
   var removePageId = $formValues.querySelector('.removePageId')?.value;
   if(removePageId != null && removePageId !== '')
     vals['removePageId'] = removePageId;
-
-  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
-  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value === 'true';
-  var setDisplayPage = removeDisplayPage ? null : $formValues.querySelector('.setDisplayPage')?.value;
-  var addDisplayPage = $formValues.querySelector('.addDisplayPage')?.value;
-  if(removeDisplayPage || setDisplayPage != null && setDisplayPage !== '')
-    vals['setDisplayPage'] = setDisplayPage;
-  if(addDisplayPage != null && addDisplayPage !== '')
-    vals['addDisplayPage'] = addDisplayPage;
-  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value;
-  if(removeDisplayPage != null && removeDisplayPage !== '')
-    vals['removeDisplayPage'] = removeDisplayPage;
 
   var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
   var removeSessionId = $formValues.querySelector('.removeSessionId')?.value === 'true';
@@ -350,6 +374,18 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pageId, su
   var removeTitle = $formValues.querySelector('.removeTitle')?.value;
   if(removeTitle != null && removeTitle !== '')
     vals['removeTitle'] = removeTitle;
+
+  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
+  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value === 'true';
+  var setDisplayPage = removeDisplayPage ? null : $formValues.querySelector('.setDisplayPage')?.value;
+  var addDisplayPage = $formValues.querySelector('.addDisplayPage')?.value;
+  if(removeDisplayPage || setDisplayPage != null && setDisplayPage !== '')
+    vals['setDisplayPage'] = setDisplayPage;
+  if(addDisplayPage != null && addDisplayPage !== '')
+    vals['addDisplayPage'] = addDisplayPage;
+  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value;
+  if(removeDisplayPage != null && removeDisplayPage !== '')
+    vals['removeDisplayPage'] = removeDisplayPage;
 
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
@@ -437,13 +473,17 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterWebinarUrlEmea != null && filterWebinarUrlEmea !== '')
       filters.push({ name: 'fq', value: 'webinarUrlEmea:' + filterWebinarUrlEmea });
 
+    var filterIcalUrl = $formFilters.querySelector('.valueIcalUrl')?.value;
+    if(filterIcalUrl != null && filterIcalUrl !== '')
+      filters.push({ name: 'fq', value: 'icalUrl:' + filterIcalUrl });
+
+    var filterNextWebinar = $formFilters.querySelector('.valueNextWebinar')?.value;
+    if(filterNextWebinar != null && filterNextWebinar !== '')
+      filters.push({ name: 'fq', value: 'nextWebinar:' + filterNextWebinar });
+
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
       filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
-
-    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
-    if(filterDisplayPage != null && filterDisplayPage !== '')
-      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
 
     var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
@@ -473,9 +513,17 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterTitle != null && filterTitle !== '')
       filters.push({ name: 'fq', value: 'title:' + filterTitle });
 
+    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
+    if(filterDisplayPage != null && filterDisplayPage !== '')
+      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
+
     var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
     if(filterEditPage != null && filterEditPage !== '')
       filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
+    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
+    if(filterUserPage != null && filterUserPage !== '')
+      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
 
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
@@ -576,13 +624,17 @@ async function postCompanyWebinar($formValues, target, success, error) {
   if(valueWebinarUrlEmea != null && valueWebinarUrlEmea !== '')
     vals['webinarUrlEmea'] = valueWebinarUrlEmea;
 
+  var valueIcalUrl = $formValues.querySelector('.valueIcalUrl')?.value;
+  if(valueIcalUrl != null && valueIcalUrl !== '')
+    vals['icalUrl'] = valueIcalUrl;
+
+  var valueNextWebinar = $formValues.querySelector('.valueNextWebinar')?.value;
+  if(valueNextWebinar != null && valueNextWebinar !== '')
+    vals['nextWebinar'] = valueNextWebinar;
+
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   if(valuePageId != null && valuePageId !== '')
     vals['pageId'] = valuePageId;
-
-  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
-  if(valueDisplayPage != null && valueDisplayPage !== '')
-    vals['displayPage'] = valueDisplayPage;
 
   var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
   if(valueSessionId != null && valueSessionId !== '')
@@ -595,6 +647,10 @@ async function postCompanyWebinar($formValues, target, success, error) {
   var valueTitle = $formValues.querySelector('.valueTitle')?.value;
   if(valueTitle != null && valueTitle !== '')
     vals['title'] = valueTitle;
+
+  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
+  if(valueDisplayPage != null && valueDisplayPage !== '')
+    vals['displayPage'] = valueDisplayPage;
 
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   if(valueEditPage != null && valueEditPage !== '')
@@ -668,8 +724,7 @@ async function websocketCompanyWebinar(success) {
 
     window.eventBus.registerHandler('websocketCompanyWebinar', function (error, message) {
       var json = JSON.parse(message['body']);
-      var pageId = json['pageId'];
-      var pageIdPage = document.querySelector('#Page_pageId')?.value;
+      var pageId = json['id'];
       var pks = json['pks'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -724,7 +779,7 @@ async function websocketCompanyWebinar(success) {
       } else {
         document.querySelector('.box-' + pageId)?.remove();
       }
-      if(pageId && pageIdPage && pageId == pageIdPage) {
+      if(pageId) {
         if(success)
           success(json);
       }
@@ -732,13 +787,12 @@ async function websocketCompanyWebinar(success) {
   }
 }
 async function websocketCompanyWebinarInner(apiRequest) {
-  var pk = apiRequest['pk'];
-  var pks = apiRequest['pks'];
+  var pageId = apiRequest['id'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
   var empty = apiRequest['empty'];
 
-  if(pk != null && vars.length > 0) {
+  if(pageId != null && vars.length > 0) {
     var queryParams = "?" + Array.from(document.querySelectorAll(".pageSearchVal")).filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
     fetch(uri).then(response => {
@@ -753,8 +807,9 @@ async function websocketCompanyWebinarInner(apiRequest) {
         var inputWebinarUrlAmericas = null;
         var inputWebinarUrlApac = null;
         var inputWebinarUrlEmea = null;
+        var inputIcalUrl = null;
+        var inputNextWebinar = null;
         var inputPageId = null;
-        var inputDisplayPage = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
         var inputClassCanonicalNames = null;
@@ -762,7 +817,9 @@ async function websocketCompanyWebinarInner(apiRequest) {
         var inputUserKey = null;
         var inputSaves = null;
         var inputTitle = null;
+        var inputDisplayPage = null;
         var inputEditPage = null;
+        var inputUserPage = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
@@ -770,225 +827,333 @@ async function websocketCompanyWebinarInner(apiRequest) {
         var inputJoinUrl = null;
 
         if(vars.includes('pk'))
-          inputPk = $response.querySelector('#Page_pk');
+          inputPk = $response.querySelector('.Page_pk');
         if(vars.includes('created'))
-          inputCreated = $response.querySelector('#Page_created');
+          inputCreated = $response.querySelector('.Page_created');
         if(vars.includes('modified'))
-          inputModified = $response.querySelector('#Page_modified');
+          inputModified = $response.querySelector('.Page_modified');
         if(vars.includes('archived'))
-          inputArchived = $response.querySelector('#Page_archived');
+          inputArchived = $response.querySelector('.Page_archived');
         if(vars.includes('name'))
-          inputName = $response.querySelector('#Page_name');
+          inputName = $response.querySelector('.Page_name');
         if(vars.includes('description'))
-          inputDescription = $response.querySelector('#Page_description');
+          inputDescription = $response.querySelector('.Page_description');
         if(vars.includes('webinarUrlAmericas'))
-          inputWebinarUrlAmericas = $response.querySelector('#Page_webinarUrlAmericas');
+          inputWebinarUrlAmericas = $response.querySelector('.Page_webinarUrlAmericas');
         if(vars.includes('webinarUrlApac'))
-          inputWebinarUrlApac = $response.querySelector('#Page_webinarUrlApac');
+          inputWebinarUrlApac = $response.querySelector('.Page_webinarUrlApac');
         if(vars.includes('webinarUrlEmea'))
-          inputWebinarUrlEmea = $response.querySelector('#Page_webinarUrlEmea');
+          inputWebinarUrlEmea = $response.querySelector('.Page_webinarUrlEmea');
+        if(vars.includes('icalUrl'))
+          inputIcalUrl = $response.querySelector('.Page_icalUrl');
+        if(vars.includes('nextWebinar'))
+          inputNextWebinar = $response.querySelector('.Page_nextWebinar');
         if(vars.includes('pageId'))
-          inputPageId = $response.querySelector('#Page_pageId');
-        if(vars.includes('displayPage'))
-          inputDisplayPage = $response.querySelector('#Page_displayPage');
+          inputPageId = $response.querySelector('.Page_pageId');
         if(vars.includes('classCanonicalName'))
-          inputClassCanonicalName = $response.querySelector('#Page_classCanonicalName');
+          inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
         if(vars.includes('classSimpleName'))
-          inputClassSimpleName = $response.querySelector('#Page_classSimpleName');
+          inputClassSimpleName = $response.querySelector('.Page_classSimpleName');
         if(vars.includes('classCanonicalNames'))
-          inputClassCanonicalNames = $response.querySelector('#Page_classCanonicalNames');
+          inputClassCanonicalNames = $response.querySelector('.Page_classCanonicalNames');
         if(vars.includes('sessionId'))
-          inputSessionId = $response.querySelector('#Page_sessionId');
+          inputSessionId = $response.querySelector('.Page_sessionId');
         if(vars.includes('userKey'))
-          inputUserKey = $response.querySelector('#Page_userKey');
+          inputUserKey = $response.querySelector('.Page_userKey');
         if(vars.includes('saves'))
-          inputSaves = $response.querySelector('#Page_saves');
+          inputSaves = $response.querySelector('.Page_saves');
         if(vars.includes('title'))
-          inputTitle = $response.querySelector('#Page_title');
+          inputTitle = $response.querySelector('.Page_title');
+        if(vars.includes('displayPage'))
+          inputDisplayPage = $response.querySelector('.Page_displayPage');
         if(vars.includes('editPage'))
-          inputEditPage = $response.querySelector('#Page_editPage');
+          inputEditPage = $response.querySelector('.Page_editPage');
+        if(vars.includes('userPage'))
+          inputUserPage = $response.querySelector('.Page_userPage');
         if(vars.includes('objectSuggest'))
-          inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
+          inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
         if(vars.includes('objectText'))
-          inputObjectText = $response.querySelector('#Page_objectText');
+          inputObjectText = $response.querySelector('.Page_objectText');
         if(vars.includes('solrId'))
-          inputSolrId = $response.querySelector('#Page_solrId');
+          inputSolrId = $response.querySelector('.Page_solrId');
         if(vars.includes('joinUri'))
-          inputJoinUri = $response.querySelector('#Page_joinUri');
+          inputJoinUri = $response.querySelector('.Page_joinUri');
         if(vars.includes('joinUrl'))
-          inputJoinUrl = $response.querySelector('#Page_joinUrl');
-          jsWebsocketCompanyWebinar(pk, vars, $response);
+          inputJoinUrl = $response.querySelector('.Page_joinUrl');
 
-          window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
-          window.listCompanyWebinar = JSON.parse($response.querySelector('.pageForm .listCompanyWebinar')?.value);
+        jsWebsocketCompanyWebinar(pageId, vars, $response);
+        window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
+        window.listCompanyWebinar = JSON.parse($response.querySelector('.pageForm .listCompanyWebinar')?.value);
 
 
         if(inputPk) {
-          document.querySelectorAll('#Page_pk').forEach((item, index) => {
-            item.setAttribute('value', inputPk.getAttribute('value'));
+          document.querySelectorAll('.Page_pk').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPk.getAttribute('value');
+            else
+              item.textContent = inputPk.textContent;
           });
-          addGlow(document.querySelector('#Page_pk'));
+          addGlow(document.querySelector('.Page_pk'));
         }
 
         if(inputCreated) {
-          document.querySelectorAll('#Page_created').forEach((item, index) => {
-            item.setAttribute('value', inputCreated.getAttribute('value'));
+          document.querySelectorAll('.Page_created').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCreated.getAttribute('value');
+            else
+              item.textContent = inputCreated.textContent;
           });
-          addGlow(document.querySelector('#Page_created'));
+          addGlow(document.querySelector('.Page_created'));
         }
 
         if(inputModified) {
-          document.querySelectorAll('#Page_modified').forEach((item, index) => {
-            item.setAttribute('value', inputModified.getAttribute('value'));
+          document.querySelectorAll('.Page_modified').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputModified.getAttribute('value');
+            else
+              item.textContent = inputModified.textContent;
           });
-          addGlow(document.querySelector('#Page_modified'));
+          addGlow(document.querySelector('.Page_modified'));
         }
 
         if(inputArchived) {
-          document.querySelectorAll('#Page_archived').forEach((item, index) => {
-            item.setAttribute('value', inputArchived.getAttribute('value'));
+          document.querySelectorAll('.Page_archived').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputArchived.getAttribute('value');
+            else
+              item.textContent = inputArchived.textContent;
           });
-          addGlow(document.querySelector('#Page_archived'));
+          addGlow(document.querySelector('.Page_archived'));
         }
 
         if(inputName) {
-          document.querySelectorAll('#Page_name').forEach((item, index) => {
-            item.setAttribute('value', inputName.getAttribute('value'));
+          document.querySelectorAll('.Page_name').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputName.getAttribute('value');
+            else
+              item.textContent = inputName.textContent;
           });
-          addGlow(document.querySelector('#Page_name'));
+          addGlow(document.querySelector('.Page_name'));
         }
 
         if(inputDescription) {
-          document.querySelectorAll('#Page_description').forEach((item, index) => {
-            item.setAttribute('value', inputDescription.getAttribute('value'));
+          document.querySelectorAll('.Page_description').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDescription.getAttribute('value');
+            else
+              item.textContent = inputDescription.textContent;
           });
-          addGlow(document.querySelector('#Page_description'));
+          addGlow(document.querySelector('.Page_description'));
         }
 
         if(inputWebinarUrlAmericas) {
-          document.querySelectorAll('#Page_webinarUrlAmericas').forEach((item, index) => {
-            item.setAttribute('value', inputWebinarUrlAmericas.getAttribute('value'));
+          document.querySelectorAll('.Page_webinarUrlAmericas').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputWebinarUrlAmericas.getAttribute('value');
+            else
+              item.textContent = inputWebinarUrlAmericas.textContent;
           });
-          addGlow(document.querySelector('#Page_webinarUrlAmericas'));
+          addGlow(document.querySelector('.Page_webinarUrlAmericas'));
         }
 
         if(inputWebinarUrlApac) {
-          document.querySelectorAll('#Page_webinarUrlApac').forEach((item, index) => {
-            item.setAttribute('value', inputWebinarUrlApac.getAttribute('value'));
+          document.querySelectorAll('.Page_webinarUrlApac').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputWebinarUrlApac.getAttribute('value');
+            else
+              item.textContent = inputWebinarUrlApac.textContent;
           });
-          addGlow(document.querySelector('#Page_webinarUrlApac'));
+          addGlow(document.querySelector('.Page_webinarUrlApac'));
         }
 
         if(inputWebinarUrlEmea) {
-          document.querySelectorAll('#Page_webinarUrlEmea').forEach((item, index) => {
-            item.setAttribute('value', inputWebinarUrlEmea.getAttribute('value'));
+          document.querySelectorAll('.Page_webinarUrlEmea').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputWebinarUrlEmea.getAttribute('value');
+            else
+              item.textContent = inputWebinarUrlEmea.textContent;
           });
-          addGlow(document.querySelector('#Page_webinarUrlEmea'));
+          addGlow(document.querySelector('.Page_webinarUrlEmea'));
+        }
+
+        if(inputIcalUrl) {
+          document.querySelectorAll('.Page_icalUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputIcalUrl.getAttribute('value');
+            else
+              item.textContent = inputIcalUrl.textContent;
+          });
+          addGlow(document.querySelector('.Page_icalUrl'));
+        }
+
+        if(inputNextWebinar) {
+          document.querySelectorAll('.Page_nextWebinar').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextWebinar.getAttribute('value');
+            else
+              item.textContent = inputNextWebinar.textContent;
+          });
+          addGlow(document.querySelector('.Page_nextWebinar'));
         }
 
         if(inputPageId) {
-          document.querySelectorAll('#Page_pageId').forEach((item, index) => {
-            item.setAttribute('value', inputPageId.getAttribute('value'));
+          document.querySelectorAll('.Page_pageId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageId.getAttribute('value');
+            else
+              item.textContent = inputPageId.textContent;
           });
-          addGlow(document.querySelector('#Page_pageId'));
-        }
-
-        if(inputDisplayPage) {
-          document.querySelectorAll('#Page_displayPage').forEach((item, index) => {
-            item.setAttribute('value', inputDisplayPage.getAttribute('value'));
-          });
-          addGlow(document.querySelector('#Page_displayPage'));
+          addGlow(document.querySelector('.Page_pageId'));
         }
 
         if(inputClassCanonicalName) {
-          document.querySelectorAll('#Page_classCanonicalName').forEach((item, index) => {
-            item.setAttribute('value', inputClassCanonicalName.getAttribute('value'));
+          document.querySelectorAll('.Page_classCanonicalName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalName.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalName.textContent;
           });
-          addGlow(document.querySelector('#Page_classCanonicalName'));
+          addGlow(document.querySelector('.Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
-          document.querySelectorAll('#Page_classSimpleName').forEach((item, index) => {
-            item.setAttribute('value', inputClassSimpleName.getAttribute('value'));
+          document.querySelectorAll('.Page_classSimpleName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassSimpleName.getAttribute('value');
+            else
+              item.textContent = inputClassSimpleName.textContent;
           });
-          addGlow(document.querySelector('#Page_classSimpleName'));
+          addGlow(document.querySelector('.Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
-          document.querySelectorAll('#Page_classCanonicalNames').forEach((item, index) => {
-            item.setAttribute('value', inputClassCanonicalNames.getAttribute('value'));
+          document.querySelectorAll('.Page_classCanonicalNames').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalNames.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalNames.textContent;
           });
-          addGlow(document.querySelector('#Page_classCanonicalNames'));
+          addGlow(document.querySelector('.Page_classCanonicalNames'));
         }
 
         if(inputSessionId) {
-          document.querySelectorAll('#Page_sessionId').forEach((item, index) => {
-            item.setAttribute('value', inputSessionId.getAttribute('value'));
+          document.querySelectorAll('.Page_sessionId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSessionId.getAttribute('value');
+            else
+              item.textContent = inputSessionId.textContent;
           });
-          addGlow(document.querySelector('#Page_sessionId'));
+          addGlow(document.querySelector('.Page_sessionId'));
         }
 
         if(inputUserKey) {
-          document.querySelectorAll('#Page_userKey').forEach((item, index) => {
-            item.setAttribute('value', inputUserKey.getAttribute('value'));
+          document.querySelectorAll('.Page_userKey').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputUserKey.getAttribute('value');
+            else
+              item.textContent = inputUserKey.textContent;
           });
-          addGlow(document.querySelector('#Page_userKey'));
+          addGlow(document.querySelector('.Page_userKey'));
         }
 
         if(inputSaves) {
-          document.querySelectorAll('#Page_saves').forEach((item, index) => {
-            item.setAttribute('value', inputSaves.getAttribute('value'));
+          document.querySelectorAll('.Page_saves').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSaves.getAttribute('value');
+            else
+              item.textContent = inputSaves.textContent;
           });
-          addGlow(document.querySelector('#Page_saves'));
+          addGlow(document.querySelector('.Page_saves'));
         }
 
         if(inputTitle) {
-          document.querySelectorAll('#Page_title').forEach((item, index) => {
-            item.setAttribute('value', inputTitle.getAttribute('value'));
+          document.querySelectorAll('.Page_title').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputTitle.getAttribute('value');
+            else
+              item.textContent = inputTitle.textContent;
           });
-          addGlow(document.querySelector('#Page_title'));
+          addGlow(document.querySelector('.Page_title'));
+        }
+
+        if(inputDisplayPage) {
+          document.querySelectorAll('.Page_displayPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDisplayPage.getAttribute('value');
+            else
+              item.textContent = inputDisplayPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_displayPage'));
         }
 
         if(inputEditPage) {
-          document.querySelectorAll('#Page_editPage').forEach((item, index) => {
-            item.setAttribute('value', inputEditPage.getAttribute('value'));
+          document.querySelectorAll('.Page_editPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEditPage.getAttribute('value');
+            else
+              item.textContent = inputEditPage.textContent;
           });
-          addGlow(document.querySelector('#Page_editPage'));
+          addGlow(document.querySelector('.Page_editPage'));
+        }
+
+        if(inputUserPage) {
+          document.querySelectorAll('.Page_userPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputUserPage.getAttribute('value');
+            else
+              item.textContent = inputUserPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_userPage'));
         }
 
         if(inputObjectSuggest) {
-          document.querySelectorAll('#Page_objectSuggest').forEach((item, index) => {
-            item.setAttribute('value', inputObjectSuggest.getAttribute('value'));
+          document.querySelectorAll('.Page_objectSuggest').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectSuggest.getAttribute('value');
+            else
+              item.textContent = inputObjectSuggest.textContent;
           });
-          addGlow(document.querySelector('#Page_objectSuggest'));
+          addGlow(document.querySelector('.Page_objectSuggest'));
         }
 
         if(inputObjectText) {
-          document.querySelectorAll('#Page_objectText').forEach((item, index) => {
-            item.setAttribute('value', inputObjectText.getAttribute('value'));
+          document.querySelectorAll('.Page_objectText').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectText.getAttribute('value');
+            else
+              item.textContent = inputObjectText.textContent;
           });
-          addGlow(document.querySelector('#Page_objectText'));
+          addGlow(document.querySelector('.Page_objectText'));
         }
 
         if(inputSolrId) {
-          document.querySelectorAll('#Page_solrId').forEach((item, index) => {
-            item.setAttribute('value', inputSolrId.getAttribute('value'));
+          document.querySelectorAll('.Page_solrId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolrId.getAttribute('value');
+            else
+              item.textContent = inputSolrId.textContent;
           });
-          addGlow(document.querySelector('#Page_solrId'));
+          addGlow(document.querySelector('.Page_solrId'));
         }
 
         if(inputJoinUri) {
-          document.querySelectorAll('#Page_joinUri').forEach((item, index) => {
-            item.setAttribute('value', inputJoinUri.getAttribute('value'));
+          document.querySelectorAll('.Page_joinUri').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputJoinUri.getAttribute('value');
+            else
+              item.textContent = inputJoinUri.textContent;
           });
-          addGlow(document.querySelector('#Page_joinUri'));
+          addGlow(document.querySelector('.Page_joinUri'));
         }
 
         if(inputJoinUrl) {
-          document.querySelectorAll('#Page_joinUrl').forEach((item, index) => {
-            item.setAttribute('value', inputJoinUrl.getAttribute('value'));
+          document.querySelectorAll('.Page_joinUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputJoinUrl.getAttribute('value');
+            else
+              item.textContent = inputJoinUrl.textContent;
           });
-          addGlow(document.querySelector('#Page_joinUrl'));
+          addGlow(document.querySelector('.Page_joinUrl'));
         }
 
           pageGraphCompanyWebinar();

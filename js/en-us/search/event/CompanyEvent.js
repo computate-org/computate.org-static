@@ -45,6 +45,14 @@ function searchCompanyEventFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
+    var filterStartDateTime = $formFilters.querySelector('.valueStartDateTime')?.value;
+    if(filterStartDateTime != null && filterStartDateTime !== '')
+      filters.push({ name: 'fq', value: 'startDateTime:' + filterStartDateTime });
+
+    var filterEndDateTime = $formFilters.querySelector('.valueEndDateTime')?.value;
+    if(filterEndDateTime != null && filterEndDateTime !== '')
+      filters.push({ name: 'fq', value: 'endDateTime:' + filterEndDateTime });
+
     var filterPrice = $formFilters.querySelector('.valuePrice')?.value;
     if(filterPrice != null && filterPrice !== '')
       filters.push({ name: 'fq', value: 'price:' + filterPrice });
@@ -80,6 +88,10 @@ function searchCompanyEventFilters($formFilters) {
     var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
     if(filterEditPage != null && filterEditPage !== '')
       filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
+    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
+    if(filterUserPage != null && filterUserPage !== '')
+      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
 
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
@@ -251,6 +263,30 @@ async function patchCompanyEvent($formFilters, $formValues, target, pageId, succ
   if(removeDescription != null && removeDescription !== '')
     vals['removeDescription'] = removeDescription;
 
+  var valueStartDateTime = $formValues.querySelector('.valueStartDateTime')?.value;
+  var removeStartDateTime = $formValues.querySelector('.removeStartDateTime')?.value === 'true';
+  var setStartDateTime = removeStartDateTime ? null : $formValues.querySelector('.setStartDateTime')?.value;
+  var addStartDateTime = $formValues.querySelector('.addStartDateTime')?.value;
+  if(removeStartDateTime || setStartDateTime != null && setStartDateTime !== '')
+    vals['setStartDateTime'] = setStartDateTime;
+  if(addStartDateTime != null && addStartDateTime !== '')
+    vals['addStartDateTime'] = addStartDateTime;
+  var removeStartDateTime = $formValues.querySelector('.removeStartDateTime')?.value;
+  if(removeStartDateTime != null && removeStartDateTime !== '')
+    vals['removeStartDateTime'] = removeStartDateTime;
+
+  var valueEndDateTime = $formValues.querySelector('.valueEndDateTime')?.value;
+  var removeEndDateTime = $formValues.querySelector('.removeEndDateTime')?.value === 'true';
+  var setEndDateTime = removeEndDateTime ? null : $formValues.querySelector('.setEndDateTime')?.value;
+  var addEndDateTime = $formValues.querySelector('.addEndDateTime')?.value;
+  if(removeEndDateTime || setEndDateTime != null && setEndDateTime !== '')
+    vals['setEndDateTime'] = setEndDateTime;
+  if(addEndDateTime != null && addEndDateTime !== '')
+    vals['addEndDateTime'] = addEndDateTime;
+  var removeEndDateTime = $formValues.querySelector('.removeEndDateTime')?.value;
+  if(removeEndDateTime != null && removeEndDateTime !== '')
+    vals['removeEndDateTime'] = removeEndDateTime;
+
   var valuePrice = $formValues.querySelector('.valuePrice')?.value;
   var removePrice = $formValues.querySelector('.removePrice')?.value === 'true';
   var setPrice = removePrice ? null : $formValues.querySelector('.setPrice')?.value;
@@ -385,6 +421,14 @@ function patchCompanyEventFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
+    var filterStartDateTime = $formFilters.querySelector('.valueStartDateTime')?.value;
+    if(filterStartDateTime != null && filterStartDateTime !== '')
+      filters.push({ name: 'fq', value: 'startDateTime:' + filterStartDateTime });
+
+    var filterEndDateTime = $formFilters.querySelector('.valueEndDateTime')?.value;
+    if(filterEndDateTime != null && filterEndDateTime !== '')
+      filters.push({ name: 'fq', value: 'endDateTime:' + filterEndDateTime });
+
     var filterPrice = $formFilters.querySelector('.valuePrice')?.value;
     if(filterPrice != null && filterPrice !== '')
       filters.push({ name: 'fq', value: 'price:' + filterPrice });
@@ -420,6 +464,10 @@ function patchCompanyEventFilters($formFilters) {
     var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
     if(filterEditPage != null && filterEditPage !== '')
       filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
+    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
+    if(filterUserPage != null && filterUserPage !== '')
+      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
 
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
@@ -519,6 +567,14 @@ async function postCompanyEvent($formValues, target, success, error) {
   var valueDescription = $formValues.querySelector('.valueDescription')?.value;
   if(valueDescription != null && valueDescription !== '')
     vals['description'] = valueDescription;
+
+  var valueStartDateTime = $formValues.querySelector('.valueStartDateTime')?.value;
+  if(valueStartDateTime != null && valueStartDateTime !== '')
+    vals['startDateTime'] = valueStartDateTime;
+
+  var valueEndDateTime = $formValues.querySelector('.valueEndDateTime')?.value;
+  if(valueEndDateTime != null && valueEndDateTime !== '')
+    vals['endDateTime'] = valueEndDateTime;
 
   var valuePrice = $formValues.querySelector('.valuePrice')?.value;
   if(valuePrice != null && valuePrice !== '')
@@ -638,13 +694,43 @@ function putimportCompanyEventVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
+// DELETEFilter //
+
+async function deletefilterCompanyEvent(target, success, error) {
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target);
+      var url = data['editPage'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, textStatus, errorThrown ) {
+      addError(target);
+    };
+  }
+
+  fetch(
+    '/en-us/api/event'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'DELETE'
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
+}
+
 async function websocketCompanyEvent(success) {
   window.eventBus.onopen = function () {
 
     window.eventBus.registerHandler('websocketCompanyEvent', function (error, message) {
       var json = JSON.parse(message['body']);
-      var pageId = json['pageId'];
-      var pageIdPage = document.querySelector('#Page_pageId')?.value;
+      var pageId = json['id'];
       var nulls = json['nulls'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
@@ -699,7 +785,7 @@ async function websocketCompanyEvent(success) {
       } else {
         document.querySelector('.box-' + pageId)?.remove();
       }
-      if(pageId && pageIdPage && pageId == pageIdPage) {
+      if(pageId) {
         if(success)
           success(json);
       }
@@ -707,13 +793,12 @@ async function websocketCompanyEvent(success) {
   }
 }
 async function websocketCompanyEventInner(apiRequest) {
-  var solrId = apiRequest['solrId'];
-  var solrIds = apiRequest['solrIds'];
+  var pageId = apiRequest['id'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
   var empty = apiRequest['empty'];
 
-  if(solrId != null && vars.length > 0) {
+  if(pageId != null && vars.length > 0) {
     var queryParams = "?" + Array.from(document.querySelectorAll(".pageSearchVal")).filter(elem => elem.innerText.length > 0).map(elem => elem.innerText).join("&");
     var uri = location.pathname + queryParams;
     fetch(uri).then(response => {
@@ -725,6 +810,8 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputName = null;
         var inputLocation = null;
         var inputDescription = null;
+        var inputStartDateTime = null;
+        var inputEndDateTime = null;
         var inputPrice = null;
         var inputPageId = null;
         var inputDisplayPage = null;
@@ -734,6 +821,7 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputSaves = null;
         var inputTitle = null;
         var inputEditPage = null;
+        var inputUserPage = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
@@ -744,216 +832,321 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputLocationLinks = null;
 
         if(vars.includes('created'))
-          inputCreated = $response.querySelector('#Page_created');
+          inputCreated = $response.querySelector('.Page_created');
         if(vars.includes('modified'))
-          inputModified = $response.querySelector('#Page_modified');
+          inputModified = $response.querySelector('.Page_modified');
         if(vars.includes('archived'))
-          inputArchived = $response.querySelector('#Page_archived');
+          inputArchived = $response.querySelector('.Page_archived');
         if(vars.includes('name'))
-          inputName = $response.querySelector('#Page_name');
+          inputName = $response.querySelector('.Page_name');
         if(vars.includes('location'))
-          inputLocation = $response.querySelector('#Page_location');
+          inputLocation = $response.querySelector('.Page_location');
         if(vars.includes('description'))
-          inputDescription = $response.querySelector('#Page_description');
+          inputDescription = $response.querySelector('.Page_description');
+        if(vars.includes('startDateTime'))
+          inputStartDateTime = $response.querySelector('.Page_startDateTime');
+        if(vars.includes('endDateTime'))
+          inputEndDateTime = $response.querySelector('.Page_endDateTime');
         if(vars.includes('price'))
-          inputPrice = $response.querySelector('#Page_price');
+          inputPrice = $response.querySelector('.Page_price');
         if(vars.includes('pageId'))
-          inputPageId = $response.querySelector('#Page_pageId');
+          inputPageId = $response.querySelector('.Page_pageId');
         if(vars.includes('displayPage'))
-          inputDisplayPage = $response.querySelector('#Page_displayPage');
+          inputDisplayPage = $response.querySelector('.Page_displayPage');
         if(vars.includes('classCanonicalName'))
-          inputClassCanonicalName = $response.querySelector('#Page_classCanonicalName');
+          inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
         if(vars.includes('classSimpleName'))
-          inputClassSimpleName = $response.querySelector('#Page_classSimpleName');
+          inputClassSimpleName = $response.querySelector('.Page_classSimpleName');
         if(vars.includes('classCanonicalNames'))
-          inputClassCanonicalNames = $response.querySelector('#Page_classCanonicalNames');
+          inputClassCanonicalNames = $response.querySelector('.Page_classCanonicalNames');
         if(vars.includes('saves'))
-          inputSaves = $response.querySelector('#Page_saves');
+          inputSaves = $response.querySelector('.Page_saves');
         if(vars.includes('title'))
-          inputTitle = $response.querySelector('#Page_title');
+          inputTitle = $response.querySelector('.Page_title');
         if(vars.includes('editPage'))
-          inputEditPage = $response.querySelector('#Page_editPage');
+          inputEditPage = $response.querySelector('.Page_editPage');
+        if(vars.includes('userPage'))
+          inputUserPage = $response.querySelector('.Page_userPage');
         if(vars.includes('objectSuggest'))
-          inputObjectSuggest = $response.querySelector('#Page_objectSuggest');
+          inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
         if(vars.includes('objectText'))
-          inputObjectText = $response.querySelector('#Page_objectText');
+          inputObjectText = $response.querySelector('.Page_objectText');
         if(vars.includes('solrId'))
-          inputSolrId = $response.querySelector('#Page_solrId');
+          inputSolrId = $response.querySelector('.Page_solrId');
         if(vars.includes('emailTemplate'))
-          inputEmailTemplate = $response.querySelector('#Page_emailTemplate');
+          inputEmailTemplate = $response.querySelector('.Page_emailTemplate');
         if(vars.includes('storeUrl'))
-          inputStoreUrl = $response.querySelector('#Page_storeUrl');
+          inputStoreUrl = $response.querySelector('.Page_storeUrl');
         if(vars.includes('locationColors'))
-          inputLocationColors = $response.querySelector('#Page_locationColors');
+          inputLocationColors = $response.querySelector('.Page_locationColors');
         if(vars.includes('locationTitles'))
-          inputLocationTitles = $response.querySelector('#Page_locationTitles');
+          inputLocationTitles = $response.querySelector('.Page_locationTitles');
         if(vars.includes('locationLinks'))
-          inputLocationLinks = $response.querySelector('#Page_locationLinks');
-          jsWebsocketCompanyEvent(solrId, vars, $response);
+          inputLocationLinks = $response.querySelector('.Page_locationLinks');
 
-          window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
-          window.listCompanyEvent = JSON.parse($response.querySelector('.pageForm .listCompanyEvent')?.value);
+        jsWebsocketCompanyEvent(pageId, vars, $response);
+        window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
+        window.listCompanyEvent = JSON.parse($response.querySelector('.pageForm .listCompanyEvent')?.value);
 
 
         if(inputCreated) {
-          document.querySelectorAll('#Page_created').forEach((item, index) => {
-            item.setAttribute('value', inputCreated.getAttribute('value'));
+          document.querySelectorAll('.Page_created').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCreated.getAttribute('value');
+            else
+              item.textContent = inputCreated.textContent;
           });
-          addGlow(document.querySelector('#Page_created'));
+          addGlow(document.querySelector('.Page_created'));
         }
 
         if(inputModified) {
-          document.querySelectorAll('#Page_modified').forEach((item, index) => {
-            item.setAttribute('value', inputModified.getAttribute('value'));
+          document.querySelectorAll('.Page_modified').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputModified.getAttribute('value');
+            else
+              item.textContent = inputModified.textContent;
           });
-          addGlow(document.querySelector('#Page_modified'));
+          addGlow(document.querySelector('.Page_modified'));
         }
 
         if(inputArchived) {
-          document.querySelectorAll('#Page_archived').forEach((item, index) => {
-            item.setAttribute('value', inputArchived.getAttribute('value'));
+          document.querySelectorAll('.Page_archived').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputArchived.getAttribute('value');
+            else
+              item.textContent = inputArchived.textContent;
           });
-          addGlow(document.querySelector('#Page_archived'));
+          addGlow(document.querySelector('.Page_archived'));
         }
 
         if(inputName) {
-          document.querySelectorAll('#Page_name').forEach((item, index) => {
-            item.setAttribute('value', inputName.getAttribute('value'));
+          document.querySelectorAll('.Page_name').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputName.getAttribute('value');
+            else
+              item.textContent = inputName.textContent;
           });
-          addGlow(document.querySelector('#Page_name'));
+          addGlow(document.querySelector('.Page_name'));
         }
 
         if(inputLocation) {
-          document.querySelectorAll('#Page_location').forEach((item, index) => {
-            item.setAttribute('value', inputLocation.getAttribute('value'));
+          document.querySelectorAll('.Page_location').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLocation.getAttribute('value');
+            else
+              item.textContent = inputLocation.textContent;
           });
-          addGlow(document.querySelector('#Page_location'));
+          addGlow(document.querySelector('.Page_location'));
         }
 
         if(inputDescription) {
-          document.querySelectorAll('#Page_description').forEach((item, index) => {
-            item.setAttribute('value', inputDescription.getAttribute('value'));
+          document.querySelectorAll('.Page_description').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDescription.getAttribute('value');
+            else
+              item.textContent = inputDescription.textContent;
           });
-          addGlow(document.querySelector('#Page_description'));
+          addGlow(document.querySelector('.Page_description'));
+        }
+
+        if(inputStartDateTime) {
+          document.querySelectorAll('.Page_startDateTime').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputStartDateTime.getAttribute('value');
+            else
+              item.textContent = inputStartDateTime.textContent;
+          });
+          addGlow(document.querySelector('.Page_startDateTime'));
+        }
+
+        if(inputEndDateTime) {
+          document.querySelectorAll('.Page_endDateTime').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEndDateTime.getAttribute('value');
+            else
+              item.textContent = inputEndDateTime.textContent;
+          });
+          addGlow(document.querySelector('.Page_endDateTime'));
         }
 
         if(inputPrice) {
-          document.querySelectorAll('#Page_price').forEach((item, index) => {
-            item.setAttribute('value', inputPrice.getAttribute('value'));
+          document.querySelectorAll('.Page_price').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrice.getAttribute('value');
+            else
+              item.textContent = inputPrice.textContent;
           });
-          addGlow(document.querySelector('#Page_price'));
+          addGlow(document.querySelector('.Page_price'));
         }
 
         if(inputPageId) {
-          document.querySelectorAll('#Page_pageId').forEach((item, index) => {
-            item.setAttribute('value', inputPageId.getAttribute('value'));
+          document.querySelectorAll('.Page_pageId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageId.getAttribute('value');
+            else
+              item.textContent = inputPageId.textContent;
           });
-          addGlow(document.querySelector('#Page_pageId'));
+          addGlow(document.querySelector('.Page_pageId'));
         }
 
         if(inputDisplayPage) {
-          document.querySelectorAll('#Page_displayPage').forEach((item, index) => {
-            item.setAttribute('value', inputDisplayPage.getAttribute('value'));
+          document.querySelectorAll('.Page_displayPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDisplayPage.getAttribute('value');
+            else
+              item.textContent = inputDisplayPage.textContent;
           });
-          addGlow(document.querySelector('#Page_displayPage'));
+          addGlow(document.querySelector('.Page_displayPage'));
         }
 
         if(inputClassCanonicalName) {
-          document.querySelectorAll('#Page_classCanonicalName').forEach((item, index) => {
-            item.setAttribute('value', inputClassCanonicalName.getAttribute('value'));
+          document.querySelectorAll('.Page_classCanonicalName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalName.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalName.textContent;
           });
-          addGlow(document.querySelector('#Page_classCanonicalName'));
+          addGlow(document.querySelector('.Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
-          document.querySelectorAll('#Page_classSimpleName').forEach((item, index) => {
-            item.setAttribute('value', inputClassSimpleName.getAttribute('value'));
+          document.querySelectorAll('.Page_classSimpleName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassSimpleName.getAttribute('value');
+            else
+              item.textContent = inputClassSimpleName.textContent;
           });
-          addGlow(document.querySelector('#Page_classSimpleName'));
+          addGlow(document.querySelector('.Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
-          document.querySelectorAll('#Page_classCanonicalNames').forEach((item, index) => {
-            item.setAttribute('value', inputClassCanonicalNames.getAttribute('value'));
+          document.querySelectorAll('.Page_classCanonicalNames').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalNames.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalNames.textContent;
           });
-          addGlow(document.querySelector('#Page_classCanonicalNames'));
+          addGlow(document.querySelector('.Page_classCanonicalNames'));
         }
 
         if(inputSaves) {
-          document.querySelectorAll('#Page_saves').forEach((item, index) => {
-            item.setAttribute('value', inputSaves.getAttribute('value'));
+          document.querySelectorAll('.Page_saves').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSaves.getAttribute('value');
+            else
+              item.textContent = inputSaves.textContent;
           });
-          addGlow(document.querySelector('#Page_saves'));
+          addGlow(document.querySelector('.Page_saves'));
         }
 
         if(inputTitle) {
-          document.querySelectorAll('#Page_title').forEach((item, index) => {
-            item.setAttribute('value', inputTitle.getAttribute('value'));
+          document.querySelectorAll('.Page_title').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputTitle.getAttribute('value');
+            else
+              item.textContent = inputTitle.textContent;
           });
-          addGlow(document.querySelector('#Page_title'));
+          addGlow(document.querySelector('.Page_title'));
         }
 
         if(inputEditPage) {
-          document.querySelectorAll('#Page_editPage').forEach((item, index) => {
-            item.setAttribute('value', inputEditPage.getAttribute('value'));
+          document.querySelectorAll('.Page_editPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEditPage.getAttribute('value');
+            else
+              item.textContent = inputEditPage.textContent;
           });
-          addGlow(document.querySelector('#Page_editPage'));
+          addGlow(document.querySelector('.Page_editPage'));
+        }
+
+        if(inputUserPage) {
+          document.querySelectorAll('.Page_userPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputUserPage.getAttribute('value');
+            else
+              item.textContent = inputUserPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_userPage'));
         }
 
         if(inputObjectSuggest) {
-          document.querySelectorAll('#Page_objectSuggest').forEach((item, index) => {
-            item.setAttribute('value', inputObjectSuggest.getAttribute('value'));
+          document.querySelectorAll('.Page_objectSuggest').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectSuggest.getAttribute('value');
+            else
+              item.textContent = inputObjectSuggest.textContent;
           });
-          addGlow(document.querySelector('#Page_objectSuggest'));
+          addGlow(document.querySelector('.Page_objectSuggest'));
         }
 
         if(inputObjectText) {
-          document.querySelectorAll('#Page_objectText').forEach((item, index) => {
-            item.setAttribute('value', inputObjectText.getAttribute('value'));
+          document.querySelectorAll('.Page_objectText').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectText.getAttribute('value');
+            else
+              item.textContent = inputObjectText.textContent;
           });
-          addGlow(document.querySelector('#Page_objectText'));
+          addGlow(document.querySelector('.Page_objectText'));
         }
 
         if(inputSolrId) {
-          document.querySelectorAll('#Page_solrId').forEach((item, index) => {
-            item.setAttribute('value', inputSolrId.getAttribute('value'));
+          document.querySelectorAll('.Page_solrId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolrId.getAttribute('value');
+            else
+              item.textContent = inputSolrId.textContent;
           });
-          addGlow(document.querySelector('#Page_solrId'));
+          addGlow(document.querySelector('.Page_solrId'));
         }
 
         if(inputEmailTemplate) {
-          document.querySelectorAll('#Page_emailTemplate').forEach((item, index) => {
-            item.setAttribute('value', inputEmailTemplate.getAttribute('value'));
+          document.querySelectorAll('.Page_emailTemplate').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEmailTemplate.getAttribute('value');
+            else
+              item.textContent = inputEmailTemplate.textContent;
           });
-          addGlow(document.querySelector('#Page_emailTemplate'));
+          addGlow(document.querySelector('.Page_emailTemplate'));
         }
 
         if(inputStoreUrl) {
-          document.querySelectorAll('#Page_storeUrl').forEach((item, index) => {
-            item.setAttribute('value', inputStoreUrl.getAttribute('value'));
+          document.querySelectorAll('.Page_storeUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputStoreUrl.getAttribute('value');
+            else
+              item.textContent = inputStoreUrl.textContent;
           });
-          addGlow(document.querySelector('#Page_storeUrl'));
+          addGlow(document.querySelector('.Page_storeUrl'));
         }
 
         if(inputLocationColors) {
-          document.querySelectorAll('#Page_locationColors').forEach((item, index) => {
-            item.setAttribute('value', inputLocationColors.getAttribute('value'));
+          document.querySelectorAll('.Page_locationColors').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLocationColors.getAttribute('value');
+            else
+              item.textContent = inputLocationColors.textContent;
           });
-          addGlow(document.querySelector('#Page_locationColors'));
+          addGlow(document.querySelector('.Page_locationColors'));
         }
 
         if(inputLocationTitles) {
-          document.querySelectorAll('#Page_locationTitles').forEach((item, index) => {
-            item.setAttribute('value', inputLocationTitles.getAttribute('value'));
+          document.querySelectorAll('.Page_locationTitles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLocationTitles.getAttribute('value');
+            else
+              item.textContent = inputLocationTitles.textContent;
           });
-          addGlow(document.querySelector('#Page_locationTitles'));
+          addGlow(document.querySelector('.Page_locationTitles'));
         }
 
         if(inputLocationLinks) {
-          document.querySelectorAll('#Page_locationLinks').forEach((item, index) => {
-            item.setAttribute('value', inputLocationLinks.getAttribute('value'));
+          document.querySelectorAll('.Page_locationLinks').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLocationLinks.getAttribute('value');
+            else
+              item.textContent = inputLocationLinks.textContent;
           });
-          addGlow(document.querySelector('#Page_locationLinks'));
+          addGlow(document.querySelector('.Page_locationLinks'));
         }
 
           pageGraphCompanyEvent();
@@ -1064,6 +1257,12 @@ function pageGraphCompanyEvent(apiRequest) {
 
     // Graph Location
     window.mapLayers = {};
+    window.bounds = null;
+    if(listCompanyEvent.filter(o => o.location)) {
+      window.bounds = L.latLngBounds(listCompanyEvent.filter(o => o.location).map((c) => {
+        return [c.location.coordinates[1], c.location.coordinates[0]];
+      }));
+    }
     function onEachFeature(feature, layer) {
       let popupContent = htmTooltipCompanyEvent(feature, layer);
       layer.bindPopup(popupContent);
@@ -1097,7 +1296,22 @@ function pageGraphCompanyEvent(apiRequest) {
         }
       });
     } else {
-      window.mapCompanyEvent = L.map('htmBodyGraphLocationCompanyEventPage', {closePopupOnClick: false});
+      window.mapCompanyEvent = L.map('htmBodyGraphLocationCompanyEventPage', {
+        position: 'topright'
+        , zoomControl: true
+        , closePopupOnClick: false
+        , contextmenu: true
+        , contextmenuWidth: 140
+        , contextmenuItems: [
+          {
+            text: 'Show coordinates'
+            , callback: function(event) {
+              alert(event.latlng);
+            }
+          }
+          ]
+      });
+      window.mapCompanyEvent.zoomControl.setPosition('topright');
       var data = [];
       var layout = {};
       layout['showlegend'] = true;
@@ -1111,12 +1325,16 @@ function pageGraphCompanyEvent(apiRequest) {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(window.mapCompanyEvent);
 
-      if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
-        window.mapCompanyEvent.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']], window['DEFAULT_MAP_ZOOM']);
-      else if(window['DEFAULT_MAP_ZOOM'])
-        window.mapCompanyEvent.setView(null, window['DEFAULT_MAP_ZOOM']);
-      else if(window['DEFAULT_MAP_LOCATION'])
-        window.mapCompanyEvent.setView([window['DEFAULT_MAP_LOCATION']['lat'], window['DEFAULT_MAP_LOCATION']['lon']]);
+      if(window.bounds) {
+        window.mapCompanyEvent.fitBounds(window.bounds);
+      } else {
+        if(window['DEFAULT_MAP_LOCATION'] && window['DEFAULT_MAP_ZOOM'])
+          window.mapCompanyEvent.setView([window['DEFAULT_MAP_LOCATION']['coordinates'][1], window['DEFAULT_MAP_LOCATION']['coordinates'][0]], window['DEFAULT_MAP_ZOOM']);
+        else if(window['DEFAULT_MAP_ZOOM'])
+          window.mapCompanyEvent.setView(null, window['DEFAULT_MAP_ZOOM']);
+        else if(window['DEFAULT_MAP_LOCATION'])
+          window.mapCompanyEvent.setView([window['DEFAULT_MAP_LOCATION']['coordinates'][1], window['DEFAULT_MAP_LOCATION']['coordinates'][0]]);
+      }
 
       layout['margin'] = { r: 0, t: 0, b: 0, l: 0 };
       window.geoJSONCompanyEvent = L.geoJSON().addTo(window.mapCompanyEvent);
@@ -1145,18 +1363,6 @@ function pageGraphCompanyEvent(apiRequest) {
           });
         }
       });
-      window.mapCompanyEvent.on('contextmenu', function(e) {
-        var htm = '';
-        if(window.listCompanyEvent.length == 1) {
-          window.listCompanyEvent.forEach((result, index) => {
-            htm += '<div><button onclick="patchLocation(event.target, { &quot;coordinates&quot;: [ ' + e.latlng.lng + ', ' + e.latlng.lat + ' ], &quot;type&quot;: &quot;Point&quot; });">Set location of ' + result.title + '</button></div>';
-          });
-        }
-        var popup = L.popup()
-            .setLatLng(e.latlng)
-            .openOn(window.mapCompanyEvent)
-            .setContent(htm);
-      });
       window.mapCompanyEvent.on('popupopen', function(e) {
         if(e.popup._source) {
           var feature = e.popup._source.feature;
@@ -1166,12 +1372,12 @@ function pageGraphCompanyEvent(apiRequest) {
       const drawnItems = new L.FeatureGroup();
       window.mapCompanyEvent.addLayer(drawnItems);
       const drawControl = new L.Control.Draw({
-        edit: {
+        position: 'topright'
+        , edit: {
           featureGroup: drawnItems
-        },
-        draw: {
+        }
+        , draw: {
           polygon: true
-          , polygon: true
           , polyline: true
           , rectangle: true
           , circle: true
@@ -1181,6 +1387,19 @@ function pageGraphCompanyEvent(apiRequest) {
       window.mapCompanyEvent.addControl(drawControl);
       window.mapCompanyEvent.on(L.Draw.Event.CREATED, function (event) {
         drawnItems.addLayer(event.layer);
+        var contextmenuItems = [];
+        if(event.layerType == 'marker') {
+          contextmenuItems.push({
+            text: 'Set location of ' + result.title
+            , callback: function(event2) {
+              patchLocation(event.layer, { coordinates: [event.layer.getLatLng()['lng'], event.layer.getLatLng()['lat']], type: "Point" });
+            }
+          });
+        }
+        event.layer.bindContextMenu({
+          contextmenu: true
+          , contextmenuItems: contextmenuItems
+        });
       });
     }
   }
