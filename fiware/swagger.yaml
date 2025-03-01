@@ -1,8 +1,6 @@
 ---
 components:
   schemas:
-    WeatherObserved
-      "$ref": "http://localhost:10200/static/fiware/WeatherObserved/model.yaml#/WeatherObserved
 info:
   description: >+
 openapi: "3.0.0"
@@ -26,11 +24,9 @@ paths:
                 keyvalues:
                   summary: "Key-Values Pairs"
                   value:
-                    - "$ref": "http://localhost:10200/static/fiware/WeatherObserved/examples/example.json"
                 normalized:
                   summary: "Normalized NGSI-LD"
                   value:
-                    - $ref: "http://localhost:10200/static/fiware/WeatherObserved/examples/example-normalized.json"
           description: OK
       tags:
         - ngsi-ld

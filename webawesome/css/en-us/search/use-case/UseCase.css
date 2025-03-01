@@ -1,0 +1,23 @@
+#site-results-grid {
+  display: grid;
+  gap: var(--site-secondary-space);
+  background-color: var(--wa-color-surface-lowered);
+  > * {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: span 4;
+    align-items: center;
+    background-color: var(--wa-color-surface-raised);
+    &:hover {
+      background-color: var(--wa-color-brand-fill-quiet);
+    }
+    wa-button {
+      &::part(base) {
+        border-radius: initial;
+      }
+    }
+    @media (max-width:767px) {
+      grid-column: span 1;
+    }
+  }
+}
