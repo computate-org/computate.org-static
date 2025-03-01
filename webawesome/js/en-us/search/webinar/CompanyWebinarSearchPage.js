@@ -90,12 +90,36 @@ Promise.all([
     document.querySelector('#postCompanyWebinarDialog').open = true;
   });
 
+  document.querySelector('#htmButton_deleteCompanyWebinar')?.addEventListener('click', (event) => {
+    var confirmResponse = confirm('Are you sure you want to delete that?'); 
+    if(confirmResponse) { 
+      var pageId =  event.currentTarget.getAttribute('data-pageId');
+      deleteCompanyWebinar(
+          event.currentTarget
+          , pageId
+          , function(response, target) { addGlow(target); }
+          , function(response, target) { addError(target); }
+          );
+    }
+  });
+
   document.querySelector('#htmButton_putimportCompanyWebinar')?.addEventListener('click', (event) => {
     document.querySelector('#putimportCompanyWebinarDialog').open = true;
   });
 
   document.querySelector('#htmButton_searchpageCompanyWebinar')?.addEventListener('click', (event) => {
     document.querySelector('#searchpageCompanyWebinarDialog').open = true;
+  });
+
+  document.querySelector('#htmButton_deletefilterCompanyWebinar')?.addEventListener('click', (event) => {
+    var confirmResponse = confirm('Are you sure you want to delete that?'); 
+    if(confirmResponse) { 
+      deletefilterCompanyWebinar(
+          event.currentTarget
+          , function(response, target) { addGlow(target); }
+          , function(response, target) { addError(target); }
+          );
+    }
   });
           document.querySelector('#fqCompanyWebinar_created')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);

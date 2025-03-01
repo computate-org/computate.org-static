@@ -8,50 +8,68 @@
     <meta name="result.location" content="40.28517912425559, -76.6521018627664"/>
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
+
+wa-button::part(base), wa-details::part(base) {
+  background: linear-gradient(130deg, var(--wa-color-purple-30), var(--wa-color-blue-30));
+  color: white;
+  &:is(wa-button, wa-dialog)::part(base) {
+    border: solid 1px var(--wa-color-purple-30);
+  }
+}
 {% endblock htmStylePageLayout %}
 {% block htmTitlePageLayout %}
     <title>{{ title }}</title>
 {% endblock htmTitlePageLayout %}
 {% block htmBodyMiddlePageLayout %}
 
-        <div class="pink-purple-background">
-          <div class="intro-content">
-            <div class="wa-crown">
-              <i class="fa-duotone fa-solid fa-browser fa-5x "></i>
-            </div>
-            <h1 class="brand-font">
-              Learn how to deploy open source smart aquaculture microservices with generative AI in the cloud
-            </h1>
-            <h2 class="brand-font">
-              with the {{ name }}
-            </h2>
-            <div class="intro-details">
-              <div>
-                This course will become available for participants at the 
-                <a href="https://nedsi.decisionsciences.org/registration/">2025 Northeast Decision Sciences Institute Annual Conference</a>
-                in Hershey, Pennsylvania, USA Thursday March 27, 2025 — Saturday March 29, 2025 
+        <div class="wa-stack purple-blue-background-headers ">
+
+          <wa-card class="purple-blue-background ">
+            <div class="wa-stack ">
+              <div class="wa-flank ">
+                <i class="fa-duotone fa-solid fa-browser fa-8x "></i>
+                <div>
+                  <h1 class="brand-font">
+                    Learn how to develop an open source data-driven website for Smart Aquaculture with generative AI in the cloud
+                  </h1>
+                  <h2 class="brand-font">
+                    with the {{ result.name }}
+                  </h2>
+                </div>
               </div>
-              <wa-button id="order-button" class="gradient-button pink-purple-background" variant="neutral" href="https://members.decisionsciences.org/ap/Events/Register/zBFQ05lcgCACR">
-                <i class="fa-solid fa-person-running-fast"></i>
-                Register for the workshop
-              </wa-button>
+              <wa-card>
+                <div class="wa-stack ">
+                  <div>
+                    This course will become available for participants at the 
+                    <a href="https://nedsi.decisionsciences.org/registration/">2025 Northeast Decision Sciences Institute Annual Conference</a>
+                    in Hershey, Pennsylvania, USA Thursday March 27, 2025 — Saturday March 29, 2025 
+                  </div>
+                  <div>
+                    <wa-button id="order-button" class="gradient-button pink-purple-background" variant="neutral" href="https://members.decisionsciences.org/ap/Events/Register/zBFQ05lcgCACR">
+                      <i class="fa-solid fa-person-running-fast"></i>
+                      Register for the workshop
+                    </wa-button>
+                  </div>
+                </div>
+              </wa-card>
             </div>
-          </div>
-        </div>
+          </wa-card>
 
-        <div class="summary-wrapper">
-          <div class="summary">
-            <h2 class="brand-font anchor-heading" id="whats-web-awesome">
-              What is the {{ name }}?
-            </h2>
-            <p>
-              Learn how to develop custom Smart Aquaculture data-driven websites and open APIs in the cloud, 
-              and build your own secure IoT smart platform with generative AI, zero-trust access control, and interactive dashboards. 
-            </p>
+          <wa-card with-header>
+            <div slot="header">
+              <h2 class="brand-font anchor-heading" id="whats-web-awesome">
+                What is the {{ result.name }}?
+              </h2>
+              <p>
+                Learn how to develop custom Smart Aquaculture data-driven websites and open APIs in the cloud, 
+                and build your own secure IoT smart platform with generative AI, zero-trust access control, and interactive dashboards. 
+              </p>
+            </div>
 
-            <div class="summary-grid">
+            <div class="wa-stack ">
+
               <div>
-                <div class="icon-heading">
+                <div class="wa-flank ">
                   <i class="fa-solid fa-code"></i>
                   <h3>
                     Modern development tools
@@ -63,7 +81,7 @@
               </div>
 
               <div>
-                <div class="icon-heading">
+                <div class="wa-flank ">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
                   <h3>
                     Automate tasks
@@ -75,7 +93,7 @@
               </div>
 
               <div>
-                <div class="icon-heading">
+                <div class="wa-flank ">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
                   <h3>
                     Learn reactive programming
@@ -87,7 +105,7 @@
               </div>
 
               <div>
-                <div class="icon-heading">
+                <div class="wa-flank ">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
                   <h3>
                     Build interactive dashboards
@@ -99,7 +117,7 @@
               </div>
 
               <div>
-                <div class="icon-heading">
+                <div class="wa-flank ">
                   <i class="fa-solid fa-cloud-arrow-up"></i>
                   <h3>
                     Cloud-native microservices
@@ -128,23 +146,31 @@
               </div>
 
             </div>
+          </wa-card>
 
+          <wa-card with-header>
+            <div slot="header">
+              <div class="wa-flank ">
+                <i class="fa-duotone fa-solid fa-conveyor-belt fa-8x "></i>
+                <div>
+                  <h2 class="brand-font anchor-heading" id="whats-web-awesome">
+                    About the conference
+                  </h2>
+                  <h3 class="brand-font anchor-heading" id="whats-web-awesome">
+                    Generative AI to Enhance Supply Chain Resilience
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="wa-stack ">
+              <div>
+                <p>
+                  A NEDSI conference is a forum for scholars and practitioners to present their research and keep abreast of their areas of expertise and interlace into new horizons, 
+                  it is where salient networking occurs, and friendships are made for a lifetime. 
+                  Conference participants have stated that they enjoy the amicable nature at NEDSI conferences; over 200 participants are expected at this year’s event. 
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="summary-wrapper">
-          <div class="summary">
-            <h2 class="brand-font anchor-heading" id="whats-web-awesome">
-              About the conference
-            </h2>
-            <h3 class="brand-font anchor-heading" id="whats-web-awesome">
-              Generative AI to Enhance Supply Chain Resilience
-            </h3>
-            <p>
-              A NEDSI conference is a forum for scholars and practitioners to present their research and keep abreast of their areas of expertise and interlace into new horizons, 
-              it is where salient networking occurs, and friendships are made for a lifetime. 
-              Conference participants have stated that they enjoy the amicable nature at NEDSI conferences; over 200 participants are expected at this year’s event. 
-            </p>
-          </div>
-        </div>
+        </wa-card>
 {% endblock %}

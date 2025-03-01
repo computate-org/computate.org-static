@@ -695,6 +695,37 @@ function postCompanyWebinarVals(vals, target, success, error) {
     .catch(response => error(response, target));
 }
 
+// DELETE //
+
+async function deleteCompanyWebinar(target, pageId, success, error) {
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target);
+      var url = data['editPage'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, textStatus, errorThrown ) {
+      addError(target);
+    };
+  }
+
+  fetch(
+    '/en-us/api/webinar/' + encodeURIComponent(pageId)
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'DELETE'
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
+}
+
 // PUTImport //
 
 async function putimportCompanyWebinar($formValues, target, pageId, success, error) {
@@ -710,6 +741,37 @@ function putimportCompanyWebinarVals(json, target, success, error) {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
       , body: JSON.stringify(json)
+    }).then(response => {
+      if(response.ok)
+        success(response, target);
+      else
+        error(response, target);
+    })
+    .catch(response => error(response, target));
+}
+
+// DELETEFilter //
+
+async function deletefilterCompanyWebinar(target, success, error) {
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target);
+      var url = data['editPage'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, textStatus, errorThrown ) {
+      addError(target);
+    };
+  }
+
+  fetch(
+    '/en-us/api/webinar'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'DELETE'
     }).then(response => {
       if(response.ok)
         success(response, target);

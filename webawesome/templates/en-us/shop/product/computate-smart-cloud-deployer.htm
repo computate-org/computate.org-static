@@ -6,98 +6,15 @@
     <meta name="result.name" content="Computate Smart Cloud Deployer"/>
     <meta name="result.description" content="Learn how to deploy open source smart device microservices to the cloud and try out your own secure IoT smart platform with built-in security. "/>
     <meta name="result.productNum" content="1"/>
-    <meta name="result.price" content="1000.00"/>
+    <meta name="result.price" content="1024.00"/>
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
-
-:where(:root),
-:host,
-:where([class^='wa-theme-'], [class*=' wa-theme-']),
-.wa-palette-default {
-
-  --wa-color-pink-95: #feeff9;
-  --wa-color-pink-90: #feddf0;
-  --wa-color-pink-80: #fcb5d8;
-  --wa-color-pink-70: #f78dbf;
-  --wa-color-pink-60: #e66ba3;
-  --wa-color-pink-50: #c84382;
-  --wa-color-pink-40: #9e2a6c;
-  --wa-color-pink-30: #7d1e58;
-  --wa-color-pink-20: #5e1342;
-  --wa-color-pink-10: #3c0828;
-  --wa-color-pink-05: #28041a;
-  --wa-color-pink: var(--wa-color-pink-50);
-
-  --wa-color-purple-95: #f7f0ff;
-  --wa-color-purple-90: #eedfff;
-  --wa-color-purple-80: #ddbdff;
-  --wa-color-purple-70: #ca99ff;
-  --wa-color-purple-60: #b678f5;
-  --wa-color-purple-50: #9951db;
-  --wa-color-purple-40: #7936b3;
-  --wa-color-purple-30: #612692;
-  --wa-color-purple-20: #491870;
-  --wa-color-purple-10: #2d0b48;
-  --wa-color-purple-05: #1e0532;
-  --wa-color-purple: var(--wa-color-purple-50);
-}
 
 wa-button::part(base), wa-details::part(base) {
   background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
   color: white;
   &:is(wa-button, wa-dialog)::part(base) {
     border: solid 1px var(--wa-color-pink-30);
-  }
-}
-
-wa-card.pink-purple-background {
-  background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
-  color: white;
-  &:is(wa-button, wa-dialog)::part(base) {
-    border: solid 1px var(--wa-color-pink-30);
-  }
-}
-.pink-purple-background-headers {
-  wa-card::part(header) {
-    background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
-    color: white;
-    &:is(wa-button, wa-dialog)::part(base) {
-      border: solid 1px var(--wa-color-pink-30);
-    }
-  }
-}
-
-wa-card.red-pink-background {
-  background: linear-gradient(130deg, var(--wa-color-red-40), var(--wa-color-pink-50));
-  color: white;
-  &:is(wa-button, wa-dialog)::part(base) {
-    border: solid 1px var(--wa-color-red-30);
-  }
-}
-.red-pink-background-headers {
-  wa-card::part(header) {
-    background: linear-gradient(130deg, var(--wa-color-red-40), var(--wa-color-pink-50));
-    color: white;
-    &:is(wa-button, wa-dialog)::part(base) {
-      border: solid 1px var(--wa-color-red-30);
-    }
-  }
-}
-
-wa-card.purple-blue-background {
-  background: linear-gradient(130deg, var(--wa-color-purple-40), var(--wa-color-blue-50));
-  color: white;
-  &:is(wa-button, wa-dialog)::part(base) {
-    border: solid 1px var(--wa-color-purple-30);
-  }
-}
-.purple-blue-background-headers {
-  wa-card::part(header) {
-    background: linear-gradient(130deg, var(--wa-color-purple-40), var(--wa-color-blue-50));
-    color: white;
-    &:is(wa-button, wa-dialog)::part(base) {
-      border: solid 1px var(--wa-color-purple-30);
-    }
   }
 }
 {% endblock htmStylePageLayout %}
@@ -112,10 +29,10 @@ wa-card.purple-blue-background {
               <div class="wa-flank ">
                 <i class="fa-duotone fa-solid fa-browser fa-7x "></i>
                 <div>
-                  <h1 class="brand-font">
+                  <h1>
                     Learn how to deploy open source smart device microservices to the cloud
                   </h1>
-                  <h2 class="brand-font">
+                  <h2>
                     with the {{ result.name }}
                   </h2>
                 </div>
@@ -163,12 +80,12 @@ wa-card.purple-blue-background {
           <wa-card class="red-pink-background background border-radius-x-large ">
             <div class="intro-content">
               <div class="wa-crown">
-                <h1 class="brand-font">
+                <h1>
                   <i class="fa-duotone fa-solid fa-video fa-2x "></i>
                   System requirements
                 </h1>
               </div>
-              <h2 class="brand-font">
+              <h2>
                 The {{ result.name }} is an open source project builder that runs on a Linux x86_64 computer. 
                 Supported Linux distributions include: 
               </h2>
@@ -194,12 +111,12 @@ wa-card.purple-blue-background {
               <wa-card class="zoom-details ">
                 <div class="wa-stack ">
                   <div>
-                    Microsoft Windows and MacOSX users can also start computating with the very similar Cloud sandbox powered by FIWARE course. 
+                    Microsoft Windows and MacOSX users can also start computating with the very similar Smart Aquaculture Cloud Sandbox course. 
                     This course runs entirely in the cloud to allow all users access to the same tools. 
-                    Try the <a href="{{ SITE_BASE_URL }}/en-us/course/cloud-sandbox-powered-by-fiware">Cloud sandbox powered by FIWARE course</a>. 
+                    Try the <a href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox">Smart Aquaculture Cloud Sandbox course</a>. 
                   </div>
                   <div>
-                    <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="{{ SITE_BASE_URL }}/en-us/course/cloud-sandbox-powered-by-fiware" variant="neutral">
+                    <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox" variant="neutral">
                       <i class="fa-solid fa-person-running-fast"></i>
                       Try the course
                     </wa-button>
@@ -223,7 +140,7 @@ wa-card.purple-blue-background {
 
           <wa-card class="summary-wrapper">
             <div class="summary">
-              <h2 class="brand-font anchor-heading" id="whats-web-awesome">
+              <h2 id="whats-web-awesome">
                 What is the {{ result.name }}?
               </h2>
               <p>
@@ -325,25 +242,25 @@ wa-card.purple-blue-background {
           <wa-card class="purple-blue-background background border-radius-x-large ">
             <div class="intro-content">
               <div class="wa-crown">
-                <h1 class="brand-font">
+                <h1>
                   <i class="fa-duotone fa-solid fa-video fa-2x "></i>
                   AI Telemetry Community Webinar
                 </h1>
               </div>
-              <h2 class="brand-font">
+              <h2>
                 Come learn how to Computate as we build a brand new custom data-driven platform 
                 for AI/ML GPU Telemetry with 
                 <i class="fa-brands fa-redhat fa-2xl fa-red" style="color: red; "></i>
                 Red Hat Research in the New England Research Cloud! 
               </h2>
-              <h3 class="brand-font">
+              <h3>
                 Watch the ai-telemetry project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud. 
               </h3>
               <iframe width="560" height="315" src="https://www.youtube.com/embed/4YrBh8Yaf0k?si=1egQxxZQpzspzb_-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
               <wa-card class="zoom-details ">
                 <div class="wa-stack ">
-                  <h3 class="brand-font">
+                  <h3>
                     Join the AI Telemetry webinar
                   </h3>
                   <div>
@@ -367,10 +284,10 @@ wa-card.purple-blue-background {
               <div class="wa-crown">
                 <i class="fa-duotone fa-solid fa-browser fa-5x "></i>
               </div>
-              <h1 class="brand-font">
+              <h1>
                 Learn how to deploy open source smart device microservices to the cloud
               </h1>
-              <h2 class="brand-font">
+              <h2>
                 with the {{ result.name }}
               </h2>
               <wa-card>

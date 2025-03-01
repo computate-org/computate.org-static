@@ -123,6 +123,16 @@
           return false;
         });
 
+        var submitForm_deleteCompanyWebinar = document.querySelector('#htmForm_deleteCompanyWebinar')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deleteCompanyWebinar')?.addEventListener('click', event => {
+          event.preventDefault();
+          deleteCompanyWebinar(event.target, event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
         var submitForm_putimportCompanyWebinar = document.querySelector('#htmForm_putimportCompanyWebinar')?.addEventListener('submit', event => {
           event.preventDefault();
           return false;
@@ -140,6 +150,16 @@
         document.querySelector('#htmFormButton_searchpageCompanyWebinar')?.addEventListener('click', event => {
           event.preventDefault();
           searchpageCompanyWebinar();
+          return false;
+        });
+
+        var submitForm_deletefilterCompanyWebinar = document.querySelector('#htmForm_deletefilterCompanyWebinar')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deletefilterCompanyWebinar')?.addEventListener('click', event => {
+          event.preventDefault();
+          deletefilterCompanyWebinar(event.target);
           return false;
         });
       });

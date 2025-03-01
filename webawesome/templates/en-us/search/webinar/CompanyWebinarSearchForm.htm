@@ -757,6 +757,20 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
+{%- macro htmButton_deleteCompanyWebinar() %}<wa-button variant="brand" id="htmButton_deleteCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+
+{%- macro htmFormButton_deleteCompanyWebinar() %}
+          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deleteCompanyWebinar">Delete webinar</wa-button>
+{%- endmacro %}
+
+{%- macro htmForm_deleteCompanyWebinar() %}
+        <wa-dialog with-footer id="deleteCompanyWebinarDialog" label="Delete webinar">
+          <form id="htmForm_deleteCompanyWebinar" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deleteCompanyWebinar() }}
+        </wa-dialog>
+{%- endmacro %}
+
 {%- macro htmButton_putimportCompanyWebinar() %}<wa-button variant="brand" id="htmButton_putimportCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyWebinar() %}
@@ -936,6 +950,20 @@ The ID for this page. "
           </div>
         </div>
 {%- endmacro %}
+
+{%- macro htmButton_deletefilterCompanyWebinar() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+
+{%- macro htmFormButton_deletefilterCompanyWebinar() %}
+          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deletefilterCompanyWebinar">Delete webinar</wa-button>
+{%- endmacro %}
+
+{%- macro htmForm_deletefilterCompanyWebinar() %}
+        <wa-dialog with-footer id="deletefilterCompanyWebinarDialog" label="Delete webinar">
+          <form id="htmForm_deletefilterCompanyWebinar" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deletefilterCompanyWebinar() }}
+        </wa-dialog>
+{%- endmacro %}
           <wa-divider></wa-divider>
           <div id="htmButtonGroup">
             <div class="flex flex-wrap round-column pill-smart-border-radius ">
@@ -970,8 +998,18 @@ The ID for this page. "
     {{ htmButton_postCompanyWebinar() }}
   {%- endif %}
 {%- endif %}
+{% if AUTH_SCOPE_ADMIN in scopes %}
+  {%- if resultCount == 1 %}
+    {{ htmButton_deleteCompanyWebinar() }}
+  {%- endif %}
+{%- endif %}
 {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {{ htmButton_putimportCompanyWebinar() }}
+{%- endif %}
+{% if AUTH_SCOPE_ADMIN in scopes %}
+  {%- if resultCount > 1 %}
+    {{ htmButton_deletefilterCompanyWebinar() }}
+  {%- endif %}
 {%- endif %}
 
             </div>
@@ -988,6 +1026,18 @@ The ID for this page. "
     {{ htmForm_postCompanyWebinar() }}
   {%- endif %}
 {%- endif %}
+{% if AUTH_SCOPE_ADMIN in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deleteCompanyWebinar() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}
 {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {{ htmForm_putimportCompanyWebinar() }}
+{%- endif %}
+{% if AUTH_SCOPE_ADMIN in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deletefilterCompanyWebinar() }}
+  {%- else %}
+  {%- endif %}
 {%- endif %}

@@ -1,25 +1,19 @@
 {% extends "en-us/PageLayout.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}"/>
-    <meta name="result.joinUri" content="/en-us/join/webinar/{{ pageId }}"/>
     <meta name="result.name" content="AI Telemetry Community Webinar"/>
     <meta name="result.description" content="Learn how to Computate as we build the AI Telemetry open source project with the Red Hat Research team built with the Computate platform! "/>
+    <meta name="result.joinUri" content="/en-us/join/webinar/{{ pageId }}"/>
     <meta name="result.courseNum" content="1"/>
     <meta name="result.icalUrl" content="https://user.fm/calendar/v1-1f13180574907ff09a03a3f56d315984/RH%20Research%20AI%20Telemetry%20Webinars.ics"/>
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
 
-@media (max-width:800px) {
-  .intro-content > h1 {
-    font-size: var(--sl-font-size-large);
-  }
-  sl-carousel {
-    --aspect-ratio: 16/8;
-  }
-}
-@media (min-width:801px) {
-  sl-carousel {
-    --aspect-ratio: 16/8;
+wa-button::part(base), wa-details::part(base) {
+  background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
+  color: white;
+  &:is(wa-button, wa-dialog)::part(base) {
+    border: solid 1px var(--wa-color-pink-30);
   }
 }
 {% endblock htmStylePageLayout %}
@@ -28,9 +22,9 @@
 {% endblock htmTitlePageLayout %}
 {% block htmBodyMiddlePageLayout %}
 
-        <div class="wa-stack ">
+        <div class="wa-stack pink-purple-background-headers ">
 
-          <wa-card>
+          <wa-card class="pink-purple-background ">
             <div class="wa-flank">
               <i class="fa-duotone fa-solid fa-video fa-2x "></i>
               <h1>{{ result.name }}</h1>
@@ -42,190 +36,188 @@
               Red Hat Research in the New England Research Cloud! 
             </h2>
           </wa-card>
-          <wa-card>
-            <div class="wa-grid">
-              <img src="{{ STATIC_BASE_URL }}/png/ai-telemetry/ai-telemetry-smart-cloud-deployer-video.png" 
-                  alt="AI Telemetry Smart Cloud Deployer Video"/>
-              <h2 class="wa-align-items-center wa-cluster ">
-                Watch the ai-telemetry project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
-                then do live development adding new features to the ai-telemetry project in OpenShift AI VSCode Java Workbench. 
-              </h2>
+
+          <wa-card with-header>
+            <div slot="header" class="wa-flank">
+              <i class="fa-duotone fa-solid fa-video fa-2x "></i>
+              <h3>
+                Watch the AI Telemetry webinar
+              </h3>
             </div>
-          </wa-card>
-
-        </div>
-        <div class="blue-teal-background background border-radius-x-large ">
-          <div class="intro-content">
-            <wa-card>
-              <h1 class="brand-font">
-              </h1>
-            </wa-card>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Z3hgoWvlvQY?si=k0yj-0xHMWR8oubQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <h3 class="brand-font">
-              The {{ name }} series will occur live weekdays from Sep 2, 2024 — Feb 28, 2025. 
-            </h3>
-            <div id="webinar-calendar" class="zoom-details ">
-
-              <div class="zoom-link font-size-large">
-                <i class="fa-duotone fa-solid fa-earth-americas fa-xl"></i>
-                <div>
-                  {% if userName is defined %}
-                  {% if scope is defined and scope == "GET" %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlAmericas }}" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    Open Zoom
-                  </wa-button>
-                  {% else %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    See below how to get access
-                  </wa-button>
-                  {% endif %}
-                  {% else %}
-                  <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
-                    <i class="fa-duotone fa-right-to-bracket"></i>
-                    Log in with GitHub
-                  </wa-button>
-                  {% endif %}
-                </div>
-                <div>
-                  <div>
-                    Mondays: Americas
-                  </div>
-                  <div class="font-size-x-small">
-                    Monday 12:00 PM US Eastern
-                  </div>
-                </div>
+            <div class="wa-stack ">
+              <div class="wa-flank">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Z3hgoWvlvQY?si=k0yj-0xHMWR8oubQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>
+                  Watch the ai-telemetry project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
+                  then do live development adding new features to the ai-telemetry project in OpenShift AI VSCode Java Workbench. 
+                </p>
               </div>
+              <h3 class="brand-font">
+                The {{ name }} series will occur live weekdays from Sep 2, 2024 — Feb 28, 2025. 
+              </h3>
+              <div id="webinar-calendar" class="wa-stack ">
 
-              <div class="zoom-link font-size-large">
-                <i class="fa-duotone fa-solid fa-earth-europe fa-xl"></i>
-                <div>
-                  {% if userName is defined %}
-                  {% if scope is defined and scope == "GET" %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlEmea }}" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    Open Zoom
-                  </wa-button>
-                  {% else %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    See below how to get access
-                  </wa-button>
-                  {% endif %}
-                  {% else %}
-                  <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
-                    <i class="fa-duotone fa-right-to-bracket"></i>
-                    Log in with GitHub
-                  </wa-button>
-                  {% endif %}
-                </div>
-                <div>
+                <div class="wa-flank zoom-link font-size-large">
+                  <i class="fa-duotone fa-solid fa-earth-americas fa-xl"></i>
                   <div>
-                    Tuesdays: Europe, Middle East, Africa
+                    {% if userName is defined %}
+                    {% if scope is defined and scope == "GET" %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlAmericas }}" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      Open Zoom
+                    </wa-button>
+                    {% else %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      See below how to get access
+                    </wa-button>
+                    {% endif %}
+                    {% else %}
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      Log in with GitHub
+                    </wa-button>
+                    {% endif %}
                   </div>
-                  <div class="font-size-x-small">
-                    Tuesday 16:00 Central European Time, Tuesday 10:00 AM US Eastern
-                  </div>
-                </div>
-              </div>
-
-              <div class="zoom-link font-size-large">
-                <i class="fa-duotone fa-solid fa-earth-asia fa-xl"></i>
-                <div>
-                  {% if userName is defined %}
-                  {% if scope is defined and scope == "GET" %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlApac }}" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    Open Zoom
-                  </wa-button>
-                  {% else %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    See below how to get access
-                  </wa-button>
-                  {% endif %}
-                  {% else %}
-                  <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
-                    <i class="fa-duotone fa-right-to-bracket"></i>
-                    Log in with GitHub
-                  </wa-button>
-                  {% endif %}
-                </div>
-                <div>
                   <div>
-                    Wednesdays: Asia Pacific
-                  </div>
-                  <div class="font-size-x-small">
-                    Wednesday 09:00 Indian Time, Tuesday 11:30 PM US Eastern
+                    <div>
+                      Mondays: Americas
+                    </div>
+                    <div class="font-size-x-small">
+                      Monday 12:00 PM US Eastern
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="zoom-link font-size-large">
-                <i class="fa-duotone fa-solid fa-earth-europe fa-xl"></i>
-                <div>
-                  {% if userName is defined %}
-                  {% if scope is defined and scope == "GET" %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlEmea }}" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    Open Zoom
-                  </wa-button>
-                  {% else %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    See below how to get access
-                  </wa-button>
-                  {% endif %}
-                  {% else %}
-                  <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
-                    <i class="fa-duotone fa-right-to-bracket"></i>
-                    Log in with GitHub
-                  </wa-button>
-                  {% endif %}
-                </div>
-                <div>
+                <div class="wa-flank zoom-link font-size-large">
+                  <i class="fa-duotone fa-solid fa-earth-europe fa-xl"></i>
                   <div>
-                    Thursdays: Europe, Middle East, Africa
+                    {% if userName is defined %}
+                    {% if scope is defined and scope == "GET" %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlEmea }}" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      Open Zoom
+                    </wa-button>
+                    {% else %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      See below how to get access
+                    </wa-button>
+                    {% endif %}
+                    {% else %}
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      Log in with GitHub
+                    </wa-button>
+                    {% endif %}
                   </div>
-                  <div class="font-size-x-small">
-                    Thursday 16:00 Central European Time, Thursday 10:00 AM US Eastern
-                  </div>
-                </div>
-              </div>
-
-              <div class="zoom-link font-size-large">
-                <i class="fa-duotone fa-solid fa-earth-asia fa-xl"></i>
-                <div>
-                  {% if userName is defined %}
-                  {% if scope is defined and scope == "GET" %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlApac }}" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    Open Zoom
-                  </wa-button>
-                  {% else %}
-                  <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                    <i class="fa-duotone fa-solid fa-video"></i>
-                    See below how to get access
-                  </wa-button>
-                  {% endif %}
-                  {% else %}
-                  <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
-                    <i class="fa-duotone fa-right-to-bracket"></i>
-                    Log in with GitHub
-                  </wa-button>
-                  {% endif %}
-                </div>
-                <div>
                   <div>
-                    Fridays: Asia Pacific
-                  </div>
-                  <div class="font-size-x-small">
-                    Friday 09:00 Indian Time, Thursday 11:30 PM US Eastern
+                    <div>
+                      Tuesdays: Europe, Middle East, Africa
+                    </div>
+                    <div class="font-size-x-small">
+                      Tuesday 16:00 Central European Time, Tuesday 10:00 AM US Eastern
+                    </div>
                   </div>
                 </div>
-              </div>
 
+                <div class="wa-flank zoom-link font-size-large">
+                  <i class="fa-duotone fa-solid fa-earth-asia fa-xl"></i>
+                  <div>
+                    {% if userName is defined %}
+                    {% if scope is defined and scope == "GET" %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlApac }}" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      Open Zoom
+                    </wa-button>
+                    {% else %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      See below how to get access
+                    </wa-button>
+                    {% endif %}
+                    {% else %}
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      Log in with GitHub
+                    </wa-button>
+                    {% endif %}
+                  </div>
+                  <div>
+                    <div>
+                      Wednesdays: Asia Pacific
+                    </div>
+                    <div class="font-size-x-small">
+                      Wednesday 09:00 Indian Time, Tuesday 11:30 PM US Eastern
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wa-flank zoom-link font-size-large">
+                  <i class="fa-duotone fa-solid fa-earth-europe fa-xl"></i>
+                  <div>
+                    {% if userName is defined %}
+                    {% if scope is defined and scope == "GET" %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlEmea }}" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      Open Zoom
+                    </wa-button>
+                    {% else %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      See below how to get access
+                    </wa-button>
+                    {% endif %}
+                    {% else %}
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      Log in with GitHub
+                    </wa-button>
+                    {% endif %}
+                  </div>
+                  <div>
+                    <div>
+                      Thursdays: Europe, Middle East, Africa
+                    </div>
+                    <div class="font-size-x-small">
+                      Thursday 16:00 Central European Time, Thursday 10:00 AM US Eastern
+                    </div>
+                  </div>
+                </div>
+
+                <div class="wa-flank zoom-link font-size-large">
+                  <i class="fa-duotone fa-solid fa-earth-asia fa-xl"></i>
+                  <div>
+                    {% if userName is defined %}
+                    {% if scope is defined and scope == "GET" %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlApac }}" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      Open Zoom
+                    </wa-button>
+                    {% else %}
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
+                      <i class="fa-duotone fa-solid fa-video"></i>
+                      See below how to get access
+                    </wa-button>
+                    {% endif %}
+                    {% else %}
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      Log in with GitHub
+                    </wa-button>
+                    {% endif %}
+                  </div>
+                  <div>
+                    <div>
+                      Fridays: Asia Pacific
+                    </div>
+                    <div class="font-size-x-small">
+                      Friday 09:00 Indian Time, Thursday 11:30 PM US Eastern
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>
