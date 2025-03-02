@@ -52,21 +52,6 @@ Promise.all([
     sort('CompanyCourse', 'editPage', event.currentTarget.value);
   });
 
-  document.querySelector('#htmDropdown-editPage')?.addEventListener('select', (event) => {
-    const item = event.detail.item;
-    const action = item.getAttribute('data-action');
-    const order = item.getAttribute('data-order');
-    const checked = !(document.querySelector('#pageSearchVal-pageSort-CompanyCourse-editPage').innerText == undefined);
-    if (action === 'sort') {
-      sort('CompanyCourse', 'editPage', checked ? order : '');
-      document.querySelector('#pageFacetSortCompanyCourse_editPage').value = checked ? order : '';
-    }
-  });
-
-  document.querySelector('#pageFacetSortCompanyCourse_editPage')?.addEventListener('change', (event) => {
-    sort('CompanyCourse', 'editPage', event.currentTarget.value);
-  });
-
   document.querySelector('#htmButton_patchCompanyCourse')?.addEventListener('click', (event) => {
     document.querySelector('#patchCompanyCourseDialog').open = true;
   });

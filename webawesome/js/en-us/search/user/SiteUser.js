@@ -47,6 +47,16 @@ function searchSiteUserFilters($formFilters) {
     if(filterSeeArchived != null && filterSeeArchived === true)
       filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
 
+    var $filterAwesomeEffectCheckbox = $formFilters.querySelector('input.valueAwesomeEffect[type = "checkbox"]');
+    var $filterAwesomeEffectSelect = $formFilters.querySelector('select.valueAwesomeEffect');
+    var filterAwesomeEffect = $filterAwesomeEffectSelect.length ? $filterAwesomeEffectSelect.value : $filterAwesomeEffectCheckbox.checked;
+    var filterAwesomeEffectSelectVal = $formFilters.querySelector('select.filterAwesomeEffect')?.value;
+    var filterAwesomeEffect = null;
+    if(filterAwesomeEffectSelectVal !== '')
+      filterAwesomeEffect = filterAwesomeEffectSelectVal == 'true';
+    if(filterAwesomeEffect != null && filterAwesomeEffect === true)
+      filters.push({ name: 'fq', value: 'awesomeEffect:' + filterAwesomeEffect });
+
     var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
       filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
@@ -248,6 +258,25 @@ async function patchSiteUser($formFilters, $formValues, target, userId, success,
   if(removeSeeArchived != null && removeSeeArchived !== '')
     vals['removeSeeArchived'] = removeSeeArchived;
 
+  var valueAwesomeEffect = $formValues.querySelector('.valueAwesomeEffect')?.value;
+  var removeAwesomeEffect = $formValues.querySelector('.removeAwesomeEffect')?.value === 'true';
+  if(valueAwesomeEffect != null)
+    valueAwesomeEffect = valueAwesomeEffect === 'true';
+  var valueAwesomeEffectSelectVal = $formValues.querySelector('select.setAwesomeEffect')?.value;
+  if(valueAwesomeEffectSelectVal != null)
+    valueAwesomeEffectSelectVal = valueAwesomeEffectSelectVal === 'true';
+  if(valueAwesomeEffectSelectVal != null && valueAwesomeEffectSelectVal !== '')
+    valueAwesomeEffect = valueAwesomeEffectSelectVal == 'true';
+  var setAwesomeEffect = removeAwesomeEffect ? null : valueAwesomeEffect;
+  var addAwesomeEffect = $formValues.querySelector('.addAwesomeEffect')?.checked;
+  if(removeAwesomeEffect || setAwesomeEffect != null && setAwesomeEffect !== '')
+    vals['setAwesomeEffect'] = setAwesomeEffect;
+  if(addAwesomeEffect != null && addAwesomeEffect !== '')
+    vals['addAwesomeEffect'] = addAwesomeEffect;
+  var removeAwesomeEffect = $formValues.querySelector('.removeAwesomeEffect')?.checked;
+  if(removeAwesomeEffect != null && removeAwesomeEffect !== '')
+    vals['removeAwesomeEffect'] = removeAwesomeEffect;
+
   var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
   var removeSessionId = $formValues.querySelector('.removeSessionId')?.value === 'true';
   var setSessionId = removeSessionId ? null : $formValues.querySelector('.setSessionId')?.value;
@@ -432,6 +461,16 @@ function patchSiteUserFilters($formFilters) {
     if(filterSeeArchived != null && filterSeeArchived === true)
       filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
 
+    var $filterAwesomeEffectCheckbox = $formFilters.querySelector('input.valueAwesomeEffect[type = "checkbox"]');
+    var $filterAwesomeEffectSelect = $formFilters.querySelector('select.valueAwesomeEffect');
+    var filterAwesomeEffect = $filterAwesomeEffectSelect.length ? $filterAwesomeEffectSelect.value : $filterAwesomeEffectCheckbox.checked;
+    var filterAwesomeEffectSelectVal = $formFilters.querySelector('select.filterAwesomeEffect')?.value;
+    var filterAwesomeEffect = null;
+    if(filterAwesomeEffectSelectVal !== '')
+      filterAwesomeEffect = filterAwesomeEffectSelectVal == 'true';
+    if(filterAwesomeEffect != null && filterAwesomeEffect === true)
+      filters.push({ name: 'fq', value: 'awesomeEffect:' + filterAwesomeEffect });
+
     var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
       filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
@@ -578,6 +617,10 @@ async function postSiteUser($formValues, target, success, error) {
   var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
   if(valueSeeArchived != null && valueSeeArchived !== '')
     vals['seeArchived'] = valueSeeArchived == 'true';
+
+  var valueAwesomeEffect = $formValues.querySelector('.valueAwesomeEffect')?.value;
+  if(valueAwesomeEffect != null && valueAwesomeEffect !== '')
+    vals['awesomeEffect'] = valueAwesomeEffect == 'true';
 
   var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
   if(valueSessionId != null && valueSessionId !== '')
@@ -742,6 +785,7 @@ async function websocketSiteUserInner(apiRequest) {
         var inputModified = null;
         var inputArchived = null;
         var inputSeeArchived = null;
+        var inputAwesomeEffect = null;
         var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
         var inputClassCanonicalNames = null;
@@ -774,6 +818,8 @@ async function websocketSiteUserInner(apiRequest) {
           inputArchived = $response.querySelector('.Page_archived');
         if(vars.includes('seeArchived'))
           inputSeeArchived = $response.querySelector('.Page_seeArchived');
+        if(vars.includes('awesomeEffect'))
+          inputAwesomeEffect = $response.querySelector('.Page_awesomeEffect');
         if(vars.includes('classCanonicalName'))
           inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
         if(vars.includes('classSimpleName'))
@@ -870,6 +916,16 @@ async function websocketSiteUserInner(apiRequest) {
               item.textContent = inputSeeArchived.textContent;
           });
           addGlow(document.querySelector('.Page_seeArchived'));
+        }
+
+        if(inputAwesomeEffect) {
+          document.querySelectorAll('.Page_awesomeEffect').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAwesomeEffect.getAttribute('value');
+            else
+              item.textContent = inputAwesomeEffect.textContent;
+          });
+          addGlow(document.querySelector('.Page_awesomeEffect'));
         }
 
         if(inputClassCanonicalName) {

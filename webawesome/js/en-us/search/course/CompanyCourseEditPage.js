@@ -287,25 +287,4 @@ Promise.all([
             const form = document.querySelector('#PageForm_courseNum');
             const valid = form.reportValidity();
           });
-
-          // PATCH title
-          document.querySelector('#Page_title')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_title');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchCompanyCourseVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setTitle', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_title')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_title')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_title');
-            const valid = form.reportValidity();
-          });
 });

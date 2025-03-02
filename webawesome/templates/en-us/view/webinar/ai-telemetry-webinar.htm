@@ -9,10 +9,10 @@
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
 
-wa-button::part(base), wa-details::part(base) {
-  background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
-  color: white;
-  &:is(wa-button, wa-dialog)::part(base) {
+wa-button, wa-details {
+  &::part(base) {
+    background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
+    color: white;
     border: solid 1px var(--wa-color-pink-30);
   }
 }
@@ -22,14 +22,14 @@ wa-button::part(base), wa-details::part(base) {
 {% endblock htmTitlePageLayout %}
 {% block htmBodyMiddlePageLayout %}
 
-        <div class="wa-stack pink-purple-background-headers ">
+        <div class="wa-stack main-content pink-purple-background-headers ">
 
           <wa-card class="pink-purple-background ">
             <div class="wa-flank">
               <i class="fa-duotone fa-solid fa-video fa-2x "></i>
               <h1>{{ result.name }}</h1>
             </div>
-            <h2 class="brand-font">
+            <h2 class="brand-font text-center">
               Come learn how to Computate as we build a brand new, public open source, custom data-driven platform 
               for AI/ML GPU Telemetry with 
               <i class="fa-brands fa-redhat fa-2xl fa-red" style="color: red; "></i>
@@ -59,7 +59,7 @@ wa-button::part(base), wa-details::part(base) {
 
                 <div class="wa-flank zoom-link font-size-large">
                   <i class="fa-duotone fa-solid fa-earth-americas fa-xl"></i>
-                  <div>
+                  <div class="wa-flank ">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlAmericas }}" variant="neutral">
@@ -73,25 +73,27 @@ wa-button::part(base), wa-details::part(base) {
                     </wa-button>
                     {% endif %}
                     {% else %}
-                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
                       <i class="fa-duotone fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
-                  </div>
-                  <div>
                     <div>
-                      Mondays: Americas
-                    </div>
-                    <div class="font-size-x-small">
-                      Monday 12:00 PM US Eastern
+                      <div>
+                        Mondays: Americas
+                      </div>
+                      <div class="font-size-x-small">
+                        Monday 12:00 PM US Eastern
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="wa-flank zoom-link font-size-large">
+                <wa-divider></wa-divider>
+
+                <div class="wa-flank wa-outlined zoom-link font-size-large">
                   <i class="fa-duotone fa-solid fa-earth-europe fa-xl"></i>
-                  <div>
+                  <div class="wa-flank">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlEmea }}" variant="neutral">
@@ -105,25 +107,27 @@ wa-button::part(base), wa-details::part(base) {
                     </wa-button>
                     {% endif %}
                     {% else %}
-                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
                       <i class="fa-duotone fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
-                  </div>
-                  <div>
                     <div>
-                      Tuesdays: Europe, Middle East, Africa
-                    </div>
-                    <div class="font-size-x-small">
-                      Tuesday 16:00 Central European Time, Tuesday 10:00 AM US Eastern
+                      <div>
+                        Tuesdays: Europe, Middle East, Africa
+                      </div>
+                      <div class="font-size-x-small">
+                        Tuesday 16:00 Central European Time, Tuesday 10:00 AM US Eastern
+                      </div>
                     </div>
                   </div>
                 </div>
 
+                <wa-divider></wa-divider>
+
                 <div class="wa-flank zoom-link font-size-large">
                   <i class="fa-duotone fa-solid fa-earth-asia fa-xl"></i>
-                  <div>
+                  <div class="wa-flank">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlApac }}" variant="neutral">
@@ -137,25 +141,27 @@ wa-button::part(base), wa-details::part(base) {
                     </wa-button>
                     {% endif %}
                     {% else %}
-                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
                       <i class="fa-duotone fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
-                  </div>
-                  <div>
                     <div>
-                      Wednesdays: Asia Pacific
-                    </div>
-                    <div class="font-size-x-small">
-                      Wednesday 09:00 Indian Time, Tuesday 11:30 PM US Eastern
+                      <div>
+                        Wednesdays: Asia Pacific
+                      </div>
+                      <div class="font-size-x-small">
+                        Wednesday 09:00 Indian Time, Tuesday 11:30 PM US Eastern
+                      </div>
                     </div>
                   </div>
                 </div>
 
+                <wa-divider></wa-divider>
+
                 <div class="wa-flank zoom-link font-size-large">
                   <i class="fa-duotone fa-solid fa-earth-europe fa-xl"></i>
-                  <div>
+                  <div class="wa-flank">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlEmea }}" variant="neutral">
@@ -169,25 +175,27 @@ wa-button::part(base), wa-details::part(base) {
                     </wa-button>
                     {% endif %}
                     {% else %}
-                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
                       <i class="fa-duotone fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
-                  </div>
-                  <div>
                     <div>
-                      Thursdays: Europe, Middle East, Africa
-                    </div>
-                    <div class="font-size-x-small">
-                      Thursday 16:00 Central European Time, Thursday 10:00 AM US Eastern
+                      <div>
+                        Thursdays: Europe, Middle East, Africa
+                      </div>
+                      <div class="font-size-x-small">
+                        Thursday 16:00 Central European Time, Thursday 10:00 AM US Eastern
+                      </div>
                     </div>
                   </div>
                 </div>
 
+                <wa-divider></wa-divider>
+
                 <div class="wa-flank zoom-link font-size-large">
                   <i class="fa-duotone fa-solid fa-earth-asia fa-xl"></i>
-                  <div>
+                  <div class="wa-flank">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlApac }}" variant="neutral">
@@ -201,171 +209,169 @@ wa-button::part(base), wa-details::part(base) {
                     </wa-button>
                     {% endif %}
                     {% else %}
-                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ userUri }}" variant="neutral">
+                    <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
                       <i class="fa-duotone fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
-                  </div>
-                  <div>
                     <div>
-                      Fridays: Asia Pacific
-                    </div>
-                    <div class="font-size-x-small">
-                      Friday 09:00 Indian Time, Thursday 11:30 PM US Eastern
+                      <div>
+                        Fridays: Asia Pacific
+                      </div>
+                      <div class="font-size-x-small">
+                        Friday 09:00 Indian Time, Thursday 11:30 PM US Eastern
+                      </div>
                     </div>
                   </div>
                 </div>
 
               </div>
             </div>
-          </div>
-        </div>
+          </wa-card>
 
-        <div id="how-to-get-access" class="red-pink-background background border-radius-x-large">
-          <div class="intro-content">
-            <h2 class="brand-font">
-              <i class="fa-brands fa-redhat fa-2xl"></i> Red Hatters — if you are a Red Hat associate and want to join the conversation, send me a Red Hat Slack message @computate and I'll get you connected. 
-            </h2>
-          </div>
-        </div>
-        <div id="how-to-get-access" class="blue-purple-background background border-radius-x-large">
-          <div class="intro-content">
-            <h2 class="brand-font">
-              <i class="fa-solid fa-cloud fa-2xl"></i> Mass Open Cloud — if you are a university researcher and part of the Red Hat Collaboratory, send me an MOC Slack message @computate and I'll get you connected. 
-            </h2>
-          </div>
-        </div>
-
-        <div class="pink-purple-background background border-radius-x-large">
-          <div class="intro-content">
-            <h2 class="brand-font">
-              <i class="fa-solid fa-computer-classic fa-2xl"></i> Computaters — if you are an open source developer who has purchased one of my products, you also have access to the webinar! 
-              Just click the link above to log in and get the Zoom link to the webinar. 
-            </h2>
-          </div>
-        </div>
-
-        <div>
-          <wa-carousel class="aspect-ratio" autoplay loop navigation pagination>
-            <wa-carousel-item>
-              <wa-tooltip placement="bottom" content="AI Telemetry Overview">
-                <a href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-overview.png">
-                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-overview.png"/>
-                </a>
-              </wa-tooltip>
-            </wa-carousel-item>
-            <wa-carousel-item>
-              <wa-tooltip placement="bottom" content="AI Telemetry GPU Dashboard">
-                <a href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-gpu-dashboard.png">
-                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-gpu-dashboard.png"/>
-                </a>
-              </wa-tooltip>
-            </wa-carousel-item>
-            <wa-carousel-item>
-              <wa-tooltip placement="bottom" content="AI Telemetry Operators">
-                <a href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-operators.png">
-                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-operators.png"/>
-                </a>
-              </wa-tooltip>
-            </wa-carousel-item>
-            <wa-carousel-item>
-              <wa-tooltip placement="bottom" content="AI Telemetry OpenAPI">
-                <a href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-openapi.png">
-                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-openapi.png"/>
-                </a>
-              </wa-tooltip>
-            </wa-carousel-item>
-          </wa-carousel>
-        </div>
-
-        <div class="summary-wrapper">
-          <div class="summary">
-            <h2 class="brand-font anchor-heading" id="whats-web-awesome">
-              What is the {{ name }}?
-            </h2>
-            <p>
-              Develop a platform for reporting on AI/ML cluster and GPU device usage data and performing telemetry on AI/ML workloads through a secure dashboard and API.
-            </p>
-
-            <div class="summary-grid">
-
-              <div>
-                <div class="icon-heading">
-                  <i class="fa-solid fa-microchip"></i>
-                  <h3>
-                    GPU Utilization
-                  </h3>
-                </div>
-                <p>
-                  We wish to help researchers and managers of GPU devices in the New England Research Cloud (NERC) shared computing environment understand how the valueable and limited GPU resources are being utilized. 
-                </p>
-              </div>
-
-              <div>
-                <div class="icon-heading">
-                  <i class="fa-solid fa-shield-check"></i>
-                  <h3>
-                    Access Control
-                  </h3>
-                </div>
-                <p>
-                  We will provide access to researchers and managers through Keycloak and various identity providers like GitHub and University SSO to access the AI Cluster data and research project GPU allocation telemetry through a modern open source platform that will be built for the MOC and usable by other organizations wishing to collect the same telemetry. 
-                </p>
-              </div>
-
-              <div>
-                <div class="icon-heading">
-                  <i class="fa-solid fa-server"></i>
-                  <h3>
-                    Where it's built
-                  </h3>
-                </div>
-                <p>
-                  The New England Research Cloud is a perfect environment for AI/ML related research. 
-                </p>
-              </div>
-
-              <div>
-                <div class="icon-heading">
-                  <i class="fa-solid fa-keyboard"></i>
-                  <h3>
-                    Development Team
-                  </h3>
-                </div>
-                <p>
-                  Other Red Hat associates outside of Red Hat Research have also been invited to participate in building the platform through the Red Hat Internal Gig Program.
-                </p>
-              </div>
-
-              <div>
-                <div class="icon-heading">
-                  <i class="fa-solid fa-code"></i>
-                  <h3>
-                    Where's the code?
-                  </h3>
-                </div>
-                <p>
-                  The AI Telemetry project is a public open source project on GitHub. 
-                  Read the docs and fork the source code, it's all available here: 
-                  <br/><a href="https://github.com/OCP-on-NERC/ai-telemetry">https://github.com/OCP-on-NERC/ai-telemetry</a>
-                </p>
-              </div>
-
+          <wa-card id="how-to-get-access" class="red-pink-background background border-radius-x-large">
+            <div class="intro-content">
+              <h2 class="brand-font">
+                <i class="fa-brands fa-redhat fa-2xl"></i> Red Hatters — if you are a Red Hat associate and want to join the conversation, send me a Red Hat Slack message @computate and I'll get you connected. 
+              </h2>
             </div>
-          </div>
-        </div>
+          </wa-card>
 
-        <div class="blue-teal-background background border-radius-x-large ">
-          <div class="intro-content">
-            <h3>
-              You can add our {{ name }} calendar to your calender with the ICS calendar link below. 
-            </h3>
-            <div>
-              <a class="word-break-all " href="https://user.fm/calendar/v1-1f13180574907ff09a03a3f56d315984/RH%20Research%20AI%20Telemetry%20Webinars.ics">
-                https://user.fm/calendar/v1-1f13180574907ff09a03a3f56d315984/RH%20Research%20AI%20Telemetry%20Webinars.ics
-              </a>
+          <wa-card id="how-to-get-access" class="purple-blue-background background border-radius-x-large">
+            <div class="intro-content">
+              <h2 class="brand-font">
+                <i class="fa-solid fa-cloud fa-2xl"></i> Mass Open Cloud — if you are a university researcher and part of the Red Hat Collaboratory, send me an MOC Slack message @computate and I'll get you connected. 
+              </h2>
             </div>
-          </div>
+          </wa-card>
+
+          <wa-card class="pink-purple-background background border-radius-x-large">
+            <div class="intro-content">
+              <h2 class="brand-font">
+                <i class="fa-solid fa-computer-classic fa-2xl"></i> Computaters — if you are an open source developer who has purchased one of my products, you also have access to the webinar! 
+                Just click the link above to log in and get the Zoom link to the webinar. 
+              </h2>
+            </div>
+          </wa-card>
+
+          <wa-card>
+            <wa-carousel class="aspect-ratio" autoplay loop navigation pagination>
+              <wa-carousel-item>
+                <wa-tooltip for="carousel-ai-telemetry-overview" placement="bottom">AI Telemetry Overview</wa-tooltip>
+                <a id="carousel-ai-telemetry-overview" href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-overview.png">
+                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-overview.png" alt="AI Telemetry Overview"/>
+                </a>
+              </wa-carousel-item>
+              <wa-carousel-item>
+                <wa-tooltip for="carousel-ai-telemetry-gpu-dashboard" placement="bottom">AI Telemetry GPU Dashboard</wa-tooltip>
+                <a id="carousel-ai-telemetry-gpu-dashboard" href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-gpu-dashboard.png">
+                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-gpu-dashboard.png" alt="AI Telemetry GPU Dashboard"/>
+                </a>
+              </wa-carousel-item>
+              <wa-carousel-item>
+                <wa-tooltip for="carousel-ai-telemetry-operators" placement="bottom">AI Telemetry Operators</wa-tooltip>
+                <a id="carousel-ai-telemetry-operators" href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-operators.png">
+                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-operators.png" alt="AI Telemetry Operators"/>
+                </a>
+              </wa-carousel-item>
+              <wa-carousel-item>
+                <wa-tooltip for="carousel-ai-telemetry-openapi" placement="bottom">AI Telemetry OpenAPI</wa-tooltip>
+                <a id="carousel-ai-telemetry-openapi" href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-openapi.png">
+                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-openapi.png" alt="AI Telemetry OpenAPI"/>
+                </a>
+              </wa-carousel-item>
+            </wa-carousel>
+          </wa-card>
+
+          <wa-card>
+            <div class="summary">
+              <h2 class="brand-font anchor-heading" id="whats-web-awesome">
+                What is the {{ result.name }}?
+              </h2>
+              <p>
+                Develop a platform for reporting on AI/ML cluster and GPU device usage data and performing telemetry on AI/ML workloads through a secure dashboard and API.
+              </p>
+
+              <div class="summary-grid">
+
+                <div>
+                  <div class="wa-flank ">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>
+                      GPU Utilization
+                    </h3>
+                  </div>
+                  <p>
+                    We wish to help researchers and managers of GPU devices in the New England Research Cloud (NERC) shared computing environment understand how the valueable and limited GPU resources are being utilized. 
+                  </p>
+                </div>
+
+                <div>
+                  <div class="wa-flank ">
+                    <i class="fa-solid fa-shield-check"></i>
+                    <h3>
+                      Access Control
+                    </h3>
+                  </div>
+                  <p>
+                    We will provide access to researchers and managers through Keycloak and various identity providers like GitHub and University SSO to access the AI Cluster data and research project GPU allocation telemetry through a modern open source platform that will be built for the MOC and usable by other organizations wishing to collect the same telemetry. 
+                  </p>
+                </div>
+
+                <div>
+                  <div class="wa-flank ">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>
+                      Where it's built
+                    </h3>
+                  </div>
+                  <p>
+                    The New England Research Cloud is a perfect environment for AI/ML related research. 
+                  </p>
+                </div>
+
+                <div>
+                  <div class="wa-flank ">
+                    <i class="fa-solid fa-keyboard"></i>
+                    <h3>
+                      Development Team
+                    </h3>
+                  </div>
+                  <p>
+                    Other Red Hat associates outside of Red Hat Research have also been invited to participate in building the platform through the Red Hat Internal Gig Program.
+                  </p>
+                </div>
+
+                <div>
+                  <div class="wa-flank ">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>
+                      Where's the code?
+                    </h3>
+                  </div>
+                  <p>
+                    The AI Telemetry project is a public open source project on GitHub. 
+                    Read the docs and fork the source code, it's all available here: 
+                    <br/><a href="https://github.com/OCP-on-NERC/ai-telemetry">https://github.com/OCP-on-NERC/ai-telemetry</a>
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </wa-card>
+
+          <wa-card class="blue-teal-background background border-radius-x-large ">
+            <div class="intro-content">
+              <h3>
+                You can add our {{ result.name }} calendar to your calender with the ICS calendar link below. 
+              </h3>
+              <div>
+                <a class="word-break-all " href="https://user.fm/calendar/v1-1f13180574907ff09a03a3f56d315984/RH%20Research%20AI%20Telemetry%20Webinars.ics">
+                  https://user.fm/calendar/v1-1f13180574907ff09a03a3f56d315984/RH%20Research%20AI%20Telemetry%20Webinars.ics
+                </a>
+              </div>
+            </div>
+          </wa-card>
+
         </div>
 {% endblock %}

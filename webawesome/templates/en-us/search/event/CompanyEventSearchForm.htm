@@ -5,7 +5,7 @@
                   <wa-input
                       type="text"
                       readonly
-                      help-text="A created timestamp for this record in the database"
+                      hint="A created timestamp for this record in the database"
                       label="created"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyEvent inputCompanyEvent{{pageId}}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -32,7 +32,7 @@
                   <wa-input
                       type="text"
                       readonly
-                      help-text="A modified timestamp for this record in the database"
+                      hint="A modified timestamp for this record in the database"
                       label="modified"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyEvent inputCompanyEvent{{pageId}}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -61,7 +61,7 @@
                       id="{{classApiMethodMethod}}_archived"
                       placeholder="archived"
                       label="archived"
-                      help-text="For archiving this record"
+                      hint="For archiving this record"
                       class="label-on-left {{classApiMethodMethod}}_archived classCompanyEvent inputCompanyEvent{{pageId}}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
@@ -79,7 +79,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="archived"
                       label="archived"
-                      help-text="For archiving this record"
+                      hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
                       class="label-on-left {{classApiMethodMethod}}_archived classCompanyEvent inputCompanyEvent{{pageId}}Archived "
                       name="setArchived"
@@ -122,7 +122,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] event name"
                       label="event name"
-                      help-text="
+                      hint="
 The event name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
@@ -194,7 +194,7 @@ The event name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] event description"
                       label="event description"
-                      help-text="
+                      hint="
 The event description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
@@ -230,7 +230,7 @@ The event description. "
                   <wa-input
                       type="text"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
-                      help-text="The start date time. "
+                      hint="The start date time. "
                       label="start date time"
                       class="label-on-left {{classApiMethodMethod}}_startDateTime datetimepicker setStartDateTime classCompanyEvent inputCompanyEvent{{pageId}}StartDateTime "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -257,7 +257,7 @@ The event description. "
                   <wa-input
                       type="text"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
-                      help-text="The end date time. "
+                      hint="The end date time. "
                       label="end date time"
                       class="label-on-left {{classApiMethodMethod}}_endDateTime datetimepicker setEndDateTime classCompanyEvent inputCompanyEvent{{pageId}}EndDateTime "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -285,7 +285,7 @@ The event description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[BigDecimal] price"
                       label="price"
-                      help-text="
+                      hint="
 The price of the product per developer. "
                       id="{{classApiMethodMethod}}_price"
   {%- if "Page" == classApiMethodMethod %}
@@ -322,7 +322,7 @@ The price of the product per developer. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      help-text="
+                      hint="
 The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
@@ -358,23 +358,15 @@ The ID for this page. "
   {%- if 'Page' == classApiMethodMethod %}
                   <wa-button variant="brand"
                       id="{{classApiMethodMethod}}_displayPage"
-                      placeholder="[String] product page"
-                      label="product page"
-                      help-text="Visit this product's landing page. "
                       class="button-on-left {{classApiMethodMethod}}_displayPage classCompanyEvent inputCompanyEvent{{pageId}}DisplayPage "
                       name="setDisplayPage"
                       href="{{ result.displayPage | e }}"
                       >
-                    product page
                   </wa-button>
-                  <div class="button-description-on-right ">Visit this product's landing page. </div>
+                  <div class="button-description-on-right "></div>
   {%- else %}
                   <wa-input
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
-                      placeholder="[String] product page"
-                      label="product page"
-                      help-text="
-Visit this product's landing page. "
                       id="{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}

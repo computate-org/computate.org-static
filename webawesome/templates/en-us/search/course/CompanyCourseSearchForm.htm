@@ -5,7 +5,7 @@
                   <wa-input
                       type="text"
                       readonly
-                      help-text="A created timestamp for this record in the database"
+                      hint="A created timestamp for this record in the database"
                       label="created"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyCourse inputCompanyCourse{{pageId}}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -32,7 +32,7 @@
                   <wa-input
                       type="text"
                       readonly
-                      help-text="A modified timestamp for this record in the database"
+                      hint="A modified timestamp for this record in the database"
                       label="modified"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyCourse inputCompanyCourse{{pageId}}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -61,7 +61,7 @@
                       id="{{classApiMethodMethod}}_archived"
                       placeholder="archived"
                       label="archived"
-                      help-text="For archiving this record"
+                      hint="For archiving this record"
                       class="label-on-left {{classApiMethodMethod}}_archived classCompanyCourse inputCompanyCourse{{pageId}}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
@@ -79,7 +79,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="archived"
                       label="archived"
-                      help-text="For archiving this record"
+                      hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
                       class="label-on-left {{classApiMethodMethod}}_archived classCompanyCourse inputCompanyCourse{{pageId}}Archived "
                       name="setArchived"
@@ -122,7 +122,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] course name"
                       label="course name"
-                      help-text="
+                      hint="
 The course name. "
                       required
                       id="{{classApiMethodMethod}}_name"
@@ -160,7 +160,7 @@ The course name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] course description"
                       label="course description"
-                      help-text="
+                      hint="
 The course description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
@@ -197,7 +197,7 @@ The course description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[BigDecimal] course description"
                       label="course description"
-                      help-text="
+                      hint="
 The course description. "
                       id="{{classApiMethodMethod}}_price"
   {%- if "Page" == classApiMethodMethod %}
@@ -234,7 +234,7 @@ The course description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      help-text="
+                      hint="
 The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
@@ -270,15 +270,23 @@ The ID for this page. "
   {%- if 'Page' == classApiMethodMethod %}
                   <wa-button variant="brand"
                       id="{{classApiMethodMethod}}_displayPage"
+                      placeholder="[String] course page"
+                      label="course page"
+                      hint="Visit this course's landing page. "
                       class="button-on-left {{classApiMethodMethod}}_displayPage classCompanyCourse inputCompanyCourse{{pageId}}DisplayPage "
                       name="setDisplayPage"
                       href="{{ result.displayPage | e }}"
                       >
+                    course page
                   </wa-button>
-                  <div class="button-description-on-right "></div>
+                  <div class="button-description-on-right ">Visit this course's landing page. </div>
   {%- else %}
                   <wa-input
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] course page"
+                      label="course page"
+                      hint="
+Visit this course's landing page. "
                       id="{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}

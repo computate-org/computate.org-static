@@ -5,7 +5,7 @@
                   <wa-input
                       type="text"
                       readonly
-                      help-text="A created timestamp for this record in the database"
+                      hint="A created timestamp for this record in the database"
                       label="created"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyResearch inputCompanyResearch{{pageId}}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -32,7 +32,7 @@
                   <wa-input
                       type="text"
                       readonly
-                      help-text="A modified timestamp for this record in the database"
+                      hint="A modified timestamp for this record in the database"
                       label="modified"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyResearch inputCompanyResearch{{pageId}}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -61,7 +61,7 @@
                       id="{{classApiMethodMethod}}_archived"
                       placeholder="archived"
                       label="archived"
-                      help-text="For archiving this record"
+                      hint="For archiving this record"
                       class="label-on-left {{classApiMethodMethod}}_archived classCompanyResearch inputCompanyResearch{{pageId}}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
@@ -79,7 +79,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="archived"
                       label="archived"
-                      help-text="For archiving this record"
+                      hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
                       class="label-on-left {{classApiMethodMethod}}_archived classCompanyResearch inputCompanyResearch{{pageId}}Archived "
                       name="setArchived"
@@ -122,7 +122,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] research name"
                       label="research name"
-                      help-text="
+                      hint="
 The research name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
@@ -159,7 +159,7 @@ The research name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] research description"
                       label="research description"
-                      help-text="
+                      hint="
 The research description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
@@ -196,7 +196,7 @@ The research description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      help-text="
+                      hint="
 The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
@@ -232,23 +232,15 @@ The ID for this page. "
   {%- if 'Page' == classApiMethodMethod %}
                   <wa-button variant="brand"
                       id="{{classApiMethodMethod}}_displayPage"
-                      placeholder="[String] product page"
-                      label="product page"
-                      help-text="Visit this product's landing page. "
                       class="button-on-left {{classApiMethodMethod}}_displayPage classCompanyResearch inputCompanyResearch{{pageId}}DisplayPage "
                       name="setDisplayPage"
                       href="{{ result.displayPage | e }}"
                       >
-                    product page
                   </wa-button>
-                  <div class="button-description-on-right ">Visit this product's landing page. </div>
+                  <div class="button-description-on-right "></div>
   {%- else %}
                   <wa-input
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
-                      placeholder="[String] product page"
-                      label="product page"
-                      help-text="
-Visit this product's landing page. "
                       id="{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}

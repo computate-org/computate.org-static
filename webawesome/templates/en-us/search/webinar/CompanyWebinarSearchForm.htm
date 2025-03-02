@@ -6,7 +6,7 @@
                       readonly
                       placeholder="[Long] primary key"
                       label="primary key"
-                      help-text="
+                      hint="
 The primary key of this object in the database"
                       id="{{classApiMethodMethod}}_pk"
   {%- if "Page" == classApiMethodMethod %}
@@ -42,7 +42,7 @@ The primary key of this object in the database"
                   <wa-input
                       type="text"
                       readonly
-                      help-text="A created timestamp for this record in the database"
+                      hint="A created timestamp for this record in the database"
                       label="created"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyWebinar inputCompanyWebinar{{pageId}}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -69,7 +69,7 @@ The primary key of this object in the database"
                   <wa-input
                       type="text"
                       readonly
-                      help-text="A modified timestamp for this record in the database"
+                      hint="A modified timestamp for this record in the database"
                       label="modified"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyWebinar inputCompanyWebinar{{pageId}}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -98,7 +98,7 @@ The primary key of this object in the database"
                       id="{{classApiMethodMethod}}_archived"
                       placeholder="archive"
                       label="archive"
-                      help-text="For archiving this record"
+                      hint="For archiving this record"
                       class="label-on-left {{classApiMethodMethod}}_archived classCompanyWebinar inputCompanyWebinar{{pageId}}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
@@ -116,7 +116,7 @@ The primary key of this object in the database"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="archive"
                       label="archive"
-                      help-text="For archiving this record"
+                      hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
                       class="label-on-left {{classApiMethodMethod}}_archived classCompanyWebinar inputCompanyWebinar{{pageId}}Archived "
                       name="setArchived"
@@ -159,7 +159,7 @@ The primary key of this object in the database"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] name"
                       label="name"
-                      help-text="
+                      hint="
 The name of this webinar"
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
@@ -196,7 +196,7 @@ The name of this webinar"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] description"
                       label="description"
-                      help-text="
+                      hint="
 A description of this webinar"
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
@@ -233,7 +233,7 @@ A description of this webinar"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Webinar URL Americas"
                       label="Webinar URL Americas"
-                      help-text="
+                      hint="
 The actual link to the Webinar in Americas"
                       id="{{classApiMethodMethod}}_webinarUrlAmericas"
   {%- if "Page" == classApiMethodMethod %}
@@ -270,7 +270,7 @@ The actual link to the Webinar in Americas"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Webinar URL APAC"
                       label="Webinar URL APAC"
-                      help-text="
+                      hint="
 The actual link to the Webinar in APAC"
                       id="{{classApiMethodMethod}}_webinarUrlApac"
   {%- if "Page" == classApiMethodMethod %}
@@ -307,7 +307,7 @@ The actual link to the Webinar in APAC"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Webinar URL EMEA"
                       label="Webinar URL EMEA"
-                      help-text="
+                      hint="
 The actual link to the Webinar in EMEA"
                       id="{{classApiMethodMethod}}_webinarUrlEmea"
   {%- if "Page" == classApiMethodMethod %}
@@ -344,7 +344,7 @@ The actual link to the Webinar in EMEA"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] ICal URL"
                       label="ICal URL"
-                      help-text="
+                      hint="
 The ICalendar URL for the events. "
                       id="{{classApiMethodMethod}}_icalUrl"
   {%- if "Page" == classApiMethodMethod %}
@@ -380,7 +380,7 @@ The ICalendar URL for the events. "
                   <wa-input
                       type="text"
                       readonly
-                      help-text="The start date time of the next webinar. "
+                      hint="The start date time of the next webinar. "
                       label="next webinar"
                       class="label-on-left {{classApiMethodMethod}}_nextWebinar datetimepicker setNextWebinar classCompanyWebinar inputCompanyWebinar{{pageId}}NextWebinar "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
@@ -408,7 +408,7 @@ The ICalendar URL for the events. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      help-text="
+                      hint="
 The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}

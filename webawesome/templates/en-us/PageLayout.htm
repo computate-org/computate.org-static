@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/site.css"/>
 {%- endblock htmStylesPageLayout %}
     <style>{%- block htmStylePageLayout %}{%- endblock htmStylePageLayout %}</style>
+    <style>
+{% if userAwesomeEffect == true %}
+* {animation: infinite awesome-effect 3s alternate ease-in-out}
+{% endif %}
+    </style>
 {%- block htmScriptsPageLayout %}
 {%- if FONTAWESOME_KIT is defined %}
     {{ FONTAWESOME_KIT }}

@@ -1,3 +1,8 @@
+@keyframes awesome-effect {
+  from {scale: 0.99; rotate: -.2deg}
+  to {scale: 1.01; rotate: .2deg}
+}
+
 html,body {
   min-height: 100%;
   height: 100%;
@@ -47,7 +52,9 @@ wa-dropdown {
   --wa-color-purple: var(--wa-color-purple-50);
 }
 
-wa-card.pink-purple-background {
+
+.pink-purple-background {
+  ::selection {background: var(--wa-color-purple-30)}
   background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
   color: white;
   &:is(wa-button, wa-dialog)::part(base) {
@@ -64,7 +71,8 @@ wa-card.pink-purple-background {
   }
 }
 
-wa-card.red-pink-background {
+.red-pink-background {
+  ::selection {background: var(--wa-color-red-30)}
   background: linear-gradient(130deg, var(--wa-color-red-40), var(--wa-color-pink-50));
   color: white;
   &:is(wa-button, wa-dialog)::part(base) {
@@ -81,7 +89,7 @@ wa-card.red-pink-background {
   }
 }
 
-wa-card.purple-blue-background {
+.purple-blue-background {
   background: linear-gradient(130deg, var(--wa-color-purple-40), var(--wa-color-blue-50));
   color: white;
   &:is(wa-button, wa-dialog)::part(base) {
@@ -143,7 +151,7 @@ main, footer {
   --menu-width: auto;
   --main-width: 1fr;
   --aside-width: auto;
-  --content-width: 56rem;
+  --content-width: 80ch;
   --content-flow-spacing: 3rem;
   --content-padding-inline: 2rem;
   --site-margin-block: var(--wa-space-m);

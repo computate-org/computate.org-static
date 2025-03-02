@@ -78,6 +78,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH awesomeEffect
+          document.querySelector('#Page_awesomeEffect')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_awesomeEffect');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
+                  , 'setAwesomeEffect', event.currentTarget.checked
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_awesomeEffect')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_awesomeEffect')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_awesomeEffect');
+            const valid = form.reportValidity();
+          });
+
           // PATCH sessionId
           document.querySelector('#Page_sessionId')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_sessionId');
