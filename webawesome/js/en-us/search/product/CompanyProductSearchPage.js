@@ -163,13 +163,13 @@ Promise.all([
           document.querySelector('#pageFacetPivotCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyProduct', event.currentTarget);
           });
-          document.querySelector('#fqCompanyProduct_downloadUri')?.addEventListener('change', (event) => {
+          document.querySelector('#fqCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
             fqChange('CompanyProduct', event.currentTarget);
           });
-          document.querySelector('#buttonFacetCompanyProduct_downloadUri')?.addEventListener('click', (event) => {
+          document.querySelector('#buttonFacetCompanyProduct_downloadUrl')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyProduct', event.currentTarget);
           });
-          document.querySelector('#pageFacetPivotCompanyProduct_downloadUri')?.addEventListener('change', (event) => {
+          document.querySelector('#pageFacetPivotCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyProduct', event.currentTarget);
           });
           document.querySelector('#fqCompanyProduct_productNum')?.addEventListener('change', (event) => {

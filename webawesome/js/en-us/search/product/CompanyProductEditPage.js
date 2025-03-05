@@ -246,24 +246,24 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH downloadUri
-          document.querySelector('#Page_downloadUri')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_downloadUri');
+          // PATCH downloadUrl
+          document.querySelector('#Page_downloadUrl')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_downloadUrl');
             const valid = form.checkValidity();
             if(valid) {
               patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setDownloadUri', event.currentTarget.value
+                  , 'setDownloadUrl', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#Page_downloadUri')?.addEventListener('focus', (event) => {
+          document.querySelector('#Page_downloadUrl')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_downloadUri')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_downloadUri');
+          document.querySelector('#Page_downloadUrl')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_downloadUrl');
             const valid = form.reportValidity();
           });
 

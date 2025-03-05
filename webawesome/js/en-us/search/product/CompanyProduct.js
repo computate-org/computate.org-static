@@ -81,6 +81,10 @@ function searchCompanyProductFilters($formFilters) {
     if(filterUserPage != null && filterUserPage !== '')
       filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
 
+    var filterDownload = $formFilters.querySelector('.valueDownload')?.value;
+    if(filterDownload != null && filterDownload !== '')
+      filters.push({ name: 'fq', value: 'download:' + filterDownload });
+
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
       filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
@@ -101,9 +105,9 @@ function searchCompanyProductFilters($formFilters) {
     if(filterStoreUrl != null && filterStoreUrl !== '')
       filters.push({ name: 'fq', value: 'storeUrl:' + filterStoreUrl });
 
-    var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
-    if(filterDownloadUri != null && filterDownloadUri !== '')
-      filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
+    var filterDownloadUrl = $formFilters.querySelector('.valueDownloadUrl')?.value;
+    if(filterDownloadUrl != null && filterDownloadUrl !== '')
+      filters.push({ name: 'fq', value: 'downloadUrl:' + filterDownloadUrl });
 
     var filterProductNum = $formFilters.querySelector('.valueProductNum')?.value;
     if(filterProductNum != null && filterProductNum !== '')
@@ -331,17 +335,17 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeStoreUrl != null && removeStoreUrl !== '')
     vals['removeStoreUrl'] = removeStoreUrl;
 
-  var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
-  var removeDownloadUri = $formValues.querySelector('.removeDownloadUri')?.value === 'true';
-  var setDownloadUri = removeDownloadUri ? null : $formValues.querySelector('.setDownloadUri')?.value;
-  var addDownloadUri = $formValues.querySelector('.addDownloadUri')?.value;
-  if(removeDownloadUri || setDownloadUri != null && setDownloadUri !== '')
-    vals['setDownloadUri'] = setDownloadUri;
-  if(addDownloadUri != null && addDownloadUri !== '')
-    vals['addDownloadUri'] = addDownloadUri;
-  var removeDownloadUri = $formValues.querySelector('.removeDownloadUri')?.value;
-  if(removeDownloadUri != null && removeDownloadUri !== '')
-    vals['removeDownloadUri'] = removeDownloadUri;
+  var valueDownloadUrl = $formValues.querySelector('.valueDownloadUrl')?.value;
+  var removeDownloadUrl = $formValues.querySelector('.removeDownloadUrl')?.value === 'true';
+  var setDownloadUrl = removeDownloadUrl ? null : $formValues.querySelector('.setDownloadUrl')?.value;
+  var addDownloadUrl = $formValues.querySelector('.addDownloadUrl')?.value;
+  if(removeDownloadUrl || setDownloadUrl != null && setDownloadUrl !== '')
+    vals['setDownloadUrl'] = setDownloadUrl;
+  if(addDownloadUrl != null && addDownloadUrl !== '')
+    vals['addDownloadUrl'] = addDownloadUrl;
+  var removeDownloadUrl = $formValues.querySelector('.removeDownloadUrl')?.value;
+  if(removeDownloadUrl != null && removeDownloadUrl !== '')
+    vals['removeDownloadUrl'] = removeDownloadUrl;
 
   var valueProductNum = $formValues.querySelector('.valueProductNum')?.value;
   var removeProductNum = $formValues.querySelector('.removeProductNum')?.value === 'true';
@@ -429,6 +433,10 @@ function patchCompanyProductFilters($formFilters) {
     if(filterUserPage != null && filterUserPage !== '')
       filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
 
+    var filterDownload = $formFilters.querySelector('.valueDownload')?.value;
+    if(filterDownload != null && filterDownload !== '')
+      filters.push({ name: 'fq', value: 'download:' + filterDownload });
+
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
       filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
@@ -449,9 +457,9 @@ function patchCompanyProductFilters($formFilters) {
     if(filterStoreUrl != null && filterStoreUrl !== '')
       filters.push({ name: 'fq', value: 'storeUrl:' + filterStoreUrl });
 
-    var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
-    if(filterDownloadUri != null && filterDownloadUri !== '')
-      filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
+    var filterDownloadUrl = $formFilters.querySelector('.valueDownloadUrl')?.value;
+    if(filterDownloadUrl != null && filterDownloadUrl !== '')
+      filters.push({ name: 'fq', value: 'downloadUrl:' + filterDownloadUrl });
 
     var filterProductNum = $formFilters.querySelector('.valueProductNum')?.value;
     if(filterProductNum != null && filterProductNum !== '')
@@ -552,9 +560,9 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueStoreUrl != null && valueStoreUrl !== '')
     vals['storeUrl'] = valueStoreUrl;
 
-  var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
-  if(valueDownloadUri != null && valueDownloadUri !== '')
-    vals['downloadUri'] = valueDownloadUri;
+  var valueDownloadUrl = $formValues.querySelector('.valueDownloadUrl')?.value;
+  if(valueDownloadUrl != null && valueDownloadUrl !== '')
+    vals['downloadUrl'] = valueDownloadUrl;
 
   var valueProductNum = $formValues.querySelector('.valueProductNum')?.value;
   if(valueProductNum != null && valueProductNum !== '')
@@ -771,12 +779,13 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputTitle = null;
         var inputEditPage = null;
         var inputUserPage = null;
+        var inputDownload = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
         var inputEmailTemplate = null;
         var inputStoreUrl = null;
-        var inputDownloadUri = null;
+        var inputDownloadUrl = null;
         var inputProductNum = null;
 
         if(vars.includes('created'))
@@ -809,6 +818,8 @@ async function websocketCompanyProductInner(apiRequest) {
           inputEditPage = $response.querySelector('.Page_editPage');
         if(vars.includes('userPage'))
           inputUserPage = $response.querySelector('.Page_userPage');
+        if(vars.includes('download'))
+          inputDownload = $response.querySelector('.Page_download');
         if(vars.includes('objectSuggest'))
           inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
         if(vars.includes('objectText'))
@@ -819,8 +830,8 @@ async function websocketCompanyProductInner(apiRequest) {
           inputEmailTemplate = $response.querySelector('.Page_emailTemplate');
         if(vars.includes('storeUrl'))
           inputStoreUrl = $response.querySelector('.Page_storeUrl');
-        if(vars.includes('downloadUri'))
-          inputDownloadUri = $response.querySelector('.Page_downloadUri');
+        if(vars.includes('downloadUrl'))
+          inputDownloadUrl = $response.querySelector('.Page_downloadUrl');
         if(vars.includes('productNum'))
           inputProductNum = $response.querySelector('.Page_productNum');
 
@@ -979,6 +990,16 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('.Page_userPage'));
         }
 
+        if(inputDownload) {
+          document.querySelectorAll('.Page_download').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDownload.getAttribute('value');
+            else
+              item.textContent = inputDownload.textContent;
+          });
+          addGlow(document.querySelector('.Page_download'));
+        }
+
         if(inputObjectSuggest) {
           document.querySelectorAll('.Page_objectSuggest').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1029,14 +1050,14 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('.Page_storeUrl'));
         }
 
-        if(inputDownloadUri) {
-          document.querySelectorAll('.Page_downloadUri').forEach((item, index) => {
+        if(inputDownloadUrl) {
+          document.querySelectorAll('.Page_downloadUrl').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
-              item.value = inputDownloadUri.getAttribute('value');
+              item.value = inputDownloadUrl.getAttribute('value');
             else
-              item.textContent = inputDownloadUri.textContent;
+              item.textContent = inputDownloadUrl.textContent;
           });
-          addGlow(document.querySelector('.Page_downloadUri'));
+          addGlow(document.querySelector('.Page_downloadUrl'));
         }
 
         if(inputProductNum) {

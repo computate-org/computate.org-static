@@ -1,12 +1,5 @@
 {% extends "en-us/PageLayout.htm" %}
 {% block htmMetaPageLayout %}
-    <meta name="result.pageId" content="{{ result.shortFileName }}"/>
-    <meta name="result.storeUrl" content="https://store.computate.org/product/computate-smart-cloud-deployer/11"/>
-    <meta name="result.emailTemplate" content="/en-us/email/order-details.htm"/>
-    <meta name="result.name" content="Computate Smart Cloud Deployer"/>
-    <meta name="result.description" content="Learn how to deploy open source smart device microservices to the cloud and try out your own secure IoT smart platform with built-in security. "/>
-    <meta name="result.productNum" content="1"/>
-    <meta name="result.price" content="1024.00"/>
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
 
@@ -24,31 +17,52 @@ wa-button::part(base), wa-details::part(base) {
 {% block htmBodyMiddlePageLayout %}
 
         <div class="wa-stack ">
-          <wa-card class="pink-purple-background ">
-            <div>
-              <div class="wa-flank ">
-                <i class="fa-duotone fa-solid fa-browser fa-7x "></i>
-                <div>
-                  <h1>
-                    Learn how to deploy open source smart device microservices to the cloud
-                  </h1>
-                  <h2>
-                    with the {{ result.name }}
-                  </h2>
-                </div>
+
+          <wa-card class="pink-purple-background">
+            <div class="intro-content">
+              <div class="wa-crown">
+                <i class="fa-duotone fa-solid fa-browser fa-5x "></i>
               </div>
+              <h1>
+                Learn how to deploy open source smart device microservices to the cloud
+              </h1>
+              <h2>
+                with the {{ result.name }}
+              </h2>
               <wa-card>
+                {% if userName is defined %}
+                {% if scopes is defined and "GET" in scopes %}
                 <div class="wa-stack ">
-                  <div class="wa-stack ">
-                    <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
-                    <div>
-                      <wa-button pill size="large" id="order-button" class="gradient-button pink-purple-background" href="{{ result.userPage }}" variant="neutral">
-                        <i class="fa-duotone fa-right-to-bracket"></i>
-                        Log in with GitHub
-                      </wa-button>
-                    </div>
+                  <div>Download your copy of the {{ result.name }}! </div>
+                  <div>
+                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.downloadUrl }}" variant="neutral">
+                      <i class="fa-solid fa-person-running-fast"></i>
+                      Download
+                    </wa-button>
                   </div>
                 </div>
+                {% else %}
+                <div class="wa-stack ">
+                  <div>You will use your GitHub username shown in the menu during checkout. </div>
+                  <div>
+                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.storeUrl }}" variant="neutral">
+                      <i class="fa-solid fa-person-running-fast"></i>
+                      Order here
+                    </wa-button>
+                  </div>
+                </div>
+                {% endif %}
+                {% else %}
+                <div class="wa-stack ">
+                  <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
+                  <div>
+                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.userPage }}" variant="neutral">
+                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      Log in with GitHub
+                    </wa-button>
+                  </div>
+                </div>
+                {% endif %}
               </wa-card>
             </div>
           </wa-card>
@@ -109,20 +123,21 @@ wa-button::part(base), wa-details::part(base) {
                     </wa-button>
                   </div>
                   <div>
-                    If you are ready to back up the files on your computer and switch to Linux, 
-                    just like I did back in the year 2005, 
-                    read my article about how to <a href="{{ SITE_BASE_URL }}/en-us/article/choose-your-operating-system">choose your operating system</a>. 
+                    If you are already running a supported version of Linux, 
+                  </div>
+                  <div>
                     <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="#install-python-prerequisites" variant="neutral">
                       <i class="fa-solid fa-person-running-fast"></i>
-                      Continue with the {{ result.name }}
+                      continue with the {{ result.name }}
                     </wa-button>
+                  </div>
                 </div>
               </wa-card>
 
             </div>
           </wa-card>
 
-          <wa-card class="summary-wrapper">
+          <wa-card class="summary-wrapper" id="install-python-prerequisites">
             <div class="summary">
               <h2 id="whats-web-awesome">
                 What is the {{ result.name }}?
@@ -222,70 +237,5 @@ wa-button::part(base), wa-details::part(base) {
               </div>
             </div>
           </wa-card>
-
-          <wa-card class="purple-blue-background background border-radius-x-large ">
-            <div class="intro-content">
-              <div class="wa-crown">
-                <h1>
-                  <i class="fa-duotone fa-solid fa-video fa-2x "></i>
-                  AI Telemetry Community Webinar
-                </h1>
-              </div>
-              <h2>
-                Come learn how to Computate as we build a brand new custom data-driven platform 
-                for AI/ML GPU Telemetry with 
-                <i class="fa-brands fa-redhat fa-2xl fa-red" style="color: red; "></i>
-                Red Hat Research in the New England Research Cloud! 
-              </h2>
-              <h3>
-                Watch the ai-telemetry project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud. 
-              </h3>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/4YrBh8Yaf0k?si=1egQxxZQpzspzb_-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-              <wa-card class="zoom-details ">
-                <div class="wa-stack ">
-                  <h3>
-                    Join the AI Telemetry webinar
-                  </h3>
-                  <div>
-                    The AI Telemetry Community Webinar series will occur live weekdays from Sep 2, 2024 — Feb 28, 2025, 
-                    2 sessions in APAC time, 2 sessions in EMEA time, and 1 session in Americas time. 
-                  </div>
-                  <div>
-                    <wa-button pill id="order-button" size="large" class="gradient-button purple-blue-background" href="{{ SITE_BASE_URL }}/en-us/webinar/ai-telemetry-webinar" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
-                      Learn more
-                    </wa-button>
-                  </div>
-                </div>
-              </wa-card>
-
-            </div>
-          </wa-card>
-
-          <wa-card class="pink-purple-background">
-            <div class="intro-content">
-              <div class="wa-crown">
-                <i class="fa-duotone fa-solid fa-browser fa-5x "></i>
-              </div>
-              <h1>
-                Learn how to deploy open source smart device microservices to the cloud
-              </h1>
-              <h2>
-                with the {{ result.name }}
-              </h2>
-              <wa-card>
-                <div class="wa-stack ">
-                  <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
-                  <div>
-                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.userPage }}" variant="neutral">
-                      <i class="fa-duotone fa-right-to-bracket"></i>
-                      Log in with GitHub
-                    </wa-button>
-                  </div>
-                </div>
-              </wa-card>
-            </div>
-          </div>
-        </wa-card>
+        </div>
 {% endblock %}

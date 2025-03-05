@@ -38,29 +38,6 @@ wa-button::part(base), wa-details::part(base) {
                 </div>
               </div>
               <wa-card>
-                {% if userName is defined %}
-                {% if scope is defined and scope == "GET" %}
-                <div class="wa-stack ">
-                  <div>Download your own customizable website building toolkit to launch your own data-driven website with the {{ result.name }} here! </div>
-                  <div>
-                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}{{ result.downloadUri }}" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
-                      Download
-                    </wa-button>
-                  </div>
-                </div>
-                {% else %}
-                <div class="wa-stack ">
-                  <div>You will use your GitHub username shown in the menu during checkout. </div>
-                  <div>
-                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.storeUrl }}" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
-                      Order here
-                    </wa-button>
-                  </div>
-                </div>
-                {% endif %}
-                {% else %}
                 <div class="wa-stack ">
                   <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
                   <div>
@@ -70,7 +47,6 @@ wa-button::part(base), wa-details::part(base) {
                     </wa-button>
                   </div>
                 </div>
-                {% endif %}
               </wa-card>
             </div>
           </wa-card>
@@ -320,29 +296,6 @@ wa-button::part(base), wa-details::part(base) {
                 </div>
               </div>
               <wa-card>
-                {% if userName is defined %}
-                {% if scope is defined and scope == "GET" %}
-                <div class="wa-stack ">
-                  <div>Download your own customizable website building toolkit to launch your own data-driven website with the {{ result.name }} here! </div>
-                  <div>
-                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}{{ result.downloadUri }}" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
-                      Download
-                    </wa-button>
-                  </div>
-                </div>
-                {% else %}
-                <div class="wa-stack ">
-                  <div>You will use your GitHub username shown in the menu during checkout. </div>
-                  <div>
-                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.storeUrl }}" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
-                      Order here
-                    </wa-button>
-                  </div>
-                </div>
-                {% endif %}
-                {% else %}
                 <div class="wa-stack ">
                   <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
                   <div>
@@ -352,7 +305,6 @@ wa-button::part(base), wa-details::part(base) {
                     </wa-button>
                   </div>
                 </div>
-                {% endif %}
               </wa-card>
             </div>
           </wa-card>
