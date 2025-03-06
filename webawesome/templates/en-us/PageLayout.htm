@@ -34,7 +34,7 @@
         if(event.target.value == '')
           filters.push({ name: 'q', value: '*:*' });
         else
-          filters.push({ name: 'q', value: 'objectSuggest:' + event.target.value });
+          filters.push({ name: 'q', value: 'objectSuggest:' + event.target.value ? event.target.value : '' });
 
         fetch(
           '{{ USER_SEARCH_URI if userName is defined else PUBLIC_SEARCH_URI }}?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
@@ -54,12 +54,15 @@
                   menuItem.addEventListener('click', (event) => window.location.href = event.target.getAttribute('data-href') );
                 });
                 dropdown.show();
+                dropdown.reposition();
               });
             } else {
               error(response, event.target);
             }
           })
-          .catch(response => error(response, event.target));
+          .catch(response => {
+            error(response, event.target)
+          });
       }
 
       Promise.all([
@@ -181,13 +184,13 @@
         </nav>
       </aside>
       <main>
-        <header slot="header" class="margin-block ">
+        <header slot="header" class="margin-block-start ">
           <wa-icon-button data-toggle-nav name="bars" class="nav-toggle-button hide-desktop " label="open menu" appearance="text"></wa-icon-button>
           <wa-input placeholder="search" id="siteSearchInput">
             <i slot="prefix" class="fa-duotone fa-regular fa-magnifying-glass"></i>
           </wa-input>
         </header>
-        <wa-dropdown id="siteSearchDropdown" class="display-block ">
+        <wa-dropdown id="siteSearchDropdown" class="display-block " stayOpenOnSelect>
           <wa-menu id="siteSearchDropdownMenu">
           </wa-menu>
         </wa-dropdown>
