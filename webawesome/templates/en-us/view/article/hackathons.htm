@@ -1,13 +1,12 @@
 {% extends "en-us/PageLayout.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
-    <meta name="result.uri" content="/en-us/article/{{ pageId }}" />
-    <meta name="result.title" content="Computate hackathons" />
+    <meta name="result.name" content="Computate hackathons" />
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
 {% endblock htmStylePageLayout %}
 {% block htmTitlePageLayout %}
-    <title>{{ title }}</title>
+    <title>{{ result.title }}</title>
 {% endblock htmTitlePageLayout %}
 {% block htmBodyMiddlePageLayout %}
     <h1>Computate hackathons</h1>

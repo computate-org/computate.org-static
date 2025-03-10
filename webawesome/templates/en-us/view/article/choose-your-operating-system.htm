@@ -1,8 +1,7 @@
 {% extends "en-us/PageLayout.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
-    <meta name="result.uri" content="/en-us/article/{{ pageId }}" />
-    <meta name="result.title" content="Choose your operating system" />
+    <meta name="result.name" content="Choose your operating system" />
 {% endblock htmMetaPageLayout %}
 {% block htmTitlePageLayout %}
     <title>{{ title }}</title>
@@ -31,7 +30,7 @@
               </div>
               <div class="w3-row w3-mobile">
                 <img class="w3-image"
-                  src="https://www.smartabyarsmartvillage.org/static/png/choose-your-operating-system/image.png" />
+                  src="{{ STATIC_BASE_URL }}/png/choose-your-operating-system/image.png" />
               </div>
             </div>
             <div>
