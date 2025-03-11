@@ -29,7 +29,7 @@
         if(event.target.value == '')
           filters.push({ name: 'q', value: '*:*' });
         else
-          filters.push({ name: 'q', value: 'objectSuggest:' + event.target.value ? event.target.value : '' });
+          filters.push({ name: 'q', value: event.target.value ? 'objectSuggest:' + event.target.value : '' });
 
         fetch(
           '{{ USER_SEARCH_URI if userName is defined else PUBLIC_SEARCH_URI }}?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
