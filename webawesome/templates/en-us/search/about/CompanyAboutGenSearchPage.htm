@@ -181,7 +181,7 @@
 {{ super() }}
 {%- block htmBodyStartCompanyAboutPage %}
 {% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-solid fa-address-card"></i> <span>about</span></a></h1>
+          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-address-card"></i> <span>about</span></a></h1>
 {%- include en-us/search/about/CompanyAboutSuggestedSearch.htm %}
 {% include en-us/search/about/CompanyAboutSearchButtons.htm %}
 {% include en-us/search/about/CompanyAboutSearchForm.htm %}
@@ -200,7 +200,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-solid fa-address-card"></i> <span>about</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-address-card"></i> <span>about</span></h1>
 {% include en-us/search/about/CompanyAboutSearchButtons.htm %}
 {% include en-us/search/about/CompanyAboutSearchForm.htm %}
         <h2>
@@ -265,7 +265,7 @@
             {% for item in listCompanyAbout%}
             <div>
               <a href="{{ item.displayPage }}">
-                <i class="fa-solid fa-address-card"></i>
+                <i class="fa-duotone fa-regular fa-address-card"></i>
               {{ item.name }}
               </a>
               <a href="{{ item.displayPage }}">

@@ -16,19 +16,22 @@ wa-button::part(base), wa-details::part(base) {
 {% endblock htmTitlePageLayout %}
 {% block htmBodyMiddlePageLayout %}
 
-        <div class="wa-stack ">
+        <div class="wa-stack pink-purple-background-headers ">
 
-          <wa-card class="pink-purple-background">
-            <div class="intro-content">
-              <div class="wa-crown">
-                <i class="fa-duotone fa-solid fa-browser fa-5x "></i>
+          <wa-card class="pink-purple-background ">
+            <div class="main-content ">
+              <div>Are you a software developer interested in building digital twins, or a custom website? </div>
+              <div class="wa-flank ">
+                <i class="fa-duotone fa-regular fa-browser fa-8x "></i>
+                <div>
+                  <h1>
+                        Build a custom data-driven website for your own ideas on your own computer
+                  </h1>
+                  <h2>
+                    with the {{ result.name }}
+                  </h2>
+                </div>
               </div>
-              <h1>
-                Learn how to deploy open source smart device microservices to the cloud
-              </h1>
-              <h2>
-                with the {{ result.name }}
-              </h2>
               <wa-card>
                 {% if userName is defined %}
                 {% if scopes is defined and "GET" in scopes %}
@@ -36,7 +39,7 @@ wa-button::part(base), wa-details::part(base) {
                   <div>Download your copy of the {{ result.name }}! </div>
                   <div>
                     <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.downloadUrl }}" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                       Download
                     </wa-button>
                   </div>
@@ -46,7 +49,7 @@ wa-button::part(base), wa-details::part(base) {
                   <div>You will use your GitHub username shown in the menu during checkout. </div>
                   <div>
                     <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.storeUrl }}" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                       Order here
                     </wa-button>
                   </div>
@@ -57,7 +60,7 @@ wa-button::part(base), wa-details::part(base) {
                   <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
                   <div>
                     <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.userPage }}" variant="neutral">
-                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                   </div>
@@ -67,11 +70,13 @@ wa-button::part(base), wa-details::part(base) {
             </div>
           </wa-card>
 
-          <wa-card class="red-pink-background background border-radius-x-large ">
-            <div class="intro-content">
+          <wa-card class="red-pink-background ">
+            <div class="wa-grid ">
+              <div class="wa-stack ">
+
               <div class="wa-crown">
                 <h1>
-                  <i class="fa-duotone fa-solid fa-video fa-2x "></i>
+                  <i class="fa-duotone fa-regular fa-video fa-2x "></i>
                   System requirements
                 </h1>
               </div>
@@ -97,8 +102,9 @@ wa-button::part(base), wa-details::part(base) {
                   Other Linux distros may also be supported
                 </li>
               </ul>
+              </div>
 
-              <wa-card class="zoom-details ">
+              <wa-card>
                 <div class="wa-stack ">
                   <div>
                     Microsoft Windows and MacOSX users can also start computating with the very similar Smart Aquaculture Cloud Sandbox course. 
@@ -107,7 +113,7 @@ wa-button::part(base), wa-details::part(base) {
                   </div>
                   <div>
                     <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                       Try the course
                     </wa-button>
                   </div>
@@ -118,17 +124,8 @@ wa-button::part(base), wa-details::part(base) {
                   </div>
                   <div>
                     <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="{{ SITE_BASE_URL }}/en-us/article/choose-your-operating-system" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                       Switch to Linux
-                    </wa-button>
-                  </div>
-                  <div>
-                    If you are already running a supported version of Linux, 
-                  </div>
-                  <div>
-                    <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="#install-python-prerequisites" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
-                      continue with the {{ result.name }}
                     </wa-button>
                   </div>
                 </div>
@@ -137,104 +134,211 @@ wa-button::part(base), wa-details::part(base) {
             </div>
           </wa-card>
 
-          <wa-card class="summary-wrapper" id="install-python-prerequisites">
-            <div class="summary">
-              <h2 id="whats-web-awesome">
+          <wa-card class="pink-purple-background border-radius-x-large">
+            <div class="main-content wa-stack ">
+              <div class="wa-flank ">
+                <i class="fa-duotone fa-regular fa-conveyor-belt fa-8x "></i>
+                <h2>
+                  The prerequisite to using this product is to start with the 
+                  Computate Smart Cloud Deployer to build your cloud development environment. 
+                </h2>
+                  </div>
+              <h1>
+                Learn how to deploy open source smart device microservices to the cloud
+                with the Computate Smart Cloud Deployer
+              </h1>
+              <wa-card>
+                <div class="wa-stack ">
+                  <div>
+                    <wa-button pill id="order-button" size="large" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}/en-us/product/computate-smart-cloud-deployer" variant="neutral">
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+                      Get the prerequisite
+                    </wa-button>
+                  </div>
+                </div>
+              </wa-card>
+
+            </div>
+          </wa-card>
+
+          <wa-card with-header>
+            <div slot="header" class="main-content ">
+              <h2>
                 What is the {{ result.name }}?
               </h2>
               <p>
-                Learn how to deploy open source smart device microservices to the cloud and try out your own secure IoT smart platform with built-in security. 
+                Teaching tools and automation for easily building a custom website with the models and data that you care about using the best in open source software. 
               </p>
+            </div>
 
-              <div class="wa-stack ">
+            <div class="main-content wa-stack ">
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-code"></i>
+                    <i class="fa-duotone fa-regular fa-code"></i>
                     <h3>
                       Modern development tools
                     </h3>
                   </div>
                   <p>
-                    Learn how to install all the latest cloud deployment tools on your own computer like VSCode, Jupyter, Ansible, Helm, and OpenShift command line interface, 
-                    and start deploying microservices to the cloud like a modern cloud developer. 
+                  Use VSCode and interactive Jupyter notebooks 
+                  to start writing code like a real cloud-native developer. 
                   </p>
                 </div>
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
                       Cloud-native microservices
                     </h3>
                   </div>
                   <p>
-                    Deploy modern microservices to an OpenShift Local environment on your own laptop in development, or in production. 
-                    Applications include FIWARE IoT Agent JSON, ScorpioBroker FIWARE Context Broker, certificate management, event bus application clustering, databases, a search engine, and single sign-on server for securing and scaling your data-driven website. 
+                  Deploy cloud microservices in a Red Hat OpenShift Local cloud environment on your own computer 
+                  for certificate management, event bus application clustering, databases, a search engine, and single sign-on server for securing and scaling your data-driven website. 
                   </p>
                 </div>
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
-                      Cloud-native microservices
+                    Automate tasks
                     </h3>
                   </div>
-                  <p>
-                    Deploy modern open source microservices including 
-                    Cert Manager for TLS site certificates, Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications. 
-                  </p>
+                <div>
+                  Use Ansible automation to generate all of the boilerplate code for your Smart Aquaculture site, and customize it along the way. 
+                </div>
                 </div>
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
-                      Manage cloud secrets
+                    Learn reactive programming
                     </h3>
                   </div>
-                  <p>
-                    Learn how to configure secrets in the cloud that allow applications to connect to each other securely. 
-                  </p>
+                <div>
+                  Learn how to build reactive asynchronous Java code, OpenAPIs, database scripts, and Smart Aquaculture data. 
+                </div>
                 </div>
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
-                      Configure relational databases
+                    Build interactive dashboards
                     </h3>
                   </div>
-                  <p>
-                    Set up access to a new database for your applications. 
-                  </p>
+                <div>
+                  Visualize your Smart Aquaculture data in event-driven, interactive dashboards and maps. 
+                </div>
                 </div>
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
-                      Configure fine-grain authorization to data
+                    Cloud-native microservices
                     </h3>
                   </div>
-                  <p>
-                    Create authentication realms, clients, OAuth identity providers, and fine-grain resources, scopes, policies, and permissions to data and dashboards. 
-                  </p>
-                </div>
-
                 <div>
-                  <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <h3>
-                      Connect it all together by deploying a complete data-driven website
-                    </h3>
-                  </div>
-                  <p>
-                    Learn how to configure and deploy a custom data-driven website like computate.org with articles, events, courses, products, services, and smart data models, so that you can do it yourself. 
-                  </p>
+                  Interact with modern microservices in the cloud like: 
                 </div>
-
+                <ol>
+                  <li>
+                    PostgreSQL Database for transactional data storage
+                  </li>
+                  <li>
+                    Apache Zookeeper Cluster Manager for event bus messaging
+                  </li>
+                  <li>
+                    Apache Solr Search Engine for autosuggest and searchable APIs
+                  </li>
+                  <li>
+                    Keycloak Single Sign-On for fine-grain access control to Smart Aquaculture data
+                  </li>
+                  <li>
+                    FIWARE Context Broker for open source IoT edge device standards
+                  </li>
+                </ol>
               </div>
+
+            </div>
+          </wa-card>
+
+          <wa-card class="purple-blue-background ">
+            <div class="main-content ">
+              <div class="wa-flank">
+                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
+                <h1>
+                  Watch the free Smart Aquaculture webinar on Zoom or live streaming to Youtube. 
+                </h1>
+              </div>
+              <div class="wa-stack ">
+                <div class="wa-flank">
+                  <p>
+                    Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
+                    then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
+                  </p>
+                </div>
+                <h3 class="brand-font">
+                  The {{ result.name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 1:30 pm Eastern US time. 
+                </h3>
+
+                <wa-card class="wa-stack ">
+                  <div class="wa-flank zoom-link font-size-large">
+                    <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
+                  <div class="wa-flank ">
+                      <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}/en-us/view/webinar/smart-aquaculture-webinar" variant="neutral">
+                        <i class="fa-duotone fa-regular fa-video"></i>
+                        Learn more
+                      </wa-button>
+                      <div>
+                        <div class="font-size-x-small">
+                          Monday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Tuesday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Thursday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Friday 1:30 PM Eastern US time
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </wa-card>
+              </div>
+            </div>
+          </wa-card>
+
+          <wa-card class="pink-purple-background">
+            <div class="main-content wa-stack ">
+              <div class="wa-flank ">
+                <i class="fa-duotone fa-regular fa-browser fa-8x "></i>
+                <div>
+                  <h1>
+                    Build a custom data-driven website for your own ideas
+                  </h1>
+                  <h2>
+                    with the {{ result.name }}
+                  </h2>
+                </div>
+              </div>
+              <wa-card>
+                <div class="wa-stack ">
+                  <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
+                  <div>
+                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.userPage }}" variant="neutral">
+                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
+                      Log in with GitHub
+                    </wa-button>
+                  </div>
+                </div>
+              </wa-card>
             </div>
           </wa-card>
         </div>

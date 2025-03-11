@@ -115,7 +115,7 @@ function suggestCompanyAboutObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     $list.empty();
     data['list'].forEach((o, i) => {
-      var $i = document.querySelector('<i class="fa-solid fa-address-card"></i>');
+      var $i = document.querySelector('<i class="fa-duotone fa-regular fa-address-card"></i>');
       var $span = document.createElement('span');      $span.setAttribute('class', '');      $span.innerText = o['title'];
       var $li = document.createElement('li');
       var $a = document.createElement('a').setAttribute('href', o['editPage']);
@@ -590,7 +590,7 @@ async function websocketCompanyAbout(success) {
       $header.setAttribute('class', 'w3-container fa- ');
       $header.setAttribute('id', 'header-' + pageId);
       var iTemplate = document.createElement('template');
-      iTemplate.innerHTML = '<i class="fa-solid fa-address-card"></i>';
+      iTemplate.innerHTML = '<i class="fa-duotone fa-regular fa-address-card"></i>';
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');

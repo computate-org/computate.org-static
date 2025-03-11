@@ -167,7 +167,7 @@
               <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all research
             </wa-button>
-            <h1 class="Page_title"><i class="fa-duotone fa-solid fa-school"></i> {{ result.title | e }}</h1>
+            <h1 class="Page_title"><i class="fa-duotone fa-regular fa-school"></i> {{ result.title | e }}</h1>
           </div>
           <div class="margin-block">
           </div>
@@ -179,7 +179,7 @@
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyResearchPage %}
-        <div class="main-content">
+        <div>
 {% if resultCount == 0 %}
         {% if varsFqCount > 0 %}
         <wa-tooltip for="return-to-CompanyResearch">back to all research</wa-tooltip>
@@ -189,7 +189,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-duotone fa-solid fa-school"></i> <span>research</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-school"></i> <span>research</span></h1>
 {% include en-us/search/research/CompanyResearchSearchButtons.htm %}
 {% include en-us/search/research/CompanyResearchSearchForm.htm %}
         <h2>

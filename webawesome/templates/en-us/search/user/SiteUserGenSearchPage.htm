@@ -151,7 +151,7 @@
 {{ super() }}
 {%- block htmBodyStartSiteUserPage %}
 {% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-solid fa-user-gear"></i> <span>site users</span></a></h1>
+          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-user-gear"></i> <span>site users</span></a></h1>
 {%- include en-us/search/user/SiteUserSuggestedSearch.htm %}
 {% include en-us/search/user/SiteUserSearchButtons.htm %}
 {% include en-us/search/user/SiteUserSearchForm.htm %}
@@ -170,7 +170,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-duotone fa-solid fa-user-gear"></i> <span>site users</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-user-gear"></i> <span>site users</span></h1>
 {% include en-us/search/user/SiteUserSearchButtons.htm %}
 {% include en-us/search/user/SiteUserSearchForm.htm %}
         <h2>
@@ -235,7 +235,7 @@
             {% for item in listSiteUser%}
             <div>
               <a href="{{ item.displayPage }}">
-                <i class="fa-duotone fa-solid fa-user-gear"></i>
+                <i class="fa-duotone fa-regular fa-user-gear"></i>
               {{ item.userFullName }}
               </a>
               <a href="{{ item.displayPage }}">

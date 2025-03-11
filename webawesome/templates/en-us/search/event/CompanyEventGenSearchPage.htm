@@ -263,7 +263,7 @@
 {{ super() }}
 {%- block htmBodyStartCompanyEventPage %}
 {% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-solid fa-map-location-dot"></i> <span>events</span></a></h1>
+          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-map-location-dot"></i> <span>events</span></a></h1>
 {%- include en-us/search/event/CompanyEventSuggestedSearch.htm %}
 {% include en-us/search/event/CompanyEventSearchButtons.htm %}
 {% include en-us/search/event/CompanyEventSearchForm.htm %}
@@ -282,7 +282,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-duotone fa-solid fa-map-location-dot"></i> <span>events</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-map-location-dot"></i> <span>events</span></h1>
 {% include en-us/search/event/CompanyEventSearchButtons.htm %}
 {% include en-us/search/event/CompanyEventSearchForm.htm %}
         <h2>
@@ -360,7 +360,7 @@
             {% for item in listCompanyEvent%}
             <div>
               <a href="{{ item.displayPage }}">
-                <i class="fa-duotone fa-solid fa-map-location-dot"></i>
+                <i class="fa-duotone fa-regular fa-map-location-dot"></i>
               <wa-format-date weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" second="numeric" time-zone-name="short" date="{{ formatZonedDateTime(item.startDateTime, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
               </a>
               <a href="{{ item.displayPage }}">

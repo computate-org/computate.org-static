@@ -6,6 +6,7 @@
     <meta name="result.joinUri" content="/en-us/join/webinar/{{ pageId }}"/>
     <meta name="result.courseNum" content="1"/>
     <meta name="result.icalUrl" content="https://user.fm/calendar/v1-700dac918aeb7b4646462481e3b36131/Smart%20Aquaculture%20Webinars.ics"/>
+    <meta name="result.webinarUrlAmericas" content="https://us06web.zoom.us/j/89629129550?pwd=AXbnGjmwK8uSkuTLPwqsg6IfTTsXaO.1"/>
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
 
@@ -27,17 +28,17 @@ wa-button, wa-details {
           <wa-card class="pink-purple-background main-content ">
             <div class="wa-stack ">
               <div class="wa-flank">
-                <i class="fa-duotone fa-solid fa-video fa-2x "></i>
+                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
                 <h1>{{ result.name }}</h1>
               </div>
               <h2 class="brand-font text-center">
-                Come learn how to be a talented open source cloud application developer as we build a brand new custom data-driven platform 
+                Become a talented open source cloud application developer as we build a brand new custom data-driven platform 
                 for Smart Aquaculture. 
               </h2>
               <wa-card>
                 <div class="wa-flank ">
-                  <wa-button variant="brand" label="Join the webinar" href="{{ result.joinUrl }}">
-                    <i class="fa-solid fa-video" aria-hidden="true"></i>
+                  <wa-button variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
+                    <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
                     Join the next webinar
                   </wa-button>
                   <div class="wa-flank ">
@@ -50,13 +51,13 @@ wa-button, wa-details {
           </wa-card>
 
           <wa-card with-header>
-            <div slot="header" class="wa-flank">
-              <i class="fa-duotone fa-solid fa-video fa-2x "></i>
+            <div slot="header" class="wa-flank main-content ">
+              <i class="fa-duotone fa-regular fa-video fa-2x "></i>
               <h3>
                 Watch the free Smart Aquaculture webinar on Zoom or live streaming to Youtube. 
               </h3>
             </div>
-            <div class="wa-stack ">
+            <div class="wa-stack main-content ">
               <div class="wa-flank">
                 <p>
                   Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
@@ -64,15 +65,15 @@ wa-button, wa-details {
                 </p>
               </div>
               <h3 class="brand-font">
-                The {{ name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 1:30 pm Eastern US time. 
+                The {{ result.name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 1:30 pm Eastern US time. 
               </h3>
               <div id="webinar-calendar" class="wa-stack ">
 
                 <div class="wa-flank zoom-link font-size-large">
-                  <i class="fa-duotone fa-solid fa-earth-americas fa-xl"></i>
+                  <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
                   <div class="wa-flank ">
-                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlAmericas }}" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ result.webinarUrlAmericas }}" variant="neutral">
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       Open Zoom
                     </wa-button>
                     <div>
@@ -97,128 +98,128 @@ wa-button, wa-details {
           </wa-card>
 
           <wa-card class="pink-purple-background background border-radius-x-large">
-            <div class="intro-content">
+            <div class="main-content ">
               <h2 class="brand-font">
-                <i class="fa-solid fa-computer-classic fa-2xl"></i> The Smart Aquaculture webinar is free to join! 
+                <i class="fa-duotone fa-regular fa-computer-classic fa-2xl"></i> The Smart Aquaculture webinar is free to join! 
                 Just click the link above to log in and get the Zoom link to the webinar. 
               </h2>
             </div>
           </wa-card>
 
-          <wa-card>
-            <wa-carousel class="aspect-ratio" autoplay loop navigation pagination>
-              <wa-carousel-item>
-                <wa-tooltip for="carousel-ai-telemetry-overview" placement="bottom">Smart Aquaculture Overview</wa-tooltip>
-                <a id="carousel-ai-telemetry-overview" href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-overview.png">
-                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-overview.png" alt="Smart Aquaculture Overview"/>
-                </a>
-              </wa-carousel-item>
-              <wa-carousel-item>
-                <wa-tooltip for="carousel-ai-telemetry-gpu-dashboard" placement="bottom">Smart Aquaculture GPU Dashboard</wa-tooltip>
-                <a id="carousel-ai-telemetry-gpu-dashboard" href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-gpu-dashboard.png">
-                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-gpu-dashboard.png" alt="Smart Aquaculture GPU Dashboard"/>
-                </a>
-              </wa-carousel-item>
-              <wa-carousel-item>
-                <wa-tooltip for="carousel-ai-telemetry-operators" placement="bottom">Smart Aquaculture Operators</wa-tooltip>
-                <a id="carousel-ai-telemetry-operators" href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-operators.png">
-                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-operators.png" alt="Smart Aquaculture Operators"/>
-                </a>
-              </wa-carousel-item>
-              <wa-carousel-item>
-                <wa-tooltip for="carousel-ai-telemetry-openapi" placement="bottom">Smart Aquaculture OpenAPI</wa-tooltip>
-                <a id="carousel-ai-telemetry-openapi" href="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-openapi.png">
-                  <img src="{{ STATIC_BASE_URL }}/webinar/ai-telemetry-webinar/ai-telemetry-openapi.png" alt="Smart Aquaculture OpenAPI"/>
-                </a>
-              </wa-carousel-item>
-            </wa-carousel>
-          </wa-card>
+          <wa-card with-header>
+            <div slot="header" class="main-content wa-stack ">
+              <div>
+                <h2 class="brand-font anchor-heading" id="whats-web-awesome">
+                  What is the {{ result.name }}?
+                </h2>
+                <p>
+                  Learn how to deploy open source smart device microservices to the cloud and try out your own secure IoT smart platform, including FIWARE Smart Data Models, and Context Broker, with built-in security provided by Keycloak fine-grained resource permissions. 
+                </p>
+              </div>
+            </div>
 
-          <wa-card>
-            <div class="summary">
-              <h2 class="brand-font anchor-heading" id="whats-web-awesome">
-                What is the {{ result.name }}?
-              </h2>
-              <p>
-                Develop a platform for reporting on AI/ML cluster and GPU device usage data and performing telemetry on AI/ML workloads through a secure dashboard and API.
-              </p>
+            <div>
+              <div class="wa-grid orange-blue-background-headers " style="--min-column-size: 20rem; ">
 
-              <div class="summary-grid">
-
-                <div>
-                  <div class="wa-flank ">
-                    <i class="fa-solid fa-microchip"></i>
-                    <h3>
-                      GPU Utilization
-                    </h3>
+                <wa-card with-header>
+                  <div slot="header" variant="brand" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-code fa-xl"></i>
+                    <div>
+                      Modern development tools
+                    </div>
                   </div>
                   <p>
-                    We wish to help researchers and managers of GPU devices in the New England Research Cloud (NERC) shared computing environment understand how the valueable and limited GPU resources are being utilized. 
+                    Use the latest cloud deployment tools like Jupyter, Ansible, Helm, and OpenShift command line interface, 
+                    and start deploying microservices to the cloud like a modern cloud developer. 
                   </p>
-                </div>
+                </wa-card>
 
-                <div>
-                  <div class="wa-flank ">
-                    <i class="fa-solid fa-shield-check"></i>
-                    <h3>
-                      Access Control
-                    </h3>
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-clouds fa-xl"></i>
+                    <div>
+                      Cloud-native microservices
+                    </div>
                   </div>
                   <p>
-                    We will provide access to researchers and managers through Keycloak and various identity providers like GitHub and University SSO to access the AI Cluster data and research project GPU allocation telemetry through a modern open source platform that will be built for the MOC and usable by other organizations wishing to collect the same telemetry. 
+                    Deploy modern open source microservices including 
+                    Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications. 
                   </p>
-                </div>
+                </wa-card>
 
-                <div>
-                  <div class="wa-flank ">
-                    <i class="fa-solid fa-server"></i>
-                    <h3>
-                      Where it's built
-                    </h3>
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-kit fa-fiware fa-xl"></i>
+                    <div>
+                      FIWARE IoT services and Smart Data Models
+                    </div>
                   </div>
                   <p>
-                    The New England Research Cloud is a perfect environment for AI/ML related research. 
+                    Connect your databases and message broker to a FIWARE Context Broker 
+                    — utilize NGSI-LD standards and Smart Data Models to manage your own smart device data. 
                   </p>
-                </div>
+                </wa-card>
 
-                <div>
-                  <div class="wa-flank ">
-                    <i class="fa-solid fa-keyboard"></i>
-                    <h3>
-                      Development Team
-                    </h3>
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-cloud-check fa-xl"></i>
+                    <div>
+                      Manage cloud secrets
+                    </div>
                   </div>
                   <p>
-                    Other Red Hat associates outside of Red Hat Research have also been invited to participate in building the platform through the Red Hat Internal Gig Program.
+                    Learn how to configure secrets in the cloud that allow applications to connect to each other securely. 
                   </p>
-                </div>
+                </wa-card>
 
-                <div>
-                  <div class="wa-flank ">
-                    <i class="fa-solid fa-code"></i>
-                    <h3>
-                      Where's the code?
-                    </h3>
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-database fa-xl"></i>
+                    <div>
+                      Configure relational databases
+                    </div>
                   </div>
                   <p>
-                    The Smart Aquaculture project is a public open source project on GitHub. 
-                    Read the docs and fork the source code, it's all available here: 
-                    <br/><a href="https://github.com/OCP-on-NERC/ai-telemetry">https://github.com/OCP-on-NERC/ai-telemetry</a>
+                    Set up access to a new database for your applications. 
                   </p>
-                </div>
+                </wa-card>
+
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-user fa-xl"></i>
+                    <div>
+                      Configure fine-grain auth to data
+                    </div>
+                  </div>
+                  <p>
+                    Create authentication realms, clients, OAuth identity providers, and fine-grain resources, scopes, policies, and permissions to data and dashboards. 
+                  </p>
+                </wa-card>
+
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-browser fa-xl"></i>
+                    <div>
+                      Deploy a complete data-driven website
+                    </div>
+                  </div>
+                  <p>
+                    Learn how to configure and deploy a custom data-driven website for Smart Aquaculture with smart data models so that you can do it yourself. 
+                  </p>
+                </wa-card>
 
               </div>
             </div>
           </wa-card>
 
           <wa-card class="blue-teal-background background border-radius-x-large ">
-            <div class="intro-content">
+            <div class="main-content ">
               <h3>
                 You can add our {{ result.name }} calendar to your calender with the ICS calendar link below. 
               </h3>
               <div>
-                <a class="word-break-all " href="https://user.fm/calendar/v1-1f13180574907ff09a03a3f56d315984/RH%20Research%20AI%20Telemetry%20Webinars.ics">
-                  https://user.fm/calendar/v1-1f13180574907ff09a03a3f56d315984/RH%20Research%20AI%20Telemetry%20Webinars.ics
+                <a class="word-break-all " href="{{ result.icalUrl }}">
+                  {{ result.icalUrl }}
                 </a>
               </div>
             </div>

@@ -16,19 +16,21 @@ wa-button::part(base), wa-details::part(base) {
 {% endblock htmTitlePageLayout %}
 {% block htmBodyMiddlePageLayout %}
 
-        <div class="wa-stack ">
+        <div class="wa-stack pink-purple-background-headers ">
 
-          <wa-card class="pink-purple-background">
-            <div class="intro-content">
-              <div class="wa-crown">
-                <i class="fa-duotone fa-solid fa-browser fa-5x "></i>
+          <wa-card class="pink-purple-background ">
+            <div class="main-content ">
+              <div class="wa-flank ">
+                <i class="fa-duotone fa-regular fa-browser fa-7x "></i>
+                <div>
+                  <h2>
+                    Learn how to deploy open source smart device microservices to the cloud
+                  </h2>
+                  <h1>
+                    with the {{ result.name }}
+                  </h1>
+                </div>
               </div>
-              <h1>
-                Learn how to deploy open source smart device microservices to the cloud
-              </h1>
-              <h2>
-                with the {{ result.name }}
-              </h2>
               <wa-card>
                 {% if userName is defined %}
                 {% if scopes is defined and "GET" in scopes %}
@@ -36,7 +38,7 @@ wa-button::part(base), wa-details::part(base) {
                   <div>Download your copy of the {{ result.name }}! </div>
                   <div>
                     <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.downloadUrl }}" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                       Download
                     </wa-button>
                   </div>
@@ -46,7 +48,7 @@ wa-button::part(base), wa-details::part(base) {
                   <div>You will use your GitHub username shown in the menu during checkout. </div>
                   <div>
                     <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.storeUrl }}" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                       Order here
                     </wa-button>
                   </div>
@@ -56,8 +58,8 @@ wa-button::part(base), wa-details::part(base) {
                 <div class="wa-stack ">
                   <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
                   <div>
-                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.userPage }}" variant="neutral">
-                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      <wa-button pill size="large" id="order-button" class="gradient-button pink-purple-background" href="{{ result.userPage }}" variant="neutral">
+                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                   </div>
@@ -68,10 +70,11 @@ wa-button::part(base), wa-details::part(base) {
           </wa-card>
 
           <wa-card class="red-pink-background background border-radius-x-large ">
-            <div class="intro-content">
+            <div class="wa-grid ">
+              <div>
               <div class="wa-crown">
                 <h1>
-                  <i class="fa-duotone fa-solid fa-video fa-2x "></i>
+                  <i class="fa-duotone fa-regular fa-video fa-2x "></i>
                   System requirements
                 </h1>
               </div>
@@ -97,7 +100,7 @@ wa-button::part(base), wa-details::part(base) {
                   Other Linux distros may also be supported
                 </li>
               </ul>
-
+              </div>
               <wa-card class="zoom-details ">
                 <div class="wa-stack ">
                   <div>
@@ -107,7 +110,7 @@ wa-button::part(base), wa-details::part(base) {
                   </div>
                   <div>
                     <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                       Try the course
                     </wa-button>
                   </div>
@@ -118,7 +121,7 @@ wa-button::part(base), wa-details::part(base) {
                   </div>
                   <div>
                     <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="{{ SITE_BASE_URL }}/en-us/article/choose-your-operating-system" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                       Switch to Linux
                     </wa-button>
                   </div>
@@ -127,8 +130,8 @@ wa-button::part(base), wa-details::part(base) {
                   </div>
                   <div>
                     <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="#install-python-prerequisites" variant="neutral">
-                      <i class="fa-solid fa-person-running-fast"></i>
-                      continue with the {{ result.name }}
+                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+                      Continue with the {{ result.name }}
                     </wa-button>
                   </div>
                 </div>
@@ -137,19 +140,70 @@ wa-button::part(base), wa-details::part(base) {
             </div>
           </wa-card>
 
-          <wa-card class="summary-wrapper" id="install-python-prerequisites">
-            <div class="summary">
-              <h2 id="whats-web-awesome">
+          <wa-card class="purple-blue-background ">
+            <div class="main-content ">
+              <div class="wa-flank">
+                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
+                <h1>
+                  Watch the free Smart Aquaculture webinar on Zoom or live streaming to Youtube. 
+                </h1>
+              </div>
+              <div class="wa-stack ">
+                <div class="wa-flank">
+                  <p>
+                    Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
+                    then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
+                  </p>
+                </div>
+                <h3 class="brand-font">
+                  The {{ result.name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 1:30 pm Eastern US time. 
+                </h3>
+
+                <wa-card class="wa-stack ">
+                  <div class="wa-flank zoom-link font-size-large">
+                    <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
+                  <div class="wa-flank ">
+                      <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}/en-us/view/webinar/smart-aquaculture-webinar" variant="neutral">
+                        <i class="fa-duotone fa-regular fa-video"></i>
+                        Learn more
+                      </wa-button>
+                      <div>
+                        <div class="font-size-x-small">
+                          Monday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Tuesday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Thursday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Friday 1:30 PM Eastern US time
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </wa-card>
+              </div>
+            </div>
+          </wa-card>
+
+          <wa-card with-header class="summary-wrapper">
+            <div slot="header" class="main-content ">
+              <h1 id="whats-web-awesome">
                 What is the {{ result.name }}?
-              </h2>
+              </h1>
               <p>
                 Learn how to deploy open source smart device microservices to the cloud and try out your own secure IoT smart platform with built-in security. 
               </p>
+            </div>
 
+            <div class="main-content ">
               <div class="wa-stack ">
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-code"></i>
+                    <i class="fa-duotone fa-regular fa-code"></i>
                     <h3>
                       Modern development tools
                     </h3>
@@ -162,7 +216,7 @@ wa-button::part(base), wa-details::part(base) {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
                       Cloud-native microservices
                     </h3>
@@ -175,7 +229,7 @@ wa-button::part(base), wa-details::part(base) {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
                       Cloud-native microservices
                     </h3>
@@ -188,7 +242,7 @@ wa-button::part(base), wa-details::part(base) {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
                       Manage cloud secrets
                     </h3>
@@ -200,7 +254,7 @@ wa-button::part(base), wa-details::part(base) {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
                       Configure relational databases
                     </h3>
@@ -212,7 +266,7 @@ wa-button::part(base), wa-details::part(base) {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
                       Configure fine-grain authorization to data
                     </h3>
@@ -224,7 +278,7 @@ wa-button::part(base), wa-details::part(base) {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
                     <h3>
                       Connect it all together by deploying a complete data-driven website
                     </h3>

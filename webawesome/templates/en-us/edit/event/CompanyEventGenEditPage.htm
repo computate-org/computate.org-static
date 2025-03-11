@@ -269,7 +269,7 @@
               <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all events
             </wa-button>
-            <h1 class="Page_title"><i class="fa-duotone fa-solid fa-map-location-dot"></i> {{ result.title | e }}</h1>
+            <h1 class="Page_title"><i class="fa-duotone fa-regular fa-map-location-dot"></i> {{ result.title | e }}</h1>
           </div>
           <div class="margin-block">
           </div>
@@ -281,7 +281,7 @@
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyEventPage %}
-        <div class="main-content">
+        <div>
 {% if resultCount == 0 %}
         {% if varsFqCount > 0 %}
         <wa-tooltip for="return-to-CompanyEvent">back to all events</wa-tooltip>
@@ -291,7 +291,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-duotone fa-solid fa-map-location-dot"></i> <span>events</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-map-location-dot"></i> <span>events</span></h1>
 {% include en-us/search/event/CompanyEventSearchButtons.htm %}
 {% include en-us/search/event/CompanyEventSearchForm.htm %}
         <h2>

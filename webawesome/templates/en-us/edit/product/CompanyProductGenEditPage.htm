@@ -187,7 +187,7 @@
               <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all products
             </wa-button>
-            <h1 class="Page_title"><i class="fa-regular fa-conveyor-belt"></i> {{ result.title | e }}</h1>
+            <h1 class="Page_title"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> {{ result.title | e }}</h1>
           </div>
           <div class="margin-block">
           </div>
@@ -199,7 +199,7 @@
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyProductPage %}
-        <div class="main-content">
+        <div>
 {% if resultCount == 0 %}
         {% if varsFqCount > 0 %}
         <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip>
@@ -209,7 +209,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-regular fa-conveyor-belt"></i> <span>products</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>products</span></h1>
 {% include en-us/search/product/CompanyProductSearchButtons.htm %}
 {% include en-us/search/product/CompanyProductSearchForm.htm %}
         <h2>

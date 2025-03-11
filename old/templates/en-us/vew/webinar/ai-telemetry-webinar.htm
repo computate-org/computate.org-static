@@ -26,7 +26,7 @@ wa-button, wa-details {
 
           <wa-card class="pink-purple-background ">
             <div class="wa-flank">
-              <i class="fa-duotone fa-solid fa-video fa-2x "></i>
+              <i class="fa-duotone fa-regular fa-video fa-2x "></i>
               <h1>{{ result.name }}</h1>
             </div>
             <h2 class="brand-font text-center">
@@ -39,7 +39,7 @@ wa-button, wa-details {
 
           <wa-card with-header>
             <div slot="header" class="wa-flank">
-              <i class="fa-duotone fa-solid fa-video fa-2x "></i>
+              <i class="fa-duotone fa-regular fa-video fa-2x "></i>
               <h3>
                 Watch the AI Telemetry webinar
               </h3>
@@ -53,28 +53,28 @@ wa-button, wa-details {
                 </p>
               </div>
               <h3 class="brand-font">
-                The {{ name }} series will occur live weekdays from Sep 2, 2024 — Feb 28, 2025. 
+                The {{ result.name }} series will occur live weekdays from Sep 2, 2024 — Feb 28, 2025. 
               </h3>
               <div id="webinar-calendar" class="wa-stack ">
 
                 <div class="wa-flank zoom-link font-size-large">
-                  <i class="fa-duotone fa-solid fa-earth-americas fa-xl"></i>
+                  <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
                   <div class="wa-flank ">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
-                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlAmericas }}" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                    <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ result.webinarUrlAmericas }}" variant="neutral">
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       Open Zoom
                     </wa-button>
                     {% else %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       See below how to get access
                     </wa-button>
                     {% endif %}
                     {% else %}
                     <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
-                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
@@ -92,23 +92,23 @@ wa-button, wa-details {
                 <wa-divider></wa-divider>
 
                 <div class="wa-flank wa-outlined zoom-link font-size-large">
-                  <i class="fa-duotone fa-solid fa-earth-europe fa-xl"></i>
+                  <i class="fa-duotone fa-regular fa-earth-europe fa-xl"></i>
                   <div class="wa-flank">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlEmea }}" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       Open Zoom
                     </wa-button>
                     {% else %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       See below how to get access
                     </wa-button>
                     {% endif %}
                     {% else %}
                     <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
-                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
@@ -126,23 +126,23 @@ wa-button, wa-details {
                 <wa-divider></wa-divider>
 
                 <div class="wa-flank zoom-link font-size-large">
-                  <i class="fa-duotone fa-solid fa-earth-asia fa-xl"></i>
+                  <i class="fa-duotone fa-regular fa-earth-asia fa-xl"></i>
                   <div class="wa-flank">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlApac }}" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       Open Zoom
                     </wa-button>
                     {% else %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       See below how to get access
                     </wa-button>
                     {% endif %}
                     {% else %}
                     <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
-                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
@@ -160,23 +160,23 @@ wa-button, wa-details {
                 <wa-divider></wa-divider>
 
                 <div class="wa-flank zoom-link font-size-large">
-                  <i class="fa-duotone fa-solid fa-earth-europe fa-xl"></i>
+                  <i class="fa-duotone fa-regular fa-earth-europe fa-xl"></i>
                   <div class="wa-flank">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlEmea }}" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       Open Zoom
                     </wa-button>
                     {% else %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       See below how to get access
                     </wa-button>
                     {% endif %}
                     {% else %}
                     <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
-                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
@@ -194,23 +194,23 @@ wa-button, wa-details {
                 <wa-divider></wa-divider>
 
                 <div class="wa-flank zoom-link font-size-large">
-                  <i class="fa-duotone fa-solid fa-earth-asia fa-xl"></i>
+                  <i class="fa-duotone fa-regular fa-earth-asia fa-xl"></i>
                   <div class="wa-flank">
                     {% if userName is defined %}
                     {% if scope is defined and scope == "GET" %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ CompanyWebinar.webinarUrlApac }}" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       Open Zoom
                     </wa-button>
                     {% else %}
                     <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="#how-to-get-access" variant="neutral">
-                      <i class="fa-duotone fa-solid fa-video"></i>
+                      <i class="fa-duotone fa-regular fa-video"></i>
                       See below how to get access
                     </wa-button>
                     {% endif %}
                     {% else %}
                     <wa-button id="order-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
-                      <i class="fa-duotone fa-right-to-bracket"></i>
+                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
                       Log in with GitHub
                     </wa-button>
                     {% endif %}
@@ -240,7 +240,7 @@ wa-button, wa-details {
           <wa-card id="how-to-get-access" class="purple-blue-background background border-radius-x-large">
             <div class="intro-content">
               <h2 class="brand-font">
-                <i class="fa-solid fa-cloud fa-2xl"></i> Mass Open Cloud — if you are a university researcher and part of the Red Hat Collaboratory, send me an MOC Slack message @computate and I'll get you connected. 
+                <i class="fa-duotone fa-regular fa-cloud fa-2xl"></i> Mass Open Cloud — if you are a university researcher and part of the Red Hat Collaboratory, send me an MOC Slack message @computate and I'll get you connected. 
               </h2>
             </div>
           </wa-card>
@@ -248,7 +248,7 @@ wa-button, wa-details {
           <wa-card class="pink-purple-background background border-radius-x-large">
             <div class="intro-content">
               <h2 class="brand-font">
-                <i class="fa-solid fa-computer-classic fa-2xl"></i> Computaters — if you are an open source developer who has purchased one of my products, you also have access to the webinar! 
+                <i class="fa-duotone fa-regular fa-computer-classic fa-2xl"></i> Computaters — if you are an open source developer who has purchased one of my products, you also have access to the webinar! 
                 Just click the link above to log in and get the Zoom link to the webinar. 
               </h2>
             </div>
@@ -296,7 +296,7 @@ wa-button, wa-details {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-microchip"></i>
+                    <i class="fa-duotone fa-regular fa-microchip"></i>
                     <h3>
                       GPU Utilization
                     </h3>
@@ -308,7 +308,7 @@ wa-button, wa-details {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-shield-check"></i>
+                    <i class="fa-duotone fa-regular fa-shield-check"></i>
                     <h3>
                       Access Control
                     </h3>
@@ -320,7 +320,7 @@ wa-button, wa-details {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-server"></i>
+                    <i class="fa-duotone fa-regular fa-server"></i>
                     <h3>
                       Where it's built
                     </h3>
@@ -332,7 +332,7 @@ wa-button, wa-details {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-keyboard"></i>
+                    <i class="fa-duotone fa-regular fa-keyboard"></i>
                     <h3>
                       Development Team
                     </h3>
@@ -344,7 +344,7 @@ wa-button, wa-details {
 
                 <div>
                   <div class="wa-flank ">
-                    <i class="fa-solid fa-code"></i>
+                    <i class="fa-duotone fa-regular fa-code"></i>
                     <h3>
                       Where's the code?
                     </h3>

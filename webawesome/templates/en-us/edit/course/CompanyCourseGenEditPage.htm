@@ -187,7 +187,7 @@
               <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all courses
             </wa-button>
-            <h1 class="Page_title"><i class="fa-regular fa-notebook"></i> {{ result.title | e }}</h1>
+            <h1 class="Page_title"><i class="fa-duotone fa-regular fa-notebook"></i> {{ result.title | e }}</h1>
           </div>
           <div class="margin-block">
           </div>
@@ -199,7 +199,7 @@
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyCoursePage %}
-        <div class="main-content">
+        <div>
 {% if resultCount == 0 %}
         {% if varsFqCount > 0 %}
         <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip>
@@ -209,7 +209,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-regular fa-notebook"></i> <span>courses</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-notebook"></i> <span>courses</span></h1>
 {% include en-us/search/course/CompanyCourseSearchButtons.htm %}
 {% include en-us/search/course/CompanyCourseSearchForm.htm %}
         <h2>

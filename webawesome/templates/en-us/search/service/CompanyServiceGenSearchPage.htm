@@ -161,7 +161,7 @@
 {{ super() }}
 {%- block htmBodyStartCompanyServicePage %}
 {% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-regular fa-conveyor-belt"></i> <span>services</span></a></h1>
+          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>services</span></a></h1>
 {%- include en-us/search/service/CompanyServiceSuggestedSearch.htm %}
 {% include en-us/search/service/CompanyServiceSearchButtons.htm %}
 {% include en-us/search/service/CompanyServiceSearchForm.htm %}
@@ -180,7 +180,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-regular fa-conveyor-belt"></i> <span>services</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>services</span></h1>
 {% include en-us/search/service/CompanyServiceSearchButtons.htm %}
 {% include en-us/search/service/CompanyServiceSearchForm.htm %}
         <h2>
@@ -245,7 +245,7 @@
             {% for item in listCompanyService%}
             <div>
               <a href="{{ item.displayPage }}">
-                <i class="fa-regular fa-conveyor-belt"></i>
+                <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
               {{ item.name }}
               </a>
               <a href="{{ item.displayPage }}">

@@ -181,7 +181,7 @@
 {{ super() }}
 {%- block htmBodyStartUseCasePage %}
 {% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-solid fa-file-invoice"></i> <span>use cases</span></a></h1>
+          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-file-invoice"></i> <span>use cases</span></a></h1>
 {%- include en-us/search/use-case/UseCaseSuggestedSearch.htm %}
 {% include en-us/search/use-case/UseCaseSearchButtons.htm %}
 {% include en-us/search/use-case/UseCaseSearchForm.htm %}
@@ -200,7 +200,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-solid fa-file-invoice"></i> <span>use cases</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-file-invoice"></i> <span>use cases</span></h1>
 {% include en-us/search/use-case/UseCaseSearchButtons.htm %}
 {% include en-us/search/use-case/UseCaseSearchForm.htm %}
         <h2>
@@ -278,7 +278,7 @@
             {% for item in listUseCase%}
             <div>
               <a href="{{ item.displayPage }}">
-                <i class="fa-solid fa-file-invoice"></i>
+                <i class="fa-duotone fa-regular fa-file-invoice"></i>
               {{ item.name }}
               </a>
               <a href="{{ item.displayPage }}">

@@ -157,7 +157,7 @@
               <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all site users
             </wa-button>
-            <h1 class="Page_title"><i class="fa-duotone fa-solid fa-user-gear"></i> {{ result.title | e }}</h1>
+            <h1 class="Page_title"><i class="fa-duotone fa-regular fa-user-gear"></i> {{ result.title | e }}</h1>
           </div>
           <div class="margin-block">
           </div>
@@ -169,7 +169,7 @@
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleSiteUserPage %}
-        <div class="main-content">
+        <div>
 {% if resultCount == 0 %}
         {% if varsFqCount > 0 %}
         <wa-tooltip for="return-to-SiteUser">back to all site users</wa-tooltip>
@@ -179,7 +179,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-duotone fa-solid fa-user-gear"></i> <span>site users</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-user-gear"></i> <span>site users</span></h1>
 {% include en-us/search/user/SiteUserSearchButtons.htm %}
 {% include en-us/search/user/SiteUserSearchForm.htm %}
         <h2>

@@ -181,7 +181,7 @@
 {{ super() }}
 {%- block htmBodyStartCompanyProductPage %}
 {% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-regular fa-conveyor-belt"></i> <span>products</span></a></h1>
+          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>products</span></a></h1>
 {%- include en-us/search/product/CompanyProductSuggestedSearch.htm %}
 {% include en-us/search/product/CompanyProductSearchButtons.htm %}
 {% include en-us/search/product/CompanyProductSearchForm.htm %}
@@ -200,7 +200,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-regular fa-conveyor-belt"></i> <span>products</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>products</span></h1>
 {% include en-us/search/product/CompanyProductSearchButtons.htm %}
 {% include en-us/search/product/CompanyProductSearchForm.htm %}
         <h2>
@@ -265,7 +265,7 @@
             {% for item in listCompanyProduct%}
             <div>
               <a href="{{ item.displayPage }}">
-                <i class="fa-regular fa-conveyor-belt"></i>
+                <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
               {{ item.name }}
               </a>
               <a href="{{ item.displayPage }}">

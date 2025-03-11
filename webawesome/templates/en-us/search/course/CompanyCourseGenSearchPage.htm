@@ -181,7 +181,7 @@
 {{ super() }}
 {%- block htmBodyStartCompanyCoursePage %}
 {% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-regular fa-notebook"></i> <span>courses</span></a></h1>
+          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-notebook"></i> <span>courses</span></a></h1>
 {%- include en-us/search/course/CompanyCourseSuggestedSearch.htm %}
 {% include en-us/search/course/CompanyCourseSearchButtons.htm %}
 {% include en-us/search/course/CompanyCourseSearchForm.htm %}
@@ -200,7 +200,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-regular fa-notebook"></i> <span>courses</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-notebook"></i> <span>courses</span></h1>
 {% include en-us/search/course/CompanyCourseSearchButtons.htm %}
 {% include en-us/search/course/CompanyCourseSearchForm.htm %}
         <h2>
@@ -265,7 +265,7 @@
             {% for item in listCompanyCourse%}
             <div>
               <a href="{{ item.displayPage }}">
-                <i class="fa-regular fa-notebook"></i>
+                <i class="fa-duotone fa-regular fa-notebook"></i>
               {{ item.name }}
               </a>
               <a href="{{ item.displayPage }}">

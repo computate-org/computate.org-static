@@ -181,7 +181,7 @@
 {{ super() }}
 {%- block htmBodyStartCompanyWebinarPage %}
 {% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-regular fa-video"></i> <span>webinars</span></a></h1>
+          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-video"></i> <span>webinars</span></a></h1>
 {%- include en-us/search/webinar/CompanyWebinarSuggestedSearch.htm %}
 {% include en-us/search/webinar/CompanyWebinarSearchButtons.htm %}
 {% include en-us/search/webinar/CompanyWebinarSearchForm.htm %}
@@ -200,7 +200,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-regular fa-video"></i> <span>webinars</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-video"></i> <span>webinars</span></h1>
 {% include en-us/search/webinar/CompanyWebinarSearchButtons.htm %}
 {% include en-us/search/webinar/CompanyWebinarSearchForm.htm %}
         <h2>
@@ -279,7 +279,7 @@
             {% for item in listCompanyWebinar%}
             <div>
               <a href="{{ item.displayPage }}">
-                <i class="fa-regular fa-video"></i>
+                <i class="fa-duotone fa-regular fa-video"></i>
               {{ item.name }}
               </a>
               <a href="{{ item.displayPage }}">
@@ -294,7 +294,7 @@
                   name="setJoinUrl"
                   href="{{ item.joinUrl | e }}"
                   >
-                <i class="fa-solid fa-video"></i>
+                <i class="fa-duotone fa-regular fa-video"></i>
                 Join the webinar
               </wa-button>
               <a href="{{ item.displayPage }}">

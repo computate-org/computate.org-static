@@ -114,7 +114,7 @@
                 </div>
                 <div>
                   <wa-button id="order-button" class="gradient-button orange-blue-background" variant="neutral" href="{{ SITE_BASE_URL }}/en-us/course/cloud-sandbox-powered-by-fiware">
-                    <i class="fa-solid fa-person-running-fast"></i>
+                    <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                     Get started
                   </wa-button>
                 </div>
@@ -125,7 +125,7 @@
           <wa-card class="pink-purple-background wa-stack ">
             <div class="wa-stack main-content ">
               <div class="wa-flank">
-                <i class="fa-duotone fa-solid fa-conveyor-belt fa-5x "></i>
+                <i class="fa-duotone fa-regular fa-conveyor-belt fa-5x "></i>
                 <h1>
                   Latest available product: 
                 </h1>
@@ -137,7 +137,7 @@
               <wa-card>
                 <div>
                   <wa-button pill id="order-button" size="large" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}/en-us/product/computate-smart-cloud-deployer" variant="neutral">
-                    <i class="fa-solid fa-person-running-fast"></i>
+                    <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                     Learn more
                   </wa-button>
                 </div>
@@ -145,35 +145,54 @@
             </div>
           </wa-card>
 
-          <wa-card class="red-pink-background ">
-            <div class="wa-stack main-content ">
-              <div class="wa-flank ">
-                <i class="fa-duotone fa-solid fa-video fa-2x "></i>
-                <h1>
-                  AI Telemetry Community Webinar
-                </h1>
+          <wa-card class="purple-blue-background ">
+            <div class="main-content ">
+              <div class="wa-flank">
+                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
+                <h2>
+                  Watch the free Smart Aquaculture webinar on Zoom or live streaming to Youtube. 
+                </h2>
               </div>
-              <h2 class="brand-font">
-                Come learn how to Computate as we build a brand new custom data-driven platform 
-                for AI/ML GPU Telemetry with 
-                <i class="fa-brands fa-redhat fa-2xl fa-red" style="color: red; "></i>
-                Red Hat Research in the New England Research Cloud! 
-              </h2>
-              <h3 class="brand-font">
-                The AI Telemetry Community Webinar series will occur live weekdays from Sep 2, 2024 — Feb 28, 2025, 
-                2 sessions in APAC time, 2 sessions in EMEA time, and 1 session in Americas time. 
-              </h3>
-
-              <wa-card>
-                <div>
-                  <wa-button pill id="order-button" size="large" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}/en-us/webinar/ai-telemetry-webinar" variant="neutral">
-                    <i class="fa-solid fa-person-running-fast"></i>
-                    Learn more
-                  </wa-button>
+              <div class="wa-stack ">
+                <div class="wa-flank">
+                  <p>
+                    Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
+                    then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
+                  </p>
                 </div>
-              </wa-card>
+                <h3 class="brand-font">
+                  The {{ result.name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 1:30 pm Eastern US time. 
+                </h3>
+                <wa-card id="webinar-calendar" class="wa-stack ">
 
+                  <div class="wa-flank zoom-link font-size-large">
+                    <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
+                    <div class="wa-flank ">
+                      <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}/en-us/view/webinar/smart-aquaculture-webinar" variant="neutral">
+                        <i class="fa-duotone fa-regular fa-video"></i>
+                        Learn more
+                      </wa-button>
+                      <div>
+                        <div class="font-size-x-small">
+                          Monday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Tuesday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Thursday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Friday 1:30 PM Eastern US time
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </wa-card>
+              </div>
             </div>
           </wa-card>
+
         </div>
 {% endblock %}

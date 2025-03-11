@@ -167,7 +167,7 @@
               <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all services
             </wa-button>
-            <h1 class="Page_title"><i class="fa-regular fa-conveyor-belt"></i> {{ result.title | e }}</h1>
+            <h1 class="Page_title"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> {{ result.title | e }}</h1>
           </div>
           <div class="margin-block">
           </div>
@@ -179,7 +179,7 @@
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyServicePage %}
-        <div class="main-content">
+        <div>
 {% if resultCount == 0 %}
         {% if varsFqCount > 0 %}
         <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip>
@@ -189,7 +189,7 @@
           </wa-button>
         </wa-tooltip>
         {% endif %}
-        <h1><i class="fa-regular fa-conveyor-belt"></i> <span>services</span></h1>
+        <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>services</span></h1>
 {% include en-us/search/service/CompanyServiceSearchButtons.htm %}
 {% include en-us/search/service/CompanyServiceSearchForm.htm %}
         <h2>
