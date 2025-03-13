@@ -2,6 +2,48 @@
 {% block htmTitlePageLayout %}
     <title>computate.org</title>
 {% endblock %}
+{%- block htmScriptsPageLayout %}
+{{ super() }}
+    <script type="module">
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+      ]).then(() => {
+
+        Promise.all([
+            queryWebinars()
+            ]);
+      });
+
+      async function queryWebinars() {
+        var query = Object.assign({ query: 'sum(gpu_operator_gpu_nodes_total)' });
+        var response = await fetch( '/en-us/api/webinar', { method: 'GET' });
+        if(response.ok) {
+          response.json().then(function(responseJson) {
+            var result = responseJson.list[0];
+            var nextWebinarDateStr = result.nextWebinar.substring(0, result.nextWebinar.indexOf('['));
+            var nextWebinarZone = result.nextWebinar.substring(result.nextWebinar.indexOf('[') + 1, result.nextWebinar.indexOf(']'));
+            const nextWebinarOptions = {
+              timeZone: nextWebinarZone,
+              year: 'numeric',
+              month: 'numeric',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+              second: 'numeric',
+            };
+            var nextWebinarFormatter = new Intl.DateTimeFormat('en-US', nextWebinarOptions);
+            var nextWebinar = nextWebinarFormatter.format(new Date(nextWebinarDateStr));
+            document.querySelector('#webinar-button').setAttribute('href', result.webinarUrlAmericas);
+            document.querySelector('#webinar-relative-time').setAttribute('date', nextWebinar);
+            document.querySelector('#webinar-format-time').setAttribute('date', nextWebinar);
+          });
+        } else {
+          throw new Error(`Failed to query GPU nodes total: ${response.status}`);
+        }
+      }
+    </script>
+{%- endblock htmScriptsPageLayout %}
 {% block htmBodyMiddlePageLayout %}
         <div class="wa-stack ">
 
@@ -50,6 +92,67 @@
               </a>
             </wa-carousel-item>
           </wa-carousel>
+
+          <wa-card class="purple-blue-background ">
+            <div class="main-content ">
+              <div class="wa-flank">
+                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
+                <h2>
+                  Watch the free Smart Aquaculture webinar on Zoom or live streaming to Youtube. 
+                </h2>
+              </div>
+              <div class="wa-stack ">
+                <div class="wa-flank">
+                  <p>
+                    Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
+                    then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
+                  </p>
+                </div>
+                <wa-card>
+                  <div class="wa-flank ">
+                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
+                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                      Join the next webinar
+                    </wa-button>
+                    <div class="wa-flank ">
+                      <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
+                      <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" second="numeric" time-zone-name="short" date=""></wa-format-date>
+                    </div>
+                  </div>
+                </wa-card>
+                <h3 class="brand-font">
+                  The {{ result.name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 1:30 pm Eastern US time. 
+                </h3>
+                <wa-card id="webinar-calendar" class="wa-stack ">
+
+                  <div class="wa-flank zoom-link font-size-large">
+                    <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
+                    <div class="wa-flank ">
+                      <wa-button id="webinar-button" variant="brand" href="{{ SITE_BASE_URL }}/en-us/view/webinar/smart-aquaculture-webinar">
+                        <i class="fa-duotone fa-regular fa-video"></i>
+                        Learn more
+                      </wa-button>
+                      <div>
+                        <div class="font-size-x-small">
+                          Monday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Tuesday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Thursday 1:30 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Friday 1:30 PM Eastern US time
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </wa-card>
+              </div>
+            </div>
+          </wa-card>
 
           <wa-card class="main-content ">
             <div>
@@ -132,65 +235,16 @@
               </div>
               <h2>
                 Learn how to deploy open source smart device microservices to the cloud
-                with the <a href="{{ SITE_BASE_URL }}/en-us/product/computate-smart-cloud-deployer">Computate Smart Cloud Deployer</a> and <a href="{{ SITE_BASE_URL }}/en-us/product/computate-smart-website-builder">Computate Smart Website Builder</a>. 
+                with the <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-cloud-deployer">Computate Smart Cloud Deployer</a> and <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-website-builder">Computate Smart Website Builder</a>. 
               </h2>
               <wa-card>
                 <div>
-                  <wa-button pill id="order-button" size="large" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}/en-us/product/computate-smart-cloud-deployer" variant="neutral">
+                  <wa-button pill id="order-button" size="large" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-cloud-deployer" variant="neutral">
                     <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                     Learn more
                   </wa-button>
                 </div>
               </wa-card>
-            </div>
-          </wa-card>
-
-          <wa-card class="purple-blue-background ">
-            <div class="main-content ">
-              <div class="wa-flank">
-                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
-                <h2>
-                  Watch the free Smart Aquaculture webinar on Zoom or live streaming to Youtube. 
-                </h2>
-              </div>
-              <div class="wa-stack ">
-                <div class="wa-flank">
-                  <p>
-                    Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
-                    then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
-                  </p>
-                </div>
-                <h3 class="brand-font">
-                  The {{ result.name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 1:30 pm Eastern US time. 
-                </h3>
-                <wa-card id="webinar-calendar" class="wa-stack ">
-
-                  <div class="wa-flank zoom-link font-size-large">
-                    <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
-                    <div class="wa-flank ">
-                      <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}/en-us/view/webinar/smart-aquaculture-webinar" variant="neutral">
-                        <i class="fa-duotone fa-regular fa-video"></i>
-                        Learn more
-                      </wa-button>
-                      <div>
-                        <div class="font-size-x-small">
-                          Monday 1:30 PM Eastern US time
-                        </div>
-                        <div class="font-size-x-small">
-                          Tuesday 1:30 PM Eastern US time
-                        </div>
-                        <div class="font-size-x-small">
-                          Thursday 1:30 PM Eastern US time
-                        </div>
-                        <div class="font-size-x-small">
-                          Friday 1:30 PM Eastern US time
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </wa-card>
-              </div>
             </div>
           </wa-card>
 

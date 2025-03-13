@@ -8,7 +8,7 @@
 {% endblock htmStylePageLayout %}
 {% block htmBodyMiddlePageLayout %}
 
-        <div class="main-content">
+        <div class="wa-stack purple-blue-background-headers ">
           <wa-card>
             <h1>{{ result.name }}</h1>
             <h2>Author: {{ result.authorName }}</h2>
@@ -60,7 +60,9 @@
               register entities with the FIWARE Context Broker, 
               and visualize their data in a Computate platform. 
             </p>
+          </wa-card>
 
+          <wa-card>
             <h2>Smart Aquaculture</h2>
             <p>
               The Smart Aquaculture use case is about building your own secure IoT smart platform for sustainable fisheries with generative AI, zero-trust access control, and interactive dashboards. 
@@ -89,7 +91,117 @@
                 FIWARE Context Broker for open source IoT edge device standards
               </li>
             </ul>
+          </wa-card>
 
+          <wa-card with-header>
+            <div slot="header" class="main-content wa-stack ">
+              <div>
+                <h2 class="brand-font anchor-heading" id="whats-web-awesome">
+                  What is the {{ result.name }}?
+                </h2>
+                <p>
+                  Learn how to deploy open source smart device microservices to the cloud and try out your own secure IoT smart platform, including FIWARE Smart Data Models, and Context Broker, with built-in security provided by Keycloak fine-grained resource permissions. 
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <div class="wa-grid orange-blue-background-headers " style="--min-column-size: 20rem; ">
+
+                <wa-card with-image with-header>
+                  <div slot="header" variant="brand" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-code fa-xl"></i>
+                    <div>
+                      Modern development tools
+                    </div>
+                  </div>
+                  <img slot="image" src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/png/smart-aquaculture-vscode-workbench.png"/>
+                  <p>
+                    Use the latest cloud deployment tools like Jupyter, Ansible, Helm, and OpenShift command line interface from your browser, 
+                    and start deploying microservices to the cloud like a modern cloud developer. 
+                  </p>
+                </wa-card>
+
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-clouds fa-xl"></i>
+                    <div>
+                      Cloud-native microservices
+                    </div>
+                  </div>
+                  <p>
+                    Deploy modern open source microservices including 
+                    Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications. 
+                  </p>
+                </wa-card>
+
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-kit fa-fiware fa-xl"></i>
+                    <div>
+                      FIWARE IoT services and Smart Data Models
+                    </div>
+                  </div>
+                  <p>
+                    Connect your databases and message broker to a FIWARE Context Broker 
+                    — utilize NGSI-LD standards and Smart Data Models to manage your own smart device data. 
+                  </p>
+                </wa-card>
+
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-cloud-check fa-xl"></i>
+                    <div>
+                      Manage cloud secrets
+                    </div>
+                  </div>
+                  <p>
+                    Learn how to configure secrets in the cloud that allow applications to connect to each other securely. 
+                  </p>
+                </wa-card>
+
+                <wa-card with-header with-image>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-database fa-xl"></i>
+                    <div>
+                      Configure relational databases
+                    </div>
+                  </div>
+                  <img slot="image" src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/png/smartaquaculture-database-tables.png"/>
+                  <p>
+                    Set up access to a new database for your applications. 
+                  </p>
+                </wa-card>
+
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-user fa-xl"></i>
+                    <div>
+                      Configure fine-grain auth to data
+                    </div>
+                  </div>
+                  <p>
+                    Create authentication realms, clients, OAuth identity providers, and fine-grain resources, scopes, policies, and permissions to data and dashboards. 
+                  </p>
+                </wa-card>
+
+                <wa-card with-header>
+                  <div slot="header" class="wa-flank wa-heading-l ">
+                    <i class="fa-duotone fa-regular fa-browser fa-xl"></i>
+                    <div>
+                      Deploy a complete data-driven website
+                    </div>
+                  </div>
+                  <p>
+                    Learn how to configure and deploy a custom data-driven website for Smart Aquaculture with smart data models so that you can do it yourself. 
+                  </p>
+                </wa-card>
+
+              </div>
+            </div>
+          </wa-card>
+
+          <wa-card>
             <h2>Getting started building a Smart Aquaculture platform</h2>
             <p>
               To begin working on a use case like Smart Aquaculture, you need to be working in a supported environment. 
