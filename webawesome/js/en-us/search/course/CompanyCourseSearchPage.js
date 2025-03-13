@@ -145,6 +145,15 @@ Promise.all([
           document.querySelector('#pageFacetPivotCompanyCourse_displayPage')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyCourse', event.currentTarget);
           });
+          document.querySelector('#fqCompanyCourse_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyCourse', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyCourse_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyCourse', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyCourse_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyCourse', event.currentTarget);
+          });
           document.querySelector('#fqCompanyCourse_emailTemplate')?.addEventListener('change', (event) => {
             fqChange('CompanyCourse', event.currentTarget);
           });

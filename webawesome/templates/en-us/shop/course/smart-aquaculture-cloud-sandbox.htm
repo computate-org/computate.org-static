@@ -1,8 +1,7 @@
 {% extends "en-us/PageLayout.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}"/>
-    <meta name="result.storeUrl" content="https://store.computate.org/product/{{ result.pageId }}/14"/>
-    <meta name="result.downloadUri" content="/download/en-us/course/{{ pageId }}"/>
+    <meta name="result.download" content="https://github.com/computate-org/smart-aquaculture-cloud-sandbox/"/>
     <meta name="result.emailTemplate" content="/en-us/email/order-details.htm"/>
     <meta name="result.name" content="Smart Aquaculture Cloud Sandbox"/>
     <meta name="result.description" content="Free course for configuring IoT services and Smart Aquaculture Data Models with a FIWARE Context Broker, and other event-driven microservices in a Red Hat OpenShift Developer Sandbox"/>
@@ -50,37 +49,13 @@ wa-card.orange-blue-background {
                     with the {{ result.name }} course
                   </div>
                   <wa-card>
-                    {% if userName is defined %}
-                    {% if scope is defined and scope == "GET" %}
                     <div class="wa-stack ">
-                      <div>Download your copy of the {{ result.name }}! </div>
-                      <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ SITE_BASE_URL }}{{ result.downloadUri }}" variant="neutral">
+                      <div>Download your copy of the {{ result.name }}, it's available on GitHub! </div>
+                      <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ result.download }}" variant="neutral">
                         <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                         Download
                       </wa-button>
                     </div>
-                    {% else %}
-                    <div class="wa-stack ">
-                      <div>You will use your GitHub username shown in the menu during checkout. </div>
-                      <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ result.storeUrl }}" variant="neutral">
-                        <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                        Order here
-                      </wa-button>
-                    </div>
-                    {% endif %}
-                    {% else %}
-                    <div class="wa-stack ">
-                      <div>
-                        Want to get started with the free {{ result.name }} course? Start by logging into computate.org with your GitHub account. 
-                      </div>
-                      <div>
-                        <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
-                          <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
-                          Log in with GitHub
-                        </wa-button>
-                      </div>
-                    </div>
-                    {% endif %}
                   </wa-card>
                 </div>
               </div>
@@ -208,38 +183,11 @@ wa-card.orange-blue-background {
               <div class="wa-flank ">
                 <i class="fa-kit fa-fiware fa-5x "></i>
                 <div class="wa-stack ">
-                  {% if userName is defined %}
-                  {% if scope is defined and scope == "GET" %}
-                  <div>
-                    <div>Download your copy of the {{ result.name }}! </div>
-                    <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ SITE_BASE_URL }}{{ result.downloadUri }}" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                      Download
-                    </wa-button>
-                  </div>
-                  {% else %}
-                  <div>
-                    <div>You will use your GitHub username shown in the menu during checkout. </div>
-                    <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ result.storeUrl }}" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                      Order here
-                    </wa-button>
-                  </div>
-                  {% endif %}
-                  {% else %}
-                  <div>
-                    Want to get started with the {{ result.name }} course? 
-                  </div>
-                  <div>
-                    Start by logging into computate.org with your GitHub account. 
-                  </div>
-                  <div>
-                    <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ SITE_BASE_URL }}{{ result.userUri }}" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
-                      Log in with GitHub
-                    </wa-button>
-                  </div>
-                  {% endif %}
+                  <div>Download your copy of the {{ result.name }}, it's available on GitHub! </div>
+                  <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ result.download }}" variant="neutral">
+                    <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+                    Download
+                  </wa-button>
                 </div>
               </div>
             </div>
