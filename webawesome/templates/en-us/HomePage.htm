@@ -16,7 +16,7 @@
       });
 
       async function queryWebinars() {
-        var query = Object.assign({ query: 'sum(gpu_operator_gpu_nodes_total)' });
+        var query = Object.assign({ query: '' });
         var response = await fetch( '/en-us/api/webinar', { method: 'GET' });
         if(response.ok) {
           response.json().then(function(responseJson) {
@@ -121,7 +121,7 @@
                   </div>
                 </wa-card>
                 <h3 class="brand-font">
-                  The {{ result.name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 1:30 pm Eastern US time. 
+                  The {{ result.name }} series will occur live on Monday, Tuesday, Wednesday, and Thursday at 4:00 PM Eastern US time. 
                 </h3>
                 <wa-card id="webinar-calendar" class="wa-stack ">
 
@@ -134,22 +134,35 @@
                       </wa-button>
                       <div>
                         <div class="font-size-x-small">
-                          Monday 1:30 PM Eastern US time
+                          Monday 4:00 PM Eastern US time
                         </div>
                         <div class="font-size-x-small">
-                          Tuesday 1:30 PM Eastern US time
+                          Tuesday 4:00 PM Eastern US time
                         </div>
                         <div class="font-size-x-small">
-                          Thursday 1:30 PM Eastern US time
+                          Thursday 4:00 PM Eastern US time
                         </div>
                         <div class="font-size-x-small">
-                          Friday 1:30 PM Eastern US time
+                          Friday 4:00 PM Eastern US time
                         </div>
                       </div>
                     </div>
                   </div>
 
                 </wa-card>
+
+                <div>
+                  You can learn more about the use case for Computate open source software for Smart Aquaculture. 
+                </div>
+                <wa-card>
+                  <div>
+                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ SITE_BASE_URL }}/en-us/shop/use-case/smart-aquaculture-use-case">
+                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                      Read the use case
+                    </wa-button>
+                  </div>
+                </wa-card>
+              </div>
               </div>
             </div>
           </wa-card>
