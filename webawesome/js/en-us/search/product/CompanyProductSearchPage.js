@@ -145,6 +145,15 @@ Promise.all([
           document.querySelector('#pageFacetPivotCompanyProduct_displayPage')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyProduct', event.currentTarget);
           });
+          document.querySelector('#fqCompanyProduct_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
           document.querySelector('#fqCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
             fqChange('CompanyProduct', event.currentTarget);
           });

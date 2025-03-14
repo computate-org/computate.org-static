@@ -299,6 +299,18 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeEditPage != null && removeEditPage !== '')
     vals['removeEditPage'] = removeEditPage;
 
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value === 'true';
+  var setDownload = removeDownload ? null : $formValues.querySelector('.setDownload')?.value;
+  var addDownload = $formValues.querySelector('.addDownload')?.value;
+  if(removeDownload || setDownload != null && setDownload !== '')
+    vals['setDownload'] = setDownload;
+  if(addDownload != null && addDownload !== '')
+    vals['addDownload'] = addDownload;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value;
+  if(removeDownload != null && removeDownload !== '')
+    vals['removeDownload'] = removeDownload;
+
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   var removeSolrId = $formValues.querySelector('.removeSolrId')?.value === 'true';
   var setSolrId = removeSolrId ? null : $formValues.querySelector('.setSolrId')?.value;
@@ -547,6 +559,10 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   if(valueEditPage != null && valueEditPage !== '')
     vals['editPage'] = valueEditPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  if(valueDownload != null && valueDownload !== '')
+    vals['download'] = valueDownload;
 
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   if(valueSolrId != null && valueSolrId !== '')

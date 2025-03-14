@@ -188,6 +188,43 @@ The service description. "
 {%- macro htmDescriptionCompanyServicePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionCompanyServicePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
+{%- macro inputPriceCompanyServicePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_price">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[BigDecimal] price"
+                      label="price"
+                      hint="
+The price of the product per developer. "
+                      id="{{classApiMethodMethod}}_price"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyService inputCompanyService{{pageId}}Price "
+                      name="setPrice"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyService inputCompanyService{{pageId}}Price "
+                      name="setPrice"
+    {%- else %}
+                      class="label-on-left {{classApiMethodMethod}}_price valuePrice classCompanyService inputCompanyService{{pageId}}Price "
+                      name="price"
+    {%- endif %}
+  {%- endif %}
+  {%- if "Page" == classApiMethodMethod %}
+                      value="{{result.price | e }}"
+  {%- endif %}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmPriceCompanyServicePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputPriceCompanyServicePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
 {%- macro inputPageIdCompanyServicePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageId">
@@ -338,6 +375,16 @@ The ID for this page. "
                   {{ htmDescriptionCompanyServicePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
                 {%- endif %}
               {%- endif %}
+
+              {%- if "PATCH" in scopes %}
+                {{ htmPriceCompanyServicePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+              {%- else %}
+                {%- if "GET" in scopes %}
+                  {{ htmPriceCompanyServicePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {%- else %}
+                  {{ htmPriceCompanyServicePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {%- endif %}
+              {%- endif %}
               </div>
             </wa-details>
             <wa-details open class="HtmRow" id="useful-urls">
@@ -439,6 +486,16 @@ The ID for this page. "
                   {{ htmDescriptionCompanyServicePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
                 {%- else %}
                   {{ htmDescriptionCompanyServicePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {%- endif %}
+              {%- endif %}
+
+              {%- if "PATCH" in scopes %}
+                {{ htmPriceCompanyServicePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+              {%- else %}
+                {%- if "GET" in scopes %}
+                  {{ htmPriceCompanyServicePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {%- else %}
+                  {{ htmPriceCompanyServicePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
                 {%- endif %}
               {%- endif %}
               </div>
@@ -563,6 +620,16 @@ The ID for this page. "
                   {{ htmDescriptionCompanyServicePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
                 {%- else %}
                   {{ htmDescriptionCompanyServicePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {%- endif %}
+              {%- endif %}
+
+              {%- if "PATCH" in scopes %}
+                {{ htmPriceCompanyServicePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+              {%- else %}
+                {%- if "GET" in scopes %}
+                  {{ htmPriceCompanyServicePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {%- else %}
+                  {{ htmPriceCompanyServicePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
                 {%- endif %}
               {%- endif %}
               </div>

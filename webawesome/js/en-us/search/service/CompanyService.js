@@ -41,6 +41,10 @@ function searchCompanyServiceFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
+    var filterPrice = $formFilters.querySelector('.valuePrice')?.value;
+    if(filterPrice != null && filterPrice !== '')
+      filters.push({ name: 'fq', value: 'price:' + filterPrice });
+
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
       filters.push({ name: 'fq', value: 'pageId:' + filterPageId });
@@ -219,6 +223,18 @@ async function patchCompanyService($formFilters, $formValues, target, pageId, su
   if(removeDescription != null && removeDescription !== '')
     vals['removeDescription'] = removeDescription;
 
+  var valuePrice = $formValues.querySelector('.valuePrice')?.value;
+  var removePrice = $formValues.querySelector('.removePrice')?.value === 'true';
+  var setPrice = removePrice ? null : $formValues.querySelector('.setPrice')?.value;
+  var addPrice = $formValues.querySelector('.addPrice')?.value;
+  if(removePrice || setPrice != null && setPrice !== '')
+    vals['setPrice'] = setPrice;
+  if(addPrice != null && addPrice !== '')
+    vals['addPrice'] = addPrice;
+  var removePrice = $formValues.querySelector('.removePrice')?.value;
+  if(removePrice != null && removePrice !== '')
+    vals['removePrice'] = removePrice;
+
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
   var setPageId = removePageId ? null : $formValues.querySelector('.setPageId')?.value;
@@ -267,6 +283,18 @@ async function patchCompanyService($formFilters, $formValues, target, pageId, su
   if(removeEditPage != null && removeEditPage !== '')
     vals['removeEditPage'] = removeEditPage;
 
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value === 'true';
+  var setDownload = removeDownload ? null : $formValues.querySelector('.setDownload')?.value;
+  var addDownload = $formValues.querySelector('.addDownload')?.value;
+  if(removeDownload || setDownload != null && setDownload !== '')
+    vals['setDownload'] = setDownload;
+  if(addDownload != null && addDownload !== '')
+    vals['addDownload'] = addDownload;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value;
+  if(removeDownload != null && removeDownload !== '')
+    vals['removeDownload'] = removeDownload;
+
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   var removeSolrId = $formValues.querySelector('.removeSolrId')?.value === 'true';
   var setSolrId = removeSolrId ? null : $formValues.querySelector('.setSolrId')?.value;
@@ -312,6 +340,10 @@ function patchCompanyServiceFilters($formFilters) {
     var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
+
+    var filterPrice = $formFilters.querySelector('.valuePrice')?.value;
+    if(filterPrice != null && filterPrice !== '')
+      filters.push({ name: 'fq', value: 'price:' + filterPrice });
 
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
@@ -428,6 +460,10 @@ async function postCompanyService($formValues, target, success, error) {
   if(valueDescription != null && valueDescription !== '')
     vals['description'] = valueDescription;
 
+  var valuePrice = $formValues.querySelector('.valuePrice')?.value;
+  if(valuePrice != null && valuePrice !== '')
+    vals['price'] = valuePrice;
+
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   if(valuePageId != null && valuePageId !== '')
     vals['pageId'] = valuePageId;
@@ -443,6 +479,10 @@ async function postCompanyService($formValues, target, success, error) {
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   if(valueEditPage != null && valueEditPage !== '')
     vals['editPage'] = valueEditPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  if(valueDownload != null && valueDownload !== '')
+    vals['download'] = valueDownload;
 
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   if(valueSolrId != null && valueSolrId !== '')
@@ -587,6 +627,7 @@ async function websocketCompanyServiceInner(apiRequest) {
         var inputArchived = null;
         var inputName = null;
         var inputDescription = null;
+        var inputPrice = null;
         var inputPageId = null;
         var inputDisplayPage = null;
         var inputClassCanonicalName = null;
@@ -611,6 +652,8 @@ async function websocketCompanyServiceInner(apiRequest) {
           inputName = $response.querySelector('.Page_name');
         if(vars.includes('description'))
           inputDescription = $response.querySelector('.Page_description');
+        if(vars.includes('price'))
+          inputPrice = $response.querySelector('.Page_price');
         if(vars.includes('pageId'))
           inputPageId = $response.querySelector('.Page_pageId');
         if(vars.includes('displayPage'))
@@ -691,6 +734,16 @@ async function websocketCompanyServiceInner(apiRequest) {
               item.textContent = inputDescription.textContent;
           });
           addGlow(document.querySelector('.Page_description'));
+        }
+
+        if(inputPrice) {
+          document.querySelectorAll('.Page_price').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrice.getAttribute('value');
+            else
+              item.textContent = inputPrice.textContent;
+          });
+          addGlow(document.querySelector('.Page_price'));
         }
 
         if(inputPageId) {

@@ -1,0 +1,36 @@
+{% extends "en-us/PageLayout.htm" %}
+{% block htmMetaPageLayout %}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Computate and Red Hat OpenShift Observability use case"/>
+    <meta name="result.authorName" content="Christopher Tate"/>
+{% endblock htmMetaPageLayout %}
+{% block htmStylePageLayout %}
+{% endblock htmStylePageLayout %}
+{% block htmBodyMiddlePageLayout %}
+
+        <div class="wa-stack purple-blue-background-headers ">
+          <wa-card class="main-content ">
+            <h1>{{ result.name }}</h1>
+            <h2>Author: {{ result.authorName }}</h2>
+
+            <h2>
+              Overview
+            </h2>
+            <p>
+              The Red Hat OpenShift Observability use case began in July 2022, after I switched teams at Red Hat from Financial Services Industry Consulting to the Red Hat Research team. 
+              In Red Hat Research, in addition to working on the <a href="https://research.redhat.com/blog/research_project/creating-a-global-open-research-platform-to-better-understand-social-sustainability-using-data-from-a-real-life-smart-village/">Smarta Byar Smart Village research project</a>, I was asked to deploy Red Hat ACM Observability and Loki Logging to the New England Research Cloud OpenShift environment. 
+              I made my <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/41">first pull request</a> for the New England Research Cloud to add ACM Observability resources to the infrastructure OpenShift cluster. 
+              I proceeded to <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/69">configure the new Loki Stack for multi-cluster logging</a>, for a centralized log search solution to replace the no longer open source Elasticsearch solution for logs in OpenShift in the past. 
+              It also involved deploying the <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/70">OpenShift Logging Operator</a> and log forwarding from each of the clusters to a central log solution on the infrastructure cluster. 
+              I wrote up some <a href="https://github.com/OCP-on-NERC/docs/blob/main/monitoring-and-logging.md">monitoring and logging documentation</a> for the New England Research cloud to wrap things up in 2022 for most of the <a href="https://github.com/OCP-on-NERC/docs/blob/main/acceptance-tests.md#data-management">data management acceptance tests</a> in the New England Research Cloud. 
+            </p>
+
+            <h2>
+              Troubleshooting storage
+            </h2>
+            <p>
+              After the new year 2023, there still remained some trouble with object storage for logging as I found out after the holidays. 
+            </p>
+          </wa-card>
+        </div>
+{% endblock %}

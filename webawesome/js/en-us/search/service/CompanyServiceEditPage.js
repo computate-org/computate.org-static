@@ -99,6 +99,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH price
+          document.querySelector('#Page_price')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_price');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPrice', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_price')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_price')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_price');
+            const valid = form.reportValidity();
+          });
+
           // PATCH pageId
           document.querySelector('#Page_pageId')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_pageId');
@@ -159,6 +180,27 @@ Promise.all([
           });
           document.querySelector('#Page_title')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_title');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH download
+          document.querySelector('#Page_download')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_download');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyServiceVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setDownload', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_download')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_download')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_download');
             const valid = form.reportValidity();
           });
 

@@ -37,6 +37,10 @@ wa-button::part(base), wa-details::part(base) {
                   <h2>
                     with the {{ result.name }}
                   </h2>
+                  <h2>
+                    <wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number>
+                    per developer
+                  </h2>
                 </div>
               </div>
               <wa-card>

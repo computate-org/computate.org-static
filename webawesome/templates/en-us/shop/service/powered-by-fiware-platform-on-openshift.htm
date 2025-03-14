@@ -6,6 +6,7 @@
     <meta name="result.userUri" content="/en-us/user/service/{{ result.pageId }}"/>
     <meta name="result.storeUrl" content=""/>
     <meta name="result.downloadUri" content="/download/en-us/service/{{ result.pageId }}"/>
+    <meta name="result.price" content="300000.00"/>
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
 {% endblock htmStylePageLayout %}
@@ -21,12 +22,12 @@
               <div class="wa-flank ">
                 <i class="fa-duotone fa-regular fa-browser fa-5x "></i>
                 <div>
-                  <h1 class="brand-font">
-                    {{ result.description }}
-                  </h1>
                   <h2 class="brand-font">
-                    with the {{ result.name }}
+                    {{ result.description }}
                   </h2>
+                  <h1 class="brand-font">
+                    with the {{ result.name }}
+                  </h1>
                 </div>
               </div>
               <wa-card>

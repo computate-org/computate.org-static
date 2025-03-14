@@ -94,6 +94,15 @@ Promise.all([
           document.querySelector('#pageFacetPivotCompanyService_description')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyService', event.currentTarget);
           });
+          document.querySelector('#fqCompanyService_price')?.addEventListener('change', (event) => {
+            fqChange('CompanyService', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyService_price')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyService', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyService_price')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyService', event.currentTarget);
+          });
           document.querySelector('#fqCompanyService_pageId')?.addEventListener('change', (event) => {
             fqChange('CompanyService', event.currentTarget);
           });
@@ -110,6 +119,15 @@ Promise.all([
             facetFieldChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#pageFacetPivotCompanyService_displayPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyService', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyService_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyService', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyService_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyService', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyService_download')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyService', event.currentTarget);
           });
 });
