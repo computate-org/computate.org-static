@@ -14,14 +14,18 @@
             <h2>Author: {{ result.authorName }}</h2>
 
             <h2>
-              Overview
+              The beginning of Observability in the Mass Open Cloud
             </h2>
             <p>
               The Red Hat OpenShift Observability use case began in July 2022, after I switched teams at Red Hat from Financial Services Industry Consulting to the Red Hat Research team. 
               In Red Hat Research, in addition to working on the <a href="https://research.redhat.com/blog/research_project/creating-a-global-open-research-platform-to-better-understand-social-sustainability-using-data-from-a-real-life-smart-village/">Smarta Byar Smart Village research project</a>, I was asked to deploy Red Hat ACM Observability and Loki Logging to the New England Research Cloud OpenShift environment. 
+            </p>
+            <p>
               I made my <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/41">first pull request</a> for the New England Research Cloud to add ACM Observability resources to the infrastructure OpenShift cluster. 
               I proceeded to <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/69">configure the new Loki Stack for multi-cluster logging</a>, for a centralized log search solution to replace the no longer open source Elasticsearch solution for logs in OpenShift in the past. 
               It also involved deploying the <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/70">OpenShift Logging Operator</a> and log forwarding from each of the clusters to a central log solution on the infrastructure cluster. 
+              I also deployed the free version of the <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/71">Grafana Operator</a> and integrated the ACM Observability data source for a developer instance of Grafana with edit and create access to Grafana Dashboards, which is unavailable in the read-only Grafana instance provided by the Red Hat ACM Observability product. 
+              Then I <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/103">deployed the desired alerts</a> in ACM Alert Manager that would send updates to Slack when certain metric events occured. 
               I wrote up some <a href="https://github.com/OCP-on-NERC/docs/blob/main/monitoring-and-logging.md">monitoring and logging documentation</a> for the New England Research cloud to wrap things up in 2022 for most of the <a href="https://github.com/OCP-on-NERC/docs/blob/main/acceptance-tests.md#data-management">data management acceptance tests</a> in the New England Research Cloud. 
             </p>
 
@@ -30,7 +34,197 @@
             </h2>
             <p>
               After the new year 2023, there still remained some trouble with object storage for logging as I found out after the holidays. 
+              The NooBaa object storage provided by the Red Hat OpenShift Data Foundations product connected to the NERC's external ceph cluster NESI was unstable for an unknown reason. 
+              Since both ACM Observability and Loki Logs require object storage, we used the existing OpenShift Data Foundation NooBaa object storage in the cluster. 
+              As Loki was ingesting logs for our OpenShift clusters, the BackingStores for NooBaa would become degraded and stop working. 
+              Even with Red Hat support nothing was working to resolve the object storage issue. 
+              We continued to onboard new metrics for IPMI and Ceph, but we could never query more than 1-2 weeks of data because of the broken object storage. 
             </p>
+
+            <h2>
+              Onboarding operators
+            </h2>
+            <p>
+              Near the end of 2023, our new NERC OpenShift production cluster had become available. 
+              Because of my work with the Smart Village project, I saw the need for several OpenShift Operators that would be useful now and in the future. 
+              In addition to Red Hat ACM, The Red Hat OpenShift Elasticsearch Operator, the Red Hat Loki Operator, and the Red Hat OpenShift Logging Operator required for metrics and logging, 
+              I installed the <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/233">Red Hat OpenShift Serverless and Red Hat Integration and Camel K Operators</a>, which turned out to also be a requirement of OpenShift AI model serving as well. 
+              I installed <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/232">Red Hat Integration - AMQ Broker for RHEL 8 (Multiarch) Operator</a> and <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/231">Red Hat Integration - AMQ Streams Operator (Kafka)</a> to prod, which are useful for event-driven messaging. 
+              I installed <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/234">Ansible Automation Platform Operator</a> to prod, which is the Red Hat way of doing automation. 
+              I installed <a href="https://github.com/OCP-on-NERC/nerc-ocp-config/pull/236">Apache Solr Operator Helm Chart Repository and CRDs</a> to prod, which is used in applications like Smarta Byar Smart Village and AI Telemetry as a fast and filterable search engine with pagination, faceting, statistics, and pivoting on data, and building REST APIs. 
+            </p>
+
+            <h2>
+              Red Hat Research Observability Gig #1
+            </h2>
+            <p>
+              Because we were stuck with storage related issues regarding ACM Observability and Loki Logs, we decided to reach out to other Red Hat associates who would like to participate in a 6-month gig with us starting in October 2023. 
+              We had an excellent response, and were able to bring in 3 other Red Hat associates to work part-time up to 10 hours per week with Red Hat Research and the Mass Open Cloud to find solutions to Observability issues. 
+              We had a Senior Engineer in Germany who during that time provided Loki RBAC, storage, backup strategy, and bug fixes. 
+              We had an architect in the US who fixed our ACM 2.8 upgrade issues, and helped us with our ACM Observability configuration. 
+              We had another architect in the US who implemented our external grafana and new observability cluster infrastructure. 
+              We also had Thorsten Schwesig join our Red Hat Research team who also began contributing full time to Observability in NERC with his extensive background in observability already. 
+              Together, we accomplished a very successful gig, and the most important part was the complete installation of a brand new OpenShift cluster for Observability. 
+            </p>
+
+            <h2>
+              NERC Observability OpenShift cluster
+            </h2>
+            <p>
+              The NERC team as a group decided a new <a href="https://github.com/nerc-project/operations/issues/166">OpenShift cluster was required</a> to relieve some of the memory, compute, and network bottlenecks from running an ACM infrustucture managment cluster in addition to logs and metrics. 
+              Other reasons included these: 
+            </p>
+            <ol>
+              <li>We wish to have our metrics available to researchers.</li>
+              <li>We currently have our metrics and observability on the infra cluster</li>
+              <li>The infra cluster is not on a public network</li>
+              <li>The Infra cluster is strained by the load of Infrastructure processes as well as logging, metrics, and observability</li>
+              <li>Creating a new Cluster that manages Metrics, Logs & Observability would solve a lot of these problems</li>
+            </ol>
+            <p>
+              We were able to accomplish the entire cluster install and reconfiguration of metrics and logs as part of our gig. 
+            </p>
+
+            <h2>
+              Updates to NERC infrastructure enable fine-grained resource permissions for observability data.
+            </h2>
+            <p>
+              This section of the use case is quoted directly from the article in <a href="https://research.redhat.com/blog/article/observability-cluster-added-to-the-moc-alliances-new-england-research-cloud/">Observability cluster added to the MOC Alliance’s New England Research Cloud</a> in the Red Hat Research Quarterly by Thorsten Schwesig and I. 
+            </p>
+
+            <h3>
+              Updates to NERC infrastructure enable fine-grained resource permissions for observability data.
+            </h3>
+            <p>
+              Observability data provides essential insights for optimizing performance, troubleshooting, and using resources sustainably. For users of the New England Research Cloud (NERC), part of the Mass Open Cloud (MOC) Alliance, this data also provides critical information for innovative research projects. Until recently, access to this data was restricted for most users.
+            </p>
+
+            <h3>
+              A standalone cluster
+            </h3>
+            <p>
+              NERC container infrastructure is based on OpenShift and includes several clusters (e.g., an infra cluster, prod cluster, and test cluster) operated within a VPN. Access to these clusters is therefore limited. This restriction especially affects observability data, such as metrics, logs, and traces. As the amount of observability data continues to grow, it becomes increasingly useful for research and teaching, independent of the applications, models, and data that generate it.
+            </p>
+            <p>
+              Initially, the observability data and systems in NERC, such as Thanos, Prometheus, Grafana, and Loki,  ran on the infra cluster, which put higher demands on this cluster, which in turn can affect its operation in extreme cases. To enable access to observability data outside the VPN—and to relieve the infra cluster and separate tasks—we developed and implemented the idea of a standalone observability cluster.
+            </p>
+            <p>
+              Since March 2024, the NERC Observability Cluster has been running in its base version and has already successfully met several requirements. The cluster captures and stores metrics and logs with an increased retention rate and is accessible outside the VPN, which makes it much easier for researchers and educators to use. Additionally, we have made static dashboards for NERC data available in Grafana, providing a first basic visualization of the collected data to support analysis and monitoring, along with the ability to develop new dashboards.
+            </p>
+
+            <h3>
+              Controlling data access
+            </h3>
+            <p>
+              With the NERC Observability Cluster in place, our next step was implementing fine-grained access control. 
+              With multiple research projects and classes hosted on NERC, maintaining data privacy compliance is essential. 
+              We needed to ensure that specific user groups, such as admins, researchers, professors, students, and apps (via API access), can access the data they need, and only the data they need. 
+            </p>
+            <p>
+              Our primary challenges were ensuring seamless integration and maintaining high security standards. 
+              We accomplished this in May 2024 by introducing a new <a href="https://operatorhub.io/operator/keycloak-permissions-operator">keycloak-permissions-operator</a> to both operatorhub.io and Red Hat OpenShift to automate a previously missing feature of the Red Hat build of the Keycloak Operator. 
+              It introduces an advanced authorization feature of Keycloak and makes it easy to configure user, group, and application access to resources. 
+              We configure Keycloak for resource definitions, scopes, and permissions and set up a secure proxy to validate access tokens. 
+              We initially built these resources for the AI for Cloud Ops project team to give them access to certain metrics only on the prod OpenShift cluster.  However, this operator was very reusable for other customers and projects as well.
+            </p>
+            <p>
+              The next step was to deploy a reverse-proxy (<a href="https://github.com/nerc-images/prom-keycloak-proxy">prom-keycloak-proxy</a>) with fine-grained resource permissions authentication and authorization between applications on NERC and Red Hat Advanced Cluster Management (ACM) observability metrics. 
+              We’ve also shared this work with the ACM Observability team, which has features for fine-grained access to metrics on its roadmap.
+            </p>
+
+            <h3>
+              Future enhancements and long-term goals
+            </h3>
+            <p>
+              In the next phase of this project, we will develop and implement mechanisms for data anonymization to ensure both privacy and usability of the data for research. We also plan to implement traces and develop interactive, dynamic dashboards that allow personalized and detailed data analysis. Additionally, the retention rate will be further optimized to support long-term analyses.
+            </p>
+            <p>
+              In time, we aim to introduce a proactive alerting and optimization system that captures event-based logs and provides targeted recommendations and optimizations. Additionally, we will continuously optimize the cluster’s scalability and performance. We plan to promote use of the cluster by more research projects and institutions and integrate additional observability systems and data sources for a more comprehensive analysis of system performance.
+            </p>
+            <p>
+              The NERC Observability Cluster represents a significant improvement in the accessibility and usability of observability data for research and education. With ongoing development, it will meet growing demands and provide a solid foundation for innovative research projects. The key ideas and tools we’ve used can also be applied to other kinds of data that require fine-grained access control. Keep up with our work on NERC Observability on GitHub.
+            </p>
+
+            <h2>
+              AI Telemetry
+            </h2>
+            <p>
+              The New England Research Cloud is a perfect environment for AI/ML related research. We wish to help researchers and managers of GPU devices in the New England Research Cloud (NERC) shared computing environment understand how the valueable and limited GPU resources are being utilized. We will provide access to researchers and managers through Keycloak and GitHub as identity provider to access the AI Cluster data and research project GPU allocation telemetry through a modern open source platform that will be built for the MOC and usable by other organizations wishing to collect the same telemetry. Other Red Hat associates outside of Red Hat Research have also been invited to participate in building the platform through the Red Hat Internal Gig Program.
+            </p>
+            <ol>
+              <li>The objective of the AI Telemetry application is performance introspection/telemetry for AI optimization. </li>
+              <li>The initiative is to build a distributed, optimized AI/ML platform from the MOC baseline. </li>
+              <li>The use case is to Develop a platform for reporting on AI/ML cluster and GPU device usage data and performing telemetry on AI/ML workloads through a secure dashboard and API. </li>
+            </ol>
+
+            <h3>
+              Required components to be in place
+            </h3>
+            <p>
+              The AI Telemetry architecture represents several components that are already in place, and several components that will be developed as part of this project:
+            </p>
+            <ol>
+              <li>GPU enabled clusters</li>
+              <li>ACM Hub on Infra cluster</li>
+              <li>Prom Keycloak Proxy</li>
+              <li>
+                <div>GPUs in the New England Research Cloud have already been deployed for the following use cases, and more GPUs are coming later in the year: </div>
+                <ol>
+                  <li>OpenShift AI GPU Workbenches</li>
+                  <li>OpenShift AI Model Servers</li>
+                  <li>OpenShift Deployments with a GPU allocation</li>
+                  <li>RHEL AI OpenShift VMs</li>
+                  <li>RHEL AI bare metal machines</li>
+                  <li>InstructLab on OpenShift</li>
+                </ol>
+              </li>
+              <li>The ACM Hub on the Infra cluster is already deployed in the New England Research Cloud. We have also built a new Observability OpenShift cluster to improve Observability performance of ACM and migrate logs and metrics by utilizing the new Observability cluster.</li>
+              <li>The Prom Keycloak Proxy and Keycloak Permissions Operator were a separate project and tool completed earlier this year in 2024 for the New England Research Cloud researchers to access metrics backed by Keycloak fine-grained authorization to specific clusters and namespaces, including GPU metrics.</li>
+            </ol>
+
+            <h3>
+              Components being developed
+            </h3>
+            <ol>
+              <li>OpenShift Open Telemetry is a collection of 3 operators (Red Hat Build of Open Telemetry, Red Hat OpenShift Distributed Tracing Platform, Tempo Operator), which we have already deployed to the NERC Observability cluster. We now need to configure and utilize these same components to enable tracing and metrics for GPU related research activity.</li>
+              <li>The AI Telemetry Worker component will be a Quarkus/Vert.x reactive, asynchronous, event bus driven background worker application that will receive messages from AlertManager about starting open traces. It can also be for scheduled cron jobs that run and collect metrics from APIs on a regular schedule.</li>
+              <li>The AI Telemetry site is a similar Quarkus/Vert.x reactive, asynchronous, event bus driven application, except this one is a front end application. It's similar platform to the <a href="https://research.redhat.com/blog/research_project/creating-a-global-open-research-platform-to-better-understand-social-sustainability-using-data-from-a-real-life-smart-village/">Smarta Byar Smart Village research platform</a>, as well as 2 other Red Hat Social Innovation projects running in NERC (<a href="https://rerc.southerncoalition.org/">rerc.southerncoalition.org</a> and <a href="https://www.opendatapolicingnc.com/">opendatapolicingnc.com</a>) built with the <a href="https://www.computate.org/">computate.org</a> open source platform. Thanks to the computate.org code generation technology demonstrated in the <a href="https://github.com/smartabyar-smartvillage/smart-device-api-generation-hackathon">Smart Device API Code Generation</a> during the Red Hat AI Combinator Hackathon, very useful dashboards and OpenAPIs for our models (like AI Cluster, AI Node, GPU Device, GPU, GPU Slice, Rersearch Project) comes together fast. These dashboards will be useful to researchers and managers of research projects utilizing GPUs to observe and review telemetry of GPU usage within the clusters and projects.</li>
+            </ol>
+
+            <h3>How the AI Telemetry project works</h3>
+            <p>
+              The Red Hat Research team together with the Red Hat Gig participants will build the applications approved to do AI Telemetry with access to the NERC OpenShift cluster metrics, and integrate these components together: 
+            </p>
+            <ol>
+              <li>The NVIDIA Operator is in place in NERC to collect metrics about GPUs, what cluster, node, project, container, and pod they are assigned to. </li>
+              <li>The AI Telemetry Worker will be built to query ACM Observability GPU metrics on NERC on a regular schedule to populate our base models of what is available in each AI Cluster, OpenShift Node, GPU Device, GPU, GPU Slice, and each Research Project allocation. </li>
+              <li>This aggregated data for each model at each level will be available in a dashboard in the AI Telemetry Site. </li>
+              <li>AlertManager will be configured to detect when GPU usage starts and stops, triggering alerts directly to the AI Telemetry Worker using the <a href="https://prometheus.io/docs/alerting/latest/configuration/#http_config">http_config, oauth2, and tls_config</a> provided by the Prometheus Alerting configuration.</li>
+              <li>The AI Telemetry Worker will be built to take AlertManager GPU usage events and start traces in the Red Hat Build of Open Telemetry Operator.</li>
+              <li>The AI Telemetry Worker will be built with open source standards for IoT Device data like NGSI-LD and @Context data already supported by <a href="https://research.redhat.com/blog/2022/10/26/smart-cities-and-other-research-projects-to-benefit-from-red-hats-collaboration-with-fiware/">exising Red Hat Research projects and the FIWARE open source community</a>, so that researchers have documentation and insights into every data point available in the AI Telemetry system.</li>
+              <li>The AI Telemetry Site will be built to connect researchers and managers directly to the projects and GPU metrics and traces that they observe. </li>
+              <li>The Keycloak service deployed on the obs cluster has been configured with research team policies and permissions to approved metrics, applied by our new <a href="https://github.com/nerc-images/keycloak-permissions-operator">Keycloak Permissions Operator</a>. </li>
+              <li>The <a href="https://github.com/orgs/OCP-on-NERC/teams/nerc-obs-admins">NERC Observability admin team</a> will will be able to grant permissions to approved managers and research teams to access metrics and telemetry for their GPU enabled AI projects on the obs cluster through the AI Telemetry Site dashboards.</li>
+              <li>The <a href="https://github.com/orgs/OCP-on-NERC/teams/nerc-obs-admins">NERC Observability admin team</a> can share a Client ID and Client Secret in the OpenShift project with approved research teams to access metrics for their GPU enabled AI projects.</li>
+            </ol>
+
+            <h3>The technology</h3>
+            <ol>
+              <li><a href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html">NVIDIA GPU Operator</a> uses the operator framework within Kubernetes to automate the management of all NVIDIA software components needed to provision GPU. These components include the NVIDIA drivers (to enable CUDA), Kubernetes device plugin for GPUs, the NVIDIA Container Toolkit, automatic node labelling using GFD, DCGM based monitoring and others. </li>
+              <li><a href="https://www.redhat.com/en/technologies/management/advanced-cluster-management">Red Hat Advanced Cluster Management Observability</a> provides a centralized hub for metrics, alerting, and monitoring of platforms for a multi-cluster environment. In addition, the observability component also focuses on displaying cluster health metrics, which describes the control plane health, cluster optimization, and resource utilization. The service gets deployed automatically to each cluster when Observability is enabled in RHACM. </li>
+              <li><a href="https://access.redhat.com/products/red-hat-build-of-keycloak/">Red Hat Build of Keycloak Operator</a> is a cloud-native Identity Access Management solution based on the popular open source Keycloak project. We configure a realm called NERC and a main client called nerc where permissions to all clients are granted. We create a new client for each approved research team requiring access to metrics with the Red Hat Build of Keycloak Operator. </li>
+              <li><a href="https://github.com/nerc-images/keycloak-permissions-operator">Keycloak Permissions Operator</a> is an OpenShift Operator for managing Keycloak resources, scopes, policies, and permissions for fine-grained resource permissions. This operator is built by the NERC software engineers. It's available as an OpenShift Operator, and a <a href="https://operatorhub.io/operator/keycloak-permissions-operator">Kubernetes Community Operator</a>. </li>
+              <li><a href="https://github.com/nerc-images/prom-keycloak-proxy">Prometheus Keycloak Proxy</a> is a proxy for observatorium and prometheus on OpenShift, secured by Keycloak Fine-Grained Resource Permissions. This application is built by the NERC software engineers. </li>
+              <li><a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.15/html-single/red_hat_build_of_opentelemetry/index">Red Hat Build of OpenTelemetry</a>, also including Red Hat OpenShift Distributed Tracing Platform and Tempo Operator, is for collecting unified, standardized, and vendor-neutral telemetry data for cloud-native software in OpenShift Container Platform. </li>
+            </ol>
+
+            <h3>NERC OpenShift clusters involved</h3>
+            <ol>
+              <li>The NERC infra cluster is where the Red Hat Cluster Management Observability service is installed. For more information, see our <a href="https://github.com/OCP-on-NERC/ai-telemetry/blob/main/README.md">NERC observability architecture documentation</a>. The Observability service provides a centralized hub for metrics, alerting, and monitoring of platforms for a multi-cluster environment. The Observability service exposes the Observatorium API as a secured route which requires a certain TLS certificate, private key, and CA certificate required to connect. The Observatorium API is also secured behind a Harvard VPN. The <a href="https://observatorium.io/docs/api#tag/metricsqueryv1">metrics query Observatorim APIs</a> will be queried by services deployed on the obs cluster. This prevents any approved researchers from building approved applications for querying and reporting on our NERC OpenShift metrics.</li>
+              <li>The NERC obs cluster is where we deploy 2 new services to authenticate applications and users wishing to query NERC metrics. We configure the clusters, namespaces, and metrics they wish to connect to and grant them permissions to approved resources with the new <a href="https://github.com/nerc-images/keycloak-permissions-operator">Keycloak Permissions Operator</a> we built for this purpose together with the <a href="https://access.redhat.com/products/red-hat-build-of-keycloak/">Red Hat Build of Keycloak Operator</a>. Our new <a href="https://github.com/nerc-images/prom-keycloak-proxy">Prometheus Keycloak Proxy</a> application we built checks their authorizations to metrics resources before querying any <a href="https://observatorium.io/docs/api#tag/metricsqueryv1">Observatorim API metrics</a> they have requested. We will deploy the AI Telemetry Worker, OpenAPI, and front-end dashboard to the Observability cluster and grant access to managers and research teams to project specific telemetry data, backed by Keycloak Fine-Grained Authorization. </li>
+              <li>The NERC prod cluster where most of the research projects for GPU workloads are in development. </li>
+              <li>The NERC test clusters where Other AI/ML GPU research projects and Red Hat projects are taking place, like RHEL AI and InstructLab. </li>
+            </ol>
           </wa-card>
         </div>
 {% endblock %}
