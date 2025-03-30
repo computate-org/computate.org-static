@@ -187,6 +187,15 @@ Promise.all([
           document.querySelector('#pageFacetPivotCompanyEvent_displayPage')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyEvent', event.currentTarget);
           });
+          document.querySelector('#fqCompanyEvent_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyEvent_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyEvent_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyEvent', event.currentTarget);
+          });
           document.querySelector('#fqCompanyEvent_emailTemplate')?.addEventListener('change', (event) => {
             fqChange('CompanyEvent', event.currentTarget);
           });

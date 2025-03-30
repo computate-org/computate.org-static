@@ -97,6 +97,15 @@ Promise.all([
           document.querySelector('#pageFacetPivotSitePage_displayPage')?.addEventListener('change', (event) => {
             facetPivotChange('SitePage', event.currentTarget);
           });
+          document.querySelector('#fqSitePage_download')?.addEventListener('change', (event) => {
+            fqChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetSitePage_download')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSitePage_download')?.addEventListener('change', (event) => {
+            facetPivotChange('SitePage', event.currentTarget);
+          });
           document.querySelector('#fqSitePage_courseNum')?.addEventListener('change', (event) => {
             fqChange('SitePage', event.currentTarget);
           });

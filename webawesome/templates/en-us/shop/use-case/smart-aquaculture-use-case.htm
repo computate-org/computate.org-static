@@ -285,5 +285,103 @@
               </p>
             </wa-card>
           </div>
+
+          <wa-card class="purple-blue-background ">
+            <div class="main-content ">
+              <div class="wa-flank">
+                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
+                <h2>
+                  Watch the free Computate AI Developer Webinar on Zoom or live streaming to Youtube. 
+                </h2>
+              </div>
+              <div class="wa-stack ">
+                <div class="wa-flank">
+                  <p>
+                    Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
+                    then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
+                  </p>
+                </div>
+                <wa-card>
+                  <div class="wa-flank ">
+                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
+                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                      Join the next webinar
+                    </wa-button>
+                    <div class="wa-flank ">
+                      <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
+                      <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" second="numeric" time-zone-name="short" date=""></wa-format-date>
+                    </div>
+                  </div>
+                </wa-card>
+                <h3 class="brand-font">
+                  The Computate AI Developer Webinar will occur live on Monday, Tuesday, Wednesday, and Thursday at 4:00 PM Eastern US time. 
+                </h3>
+                <wa-card id="webinar-calendar" class="wa-stack ">
+
+                  <div class="wa-flank zoom-link font-size-large">
+                    <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
+                    <div class="wa-flank ">
+                      <wa-button id="webinar-button" variant="brand" href="{{ SITE_BASE_URL }}/en-us/view/webinar/smart-aquaculture-webinar">
+                        <i class="fa-duotone fa-regular fa-video"></i>
+                        Learn more
+                      </wa-button>
+                      <div>
+                        <div class="font-size-x-small">
+                          Monday 4:00 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Tuesday 4:00 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Thursday 4:00 PM Eastern US time
+                        </div>
+                        <div class="font-size-x-small">
+                          Friday 4:00 PM Eastern US time
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </wa-card>
+              </div>
+            </div>
+          </wa-card>
+
+          <wa-card class="purple-blue-background wa-stack ">
+            <div class="wa-grid ">
+              <div class="flex-item-left ">
+                <div class="wa-stack ">
+                  <div class="wa-flank ">
+                    <i class="fa-kit fa-fiware fa-5x "></i>
+                    <h1>
+                      Latest available course: 
+                    </h1>
+                  </div>
+                  <h2>
+                    Free course for configuring IoT services and Smart Data Models with a FIWARE IoT Agent, Context Broker, and other event-driven microservices in a free Red Hat OpenShift Developer Sandbox
+                    with the Smart Aquaculture Cloud Sandbox
+                  </h1>
+                </div>
+              </div>
+              <div class="flex-item-right ">
+                <img src="{{ STATIC_BASE_URL }}/jpg/fiware/2024-summit/technical-training.jpg"/>
+              </div>
+            </div>
+            <wa-card class="main-content ">
+              <div class="wa-stack ">
+                <div>
+                  This course was presented at the 
+                  <a href="https://www.eventbrite.de/e/fiware-tech-training-naples-tickets-920143322447">FIWARE Summit Technical Training</a>
+                  in Naples, Italy September 18 2024
+                </div>
+                <div>
+                  <wa-button id="order-button" class="gradient-button orange-blue-background" variant="neutral" href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox">
+                    <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+                    Get started
+                  </wa-button>
+                </div>
+              </div>
+            </wa-card>
+          </wa-card>
         </div>
 {% endblock %}

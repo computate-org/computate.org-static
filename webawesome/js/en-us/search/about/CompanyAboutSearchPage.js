@@ -136,4 +136,13 @@ Promise.all([
           document.querySelector('#pageFacetPivotCompanyAbout_displayPage')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyAbout', event.currentTarget);
           });
+          document.querySelector('#fqCompanyAbout_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
 });

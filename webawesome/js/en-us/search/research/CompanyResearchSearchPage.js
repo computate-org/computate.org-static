@@ -112,4 +112,13 @@ Promise.all([
           document.querySelector('#pageFacetPivotCompanyResearch_displayPage')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyResearch', event.currentTarget);
           });
+          document.querySelector('#fqCompanyResearch_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyResearch_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyResearch_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyResearch', event.currentTarget);
+          });
 });

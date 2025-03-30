@@ -160,4 +160,13 @@ Promise.all([
           document.querySelector('#pageFacetPivotUseCase_displayPage')?.addEventListener('change', (event) => {
             facetPivotChange('UseCase', event.currentTarget);
           });
+          document.querySelector('#fqUseCase_download')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetUseCase_download')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_download')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
 });

@@ -112,6 +112,15 @@ Promise.all([
           document.querySelector('#pageFacetPivotCompanyWebsite_displayPage')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyWebsite', event.currentTarget);
           });
+          document.querySelector('#fqCompanyWebsite_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyWebsite_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyWebsite_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyWebsite', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebsite_websiteNum')?.addEventListener('change', (event) => {
             fqChange('CompanyWebsite', event.currentTarget);
           });
