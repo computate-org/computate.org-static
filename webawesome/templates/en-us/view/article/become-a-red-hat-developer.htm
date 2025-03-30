@@ -1,7 +1,7 @@
 {% extends "en-us/PageLayout.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
-    <meta name="result.name" content="Become a Red Hat developer" />
+    <meta name="result.name" content="How to become a Red Hat developer" />
 {% endblock htmMetaPageLayout %}
 {% block htmTitlePageLayout %}
     <title>{{ result.name }}</title>
@@ -11,7 +11,7 @@
           <wa-card>
             <div>
               <h1 class="icon-heading ">
-                How to become a Red Hat Developer
+                {{ result.name }}
               </h1>
               <div class="font-style-italic">
                 Created Sat Mar 29, 2025 </div>
