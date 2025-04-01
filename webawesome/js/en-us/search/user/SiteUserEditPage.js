@@ -141,27 +141,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH displayPage
-          document.querySelector('#Page_displayPage')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_displayPage');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
-                  , 'setDisplayPage', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_displayPage')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_displayPage')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_displayPage');
-            const valid = form.reportValidity();
-          });
-
           // PATCH title
           document.querySelector('#Page_title')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_title');
@@ -183,24 +162,24 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH userEmail
-          document.querySelector('#Page_userEmail')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_userEmail');
+          // PATCH displayPage
+          document.querySelector('#Page_displayPage')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_displayPage');
             const valid = form.checkValidity();
             if(valid) {
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
-                  , 'setUserEmail', event.currentTarget.value
+                  , 'setDisplayPage', event.currentTarget.value
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#Page_userEmail')?.addEventListener('focus', (event) => {
+          document.querySelector('#Page_displayPage')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#Page_userEmail')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_userEmail');
+          document.querySelector('#Page_displayPage')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_displayPage');
             const valid = form.reportValidity();
           });
 
@@ -243,6 +222,27 @@ Promise.all([
           });
           document.querySelector('#Page_userName')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_userName');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH userEmail
+          document.querySelector('#Page_userEmail')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_userEmail');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
+                  , 'setUserEmail', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_userEmail')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_userEmail')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_userEmail');
             const valid = form.reportValidity();
           });
 
