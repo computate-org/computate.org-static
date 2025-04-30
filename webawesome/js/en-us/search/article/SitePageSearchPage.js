@@ -87,16 +87,16 @@ Promise.all([
     sort('SitePage', 'lessonNum', event.currentTarget.value);
   });
 
+  document.querySelector('#pageFacetSortSitePage_name')?.addEventListener('change', (event) => {
+    sort('SitePage', 'name', event.currentTarget.value);
+  });
+
   document.querySelector('#pageFacetSortSitePage_h1')?.addEventListener('change', (event) => {
     sort('SitePage', 'h1', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSitePage_h2')?.addEventListener('change', (event) => {
     sort('SitePage', 'h2', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageFacetSortSitePage_name')?.addEventListener('change', (event) => {
-    sort('SitePage', 'name', event.currentTarget.value);
   });
 
   document.querySelector('#htmButton_patchSitePage')?.addEventListener('click', (event) => {

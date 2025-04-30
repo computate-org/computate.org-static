@@ -101,6 +101,10 @@ function searchSitePageFilters($formFilters) {
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
 
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
+
     var filterH1 = $formFilters.querySelector('.valueH1')?.value;
     if(filterH1 != null && filterH1 !== '')
       filters.push({ name: 'fq', value: 'h1:' + filterH1 });
@@ -108,15 +112,12 @@ function searchSitePageFilters($formFilters) {
     var filterH2 = $formFilters.querySelector('.valueH2')?.value;
     if(filterH2 != null && filterH2 !== '')
       filters.push({ name: 'fq', value: 'h2:' + filterH2 });
-
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
   }
   return filters;
 }
 
 function searchSitePageVals(filters, target, success, error) {
+
 
   fetch(
     '/en-us/api/article?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
@@ -329,6 +330,18 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   if(removeLessonNum != null && removeLessonNum !== '')
     vals['removeLessonNum'] = removeLessonNum;
 
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
+  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
+  var addName = $formValues.querySelector('.addName')?.value;
+  if(removeName || setName != null && setName !== '')
+    vals['setName'] = setName;
+  if(addName != null && addName !== '')
+    vals['addName'] = addName;
+  var removeName = $formValues.querySelector('.removeName')?.value;
+  if(removeName != null && removeName !== '')
+    vals['removeName'] = removeName;
+
   var valueH1 = $formValues.querySelector('.valueH1')?.value;
   var removeH1 = $formValues.querySelector('.removeH1')?.value === 'true';
   var setH1 = removeH1 ? null : $formValues.querySelector('.setH1')?.value;
@@ -352,18 +365,6 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   var removeH2 = $formValues.querySelector('.removeH2')?.value;
   if(removeH2 != null && removeH2 !== '')
     vals['removeH2'] = removeH2;
-
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
-  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
-  var addName = $formValues.querySelector('.addName')?.value;
-  if(removeName || setName != null && setName !== '')
-    vals['setName'] = setName;
-  if(addName != null && addName !== '')
-    vals['addName'] = addName;
-  var removeName = $formValues.querySelector('.removeName')?.value;
-  if(removeName != null && removeName !== '')
-    vals['removeName'] = removeName;
 
   patchSitePageVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
 }
@@ -459,6 +460,10 @@ function patchSitePageFilters($formFilters) {
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
 
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
+
     var filterH1 = $formFilters.querySelector('.valueH1')?.value;
     if(filterH1 != null && filterH1 !== '')
       filters.push({ name: 'fq', value: 'h1:' + filterH1 });
@@ -466,10 +471,6 @@ function patchSitePageFilters($formFilters) {
     var filterH2 = $formFilters.querySelector('.valueH2')?.value;
     if(filterH2 != null && filterH2 !== '')
       filters.push({ name: 'fq', value: 'h2:' + filterH2 });
-
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
   }
   return filters;
 }
@@ -565,6 +566,10 @@ async function postSitePage($formValues, target, success, error) {
   if(valueLessonNum != null && valueLessonNum !== '')
     vals['lessonNum'] = valueLessonNum;
 
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  if(valueName != null && valueName !== '')
+    vals['name'] = valueName;
+
   var valueH1 = $formValues.querySelector('.valueH1')?.value;
   if(valueH1 != null && valueH1 !== '')
     vals['h1'] = valueH1;
@@ -572,10 +577,6 @@ async function postSitePage($formValues, target, success, error) {
   var valueH2 = $formValues.querySelector('.valueH2')?.value;
   if(valueH2 != null && valueH2 !== '')
     vals['h2'] = valueH2;
-
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  if(valueName != null && valueName !== '')
-    vals['name'] = valueName;
 
   fetch(
     '/en-us/api/article'
@@ -740,9 +741,9 @@ async function websocketSitePageInner(apiRequest) {
         var inputSolrId = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
+        var inputName = null;
         var inputH1 = null;
         var inputH2 = null;
-        var inputName = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.Page_created');
@@ -784,12 +785,12 @@ async function websocketSitePageInner(apiRequest) {
           inputCourseNum = $response.querySelector('.Page_courseNum');
         if(vars.includes('lessonNum'))
           inputLessonNum = $response.querySelector('.Page_lessonNum');
+        if(vars.includes('name'))
+          inputName = $response.querySelector('.Page_name');
         if(vars.includes('h1'))
           inputH1 = $response.querySelector('.Page_h1');
         if(vars.includes('h2'))
           inputH2 = $response.querySelector('.Page_h2');
-        if(vars.includes('name'))
-          inputName = $response.querySelector('.Page_name');
 
         jsWebsocketSitePage(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -996,6 +997,16 @@ async function websocketSitePageInner(apiRequest) {
           addGlow(document.querySelector('.Page_lessonNum'));
         }
 
+        if(inputName) {
+          document.querySelectorAll('.Page_name').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputName.getAttribute('value');
+            else
+              item.textContent = inputName.textContent;
+          });
+          addGlow(document.querySelector('.Page_name'));
+        }
+
         if(inputH1) {
           document.querySelectorAll('.Page_h1').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1014,16 +1025,6 @@ async function websocketSitePageInner(apiRequest) {
               item.textContent = inputH2.textContent;
           });
           addGlow(document.querySelector('.Page_h2'));
-        }
-
-        if(inputName) {
-          document.querySelectorAll('.Page_name').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputName.getAttribute('value');
-            else
-              item.textContent = inputName.textContent;
-          });
-          addGlow(document.querySelector('.Page_name'));
         }
 
           pageGraphSitePage();

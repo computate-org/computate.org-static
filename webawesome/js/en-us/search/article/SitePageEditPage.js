@@ -225,6 +225,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH name
+          document.querySelector('#Page_name')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_name');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSitePageVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setName', event.currentTarget.value
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_name')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_name')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_name');
+            const valid = form.reportValidity();
+          });
+
           // PATCH h1
           document.querySelector('#Page_h1')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_h1');
@@ -264,27 +285,6 @@ Promise.all([
           });
           document.querySelector('#Page_h2')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_h2');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH name
-          document.querySelector('#Page_name')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_name');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSitePageVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setName', event.currentTarget.value
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_name')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_name')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_name');
             const valid = form.reportValidity();
           });
 });
