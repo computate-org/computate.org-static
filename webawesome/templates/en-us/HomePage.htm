@@ -56,31 +56,29 @@
           <wa-tooltip for="carousel-item-4" placement="left" hoist>Remote hackathon with the Southern Coalition for Social Justice on Martin Luther King Jr. Day 2021 to kick off the development of the Open Data Policing website. </wa-tooltip>
           <wa-tooltip for="carousel-item-5" placement="left" hoist>Global outreach panel discussion at the FIWARE Summit in Vienna, Austria in 2023. </wa-tooltip>
           <wa-tooltip for="carousel-item-6" placement="left" hoist>FIWARE Cloud-to-Edge Hackathon with students from Shaw University, St. Augustine’s University, and North Carolina Central University in 2024. </wa-tooltip>
+          <wa-tooltip for="carousel-item-7" placement="left" hoist>Presenting the Smart Aquaculture Cloud Sandbox technical workshop at the 2024 FIWARE Summit. </wa-tooltip>
+          <wa-tooltip for="carousel-item-8" placement="left" hoist>Presenting a panel discussion on FIWARE iHub Value Proposition as Businesses and Services at the 2024 FIWARE Summit in Naples, Italy. </wa-tooltip>
+          <wa-tooltip for="carousel-item-9" placement="left" hoist>Presenting the Smart Aquaculture workshop at the the Generative AI to Enhance Supply Chain Resilience NEDSI 2025 research conference in Hershey, Pennsylvania. </wa-tooltip>
 
           <wa-carousel style="--aspect-ratio: 16/4; " autoplay loop navigation pagination autoplay-interval="5000">
             <wa-carousel-item>
-              <a id="carousel-item-0" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
-                <img src="{{ STATIC_BASE_URL }}/jpg/smartvillage/meet-our-team.jpg">
+              <a id="carousel-item-9" href="{{ SITE_BASE_URL }}/en-us/shop/event/smart-aquaculture-nedsi-2025">
+                <img src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/jpg/nedsi-conference-2025.jpg">
               </a>
             </wa-carousel-item>
             <wa-carousel-item>
-              <a id="carousel-item-1" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
-                <img src="{{ STATIC_BASE_URL }}/jpg/social-innovation/unicef-hackathon-2018.jpg">
+              <a id="carousel-item-8" href="{{ SITE_BASE_URL }}/en-us/shop/event/fiware-kubernetes-deployment-at-fiware-summit-2024-in-naples-italy">
+                <img src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/jpg/fiware-summit-2024-panel.jpg">
               </a>
             </wa-carousel-item>
             <wa-carousel-item>
-              <a id="carousel-item-2" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
-                <img src="{{ STATIC_BASE_URL }}/jpg/fiware/fiware-ihub-certificate.jpg">
+              <a id="carousel-item-7" href="{{ SITE_BASE_URL }}/en-us/shop/event/fiware-kubernetes-deployment-at-fiware-summit-2024-in-naples-italy">
+                <img src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/jpg/fiware-summit-2024-technical-workshop.jpg">
               </a>
             </wa-carousel-item>
             <wa-carousel-item>
-              <a id="carousel-item-3" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
-                <img src="{{ STATIC_BASE_URL }}/jpg/shaw-university/shaw-hackathon-2023.jpg">
-              </a>
-            </wa-carousel-item>
-            <wa-carousel-item>
-              <a id="carousel-item-4" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
-                <img src="{{ STATIC_BASE_URL }}/png/social-innovation/mlk-day-hackathon-2021.png">
+              <a id="carousel-item-6" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
+                <img src="{{ STATIC_BASE_URL }}/jpg/shaw-university/shaw-hackathon-2024.jpg">
               </a>
             </wa-carousel-item>
             <wa-carousel-item>
@@ -89,8 +87,28 @@
               </a>
             </wa-carousel-item>
             <wa-carousel-item>
-              <a id="carousel-item-6" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
-                <img src="{{ STATIC_BASE_URL }}/jpg/shaw-university/shaw-hackathon-2024.jpg">
+              <a id="carousel-item-4" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
+                <img src="{{ STATIC_BASE_URL }}/png/social-innovation/mlk-day-hackathon-2021.png">
+              </a>
+            </wa-carousel-item>
+            <wa-carousel-item>
+              <a id="carousel-item-3" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
+                <img src="{{ STATIC_BASE_URL }}/jpg/shaw-university/shaw-hackathon-2023.jpg">
+              </a>
+            </wa-carousel-item>
+            <wa-carousel-item>
+              <a id="carousel-item-2" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
+                <img src="{{ STATIC_BASE_URL }}/jpg/fiware/fiware-ihub-certificate.jpg">
+              </a>
+            </wa-carousel-item>
+            <wa-carousel-item>
+              <a id="carousel-item-1" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
+                <img src="{{ STATIC_BASE_URL }}/jpg/social-innovation/unicef-hackathon-2018.jpg">
+              </a>
+            </wa-carousel-item>
+            <wa-carousel-item>
+              <a id="carousel-item-0" href="{{ SITE_BASE_URL }}/en-us/article/hackathons">
+                <img src="{{ STATIC_BASE_URL }}/jpg/smartvillage/meet-our-team.jpg">
               </a>
             </wa-carousel-item>
           </wa-carousel>
@@ -111,15 +129,15 @@
                   </p>
                 </div>
                 <wa-card>
-                  <div class="wa-flank ">
-                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
-                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
-                      Join the next webinar
-                    </wa-button>
+                  <div class="wa-stack ">
                     <div class="wa-flank ">
                       <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
                       <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" time-zone-name="short" date=""></wa-format-date>
                     </div>
+                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
+                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                      Join webinar
+                    </wa-button>
                   </div>
                 </wa-card>
                 <h3 class="brand-font">
@@ -166,7 +184,7 @@
                   <div>
                     <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ SITE_BASE_URL }}/en-us/shop/use-case/smart-aquaculture-use-case">
                       <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
-                      Read the use case
+                      Read use case
                     </wa-button>
                   </div>
                 </wa-card>
@@ -210,9 +228,15 @@
                       </ul>
                     </div>
                     <div>
+                      <wa-button id="order-button" class="gradient-button pink-purple-background" variant="neutral" href="{{ SITE_BASE_URL }}/en-us/shop/event/smart-aquaculture-red-hat-summit-2025">
+                        <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+                        Learn more
+                      </wa-button>
+                    </div>
+                    <div>
                       <wa-button id="order-button" class="gradient-button pink-purple-background" variant="neutral" href="https://events.experiences.redhat.com/widget/redhat/sum25/SessionCatalog2025/session/1731473553640001dRBg">
                         <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                        Register for the workshop
+                        Register for workshop
                       </wa-button>
                     </div>
                   </div>
