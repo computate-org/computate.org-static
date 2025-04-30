@@ -41,7 +41,7 @@
 
       function htmTooltipCompanyProduct(feature, layer) {
         return `{%- block htmTooltipCompanyProductPage %}
-<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.title}</a></h3>
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipCompanyProductPage %}`;
       }
     </script>
@@ -77,7 +77,7 @@
           var o = document.querySelector('.pageForm .result')?.value;
           if(o)
             window.result = JSON.parse(o);
-        {% if pageId is defined %}
+        {% if result.pageId is defined %}
         {% endif %}
         }
         var l = document.querySelector('.pageForm .listCompanyProduct')?.value;
@@ -119,7 +119,11 @@
         });
         document.querySelector('#htmFormButton_postCompanyProduct')?.addEventListener('click', event => {
           event.preventDefault();
-          postCompanyProduct(document.querySelector('#htmForm_postCompanyProduct'), document.querySelector('#htmFormButton_postCompanyProduct'), (response, target) => { response.json().then((json) => { window.location.href = json.editPage; }); });
+          postCompanyProduct(document.querySelector('#htmForm_postCompanyProduct')
+          , document.querySelector('#htmFormButton_postCompanyProduct')
+          , (json, target) => {
+            window.location.href = json.editPage;
+          });
           return false;
         });
 
@@ -169,9 +173,11 @@
 
 {%- block websocketPageLayout %}
 {%- block websocketCompanyProductPage %}
+{% if resultCount > 0 %}
         window.eventBus = new EventBus('/eventbus');
         window.eventBus.enableReconnect(true);
         websocketCompanyProduct(websocketCompanyProductInner);
+{% endif %}
 {%- endblock websocketCompanyProductPage %}
 {%- endblock websocketPageLayout %}
 
@@ -183,7 +189,7 @@
 {% if resultCount > 0 %}
           <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>products</span></a></h1>
 {%- include en-us/search/product/CompanyProductSuggestedSearch.htm %}
-{% include en-us/search/product/CompanyProductSearchButtons.htm %}
+          <wa-divider></wa-divider>
 {% include en-us/search/product/CompanyProductSearchForm.htm %}
 {% endif %}
 {%- endblock htmBodyStartCompanyProductPage %}
@@ -192,17 +198,21 @@
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyProductPage %}
 {% if resultCount == 0 %}
-        {% if varsFqCount > 0 %}
-        <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip>
+        <div class="wa-flank">
+          <div>
+          {% if varsFqCount > 1 %}
+          <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip></wa-tooltip>
           <wa-button id="return-to-CompanyProduct" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
             <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
             all products
           </wa-button>
-        </wa-tooltip>
-        {% endif %}
-        <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>products</span></h1>
-{% include en-us/search/product/CompanyProductSearchButtons.htm %}
+          {% endif %}
+        </div>
+          <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>products</span></h1>
+        </div>
 {% include en-us/search/product/CompanyProductSearchForm.htm %}
+          <wa-divider></wa-divider>
+{% include en-us/search/product/CompanyProductSearchButtons.htm %}
         <h2>
           <span>
   {% if classIconCssClasses is defined %}
@@ -222,7 +232,7 @@
           <div id="site-calendar-box">
             <div id="site-calendar"><!-- // --></div>
           </div>
-          {% if varsFqCount > 0 %}
+          {% if varsFqCount > 1 %}
           <div class="margin-block">
             <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip>
             <wa-button id="return-to-CompanyProduct" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
@@ -231,17 +241,20 @@
             </wa-button>
           </div>
           {% endif %}
+          <div class="wa-flank wa-align-items-baseline margin-block-start ">
 {% include en-us/search/product/CompanyProductPaginationButtons.htm %}
+{% include en-us/search/product/CompanyProductSearchButtons.htm %}
+          </div>
           <div class="card-like-thing background-color-surface-border" id="site-results-grid">
             <div>
               <wa-dropdown id="htmDropdown-name">
                 <wa-button variant="brand" slot="trigger" caret>product name</wa-button>
                 <wa-menu>
-                  <wa-menu-item data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyProduct_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyProduct').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
                     <i class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
                     sort by product name ascending
                   </wa-menu-item>
-                  <wa-menu-item data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyProduct_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyProduct').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
                     <i class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
                     sort by product name descending
                   </wa-menu-item>
@@ -250,11 +263,11 @@
               <wa-dropdown id="htmDropdown-description">
                 <wa-button variant="brand" slot="trigger" caret>product description</wa-button>
                 <wa-menu>
-                  <wa-menu-item data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyProduct_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyProduct').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
                     <i class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
                     sort by product description ascending
                   </wa-menu-item>
-                  <wa-menu-item data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyProduct_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyProduct').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
                     <i class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
                     sort by product description descending
                   </wa-menu-item>
@@ -266,17 +279,17 @@
             <div>
               <a href="{{ item.displayPage }}">
                 <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
-              {{ item.name }}
-              </a>
+              <span>{{ item.name | e }}
+</span>              </a>
               <a href="{{ item.displayPage }}">
-              {{ item.description }}
-              </a>
+              <span>{{ item.description | e }}
+</span>              </a>
               <wa-button variant="brand"
                   id="{{classApiMethodMethod}}_editPage"
                   placeholder="[String] edit"
                   label="edit"
                   title="Edit this"
-                  class="button-on-left {{classApiMethodMethod}}_editPage classCompanyProduct inputCompanyProduct{{pageId}}EditPage "
+                  class="button-on-left {{classApiMethodMethod}}_editPage classCompanyProduct inputCompanyProduct{{ result.pageId }}EditPage "
                   name="setEditPage"
                   href="{{ item.editPage | e }}"
                   >

@@ -7,7 +7,7 @@
                       readonly
                       hint="A created timestamp for this record in the database"
                       label="created"
-                      class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyCourse inputCompanyCourse{{pageId}}Created "
+                      class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyCourse inputCompanyCourse{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_created"
@@ -34,7 +34,7 @@
                       readonly
                       hint="A modified timestamp for this record in the database"
                       label="modified"
-                      class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyCourse inputCompanyCourse{{pageId}}Modified "
+                      class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyCourse inputCompanyCourse{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_modified"
@@ -62,7 +62,7 @@
                       placeholder="archived"
                       label="archived"
                       hint="For archiving this record"
-                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyCourse inputCompanyCourse{{pageId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyCourse inputCompanyCourse{{ result.pageId }}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
                       data-val="{{ result.archived | e }}"
@@ -81,14 +81,14 @@
                       label="archived"
                       hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyCourse inputCompanyCourse{{pageId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyCourse inputCompanyCourse{{ result.pageId }}Archived "
                       name="setArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyCourse inputCompanyCourse{{pageId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyCourse inputCompanyCourse{{ result.pageId }}Archived "
                       name="setArchived"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_archived setArchived valueArchived classCompanyCourse inputCompanyCourse{{pageId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived setArchived valueArchived classCompanyCourse inputCompanyCourse{{ result.pageId }}Archived "
                       name="setArchived"
     {%- endif %}
   {%- endif %}
@@ -128,14 +128,14 @@ The course name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_name setName classCompanyCourse inputCompanyCourse{{pageId}}Name "
+                      class="label-on-left {{classApiMethodMethod}}_name setName classCompanyCourse inputCompanyCourse{{ result.pageId }}Name "
                       name="setName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_name setName classCompanyCourse inputCompanyCourse{{pageId}}Name "
+                      class="label-on-left {{classApiMethodMethod}}_name setName classCompanyCourse inputCompanyCourse{{ result.pageId }}Name "
                       name="setName"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_name valueName classCompanyCourse inputCompanyCourse{{pageId}}Name "
+                      class="label-on-left {{classApiMethodMethod}}_name valueName classCompanyCourse inputCompanyCourse{{ result.pageId }}Name "
                       name="name"
     {%- endif %}
   {%- endif %}
@@ -165,14 +165,14 @@ The course description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_description setDescription classCompanyCourse inputCompanyCourse{{pageId}}Description "
+                      class="label-on-left {{classApiMethodMethod}}_description setDescription classCompanyCourse inputCompanyCourse{{ result.pageId }}Description "
                       name="setDescription"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_description setDescription classCompanyCourse inputCompanyCourse{{pageId}}Description "
+                      class="label-on-left {{classApiMethodMethod}}_description setDescription classCompanyCourse inputCompanyCourse{{ result.pageId }}Description "
                       name="setDescription"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_description valueDescription classCompanyCourse inputCompanyCourse{{pageId}}Description "
+                      class="label-on-left {{classApiMethodMethod}}_description valueDescription classCompanyCourse inputCompanyCourse{{ result.pageId }}Description "
                       name="description"
     {%- endif %}
   {%- endif %}
@@ -202,14 +202,14 @@ The course description. "
                       id="{{classApiMethodMethod}}_price"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyCourse inputCompanyCourse{{pageId}}Price "
+                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyCourse inputCompanyCourse{{ result.pageId }}Price "
                       name="setPrice"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyCourse inputCompanyCourse{{pageId}}Price "
+                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyCourse inputCompanyCourse{{ result.pageId }}Price "
                       name="setPrice"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_price valuePrice classCompanyCourse inputCompanyCourse{{pageId}}Price "
+                      class="label-on-left {{classApiMethodMethod}}_price valuePrice classCompanyCourse inputCompanyCourse{{ result.pageId }}Price "
                       name="price"
     {%- endif %}
   {%- endif %}
@@ -239,14 +239,14 @@ The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_pageId setPageId classCompanyCourse inputCompanyCourse{{pageId}}PageId "
+                      class="label-on-left {{classApiMethodMethod}}_pageId setPageId classCompanyCourse inputCompanyCourse{{ result.pageId }}PageId "
                       name="setPageId"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_pageId setPageId classCompanyCourse inputCompanyCourse{{pageId}}PageId "
+                      class="label-on-left {{classApiMethodMethod}}_pageId setPageId classCompanyCourse inputCompanyCourse{{ result.pageId }}PageId "
                       name="setPageId"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_pageId valuePageId classCompanyCourse inputCompanyCourse{{pageId}}PageId "
+                      class="label-on-left {{classApiMethodMethod}}_pageId valuePageId classCompanyCourse inputCompanyCourse{{ result.pageId }}PageId "
                       name="pageId"
     {%- endif %}
   {%- endif %}
@@ -268,17 +268,19 @@ The ID for this page. "
                 <form class="subgrid-2col " id="PageForm_displayPage">
   {%- endif %}
   {%- if 'Page' == classApiMethodMethod %}
-                  <wa-button variant="brand"
-                      id="{{classApiMethodMethod}}_displayPage"
-                      placeholder="[String] course page"
-                      label="course page"
-                      hint="Visit this course's landing page. "
-                      class="button-on-left {{classApiMethodMethod}}_displayPage classCompanyCourse inputCompanyCourse{{pageId}}DisplayPage "
-                      name="setDisplayPage"
-                      href="{{ result.displayPage | e }}"
-                      >
-                    course page
-                  </wa-button>
+                  <div class="button-on-left ">
+                    <wa-button variant="brand"
+                        id="{{classApiMethodMethod}}_displayPage"
+                        placeholder="[String] course page"
+                        label="course page"
+                        hint="Visit this course's landing page. "
+                        class="button-on-left {{classApiMethodMethod}}_displayPage classCompanyCourse inputCompanyCourse{{ result.pageId }}DisplayPage "
+                        name="setDisplayPage"
+                        href="{{ result.displayPage | e }}"
+                        >
+                      course page
+                    </wa-button>
+                  </div>
                   <div class="button-description-on-right ">Visit this course's landing page. </div>
   {%- else %}
                   <wa-input
@@ -290,14 +292,14 @@ Visit this course's landing page. "
                       id="{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_displayPage setDisplayPage classCompanyCourse inputCompanyCourse{{pageId}}DisplayPage "
+                      class="label-on-left {{classApiMethodMethod}}_displayPage setDisplayPage classCompanyCourse inputCompanyCourse{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_displayPage setDisplayPage classCompanyCourse inputCompanyCourse{{pageId}}DisplayPage "
+                      class="label-on-left {{classApiMethodMethod}}_displayPage setDisplayPage classCompanyCourse inputCompanyCourse{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_displayPage valueDisplayPage classCompanyCourse inputCompanyCourse{{pageId}}DisplayPage "
+                      class="label-on-left {{classApiMethodMethod}}_displayPage valueDisplayPage classCompanyCourse inputCompanyCourse{{ result.pageId }}DisplayPage "
                       name="displayPage"
     {%- endif %}
   {%- endif %}
@@ -701,14 +703,13 @@ Visit this course's landing page. "
           {{ htmFormButton_deletefilterCompanyCourse() }}
         </wa-dialog>
 {%- endmacro %}
-          <wa-divider></wa-divider>
           <div id="htmButtonGroup">
             <div class="flex flex-wrap round-column pill-smart-border-radius ">
 {% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {% if "PATCH" in scopes %}
     {% if resultCount >= 1 %}
               <wa-button variant="brand" id="refreshThisCompanyCourseGenPage"
-                   onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{pageId}}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyCourseGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyCourseGenPage')); }); return false; ">
+                   onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyCourseGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyCourseGenPage')); }); return false; ">
                 <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
                 refresh
               </wa-button>

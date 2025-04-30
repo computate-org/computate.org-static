@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/site.css"/>
 {%- endblock htmStylesPageLayout %}
     <style>{%- block htmStylePageLayout %}{%- endblock htmStylePageLayout %}</style>
+{% if userAwesomeEffect == true %}
+    <style>
+* {animation: infinite awesome-effect 3s alternate ease-in-out}
+    </style>
+{% endif %}
 {%- block htmScriptsPageLayout %}
 {%- if FONTAWESOME_KIT is defined %}
     {{ FONTAWESOME_KIT }}
@@ -82,12 +87,10 @@
     </script>
    </head>
   <body>
-    <wa-fade-in>
     <wa-page disable-sticky="header">
 {%- block htmBodyPageLayout %}
 {%- block htmBodyStartPageLayout %}
-      <aside class="main-sidebar" slot="navigation">
-        <nav>
+      <nav slot="navigation">
           <div class="display-flex-center ">
             <a href="/">
               <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}{{ SITE_LOGO_URI }}"/>
@@ -124,6 +127,18 @@
                   <span>sign out</span>
                 </wa-button>
               </div>
+              <wa-details summary="Current scopes" open="true">
+                <div class="wa-stack ">
+                  <div>
+                    <wa-tag variant="neutral">{{ pageUri }}</wa-tag>
+                  </div>
+                  <div>
+                    {% for scope in scopes %}
+                    <wa-badge variant="success">{{ scope }}</wa-badge>
+                    {% endfor %}
+                  </div>
+                </div>
+              </wa-details>
             </wa-details>
 {%- else %}
             <wa-button variant="brand" href="{{ SITE_BASE_URL }}/en-us/search/user">
@@ -174,9 +189,10 @@
             </wa-button>
           </div>
         </nav>
+      </nav>
       </aside>
       <main>
-        <header slot="header" class="wa--flank margin-block-start ">
+        <header slot="header" class="wa-flank margin-block-start ">
           <wa-icon-button data-toggle-nav name="bars" class="nav-toggle-button hide-desktop " label="open menu" appearance="text"></wa-icon-button>
           <wa-input placeholder="search" id="siteSearchInput">
             <i slot="prefix" class="fa-duotone fa-regular  fa-magnifying-glass"></i>
@@ -216,7 +232,6 @@
         {% endif %}
       </footer>
     </wa-page>
-    </wa-fade-in>
 {%- endblock htmBodyEndPageLayout %}
 {%- endblock htmBodyPageLayout %}
   </body>

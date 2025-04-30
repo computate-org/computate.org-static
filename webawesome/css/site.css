@@ -1,8 +1,3 @@
-@keyframes awesome-effect {
-  from {scale: 0.99; rotate: -.2deg}
-  to {scale: 1.01; rotate: .2deg}
-}
-
 html,body {
   min-height: 100%;
   height: 100%;
@@ -18,6 +13,11 @@ footer > a > wa-card {
 }
 wa-dropdown {
   z-index: 1;
+}
+.display-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 :where(:root),
@@ -52,9 +52,7 @@ wa-dropdown {
   --wa-color-purple: var(--wa-color-purple-50);
 }
 
-
-.pink-purple-background {
-  ::selection {background: var(--wa-color-purple-30)}
+wa-card.pink-purple-background {
   background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
   color: white;
   &:is(wa-button, wa-dialog)::part(base) {
@@ -71,8 +69,7 @@ wa-dropdown {
   }
 }
 
-.red-pink-background {
-  ::selection {background: var(--wa-color-red-30)}
+wa-card.red-pink-background {
   background: linear-gradient(130deg, var(--wa-color-red-40), var(--wa-color-pink-50));
   color: white;
   &:is(wa-button, wa-dialog)::part(base) {
@@ -89,7 +86,7 @@ wa-dropdown {
   }
 }
 
-.purple-blue-background {
+wa-card.purple-blue-background {
   background: linear-gradient(130deg, var(--wa-color-purple-40), var(--wa-color-blue-50));
   color: white;
   &:is(wa-button, wa-dialog)::part(base) {
@@ -130,9 +127,9 @@ main, footer {
       max-width: 300px;
     }
   }
-main, footer {
-  padding-inline: var(--content-padding-inline);
-}
+  main, footer {
+    padding-inline: var(--content-padding-inline);
+  }
 }
 
 /********/
@@ -185,6 +182,9 @@ main, footer {
     /* Layout */
     /**********/
 
+    .white-space-pre-wrap {
+      white-space: pre-wrap;
+    }
     .card-like-thing {
       padding: var(--site-primary-space);
       margin-block: var(--site-margin-block);
@@ -503,8 +503,11 @@ main, footer {
   grid-column: 1/3;
   align-items: center;
 }
+.label-on-left-ul {
+  list-style-type: none;
+}
 @media (max-width:800px) {
-  .label-on-left::part(form-control-label), wa-button.button-on-left {
+  .label-on-left::part(label), wa-button.button-on-left {
     grid-column: 1 / span 2;
   }
   .label-on-left::part(form-control-input), div.button-description-on-right {
@@ -513,13 +516,44 @@ main, footer {
   .label-on-left::part(form-control-help-text) {
     grid-column: 1 / span 2;
   }
+  .label-on-left::part(hint) {
+    grid-column: 1 / span 2;
+  }
+  .label-on-left::part(input) {
+    grid-column: 1 / span 2;
+  }
+  .label-on-left-ul-label {
+    grid-column: 1 / span 2;
+  }
+  .label-on-left-ul {
+    grid-column: 1 / span 2;
+  }
 }
 @media (min-width:801px) {
-  .label-on-left::part(form-control-label), wa-button.button-on-left {
-    text-align: right;
+  .label-on-left::part(hint) {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  div.button-description-on-right {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+  div.button-on-left {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+  .label-on-left::part(form-control-label) {
+    text-align: left;
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .label-on-left::part(input), .label-on-left::part(base) {
+    grid-column: 2;
+    grid-row: 2;
   }
   .label-on-left::part(form-control-help-text) {
     grid-column: 2;
+    grid-row: 3;
   }
 }
 
@@ -529,4 +563,9 @@ main, footer {
 
 .htmBodyGraphLocation {
   height: 40em;
+}
+
+@keyframes awesome-effect {
+  from {scale: 0.99; rotate: -.2deg}
+  to {scale: 1.01; rotate: .2deg}
 }

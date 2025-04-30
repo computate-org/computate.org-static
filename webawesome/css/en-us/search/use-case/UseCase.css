@@ -8,12 +8,13 @@
     grid-column: span 4;
     align-items: center;
     background-color: var(--wa-color-surface-raised);
-    &:hover {
-      background-color: var(--wa-color-brand-fill-quiet);
+    border-radius: var(--wa-border-radius-pill);
+    &:not(:first-child) {
+      padding-inline-start: var(--wa-space-m);
     }
     wa-button {
       &::part(base) {
-        border-radius: initial;
+        border-radius: var(--wa-border-radius-pill);
       }
     }
     @media (max-width:767px) {

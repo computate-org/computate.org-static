@@ -7,7 +7,7 @@
                       readonly
                       hint="A created timestamp for this record in the database"
                       label="created"
-                      class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyEvent inputCompanyEvent{{pageId}}Created "
+                      class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyEvent inputCompanyEvent{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_created"
@@ -34,7 +34,7 @@
                       readonly
                       hint="A modified timestamp for this record in the database"
                       label="modified"
-                      class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyEvent inputCompanyEvent{{pageId}}Modified "
+                      class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyEvent inputCompanyEvent{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_modified"
@@ -62,7 +62,7 @@
                       placeholder="archived"
                       label="archived"
                       hint="For archiving this record"
-                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyEvent inputCompanyEvent{{pageId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyEvent inputCompanyEvent{{ result.pageId }}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
                       data-val="{{ result.archived | e }}"
@@ -81,14 +81,14 @@
                       label="archived"
                       hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyEvent inputCompanyEvent{{pageId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyEvent inputCompanyEvent{{ result.pageId }}Archived "
                       name="setArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyEvent inputCompanyEvent{{pageId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classCompanyEvent inputCompanyEvent{{ result.pageId }}Archived "
                       name="setArchived"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_archived setArchived valueArchived classCompanyEvent inputCompanyEvent{{pageId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived setArchived valueArchived classCompanyEvent inputCompanyEvent{{ result.pageId }}Archived "
                       name="setArchived"
     {%- endif %}
   {%- endif %}
@@ -127,14 +127,14 @@ The event name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_name setName classCompanyEvent inputCompanyEvent{{pageId}}Name "
+                      class="label-on-left {{classApiMethodMethod}}_name setName classCompanyEvent inputCompanyEvent{{ result.pageId }}Name "
                       name="setName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_name setName classCompanyEvent inputCompanyEvent{{pageId}}Name "
+                      class="label-on-left {{classApiMethodMethod}}_name setName classCompanyEvent inputCompanyEvent{{ result.pageId }}Name "
                       name="setName"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_name valueName classCompanyEvent inputCompanyEvent{{pageId}}Name "
+                      class="label-on-left {{classApiMethodMethod}}_name valueName classCompanyEvent inputCompanyEvent{{ result.pageId }}Name "
                       name="name"
     {%- endif %}
   {%- endif %}
@@ -162,14 +162,14 @@ The event name. "
                       id="{{classApiMethodMethod}}_location"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_location setLocation classCompanyEvent inputCompanyEvent{{pageId}}Location "
+                      class="label-on-left {{classApiMethodMethod}}_location setLocation classCompanyEvent inputCompanyEvent{{ result.pageId }}Location "
                       name="setLocation"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_location setLocation classCompanyEvent inputCompanyEvent{{pageId}}Location "
+                      class="label-on-left {{classApiMethodMethod}}_location setLocation classCompanyEvent inputCompanyEvent{{ result.pageId }}Location "
                       name="setLocation"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_location valueLocation classCompanyEvent inputCompanyEvent{{pageId}}Location "
+                      class="label-on-left {{classApiMethodMethod}}_location valueLocation classCompanyEvent inputCompanyEvent{{ result.pageId }}Location "
                       name="location"
     {%- endif %}
   {%- endif %}
@@ -199,14 +199,14 @@ The event description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_description setDescription classCompanyEvent inputCompanyEvent{{pageId}}Description "
+                      class="label-on-left {{classApiMethodMethod}}_description setDescription classCompanyEvent inputCompanyEvent{{ result.pageId }}Description "
                       name="setDescription"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_description setDescription classCompanyEvent inputCompanyEvent{{pageId}}Description "
+                      class="label-on-left {{classApiMethodMethod}}_description setDescription classCompanyEvent inputCompanyEvent{{ result.pageId }}Description "
                       name="setDescription"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_description valueDescription classCompanyEvent inputCompanyEvent{{pageId}}Description "
+                      class="label-on-left {{classApiMethodMethod}}_description valueDescription classCompanyEvent inputCompanyEvent{{ result.pageId }}Description "
                       name="description"
     {%- endif %}
   {%- endif %}
@@ -232,7 +232,7 @@ The event description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       hint="The start date time. "
                       label="start date time"
-                      class="label-on-left {{classApiMethodMethod}}_startDateTime datetimepicker setStartDateTime classCompanyEvent inputCompanyEvent{{pageId}}StartDateTime "
+                      class="label-on-left {{classApiMethodMethod}}_startDateTime datetimepicker setStartDateTime classCompanyEvent inputCompanyEvent{{ result.pageId }}StartDateTime "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_startDateTime"
@@ -259,7 +259,7 @@ The event description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       hint="The end date time. "
                       label="end date time"
-                      class="label-on-left {{classApiMethodMethod}}_endDateTime datetimepicker setEndDateTime classCompanyEvent inputCompanyEvent{{pageId}}EndDateTime "
+                      class="label-on-left {{classApiMethodMethod}}_endDateTime datetimepicker setEndDateTime classCompanyEvent inputCompanyEvent{{ result.pageId }}EndDateTime "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_endDateTime"
@@ -290,14 +290,14 @@ The price of the product per developer. "
                       id="{{classApiMethodMethod}}_price"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyEvent inputCompanyEvent{{pageId}}Price "
+                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyEvent inputCompanyEvent{{ result.pageId }}Price "
                       name="setPrice"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyEvent inputCompanyEvent{{pageId}}Price "
+                      class="label-on-left {{classApiMethodMethod}}_price setPrice classCompanyEvent inputCompanyEvent{{ result.pageId }}Price "
                       name="setPrice"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_price valuePrice classCompanyEvent inputCompanyEvent{{pageId}}Price "
+                      class="label-on-left {{classApiMethodMethod}}_price valuePrice classCompanyEvent inputCompanyEvent{{ result.pageId }}Price "
                       name="price"
     {%- endif %}
   {%- endif %}
@@ -327,14 +327,14 @@ The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_pageId setPageId classCompanyEvent inputCompanyEvent{{pageId}}PageId "
+                      class="label-on-left {{classApiMethodMethod}}_pageId setPageId classCompanyEvent inputCompanyEvent{{ result.pageId }}PageId "
                       name="setPageId"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_pageId setPageId classCompanyEvent inputCompanyEvent{{pageId}}PageId "
+                      class="label-on-left {{classApiMethodMethod}}_pageId setPageId classCompanyEvent inputCompanyEvent{{ result.pageId }}PageId "
                       name="setPageId"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_pageId valuePageId classCompanyEvent inputCompanyEvent{{pageId}}PageId "
+                      class="label-on-left {{classApiMethodMethod}}_pageId valuePageId classCompanyEvent inputCompanyEvent{{ result.pageId }}PageId "
                       name="pageId"
     {%- endif %}
   {%- endif %}
@@ -356,13 +356,15 @@ The ID for this page. "
                 <form class="subgrid-2col " id="PageForm_displayPage">
   {%- endif %}
   {%- if 'Page' == classApiMethodMethod %}
-                  <wa-button variant="brand"
-                      id="{{classApiMethodMethod}}_displayPage"
-                      class="button-on-left {{classApiMethodMethod}}_displayPage classCompanyEvent inputCompanyEvent{{pageId}}DisplayPage "
-                      name="setDisplayPage"
-                      href="{{ result.displayPage | e }}"
-                      >
-                  </wa-button>
+                  <div class="button-on-left ">
+                    <wa-button variant="brand"
+                        id="{{classApiMethodMethod}}_displayPage"
+                        class="button-on-left {{classApiMethodMethod}}_displayPage classCompanyEvent inputCompanyEvent{{ result.pageId }}DisplayPage "
+                        name="setDisplayPage"
+                        href="{{ result.displayPage | e }}"
+                        >
+                    </wa-button>
+                  </div>
                   <div class="button-description-on-right "></div>
   {%- else %}
                   <wa-input
@@ -370,14 +372,14 @@ The ID for this page. "
                       id="{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_displayPage setDisplayPage classCompanyEvent inputCompanyEvent{{pageId}}DisplayPage "
+                      class="label-on-left {{classApiMethodMethod}}_displayPage setDisplayPage classCompanyEvent inputCompanyEvent{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_displayPage setDisplayPage classCompanyEvent inputCompanyEvent{{pageId}}DisplayPage "
+                      class="label-on-left {{classApiMethodMethod}}_displayPage setDisplayPage classCompanyEvent inputCompanyEvent{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_displayPage valueDisplayPage classCompanyEvent inputCompanyEvent{{pageId}}DisplayPage "
+                      class="label-on-left {{classApiMethodMethod}}_displayPage valueDisplayPage classCompanyEvent inputCompanyEvent{{ result.pageId }}DisplayPage "
                       name="displayPage"
     {%- endif %}
   {%- endif %}
@@ -871,14 +873,13 @@ The ID for this page. "
           {{ htmFormButton_deletefilterCompanyEvent() }}
         </wa-dialog>
 {%- endmacro %}
-          <wa-divider></wa-divider>
           <div id="htmButtonGroup">
             <div class="flex flex-wrap round-column pill-smart-border-radius ">
 {% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {% if "PATCH" in scopes %}
     {% if resultCount >= 1 %}
               <wa-button variant="brand" id="refreshThisCompanyEventGenPage"
-                   onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{pageId}}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyEventGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyEventGenPage')); }); return false; ">
+                   onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyEventGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyEventGenPage')); }); return false; ">
                 <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
                 refresh
               </wa-button>

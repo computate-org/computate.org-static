@@ -7,34 +7,96 @@ Promise.all([
     facetRangeChange('SitePage', event.target.value);
   });
 
-  document.querySelector('#htmDropdown-name')?.addEventListener('select', (event) => {
-    const item = event.detail.item;
-    const action = item.getAttribute('data-action');
-    const order = item.getAttribute('data-order');
-    const checked = !(document.querySelector('#pageSearchVal-pageSort-SitePage-name').innerText == undefined);
-    if (action === 'sort') {
-      sort('SitePage', 'name', checked ? order : '');
-      document.querySelector('#pageFacetSortSitePage_name').value = checked ? order : '';
-    }
+  document.querySelector('#pageFacetSortSitePage_created')?.addEventListener('change', (event) => {
+    sort('SitePage', 'created', event.currentTarget.value);
   });
 
-  document.querySelector('#pageFacetSortSitePage_name')?.addEventListener('change', (event) => {
-    sort('SitePage', 'name', event.currentTarget.value);
+  document.querySelector('#pageFacetSortSitePage_modified')?.addEventListener('change', (event) => {
+    sort('SitePage', 'modified', event.currentTarget.value);
   });
 
-  document.querySelector('#htmDropdown-editPage')?.addEventListener('select', (event) => {
-    const item = event.detail.item;
-    const action = item.getAttribute('data-action');
-    const order = item.getAttribute('data-order');
-    const checked = !(document.querySelector('#pageSearchVal-pageSort-SitePage-editPage').innerText == undefined);
-    if (action === 'sort') {
-      sort('SitePage', 'editPage', checked ? order : '');
-      document.querySelector('#pageFacetSortSitePage_editPage').value = checked ? order : '';
-    }
+  document.querySelector('#pageFacetSortSitePage_archived')?.addEventListener('change', (event) => {
+    sort('SitePage', 'archived', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_author')?.addEventListener('change', (event) => {
+    sort('SitePage', 'author', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_pageImageUri')?.addEventListener('change', (event) => {
+    sort('SitePage', 'pageImageUri', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_pageId')?.addEventListener('change', (event) => {
+    sort('SitePage', 'pageId', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_displayPage')?.addEventListener('change', (event) => {
+    sort('SitePage', 'displayPage', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_classCanonicalName')?.addEventListener('change', (event) => {
+    sort('SitePage', 'classCanonicalName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_classSimpleName')?.addEventListener('change', (event) => {
+    sort('SitePage', 'classSimpleName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_classCanonicalNames')?.addEventListener('change', (event) => {
+    sort('SitePage', 'classCanonicalNames', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_saves')?.addEventListener('change', (event) => {
+    sort('SitePage', 'saves', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_objectTitle')?.addEventListener('change', (event) => {
+    sort('SitePage', 'objectTitle', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSitePage_editPage')?.addEventListener('change', (event) => {
     sort('SitePage', 'editPage', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_userPage')?.addEventListener('change', (event) => {
+    sort('SitePage', 'userPage', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_download')?.addEventListener('change', (event) => {
+    sort('SitePage', 'download', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_objectSuggest')?.addEventListener('change', (event) => {
+    sort('SitePage', 'objectSuggest', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_objectText')?.addEventListener('change', (event) => {
+    sort('SitePage', 'objectText', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_solrId')?.addEventListener('change', (event) => {
+    sort('SitePage', 'solrId', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_courseNum')?.addEventListener('change', (event) => {
+    sort('SitePage', 'courseNum', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_lessonNum')?.addEventListener('change', (event) => {
+    sort('SitePage', 'lessonNum', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_h1')?.addEventListener('change', (event) => {
+    sort('SitePage', 'h1', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_h2')?.addEventListener('change', (event) => {
+    sort('SitePage', 'h2', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_name')?.addEventListener('change', (event) => {
+    sort('SitePage', 'name', event.currentTarget.value);
   });
 
   document.querySelector('#htmButton_patchSitePage')?.addEventListener('click', (event) => {
@@ -95,15 +157,6 @@ Promise.all([
             facetFieldChange('SitePage', event.currentTarget);
           });
           document.querySelector('#pageFacetPivotSitePage_displayPage')?.addEventListener('change', (event) => {
-            facetPivotChange('SitePage', event.currentTarget);
-          });
-          document.querySelector('#fqSitePage_download')?.addEventListener('change', (event) => {
-            fqChange('SitePage', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetSitePage_download')?.addEventListener('click', (event) => {
-            facetFieldChange('SitePage', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotSitePage_download')?.addEventListener('change', (event) => {
             facetPivotChange('SitePage', event.currentTarget);
           });
           document.querySelector('#fqSitePage_courseNum')?.addEventListener('change', (event) => {

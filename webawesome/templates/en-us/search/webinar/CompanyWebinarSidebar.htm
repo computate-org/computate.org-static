@@ -54,28 +54,30 @@
             </div>
             <div>
               {%- block htmBodyFiltersCompanyWebinarPage %}
-              <div>
+              <div class="flex flex-column gap-l ">
                 {% for key, value in varsFq.items() %}
-                  <div class="">
+                <div>
+                  <div>
                     <label for="fqCompanyWebinar_{{ key }}">{{ value.displayName }}<sup> ({{ value.classSimpleName }})</sup></label>
                     <wa-tooltip for="buttonFacetCompanyWebinar_{{ key }}">see values</wa-tooltip>
                     <div class="flex round-column pill-smart-border-radius ">
                       <wa-button variant="brand" id="buttonFacetCompanyWebinar_{{ key }}" data-var="{{ value.var }}" data-clear="{% if value.facetField is defined %}true{% else %}false{% endif %}"><i class="{{ FONTAWESOME_STYLE }} fa-list "></i></wa-button>
                       <wa-input id="fqCompanyWebinar_{{ key }}" placeholder="{{ value.displayName }}" class="" onchange="fqChange('CompanyWebinar', this); " data-var="{{ value.var }}" autocomplete="off=" value="{{ value.val }}"></wa-input>
                     </div>
-                  </div>
-                  <div>
                     <div class="pageSearchVal " id="pageSearchVal-fqCompanyWebinar_{{ key }}">{% if value.val is defined %}fq={{ value.var }}:{{ value.val | urlencode() }}{% endif %}</div>
                     <div class="pageSearchVal " id="pageSearchVal-buttonFacetCompanyWebinar_{{ key }}">{% if value.facetField.var is defined %}facet.field={{ value.facetField.var }}{% endif %}</div>
+                  </div>
+                  <div>
                     <div class="pageFacetField pageFacetFieldCompanyWebinar_{{ key }} " id="pageFacetFieldCompanyWebinar_{{ key }}">
                       {% for facetFieldKey, facetFieldValue in value.facetField.counts.items() %}
                       <div>
                         <wa-tooltip content="{{ facetFieldValue | e }} webinar total with {{ value.facetField.var | e }} &quot;{{ facetFieldKey | e }}&quot;"></wa-tooltip>
-                        <div class="cursor-pointer " data-class="CompanyWebinar" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="fqReplace('CompanyWebinar', this); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
+                        <div class="cursor-pointer raised-item " data-class="CompanyWebinar" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="if(document.querySelector('#fqCompanyWebinar_{{ key }}')?.value === '{{ facetFieldKey }}') this.setAttribute('data-val', ''); fqReplace('CompanyWebinar', this); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
                       </div>
                       {% endfor %}
                     </div>
                   </div>
+                </div>
                 {% endfor %}
               </div>
               {%- endblock htmBodyFiltersCompanyWebinarPage %}
@@ -90,12 +92,14 @@
               {%- block htmBodySortCompanyWebinarPage %}
               <div id="pageSearchVal-pageSort-CompanyWebinar">
               {% for key, value in varsFq.items() %}
-                  <div class="pageSearchVal pageSearchVal-pageSort-CompanyWebinar-{{ key }} " id="pageSearchVal-pageSort-CompanyWebinar-{{ key }}">{% if defaultSortVars is defined and (key + ' asc') in defaultSortVars %}sort={{ key }} asc{% else %}{% if defaultSortVars is defined and (key + ' desc') in defaultSortVars %}sort={{ key }} desc{% endif %}{% endif %}</div>
+              {% if defaultSortVars is defined and ((key + ' asc') in defaultSortVars or (key + ' desc') in defaultSortVars) %}
+                  <div class="pageSearchVal pageSearchVal-pageSort-CompanyWebinar pageSearchVal-pageSort-CompanyWebinar-{{ key }} " id="pageSearchVal-pageSort-CompanyWebinar-{{ key }}">{% if defaultSortVars is defined and (key + ' asc') in defaultSortVars %}sort={{ key }} asc{% else %}{% if defaultSortVars is defined and (key + ' desc') in defaultSortVars %}sort={{ key }} desc{% endif %}{% endif %}</div>
+              {% endif %}
               {% endfor %}
               </div>
               {% for key, value in varsFq.items() %}
               <div>
-                <wa-radio-group name="pageFacetSort" class="pageFacetSort " id="pageFacetSortCompanyWebinar_{{ key }}" value="{% if (key + ' asc') in defaultSortVars %}asc{% else %}{% if (key + ' desc') in defaultSortVars %}desc{% endif %}{% endif %}"{% if pivot is defined %} checked="checked"{% endif %} label={{ value.displayName | tojson }} size="small">
+                <wa-radio-group orientation="horizontal" name="pageFacetSort" class="pageFacetSort " id="pageFacetSortCompanyWebinar_{{ key }}" value="{% if (key + ' asc') in defaultSortVars %}asc{% else %}{% if (key + ' desc') in defaultSortVars %}desc{% endif %}{% endif %}"{% if pivot is defined %} checked="checked"{% endif %} label={{ value.displayName | tojson }} size="small">
                   <wa-radio-button value="" pill>none</wa-radio-button>
                   <wa-radio-button value="asc" pill>ascending</wa-radio-button>
                   <wa-radio-button value="desc" pill>descending</wa-radio-button>
@@ -128,7 +132,7 @@
                     <span>Range Gap</span>
                   </td>
                   <td class="">
-                    <wa-select name="facet.range.gap" id="pageFacetRangeGap-CompanyWebinar" onchange="facetRangeGapChange('CompanyWebinar', this); ">
+                    <wa-select name="facet.range.gap" id="pageSearchVal-pageFacetRangeGap-CompanyWebinar-input" onchange="facetRangeGapChange('CompanyWebinar', this); ">
                       <wa-option value="+1YEAR"{% if defaultRangeGap == '+1YEAR' %} selected="selected"{% else %}{% endif %}>Year</wa-option>
                       <wa-option value="+1MONTH"{% if defaultRangeGap == '+1MONTH' %} selected="selected"{% else %}{% endif %}>Month</wa-option>
                       <wa-option value="+1WEEK"{% if defaultRangeGap == '+1WEEK' %} selected="selected"{% else %}{% endif %}>Week</wa-option>

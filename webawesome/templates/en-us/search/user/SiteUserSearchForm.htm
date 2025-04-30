@@ -11,14 +11,14 @@ The primary key of this object in the database"
                       id="{{classApiMethodMethod}}_pk"
   {%- if "Page" == classApiMethodMethod %}
                       data-userId={{ result.userId | tojson }}
-                      class="label-on-left {{classApiMethodMethod}}_pk setPk classSiteUser inputSiteUser{{userId}}Pk "
+                      class="label-on-left {{classApiMethodMethod}}_pk setPk classSiteUser inputSiteUser{{ result.userId }}Pk "
                       name="setPk"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_pk setPk classSiteUser inputSiteUser{{userId}}Pk "
+                      class="label-on-left {{classApiMethodMethod}}_pk setPk classSiteUser inputSiteUser{{ result.userId }}Pk "
                       name="setPk"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_pk valuePk classSiteUser inputSiteUser{{userId}}Pk "
+                      class="label-on-left {{classApiMethodMethod}}_pk valuePk classSiteUser inputSiteUser{{ result.userId }}Pk "
                       name="pk"
     {%- endif %}
   {%- endif %}
@@ -44,7 +44,7 @@ The primary key of this object in the database"
                       readonly
                       hint="A created timestamp for this record in the database"
                       label="created"
-                      class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classSiteUser inputSiteUser{{userId}}Created "
+                      class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classSiteUser inputSiteUser{{ result.userId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_created"
@@ -71,7 +71,7 @@ The primary key of this object in the database"
                       readonly
                       hint="A modified timestamp for this record in the database"
                       label="modified"
-                      class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classSiteUser inputSiteUser{{userId}}Modified "
+                      class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classSiteUser inputSiteUser{{ result.userId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_modified"
@@ -99,7 +99,7 @@ The primary key of this object in the database"
                       placeholder="archive"
                       label="archive"
                       hint="For archiving this record"
-                      class="label-on-left {{classApiMethodMethod}}_archived classSiteUser inputSiteUser{{userId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classSiteUser inputSiteUser{{ result.userId }}Archived "
                       name="setArchived"
                       data-userId={{ result.userId | tojson }}
                       data-val="{{ result.archived | e }}"
@@ -118,14 +118,14 @@ The primary key of this object in the database"
                       label="archive"
                       hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_archived classSiteUser inputSiteUser{{userId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classSiteUser inputSiteUser{{ result.userId }}Archived "
                       name="setArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_archived classSiteUser inputSiteUser{{userId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived classSiteUser inputSiteUser{{ result.userId }}Archived "
                       name="setArchived"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_archived setArchived valueArchived classSiteUser inputSiteUser{{userId}}Archived "
+                      class="label-on-left {{classApiMethodMethod}}_archived setArchived valueArchived classSiteUser inputSiteUser{{ result.userId }}Archived "
                       name="setArchived"
     {%- endif %}
   {%- endif %}
@@ -168,14 +168,14 @@ The primary key of this object in the database"
                       label="see archived"
                       hint="A user field allowing a user to see archived records"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_seeArchived classSiteUser inputSiteUser{{userId}}SeeArchived "
+                      class="label-on-left {{classApiMethodMethod}}_seeArchived classSiteUser inputSiteUser{{ result.userId }}SeeArchived "
                       name="setSeeArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_seeArchived classSiteUser inputSiteUser{{userId}}SeeArchived "
+                      class="label-on-left {{classApiMethodMethod}}_seeArchived classSiteUser inputSiteUser{{ result.userId }}SeeArchived "
                       name="setSeeArchived"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_seeArchived setSeeArchived valueSeeArchived classSiteUser inputSiteUser{{userId}}SeeArchived "
+                      class="label-on-left {{classApiMethodMethod}}_seeArchived setSeeArchived valueSeeArchived classSiteUser inputSiteUser{{ result.userId }}SeeArchived "
                       name="setSeeArchived"
     {%- endif %}
   {%- endif %}
@@ -217,14 +217,14 @@ The primary key of this object in the database"
                       label="awesome effect (requires refresh)"
                       hint="an awesome effect for the entire site"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_awesomeEffect classSiteUser inputSiteUser{{userId}}AwesomeEffect "
+                      class="label-on-left {{classApiMethodMethod}}_awesomeEffect classSiteUser inputSiteUser{{ result.userId }}AwesomeEffect "
                       name="setAwesomeEffect"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{classApiMethodMethod}}_awesomeEffect classSiteUser inputSiteUser{{userId}}AwesomeEffect "
+                      class="label-on-left {{classApiMethodMethod}}_awesomeEffect classSiteUser inputSiteUser{{ result.userId }}AwesomeEffect "
                       name="setAwesomeEffect"
     {%- else %}
-                      class="label-on-left {{classApiMethodMethod}}_awesomeEffect setAwesomeEffect valueAwesomeEffect classSiteUser inputSiteUser{{userId}}AwesomeEffect "
+                      class="label-on-left {{classApiMethodMethod}}_awesomeEffect setAwesomeEffect valueAwesomeEffect classSiteUser inputSiteUser{{ result.userId }}AwesomeEffect "
                       name="setAwesomeEffect"
     {%- endif %}
   {%- endif %}
@@ -519,14 +519,13 @@ The primary key of this object in the database"
           </div>
         </div>
 {%- endmacro %}
-          <wa-divider></wa-divider>
           <div id="htmButtonGroup">
             <div class="flex flex-wrap round-column pill-smart-border-radius ">
 {% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {% if "PATCH" in scopes %}
     {% if resultCount >= 1 %}
               <wa-button variant="brand" id="refreshThisSiteUserGenPage"
-                   onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'userId:{{userId}}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisSiteUserGenPage')); }, function() { addError(document.querySelector('#refreshThisSiteUserGenPage')); }); return false; ">
+                   onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'userId:{{ result.userId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisSiteUserGenPage')); }, function() { addError(document.querySelector('#refreshThisSiteUserGenPage')); }); return false; ">
                 <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
                 refresh
               </wa-button>

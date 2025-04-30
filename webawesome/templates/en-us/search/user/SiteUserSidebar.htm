@@ -54,28 +54,30 @@
             </div>
             <div>
               {%- block htmBodyFiltersSiteUserPage %}
-              <div>
+              <div class="flex flex-column gap-l ">
                 {% for key, value in varsFq.items() %}
-                  <div class="">
+                <div>
+                  <div>
                     <label for="fqSiteUser_{{ key }}">{{ value.displayName }}<sup> ({{ value.classSimpleName }})</sup></label>
                     <wa-tooltip for="buttonFacetSiteUser_{{ key }}">see values</wa-tooltip>
                     <div class="flex round-column pill-smart-border-radius ">
                       <wa-button variant="brand" id="buttonFacetSiteUser_{{ key }}" data-var="{{ value.var }}" data-clear="{% if value.facetField is defined %}true{% else %}false{% endif %}"><i class="{{ FONTAWESOME_STYLE }} fa-list "></i></wa-button>
                       <wa-input id="fqSiteUser_{{ key }}" placeholder="{{ value.displayName }}" class="" onchange="fqChange('SiteUser', this); " data-var="{{ value.var }}" autocomplete="off=" value="{{ value.val }}"></wa-input>
                     </div>
-                  </div>
-                  <div>
                     <div class="pageSearchVal " id="pageSearchVal-fqSiteUser_{{ key }}">{% if value.val is defined %}fq={{ value.var }}:{{ value.val | urlencode() }}{% endif %}</div>
                     <div class="pageSearchVal " id="pageSearchVal-buttonFacetSiteUser_{{ key }}">{% if value.facetField.var is defined %}facet.field={{ value.facetField.var }}{% endif %}</div>
+                  </div>
+                  <div>
                     <div class="pageFacetField pageFacetFieldSiteUser_{{ key }} " id="pageFacetFieldSiteUser_{{ key }}">
                       {% for facetFieldKey, facetFieldValue in value.facetField.counts.items() %}
                       <div>
                         <wa-tooltip content="{{ facetFieldValue | e }} site user total with {{ value.facetField.var | e }} &quot;{{ facetFieldKey | e }}&quot;"></wa-tooltip>
-                        <div class="cursor-pointer " data-class="SiteUser" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="fqReplace('SiteUser', this); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
+                        <div class="cursor-pointer raised-item " data-class="SiteUser" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="if(document.querySelector('#fqSiteUser_{{ key }}')?.value === '{{ facetFieldKey }}') this.setAttribute('data-val', ''); fqReplace('SiteUser', this); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
                       </div>
                       {% endfor %}
                     </div>
                   </div>
+                </div>
                 {% endfor %}
               </div>
               {%- endblock htmBodyFiltersSiteUserPage %}
@@ -90,12 +92,14 @@
               {%- block htmBodySortSiteUserPage %}
               <div id="pageSearchVal-pageSort-SiteUser">
               {% for key, value in varsFq.items() %}
-                  <div class="pageSearchVal pageSearchVal-pageSort-SiteUser-{{ key }} " id="pageSearchVal-pageSort-SiteUser-{{ key }}">{% if defaultSortVars is defined and (key + ' asc') in defaultSortVars %}sort={{ key }} asc{% else %}{% if defaultSortVars is defined and (key + ' desc') in defaultSortVars %}sort={{ key }} desc{% endif %}{% endif %}</div>
+              {% if defaultSortVars is defined and ((key + ' asc') in defaultSortVars or (key + ' desc') in defaultSortVars) %}
+                  <div class="pageSearchVal pageSearchVal-pageSort-SiteUser pageSearchVal-pageSort-SiteUser-{{ key }} " id="pageSearchVal-pageSort-SiteUser-{{ key }}">{% if defaultSortVars is defined and (key + ' asc') in defaultSortVars %}sort={{ key }} asc{% else %}{% if defaultSortVars is defined and (key + ' desc') in defaultSortVars %}sort={{ key }} desc{% endif %}{% endif %}</div>
+              {% endif %}
               {% endfor %}
               </div>
               {% for key, value in varsFq.items() %}
               <div>
-                <wa-radio-group name="pageFacetSort" class="pageFacetSort " id="pageFacetSortSiteUser_{{ key }}" value="{% if (key + ' asc') in defaultSortVars %}asc{% else %}{% if (key + ' desc') in defaultSortVars %}desc{% endif %}{% endif %}"{% if pivot is defined %} checked="checked"{% endif %} label={{ value.displayName | tojson }} size="small">
+                <wa-radio-group orientation="horizontal" name="pageFacetSort" class="pageFacetSort " id="pageFacetSortSiteUser_{{ key }}" value="{% if (key + ' asc') in defaultSortVars %}asc{% else %}{% if (key + ' desc') in defaultSortVars %}desc{% endif %}{% endif %}"{% if pivot is defined %} checked="checked"{% endif %} label={{ value.displayName | tojson }} size="small">
                   <wa-radio-button value="" pill>none</wa-radio-button>
                   <wa-radio-button value="asc" pill>ascending</wa-radio-button>
                   <wa-radio-button value="desc" pill>descending</wa-radio-button>
@@ -128,7 +132,7 @@
                     <span>Range Gap</span>
                   </td>
                   <td class="">
-                    <wa-select name="facet.range.gap" id="pageFacetRangeGap-SiteUser" onchange="facetRangeGapChange('SiteUser', this); ">
+                    <wa-select name="facet.range.gap" id="pageSearchVal-pageFacetRangeGap-SiteUser-input" onchange="facetRangeGapChange('SiteUser', this); ">
                       <wa-option value="+1YEAR"{% if defaultRangeGap == '+1YEAR' %} selected="selected"{% else %}{% endif %}>Year</wa-option>
                       <wa-option value="+1MONTH"{% if defaultRangeGap == '+1MONTH' %} selected="selected"{% else %}{% endif %}>Month</wa-option>
                       <wa-option value="+1WEEK"{% if defaultRangeGap == '+1WEEK' %} selected="selected"{% else %}{% endif %}>Week</wa-option>

@@ -1,7 +1,7 @@
 {% extends "en-us/PageLayout.htm" %}
 {%- block htmTitlePageLayout %}
 {%- block htmTitleCompanyServicePage %}
-    <title>{{ result.title }}</title>
+    <title>{{ result.objectTitle }}</title>
 {%- endblock htmTitleCompanyServicePage %}
 {%- endblock htmTitlePageLayout %}
 
@@ -41,7 +41,7 @@
 
       function htmTooltipCompanyService(feature, layer) {
         return `{%- block htmTooltipCompanyServicePage %}
-<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.title}</a></h3>
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipCompanyServicePage %}`;
       }
     </script>
@@ -77,7 +77,7 @@
           var o = document.querySelector('.pageForm .result')?.value;
           if(o)
             window.result = JSON.parse(o);
-        {% if pageId is defined %}
+        {% if result.pageId is defined %}
         {% endif %}
         }
         var l = document.querySelector('.pageForm .listCompanyService')?.value;
@@ -119,7 +119,11 @@
         });
         document.querySelector('#htmFormButton_postCompanyService')?.addEventListener('click', event => {
           event.preventDefault();
-          postCompanyService(document.querySelector('#htmForm_postCompanyService'), document.querySelector('#htmFormButton_postCompanyService'), (response, target) => { response.json().then((json) => { window.location.href = json.editPage; }); });
+          postCompanyService(document.querySelector('#htmForm_postCompanyService')
+          , document.querySelector('#htmFormButton_postCompanyService')
+          , (json, target) => {
+            window.location.href = json.editPage;
+          });
           return false;
         });
 
@@ -149,9 +153,11 @@
 
 {%- block websocketPageLayout %}
 {%- block websocketCompanyServicePage %}
+{% if resultCount > 0 %}
         window.eventBus = new EventBus('/eventbus');
         window.eventBus.enableReconnect(true);
         websocketCompanyService(websocketCompanyServiceInner);
+{% endif %}
 {%- endblock websocketCompanyServicePage %}
 {%- endblock websocketPageLayout %}
 
@@ -167,12 +173,13 @@
               <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all services
             </wa-button>
-            <h1 class="Page_title"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> {{ result.title | e }}</h1>
+            <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> {{ result.objectTitle | e }}</h1>
           </div>
           <div class="margin-block">
           </div>
-{% include en-us/search/service/CompanyServiceSearchButtons.htm %}
 {% include en-us/search/service/CompanyServiceSearchForm.htm %}
+          <wa-divider></wa-divider>
+{% include en-us/search/service/CompanyServiceSearchButtons.htm %}
 {% endif %}
 {%- endblock htmBodyStartCompanyServicePage %}
 {%- endblock htmBodyStartPageLayout %}
@@ -181,17 +188,21 @@
 {%- block htmBodyMiddleCompanyServicePage %}
         <div>
 {% if resultCount == 0 %}
-        {% if varsFqCount > 0 %}
-        <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip>
+        <div class="wa-flank">
+          <div>
+          {% if varsFqCount > 1 %}
+          <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip></wa-tooltip>
           <wa-button id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
             <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
             all services
           </wa-button>
-        </wa-tooltip>
-        {% endif %}
-        <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>services</span></h1>
-{% include en-us/search/service/CompanyServiceSearchButtons.htm %}
+          {% endif %}
+        </div>
+          <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>services</span></h1>
+        </div>
 {% include en-us/search/service/CompanyServiceSearchForm.htm %}
+          <wa-divider></wa-divider>
+{% include en-us/search/service/CompanyServiceSearchButtons.htm %}
         <h2>
           <span>
   {% if classIconCssClasses is defined %}
@@ -206,8 +217,8 @@
 {% endif %}
 {%- block htmFormCompanyServicePage %}
           <form action="/en-us/api/service" id="CompanyServiceForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
-{% if pageId is defined %}
-            <input name="pageId" class="valuePageId" type="hidden" value="{{pageId}}"/>
+{% if result.pageId is defined %}
+            <input name="pageId" class="valuePageId" type="hidden" value="{{ result.pageId }}"/>
             {% endif %}
             <input name="focusId" type="hidden"/>
             <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>

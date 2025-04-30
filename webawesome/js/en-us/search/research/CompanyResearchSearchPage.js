@@ -7,49 +7,76 @@ Promise.all([
     facetRangeChange('CompanyResearch', event.target.value);
   });
 
-  document.querySelector('#htmDropdown-name')?.addEventListener('select', (event) => {
-    const item = event.detail.item;
-    const action = item.getAttribute('data-action');
-    const order = item.getAttribute('data-order');
-    const checked = !(document.querySelector('#pageSearchVal-pageSort-CompanyResearch-name').innerText == undefined);
-    if (action === 'sort') {
-      sort('CompanyResearch', 'name', checked ? order : '');
-      document.querySelector('#pageFacetSortCompanyResearch_name').value = checked ? order : '';
-    }
+  document.querySelector('#pageFacetSortCompanyResearch_created')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'created', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_modified')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'modified', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_archived')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'archived', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortCompanyResearch_name')?.addEventListener('change', (event) => {
     sort('CompanyResearch', 'name', event.currentTarget.value);
   });
 
-  document.querySelector('#htmDropdown-description')?.addEventListener('select', (event) => {
-    const item = event.detail.item;
-    const action = item.getAttribute('data-action');
-    const order = item.getAttribute('data-order');
-    const checked = !(document.querySelector('#pageSearchVal-pageSort-CompanyResearch-description').innerText == undefined);
-    if (action === 'sort') {
-      sort('CompanyResearch', 'description', checked ? order : '');
-      document.querySelector('#pageFacetSortCompanyResearch_description').value = checked ? order : '';
-    }
-  });
-
   document.querySelector('#pageFacetSortCompanyResearch_description')?.addEventListener('change', (event) => {
     sort('CompanyResearch', 'description', event.currentTarget.value);
   });
 
-  document.querySelector('#htmDropdown-editPage')?.addEventListener('select', (event) => {
-    const item = event.detail.item;
-    const action = item.getAttribute('data-action');
-    const order = item.getAttribute('data-order');
-    const checked = !(document.querySelector('#pageSearchVal-pageSort-CompanyResearch-editPage').innerText == undefined);
-    if (action === 'sort') {
-      sort('CompanyResearch', 'editPage', checked ? order : '');
-      document.querySelector('#pageFacetSortCompanyResearch_editPage').value = checked ? order : '';
-    }
+  document.querySelector('#pageFacetSortCompanyResearch_pageId')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'pageId', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_displayPage')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'displayPage', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_classCanonicalName')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'classCanonicalName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_classSimpleName')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'classSimpleName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_classCanonicalNames')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'classCanonicalNames', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_saves')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'saves', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_objectTitle')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'objectTitle', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortCompanyResearch_editPage')?.addEventListener('change', (event) => {
     sort('CompanyResearch', 'editPage', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_userPage')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'userPage', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_download')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'download', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_objectSuggest')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'objectSuggest', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_objectText')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'objectText', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyResearch_solrId')?.addEventListener('change', (event) => {
+    sort('CompanyResearch', 'solrId', event.currentTarget.value);
   });
 
   document.querySelector('#htmButton_patchCompanyResearch')?.addEventListener('click', (event) => {
@@ -110,15 +137,6 @@ Promise.all([
             facetFieldChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#pageFacetPivotCompanyResearch_displayPage')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyResearch', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyResearch_download')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyResearch_download')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyResearch', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyResearch_download')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyResearch', event.currentTarget);
           });
 });
