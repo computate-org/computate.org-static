@@ -48,7 +48,7 @@
                 dropdownMenu.innerHTML = '';
                 body.list.forEach((o) => {
                   var menuItem = document.createElement('wa-menu-item');
-                  menuItem.innerText = o.title;
+                  menuItem.innerText = o.objectTitle;
                   menuItem.setAttribute('data-href', o.displayPage);
                   dropdownMenu.appendChild(menuItem);
                   menuItem.addEventListener('click', (event) => window.location.href = event.target.getAttribute('data-href') );
