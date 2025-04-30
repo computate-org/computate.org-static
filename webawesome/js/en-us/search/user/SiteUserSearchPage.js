@@ -75,16 +75,16 @@ Promise.all([
     sort('SiteUser', 'download', event.currentTarget.value);
   });
 
-  document.querySelector('#pageFacetSortSiteUser_objectSuggest')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'objectSuggest', event.currentTarget.value);
-  });
-
   document.querySelector('#pageFacetSortSiteUser_objectText')?.addEventListener('change', (event) => {
     sort('SiteUser', 'objectText', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSiteUser_solrId')?.addEventListener('change', (event) => {
     sort('SiteUser', 'solrId', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSiteUser_objectSuggest')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'objectSuggest', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSiteUser_userKeys')?.addEventListener('change', (event) => {
