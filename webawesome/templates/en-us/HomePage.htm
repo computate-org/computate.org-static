@@ -33,7 +33,9 @@
               second: 'numeric',
             };
             var nextWebinarFormatter = new Intl.DateTimeFormat('en-US', nextWebinarOptions);
-            var nextWebinar = nextWebinarFormatter.format(new Date(nextWebinarDateStr));
+            var nextWebinarTz = moment.tz(nextWebinarDateStr, nextWebinarZone);
+            var userTz = moment.tz.guess();
+            var nextWebinar = nextWebinarFormatter.format(nextWebinarTz.clone().tz(userTz));
             document.querySelector('#webinar-button').setAttribute('href', result.webinarUrlAmericas);
             document.querySelector('#webinar-relative-time').setAttribute('date', nextWebinar);
             document.querySelector('#webinar-format-time').setAttribute('date', nextWebinar);
@@ -172,6 +174,53 @@
             </div>
           </wa-card>
 
+          <wa-card class="red-pink-background ">
+            <div class="wa-stack ">
+              <div class="wa-flank ">
+                <i class="fa-brands fa-redhat fa-8x "></i>
+                <div>
+                  <h1 class="brand-font">
+                    Vibe code a data-driven website with generative AI for smart aquaculture in Red Hat OpenShift AI
+                  </h1>
+                  <h2 class="brand-font">
+                    at the Red Hat Summit May 20, 2025 in Boston, Massachussetts
+                  </h2>
+                </div>
+              </div>
+              <wa-card>
+                <div class="wa-align-items-center wa-grid wa-gap-3xl ">
+                  <div class="wa-frame wa-border-radius-l ">
+                    <img src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/png/smart-aquaculture-vscode-workbench.png"/>
+                  </div>
+                  <div class="wa-stack ">
+                    <h3 class="wa-heading-xl ">
+                      Smart Aquaculture workshop at Red Hat Summit 2025
+                    </h3>
+                    <p class="wa-caption-l ">
+                      This course will become available for participants at the 
+                      <a href="https://events.experiences.redhat.com/widget/redhat/sum25/SessionCatalog2025/session/1731473553640001dRBg">Red Hat Summit 2025</a>
+                      in Boston, Massachussetts, USA Tuesday May 20, 2025 10:30 AM - 12:00 PM EDT. 
+                    </p>
+                    <div>
+                      <div>Speakers:</div>
+                      <ul>
+                        <li>Dewayne Branch, CEO, Founder, Qatar Strategic Business Group</li>
+                        <li>Jarvis Green, Founder, Green Reef Foundation</li>
+                        <li>Christopher Tate, Principal Software Engineer, Red Hat</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <wa-button id="order-button" class="gradient-button pink-purple-background" variant="neutral" href="https://events.experiences.redhat.com/widget/redhat/sum25/SessionCatalog2025/session/1731473553640001dRBg">
+                        <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+                        Register for the workshop
+                      </wa-button>
+                    </div>
+                  </div>
+                </div>
+              </wa-card>
+            </div>
+          </wa-card>
+
           <wa-card class="main-content ">
             <div>
               <img class="max-width-100" src="https://computate.neocities.org/svg/computate.org-keys.svg" alt="computate.org logo">
@@ -217,9 +266,12 @@
                     </h1>
                   </div>
                   <h2>
+                    The free Smart Aquaculture Cloud Sandbox course
+                  </h2>
+                  <p>
                     Free course for configuring IoT services and Smart Data Models with a FIWARE IoT Agent, Context Broker, and other event-driven microservices in a free Red Hat OpenShift Developer Sandbox
                     with the Smart Aquaculture Cloud Sandbox
-                  </h1>
+                  </p>
                 </div>
               </div>
               <div class="flex-item-right ">
@@ -230,8 +282,8 @@
               <div class="wa-stack ">
                 <div>
                   This course was presented at the 
-                  <a href="https://www.eventbrite.de/e/fiware-tech-training-naples-tickets-920143322447">FIWARE Summit Technical Training</a>
-                  in Naples, Italy September 18 2024
+                  <a href="{{ SITE_BASE_URL }}/en-us/shop/event/fiware-kubernetes-deployment-at-fiware-summit-2024-in-naples-italy">2024 FIWARE Summit Technical Training in Naples, Italy</a>
+                  and <a href="{{ SITE_BASE_URL }}/en-us/shop/event/smart-aquaculture-nedsi-2025">the Generative AI to Enhance Supply Chain Resilience NEDSI 2025 research conference in Hershey, Pennsylvania</a>
                 </div>
                 <div>
                   <wa-button id="order-button" class="gradient-button orange-blue-background" variant="neutral" href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox">
@@ -255,14 +307,50 @@
                 Learn how to deploy open source smart device microservices to the cloud
                 with the <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-cloud-deployer">Computate Smart Cloud Deployer</a> and <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-website-builder">Computate Smart Website Builder</a>. 
               </h2>
-              <wa-card>
-                <div>
-                  <wa-button pill id="order-button" size="large" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-cloud-deployer" variant="neutral">
-                    <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                    Learn more
-                  </wa-button>
+              <div class="wa-grid" style="--min-column-size: 50ch">
+                <div class="wa-grid">
+                  <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-cloud-deployer" class="wa-link-plain">
+                    <wa-card>
+                      <img slot="image"
+                        src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/png/smart-aquaculture-openshift-topology.png"
+                        alt="Deploy modern open source microservices including Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications. "
+                      />
+                      <div class="wa-stack">
+                        <div class="wa-flank:end wa-align-items-start wa-heading-m">
+                          <span>Computate Smart Cloud Deployer</span>
+                          <span>$1,024</span>
+                        </div>
+                        <p class="wa-caption-m">
+                          Learn how to deploy open source smart device microservices to the cloud. 
+                        </p>
+                        <em class="wa-caption-m">
+                          Deploy modern open source microservices including Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications. 
+                        </em>
+                      </div>
+                    </wa-card>
+                  </a>
+                  <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-website-builder" class="wa-link-plain">
+                    <wa-card>
+                      <img slot="image"
+                        src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/png/smart-aquaculture-fish-populations.png"
+                        alt="Build a custom data-driven website for your own ideas on your own computer. "
+                      />
+                      <div class="wa-stack">
+                        <div class="wa-flank:end wa-align-items-start wa-heading-m">
+                          <span>Computate Smart Website Builder</span>
+                          <span>$2,048</span>
+                        </div>
+                        <p class="wa-caption-m">
+                          Are you a software developer interested in building digital twins, or a custom website? 
+                        </p>
+                        <em class="wa-caption-m">
+                          Build a custom data-driven website for your own ideas on your own computer. 
+                        </em>
+                      </div>
+                    </wa-card>
+                  </a>
                 </div>
-              </wa-card>
+              </div>
             </div>
           </wa-card>
 
