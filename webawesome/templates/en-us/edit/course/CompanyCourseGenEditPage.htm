@@ -1,7 +1,7 @@
 {% extends "en-us/PageLayout.htm" %}
 {%- block htmTitlePageLayout %}
 {%- block htmTitleCompanyCoursePage %}
-    <title>{{ result.title }}</title>
+    <title>{{ result.objectTitle }}</title>
 {%- endblock htmTitleCompanyCoursePage %}
 {%- endblock htmTitlePageLayout %}
 
@@ -41,7 +41,7 @@
 
       function htmTooltipCompanyCourse(feature, layer) {
         return `{%- block htmTooltipCompanyCoursePage %}
-<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.title}</a></h3>
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipCompanyCoursePage %}`;
       }
     </script>
@@ -193,7 +193,7 @@
               <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all courses
             </wa-button>
-            <h1 class="Page_title"><i class="fa-duotone fa-regular fa-notebook"></i> {{ result.title | e }}</h1>
+            <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-notebook"></i> {{ result.objectTitle | e }}</h1>
           </div>
           <div class="margin-block">
           </div>

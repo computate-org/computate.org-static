@@ -95,10 +95,6 @@ Promise.all([
     sort('CompanyCourse', 'downloadUri', event.currentTarget.value);
   });
 
-  document.querySelector('#pageFacetSortCompanyCourse_courseNum')?.addEventListener('change', (event) => {
-    sort('CompanyCourse', 'courseNum', event.currentTarget.value);
-  });
-
   document.querySelector('#htmButton_patchCompanyCourse')?.addEventListener('click', (event) => {
     document.querySelector('#patchCompanyCourseDialog').open = true;
   });
@@ -217,15 +213,6 @@ Promise.all([
             facetFieldChange('CompanyCourse', event.currentTarget);
           });
           document.querySelector('#pageFacetPivotCompanyCourse_downloadUri')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyCourse', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyCourse_courseNum')?.addEventListener('change', (event) => {
-            fqChange('CompanyCourse', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyCourse_courseNum')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyCourse', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyCourse_courseNum')?.addEventListener('change', (event) => {
             facetPivotChange('CompanyCourse', event.currentTarget);
           });
 });

@@ -108,10 +108,6 @@ function searchCompanyCourseFilters($formFilters) {
     var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
     if(filterDownloadUri != null && filterDownloadUri !== '')
       filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
-
-    var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
-    if(filterCourseNum != null && filterCourseNum !== '')
-      filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
   }
   return filters;
 }
@@ -139,7 +135,7 @@ function suggestCompanyCourseObjectSuggest($formFilters, $list, target) {
     $list.innerHTML = '';
     data['list'].forEach((o, i) => {
       var $i = document.querySelector('<i class="fa-duotone fa-regular fa-notebook"></i>');
-      var $span = document.createElement('span');      $span.setAttribute('class', '');      $span.innerText = o['title'];
+      var $span = document.createElement('span');      $span.setAttribute('class', '');      $span.innerText = o['objectTitle'];
       var $li = document.createElement('li');
       var $a = document.createElement('a').setAttribute('href', o['editPage']);
       $a.append($i);
@@ -353,18 +349,6 @@ async function patchCompanyCourse($formFilters, $formValues, target, pageId, suc
   if(removeDownloadUri != null && removeDownloadUri !== '')
     vals['removeDownloadUri'] = removeDownloadUri;
 
-  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
-  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
-  var setCourseNum = removeCourseNum ? null : $formValues.querySelector('.setCourseNum')?.value;
-  var addCourseNum = $formValues.querySelector('.addCourseNum')?.value;
-  if(removeCourseNum || setCourseNum != null && setCourseNum !== '')
-    vals['setCourseNum'] = setCourseNum;
-  if(addCourseNum != null && addCourseNum !== '')
-    vals['addCourseNum'] = addCourseNum;
-  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value;
-  if(removeCourseNum != null && removeCourseNum !== '')
-    vals['removeCourseNum'] = removeCourseNum;
-
   patchCompanyCourseVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
 }
 
@@ -466,10 +450,6 @@ function patchCompanyCourseFilters($formFilters) {
     var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
     if(filterDownloadUri != null && filterDownloadUri !== '')
       filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
-
-    var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
-    if(filterCourseNum != null && filterCourseNum !== '')
-      filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
   }
   return filters;
 }
@@ -572,10 +552,6 @@ async function postCompanyCourse($formValues, target, success, error) {
   var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
   if(valueDownloadUri != null && valueDownloadUri !== '')
     vals['downloadUri'] = valueDownloadUri;
-
-  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
-  if(valueCourseNum != null && valueCourseNum !== '')
-    vals['courseNum'] = valueCourseNum;
 
   fetch(
     '/en-us/api/course'
@@ -806,7 +782,6 @@ async function websocketCompanyCourseInner(apiRequest) {
         var inputEmailTemplate = null;
         var inputStoreUrl = null;
         var inputDownloadUri = null;
-        var inputCourseNum = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.Page_created');
@@ -852,8 +827,6 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputStoreUrl = $response.querySelector('.Page_storeUrl');
         if(vars.includes('downloadUri'))
           inputDownloadUri = $response.querySelector('.Page_downloadUri');
-        if(vars.includes('courseNum'))
-          inputCourseNum = $response.querySelector('.Page_courseNum');
 
         jsWebsocketCompanyCourse(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -1078,16 +1051,6 @@ async function websocketCompanyCourseInner(apiRequest) {
               item.textContent = inputDownloadUri.textContent;
           });
           addGlow(document.querySelector('.Page_downloadUri'));
-        }
-
-        if(inputCourseNum) {
-          document.querySelectorAll('.Page_courseNum').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputCourseNum.getAttribute('value');
-            else
-              item.textContent = inputCourseNum.textContent;
-          });
-          addGlow(document.querySelector('.Page_courseNum'));
         }
 
           pageGraphCompanyCourse();
