@@ -101,6 +101,10 @@ function searchSiteUserFilters($formFilters) {
     if(filterDownload != null && filterDownload !== '')
       filters.push({ name: 'fq', value: 'download:' + filterDownload });
 
+    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
+    if(filterObjectSuggest != null && filterObjectSuggest !== '')
+      filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
+
     var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
@@ -108,10 +112,6 @@ function searchSiteUserFilters($formFilters) {
     var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
-
-    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
-    if(filterObjectSuggest != null && filterObjectSuggest !== '')
-      filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
 
     var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
     if(filterUserKeys != null && filterUserKeys !== '')
@@ -522,6 +522,10 @@ function patchSiteUserFilters($formFilters) {
     if(filterDownload != null && filterDownload !== '')
       filters.push({ name: 'fq', value: 'download:' + filterDownload });
 
+    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
+    if(filterObjectSuggest != null && filterObjectSuggest !== '')
+      filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
+
     var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
@@ -529,10 +533,6 @@ function patchSiteUserFilters($formFilters) {
     var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
-
-    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
-    if(filterObjectSuggest != null && filterObjectSuggest !== '')
-      filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
 
     var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
     if(filterUserKeys != null && filterUserKeys !== '')
@@ -817,9 +817,9 @@ async function websocketSiteUserInner(apiRequest) {
         var inputEditPage = null;
         var inputUserPage = null;
         var inputDownload = null;
+        var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
-        var inputObjectSuggest = null;
         var inputUserKeys = null;
         var inputUserId = null;
         var inputUserName = null;
@@ -863,12 +863,12 @@ async function websocketSiteUserInner(apiRequest) {
           inputUserPage = $response.querySelector('.Page_userPage');
         if(vars.includes('download'))
           inputDownload = $response.querySelector('.Page_download');
+        if(vars.includes('objectSuggest'))
+          inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('.Page_objectText');
         if(vars.includes('solrId'))
           inputSolrId = $response.querySelector('.Page_solrId');
-        if(vars.includes('objectSuggest'))
-          inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
         if(vars.includes('userKeys'))
           inputUserKeys = $response.querySelector('.Page_userKeys');
         if(vars.includes('userId'))
@@ -1061,6 +1061,16 @@ async function websocketSiteUserInner(apiRequest) {
           addGlow(document.querySelector('.Page_download'));
         }
 
+        if(inputObjectSuggest) {
+          document.querySelectorAll('.Page_objectSuggest').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectSuggest.getAttribute('value');
+            else
+              item.textContent = inputObjectSuggest.textContent;
+          });
+          addGlow(document.querySelector('.Page_objectSuggest'));
+        }
+
         if(inputObjectText) {
           document.querySelectorAll('.Page_objectText').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1079,16 +1089,6 @@ async function websocketSiteUserInner(apiRequest) {
               item.textContent = inputSolrId.textContent;
           });
           addGlow(document.querySelector('.Page_solrId'));
-        }
-
-        if(inputObjectSuggest) {
-          document.querySelectorAll('.Page_objectSuggest').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputObjectSuggest.getAttribute('value');
-            else
-              item.textContent = inputObjectSuggest.textContent;
-          });
-          addGlow(document.querySelector('.Page_objectSuggest'));
         }
 
         if(inputUserKeys) {
