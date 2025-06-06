@@ -6,6 +6,7 @@
                       readonly
                       placeholder="[Long] primary key"
                       label="primary key"
+                      type="number"
                       hint="
 The primary key of this object in the database"
                       id="{{classApiMethodMethod}}_pk"
@@ -40,18 +41,19 @@ The primary key of this object in the database"
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A created timestamp for this record in the database"
-                      label="created"
+                      label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_created"
-                      value="{%- if result.created is defined %}{{ formatZonedDateTime(result.created, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.created is defined %}{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -67,18 +69,19 @@ The primary key of this object in the database"
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A modified timestamp for this record in the database"
-                      label="modified"
+                      label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_modified"
-                      value="{%- if result.modified is defined %}{{ formatZonedDateTime(result.modified, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.modified is defined %}{{ formatZonedDateTime(result.modified, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -137,7 +140,7 @@ The primary key of this object in the database"
                       >archive</wa-checkbox>
   {%- else %}
                       >
-                    <wa-option value="" selected="selected"></wa-option>
+                    <wa-option value=""></wa-option>
                     <wa-option value="true">true</wa-option>
                     <wa-option value="false">false</wa-option>
                   </wa-select>
@@ -378,18 +381,19 @@ The ICalendar URL for the events. "
                 <form class="subgrid-2col " id="PageForm_nextWebinar">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="The start date time of the next webinar. "
-                      label="next webinar"
+                      label="next webinar {{ formatZonedDateTime(result.nextWebinar, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_nextWebinar datetimepicker setNextWebinar classCompanyWebinar inputCompanyWebinar{{ result.pageId }}NextWebinar "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_nextWebinar"
-                      value="{%- if result.nextWebinar is defined %}{{ formatZonedDateTime(result.nextWebinar, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.nextWebinar is defined %}{{ formatZonedDateTime(result.nextWebinar, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -441,11 +445,16 @@ The ID for this page. "
 {%- macro htmButton_patchCompanyWebinar() %}<wa-button variant="brand" id="htmButton_patchCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyWebinar() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_patchCompanyWebinar">Modify webinar</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyWebinar" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_patchCompanyWebinar"
+                >Modify webinar</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_patchCompanyWebinar"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_patchCompanyWebinar() %}
-        <wa-dialog with-footer id="patchCompanyWebinarDialog" label="Modify webinar">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchCompanyWebinarDialog" label="Modify webinar">
           <form id="htmForm_patchCompanyWebinar" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -600,11 +609,16 @@ The ID for this page. "
 {%- macro htmButton_postCompanyWebinar() %}<wa-button variant="brand" id="htmButton_postCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyWebinar() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_postCompanyWebinar">Create a webinar</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyWebinar" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_postCompanyWebinar"
+                >Create a webinar</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_postCompanyWebinar"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_postCompanyWebinar() %}
-        <wa-dialog with-footer id="postCompanyWebinarDialog" label="Create a webinar">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="postCompanyWebinarDialog" label="Create a webinar">
           <form id="htmForm_postCompanyWebinar" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -613,7 +627,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmPkCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -623,7 +637,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmCreatedCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -633,7 +647,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmModifiedCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -645,7 +659,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmArchivedCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -662,7 +676,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmNameCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -672,7 +686,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -684,7 +698,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -694,7 +708,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -704,7 +718,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -714,7 +728,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -724,7 +738,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -741,7 +755,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -760,11 +774,16 @@ The ID for this page. "
 {%- macro htmButton_deleteCompanyWebinar() %}<wa-button variant="brand" id="htmButton_deleteCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deleteCompanyWebinar() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deleteCompanyWebinar">Delete webinar</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deleteCompanyWebinar" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deleteCompanyWebinar"
+                >Delete webinar</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deleteCompanyWebinar"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_deleteCompanyWebinar() %}
-        <wa-dialog with-footer id="deleteCompanyWebinarDialog" label="Delete webinar">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteCompanyWebinarDialog" label="Delete webinar">
           <form id="htmForm_deleteCompanyWebinar" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteCompanyWebinar() }}
@@ -774,11 +793,16 @@ The ID for this page. "
 {%- macro htmButton_putimportCompanyWebinar() %}<wa-button variant="brand" id="htmButton_putimportCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyWebinar() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_putimportCompanyWebinar">Import webinars</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyWebinar" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_putimportCompanyWebinar"
+                >Import webinars</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_putimportCompanyWebinar"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_putimportCompanyWebinar() %}
-        <wa-dialog with-footer id="putimportCompanyWebinarDialog" label="Import webinars">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportCompanyWebinarDialog" label="Import webinars">
           <form id="htmForm_putimportCompanyWebinar" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -796,11 +820,16 @@ The ID for this page. "
 {%- macro htmButton_searchpageCompanyWebinar() %}{%- endmacro %}
 
 {%- macro htmFormButton_searchpageCompanyWebinar() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_searchpageCompanyWebinar">Search webinars</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageCompanyWebinar" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_searchpageCompanyWebinar"
+                >Search webinars</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_searchpageCompanyWebinar"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyWebinar() %}
-        <div with-footer id="searchpageCompanyWebinarDialog" label="Search webinars">
+        <div with-header with-footer style="--width: 50vw; " id="searchpageCompanyWebinarDialog" label="Search webinars">
           <div id="htmForm_searchpageCompanyWebinar" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -954,18 +983,23 @@ The ID for this page. "
 {%- macro htmButton_deletefilterCompanyWebinar() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deletefilterCompanyWebinar() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deletefilterCompanyWebinar">Delete webinar</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterCompanyWebinar" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deletefilterCompanyWebinar"
+                >Delete webinar</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deletefilterCompanyWebinar"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterCompanyWebinar() %}
-        <wa-dialog with-footer id="deletefilterCompanyWebinarDialog" label="Delete webinar">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterCompanyWebinarDialog" label="Delete webinar">
           <form id="htmForm_deletefilterCompanyWebinar" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterCompanyWebinar() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmButtonGroup">
-            <div class="flex flex-wrap round-column pill-smart-border-radius ">
+          <div id="htmSearchForm">
+            <wa-button-group>
 {% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {% if "PATCH" in scopes %}
     {% if resultCount >= 1 %}
@@ -987,7 +1021,9 @@ The ID for this page. "
 {% endif %}
 {%- if 'PATCH' in scopes %}
   {%- if resultCount > 0 %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_patchCompanyWebinar() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 {%- if 'POST' in scopes %}
@@ -998,7 +1034,7 @@ The ID for this page. "
   {%- endif %}
 {%- endif %}
 {%- if 'DELETE' in scopes %}
-  {%- if resultCount == 1 %}
+  {%- if result is defined %}
     {{ htmButton_deleteCompanyWebinar() }}
   {%- endif %}
 {%- endif %}
@@ -1006,12 +1042,14 @@ The ID for this page. "
   {{ htmButton_putimportCompanyWebinar() }}
 {%- endif %}
 {%- if 'DELETE' in scopes %}
-  {%- if resultCount > 1 %}
+  {%- if result is not defined %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_deletefilterCompanyWebinar() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 
-            </div>
+            </wa-button-group>
           </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchCompanyWebinar() }}

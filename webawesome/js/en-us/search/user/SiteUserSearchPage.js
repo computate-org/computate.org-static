@@ -27,8 +27,20 @@ Promise.all([
     sort('SiteUser', 'seeArchived', event.currentTarget.value);
   });
 
+  document.querySelector('#pageFacetSortSiteUser_siteFontSize')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'siteFontSize', event.currentTarget.value);
+  });
+
   document.querySelector('#pageFacetSortSiteUser_awesomeEffect')?.addEventListener('change', (event) => {
     sort('SiteUser', 'awesomeEffect', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSiteUser_siteTheme')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'siteTheme', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSiteUser_webComponentsTheme')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'webComponentsTheme', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSiteUser_classCanonicalName')?.addEventListener('change', (event) => {

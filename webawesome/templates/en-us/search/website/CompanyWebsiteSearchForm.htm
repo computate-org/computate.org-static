@@ -3,18 +3,19 @@
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A created timestamp for this record in the database"
-                      label="created"
+                      label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyWebsite inputCompanyWebsite{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_created"
-                      value="{%- if result.created is defined %}{{ formatZonedDateTime(result.created, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.created is defined %}{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -30,18 +31,19 @@
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A modified timestamp for this record in the database"
-                      label="modified"
+                      label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyWebsite inputCompanyWebsite{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_modified"
-                      value="{%- if result.modified is defined %}{{ formatZonedDateTime(result.modified, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.modified is defined %}{{ formatZonedDateTime(result.modified, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -100,7 +102,7 @@
                       >archived</wa-checkbox>
   {%- else %}
                       >
-                    <wa-option value="" selected="selected"></wa-option>
+                    <wa-option value=""></wa-option>
                     <wa-option value="true">true</wa-option>
                     <wa-option value="false">false</wa-option>
                   </wa-select>
@@ -275,11 +277,16 @@ The ID for this page. "
 {%- macro htmButton_patchCompanyWebsite() %}<wa-button variant="brand" id="htmButton_patchCompanyWebsite" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyWebsite() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_patchCompanyWebsite">Modify website</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyWebsite" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_patchCompanyWebsite"
+                >Modify website</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_patchCompanyWebsite"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_patchCompanyWebsite() %}
-        <wa-dialog with-footer id="patchCompanyWebsiteDialog" label="Modify website">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchCompanyWebsiteDialog" label="Modify website">
           <form id="htmForm_patchCompanyWebsite" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -377,11 +384,16 @@ The ID for this page. "
 {%- macro htmButton_postCompanyWebsite() %}<wa-button variant="brand" id="htmButton_postCompanyWebsite" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyWebsite() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_postCompanyWebsite">Create a website</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyWebsite" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_postCompanyWebsite"
+                >Create a website</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_postCompanyWebsite"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_postCompanyWebsite() %}
-        <wa-dialog with-footer id="postCompanyWebsiteDialog" label="Create a website">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="postCompanyWebsiteDialog" label="Create a website">
           <form id="htmForm_postCompanyWebsite" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -390,7 +402,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmCreatedCompanyWebsitePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -400,7 +412,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmModifiedCompanyWebsitePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -412,7 +424,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmArchivedCompanyWebsitePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -424,7 +436,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmNameCompanyWebsitePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -434,7 +446,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDescriptionCompanyWebsitePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -451,7 +463,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmPageIdCompanyWebsitePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -461,7 +473,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDisplayPageCompanyWebsitePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -480,11 +492,16 @@ The ID for this page. "
 {%- macro htmButton_putimportCompanyWebsite() %}<wa-button variant="brand" id="htmButton_putimportCompanyWebsite" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyWebsite() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_putimportCompanyWebsite">Import websites</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyWebsite" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_putimportCompanyWebsite"
+                >Import websites</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_putimportCompanyWebsite"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_putimportCompanyWebsite() %}
-        <wa-dialog with-footer id="putimportCompanyWebsiteDialog" label="Import websites">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportCompanyWebsiteDialog" label="Import websites">
           <form id="htmForm_putimportCompanyWebsite" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -502,11 +519,16 @@ The ID for this page. "
 {%- macro htmButton_searchpageCompanyWebsite() %}{%- endmacro %}
 
 {%- macro htmFormButton_searchpageCompanyWebsite() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_searchpageCompanyWebsite">Search websites</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageCompanyWebsite" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_searchpageCompanyWebsite"
+                >Search websites</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_searchpageCompanyWebsite"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyWebsite() %}
-        <div with-footer id="searchpageCompanyWebsiteDialog" label="Search websites">
+        <div with-header with-footer style="--width: 50vw; " id="searchpageCompanyWebsiteDialog" label="Search websites">
           <div id="htmForm_searchpageCompanyWebsite" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -599,8 +621,8 @@ The ID for this page. "
           </div>
         </div>
 {%- endmacro %}
-          <div id="htmButtonGroup">
-            <div class="flex flex-wrap round-column pill-smart-border-radius ">
+          <div id="htmSearchForm">
+            <wa-button-group>
 {% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {% if "PATCH" in scopes %}
     {% if resultCount >= 1 %}
@@ -622,7 +644,9 @@ The ID for this page. "
 {% endif %}
 {%- if 'PATCH' in scopes %}
   {%- if resultCount > 0 %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_patchCompanyWebsite() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 {%- if 'POST' in scopes %}
@@ -636,7 +660,7 @@ The ID for this page. "
   {{ htmButton_putimportCompanyWebsite() }}
 {%- endif %}
 
-            </div>
+            </wa-button-group>
           </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchCompanyWebsite() }}

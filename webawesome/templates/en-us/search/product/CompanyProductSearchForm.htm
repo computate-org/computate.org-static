@@ -3,18 +3,19 @@
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A created timestamp for this record in the database"
-                      label="created"
+                      label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyProduct inputCompanyProduct{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_created"
-                      value="{%- if result.created is defined %}{{ formatZonedDateTime(result.created, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.created is defined %}{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -30,18 +31,19 @@
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A modified timestamp for this record in the database"
-                      label="modified"
+                      label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyProduct inputCompanyProduct{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_modified"
-                      value="{%- if result.modified is defined %}{{ formatZonedDateTime(result.modified, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.modified is defined %}{{ formatZonedDateTime(result.modified, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -100,7 +102,7 @@
                       >archived</wa-checkbox>
   {%- else %}
                       >
-                    <wa-option value="" selected="selected"></wa-option>
+                    <wa-option value=""></wa-option>
                     <wa-option value="true">true</wa-option>
                     <wa-option value="false">false</wa-option>
                   </wa-select>
@@ -196,6 +198,7 @@ The product description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[BigDecimal] price"
                       label="price"
+                      type="number"
                       hint="
 The price of the product per developer. "
                       id="{{classApiMethodMethod}}_price"
@@ -312,11 +315,16 @@ The ID for this page. "
 {%- macro htmButton_patchCompanyProduct() %}<wa-button variant="brand" id="htmButton_patchCompanyProduct" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyProduct() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_patchCompanyProduct">Modify product</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyProduct" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_patchCompanyProduct"
+                >Modify product</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_patchCompanyProduct"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_patchCompanyProduct() %}
-        <wa-dialog with-footer id="patchCompanyProductDialog" label="Modify product">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchCompanyProductDialog" label="Modify product">
           <form id="htmForm_patchCompanyProduct" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -429,11 +437,16 @@ The ID for this page. "
 {%- macro htmButton_postCompanyProduct() %}<wa-button variant="brand" id="htmButton_postCompanyProduct" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyProduct() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_postCompanyProduct">Create a product</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyProduct" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_postCompanyProduct"
+                >Create a product</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_postCompanyProduct"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_postCompanyProduct() %}
-        <wa-dialog with-footer id="postCompanyProductDialog" label="Create a product">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="postCompanyProductDialog" label="Create a product">
           <form id="htmForm_postCompanyProduct" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -442,7 +455,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmCreatedCompanyProductPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -452,7 +465,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmModifiedCompanyProductPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -464,7 +477,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmArchivedCompanyProductPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -481,7 +494,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmNameCompanyProductPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -491,7 +504,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDescriptionCompanyProductPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -501,7 +514,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmPriceCompanyProductPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -518,7 +531,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmPageIdCompanyProductPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -528,7 +541,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDisplayPageCompanyProductPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -547,11 +560,16 @@ The ID for this page. "
 {%- macro htmButton_deleteCompanyProduct() %}<wa-button variant="brand" id="htmButton_deleteCompanyProduct" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deleteCompanyProduct() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deleteCompanyProduct">Delete product</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deleteCompanyProduct" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deleteCompanyProduct"
+                >Delete product</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deleteCompanyProduct"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_deleteCompanyProduct() %}
-        <wa-dialog with-footer id="deleteCompanyProductDialog" label="Delete product">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteCompanyProductDialog" label="Delete product">
           <form id="htmForm_deleteCompanyProduct" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteCompanyProduct() }}
@@ -561,11 +579,16 @@ The ID for this page. "
 {%- macro htmButton_putimportCompanyProduct() %}<wa-button variant="brand" id="htmButton_putimportCompanyProduct" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyProduct() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_putimportCompanyProduct">Import products</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyProduct" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_putimportCompanyProduct"
+                >Import products</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_putimportCompanyProduct"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_putimportCompanyProduct() %}
-        <wa-dialog with-footer id="putimportCompanyProductDialog" label="Import products">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportCompanyProductDialog" label="Import products">
           <form id="htmForm_putimportCompanyProduct" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -583,11 +606,16 @@ The ID for this page. "
 {%- macro htmButton_searchpageCompanyProduct() %}{%- endmacro %}
 
 {%- macro htmFormButton_searchpageCompanyProduct() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_searchpageCompanyProduct">Search products</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageCompanyProduct" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_searchpageCompanyProduct"
+                >Search products</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_searchpageCompanyProduct"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyProduct() %}
-        <div with-footer id="searchpageCompanyProductDialog" label="Search products">
+        <div with-header with-footer style="--width: 50vw; " id="searchpageCompanyProductDialog" label="Search products">
           <div id="htmForm_searchpageCompanyProduct" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -699,18 +727,23 @@ The ID for this page. "
 {%- macro htmButton_deletefilterCompanyProduct() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyProduct" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deletefilterCompanyProduct() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deletefilterCompanyProduct">Delete product</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterCompanyProduct" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deletefilterCompanyProduct"
+                >Delete product</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deletefilterCompanyProduct"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterCompanyProduct() %}
-        <wa-dialog with-footer id="deletefilterCompanyProductDialog" label="Delete product">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterCompanyProductDialog" label="Delete product">
           <form id="htmForm_deletefilterCompanyProduct" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterCompanyProduct() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmButtonGroup">
-            <div class="flex flex-wrap round-column pill-smart-border-radius ">
+          <div id="htmSearchForm">
+            <wa-button-group>
 {% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {% if "PATCH" in scopes %}
     {% if resultCount >= 1 %}
@@ -732,7 +765,9 @@ The ID for this page. "
 {% endif %}
 {%- if 'PATCH' in scopes %}
   {%- if resultCount > 0 %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_patchCompanyProduct() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 {%- if 'POST' in scopes %}
@@ -743,7 +778,7 @@ The ID for this page. "
   {%- endif %}
 {%- endif %}
 {%- if 'DELETE' in scopes %}
-  {%- if resultCount == 1 %}
+  {%- if result is defined %}
     {{ htmButton_deleteCompanyProduct() }}
   {%- endif %}
 {%- endif %}
@@ -751,12 +786,14 @@ The ID for this page. "
   {{ htmButton_putimportCompanyProduct() }}
 {%- endif %}
 {%- if 'DELETE' in scopes %}
-  {%- if resultCount > 1 %}
+  {%- if result is not defined %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_deletefilterCompanyProduct() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 
-            </div>
+            </wa-button-group>
           </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchCompanyProduct() }}

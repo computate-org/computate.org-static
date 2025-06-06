@@ -188,29 +188,26 @@
 {%- block htmBodyMiddleCompanyServicePage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all services
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>services</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+              all services
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no service found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+            </div>
+            <span class="wa-heading-m ">no service found</span>
+            <p class="wa-caption-l ">See the services provided by computate that will help you build your own data-driven platforms</p>
 {% include en-us/search/service/CompanyServiceSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/service/CompanyServiceSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no service found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/service/CompanyServiceSidebar.htm %}
 {%- include en-us/search/service/CompanyServiceSuggestedSearch.htm %}

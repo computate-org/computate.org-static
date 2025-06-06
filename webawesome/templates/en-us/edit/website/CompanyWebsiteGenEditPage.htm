@@ -188,29 +188,26 @@
 {%- block htmBodyMiddleCompanyWebsitePage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyWebsite">back to all websites</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyWebsite" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all websites
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-globe-pointer"></i> <span>websites</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyWebsite" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-globe-pointer"></i>
+              all websites
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no website found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-globe-pointer"></i>
+            </div>
+            <span class="wa-heading-m ">no website found</span>
+            <p class="wa-caption-l ">See the live websites built with computate</p>
 {% include en-us/search/website/CompanyWebsiteSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/website/CompanyWebsiteSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no website found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/website/CompanyWebsiteSidebar.htm %}
 {%- include en-us/search/website/CompanyWebsiteSuggestedSearch.htm %}

@@ -208,29 +208,26 @@
 {%- block htmBodyMiddleCompanyAboutPage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyAbout">back to all about</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyAbout" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all about
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-address-card"></i> <span>about</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyAbout" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-address-card"></i>
+              all about
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no about page found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-address-card"></i>
+            </div>
+            <span class="wa-heading-m ">no about page found</span>
+            <p class="wa-caption-l ">Learn about our team, company, culture, and values. </p>
 {% include en-us/search/about/CompanyAboutSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/about/CompanyAboutSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no about page found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/about/CompanyAboutSidebar.htm %}
 {%- include en-us/search/about/CompanyAboutSuggestedSearch.htm %}

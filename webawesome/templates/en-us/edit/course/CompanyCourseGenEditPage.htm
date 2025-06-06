@@ -208,29 +208,26 @@
 {%- block htmBodyMiddleCompanyCoursePage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyCourse" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all courses
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-notebook"></i> <span>courses</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyCourse" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-notebook"></i>
+              all courses
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no course found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-notebook"></i>
+            </div>
+            <span class="wa-heading-m ">no course found</span>
+            <p class="wa-caption-l ">Take an exciting hands-on course on your own computer with computate</p>
 {% include en-us/search/course/CompanyCourseSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/course/CompanyCourseSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no course found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/course/CompanyCourseSidebar.htm %}
 {%- include en-us/search/course/CompanyCourseSuggestedSearch.htm %}

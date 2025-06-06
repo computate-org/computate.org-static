@@ -186,67 +186,61 @@
 {%- block htmBodyStartPageLayout %}
 {{ super() }}
 {%- block htmBodyStartCompanyWebinarPage %}
-{% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-video"></i> <span>webinars</span></a></h1>
-{%- include en-us/search/webinar/CompanyWebinarSuggestedSearch.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/webinar/CompanyWebinarSearchForm.htm %}
-{% endif %}
 {%- endblock htmBodyStartCompanyWebinarPage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyWebinarPage %}
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyWebinar">back to all webinars</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyWebinar" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all webinars
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-video"></i> <span>webinars</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyWebinar" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-video"></i>
+              all webinars
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no webinar found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-video"></i>
+            </div>
+            <span class="wa-heading-m ">no webinar found</span>
+            <p class="wa-caption-l ">Join the Computate community for regular weekly webinars</p>
 {% include en-us/search/webinar/CompanyWebinarSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/webinar/CompanyWebinarSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no webinar found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/webinar/CompanyWebinarSidebar.htm %}
-          <form action="/en-us/api/webinar" id="CompanyWebinarForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
-            <input name="focusId" type="hidden"/>
-            <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
-            <input name="listCompanyWebinar" id="listCompanyWebinar" class="listCompanyWebinar"  value='{{ toJsonArrayStringInApostrophes(listCompanyWebinar) }}' type="hidden"/>
-          </form>
-        <div class="pageContent ">
-          <div id="site-calendar-box">
-            <div id="site-calendar"><!-- // --></div>
-          </div>
-          {% if varsFqCount > 1 %}
-          <div class="margin-block">
-            <wa-tooltip for="return-to-CompanyWebinar">back to all webinars</wa-tooltip>
-            <wa-button id="return-to-CompanyWebinar" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all webinars
-            </wa-button>
-          </div>
-          {% endif %}
-          <div class="wa-flank wa-align-items-baseline margin-block-start ">
-{% include en-us/search/webinar/CompanyWebinarPaginationButtons.htm %}
+{%- include en-us/search/webinar/CompanyWebinarSuggestedSearch.htm %}
+          <div>
+            <form action="/en-us/api/webinar" id="CompanyWebinarForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="focusId" type="hidden"/>
+              <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+              <input name="listCompanyWebinar" id="listCompanyWebinar" class="listCompanyWebinar"  value='{{ toJsonArrayStringInApostrophes(listCompanyWebinar) }}' type="hidden"/>
+            </form>
+            <div id="site-calendar-box">
+              <div id="site-calendar"><!-- // --></div>
+            </div>
+            <div class="wa-stack wa-gap-m ">
+              <wa-tooltip for="return-to-CompanyWebinar">back to all webinars</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-CompanyWebinar" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-video"></i>
+                  all webinars
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search webinars
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{% include en-us/search/webinar/CompanyWebinarSearchForm.htm %}
 {% include en-us/search/webinar/CompanyWebinarSearchButtons.htm %}
-          </div>
-          <div class="card-like-thing background-color-surface-border" id="site-results-grid">
-            <div>
+              <div class="wa-stack wa-gap-0 ">
+{% include en-us/search/webinar/CompanyWebinarPaginationButtons.htm %}
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
               <wa-dropdown id="htmDropdown-name">
                 <wa-button variant="brand" slot="trigger" caret>name</wa-button>
                 <wa-menu>
@@ -288,9 +282,9 @@
                 </wa-menu>
               </wa-dropdown>
               <div></div>
-            </div>
-            {% for item in listCompanyWebinar%}
-            <div>
+                  </div>
+                  {% for item in listCompanyWebinar%}
+                  <div>
               <a href="{{ item.displayPage }}">
                 <i class="fa-duotone fa-regular fa-video"></i>
               <span>{{ item.name | e }}
@@ -325,8 +319,8 @@
                 <i class="fa-duotone fa-regular fa-pen-to-square"></i>
                 edit
               </wa-button>
-            </div>
-            {% endfor %}
+                  </div>
+                  {% endfor %}
               {% if getColumnName is defined %}
                 <div>
                 </div>
@@ -347,8 +341,11 @@
                 <div>
                 </div>
               {% endif %}
+                </div>
+{% include en-us/search/webinar/CompanyWebinarPaginationButtons.htm %}
+              </div>
+            </div>
           </div>
-        </div>
 {% endif %}
 {%- endblock htmBodyMiddleCompanyWebinarPage %}
 {%- endblock htmBodyMiddlePageLayout %}

@@ -8,9 +8,9 @@ Promise.all([
             const form = document.querySelector('#PageForm_created');
             const valid = form.checkValidity();
             if(valid) {
-              var timeZone = event.currentTarget.value.split('[').pop().split(']')[0];
-              var t1 = moment(event.currentTarget.value.split('[')[0].trim(), 'MM/DD/YYYY h:mm a');
-              var t2 = moment.tz(event.currentTarget.value.split('[')[0].trim(), 'MM/DD/YYYY h:mm a', timeZone);
+              var timeZone = event.currentTarget.getAttribute('data-zone');
+              var t1 = moment(event.currentTarget.value, "YYYY-MM-DDTHH:mm");
+              var t2 = moment.tz(event.currentTarget.value, "YYYY-MM-DDTHH:mm", timeZone);
               var t3 = new Date(t1._d);
               t3.setTime(t1.toDate().getTime() + t2.toDate().getTime() - t1.toDate().getTime());
               var t = moment(t3);
@@ -65,7 +65,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setSeeArchived', event.currentTarget.checked
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -78,6 +78,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH siteFontSize
+          document.querySelector('#Page_siteFontSize')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_siteFontSize');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
+                  , 'setSiteFontSize', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); window.location.reload(); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_siteFontSize')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_siteFontSize')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_siteFontSize');
+            const valid = form.reportValidity();
+          });
+
           // PATCH awesomeEffect
           document.querySelector('#Page_awesomeEffect')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_awesomeEffect');
@@ -86,7 +107,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setAwesomeEffect', event.currentTarget.checked
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -99,6 +120,48 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH siteTheme
+          document.querySelector('#Page_siteTheme')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_siteTheme');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
+                  , 'setSiteTheme', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); window.location.reload(); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_siteTheme')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_siteTheme')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_siteTheme');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH webComponentsTheme
+          document.querySelector('#Page_webComponentsTheme')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_webComponentsTheme');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
+                  , 'setWebComponentsTheme', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); window.location.reload(); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_webComponentsTheme')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_webComponentsTheme')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_webComponentsTheme');
+            const valid = form.reportValidity();
+          });
+
           // PATCH sessionId
           document.querySelector('#Page_sessionId')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_sessionId');
@@ -107,7 +170,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setSessionId', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -128,7 +191,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setUserKey', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -149,7 +212,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setObjectTitle', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -170,7 +233,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setDisplayPage', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -191,7 +254,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setUserId', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -212,7 +275,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setUserName', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -233,7 +296,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setUserEmail', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -254,7 +317,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setUserFirstName', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -275,7 +338,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setUserLastName', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -296,7 +359,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setUserFullName', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -317,7 +380,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setDisplayName', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }

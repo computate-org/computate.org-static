@@ -188,29 +188,26 @@
 {%- block htmBodyMiddleCompanyResearchPage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyResearch">back to all research</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyResearch" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all research
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-school"></i> <span>research</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyResearch" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-school"></i>
+              all research
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no research found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-school"></i>
+            </div>
+            <span class="wa-heading-m ">no research found</span>
+            <p class="wa-caption-l ">Read about the computate project related research going on at Red Hat research</p>
 {% include en-us/search/research/CompanyResearchSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/research/CompanyResearchSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no research found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/research/CompanyResearchSidebar.htm %}
 {%- include en-us/search/research/CompanyResearchSuggestedSearch.htm %}

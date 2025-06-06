@@ -186,67 +186,61 @@
 {%- block htmBodyStartPageLayout %}
 {{ super() }}
 {%- block htmBodyStartUseCasePage %}
-{% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-file-invoice"></i> <span>use cases</span></a></h1>
-{%- include en-us/search/use-case/UseCaseSuggestedSearch.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/use-case/UseCaseSearchForm.htm %}
-{% endif %}
 {%- endblock htmBodyStartUseCasePage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleUseCasePage %}
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-UseCase">back to all use cases</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-UseCase" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all use cases
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-file-invoice"></i> <span>use cases</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-UseCase" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-file-invoice"></i>
+              all use cases
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no use case found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-file-invoice"></i>
+            </div>
+            <span class="wa-heading-m ">no use case found</span>
+            <p class="wa-caption-l ">See computate use cases for real organizations. </p>
 {% include en-us/search/use-case/UseCaseSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/use-case/UseCaseSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no use case found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/use-case/UseCaseSidebar.htm %}
-          <form action="/en-us/api/use-case" id="UseCaseForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
-            <input name="focusId" type="hidden"/>
-            <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
-            <input name="listUseCase" id="listUseCase" class="listUseCase"  value='{{ toJsonArrayStringInApostrophes(listUseCase) }}' type="hidden"/>
-          </form>
-        <div class="pageContent ">
-          <div id="site-calendar-box">
-            <div id="site-calendar"><!-- // --></div>
-          </div>
-          {% if varsFqCount > 1 %}
-          <div class="margin-block">
-            <wa-tooltip for="return-to-UseCase">back to all use cases</wa-tooltip>
-            <wa-button id="return-to-UseCase" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all use cases
-            </wa-button>
-          </div>
-          {% endif %}
-          <div class="wa-flank wa-align-items-baseline margin-block-start ">
-{% include en-us/search/use-case/UseCasePaginationButtons.htm %}
+{%- include en-us/search/use-case/UseCaseSuggestedSearch.htm %}
+          <div>
+            <form action="/en-us/api/use-case" id="UseCaseForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="focusId" type="hidden"/>
+              <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+              <input name="listUseCase" id="listUseCase" class="listUseCase"  value='{{ toJsonArrayStringInApostrophes(listUseCase) }}' type="hidden"/>
+            </form>
+            <div id="site-calendar-box">
+              <div id="site-calendar"><!-- // --></div>
+            </div>
+            <div class="wa-stack wa-gap-m ">
+              <wa-tooltip for="return-to-UseCase">back to all use cases</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-UseCase" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-file-invoice"></i>
+                  all use cases
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search use cases
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{% include en-us/search/use-case/UseCaseSearchForm.htm %}
 {% include en-us/search/use-case/UseCaseSearchButtons.htm %}
-          </div>
-          <div class="card-like-thing background-color-surface-border" id="site-results-grid">
-            <div>
+              <div class="wa-stack wa-gap-0 ">
+{% include en-us/search/use-case/UseCasePaginationButtons.htm %}
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
               <wa-dropdown id="htmDropdown-name">
                 <wa-button variant="brand" slot="trigger" caret>use case name</wa-button>
                 <wa-menu>
@@ -287,9 +281,9 @@
                 </wa-menu>
               </wa-dropdown>
               <div></div>
-            </div>
-            {% for item in listUseCase%}
-            <div>
+                  </div>
+                  {% for item in listUseCase%}
+                  <div>
               <a href="{{ item.displayPage }}">
                 <i class="fa-duotone fa-regular fa-file-invoice"></i>
               <span>{{ item.name | e }}
@@ -312,8 +306,8 @@
                 <i class="fa-duotone fa-regular fa-pen-to-square"></i>
                 edit
               </wa-button>
-            </div>
-            {% endfor %}
+                  </div>
+                  {% endfor %}
               {% if getColumnName is defined %}
                 <div>
                 </div>
@@ -330,8 +324,11 @@
                 <div>
                 </div>
               {% endif %}
+                </div>
+{% include en-us/search/use-case/UseCasePaginationButtons.htm %}
+              </div>
+            </div>
           </div>
-        </div>
 {% endif %}
 {%- endblock htmBodyMiddleUseCasePage %}
 {%- endblock htmBodyMiddlePageLayout %}

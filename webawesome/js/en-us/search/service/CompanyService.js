@@ -6,7 +6,7 @@ async function searchCompanyService($formFilters, success, error) {
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
-    error = function( jqXhr, textStatus, errorThrown ) {};
+    error = function( jqXhr, target2 ) {};
 
   searchCompanyServiceVals(filters, target, success, error);
 }
@@ -132,7 +132,7 @@ function suggestCompanyServiceObjectSuggest($formFilters, $list, target) {
       $list.append($li);
     });
   };
-  error = function( jqXhr, textStatus, errorThrown ) {};
+  error = function( jqXhr, target2 ) {};
   searchCompanyServiceVals($formFilters, target, success, error);
 }
 
@@ -425,15 +425,15 @@ async function postCompanyService($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
-      addGlow(target);
+      addGlow(target, jqXhr);
       var url = data['editPage'];
       if(url)
         window.location.href = url;
     };
   }
   if(error == null) {
-    error = function( jqXhr, textStatus, errorThrown ) {
-      addError(target);
+    error = function( jqXhr, target2 ) {
+      addError(target, jqXhr);
     };
   }
 
@@ -551,7 +551,7 @@ async function websocketCompanyService(success) {
     window.eventBus.registerHandler('websocketCompanyService', function (error, message) {
       var json = JSON.parse(message['body']);
       var pageId = json['id'];
-      var nulls = json['nulls'];
+      var solrIds = json['solrIds'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
       var numPATCH = parseInt(json['numPATCH']);

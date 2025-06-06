@@ -166,67 +166,61 @@
 {%- block htmBodyStartPageLayout %}
 {{ super() }}
 {%- block htmBodyStartCompanyServicePage %}
-{% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>services</span></a></h1>
-{%- include en-us/search/service/CompanyServiceSuggestedSearch.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/service/CompanyServiceSearchForm.htm %}
-{% endif %}
 {%- endblock htmBodyStartCompanyServicePage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyServicePage %}
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all services
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>services</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+              all services
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no service found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+            </div>
+            <span class="wa-heading-m ">no service found</span>
+            <p class="wa-caption-l ">See the services provided by computate that will help you build your own data-driven platforms</p>
 {% include en-us/search/service/CompanyServiceSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/service/CompanyServiceSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no service found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/service/CompanyServiceSidebar.htm %}
-          <form action="/en-us/api/service" id="CompanyServiceForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
-            <input name="focusId" type="hidden"/>
-            <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
-            <input name="listCompanyService" id="listCompanyService" class="listCompanyService"  value='{{ toJsonArrayStringInApostrophes(listCompanyService) }}' type="hidden"/>
-          </form>
-        <div class="pageContent ">
-          <div id="site-calendar-box">
-            <div id="site-calendar"><!-- // --></div>
-          </div>
-          {% if varsFqCount > 1 %}
-          <div class="margin-block">
-            <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip>
-            <wa-button id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all services
-            </wa-button>
-          </div>
-          {% endif %}
-          <div class="wa-flank wa-align-items-baseline margin-block-start ">
-{% include en-us/search/service/CompanyServicePaginationButtons.htm %}
+{%- include en-us/search/service/CompanyServiceSuggestedSearch.htm %}
+          <div>
+            <form action="/en-us/api/service" id="CompanyServiceForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="focusId" type="hidden"/>
+              <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+              <input name="listCompanyService" id="listCompanyService" class="listCompanyService"  value='{{ toJsonArrayStringInApostrophes(listCompanyService) }}' type="hidden"/>
+            </form>
+            <div id="site-calendar-box">
+              <div id="site-calendar"><!-- // --></div>
+            </div>
+            <div class="wa-stack wa-gap-m ">
+              <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                  all services
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search services
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{% include en-us/search/service/CompanyServiceSearchForm.htm %}
 {% include en-us/search/service/CompanyServiceSearchButtons.htm %}
-          </div>
-          <div class="card-like-thing background-color-surface-border" id="site-results-grid">
-            <div>
+              <div class="wa-stack wa-gap-0 ">
+{% include en-us/search/service/CompanyServicePaginationButtons.htm %}
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
               <wa-dropdown id="htmDropdown-name">
                 <wa-button variant="brand" slot="trigger" caret>service name</wa-button>
                 <wa-menu>
@@ -254,9 +248,9 @@
                 </wa-menu>
               </wa-dropdown>
               <div></div>
-            </div>
-            {% for item in listCompanyService%}
-            <div>
+                  </div>
+                  {% for item in listCompanyService%}
+                  <div>
               <a href="{{ item.displayPage }}">
                 <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
               <span>{{ item.name | e }}
@@ -276,8 +270,8 @@
                 <i class="fa-duotone fa-regular fa-pen-to-square"></i>
                 edit
               </wa-button>
-            </div>
-            {% endfor %}
+                  </div>
+                  {% endfor %}
               {% if getColumnName is defined %}
                 <div>
                 </div>
@@ -290,8 +284,11 @@
                 <div>
                 </div>
               {% endif %}
+                </div>
+{% include en-us/search/service/CompanyServicePaginationButtons.htm %}
+              </div>
+            </div>
           </div>
-        </div>
 {% endif %}
 {%- endblock htmBodyMiddleCompanyServicePage %}
 {%- endblock htmBodyMiddlePageLayout %}

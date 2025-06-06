@@ -3,18 +3,19 @@
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A created timestamp for this record in the database"
-                      label="created"
+                      label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classCompanyEvent inputCompanyEvent{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_created"
-                      value="{%- if result.created is defined %}{{ formatZonedDateTime(result.created, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.created is defined %}{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -30,18 +31,19 @@
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A modified timestamp for this record in the database"
-                      label="modified"
+                      label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classCompanyEvent inputCompanyEvent{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_modified"
-                      value="{%- if result.modified is defined %}{{ formatZonedDateTime(result.modified, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.modified is defined %}{{ formatZonedDateTime(result.modified, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -100,7 +102,7 @@
                       >archived</wa-checkbox>
   {%- else %}
                       >
-                    <wa-option value="" selected="selected"></wa-option>
+                    <wa-option value=""></wa-option>
                     <wa-option value="true">true</wa-option>
                     <wa-option value="false">false</wa-option>
                   </wa-select>
@@ -228,18 +230,19 @@ The event description. "
                 <form class="subgrid-2col " id="PageForm_startDateTime">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       hint="The start date time. "
-                      label="start date time"
+                      label="start date time {{ formatZonedDateTime(result.startDateTime, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_startDateTime datetimepicker setStartDateTime classCompanyEvent inputCompanyEvent{{ result.pageId }}StartDateTime "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_startDateTime"
-                      value="{%- if result.startDateTime is defined %}{{ formatZonedDateTime(result.startDateTime, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.startDateTime is defined %}{{ formatZonedDateTime(result.startDateTime, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -255,18 +258,19 @@ The event description. "
                 <form class="subgrid-2col " id="PageForm_endDateTime">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       hint="The end date time. "
-                      label="end date time"
+                      label="end date time {{ formatZonedDateTime(result.endDateTime, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_endDateTime datetimepicker setEndDateTime classCompanyEvent inputCompanyEvent{{ result.pageId }}EndDateTime "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_endDateTime"
-                      value="{%- if result.endDateTime is defined %}{{ formatZonedDateTime(result.endDateTime, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.endDateTime is defined %}{{ formatZonedDateTime(result.endDateTime, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -285,6 +289,7 @@ The event description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[BigDecimal] price"
                       label="price"
+                      type="number"
                       hint="
 The price of the product per developer. "
                       id="{{classApiMethodMethod}}_price"
@@ -401,11 +406,16 @@ The ID for this page. "
 {%- macro htmButton_patchCompanyEvent() %}<wa-button variant="brand" id="htmButton_patchCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyEvent() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_patchCompanyEvent">Modify event</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyEvent" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_patchCompanyEvent"
+                >Modify event</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_patchCompanyEvent"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_patchCompanyEvent() %}
-        <wa-dialog with-footer id="patchCompanyEventDialog" label="Modify event">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchCompanyEventDialog" label="Modify event">
           <form id="htmForm_patchCompanyEvent" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -543,11 +553,16 @@ The ID for this page. "
 {%- macro htmButton_postCompanyEvent() %}<wa-button variant="brand" id="htmButton_postCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyEvent() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_postCompanyEvent">Create an event</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyEvent" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_postCompanyEvent"
+                >Create an event</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_postCompanyEvent"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_postCompanyEvent() %}
-        <wa-dialog with-footer id="postCompanyEventDialog" label="Create an event">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="postCompanyEventDialog" label="Create an event">
           <form id="htmForm_postCompanyEvent" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -556,7 +571,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmCreatedCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -566,7 +581,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmModifiedCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -578,7 +593,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmArchivedCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -590,7 +605,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmNameCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -600,7 +615,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmLocationCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -610,7 +625,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDescriptionCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -620,7 +635,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmStartDateTimeCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -630,7 +645,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmEndDateTimeCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -640,7 +655,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmPriceCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -657,7 +672,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmPageIdCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -667,7 +682,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDisplayPageCompanyEventPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -686,11 +701,16 @@ The ID for this page. "
 {%- macro htmButton_deleteCompanyEvent() %}<wa-button variant="brand" id="htmButton_deleteCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deleteCompanyEvent() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deleteCompanyEvent">Delete event</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deleteCompanyEvent" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deleteCompanyEvent"
+                >Delete event</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deleteCompanyEvent"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_deleteCompanyEvent() %}
-        <wa-dialog with-footer id="deleteCompanyEventDialog" label="Delete event">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteCompanyEventDialog" label="Delete event">
           <form id="htmForm_deleteCompanyEvent" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteCompanyEvent() }}
@@ -700,11 +720,16 @@ The ID for this page. "
 {%- macro htmButton_putimportCompanyEvent() %}<wa-button variant="brand" id="htmButton_putimportCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyEvent() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_putimportCompanyEvent">Import events</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyEvent" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_putimportCompanyEvent"
+                >Import events</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_putimportCompanyEvent"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_putimportCompanyEvent() %}
-        <wa-dialog with-footer id="putimportCompanyEventDialog" label="Import events">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportCompanyEventDialog" label="Import events">
           <form id="htmForm_putimportCompanyEvent" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -722,11 +747,16 @@ The ID for this page. "
 {%- macro htmButton_searchpageCompanyEvent() %}{%- endmacro %}
 
 {%- macro htmFormButton_searchpageCompanyEvent() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_searchpageCompanyEvent">Search events</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageCompanyEvent" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_searchpageCompanyEvent"
+                >Search events</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_searchpageCompanyEvent"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyEvent() %}
-        <div with-footer id="searchpageCompanyEventDialog" label="Search events">
+        <div with-header with-footer style="--width: 50vw; " id="searchpageCompanyEventDialog" label="Search events">
           <div id="htmForm_searchpageCompanyEvent" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -863,18 +893,23 @@ The ID for this page. "
 {%- macro htmButton_deletefilterCompanyEvent() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deletefilterCompanyEvent() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deletefilterCompanyEvent">Delete event</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterCompanyEvent" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deletefilterCompanyEvent"
+                >Delete event</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deletefilterCompanyEvent"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterCompanyEvent() %}
-        <wa-dialog with-footer id="deletefilterCompanyEventDialog" label="Delete event">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterCompanyEventDialog" label="Delete event">
           <form id="htmForm_deletefilterCompanyEvent" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterCompanyEvent() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmButtonGroup">
-            <div class="flex flex-wrap round-column pill-smart-border-radius ">
+          <div id="htmSearchForm">
+            <wa-button-group>
 {% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {% if "PATCH" in scopes %}
     {% if resultCount >= 1 %}
@@ -896,7 +931,9 @@ The ID for this page. "
 {% endif %}
 {%- if 'PATCH' in scopes %}
   {%- if resultCount > 0 %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_patchCompanyEvent() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 {%- if 'POST' in scopes %}
@@ -907,7 +944,7 @@ The ID for this page. "
   {%- endif %}
 {%- endif %}
 {%- if 'DELETE' in scopes %}
-  {%- if resultCount == 1 %}
+  {%- if result is defined %}
     {{ htmButton_deleteCompanyEvent() }}
   {%- endif %}
 {%- endif %}
@@ -915,12 +952,14 @@ The ID for this page. "
   {{ htmButton_putimportCompanyEvent() }}
 {%- endif %}
 {%- if 'DELETE' in scopes %}
-  {%- if resultCount > 1 %}
+  {%- if result is not defined %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_deletefilterCompanyEvent() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 
-            </div>
+            </wa-button-group>
           </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchCompanyEvent() }}

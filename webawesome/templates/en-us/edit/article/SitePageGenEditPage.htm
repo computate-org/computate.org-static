@@ -188,29 +188,26 @@
 {%- block htmBodyMiddleSitePagePage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-SitePage">back to all articles</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-SitePage" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all articles
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-newspaper"></i> <span>articles</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-SitePage" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-newspaper"></i>
+              all articles
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no article found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-newspaper"></i>
+            </div>
+            <span class="wa-heading-m ">no article found</span>
+            <p class="wa-caption-l ">Read the latest articles to learn more</p>
 {% include en-us/search/article/SitePageSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/article/SitePageSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no article found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/article/SitePageSidebar.htm %}
 {%- include en-us/search/article/SitePageSuggestedSearch.htm %}

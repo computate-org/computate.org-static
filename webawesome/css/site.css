@@ -102,6 +102,9 @@ wa-card.purple-blue-background {
     }
   }
 }
+footer {
+  margin-block-start: 100px;
+}
 /* @media stuff */
 @media (max-width: 767px) {
   /* Mobile mode */
@@ -119,6 +122,8 @@ main, footer {
     padding-inline: var(--content-padding-inline);
   }
   wa-page {
+    --menu-width: 25vw;
+
     & > .main-sidebar {
       overflow: auto;
       max-height: 100%;
@@ -426,6 +431,10 @@ main, footer {
       }
     }
 
+    .popup-overview .box {
+      background: var(--wa-color-brand-fill-loud);
+      border-radius: var(--wa-border-radius-m);
+    }
 
     .footer-img {
       height: var(--footer-logo-height);

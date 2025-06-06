@@ -208,29 +208,26 @@
 {%- block htmBodyMiddleCompanyProductPage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyProduct" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all products
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-conveyor-belt"></i> <span>products</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyProduct" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+              all products
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no product found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+            </div>
+            <span class="wa-heading-m ">no product found</span>
+            <p class="wa-caption-l ">See the computate products that will help you build your own data-driven platforms</p>
 {% include en-us/search/product/CompanyProductSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/product/CompanyProductSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no product found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/product/CompanyProductSidebar.htm %}
 {%- include en-us/search/product/CompanyProductSuggestedSearch.htm %}

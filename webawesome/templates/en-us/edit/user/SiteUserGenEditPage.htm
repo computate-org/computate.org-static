@@ -178,29 +178,26 @@
 {%- block htmBodyMiddleSiteUserPage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-SiteUser">back to all site users</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-SiteUser" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all site users
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-user-gear"></i> <span>site users</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-SiteUser" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-user-gear"></i>
+              all site users
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no site user found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-user-gear"></i>
+            </div>
+            <span class="wa-heading-m ">no site user found</span>
+            <p class="wa-caption-l ">A user record for each site user</p>
 {% include en-us/search/user/SiteUserSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/user/SiteUserSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no site user found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/user/SiteUserSidebar.htm %}
 {%- include en-us/search/user/SiteUserSuggestedSearch.htm %}

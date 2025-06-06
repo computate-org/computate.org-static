@@ -186,67 +186,61 @@
 {%- block htmBodyStartPageLayout %}
 {{ super() }}
 {%- block htmBodyStartCompanyCoursePage %}
-{% if resultCount > 0 %}
-          <h1><a href="{{pageUri}}"><i class="fa-duotone fa-regular fa-notebook"></i> <span>courses</span></a></h1>
-{%- include en-us/search/course/CompanyCourseSuggestedSearch.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/course/CompanyCourseSearchForm.htm %}
-{% endif %}
 {%- endblock htmBodyStartCompanyCoursePage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyCoursePage %}
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-CompanyCourse" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all courses
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-notebook"></i> <span>courses</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-CompanyCourse" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-notebook"></i>
+              all courses
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no course found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-notebook"></i>
+            </div>
+            <span class="wa-heading-m ">no course found</span>
+            <p class="wa-caption-l ">Take an exciting hands-on course on your own computer with computate</p>
 {% include en-us/search/course/CompanyCourseSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/course/CompanyCourseSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no course found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/course/CompanyCourseSidebar.htm %}
-          <form action="/en-us/api/course" id="CompanyCourseForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
-            <input name="focusId" type="hidden"/>
-            <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
-            <input name="listCompanyCourse" id="listCompanyCourse" class="listCompanyCourse"  value='{{ toJsonArrayStringInApostrophes(listCompanyCourse) }}' type="hidden"/>
-          </form>
-        <div class="pageContent ">
-          <div id="site-calendar-box">
-            <div id="site-calendar"><!-- // --></div>
-          </div>
-          {% if varsFqCount > 1 %}
-          <div class="margin-block">
-            <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip>
-            <wa-button id="return-to-CompanyCourse" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all courses
-            </wa-button>
-          </div>
-          {% endif %}
-          <div class="wa-flank wa-align-items-baseline margin-block-start ">
-{% include en-us/search/course/CompanyCoursePaginationButtons.htm %}
+{%- include en-us/search/course/CompanyCourseSuggestedSearch.htm %}
+          <div>
+            <form action="/en-us/api/course" id="CompanyCourseForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="focusId" type="hidden"/>
+              <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+              <input name="listCompanyCourse" id="listCompanyCourse" class="listCompanyCourse"  value='{{ toJsonArrayStringInApostrophes(listCompanyCourse) }}' type="hidden"/>
+            </form>
+            <div id="site-calendar-box">
+              <div id="site-calendar"><!-- // --></div>
+            </div>
+            <div class="wa-stack wa-gap-m ">
+              <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-CompanyCourse" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-notebook"></i>
+                  all courses
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search courses
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{% include en-us/search/course/CompanyCourseSearchForm.htm %}
 {% include en-us/search/course/CompanyCourseSearchButtons.htm %}
-          </div>
-          <div class="card-like-thing background-color-surface-border" id="site-results-grid">
-            <div>
+              <div class="wa-stack wa-gap-0 ">
+{% include en-us/search/course/CompanyCoursePaginationButtons.htm %}
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
               <wa-dropdown id="htmDropdown-name">
                 <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
                 <wa-menu>
@@ -274,9 +268,9 @@
                 </wa-menu>
               </wa-dropdown>
               <div></div>
-            </div>
-            {% for item in listCompanyCourse%}
-            <div>
+                  </div>
+                  {% for item in listCompanyCourse%}
+                  <div>
               <a href="{{ item.displayPage }}">
                 <i class="fa-duotone fa-regular fa-notebook"></i>
               <span>{{ item.name | e }}
@@ -296,8 +290,8 @@
                 <i class="fa-duotone fa-regular fa-pen-to-square"></i>
                 edit
               </wa-button>
-            </div>
-            {% endfor %}
+                  </div>
+                  {% endfor %}
               {% if getColumnName is defined %}
                 <div>
                 </div>
@@ -310,8 +304,11 @@
                 <div>
                 </div>
               {% endif %}
+                </div>
+{% include en-us/search/course/CompanyCoursePaginationButtons.htm %}
+              </div>
+            </div>
           </div>
-        </div>
 {% endif %}
 {%- endblock htmBodyMiddleCompanyCoursePage %}
 {%- endblock htmBodyMiddlePageLayout %}

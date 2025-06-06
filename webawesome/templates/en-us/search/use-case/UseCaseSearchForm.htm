@@ -3,18 +3,19 @@
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A created timestamp for this record in the database"
-                      label="created"
+                      label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_created datetimepicker setCreated classUseCase inputUseCase{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_created"
-                      value="{%- if result.created is defined %}{{ formatZonedDateTime(result.created, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.created is defined %}{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -30,18 +31,19 @@
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
                   <wa-input
-                      type="text"
+                      type="datetime-local"
                       readonly
                       hint="A modified timestamp for this record in the database"
-                      label="modified"
+                      label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
                       class="label-on-left {{classApiMethodMethod}}_modified datetimepicker setModified classUseCase inputUseCase{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="{{classApiMethodMethod}}_modified"
-                      value="{%- if result.modified is defined %}{{ formatZonedDateTime(result.modified, "MM/dd/yyyy h:mm a '['VV']'", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+                      value="{%- if "Page" == classApiMethodMethod and result.modified is defined %}{{ formatZonedDateTime(result.modified, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
   {%- if 'Page' == classApiMethodMethod %}
   {%- endif %}
                       data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
                       >
                   </wa-input>
   {%- if 'Page' == classApiMethodMethod %}
@@ -100,7 +102,7 @@
                       >archived</wa-checkbox>
   {%- else %}
                       >
-                    <wa-option value="" selected="selected"></wa-option>
+                    <wa-option value=""></wa-option>
                     <wa-option value="true">true</wa-option>
                     <wa-option value="false">false</wa-option>
                   </wa-select>
@@ -312,11 +314,16 @@ The ID for this page. "
 {%- macro htmButton_patchUseCase() %}<wa-button variant="brand" id="htmButton_patchUseCase" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchUseCase() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_patchUseCase">Modify use case</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_patchUseCase" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_patchUseCase"
+                >Modify use case</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_patchUseCase"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_patchUseCase() %}
-        <wa-dialog with-footer id="patchUseCaseDialog" label="Modify use case">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchUseCaseDialog" label="Modify use case">
           <form id="htmForm_patchUseCase" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -424,11 +431,16 @@ The ID for this page. "
 {%- macro htmButton_postUseCase() %}<wa-button variant="brand" id="htmButton_postUseCase" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postUseCase() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_postUseCase">Create a use case</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_postUseCase" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_postUseCase"
+                >Create a use case</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_postUseCase"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_postUseCase() %}
-        <wa-dialog with-footer id="postUseCaseDialog" label="Create a use case">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="postUseCaseDialog" label="Create a use case">
           <form id="htmForm_postUseCase" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -437,7 +449,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmCreatedUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -447,7 +459,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmModifiedUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -459,7 +471,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmArchivedUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -471,7 +483,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -481,7 +493,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmAuthorNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -491,7 +503,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDescriptionUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -508,7 +520,7 @@ The ID for this page. "
               </div>
               <div class="grid-with-subgrid-2col ">
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmPageIdUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -518,7 +530,7 @@ The ID for this page. "
                 {%- endif %}
               {%- endif %}
 
-              {%- if "PATCH" in scopes %}
+              {%- if "POST" in scopes %}
                 {{ htmDisplayPageUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
               {%- else %}
                 {%- if "GET" in scopes %}
@@ -537,11 +549,16 @@ The ID for this page. "
 {%- macro htmButton_deleteUseCase() %}<wa-button variant="brand" id="htmButton_deleteUseCase" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deleteUseCase() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deleteUseCase">Delete use case</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deleteUseCase" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deleteUseCase"
+                >Delete use case</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deleteUseCase"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_deleteUseCase() %}
-        <wa-dialog with-footer id="deleteUseCaseDialog" label="Delete use case">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteUseCaseDialog" label="Delete use case">
           <form id="htmForm_deleteUseCase" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteUseCase() }}
@@ -551,11 +568,16 @@ The ID for this page. "
 {%- macro htmButton_putimportUseCase() %}<wa-button variant="brand" id="htmButton_putimportUseCase" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportUseCase() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_putimportUseCase">Import use cases</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_putimportUseCase" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_putimportUseCase"
+                >Import use cases</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_putimportUseCase"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_putimportUseCase() %}
-        <wa-dialog with-footer id="putimportUseCaseDialog" label="Import use cases">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportUseCaseDialog" label="Import use cases">
           <form id="htmForm_putimportUseCase" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -573,11 +595,16 @@ The ID for this page. "
 {%- macro htmButton_searchpageUseCase() %}{%- endmacro %}
 
 {%- macro htmFormButton_searchpageUseCase() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_searchpageUseCase">Search use cases</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageUseCase" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_searchpageUseCase"
+                >Search use cases</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_searchpageUseCase"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageUseCase() %}
-        <div with-footer id="searchpageUseCaseDialog" label="Search use cases">
+        <div with-header with-footer style="--width: 50vw; " id="searchpageUseCaseDialog" label="Search use cases">
           <div id="htmForm_searchpageUseCase" class="round-row primary-smart-border-radius ">
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
               <div slot="summary">
@@ -684,18 +711,23 @@ The ID for this page. "
 {%- macro htmButton_deletefilterUseCase() %}<wa-button variant="brand" id="htmButton_deletefilterUseCase" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deletefilterUseCase() %}
-          <wa-button variant="brand" slot="footer" type="submit" id="htmFormButton_deletefilterUseCase">Delete use case</wa-button>
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterUseCase" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deletefilterUseCase"
+                >Delete use case</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deletefilterUseCase"></wa-badge>
+          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterUseCase() %}
-        <wa-dialog with-footer id="deletefilterUseCaseDialog" label="Delete use case">
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterUseCaseDialog" label="Delete use case">
           <form id="htmForm_deletefilterUseCase" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterUseCase() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmButtonGroup">
-            <div class="flex flex-wrap round-column pill-smart-border-radius ">
+          <div id="htmSearchForm">
+            <wa-button-group>
 {% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {% if "PATCH" in scopes %}
     {% if resultCount >= 1 %}
@@ -717,7 +749,9 @@ The ID for this page. "
 {% endif %}
 {%- if 'PATCH' in scopes %}
   {%- if resultCount > 0 %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_patchUseCase() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 {%- if 'POST' in scopes %}
@@ -728,7 +762,7 @@ The ID for this page. "
   {%- endif %}
 {%- endif %}
 {%- if 'DELETE' in scopes %}
-  {%- if resultCount == 1 %}
+  {%- if result is defined %}
     {{ htmButton_deleteUseCase() }}
   {%- endif %}
 {%- endif %}
@@ -736,12 +770,14 @@ The ID for this page. "
   {{ htmButton_putimportUseCase() }}
 {%- endif %}
 {%- if 'DELETE' in scopes %}
-  {%- if resultCount > 1 %}
+  {%- if result is not defined %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
     {{ htmButton_deletefilterUseCase() }}
+    {%- endif %}
   {%- endif %}
 {%- endif %}
 
-            </div>
+            </wa-button-group>
           </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchUseCase() }}

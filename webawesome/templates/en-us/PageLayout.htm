@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ SITE_LOCALE }}" class="wa-{{ SITE_THEME }}">
+<html lang="{{ SITE_LOCALE }}" class="wa-{{ userSiteTheme | default(SITE_THEME) }}">
   <head>
 {%- block htmHeadPageLayout %}
     <meta charset="UTF-8" />
@@ -12,6 +12,7 @@
 {%- block htmStylesPageLayout %}
     <link rel="icon" href="{{ STATIC_BASE_URL }}/favicon.svg" />
     {{ WEB_COMPONENTS_CSS }}
+<link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.12/dist/styles/themes/{{ userWebComponentsTheme | default('glossy') }}.css" />
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.draw.css" />
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.contextmenu.css"/>
@@ -87,14 +88,14 @@
 {%- block websocketPageLayout %}{%- endblock websocketPageLayout %}
     </script>
    </head>
-  <body class="wa-body-l wa-size-l ">
+  <body class="wa-body-{{ userFontSize }} wa-size-{{ userFontSize }} ">
     <wa-page disable-sticky="header">
 {%- block htmBodyPageLayout %}
 {%- block htmBodyStartPageLayout %}
       <nav slot="navigation">
           <div class="display-flex-center ">
             <a href="/">
-              <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}{{ SITE_LOGO_URI }}"/>
+              <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}/svg/logo-{{ userSiteTheme | default(SITE_THEME) }}.svg"/>
             </a>
           </div>
           <wa-tooltip for="site-aside-left-model-button-CompanyAbout" placement="right" hoist>Learn about our team, company, culture, and values. </wa-tooltip>
@@ -107,91 +108,90 @@
           <wa-tooltip for="site-aside-left-model-button-CompanyService" placement="right" hoist>See the services provided by computate that will help you build your own data-driven platforms</wa-tooltip>
           <wa-tooltip for="site-aside-left-model-button-CompanyResearch" placement="right" hoist>Read about the computate project related research going on at Red Hat research</wa-tooltip>
           <wa-tooltip for="site-aside-left-model-button-CompanyWebsite" placement="right" hoist>See the live websites built with computate</wa-tooltip>
-          <div class="flex flex-column round-row primary-smart-border-radius margin-block">
+          <div class="wa-stack ">
+            <div>
 {%- if userName is defined %}
-            <wa-details>
-              <div slot="summary">
-                <wa-avatar label="user"></wa-avatar>
-                user: {{userName}}
-              </div>
-              <div>{{ userFullName }}</div>
-              <div>{{ userEmail }}</div>
-              <wa-tooltip for="site-button-user-page">see or change your user profile</wa-tooltip>
-              <wa-tooltip for="site-button-logout" placement="right">sign out</wa-tooltip>
-              <div class="flex flex-column round-row primary-smart-border-radius margin-block">
-                <wa-button id="site-button-user-page" variant="brand" href="{{ SITE_BASE_URL }}/en-us/edit/user/{{ userId }}" label="see or change your user profile">
-                  <i slot="prefix" class="fa-duotone fa-regular  fa-house-user"></i>
-                  <span>my user page</span>
-                </wa-button>
-                <wa-button id="site-button-logout" variant="brand" href="{{ logoutUrl }}" label="sign out">
-                  <i slot="prefix" class="fa-duotone fa-regular  fa-person-from-portal"></i>
-                  <span>sign out</span>
-                </wa-button>
-              </div>
-              <wa-details summary="Current scopes" open="true">
-                <div class="wa-stack ">
-                  <div>
-                    <wa-tag variant="neutral">{{ pageUri }}</wa-tag>
-                  </div>
-                  <div>
-                    {% for scope in scopes %}
-                    <wa-badge variant="success">{{ scope }}</wa-badge>
-                    {% endfor %}
-                  </div>
+              <wa-details>
+                <div slot="summary">
+                  <wa-avatar label="user"></wa-avatar>
+                  user: {{userName}}
                 </div>
+                <div>{{ userFullName }}</div>
+                <div>{{ userEmail }}</div>
+                <wa-tooltip for="site-button-user-page">see or change your user profile</wa-tooltip>
+                <wa-tooltip for="site-button-logout" placement="right">sign out</wa-tooltip>
+                <div>
+                  <wa-button id="site-button-user-page" variant="brand" href="{{ SITE_BASE_URL }}/en-us/edit/user/{{ userId }}" label="see or change your user profile">
+                    <i slot="prefix" class="fa-duotone fa-regular  fa-house-user"></i>
+                    <span>my user page</span>
+                  </wa-button>
+                  <wa-button id="site-button-logout" variant="brand" href="{{ logoutUrl }}" label="sign out">
+                    <i slot="prefix" class="fa-duotone fa-regular  fa-person-from-portal"></i>
+                    <span>sign out</span>
+                  </wa-button>
+                </div>
+                <wa-details summary="Current scopes" open="true">
+                  <div class="wa-stack ">
+                    <div>
+                      <wa-tag variant="neutral">{{ pageUri }}</wa-tag>
+                    </div>
+                    <div>
+                      {% for scope in scopes %}
+                      <wa-badge variant="success">{{ scope }}</wa-badge>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </wa-details>
               </wa-details>
-            </wa-details>
 {%- else %}
-            <wa-button variant="brand" href="{{ SITE_BASE_URL }}/en-us/search/user">
-              <i class="fa-duotone fa-regular  fa-person-to-portal"></i> login
-            </wa-button>
+              <wa-button variant="brand" href="{{ SITE_BASE_URL }}/en-us/search/user">
+                <i class="fa-duotone fa-regular  fa-person-to-portal"></i> login
+              </wa-button>
 {%- endif %}
-          </div>
-          <div class="flex flex-column round-row primary-smart-border-radius margin-block">
-            <wa-button variant="brand" id="site-aside-left-model-button-CompanyAbout" href="{{ SITE_BASE_URL }}/en-us/search/about">
-              <i class="fa-duotone fa-regular fa-address-card"></i>
-              about
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-UseCase" href="{{ SITE_BASE_URL }}/en-us/search/use-case">
-              <i class="fa-duotone fa-regular fa-file-invoice"></i>
-              use cases
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-CompanyCourse" href="{{ SITE_BASE_URL }}/en-us/search/course">
-              <i class="fa-duotone fa-regular fa-notebook"></i>
-              courses
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-SitePage" href="{{ SITE_BASE_URL }}/en-us/search/article">
-              <i class="fa-duotone fa-regular fa-newspaper"></i>
-              articles
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}/en-us/search/product">
-              <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
-              products
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-CompanyEvent" href="{{ SITE_BASE_URL }}/en-us/search/event">
-              <i class="fa-duotone fa-regular fa-map-location-dot"></i>
-              events
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-CompanyWebinar" href="{{ SITE_BASE_URL }}/en-us/search/webinar">
-              <i class="fa-duotone fa-regular fa-video"></i>
-              webinars
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-CompanyService" href="{{ SITE_BASE_URL }}/en-us/search/service">
-              <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
-              services
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-CompanyResearch" href="{{ SITE_BASE_URL }}/en-us/search/research">
-              <i class="fa-duotone fa-regular fa-school"></i>
-              research
-            </wa-button>
-            <wa-button variant="brand" id="site-aside-left-model-button-CompanyWebsite" href="{{ SITE_BASE_URL }}/en-us/search/website">
-              <i class="fa-duotone fa-regular fa-globe-pointer"></i>
-              websites
-            </wa-button>
-          </div>
-        </nav>
+            </div>
+            <div>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyAbout" href="{{ SITE_BASE_URL }}/en-us/search/about">
+                <i class="fa-duotone fa-regular fa-address-card"></i>
+                about
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-UseCase" href="{{ SITE_BASE_URL }}/en-us/search/use-case">
+                <i class="fa-duotone fa-regular fa-file-invoice"></i>
+                use cases
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyCourse" href="{{ SITE_BASE_URL }}/en-us/search/course">
+                <i class="fa-duotone fa-regular fa-notebook"></i>
+                courses
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SitePage" href="{{ SITE_BASE_URL }}/en-us/search/article">
+                <i class="fa-duotone fa-regular fa-newspaper"></i>
+                articles
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}/en-us/search/product">
+                <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                products
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyEvent" href="{{ SITE_BASE_URL }}/en-us/search/event">
+                <i class="fa-duotone fa-regular fa-map-location-dot"></i>
+                events
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyWebinar" href="{{ SITE_BASE_URL }}/en-us/search/webinar">
+                <i class="fa-duotone fa-regular fa-video"></i>
+                webinars
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyService" href="{{ SITE_BASE_URL }}/en-us/search/service">
+                <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                services
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyResearch" href="{{ SITE_BASE_URL }}/en-us/search/research">
+                <i class="fa-duotone fa-regular fa-school"></i>
+                research
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyWebsite" href="{{ SITE_BASE_URL }}/en-us/search/website">
+                <i class="fa-duotone fa-regular fa-globe-pointer"></i>
+                websites
+              </wa-button>
+            </div>
       </nav>
-      </aside>
       <main>
         <header slot="header" class="wa-flank margin-block-start ">
           <wa-icon-button data-toggle-nav name="bars" class="nav-toggle-button hide-desktop " label="open menu" appearance="text"></wa-icon-button>
@@ -205,33 +205,33 @@
         </wa-dropdown>
 {%- endblock htmBodyStartPageLayout %}
 {% block htmBodyMiddlePageLayout %}
-        <div class="pageContent ">
+        <div class="pageContent wa-stack wa-gap-3xl ">
           put stuff here
         </div>
 {%- endblock htmBodyMiddlePageLayout %}
 {%- block htmBodyEndPageLayout %}
+        <footer>
+          {% if GITHUB_ORG is defined %}
+          <a href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}/" target="_blank">
+            <wa-card>
+              This site is <b><i class="fa-brands fa-github fa-xl"></i> open source</b>
+            </wa-card>
+          </a>
+          {% endif %}
+          <a href="https://www.computate.org/" target="_blank" id="footer-generated-by">
+            <wa-card>
+                Generated with <b><img class="footer-img" src="{{ STATIC_BASE_URL }}/svg/computate-keys.svg" alt="Computate"/></b>
+            </wa-card>
+          </a>
+          {% if SITE_POWERED_BY_URL is defined %}
+          <a href="{{ SITE_POWERED_BY_URL }}" target="_blank" id="footer-powered-by">
+            <wa-card>
+              Powered by <i class="fa-brands fa-redhat fa-xl" style="color: #ff0000;"></i> <b>{{ SITE_POWERED_BY_NAME | e }}</b>
+            </wa-card>
+          </a>
+          {% endif %}
+        </footer>
       </main>
-      <footer class="flex flex-column round-row primary-smart-border-radius margin-block">
-        {% if GITHUB_ORG is defined %}
-        <a href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}/" target="_blank">
-          <wa-card>
-            This site is <b><i class="fa-brands fa-github fa-xl"></i> open source</b>
-          </wa-card>
-        </a>
-        {% endif %}
-        <a href="https://www.computate.org/" target="_blank" id="footer-generated-by">
-          <wa-card>
-              Generated with <b><img class="footer-img" src="{{ STATIC_BASE_URL }}/svg/computate-keys.svg" alt="Computate"/></b>
-          </wa-card>
-        </a>
-        {% if SITE_POWERED_BY_URL is defined %}
-        <a href="{{ SITE_POWERED_BY_URL }}" target="_blank" id="footer-powered-by">
-          <wa-card>
-            Powered by <i class="fa-brands fa-redhat fa-xl" style="color: #ff0000;"></i> <b>{{ SITE_POWERED_BY_NAME | e }}</b>
-          </wa-card>
-        </a>
-        {% endif %}
-      </footer>
     </wa-page>
 {%- endblock htmBodyEndPageLayout %}
 {%- endblock htmBodyPageLayout %}

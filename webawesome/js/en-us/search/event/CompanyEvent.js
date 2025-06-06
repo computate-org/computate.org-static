@@ -6,7 +6,7 @@ async function searchCompanyEvent($formFilters, success, error) {
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
-    error = function( jqXhr, textStatus, errorThrown ) {};
+    error = function( jqXhr, target2 ) {};
 
   searchCompanyEventVals(filters, target, success, error);
 }
@@ -164,7 +164,7 @@ function suggestCompanyEventObjectSuggest($formFilters, $list, target) {
       $list.append($li);
     });
   };
-  error = function( jqXhr, textStatus, errorThrown ) {};
+  error = function( jqXhr, target2 ) {};
   searchCompanyEventVals($formFilters, target, success, error);
 }
 
@@ -549,15 +549,15 @@ async function postCompanyEvent($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
-      addGlow(target);
+      addGlow(target, jqXhr);
       var url = data['editPage'];
       if(url)
         window.location.href = url;
     };
   }
   if(error == null) {
-    error = function( jqXhr, textStatus, errorThrown ) {
-      addError(target);
+    error = function( jqXhr, target2 ) {
+      addError(target, jqXhr);
     };
   }
 
@@ -667,15 +667,15 @@ function postCompanyEventVals(vals, target, success, error) {
 async function deleteCompanyEvent(target, pageId, success, error) {
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
-      addGlow(target);
+      addGlow(target, jqXhr);
       var url = data['editPage'];
       if(url)
         window.location.href = url;
     };
   }
   if(error == null) {
-    error = function( jqXhr, textStatus, errorThrown ) {
-      addError(target);
+    error = function( jqXhr, target2 ) {
+      addError(target, jqXhr);
     };
   }
 
@@ -726,15 +726,15 @@ function putimportCompanyEventVals(json, target, success, error) {
 async function deletefilterCompanyEvent(target, success, error) {
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
-      addGlow(target);
+      addGlow(target, jqXhr);
       var url = data['editPage'];
       if(url)
         window.location.href = url;
     };
   }
   if(error == null) {
-    error = function( jqXhr, textStatus, errorThrown ) {
-      addError(target);
+    error = function( jqXhr, target2 ) {
+      addError(target, jqXhr);
     };
   }
 
@@ -759,7 +759,7 @@ async function websocketCompanyEvent(success) {
     window.eventBus.registerHandler('websocketCompanyEvent', function (error, message) {
       var json = JSON.parse(message['body']);
       var pageId = json['id'];
-      var nulls = json['nulls'];
+      var solrIds = json['solrIds'];
       var empty = json['empty'];
       var numFound = parseInt(json['numFound']);
       var numPATCH = parseInt(json['numPATCH']);
@@ -1325,14 +1325,14 @@ function pageGraphCompanyEvent(apiRequest) {
               , "geometry": shape
               , "index": index
             }];
-            var layer = L.geoJSON(features, {
+            var layerGeoJson = L.geoJSON(features, {
               onEachFeature: onEachFeature
               , style: jsStyleCompanyEvent
               , pointToLayer: function(feature, latlng) {
                 return L.circleMarker(latlng, jsStyleCompanyEvent(feature));
               }
             });
-            window.geoJSONCompanyEvent.addLayer(layer);
+            window.geoJSONCompanyEvent.addLayer(layerGeoJson);
           });
         }
       });
@@ -1367,7 +1367,7 @@ function pageGraphCompanyEvent(apiRequest) {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(window.mapCompanyEvent);
 
-      if(window.bounds && window['DEFAULT_MAP_ZOOM']) {
+      if(window.bounds && window['DEFAULT_MAP_ZOOM'] && window.bounds.getNorthEast()) {
         if(listCompanyEvent.length == 1) {
           window.mapCompanyEvent.setView(window.bounds.getNorthEast(), window['DEFAULT_MAP_ZOOM']);
         } else {
@@ -1398,14 +1398,14 @@ function pageGraphCompanyEvent(apiRequest) {
               , "geometry": shape
               , "index": index
             }];
-            var layer = L.geoJSON(features, {
+            var layerGeoJson = L.geoJSON(features, {
               onEachFeature: onEachFeature
               , style: jsStyleCompanyEvent
               , pointToLayer: function(feature, latlng) {
                 return L.circleMarker(latlng, jsStyleCompanyEvent(feature));
               }
             });
-            window.geoJSONCompanyEvent.addLayer(layer);
+            window.geoJSONCompanyEvent.addLayer(layerGeoJson);
           });
         }
       });

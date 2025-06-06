@@ -208,29 +208,26 @@
 {%- block htmBodyMiddleUseCasePage %}
         <div>
 {% if resultCount == 0 %}
-        <div class="wa-flank">
-          <div>
-          {% if varsFqCount > 1 %}
+        <div class="wa-stack ">
           <wa-tooltip for="return-to-UseCase">back to all use cases</wa-tooltip></wa-tooltip>
-          <wa-button id="return-to-UseCase" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-            <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-            all use cases
-          </wa-button>
-          {% endif %}
-        </div>
-          <h1><i class="fa-duotone fa-regular fa-file-invoice"></i> <span>use cases</span></h1>
-        </div>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-UseCase" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-file-invoice"></i>
+              all use cases
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no use case found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-file-invoice"></i>
+            </div>
+            <span class="wa-heading-m ">no use case found</span>
+            <p class="wa-caption-l ">See computate use cases for real organizations. </p>
 {% include en-us/search/use-case/UseCaseSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/use-case/UseCaseSearchButtons.htm %}
-        <h2>
-          <span>
-  {% if classIconCssClasses is defined %}
-            <i class="{{ classIconCssClasses }}  site-menu-icon "></i>
-  {% endif %}
-            <span class="">no use case found</span>
-          </span>
-        </h2>
+          </div>
+        </div>
 {% else %}
 {%- include en-us/search/use-case/UseCaseSidebar.htm %}
 {%- include en-us/search/use-case/UseCaseSuggestedSearch.htm %}
