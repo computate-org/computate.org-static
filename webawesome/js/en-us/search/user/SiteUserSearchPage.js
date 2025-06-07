@@ -43,6 +43,22 @@ Promise.all([
     sort('SiteUser', 'webComponentsTheme', event.currentTarget.value);
   });
 
+  document.querySelector('#pageFacetSortSiteUser_download')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'download', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSiteUser_objectSuggest')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'objectSuggest', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSiteUser_objectText')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'objectText', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSiteUser_solrId')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'solrId', event.currentTarget.value);
+  });
+
   document.querySelector('#pageFacetSortSiteUser_classCanonicalName')?.addEventListener('change', (event) => {
     sort('SiteUser', 'classCanonicalName', event.currentTarget.value);
   });
@@ -81,22 +97,6 @@ Promise.all([
 
   document.querySelector('#pageFacetSortSiteUser_userPage')?.addEventListener('change', (event) => {
     sort('SiteUser', 'userPage', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageFacetSortSiteUser_download')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'download', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageFacetSortSiteUser_objectSuggest')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'objectSuggest', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageFacetSortSiteUser_objectText')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'objectText', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageFacetSortSiteUser_solrId')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'solrId', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSiteUser_userKeys')?.addEventListener('change', (event) => {

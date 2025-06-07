@@ -111,16 +111,16 @@ Promise.all([
     sort('CompanyWebinar', 'solrId', event.currentTarget.value);
   });
 
-  document.querySelector('#pageFacetSortCompanyWebinar_joinUri')?.addEventListener('change', (event) => {
-    sort('CompanyWebinar', 'joinUri', event.currentTarget.value);
-  });
-
   document.querySelector('#pageFacetSortCompanyWebinar_nextWebinarsBegin')?.addEventListener('change', (event) => {
     sort('CompanyWebinar', 'nextWebinarsBegin', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortCompanyWebinar_joinUrl')?.addEventListener('change', (event) => {
     sort('CompanyWebinar', 'joinUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortCompanyWebinar_joinUri')?.addEventListener('change', (event) => {
+    sort('CompanyWebinar', 'joinUri', event.currentTarget.value);
   });
 
   document.querySelector('#htmButton_patchCompanyWebinar')?.addEventListener('click', (event) => {
