@@ -1,31 +1,16 @@
-{% extends "en-us/PageLayout.htm" %}
+{% extends "en-us/Article.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
     <meta name="result.name" content="How to become a Red Hat developer" />
+    <meta name="result.description" content="Learn how to develop with the Computate platform. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-04-23T21:50:36.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/c-key.png" />
+    <meta name="result.pageImageAlt" content="The Computate logo with a C key from a keyboard" />
+    <meta name="result.relatedArticleIds" content="become-an-open-source-software-developer, become-a-red-hat-developer" />
 {% endblock htmMetaPageLayout %}
-{% block htmTitlePageLayout %}
-    <title>{{ result.name }}</title>
-{% endblock htmTitlePageLayout %}
-{% block htmBodyMiddlePageLayout %}
-        <div class="intro-content ">
-          <wa-card>
-            <div>
-              <h1 class="icon-heading ">
-                {{ result.name }}
-              </h1>
-              <div class="font-style-italic">
-                Created Wed Apr 23, 2025 </div>
-              <p>
-                <div class="font-weight-bold">
-                  By Christopher Tate
-                </div>
-                <div class="font-weight-bold font-style-italic icon-heading ">
-                  <i class="fa-brands fa-redhat w3-text-red"></i>
-                  <span class="font-weight-bold">Red Hat Principal Software Engineer</span>
-                </div>
-              </p>
-            </div>
-          </wa-card>
-        </div>
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
 
 {% endblock %}

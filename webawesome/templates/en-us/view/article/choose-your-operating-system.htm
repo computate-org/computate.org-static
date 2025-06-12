@@ -1,12 +1,17 @@
-{% extends "en-us/PageLayout.htm" %}
+{% extends "en-us/Article.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
     <meta name="result.name" content="Choose your operating system" />
+    <meta name="result.description" content="Learn why open source operating systems like Linux are more useful for software development than proprietary operating systems. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2024-09-30T21:50:36.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/templates/en-us/view/article/{{ result.pageId }}/super-tux-kart-application.png" />
+    <meta name="result.pageImageAlt" content="Searching for the Super Tux Kart application in Red Hat Enterprise Linux 9" />
+    <meta name="result.relatedArticleIds" content="become-an-open-source-software-developer, become-a-red-hat-developer" />
 {% endblock htmMetaPageLayout %}
-{% block htmTitlePageLayout %}
-    <title>{{ title }}</title>
-{% endblock htmTitlePageLayout %}
-{% block htmBodyMiddlePageLayout %}
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
         <div class="intro-content ">
           <wa-card>
             <div>

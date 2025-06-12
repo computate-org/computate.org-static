@@ -288,3 +288,23 @@ function quoteattr(s, preserveCR) {
 //    return rows.map(function(row) { return row[key]; });
 //}
 //
+
+function imgToDialog(target) {
+  var h = this.previousElementSibling;
+  var dialog = document.createElement('wa-dialog');
+  dialog.setAttribute('label', target.getAttribute('alt'));
+  dialog.setAttribute('style', '--width: 80vw; --height: 80vh; ');
+  dialog.setAttribute('open', 'true');
+  dialog.setAttribute('light-dismiss', 'true');
+  var stack = document.createElement('div');
+  stack.classList.add('wa-stack');
+  stack.classList.add('wa-align-items-center');
+  dialog.append(stack);
+  var img = document.createElement('img');
+  img.setAttribute('src', target.getAttribute('src'));
+  stack.append(img);
+  dialog.addEventListener('wa-after-hide', event => {
+		event.target.remove();
+  });
+	target.after(dialog);
+}

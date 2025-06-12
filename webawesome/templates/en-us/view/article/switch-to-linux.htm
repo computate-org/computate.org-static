@@ -1,83 +1,55 @@
-{% extends "en-us/PageLayout.htm" %}
+{% extends "en-us/Article.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
     <meta name="result.name" content="Switch to Linux" />
+    <meta name="result.description" content="Reasons for switching your computer from a proprietary operating system to an open source Linux-based operating system. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2024-09-30T21:50:36.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/templates/en-us/view/article/{{ result.pageId }}/super-tux-kart-application.png" />
+    <meta name="result.pageImageAlt" content="Searching for the Super Tux Kart application in Red Hat Enterprise Linux 9" />
+    <meta name="result.relatedArticleIds" content="become-an-open-source-software-developer, become-a-red-hat-developer" />
 {% endblock htmMetaPageLayout %}
-{% block htmTitlePageLayout %}
-    <title>{{ result.name }}</title>
-{% endblock htmTitlePageLayout %}
-{% block htmBodyMiddlePageLayout %}
-        <div class="intro-content ">
-          <wa-card>
-            <div>
-              <h1 class="icon-heading ">
-                {{ result.name }}
-              </h1>
-              <div class="font-style-italic">
-                Created Mon Sep 30 2024
-              </div>
-              <p>
-                <div class="font-weight-bold">
-                  By Christopher Tate </div>
-                <div class="font-weight-bold font-style-italic icon-heading ">
-                  <i class="fa-brands fa-redhat w3-text-red"></i>
-                  <span class="font-weight-bold">Red Hat Principal Software Engineer</span>
-                </div>
-              </p>
-            </div>
-            <h2>Proprietary operating systems</h2>
-            <p>
-              Proprietary operating systems like MacOSX, and especially Microsoft Windows are not set up for open source software development. 
-            </p>
-            <h3>Apple MacOSX</h3>
-            <p>
-              The package management system of MacOSX is tightly linked to the operating system and how old your Apple computer hardware is. 
-              When your MacOSX operating system is a few years out of date, it will stop providing software updates. 
-              Based on the age of your MacOSX hardware, you will no longer be able to receive operating system upgrades. 
-              This will render your software developer packages obsolete and broken. 
-            </p>
-            <h3>Microsoft Windows</h3>
-            <p>
-              Microsoft Windows does not come with any developer tools out of the box. 
-              In order to obtain developer tools, you need to download them manually from the Web. 
-              Windows does not provide open source Linux plackages in a native way. 
-              This makes it very difficult to use source control, virtualization, containers, and install open source software packages. 
-            </p>
-            <h2>Open source operating systems</h2>
-            <h3>Linux</h3>
-            <p>
-              Each version of Linux gives you access to many open source software packages, and the source code is always available for any missing packages in Linux. 
-              Linux packages make it easy to run the software you need without having to compile the source code. 
-              Because some Linux operating systems don't maintain as many packages, you may have to compile some open source software for your projects. 
-              Learning to install packages and compile open source code is one of the tasks of an open source software developer. 
-              These skills allow you to build your own solutions and integrate other open source community solutions without having to rely on proprietary software services. 
-            </p>
-            <p>
-              If you are ready to change your operating system to Linux, it means that you are ready to embrace open source software. 
-              I would like to show you how to fully embrace open source software. 
-            </p>
-            <h2>Become a Red Hat Developer</h2>
-            <p>The first step to installing Linux is to follow my article to <a href="{{ SITE_BASE_URL }}/en-us/view/become-a-red-hat-developer">become a Red Hat Developer</a></p>. 
-            <h2>Download Red Hat Enterprise Linux</h2>
-            <h3 class="wa-flank ">
-              <i class="fa-duotone fa-regular fa-download padding-right-quarter-em"></i>
-              <div>
-                Download the RHEL9 x86_64 DVD ISO
-              </div>
-            </h3>
-            <p>
-              Now that you are a Red Hat Developer, you have access to download Red Hat Enterprise Linux for your open source
-              development. To get started with RHEL9, you will want to download the 9.0 x86_64 DVD ISO here: 
-            </p>
-            <p class="w3-monospace">
-              <a href="https://developers.redhat.com/products/rhel/download" target="_new">
-                https://developers.redhat.com/products/rhel/download
-              </a>
-            </p>
-            <p>
-              Having the RHEL9 ISO file will allow you to burn it to a disk so that you can install it on your physical
-              computers. You can also create RHEL9 virtual machines using the same ISO file. 
-            </p>
-          </wa-card>
-        </div>
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+    <h2>Proprietary operating systems</h2>
+    <p>
+      Proprietary operating systems like MacOSX, and especially Microsoft Windows are not set up for open source software development. 
+    </p>
+    <h3>Apple MacOSX</h3>
+    <p>
+      The package management system of MacOSX is tightly linked to the operating system and how old your Apple computer hardware is. 
+      When your MacOSX operating system is a few years out of date, it will stop providing software updates. 
+      Based on the age of your MacOSX hardware, you will no longer be able to receive operating system upgrades. 
+      This will render your software developer packages obsolete and broken. 
+    </p>
+    <h3>Microsoft Windows</h3>
+    <p>
+      Microsoft Windows does not come with any developer tools out of the box. 
+      In order to obtain developer tools, you need to download them manually from the Web. 
+      Windows does not provide open source Linux plackages in a native way. 
+      This makes it very difficult to use source control, virtualization, containers, and install open source software packages. 
+    </p>
+    <h2>Open source operating systems</h2>
+    <h3>Linux</h3>
+    <p>
+      Each version of Linux gives you access to many open source software packages, and the source code is always available for any missing packages in Linux. 
+      Linux packages make it easy to run the software you need without having to compile the source code. 
+      Because some Linux operating systems don't maintain as many packages, you may have to compile some open source software for your projects. 
+      Learning to install packages and compile open source code is one of the tasks of an open source software developer. 
+      These skills allow you to build your own solutions and integrate other open source community solutions without having to rely on proprietary software services. 
+    </p>
+    <p>
+      If you are ready to change your operating system to Linux, it means that you are ready to embrace open source software. 
+      I would like to show you how to fully embrace open source software. 
+    </p>
+    <h2>Become a Red Hat Developer</h2>
+    <p>The first step to installing Linux is to follow my article to <a href="{{ SITE_BASE_URL }}/en-us/view/article/become-a-red-hat-developer">become a Red Hat Developer</a></p>. 
+    <h2>Download {{ SITE_OS_NAME }}</h2>
+    <h3 class="wa-flank ">
+      <i class="fa-duotone fa-regular fa-download padding-right-quarter-em"></i>
+      <div>
+        Download the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} x86_64 DVD ISO
+      </div>
+    </h3>
 {% endblock %}

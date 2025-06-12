@@ -1,0 +1,40 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Install Red Hat Enterprise Linux" />
+    <meta name="result.description" content="Run the most secure and trusted open source operating system on your own computer for free as a Red Hat Developer. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-06-06T21:50:36.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/templates/en-us/view/article/{{ result.pageId }}/boot-screen-test-or-install.png" />
+    <meta name="result.pageImageAlt" content="The boot screen to test or install Red Hat Enterprise Linux" />
+    <meta name="result.relatedArticleIds" content="become-a-red-hat-developer" />
+{% endblock htmMetaPageLayout %}
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+
+    <div class="wa-stack">
+      <h2>
+        Reboot your computer into the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} installer
+      </h2>
+      <ol class="wa-stack ">
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 16 / 9;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/install-red-hat-enterprise-linux/boot-screen-test-or-install.png"
+                  alt="The {{ SITE_OS_NAME }} boot screen to either test the media or install"
+                  />
+            </div>
+            <ul>
+              <li>
+                Once you have your {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} USB disk ready, you can reboot your computer. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+      </ul>
+    </div>
+{% endblock %}

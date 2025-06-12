@@ -1,0 +1,121 @@
+{% extends "en-us/PageLayout.htm" %}
+{%- macro articleH1(resultName) -%}
+    <h1 class="wa-heading-3xl">
+      {{ result.name | e }}
+    </h1>
+{%- endmacro %}
+{%- macro articleAuthor(result) -%}
+      <div class="wa-heading-m ">
+        by 
+        <a href="{{ resultAuthorUrl | e }}">
+          {{ result.authorName | e }}
+        </a>
+      </div>
+{%- endmacro %}
+{%- macro articleCreated(result) -%}
+      <div class="wa-caption-l ">
+        <div class="wa-stack wa-gap-3xs ">
+          <wa-relative-time id="webinar-relative-time" format="long" sync="true" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-relative-time>
+          <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
+        </div>
+      </div>
+{%- endmacro %}
+{%- macro articleImage(result) -%}
+    <div class="wa-frame:landscape wa-border-radius-l "{% if result.pageImageWidth %} style="aspect-ratio: {{ result.pageImageWidth }} / {{ result.pageImageHeight }}; "{% endif %}>
+      <img
+          src="{{ STATIC_BASE_URL }}{{ result.pageImageUri }}"
+{% if result.pageImageAlt is defined %}
+          alt="{{ result.pageImageAlt | e }}"
+{% endif %}
+          />
+    </div>
+{%- endmacro %}
+{%- macro articleShare(result) -%}
+    <div class="wa-stack wa-gap-2xl">
+      <h3 class="wa-heading-xl">Don't forget to share this article!</h3>
+      <div class="wa-cluster" style="justify-content: center;">
+        <a class="wa-align-items-center wa-stack wa-gap-2xs"
+            href="https://www.linkedin.com/shareArticle?mini=true&url={{ result.displayPage | urlencode }}"
+            target="_blank"
+            >
+          <wa-icon
+              style="font-size: var(--wa-font-size-2xl);"
+              name="linkedin"
+              family="brands"
+              label="Share on LinkedIn"
+              target="_blank"
+              ></wa-icon>
+          <span class="wa-caption-s">LinkedIn</span>
+        </a>
+        <a class="wa-align-items-center wa-stack wa-gap-2xs"
+            href="https://www.facebook.com/sharer/sharer.php?u={{ result.displayPage | urlencode }}"
+            target="_blank"
+            >
+          <wa-icon
+              style="font-size: var(--wa-font-size-2xl);"
+              name="facebook"
+              family="brands"
+              label="Share on Facebook"
+              ></wa-icon>
+          <span class="wa-caption-s">Facebook</span>
+      </a>
+      </div>
+    </div>
+{%- endmacro %}
+{%- macro articleRelatedArticles(result) -%}
+    <div class="wa-stack">
+      <h3 class="wa-heading-xl">Related Articles</h3>
+      <wa-carousel navigation pagination slides-per-page="3" slides-per-move="3" style="--aspect-ratio: initial">
+        {% for relatedArticle in result.relatedArticles %}
+        <wa-carousel-item>
+          <a href="{{ relatedArticle.displayPage }}" class="wa-link-plain">
+            <wa-card with-image>
+              <div class="wa-frame:landscape" slot="image"{% if relatedArticle.pageImageWidth %} style="aspect-ratio: {{ relatedArticle.pageImageWidth }} / {{ relatedArticle.pageImageHeight }}; "{% endif %}>
+                <wa-frame>
+                  <img
+                      src="{{ STATIC_BASE_URL }}{{ relatedArticle.pageImageUri }}"
+{%- if relatedArticle.pageImageAlt is defined %}
+                      alt="{{ relatedArticle.name | e }}"
+{%- endif %}
+                      />
+                </wa-frame>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-heading-m">{{ relatedArticle.name | e }}</span>
+              </div>
+            </wa-card>
+          </a>
+        </wa-carousel-item>
+        {% endfor %}
+      </wa-carousel>
+    </div>
+{%- endmacro %}
+{%- macro articleStart(result) -%}
+<div class="wa-stack ">
+  <div class="wa-flank:end wa-align-items-end ">
+{{ articleH1(result) }}
+    <div class="wa-stack wa-gap-3xs ">
+{{ articleAuthor(result) }}
+{{ articleCreated(result) }}
+    </div>
+  </div>
+  <div class="wa-stack " style="max-width: 80ch; margin-inline: auto; ">
+{%- endmacro %}
+{%- macro articleEnd(result) -%}
+    <wa-divider style="margin-block-start: 2rem; --width: 3px;"></wa-divider>
+  </div>
+  <div class="wa-stack" style="text-align: center;">
+{{ articleShare(result) }}
+    <wa-divider></wa-divider>
+{{ articleRelatedArticles(result) }}
+  </div>
+</div>
+{%- endmacro %}
+{% block htmTitlePageLayout %}
+    <title>{{ result.name | e }}</title>
+{% endblock htmTitlePageLayout %}
+{% block htmBodyMiddlePageLayout %}
+{{ articleStart(result) }}
+{% block htmBodyMiddleArticle %}{% endblock %}
+{{ articleEnd(result) }}
+{% endblock %}

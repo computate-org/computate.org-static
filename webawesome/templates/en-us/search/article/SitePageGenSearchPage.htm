@@ -234,6 +234,19 @@
                   </wa-menu-item>
                 </wa-menu>
               </wa-dropdown>
+              <wa-dropdown id="htmDropdown-description">
+                <wa-button variant="brand" slot="trigger" caret>description</wa-button>
+                <wa-menu>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSitePage_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SitePage').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                    <i class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                    sort by description ascending
+                  </wa-menu-item>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSitePage_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SitePage').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                    <i class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                    sort by description descending
+                  </wa-menu-item>
+                </wa-menu>
+              </wa-dropdown>
                   </div>
                   {% for item in listSitePage%}
                   <div>
@@ -241,9 +254,16 @@
                 <i class="fa-duotone fa-regular fa-newspaper"></i>
               <span>{{ item.name | e }}
 </span>              </a>
+              <a href="{{ item.displayPage }}">
+              <span>{{ item.description | e }}
+</span>              </a>
                   </div>
                   {% endfor %}
               {% if getColumnName is defined %}
+                <div>
+                </div>
+              {% endif %}
+              {% if getColumnDescription is defined %}
                 <div>
                 </div>
               {% endif %}

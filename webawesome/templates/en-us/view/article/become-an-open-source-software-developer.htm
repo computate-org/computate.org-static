@@ -1,37 +1,22 @@
-{% extends "en-us/PageLayout.htm" %}
+{% extends "en-us/Article.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
     <meta name="result.name" content="Become an open source software developer" />
+    <meta name="result.description" content="Become an open source developer and start contributing to communities of code on GitHub. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2024-09-30T21:50:36.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/templates/en-us/view/article/{{ result.pageId }}/github-profile.png" />
+    <meta name="result.pageImageAlt" content="A view of computate's GitHub profile" />
+    <meta name="result.relatedArticleIds" content="become-a-red-hat-developer, install-red-hat-enterprise-linux" />
 {% endblock htmMetaPageLayout %}
-{% block htmTitlePageLayout %}
-    <title>{{ result.name }}</title>
-{% endblock htmTitlePageLayout %}
-{% block htmBodyMiddlePageLayout %}
-        <div class="intro-content ">
-          <wa-card>
-            <div>
-              <h1 class="icon-heading ">
-                {{ result.name }}
-              </h1>
-              <div class="font-style-italic">
-                Created Sat Mar 29, 2025
-              </div>
-              <p>
-                <div class="font-weight-bold">
-                  By Christopher Tate </div>
-                <div class="font-weight-bold font-style-italic icon-heading ">
-                  <i class="fa-brands fa-redhat w3-text-red"></i>
-                  <span class="font-weight-bold">Red Hat Principal Software Engineer</span>
-                </div>
-              </p>
-              <h2>How do I become an open source software developer? </h2>
-              <h3>It's as easy as creating a github.com user account</h3>
-              <p>
-                An open source developer can upload their source code to GitHub source control for free! 
-                An open source developer can also clone and fork other people's and organization's source code. 
-                Simply create an account at <a href="github.com">github.com</a> to get started. 
-              </p>
-            </div>
-          </wa-card>
-        </div>
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+    <h2>How do I become an open source software developer? </h2>
+    <h3>It's as easy as creating a github.com user account</h3>
+    <p>
+      An open source developer can upload their source code to GitHub source control for free! 
+      An open source developer can also clone and fork other people's and organization's source code. 
+      Simply create an account at <a href="github.com">github.com</a> to get started. 
+    </p>
 {% endblock %}

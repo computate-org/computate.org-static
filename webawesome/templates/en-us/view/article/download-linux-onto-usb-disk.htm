@@ -1,0 +1,257 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Download Red Hat Enterprise Linux onto USB disk" />
+    <meta name="result.description" content="Wondering how you can put a free operating system like Red Hat Enterprise Linux on your own computer? Get started by downloading Red Hat Enterprise Linux and put it on one of your USB disks. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-06-06T21:50:36.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/templates/en-us/view/article/{{ result.pageId }}/wait-for-the-disk-to-finish-writing.png" />
+    <meta name="result.pageImageAlt" content="Wait for the disk to finish writing the ISO" />
+    <meta name="result.relatedArticleIds" content="become-a-red-hat-developer, install-red-hat-enterprise-linux" />
+{{ super() }}
+{% endblock htmMetaPageLayout %}
+{% block htmStylePageLayout %}
+      wa-details {
+        counter-reset: listCounter; /* Initialize a counter */
+      }
+      ol > li {
+        counter-increment: listCounter; /* Increment the counter for each list item */
+        &::marker {content: none;}
+      }
+      ol > li::before {
+        content: counter(listCounter) ". "; /* Display the counter value */
+      }
+{% endblock htmStylePageLayout %}
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+
+    <p>
+      Ready to start using the best Enterprise open source Linux operating system? 
+      Having the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} ISO file will allow you to burn it to a disk so that you can install it on your physical computers. 
+    </p>
+
+    <div class="wa-stack">
+      <h2>
+        Download {{ SITE_OS_NAME }} for free as an open source Red Hat Developer
+      </h2>
+      <p>
+        If you have followed my previous article on <a href="{{ SITE_BASE_URL }}/en-us/view/article/become-a-red-hat-developer">becoming a Red Hat Developer</a>, 
+        you have access to download {{ SITE_OS_NAME }} for your open source development. 
+        To get started with {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }}, you will want to download the {{ SITE_OS_VERSION }} x86_64 DVD ISO here: 
+      </p>
+      <p>
+        <a href="https://developers.redhat.com/products/rhel/download" target="_new">
+          https://developers.redhat.com/products/rhel/download
+        </a>
+      </p>
+    </div>
+
+    <h2>
+      Writing  the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} ISO file to a USB disk
+    </h2>
+    <ol>
+      <li>You will want to find a USB disk with at least 16 GB of storage. </li>
+      <li>Plug the USB disk into your computer. </li>
+    </ol>
+    <p>
+      It depends on your operating system how you will write the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} ISO to a USB disk. 
+      Here are some instructions for creating a {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} USB disk if you have a computer running Microsoft Windows or Linux. 
+    </p>
+
+    <wa-details summary="Microsoft Windows instructions for writing ISO files to a USB disk">
+
+      <p>
+        If you are on Microsoft Windows, I recommend downloading a program called Rufus to write the ISO to a USB disk. 
+      </p>
+      <ol>
+        <li>
+          Download the Rufus application at <a href="https://rufus.ie/en/">https://rufus.ie/en/</a>. 
+        </li>
+        <li>
+          Find the latest .exe download for platform "Windows x64". 
+        </li>
+        <li>
+          Write the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} ISO to a USB disk with the Rufus application. 
+        </li>
+      </ol>
+    </wa-details>
+
+    <wa-details summary="Linux instructions for writing ISO files to a USB disk">
+
+      <div class="wa-stack">
+        <h2>
+          Linux instructions for writing ISO files to a USB disk
+        </h2>
+        <p>
+          If you have a Linux Gnome desktop environment, you can use the Disks application to write an ISO to a USB disk. 
+        </p>
+        <div class="wa-stack ">
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 16 / 9;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/find-disks-application.png"
+                    alt="Open the Disks application in Linux"
+                    />
+              </div>
+              <div>
+                <ol>
+                  <li>
+                    Open the Disks application. 
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 16 / 9;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/select-usb-drive-in-disks.png"
+                    alt="Watch for your USB disk appear in the Disks application"
+                    />
+              </div>
+              <ol>
+                <li>
+                  Plug in your USB disk into your computer, and watch for your USB disk appear in the Disks application. 
+                  Make sure you have selected the correct USB disk, because the next step will require root privileges and destroy any existing files on the disk you select. 
+                </li>
+              </ol>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 16 / 9;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/click-restore-disk-image.png"
+                    alt="Click restore disk image"
+                    />
+              </div>
+              <ol>
+                <li>
+                  Once you have selected the correct USB disk, click the button with 3 vertical dots at the top right of the Disks application. 
+                </li>
+                <li>
+                  Select <b>Restore disk image…</b>. 
+                </li>
+              </ol>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 3 / 1;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/click-on-image-to-restore.png"
+                    alt="Click on image to restore button"
+                    />
+              </div>
+              <ol>
+                <li>
+                  Click on the <b>Image to Restore</b> button. 
+                </li>
+                <li>
+                  Select <b>Restore disk image…</b>. 
+                </li>
+              </ol>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 5 / 2;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/select-rhel-dvd-iso.png"
+                    alt="Select the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} ISO file"
+                    />
+              </div>
+              <ol>
+                <li>
+                  Select the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} ISO file <b>{{ SITE_OS_SHORT_NAME | lower }}-{{ SITE_OS_VERSION }}-x86_64-dvd.iso</b> in your Downloads. 
+                </li>
+                <li>
+                  Press the <b>Open</b> button. 
+                </li>
+              </ol>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 5 / 2;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/start-restoring.png"
+                    alt="Click the start restoring button"
+                    />
+              </div>
+              <ol>
+                <li>
+                  Click the <b>Start Restoring…</b> button to start writing the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} ISO to the disk. 
+                </li>
+              </ol>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 5 / 3;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/verify-usb-disk.png"
+                    alt="Verify the disk before writing the ISO to disk"
+                    />
+              </div>
+              <ol>
+                <li>
+                  Another window will open for you to verify that the USB disk you wish to format is selected by looking closely at the size of the disk or it's name so you don't format the wrong disk. 
+                </li>
+              </ol>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1 / 1;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/authentication-required.png"
+                    alt="Authentication is required to write to the disk"
+                    />
+              </div>
+              <ol>
+                <li>
+                  Another window will open for you to authenticate with your user password as an administrator, which requires root privileges to write to the disk. 
+                </li>
+                <li>
+                  Enter your user password. 
+                </li>
+                <li>
+                  Press the <b>Authenticate</b> button to begin writing the {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} ISO to the USB disk. 
+                </li>
+              </ol>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+          <div class="wa-stack ">
+            <div class="wa-flank " style="--flank-size: 32ch; ">
+              <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 5 / 3;">
+                <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                    src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/wait-for-the-disk-to-finish-writing.png"
+                    alt="Wait for the disk to finish writing the ISO"
+                    />
+              </div>
+              <ol>
+                <li>
+                  Wait patiently for a few minutes for the disk to finish writing to the disk. 
+                </li>
+              </ol>
+            </div>
+          </div>
+          <wa-divider></wa-divider>
+        </div>
+      </div>
+    </wa-details>
+
+{% endblock %}

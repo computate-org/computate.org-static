@@ -1,160 +1,147 @@
-{% extends "en-us/PageLayout.htm" %}
+{% extends "en-us/Article.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
     <meta name="result.name" content="Purchase your own computer" />
+    <meta name="result.description" content="Learn how to purchase your own computer for open source software development. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-06-06T21:50:36.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/c-key.png" />
+    <meta name="result.pageImageAlt" content="The Computate logo with a C key from a keyboard" />
+    <meta name="result.relatedArticleIds" content="become-a-red-hat-developer, install-red-hat-enterprise-linux" />
 {% endblock htmMetaPageLayout %}
-{% block htmTitlePageLayout %}
-    <title>{{ result.name }}</title>
-{% endblock htmTitlePageLayout %}
-{% block htmBodyMiddlePageLayout %}
-        <div class="intro-content ">
-          <wa-card>
-            <div>
-              <h1 class="icon-heading ">
-                {{ result.name }}
-              </h1>
-              <div class="font-style-italic">
-                Created Sat Mar 29, 2025
-              </div>
-              <p>
-                <div class="font-weight-bold">
-                  By Christopher Tate </div>
-                <div class="font-weight-bold font-style-italic icon-heading ">
-                  <i class="fa-brands fa-redhat w3-text-red"></i>
-                  <span class="font-weight-bold">Red Hat Principal Software Engineer</span>
-                </div>
-              </p>
-              <h2>What kind of computer should I buy? </h2>
-              <h3>Whether you want a laptop or a desktop computer is up to you. </h3>
-              <p>
-                You can be an effective computer programmer whether you have a laptop or a desktop computer. 
-                The difference is the price of the hardware. 
-                Laptop hardware is generally more expensive than desktop hardware. 
-                A motherboard for a laptop with similar specifications will be more expensive on a laptop. 
-              </p>
-              <p>
-                Unless you put your desktop on a roller desk like I do, a desktop is not very portable. 
-                Even so, a desktop does not easily travel with you on business trips. 
-                So I would recommend having a laptop before purchasing a desktop. 
-              </p>
-              <h2>What is the right system architecture for open source development? </h2>
-              <h3>Purchase a computer with the x86_64 system architecture. </h3>
-              <p>
-                There are many system architectures, like Raspberry Pi's ARM 64 architecture. 
-                IBM Z has a different system architecture. 
-                The preferred system architecture for Linux software development is x86_64. 
-                This is because because most Linux applications and container images are meant to run on the x86_64 architecture. 
-                It's also the same system architecture that Microsoft Windows computers use. 
-                This makes Linux compatible computers widely available. 
-              </p>
-              <h2>Where should I purchase my computer? </h2>
-              <h3>Purchase a computer from a local computer shop. </h3>
-              <p>
-                If you purchase a computer from an online store, you would have to ship your computer to them for any hardware upgrades or hardware failures. 
-                In my opinion, it's best to find a local computer shop to purchase your computer. 
-                You will be able to get local support for your computer for upgrades and failures. 
-                You can also talk to them face-to-face about the options that are available, and avoid any backorders. 
-                You can pick out the other devices you need to connect to your computer. 
-              </p>
-              <h2>What kind of specs should my computer have? </h2>
-              <h3>Recommended laptop specs</h3>
-              <p>
-                If you are purchasing a laptop, I would suggest the following specs: 
-              </p>
-              <ol>
-                <li>
-                  At least 32 GiB RAM. 
-                  My Red Hat work laptop has 32 GiB RAM, and it's enough to run OpenShift Local with the microshift preset. 
-                  This allows me to run enough containers for application development for my data-driven websites like AI Telemetry. 
-                </li>
-                <li>
-                  At least 8 CPUs. 
-                  My Red Hat work laptop has 8 CPUs, and it's enough to run OpenShift Local with the microshift preset. 
-                  This allows me to run enough containers for application development for my data-driven websites like AI Telemetry. 
-                </li>
-                <li>
-                  At least 1 TiB solid state drive (SSD) storage. 
-                  1 TiB is enough storage for most developer's applications and documents. 
-                </li>
-              </ol>
-              <h3>Recommended desktop specs</h3>
-              <p>
-                If you are purchasing a desktop, I would make it a really nice one, with enough resources to run the full OpenShift Local Console, which requires a lot more resources than OpenShift Local with the microshift preset. 
-              </p>
-              <ol>
-                <li>
-                  An Intel I9 motherboard. 
-                  The Intel I9 has a high CPU and memory capacity for tons of cloud computing on one computer. 
-                </li>
-                <li>
-                  128 to 192 GiB RAM. 
-                  With an Intel I9 motherboard you can add up to 192 GiB RAM, which is a ton of useful RAM for cloud computing. 
-                  You may not be used to using that much RAM with your applications, but you will find it useful. 
-                  This allows me to run more than enough containers for application development for my data-driven websites like AI Telemetry and Smart Aquaculture. 
-                </li>
-                <li>
-                  16 to 32 CPUs. 
-                  With an Intel I9 motherboard you will have 32 CPUs, which is a ton of compute for cloud computing. 
-                  This allows me to run enough containers for application development for my data-driven websites like AI Telemetry and Smart Aquaculture. 
-                </li>
-                <li>
-                  At least 2 TiB solid state drive (SSD) storage. 
-                  If you are like me, you have a lot of digital photos and videos accumulated after too many years of owning a smartphone. 
-                  Applications, Linux software packages, containers and container images also take up a lot of space. 
-                  You also want to make sure you configure the same amount of swap space as you have RAM. 
-                </li>
-              </ol>
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+    <h2>What kind of computer should I buy? </h2>
+    <h3>Whether you want a laptop or a desktop computer is up to you. </h3>
+    <p>
+      You can be an effective computer programmer whether you have a laptop or a desktop computer. 
+      The difference is the price of the hardware. 
+      Laptop hardware is generally more expensive than desktop hardware. 
+      A motherboard for a laptop with similar specifications will be more expensive on a laptop. 
+    </p>
+    <p>
+      Unless you put your desktop on a roller desk like I do, a desktop is not very portable. 
+      Even so, a desktop does not easily travel with you on business trips. 
+      So I would recommend having a laptop before purchasing a desktop. 
+    </p>
+    <h2>What is the right system architecture for open source development? </h2>
+    <h3>Purchase a computer with the x86_64 system architecture. </h3>
+    <p>
+      There are many system architectures, like Raspberry Pi's ARM 64 architecture. 
+      IBM Z has a different system architecture. 
+      The preferred system architecture for Linux software development is x86_64. 
+      This is because because most Linux applications and container images are meant to run on the x86_64 architecture. 
+      It's also the same system architecture that Microsoft Windows computers use. 
+      This makes Linux compatible computers widely available. 
+    </p>
+    <h2>Where should I purchase my computer? </h2>
+    <h3>Purchase a computer from a local computer shop. </h3>
+    <p>
+      If you purchase a computer from an online store, you would have to ship your computer to them for any hardware upgrades or hardware failures. 
+      In my opinion, it's best to find a local computer shop to purchase your computer. 
+      You will be able to get local support for your computer for upgrades and failures. 
+      You can also talk to them face-to-face about the options that are available, and avoid any backorders. 
+      You can pick out the other devices you need to connect to your computer. 
+    </p>
+    <h2>What kind of specs should my computer have? </h2>
+    <h3>Recommended laptop specs</h3>
+    <p>
+      If you are purchasing a laptop, I would suggest the following specs: 
+    </p>
+    <ol>
+      <li>
+        At least 32 GiB RAM. 
+        My Red Hat work laptop has 32 GiB RAM, and it's enough to run OpenShift Local with the microshift preset. 
+        This allows me to run enough containers for application development for my data-driven websites like AI Telemetry. 
+      </li>
+      <li>
+        At least 8 CPUs. 
+        My Red Hat work laptop has 8 CPUs, and it's enough to run OpenShift Local with the microshift preset. 
+        This allows me to run enough containers for application development for my data-driven websites like AI Telemetry. 
+      </li>
+      <li>
+        At least 1 TiB solid state drive (SSD) storage. 
+        1 TiB is enough storage for most developer's applications and documents. 
+      </li>
+    </ol>
+    <h3>Recommended desktop specs</h3>
+    <p>
+      If you are purchasing a desktop, I would make it a really nice one, with enough resources to run the full OpenShift Local Console, which requires a lot more resources than OpenShift Local with the microshift preset. 
+    </p>
+    <ol>
+      <li>
+        An Intel I9 motherboard. 
+        The Intel I9 has a high CPU and memory capacity for tons of cloud computing on one computer. 
+      </li>
+      <li>
+        128 to 192 GiB RAM. 
+        With an Intel I9 motherboard you can add up to 192 GiB RAM, which is a ton of useful RAM for cloud computing. 
+        You may not be used to using that much RAM with your applications, but you will find it useful. 
+        This allows me to run more than enough containers for application development for my data-driven websites like AI Telemetry and Smart Aquaculture. 
+      </li>
+      <li>
+        16 to 32 CPUs. 
+        With an Intel I9 motherboard you will have 32 CPUs, which is a ton of compute for cloud computing. 
+        This allows me to run enough containers for application development for my data-driven websites like AI Telemetry and Smart Aquaculture. 
+      </li>
+      <li>
+        At least 2 TiB solid state drive (SSD) storage. 
+        If you are like me, you have a lot of digital photos and videos accumulated after too many years of owning a smartphone. 
+        Applications, Linux software packages, containers and container images also take up a lot of space. 
+        You also want to make sure you configure the same amount of swap space as you have RAM. 
+      </li>
+    </ol>
 
-              <h2>What other devices should I purchase for my computer? </h2>
-              <h3>Laptop accessories</h3>
-              <p>
-                If you are purchasing a laptop, you may not need a lot of accessories. 
-                I can tell you what I prefer in a laptop. 
-                I like to have a laptop with WIFI and an Ethernet port for more reliable streaming for online meetings. 
-                I like to have a mouse, rather than using the touchpad. 
-              </p>
-              <h3>Desktop accessories</h3>
-              <p>
-                If you are purchasing a desktop, there are a few more accessories. 
-              </p>
-              <ol>
-                <li>
-                  Be sure to buy a mouse. 
-                </li>
-                <li>
-                  Be sure to buy a keyboard. 
-                </li>
-                <li>
-                  Be sure to buy a webcam. 
-                </li>
-                <li>
-                  Be sure to buy a monitor. 
-                  There are many types of monitors, but the quality and price is up to you. 
-                  Make sure that the monitor has the right type of connection as your motherboard or GPU. 
-                </li>
-                <li>
-                  <p>
-                    Be sure to  buy a Universal Power Supply (UPS) with battery backup. 
-                  </p>
-                  <p>
-                    The reason for a battery backup is every city has periods of blackout or brownout. 
-                    These periods of low power can be devistating to computer hardware. 
-                    I've watched a brownout where power was surging at my house, and flickering my computer on and off. 
-                    This ended up messing up even my Linux operating system to where it couldn't be recovered. 
-                    The hardware was somehow not damaged, but I had to reinstall the operating system. 
-                  </p>
-                </li>
-                <li>
-                  You should definitely have an Ethernet port for more reliable streaming for online meetings. 
-                </li>
-                <li>
-                  A WIFI card is very optional depending on your Internet setup at home. 
-                </li>
-                <li>
-                  A Graphical Processing Unit (GPU) is optional, but can be used for AI applications and gaming. 
-                </li>
-              </ol>
-            </div>
-          </wa-card>
-        </div>
+    <h2>What other devices should I purchase for my computer? </h2>
+    <h3>Laptop accessories</h3>
+    <p>
+      If you are purchasing a laptop, you may not need a lot of accessories. 
+      I can tell you what I prefer in a laptop. 
+      I like to have a laptop with WIFI and an Ethernet port for more reliable streaming for online meetings. 
+      I like to have a mouse, rather than using the touchpad. 
+    </p>
+    <h3>Desktop accessories</h3>
+    <p>
+      If you are purchasing a desktop, there are a few more accessories. 
+    </p>
+    <ol>
+      <li>
+        Be sure to buy a mouse. 
+      </li>
+      <li>
+        Be sure to buy a keyboard. 
+      </li>
+      <li>
+        Be sure to buy a webcam. 
+      </li>
+      <li>
+        Be sure to buy a monitor. 
+        There are many types of monitors, but the quality and price is up to you. 
+        Make sure that the monitor has the right type of connection as your motherboard or GPU. 
+      </li>
+      <li>
+        <p>
+          Be sure to  buy a Universal Power Supply (UPS) with battery backup. 
+        </p>
+        <p>
+          The reason for a battery backup is every city has periods of blackout or brownout. 
+          These periods of low power can be devistating to computer hardware. 
+          I've watched a brownout where power was surging at my house, and flickering my computer on and off. 
+          This ended up messing up even my Linux operating system to where it couldn't be recovered. 
+          The hardware was somehow not damaged, but I had to reinstall the operating system. 
+        </p>
+      </li>
+      <li>
+        You should definitely have an Ethernet port for more reliable streaming for online meetings. 
+      </li>
+      <li>
+        A WIFI card is very optional depending on your Internet setup at home. 
+      </li>
+      <li>
+        A Graphical Processing Unit (GPU) is optional, but can be used for AI applications and gaming. 
+      </li>
+    </ol>
+      </div>
+    </wa-card>
 {% endblock %}

@@ -19,8 +19,12 @@ Promise.all([
     sort('SitePage', 'archived', event.currentTarget.value);
   });
 
-  document.querySelector('#pageFacetSortSitePage_author')?.addEventListener('change', (event) => {
-    sort('SitePage', 'author', event.currentTarget.value);
+  document.querySelector('#pageFacetSortSitePage_authorName')?.addEventListener('change', (event) => {
+    sort('SitePage', 'authorName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_authorUrl')?.addEventListener('change', (event) => {
+    sort('SitePage', 'authorUrl', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSitePage_pageImageUri')?.addEventListener('change', (event) => {
@@ -91,12 +95,36 @@ Promise.all([
     sort('SitePage', 'name', event.currentTarget.value);
   });
 
+  document.querySelector('#pageFacetSortSitePage_description')?.addEventListener('change', (event) => {
+    sort('SitePage', 'description', event.currentTarget.value);
+  });
+
   document.querySelector('#pageFacetSortSitePage_h1')?.addEventListener('change', (event) => {
     sort('SitePage', 'h1', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSitePage_h2')?.addEventListener('change', (event) => {
     sort('SitePage', 'h2', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_pageImageWidth')?.addEventListener('change', (event) => {
+    sort('SitePage', 'pageImageWidth', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_pageImageHeight')?.addEventListener('change', (event) => {
+    sort('SitePage', 'pageImageHeight', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_pageImageType')?.addEventListener('change', (event) => {
+    sort('SitePage', 'pageImageType', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_pageImageAlt')?.addEventListener('change', (event) => {
+    sort('SitePage', 'pageImageAlt', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSitePage_relatedArticleIds')?.addEventListener('change', (event) => {
+    sort('SitePage', 'relatedArticleIds', event.currentTarget.value);
   });
 
   document.querySelector('#htmButton_patchSitePage')?.addEventListener('click', (event) => {
@@ -123,13 +151,22 @@ Promise.all([
           document.querySelector('#pageFacetPivotSitePage_created')?.addEventListener('change', (event) => {
             facetPivotChange('SitePage', event.currentTarget);
           });
-          document.querySelector('#fqSitePage_author')?.addEventListener('change', (event) => {
+          document.querySelector('#fqSitePage_authorName')?.addEventListener('change', (event) => {
             fqChange('SitePage', event.currentTarget);
           });
-          document.querySelector('#buttonFacetSitePage_author')?.addEventListener('click', (event) => {
+          document.querySelector('#buttonFacetSitePage_authorName')?.addEventListener('click', (event) => {
             facetFieldChange('SitePage', event.currentTarget);
           });
-          document.querySelector('#pageFacetPivotSitePage_author')?.addEventListener('change', (event) => {
+          document.querySelector('#pageFacetPivotSitePage_authorName')?.addEventListener('change', (event) => {
+            facetPivotChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#fqSitePage_authorUrl')?.addEventListener('change', (event) => {
+            fqChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetSitePage_authorUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSitePage_authorUrl')?.addEventListener('change', (event) => {
             facetPivotChange('SitePage', event.currentTarget);
           });
           document.querySelector('#fqSitePage_pageImageUri')?.addEventListener('change', (event) => {
