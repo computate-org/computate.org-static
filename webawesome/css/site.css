@@ -625,9 +625,9 @@ main, footer {
     grid-column: span var(--site-results-number-of-columns);
     align-items: center;
     /* background-color: var(--wa-color-surface-raised); */
-    &:not(:first-child) {
+    /* &:not(:first-child) {
       padding-inline-start: var(--wa-space-m);
-    }
+    } */
     @media (max-width:767px) {
       grid-column: span 1;
     }
