@@ -6,7 +6,7 @@
             <wa-tooltip for="PaginationButtonsNext" placement="top">Show the next results</wa-tooltip>
             <div class="wa-caption-l ">{{ pagination.startNum }} – {{ pagination.endNum }} of {{ pagination.foundNum }} courses</div>
             <wa-scroller>
-              <wa-button-group size="small" class="wa-cluster wa-gap-xs " id="htmPaginationButtons">
+              <wa-button-group size="small" class="no-gradient wa-cluster wa-gap-xs " id="htmPaginationButtons">
                 <wa-button id="PaginationButtonsPrevious" variant="brand"{% if pagination.pagePrevious is defined %} href="{{pageUri}}?start={{pagination.pagePrevious.start}}&amp;rows={{pagination.rows}}"{% else %} disabled{% endif %}>
                   <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-arrow-square-left "></i>
                   Previous

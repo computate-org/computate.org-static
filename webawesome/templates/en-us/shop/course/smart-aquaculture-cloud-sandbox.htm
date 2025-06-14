@@ -1,4 +1,4 @@
-{% extends "en-us/PageLayout.htm" %}
+{% extends "en-us/Article.htm" %}
 {% block htmMetaPageLayout %}
     <meta name="result.pageId" content="{{ result.shortFileName }}"/>
     <meta name="result.downloadUri" content="https://github.com/computate-org/smart-aquaculture-cloud-sandbox/"/>
@@ -7,6 +7,7 @@
     <meta name="result.description" content="Free course for configuring IoT services and Smart Aquaculture Data Models with a FIWARE Context Broker, and other event-driven microservices in a Red Hat OpenShift Developer Sandbox"/>
     <meta name="result.courseNum" content="1"/>
     <meta name="result.price" content="0.00"/>
+    <meta name="result.relatedArticleIds" content="become-an-open-source-software-developer, become-a-red-hat-developer" />
 {% endblock htmMetaPageLayout %}
 {%- block htmScriptsPageLayout %}
 {{ super() }}
@@ -51,35 +52,15 @@
     </script>
 {%- endblock htmScriptsPageLayout %}
 {% block htmStylePageLayout %}
-
-wa-button::part(base), wa-details::part(base) {
-  background: linear-gradient(130deg, var(--wa-color-green-50), var(--wa-color-blue-50));
-  color: white;
-  &:is(wa-button, wa-dialog)::part(base) {
-    border: solid 1px var(--wa-color-orange-300);
-  }
-}
-wa-card.orange-blue-background {
-  background: linear-gradient(130deg, var(--wa-color-green-50), var(--wa-color-blue-50));
-  color: white;
-  &:is(wa-button, wa-dialog)::part(base) {
-    border: solid 1px var(--wa-color-orange-300);
-  }
-}
-.orange-blue-background-headers {
-  wa-card::part(header) {
-    background: linear-gradient(130deg, var(--wa-color-green-50), var(--wa-color-blue-50));
-    color: white;
-    &:is(wa-button, wa-dialog)::part(base) {
-      border: solid 1px var(--wa-color-orange-300);
-    }
-  }
+:root {
+  --gradient-color-0: var(--wa-color-green-50);
+  --gradient-color-1: var(--wa-color-blue-50);
 }
 {% endblock htmStylePageLayout %}
-{% block htmBodyMiddlePageLayout %}
+{% block htmBodyMiddleArticle %}
 
         <div class="wa-stack ">
-          <wa-card class="orange-blue-background">
+          <wa-card class="gradient">
             <div class="wa-stack ">
               <div class="wa-flank ">
                 <i class="fa-kit fa-fiware fa-5x "></i>
@@ -93,7 +74,7 @@ wa-card.orange-blue-background {
                   <wa-card>
                     <div class="wa-stack ">
                       <div>Download your copy of the {{ result.name }}, it's available on GitHub! </div>
-                      <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ result.downloadUri }}" variant="neutral">
+                      <wa-button id="order-button" href="{{ result.downloadUri }}" variant="neutral">
                         <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                         Download
                       </wa-button>
@@ -107,7 +88,7 @@ wa-card.orange-blue-background {
           <div>
             <div class="wa-stack ">
               <div>
-                <h2 class="brand-font anchor-heading" id="whats-web-awesome">
+                <h2 class="brand-font anchor-heading">
                   What is the {{ result.name }}?
                 </h2>
                 <p>
@@ -115,9 +96,9 @@ wa-card.orange-blue-background {
                 </p>
               </div>
 
-              <div class="wa-grid orange-blue-background-headers " style="--min-column-size: 20rem; ">
+              <div class="wa-grid " style="--min-column-size: 20rem; ">
 
-                <wa-card with-header>
+                <wa-card with-header class="gradient-card-header">
                   <div slot="header" variant="brand" class="wa-flank wa-heading-l ">
                     <i class="fa-duotone fa-regular fa-code fa-xl"></i>
                     <div>
@@ -130,7 +111,7 @@ wa-card.orange-blue-background {
                   </p>
                 </wa-card>
 
-                <wa-card with-header>
+                <wa-card with-header class="gradient-card-header">
                   <div slot="header" class="wa-flank wa-heading-l ">
                     <i class="fa-duotone fa-regular fa-cloud-binary fa-xl"></i>
                     <div>
@@ -142,7 +123,7 @@ wa-card.orange-blue-background {
                   </p>
                 </wa-card>
 
-                <wa-card with-header>
+                <wa-card with-header class="gradient-card-header">
                   <div slot="header" class="wa-flank wa-heading-l ">
                     <i class="fa-duotone fa-regular fa-clouds fa-xl"></i>
                     <div>
@@ -155,7 +136,7 @@ wa-card.orange-blue-background {
                   </p>
                 </wa-card>
 
-                <wa-card with-header>
+                <wa-card with-header class="gradient-card-header">
                   <div slot="header" class="wa-flank wa-heading-l ">
                     <i class="fa-kit fa-fiware fa-xl"></i>
                     <div>
@@ -168,7 +149,7 @@ wa-card.orange-blue-background {
                   </p>
                 </wa-card>
 
-                <wa-card with-header>
+                <wa-card with-header class="gradient-card-header">
                   <div slot="header" class="wa-flank wa-heading-l ">
                     <i class="fa-duotone fa-regular fa-cloud-check fa-xl"></i>
                     <div>
@@ -180,7 +161,7 @@ wa-card.orange-blue-background {
                   </p>
                 </wa-card>
 
-                <wa-card with-header>
+                <wa-card with-header class="gradient-card-header">
                   <div slot="header" class="wa-flank wa-heading-l ">
                     <i class="fa-duotone fa-regular fa-database fa-xl"></i>
                     <div>
@@ -192,7 +173,7 @@ wa-card.orange-blue-background {
                   </p>
                 </wa-card>
 
-                <wa-card with-header>
+                <wa-card with-header class="gradient-card-header">
                   <div slot="header" class="wa-flank wa-heading-l ">
                     <i class="fa-duotone fa-regular fa-user fa-xl"></i>
                     <div>
@@ -204,7 +185,7 @@ wa-card.orange-blue-background {
                   </p>
                 </wa-card>
 
-                <wa-card with-header>
+                <wa-card with-header class="gradient-card-header">
                   <div slot="header" class="wa-flank wa-heading-l ">
                     <i class="fa-duotone fa-regular fa-browser fa-xl"></i>
                     <div>
@@ -220,7 +201,7 @@ wa-card.orange-blue-background {
             </div>
           </div>
 
-          <wa-card class="purple-blue-background ">
+          <wa-card class="gradient " style="--gradient-color-0: var(--wa-color-purple-50); --gradient-color-1: var(--wa-color-blue-50);">
             <div class="main-content ">
               <div class="wa-flank">
                 <i class="fa-duotone fa-regular fa-video fa-2x "></i>
@@ -235,18 +216,16 @@ wa-card.orange-blue-background {
                     then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
                   </p>
                 </div>
-                <wa-card>
+                <div class="wa-flank ">
+                  <wa-button class="no-gradient" appearance="filled outlined" id="webinar-button" variant="success" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
+                    <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                    Join the next webinar
+                  </wa-button>
                   <div class="wa-flank ">
-                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
-                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
-                      Join the next webinar
-                    </wa-button>
-                    <div class="wa-flank ">
-                      <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
-                      <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" time-zone-name="short" date=""></wa-format-date>
-                    </div>
+                    <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
+                    <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" time-zone-name="short" date=""></wa-format-date>
                   </div>
-                </wa-card>
+                </div>
                 <h3 class="brand-font">
                   The {{ result.name }} series will occur live each weekday. 
                 </h3>
@@ -255,7 +234,7 @@ wa-card.orange-blue-background {
                   <div class="wa-flank zoom-link font-size-large">
                     <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
                     <div class="wa-flank ">
-                      <wa-button id="webinar-button" variant="brand" href="{{ SITE_BASE_URL }}/en-us/view/webinar/computate-ai-developer-webinar">
+                      <wa-button class="no-gradient" id="webinar-button" variant="success" appearance="filled outlined" href="{{ SITE_BASE_URL }}/en-us/view/webinar/computate-ai-developer-webinar">
                         <i class="fa-duotone fa-regular fa-video"></i>
                         Learn more
                       </wa-button>
@@ -284,17 +263,15 @@ wa-card.orange-blue-background {
 
                 </wa-card>
 
-                <div>
+                <p>
                   You can learn more about the use case for Computate open source software for Smart Aquaculture. 
+                </p>
+                <div>
+                  <wa-button class="no-gradient" id="webinar-button" variant="success" appearance="filled outlined" label="Join the webinar" href="{{ SITE_BASE_URL }}/en-us/shop/use-case/smart-aquaculture-use-case">
+                    <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                    Read the use case
+                  </wa-button>
                 </div>
-                <wa-card>
-                  <div>
-                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ SITE_BASE_URL }}/en-us/shop/use-case/smart-aquaculture-use-case">
-                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
-                      Read the use case
-                    </wa-button>
-                  </div>
-                </wa-card>
               </div>
 
             </div>
@@ -306,7 +283,7 @@ wa-card.orange-blue-background {
                 <i class="fa-kit fa-fiware fa-5x "></i>
                 <div class="wa-stack ">
                   <div>Download your copy of the {{ result.name }}, it's available on GitHub! </div>
-                  <wa-button id="order-button" class="gradient-button orange-blue-background" href="{{ result.downloadUri }}" variant="neutral">
+                  <wa-button id="order-button" href="{{ result.downloadUri }}">
                     <i class="fa-duotone fa-regular fa-person-running-fast"></i>
                     Download
                   </wa-button>

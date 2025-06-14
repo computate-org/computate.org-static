@@ -108,6 +108,14 @@ function searchCompanyCourseFilters($formFilters) {
     var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
     if(filterDownloadUri != null && filterDownloadUri !== '')
       filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
+
+    var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
+    if(filterCourseNum != null && filterCourseNum !== '')
+      filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
+
+    var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
+    if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
+      filters.push({ name: 'fq', value: 'relatedArticleIds:' + filterRelatedArticleIds });
   }
   return filters;
 }
@@ -337,6 +345,30 @@ async function patchCompanyCourse($formFilters, $formValues, target, pageId, suc
   if(removeDownloadUri != null && removeDownloadUri !== '')
     vals['removeDownloadUri'] = removeDownloadUri;
 
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
+  var setCourseNum = removeCourseNum ? null : $formValues.querySelector('.setCourseNum')?.value;
+  var addCourseNum = $formValues.querySelector('.addCourseNum')?.value;
+  if(removeCourseNum || setCourseNum != null && setCourseNum !== '')
+    vals['setCourseNum'] = setCourseNum;
+  if(addCourseNum != null && addCourseNum !== '')
+    vals['addCourseNum'] = addCourseNum;
+  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value;
+  if(removeCourseNum != null && removeCourseNum !== '')
+    vals['removeCourseNum'] = removeCourseNum;
+
+  var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
+  var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
+  var setRelatedArticleIds = removeRelatedArticleIds ? null : $formValues.querySelector('.setRelatedArticleIds')?.value;
+  var addRelatedArticleIds = $formValues.querySelector('.addRelatedArticleIds')?.value;
+  if(removeRelatedArticleIds || setRelatedArticleIds != null && setRelatedArticleIds !== '')
+    vals['setRelatedArticleIds'] = setRelatedArticleIds;
+  if(addRelatedArticleIds != null && addRelatedArticleIds !== '')
+    vals['addRelatedArticleIds'] = addRelatedArticleIds;
+  var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value;
+  if(removeRelatedArticleIds != null && removeRelatedArticleIds !== '')
+    vals['removeRelatedArticleIds'] = removeRelatedArticleIds;
+
   patchCompanyCourseVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
 }
 
@@ -438,6 +470,14 @@ function patchCompanyCourseFilters($formFilters) {
     var filterDownloadUri = $formFilters.querySelector('.valueDownloadUri')?.value;
     if(filterDownloadUri != null && filterDownloadUri !== '')
       filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
+
+    var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
+    if(filterCourseNum != null && filterCourseNum !== '')
+      filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
+
+    var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
+    if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
+      filters.push({ name: 'fq', value: 'relatedArticleIds:' + filterRelatedArticleIds });
   }
   return filters;
 }
@@ -536,6 +576,14 @@ async function postCompanyCourse($formValues, target, success, error) {
   var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
   if(valueDownloadUri != null && valueDownloadUri !== '')
     vals['downloadUri'] = valueDownloadUri;
+
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  if(valueCourseNum != null && valueCourseNum !== '')
+    vals['courseNum'] = valueCourseNum;
+
+  var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
+  if(valueRelatedArticleIds != null && valueRelatedArticleIds !== '')
+    vals['relatedArticleIds'] = valueRelatedArticleIds;
 
   fetch(
     '/en-us/api/course'
@@ -766,6 +814,8 @@ async function websocketCompanyCourseInner(apiRequest) {
         var inputEmailTemplate = null;
         var inputStoreUrl = null;
         var inputDownloadUri = null;
+        var inputCourseNum = null;
+        var inputRelatedArticleIds = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.Page_created');
@@ -811,6 +861,10 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputStoreUrl = $response.querySelector('.Page_storeUrl');
         if(vars.includes('downloadUri'))
           inputDownloadUri = $response.querySelector('.Page_downloadUri');
+        if(vars.includes('courseNum'))
+          inputCourseNum = $response.querySelector('.Page_courseNum');
+        if(vars.includes('relatedArticleIds'))
+          inputRelatedArticleIds = $response.querySelector('.Page_relatedArticleIds');
 
         jsWebsocketCompanyCourse(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -1035,6 +1089,26 @@ async function websocketCompanyCourseInner(apiRequest) {
               item.textContent = inputDownloadUri.textContent;
           });
           addGlow(document.querySelector('.Page_downloadUri'));
+        }
+
+        if(inputCourseNum) {
+          document.querySelectorAll('.Page_courseNum').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCourseNum.getAttribute('value');
+            else
+              item.textContent = inputCourseNum.textContent;
+          });
+          addGlow(document.querySelector('.Page_courseNum'));
+        }
+
+        if(inputRelatedArticleIds) {
+          document.querySelectorAll('.Page_relatedArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticleIds.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.Page_relatedArticleIds'));
         }
 
           pageGraphCompanyCourse();

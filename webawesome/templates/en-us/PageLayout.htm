@@ -33,7 +33,9 @@
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.contextmenu.css"/>
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/site.css"/>
 {%- endblock htmStylesPageLayout %}
-    <style>{%- block htmStylePageLayout %}{%- endblock htmStylePageLayout %}</style>
+    <style>
+{%- block htmStylePageLayout %}{%- endblock htmStylePageLayout %}
+    </style>
 {% if userAwesomeEffect == true %}
     <style>
 * {animation: infinite awesome-effect 3s alternate ease-in-out}
@@ -243,7 +245,7 @@
           </div>
       </nav>
       <main>
-        <header slot="header" class="wa-flank margin-block-start ">
+        <header slot="header" class="wa-flank margin-block ">
           <wa-icon-button data-toggle-nav name="bars" class="nav-toggle-button hide-desktop " label="open menu" appearance="text"></wa-icon-button>
           <wa-popup  placement="bottom-start" id="siteSearchDropdown">
             <wa-input slot="anchor" placeholder="search" id="siteSearchInput">
@@ -269,25 +271,30 @@
         </div>
 {%- endblock htmBodyMiddlePageLayout %}
 {%- block htmBodyEndPageLayout %}
-        <footer>
+        <footer class="no-gradient text-center">
           {% if GITHUB_ORG is defined %}
-          <a href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank">
-            <wa-card>
-              This site is <b><i class="fa-brands fa-github fa-xl"></i> open source</b>
-            </wa-card>
-          </a>
+          <wa-button href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank" appearance="filled outlined" class="tile">
+            <div class="flex wa-align-items-center" style="gap: 1ch;">
+              <span>This site is</span>
+              <i class="fa-brands fa-github fa-xl"></i>
+              <b>open source</b>
+            </div>
+          </wa-button>
           {% endif %}
-          <a href="https://www.computate.org/" target="_blank" id="footer-generated-by">
-            <wa-card>
-                Generated with <b><img class="footer-img" src="{{ STATIC_BASE_URL }}/svg/computate-keys.svg" alt="Computate"/></b>
-            </wa-card>
-          </a>
+          <wa-button href="https://www.computate.org/" target="_blank" id="footer-generated-by" appearance="filled outlined" class="tile">
+            <div class="flex wa-align-items-center" style="gap: 1ch;">
+              <span>Generated with </span>
+              <img class="footer-img" style="font-weight: var(--wa-font-weight-bold);" src="{{ STATIC_BASE_URL }}/svg/computate-keys.svg" alt="Computate"/>
+            </div>
+          </wa-button>
           {% if SITE_POWERED_BY_URL is defined %}
-          <a href="{{ SITE_POWERED_BY_URL }}" target="_blank" id="footer-powered-by">
-            <wa-card>
-              Powered by <i class="fa-brands fa-redhat fa-xl" style="color: #ff0000;"></i> <b>{{ SITE_POWERED_BY_NAME | e }}</b>
-            </wa-card>
-          </a>
+          <wa-button href="{{ SITE_POWERED_BY_URL }}" target="_blank" id="footer-powered-by" appearance="filled outlined" class="tile">
+            <div class="flex wa-align-items-center" style="gap: 1ch;">
+              <span>Powered by </span>
+              <i class="fa-brands fa-redhat fa-xl" style="color: #ff0000;"></i>
+              <b>{{ SITE_POWERED_BY_NAME | e }}</b>
+            </div>
+          </wa-button>
           {% endif %}
         </footer>
       </main>

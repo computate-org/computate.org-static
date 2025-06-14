@@ -31,11 +31,11 @@ wa-button, wa-details {
                 <i class="fa-duotone fa-regular fa-video fa-2x "></i>
                 <h1>Free {{ result.name }}</h1>
               </div>
-              <h2 class="brand-font text-center">
+              <p>
                 Become a talented artificial intelligence developer as we use open source solutions in the cloud and on your own computer. 
                 We'll build impactful smart solutions like a brand new custom data-driven platform for Smart Aquaculture, 
                 and help you develop your very own data-driven website for your own ideas. 
-              </h2>
+              </p>
               <wa-card>
                 <div class="wa-flank ">
                   <wa-button variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
@@ -51,8 +51,8 @@ wa-button, wa-details {
             </div>
           </wa-card>
 
-          <wa-card with-header>
-            <div slot="header" class="wa-flank main-content ">
+          <wa-card with-header class="gradient-card-header">
+            <div slot="header" class="wa-flank main-content " >
               <i class="fa-duotone fa-regular fa-video fa-2x "></i>
               <h3>
                 Watch the free Computate AI Developer Webinar on Zoom or live streaming to Youtube. 
@@ -65,9 +65,9 @@ wa-button, wa-details {
                   then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
                 </p>
               </div>
-              <h3 class="brand-font">
-                The {{ result.name }} series will occur live each weekday. 
-              </h3>
+              <p>
+                <strong>The {{ result.name }} series will occur live each weekday. </strong>
+              </p>
               <div id="webinar-calendar" class="wa-stack ">
 
                 <div class="wa-flank zoom-link font-size-large">
@@ -102,21 +102,20 @@ wa-button, wa-details {
 
               </div>
             </div>
-          </wa-card>
 
-          <wa-card class="pink-purple-background background border-radius-x-large">
-            <div class="main-content ">
-              <h2 class="brand-font">
-                <i class="fa-duotone fa-regular fa-computer-classic fa-2xl"></i> The Computate AI Developer Webinar is free to join! 
-                Just click the link above to log in and get the Zoom link to the webinar. 
+            <div>
+              <h2 class="wa-flank">
+                <i class="fa-duotone fa-regular fa-computer-classic fa-2xl"></i>
+                <span>The Computate AI Developer Webinar is free to join!
+                Just click the link above to log in and get the Zoom link to the webinar.</span>
               </h2>
             </div>
           </wa-card>
 
-          <wa-card with-header>
-            <div slot="header" class="main-content wa-stack ">
+          <wa-card with-header class="gradient-card-header">
+            <div slot="header" class="wa-stack ">
               <div>
-                <h2 class="brand-font anchor-heading" id="whats-web-awesome">
+                <h2 class="brand-font anchor-heading">
                   What is the {{ result.name }}?
                 </h2>
                 <p>
@@ -278,13 +277,13 @@ wa-button, wa-details {
             </div>
           </wa-card>
 
-          <wa-card class="blue-teal-background background border-radius-x-large ">
-            <div class="main-content ">
+          <wa-card class="gradient main-content " style="--gradient-color-0: var(--wa-color-blue-50); --gradient-color-1: var(--wa-color-cyan-50); ">
+            <div>
               <h3>
                 You can add our {{ result.name }} calendar to your calender with the ICS calendar link below. 
               </h3>
               <div>
-                <a class="word-break-all " href="{{ result.icalUrl }}">
+                <a class="word-break-all " href="{{ result.icalUrl }}" style="color: var(--wa-color-gray-05);">
                   {{ result.icalUrl }}
                 </a>
               </div>

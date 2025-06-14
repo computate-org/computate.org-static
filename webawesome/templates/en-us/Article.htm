@@ -15,8 +15,8 @@
 {%- macro articleCreated(result) -%}
       <div class="wa-caption-l ">
         <div class="wa-stack wa-gap-3xs ">
-          <wa-relative-time id="webinar-relative-time" format="long" sync="true" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-relative-time>
-          <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
+          <wa-relative-time format="long" sync="true" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-relative-time>
+          <wa-format-date weekday="short" month="short" day="numeric" year="numeric" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
         </div>
       </div>
 {%- endmacro %}
@@ -32,9 +32,9 @@
 {%- endmacro %}
 {%- macro articleShare(result) -%}
     <div class="wa-stack wa-gap-2xl">
-      <h3 class="wa-heading-xl">Don't forget to share this article!</h3>
+      <h3 class="wa-heading-xl">Don't forget to share this page!</h3>
       <div class="wa-cluster" style="justify-content: center;">
-        <a class="wa-align-items-center wa-stack wa-gap-2xs"
+        <wa-button class="tile"
             href="https://www.linkedin.com/shareArticle?mini=true&url={{ result.displayPage | urlencode }}"
             target="_blank"
             >
@@ -45,20 +45,23 @@
               label="Share on LinkedIn"
               target="_blank"
               ></wa-icon>
-          <span class="wa-caption-s">LinkedIn</span>
-        </a>
-        <a class="wa-align-items-center wa-stack wa-gap-2xs"
+          <div class="wa-caption-s" style="color: black;"><b>LinkedIn</b></div>
+        </wa-button>
+        <wa-button
             href="https://www.facebook.com/sharer/sharer.php?u={{ result.displayPage | urlencode }}"
             target="_blank"
+            class="tile"
             >
-          <wa-icon
-              style="font-size: var(--wa-font-size-2xl);"
-              name="facebook"
-              family="brands"
-              label="Share on Facebook"
-              ></wa-icon>
-          <span class="wa-caption-s">Facebook</span>
-      </a>
+          <div>
+            <wa-icon
+                style="font-size: var(--wa-font-size-2xl);"
+                name="facebook"
+                family="brands"
+                label="Share on Facebook"
+                ></wa-icon>
+          </div>
+          <div class="wa-caption-s" style="color: black;"><b>Facebook</b></div>
+        </wa-button>
       </div>
     </div>
 {%- endmacro %}
