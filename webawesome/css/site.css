@@ -78,11 +78,11 @@ wa-dropdown {
   );
 } */
 
-.gradient, wa-button:not(.no-gradient):not(:is(.no-gradient *))::part(base) {
+.gradient, :is(wa-button, wa-icon-button):not(.no-gradient):not(:is(.no-gradient *))::part(base) {
   background: linear-gradient(130deg, var(--gradient-color-0, var(--wa-color-purple-50)), var(--gradient-color-1, var(--wa-color-blue-50)));
 }
 
-wa-button:not(.no-gradient):not(:is(.no-gradient *)):hover {
+:is(wa-button, wa-icon-button):not(.no-gradient):not(:is(.no-gradient *)):hover {
   &::part(base) {
     background: linear-gradient(130deg,
       color-mix(in oklab,
@@ -97,7 +97,7 @@ wa-button:not(.no-gradient):not(:is(.no-gradient *)):hover {
   }
 }
 
-wa-button:not(.no-gradient):not(:is(.no-gradient *)):active {
+:is(wa-button, wa-icon-button):not(.no-gradient):not(:is(.no-gradient *)):active {
   &::part(base) {
     background: linear-gradient(130deg,
       color-mix(in oklab,
@@ -124,12 +124,22 @@ footer {
   margin-block-start: 100px;
 }
 
-wa-button.tile::part(base) {
-  height: 100%;
-  padding-block: var(--wa-space, var(--wa-space-m));
-  text-wrap-mode: wrap;
-  line-height: var(--wa-line-height-normal);
+wa-button.tile {
+  &::part(base) {
+    height: 100%;
+    text-wrap-mode: wrap;
+    line-height: var(--wa-line-height-normal);
+  }
+  &:not(.no-padding)::part(base) {
+    padding-block: var(--wa-space, var(--wa-space-m));
+  }
 }
+
+/* .sidebar-connections {
+  wa-button::part(base) {
+    height: 4rem;
+  }
+} */
 
 /* @media stuff */
 @media (max-width: 767px) {
