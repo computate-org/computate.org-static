@@ -82,33 +82,34 @@ wa-dropdown {
   background: linear-gradient(130deg, var(--gradient-color-0, var(--wa-color-purple-50)), var(--gradient-color-1, var(--wa-color-blue-50)));
 }
 
-:is(wa-button, wa-icon-button):not(.no-gradient):not(:is(.no-gradient *)):hover {
-  &::part(base) {
-    background: linear-gradient(130deg,
-      color-mix(in oklab,
-        var(--gradient-color-0, var(--wa-color-purple-50)),
-        var(--wa-color-mix-hover)
-      ),
-      color-mix(in oklab,
-        var(--gradient-color-1, var(--wa-color-blue-50)),
-        var(--wa-color-mix-hover)
-      )
-    );
+:is(wa-button, wa-icon-button):not(.no-gradient):not(:is(.no-gradient *)) {
+  &:hover {
+    &::part(base) {
+      background: linear-gradient(130deg,
+        color-mix(in oklab,
+          var(--gradient-color-0, var(--wa-color-purple-50)),
+          var(--wa-color-mix-hover)
+        ),
+        color-mix(in oklab,
+          var(--gradient-color-1, var(--wa-color-blue-50)),
+          var(--wa-color-mix-hover)
+        )
+      );
+    }
   }
-}
-
-:is(wa-button, wa-icon-button):not(.no-gradient):not(:is(.no-gradient *)):active {
-  &::part(base) {
-    background: linear-gradient(130deg,
-      color-mix(in oklab,
-        var(--gradient-color-0, var(--wa-color-purple-50)),
-        var(--wa-color-mix-active)
-      ),
-      color-mix(in oklab,
-        var(--gradient-color-1, var(--wa-color-blue-50)),
-        var(--wa-color-mix-active)
-      )
-    );
+  &:active {
+    &::part(base) {
+      background: linear-gradient(130deg,
+        color-mix(in oklab,
+          var(--gradient-color-0, var(--wa-color-purple-50)),
+          var(--wa-color-mix-active)
+        ),
+        color-mix(in oklab,
+          var(--gradient-color-1, var(--wa-color-blue-50)),
+          var(--wa-color-mix-active)
+        )
+      );
+    }
   }
 }
 
