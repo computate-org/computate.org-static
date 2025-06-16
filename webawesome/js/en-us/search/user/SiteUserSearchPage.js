@@ -99,10 +99,6 @@ Promise.all([
     sort('SiteUser', 'objectSuggest', event.currentTarget.value);
   });
 
-  document.querySelector('#pageFacetSortSiteUser_userLastName')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'userLastName', event.currentTarget.value);
-  });
-
   document.querySelector('#pageFacetSortSiteUser_userKeys')?.addEventListener('change', (event) => {
     sort('SiteUser', 'userKeys', event.currentTarget.value);
   });
@@ -121,6 +117,10 @@ Promise.all([
 
   document.querySelector('#pageFacetSortSiteUser_userFirstName')?.addEventListener('change', (event) => {
     sort('SiteUser', 'userFirstName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSiteUser_userLastName')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'userLastName', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSiteUser_userFullName')?.addEventListener('change', (event) => {
