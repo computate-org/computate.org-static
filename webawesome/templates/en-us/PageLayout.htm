@@ -33,7 +33,9 @@
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.contextmenu.css"/>
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/site.css"/>
 {%- endblock htmStylesPageLayout %}
-    <style>{%- block htmStylePageLayout %}{%- endblock htmStylePageLayout %}</style>
+    <style>
+{%- block htmStylePageLayout %}{%- endblock htmStylePageLayout %}
+    </style>
 {% if userAwesomeEffect == true %}
     <style>
 * {animation: infinite awesome-effect 3s alternate ease-in-out}
@@ -124,28 +126,26 @@
             </a>
           </div>
 
-          <wa-card style="max-width: fit-content; margin: 0 auto;">
-            <div class="wa-stack">
-              <div class="wa-cluster">
-                <span class="wa-align-items-center wa-stack wa-gap-2xs">
-                  <wa-icon-button style="font-size: var(--wa-font-size-2xl);" name="youtube" family="brands" label="Follow us on Youtube" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank"></wa-icon-button>
-                  <span class="wa-caption-s">Youtube</span>
-                </span>
-                <span class="wa-align-items-center wa-stack wa-gap-2xs">
-                  <wa-icon-button style="font-size: var(--wa-font-size-2xl);" name="github" family="brands" label="View our source code on GitHub" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank"></wa-icon-button>
-                  <span class="wa-caption-s">GitHub</span>
-                </span>
-                <span class="wa-align-items-center wa-stack wa-gap-2xs">
-                  <wa-icon-button style="font-size: var(--wa-font-size-2xl);" name="linkedin" family="brands" label="Share on LinkedIn" href="https://www.linkedin.com/company/computate/" target="_blank"></wa-icon-button>
-                  <span class="wa-caption-s">LinkedIn</span>
-                </span>
-                <span class="wa-align-items-center wa-stack wa-gap-2xs">
-                  <wa-icon-button style="font-size: var(--wa-font-size-2xl);" name="envelope-open" label="Share with email" href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank"></wa-icon-button>
-                  <span class="wa-caption-s">email</span>
-                </span>
-              </div>
-            </div>
-          </wa-card>
+          <!-- <wa-card style="max-width: fit-content; margin: 0 auto;"> -->
+          <div class="wa-cluster " style="justify-content: center;">
+            <!-- <wa-button class="tile no-padding " variant="brand"> -->
+              <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="youtube" family="brands" label="Follow us on Youtube" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank"></wa-icon-button>
+              <!-- <div class="wa-body-s">Youtube</div> -->
+            <!-- </wa-button> -->
+            <!-- <wa-button class="tile no-padding " variant="brand"> -->
+              <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="github" family="brands" label="View our source code on GitHub" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank"></wa-icon-button>
+              <!-- <div class="wa-caption-s">GitHub</div> -->
+            <!-- </wa-button> -->
+            <!-- <wa-button class="tile no-padding " variant="brand"> -->
+              <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="linkedin" family="brands" label="Share on LinkedIn" href="https://www.linkedin.com/company/computate/" target="_blank"></wa-icon-button>
+              <!-- <div class="wa-caption-s">LinkedIn</div> -->
+            <!-- </wa-button> -->
+            <!-- <wa-button class="tile no-padding " variant="brand"> -->
+              <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="envelope-open" label="Share with email" href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank"></wa-icon-button>
+              <!-- <div class="wa-caption-s">email</div> -->
+            <!-- </wa-button> -->
+          </div>
+          <!-- </wa-card> -->
 
           <wa-tooltip for="site-aside-left-model-button-CompanyAbout" placement="right" hoist>Learn about our team, company, culture, and values. </wa-tooltip>
           <wa-tooltip for="site-aside-left-model-button-UseCase" placement="right" hoist>See computate use cases for real organizations. </wa-tooltip>
@@ -243,7 +243,7 @@
           </div>
       </nav>
       <main>
-        <header slot="header" class="wa-flank margin-block-start ">
+        <header slot="header" class="wa-flank margin-block ">
           <wa-icon-button data-toggle-nav name="bars" class="nav-toggle-button hide-desktop " label="open menu" appearance="text"></wa-icon-button>
           <wa-popup  placement="bottom-start" id="siteSearchDropdown">
             <wa-input slot="anchor" placeholder="search" id="siteSearchInput">
@@ -269,25 +269,30 @@
         </div>
 {%- endblock htmBodyMiddlePageLayout %}
 {%- block htmBodyEndPageLayout %}
-        <footer>
+        <footer class="no-gradient text-center">
           {% if GITHUB_ORG is defined %}
-          <a href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank">
-            <wa-card>
-              This site is <b><i class="fa-brands fa-github fa-xl"></i> open source</b>
-            </wa-card>
-          </a>
+          <wa-button href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank" appearance="filled outlined" class="tile">
+            <div class="wa-cluster" style="gap: 1ch;">
+              <span>This site is</span>
+              <i class="fa-brands fa-github fa-xl"></i>
+              <b>open source</b>
+            </div>
+          </wa-button>
           {% endif %}
-          <a href="https://www.computate.org/" target="_blank" id="footer-generated-by">
-            <wa-card>
-                Generated with <b><img class="footer-img" src="{{ STATIC_BASE_URL }}/svg/computate-keys.svg" alt="Computate"/></b>
-            </wa-card>
-          </a>
+          <wa-button href="https://www.computate.org/" target="_blank" id="footer-generated-by" appearance="filled outlined" class="tile">
+            <div class="wa-cluster" style="gap: 1ch;">
+              <span>Generated with </span>
+              <img class="footer-img" style="font-weight: var(--wa-font-weight-bold);" src="{{ STATIC_BASE_URL }}/svg/computate-keys.svg" alt="Computate"/>
+            </div>
+          </wa-button>
           {% if SITE_POWERED_BY_URL is defined %}
-          <a href="{{ SITE_POWERED_BY_URL }}" target="_blank" id="footer-powered-by">
-            <wa-card>
-              Powered by <i class="fa-brands fa-redhat fa-xl" style="color: #ff0000;"></i> <b>{{ SITE_POWERED_BY_NAME | e }}</b>
-            </wa-card>
-          </a>
+          <wa-button href="{{ SITE_POWERED_BY_URL }}" target="_blank" id="footer-powered-by" appearance="filled outlined" class="tile">
+            <div class="wa-cluster" style="gap: 1ch;">
+              <span>Powered by </span>
+              <i class="fa-brands fa-redhat fa-xl" style="color: #ff0000;"></i>
+              <b>{{ SITE_POWERED_BY_NAME | e }}</b>
+            </div>
+          </wa-button>
           {% endif %}
         </footer>
       </main>

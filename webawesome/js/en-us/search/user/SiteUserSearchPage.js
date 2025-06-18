@@ -43,14 +43,6 @@ Promise.all([
     sort('SiteUser', 'webComponentsTheme', event.currentTarget.value);
   });
 
-  document.querySelector('#pageFacetSortSiteUser_download')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'download', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageFacetSortSiteUser_objectSuggest')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'objectSuggest', event.currentTarget.value);
-  });
-
   document.querySelector('#pageFacetSortSiteUser_objectText')?.addEventListener('change', (event) => {
     sort('SiteUser', 'objectText', event.currentTarget.value);
   });
@@ -91,12 +83,20 @@ Promise.all([
     sort('SiteUser', 'displayPage', event.currentTarget.value);
   });
 
+  document.querySelector('#pageFacetSortSiteUser_userPage')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'userPage', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageFacetSortSiteUser_download')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'download', event.currentTarget.value);
+  });
+
   document.querySelector('#pageFacetSortSiteUser_editPage')?.addEventListener('change', (event) => {
     sort('SiteUser', 'editPage', event.currentTarget.value);
   });
 
-  document.querySelector('#pageFacetSortSiteUser_userPage')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'userPage', event.currentTarget.value);
+  document.querySelector('#pageFacetSortSiteUser_objectSuggest')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'objectSuggest', event.currentTarget.value);
   });
 
   document.querySelector('#pageFacetSortSiteUser_userKeys')?.addEventListener('change', (event) => {
