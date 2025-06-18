@@ -21,9 +21,9 @@
         <wa-divider></wa-divider>
         <li class="wa-stack ">
           <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
-            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 16 / 9;">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1278 / 796;">
               <img onclick="imgToDialog(this)" style="cursor: pointer; "
-                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/install-red-hat-enterprise-linux/boot-screen-test-or-install.png"
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/boot-screen-test-or-install.png"
                   alt="The {{ SITE_OS_NAME }} boot screen to either test the media or install"
                   />
             </div>
@@ -31,10 +31,331 @@
               <li>
                 Once you have your {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }} USB disk ready, you can reboot your computer. 
               </li>
+              <li>
+                You should see the {{ SITE_OS_NAME }} {{ SITE_OS_VERSION }} boot screen. 
+              </li>
+              <li>
+                Be sure to select <kbd>Test this media & install {{ SITE_OS_NAME }} {{ SITE_OS_VERSION }}</kbd>, which should be the default, the first time you use your new USB disk installer to make sure everything was written correctly before beginning the installation. Using the up and down arrow keys on your computer allows you to navigate the options, and press <kbd>Enter</kbd> when you are ready. 
+              </li>
             </ul>
           </div>
         </li>
         <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/checking-usb-disk-image.png"
+                  alt="Checking the {{ SITE_OS_NAME }} USB disk image for errors before installing"
+                  />
+            </div>
+            <ul>
+              <li>
+                Watch the percent complete increase as it checks the USB disk image for errors. 
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="wa-stack">
+      <h2>
+        Select your preferred language for {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }}
+      </h2>
+      <ol class="wa-stack ">
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/rhel-language-selection.png"
+                  alt="Select your preferred language for installing {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                Select your preferred language for installing {{ SITE_OS_NAME }}. 
+              </li>
+              <li>
+                Click <kbd>Continue</kbd>. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/installation-summary-0.png"
+                  alt="Installation summary for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                First step is to verify that the installer has guessed the correct keyboard layout you are using. 
+                Look at the top right at the keyboard configuration right under where it says <kbd>{{ SITE_OS_NAME | upper }} {{ SITE_OS_VERSION | upper }} INSTALLATION</kbd>. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/keyboard-layout-0.png"
+                  alt="Keyboard Layout configuration for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                Click the <kbd>-</kbd> button on the left to remove the wrong keyboard and choose a new keyboard. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/add-a-keyboard-layout.png"
+                  alt="Add a new keyboard layout for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                Find the correct keyboard in the list. 
+              </li>
+              <li>
+                Click <kbd>Add</kbd>. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/test-keyboard-configuration.png"
+                  alt="Test the new keyboard configuration for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                Use the <kbd>Test the layout configuration below:</kbd> section to verify you have the right keyboard selected. 
+              </li>
+              <li>
+                Click <kbd>Done</kbd> on the top left when you are done. 
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="wa-stack">
+      <h2>
+        Configure your network and host name
+      </h2>
+      <ol class="wa-stack ">
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/network-and-host-name.png"
+                  alt="Configure network and host name for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                Click <kbd>Network &amp; Host Name</kbd> to set up your network configuration in your home or work. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/default-ethernet-connection.png"
+                  alt="Configure network for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                If you have an Ethernet connection, which is preferred, then you should see an Ethernet network already connected. 
+              </li>
+              <li>
+                If you are using WiFi, then you will need to select your WiFi network and enter your password. 
+              </li>
+              <li>
+                Entering a host name is optional, but if you prefer your computer to have a certain name, then enter it in the <kbd>Host Name:</kbd> input and click <kbd>Apply</kbd>. 
+              </li>
+              <li>
+                Click <kbd>Done</kbd> when finished. 
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="wa-stack">
+      <h2>
+        Choose your installation destination disk. 
+      </h2>
+      <ol class="wa-stack ">
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/installation-destination.png"
+                  alt="Configure your installation destination disk for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                Click <kbd>Installation Destination</kbd> to configure your disk for {{ SITE_OS_NAME }}. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/disk-device-selection.png"
+                  alt="Select your disks to install {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                The <kbd>INSTALLATION DESTINATION</kbd> screen will show you the hard disks available on your computer. 
+              </li>
+              <li>
+                Make sure the disk where you wish to install {{ SITE_OS_NAME }} has a black circle and white check mark on it. 
+                If not, click on it until it does. 
+              </li>
+              <li>
+                Change the <kbd>Storage Configuration</kbd> from <kbd>Automatic</kbd> to <kbd>Custom</kbd>, 
+                because {{ SITE_OS_NAME }} does not do a good job with automatic disk partitioning. 
+              </li>
+              <li>
+                Click <kbd>Done</kbd> to configure your disk partitioning. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/manual-partitioning.png"
+                  alt="Manual disk partitioning for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                Before you configure your disk partitioning, you need to delete existing disks that already have an operating system or other data on them. 
+              </li>
+              <li>
+                Open the <kbd>Unknown</kbd> section on the left if it is shown. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/unknown-disk-partitions.png"
+                  alt="Delete unknown disk paritions before installing {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                Select one of the unknown partitions that is the old operating system like <kbd>EFI System Partition</kbd> in the screenshot. 
+              </li>
+              <li>
+                Click the <kbd>-</kbd> button to remove the partition. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/delete-all-unkown-partitions.png"
+                  alt="Delete all unknown disk paritions before installing {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                A dialog will pop up asking you to confirm deleting the system boot partition. 
+              </li>
+              <li>
+                Check the box for <kbd>Delete all file systems are only used by Unknown.</kbd> 
+              </li>
+              <li>
+                Click <kbd>Delete It</kbd> to confirm. 
+              </li>
+              <li>
+                Delete all other unknown disks, unless you know that they are the USB disk of the {{ SITE_OS_NAME }} installer, you don't have to delete that one. 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <wa-divider></wa-divider>
+        <li class="wa-stack ">
+          <div class="wa-flank wa-gap-l " style="--flank-size: 32ch; ">
+            <div class="wa-frame wa-border-radius-m " style="aspect-ratio: 1308 / 915;">
+              <img onclick="imgToDialog(this)" style="cursor: pointer; "
+                  src="{{ STATIC_BASE_URL }}/templates/en-us/view/article/{{ result.pageId }}/create-partitions-manually.png"
+                  alt="Create partitions manually for {{ SITE_OS_NAME }}"
+                  />
+            </div>
+            <ul>
+              <li>
+                If you would like to encrypt your disk with a password as soon as you boot to protect your files from theft, select <kbd>Encrypt my data</kbd>, otherwise leave it unchecked. 
+              </li>
+              <li>
+                Use LVM partitioning scheme so that you can have flexibility add new disks to your computer later. 
+              </li>
+              <li>
+                Click the link that says, <kbd>Click here to create them automatically</kbd>. 
+              </li>
+              <li>
+                Click <kbd>Delete It</kbd> to confirm. 
+              </li>
+              <li>
+                Delete all other unknown disks, unless you know that they are the USB disk of the {{ SITE_OS_NAME }} installer, you don't have to delete that one. 
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="wa-stack">
+      <h2>
+        Select your preferred language for {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }}
+      </h2>
+      <ol class="wa-stack ">
+      </ol>
+    </div>
+    <div class="wa-stack">
+      <h2>
+        Select your preferred language for {{ SITE_OS_SHORT_NAME }} {{ SITE_OS_VERSION }}
+      </h2>
+      <ol class="wa-stack ">
       </ul>
     </div>
 {% endblock %}
