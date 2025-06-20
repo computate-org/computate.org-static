@@ -125,28 +125,26 @@
               <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}/svg/logo-{{ userSiteTheme | default(SITE_THEME) }}.svg"/>
             </a>
           </div>
-
-          <!-- <wa-card style="max-width: fit-content; margin: 0 auto;"> -->
-          <div class="wa-cluster " style="justify-content: center;">
-            <!-- <wa-button class="tile no-padding " variant="brand"> -->
-              <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="youtube" family="brands" label="Follow us on Youtube" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank"></wa-icon-button>
-              <!-- <div class="wa-body-s">Youtube</div> -->
-            <!-- </wa-button> -->
-            <!-- <wa-button class="tile no-padding " variant="brand"> -->
-              <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="github" family="brands" label="View our source code on GitHub" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank"></wa-icon-button>
-              <!-- <div class="wa-caption-s">GitHub</div> -->
-            <!-- </wa-button> -->
-            <!-- <wa-button class="tile no-padding " variant="brand"> -->
-              <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="linkedin" family="brands" label="Share on LinkedIn" href="https://www.linkedin.com/company/computate/" target="_blank"></wa-icon-button>
-              <!-- <div class="wa-caption-s">LinkedIn</div> -->
-            <!-- </wa-button> -->
-            <!-- <wa-button class="tile no-padding " variant="brand"> -->
-              <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="envelope-open" label="Share with email" href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank"></wa-icon-button>
-              <!-- <div class="wa-caption-s">email</div> -->
-            <!-- </wa-button> -->
-          </div>
-          <!-- </wa-card> -->
-
+       <!-- <wa-card style="max-width: fit-content; margin: 0 auto;"> -->
+       <div class="wa-cluster " style="justify-content: center;">
+         <!-- <wa-button class="tile no-padding " variant="brand"> -->
+           <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="youtube" family="brands" label="Follow us on Youtube" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank"></wa-icon-button>
+           <!-- <div class="wa-body-s">Youtube</div> -->
+         <!-- </wa-button> -->
+         <!-- <wa-button class="tile no-padding " variant="brand"> -->
+           <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="github" family="brands" label="View our source code on GitHub" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank"></wa-icon-button>
+           <!-- <div class="wa-caption-s">GitHub</div> -->
+         <!-- </wa-button> -->
+         <!-- <wa-button class="tile no-padding " variant="brand"> -->
+           <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="linkedin" family="brands" label="Share on LinkedIn" href="https://www.linkedin.com/company/computate/" target="_blank"></wa-icon-button>
+           <!-- <div class="wa-caption-s">LinkedIn</div> -->
+         <!-- </wa-button> -->
+         <!-- <wa-button class="tile no-padding " variant="brand"> -->
+           <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="envelope-open" label="Share with email" href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank"></wa-icon-button>
+           <!-- <div class="wa-caption-s">email</div> -->
+         <!-- </wa-button> -->
+       </div>
+       <!-- </wa-card> -->
           <wa-tooltip for="site-aside-left-model-button-CompanyAbout" placement="right" hoist>Learn about our team, company, culture, and values. </wa-tooltip>
           <wa-tooltip for="site-aside-left-model-button-UseCase" placement="right" hoist>See computate use cases for real organizations. </wa-tooltip>
           <wa-tooltip for="site-aside-left-model-button-CompanyCourse" placement="right" hoist>Take an exciting hands-on course on your own computer with computate</wa-tooltip>
@@ -253,15 +251,6 @@
             </wa-menu>
           </wa-popup>
         </header>
-        <!-- <wa-dropdown id="siteSearchDropdown" class="display-block " stay-open-on-select="true">
-          <wa-input slot="trigger" placeholder="search" id="siteSearchInput">
-            <i slot="prefix" class="fa-duotone fa-regular  fa-magnifying-glass"></i>
-          </wa-input> -->
-        <!-- <wa-dropdown id="siteSearchDropdown" open="true">
-          <wa-menu id="siteSearchDropdownMenu">
-            stuff
-          </wa-menu>
-        </wa-dropdown> -->
 {%- endblock htmBodyStartPageLayout %}
 {% block htmBodyMiddlePageLayout %}
         <div class="pageContent wa-stack wa-gap-3xl ">

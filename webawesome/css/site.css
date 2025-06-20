@@ -109,8 +109,8 @@ wa-dropdown {
           var(--wa-color-mix-active)
         )
       );
-    }
   }
+}
 }
 
 .gradient-card-header::part(header) {
@@ -352,29 +352,6 @@ main, footer {
     }
 
     .col-span-2 {grid-column: span 2} .col-span-3 {grid-column: span 3} .col-span-4 {grid-column: span 4} .col-span-5 {grid-column: span 5} .col-span-6 {grid-column: span 6}
-
-    /* .item-list {
-      background-color: bisque;
-      > * {
-        background-color: aqua;
-        padding: var(--item-list-gap);
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: span var(--result-columns);
-        > * {
-          align-content: center;
-          background-color: aquamarine;
-        }
-      }
-
-      &:has(> * > :nth-child(1)) {--result-columns: 1}
-      &:has(> * > :nth-child(2)) {--result-columns: 2}
-      &:has(> * > :nth-child(3)) {--result-columns: 3}
-      &:has(> * > :nth-child(4)) {--result-columns: 4}
-      &:has(> * > :nth-child(5)) {--result-columns: 5}
-      &:has(> * > :nth-child(6)) {--result-columns: 6}
-    } 
-      */
 
     /************************/
     /* Crazy rounding stuff */
@@ -640,4 +617,3 @@ main, footer {
     padding: var(--wa-space-xs) var(--wa-space-s);
   }
 }
-
