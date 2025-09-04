@@ -113,134 +113,79 @@
             </wa-carousel-item>
           </wa-carousel>
 
-          <wa-card class="purple-blue-background ">
-            <div class="main-content ">
-              <div class="wa-flank">
-                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
-                <h2>
-                  Watch the free Computate AI Developer Webinar on Zoom or live streaming to Youtube. 
-                </h2>
-              </div>
-              <div class="wa-stack ">
-                <div class="wa-flank">
-                  <p>
-                    Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
-                    then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
-                  </p>
-                </div>
-                <wa-card>
-                  <div class="wa-stack ">
-                    <div class="wa-flank ">
-                      <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
-                      <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" time-zone-name="short" date=""></wa-format-date>
-                    </div>
-                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
-                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
-                      Join webinar
-                    </wa-button>
-                  </div>
-                </wa-card>
-                <h3 class="brand-font">
-                  The Computate AI Developer Webinar will occur live each weekday. 
-                </h3>
-                <wa-card id="webinar-calendar" class="wa-stack ">
-
-                  <div class="wa-flank ">
-                    <wa-button id="webinar-button" variant="brand" href="{{ SITE_BASE_URL }}/en-us/view/webinar/computate-ai-developer-webinar">
-                      <i class="fa-duotone fa-regular fa-video"></i>
-                      Learn more
-                    </wa-button>
-                    <div class="wa-stack wa-gap-m ">
-                      <div class="font-size-x-small">
-                        Monday 1:30 PM Eastern US time
-                      </div>
-                      <div class="font-size-x-small">
-                        Tuesday 1:30 PM Eastern US time
-                      </div>
-                      <div class="font-size-x-small">
-                        Wednesday 12:00 PM noon Eastern US time
-                      </div>
-                      <div class="font-size-x-small">
-                        Thursday 1:30 PM Eastern US time
-                      </div>
-                      <div class="font-size-x-small">
-                        Friday 10:30 AM Eastern US time
-                      </div>
-                      <div class="font-size-x-small">
-                        Friday 1:30 PM Eastern US time
-                      </div>
-                    </div>
-                  </div>
-
-                </wa-card>
-
-                <div>
-                  You can learn more about the use case for Computate open source software for Smart Aquaculture. 
-                </div>
-                <wa-card>
-                  <div>
-                    <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ SITE_BASE_URL }}/en-us/shop/use-case/smart-aquaculture-use-case">
-                      <i class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
-                      Read use case
-                    </wa-button>
-                  </div>
-                </wa-card>
-              </div>
+          <div class="wa-stack main-content ">
+            <div class="wa-flank">
+              <i class="fa-duotone fa-regular fa-video fa-2x "></i>
+              <h2>
+                Watch the free Computate AI Developer Webinar on Zoom or live streaming to Youtube. 
+              </h2>
             </div>
-          </wa-card>
-
-          <wa-card class="red-pink-background ">
             <div class="wa-stack ">
-              <div class="wa-flank ">
-                <i class="fa-brands fa-redhat fa-8x "></i>
-                <div>
-                  <h1 class="brand-font">
-                    Vibe code a data-driven website with generative AI for smart aquaculture in Red Hat OpenShift AI
-                  </h1>
-                  <h2 class="brand-font">
-                    at the Red Hat Summit May 20, 2025 in Boston, Massachussetts
-                  </h2>
-                </div>
+              <div class="wa-flank">
+                <p>
+                  Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
+                  then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
+                </p>
               </div>
               <wa-card>
-                <div class="wa-align-items-center wa-grid wa-gap-3xl ">
-                  <div class="wa-frame wa-border-radius-l ">
-                    <img src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/png/smart-aquaculture-vscode-workbench.png"/>
+                <div class="wa-stack ">
+                  <div class="wa-flank ">
+                    <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
+                    <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" time-zone-name="short" date=""></wa-format-date>
                   </div>
-                  <div class="wa-stack ">
-                    <h3 class="wa-heading-xl ">
-                      Smart Aquaculture workshop at Red Hat Summit 2025
-                    </h3>
-                    <p class="wa-caption-l ">
-                      This course will become available for participants at the 
-                      <a href="https://events.experiences.redhat.com/widget/redhat/sum25/SessionCatalog2025/session/1731473553640001dRBg">Red Hat Summit 2025</a>
-                      in Boston, Massachussetts, USA Tuesday May 20, 2025 10:30 AM - 12:00 PM EDT. 
-                    </p>
-                    <div>
-                      <div>Speakers:</div>
-                      <ul>
-                        <li>Dewayne Branch, CEO, Founder, Qatar Strategic Business Group</li>
-                        <li>Jarvis Green, Founder, Green Reef Foundation</li>
-                        <li>Christopher Tate, Principal Software Engineer, Red Hat</li>
-                      </ul>
+                  <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
+                    <i slot="start" class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                    Join webinar
+                  </wa-button>
+                </div>
+              </wa-card>
+              <h3 class="brand-font">
+                The Computate AI Developer Webinar will occur live each weekday. 
+              </h3>
+              <wa-card id="webinar-calendar" class="wa-stack ">
+
+                <div class="wa-flank ">
+                  <wa-button id="webinar-button" variant="brand" href="{{ SITE_BASE_URL }}/en-us/view/webinar/computate-ai-developer-webinar">
+                    <i slot="start" class="fa-duotone fa-regular fa-video"></i>
+                    Learn more
+                  </wa-button>
+                  <div class="wa-stack wa-gap-m ">
+                    <div class="font-size-x-small">
+                      Monday 1:30 PM Eastern US time
                     </div>
-                    <div>
-                      <wa-button id="order-button" class="gradient-button pink-purple-background" variant="neutral" href="{{ SITE_BASE_URL }}/en-us/shop/event/smart-aquaculture-red-hat-summit-2025">
-                        <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                        Learn more
-                      </wa-button>
+                    <div class="font-size-x-small">
+                      Tuesday 1:30 PM Eastern US time
                     </div>
-                    <div>
-                      <wa-button id="order-button" class="gradient-button pink-purple-background" variant="neutral" href="https://events.experiences.redhat.com/widget/redhat/sum25/SessionCatalog2025/session/1731473553640001dRBg">
-                        <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                        Register
-                      </wa-button>
+                    <div class="font-size-x-small">
+                      Wednesday 12:00 PM noon Eastern US time
+                    </div>
+                    <div class="font-size-x-small">
+                      Thursday 1:30 PM Eastern US time
+                    </div>
+                    <div class="font-size-x-small">
+                      Friday 10:30 AM Eastern US time
+                    </div>
+                    <div class="font-size-x-small">
+                      Friday 1:30 PM Eastern US time
                     </div>
                   </div>
+                </div>
+
+              </wa-card>
+
+              <div>
+                You can learn more about the use case for Computate open source software for Smart Aquaculture. 
+              </div>
+              <wa-card>
+                <div>
+                  <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ SITE_BASE_URL }}/en-us/shop/use-case/smart-aquaculture-use-case">
+                    <i slot="start" class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                    Read use case
+                  </wa-button>
                 </div>
               </wa-card>
             </div>
-          </wa-card>
+          </div>
 
           <wa-card class="main-content ">
             <div>
@@ -276,45 +221,77 @@
             </p>
           </wa-card>
 
-          <wa-card class="purple-blue-background wa-stack ">
-            <div class="wa-grid ">
-              <div class="flex-item-left ">
-                <div class="wa-stack ">
-                  <div class="wa-flank ">
-                    <i class="fa-kit fa-fiware fa-5x "></i>
-                    <h1>
-                      Latest available course: 
-                    </h1>
-                  </div>
-                  <h2>
-                    The free Smart Aquaculture Cloud Sandbox course
-                  </h2>
-                  <p>
-                    Free course for configuring IoT services and Smart Data Models with a FIWARE IoT Agent, Context Broker, and other event-driven microservices in a free Red Hat OpenShift Developer Sandbox
-                    with the Smart Aquaculture Cloud Sandbox
-                  </p>
-                </div>
-              </div>
-              <div class="flex-item-right ">
-                <img src="{{ STATIC_BASE_URL }}/jpg/fiware/2024-summit/technical-training.jpg"/>
-              </div>
+          <div class="wa-stack">
+            <div class="wa-split">
+              <h3 class="wa-heading-l">The path to computer enlightenment</h2>
+              <a href="{{ SITE_BASE_URL }}/en-us/search/article" class="wa-cluster">
+                <span>Browse all articles</span>
+                <wa-icon name="arrow-right"></wa-icon>
+              </a>
             </div>
-            <wa-card class="main-content ">
-              <div class="wa-stack ">
-                <div>
-                  This course was presented at the 
-                  <a href="{{ SITE_BASE_URL }}/en-us/shop/event/fiware-kubernetes-deployment-at-fiware-summit-2024-in-naples-italy">2024 FIWARE Summit Technical Training in Naples, Italy</a>
-                  and <a href="{{ SITE_BASE_URL }}/en-us/shop/event/smart-aquaculture-nedsi-2025">the Generative AI to Enhance Supply Chain Resilience NEDSI 2025 research conference in Hershey, Pennsylvania</a>
-                </div>
-                <div>
-                  <wa-button id="order-button" class="gradient-button orange-blue-background" variant="neutral" href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox">
-                    <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                    Get started
-                  </wa-button>
-                </div>
-              </div>
-            </wa-card>
-          </wa-card>
+            <p>
+              Learn how to become a super-talented cloud software developer with this series of articles that I call, 
+              "the path the computer enlightenment." 
+            </p>
+            <wa-carousel navigation pagination slides-per-page="4" slides-per-move="4" style="--aspect-ratio: initial">
+              {% for article in pathToComputerEnlightenment %}
+              <wa-carousel-item>
+                <a href="{{ article.displayPage }}" class="wa-link-plain">
+                  <wa-card with-image>
+                    <div class="wa-frame:landscape" slot="media"{% if article.pageImageWidth %} style="aspect-ratio: {{ article.pageImageWidth }} / {{ article.pageImageHeight }}; "{% endif %}>
+                      <wa-frame>
+                        <img
+                            src="{{ STATIC_BASE_URL }}{{ article.pageImageUri }}"
+{%- if article.pageImageAlt is defined %}
+                            alt="{{ article.name | e }}"
+{%- endif %}
+                            />
+                      </wa-frame>
+                    </div>
+                    <div class="wa-stack wa-gap-xs">
+                      <div class="wa-heading-m">{{ article.name | e }}</div>
+                      <div class="wa-caption-m">{{ article.description | e }}</div>
+                    </div>
+                  </wa-card>
+                </a>
+              </wa-carousel-item>
+              {% endfor %}
+            </wa-carousel>
+          </div>
+
+          <div class="wa-stack">
+            <div class="wa-split">
+              <h3 class="wa-heading-l">Free courses in cloud computing on your own computer</h2>
+              <a href="{{ SITE_BASE_URL }}/en-us/search/course" class="wa-cluster">
+                <span>Browse all courses</span>
+                <wa-icon name="arrow-right"></wa-icon>
+              </a>
+            </div>
+            <wa-carousel navigation pagination slides-per-page="2" slides-per-move="2" style="--aspect-ratio: initial">
+              {% for course in topCourses %}
+              <wa-carousel-item>
+                <a href="{{ course.displayPage }}" class="wa-link-plain">
+                  <wa-card with-image>
+                    <div class="wa-frame:landscape" slot="media"{% if course.pageImageWidth %} style="aspect-ratio: {{ course.pageImageWidth }} / {{ course.pageImageHeight }}; "{% endif %}>
+                      <wa-frame>
+                        <img
+                            src="{{ STATIC_BASE_URL }}{{ course.pageImageUri }}"
+{%- if course.pageImageAlt is defined %}
+                            alt="{{ course.name | e }}"
+{%- endif %}
+                            />
+                      </wa-frame>
+                    </div>
+                    <div class="wa-stack wa-gap-xs">
+                      <div class="wa-heading-m">{{ course.name | e }}</div>
+                      <div class="wa-caption-m">{{ course.description | e }}</div>
+                    </div>
+                  </wa-card>
+                </a>
+              </wa-carousel-item>
+              {% endfor %}
+            </wa-carousel>
+          </div>
 
           <wa-card class="pink-purple-background wa-stack ">
             <div class="wa-stack main-content ">

@@ -38,13 +38,7 @@
             href="https://www.linkedin.com/shareArticle?mini=true&url={{ result.displayPage | urlencode }}"
             target="_blank"
             >
-          <wa-icon
-              style="font-size: var(--wa-font-size-2xl);"
-              name="linkedin"
-              family="brands"
-              label="Share on LinkedIn"
-              target="_blank"
-              ></wa-icon>
+          <i slot="start" class="fa-brands fa-linkedin fa-2xl"></i>
           <div class="wa-caption-s" style="color: black;"><b>LinkedIn</b></div>
         </wa-button>
         <wa-button
@@ -52,28 +46,82 @@
             target="_blank"
             class="tile"
             >
-          <div>
-            <wa-icon
-                style="font-size: var(--wa-font-size-2xl);"
-                name="facebook"
-                family="brands"
-                label="Share on Facebook"
-                ></wa-icon>
-          </div>
+          <i slot="start" class="fa-brands fa-facebook fa-2xl"></i>
           <div class="wa-caption-s" style="color: black;"><b>Facebook</b></div>
         </wa-button>
       </div>
     </div>
 {%- endmacro %}
-{%- macro articleRelatedArticles(result) -%}
+{%- macro prerequisiteArticles(result) -%}
+{%- if result.prerequisiteArticles | length > 0 -%}
     <div class="wa-stack">
-      <h3 class="wa-heading-xl">Related Articles</h3>
-      <wa-carousel navigation pagination slides-per-page="3" slides-per-move="3" style="--aspect-ratio: initial">
+      <h3 class="wa-heading-xl">Prerequisite Article{%- if result.nextArticles | length > 0 -%}s{% else %}{% endif %}</h3>
+      <wa-carousel navigation pagination slides-per-page="2" slides-per-move="2" style="--aspect-ratio: initial">
+        {% for prerequisiteArticle in result.prerequisiteArticles %}
+        <wa-carousel-item>
+          <a href="{{ prerequisiteArticle.displayPage }}" class="wa-link-plain">
+            <wa-card with-image>
+              <div class="wa-frame:landscape" slot="media"{% if prerequisiteArticle.pageImageWidth %} style="aspect-ratio: {{ prerequisiteArticle.pageImageWidth }} / {{ prerequisiteArticle.pageImageHeight }}; "{% endif %}>
+                <wa-frame>
+                  <img
+                      src="{{ STATIC_BASE_URL }}{{ prerequisiteArticle.pageImageUri }}"
+{%- if prerequisiteArticle.pageImageAlt is defined %}
+                      alt="{{ prerequisiteArticle.name | e }}"
+{%- endif %}
+                      />
+                </wa-frame>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-heading-m">{{ prerequisiteArticle.name | e }}</span>
+              </div>
+            </wa-card>
+          </a>
+        </wa-carousel-item>
+        {% endfor %}
+      </wa-carousel>
+    </div>
+{%- endif %}
+{%- endmacro %}
+{%- macro nextArticles(result) -%}
+{%- if result.nextArticles | length > 0 -%}
+    <div class="wa-stack">
+      <h3 class="wa-heading-xl">Next Article{%- if result.nextArticles | length > 0 -%}s{% else %}{% endif %}</h3>
+      <wa-carousel navigation pagination slides-per-page="2" slides-per-move="2" style="--aspect-ratio: initial">
+        {% for nextArticle in result.nextArticles %}
+        <wa-carousel-item>
+          <a href="{{ nextArticle.displayPage }}" class="wa-link-plain">
+            <wa-card with-image>
+              <div class="wa-frame:landscape" slot="media"{% if nextArticle.pageImageWidth %} style="aspect-ratio: {{ nextArticle.pageImageWidth }} / {{ nextArticle.pageImageHeight }}; "{% endif %}>
+                <wa-frame>
+                  <img
+                      src="{{ STATIC_BASE_URL }}{{ nextArticle.pageImageUri }}"
+{%- if nextArticle.pageImageAlt is defined %}
+                      alt="{{ nextArticle.name | e }}"
+{%- endif %}
+                      />
+                </wa-frame>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-heading-m">{{ nextArticle.name | e }}</span>
+              </div>
+            </wa-card>
+          </a>
+        </wa-carousel-item>
+        {% endfor %}
+      </wa-carousel>
+    </div>
+{%- endif %}
+{%- endmacro %}
+{%- macro relatedArticles(result) -%}
+{%- if result.relatedArticles | length > 0 -%}
+    <div class="wa-stack">
+      <h3 class="wa-heading-xl">Related Article{%- if result.nextArticles | length > 0 -%}s{% else %}{% endif %}</h3>
+      <wa-carousel navigation pagination slides-per-page="2" slides-per-move="2" style="--aspect-ratio: initial">
         {% for relatedArticle in result.relatedArticles %}
         <wa-carousel-item>
           <a href="{{ relatedArticle.displayPage }}" class="wa-link-plain">
             <wa-card with-image>
-              <div class="wa-frame:landscape" slot="image"{% if relatedArticle.pageImageWidth %} style="aspect-ratio: {{ relatedArticle.pageImageWidth }} / {{ relatedArticle.pageImageHeight }}; "{% endif %}>
+              <div class="wa-frame:landscape" slot="media"{% if relatedArticle.pageImageWidth %} style="aspect-ratio: {{ relatedArticle.pageImageWidth }} / {{ relatedArticle.pageImageHeight }}; "{% endif %}>
                 <wa-frame>
                   <img
                       src="{{ STATIC_BASE_URL }}{{ relatedArticle.pageImageUri }}"
@@ -92,6 +140,7 @@
         {% endfor %}
       </wa-carousel>
     </div>
+{%- endif %}
 {%- endmacro %}
 {%- macro articleStart(result) -%}
 <div class="wa-stack ">
@@ -102,7 +151,8 @@
 {{ articleCreated(result) }}
     </div>
   </div>
-  <div class="wa-stack " style="max-width: 80ch; margin-inline: auto; ">
+  <div class="wa-stack " style="max-width: 80ch; ">
+{{ prerequisiteArticles(result) }}
 {%- endmacro %}
 {%- macro articleEnd(result) -%}
     <wa-divider style="margin-block-start: 2rem; --width: 3px;"></wa-divider>
@@ -110,7 +160,8 @@
   <div class="wa-stack" style="text-align: center;">
 {{ articleShare(result) }}
     <wa-divider></wa-divider>
-{{ articleRelatedArticles(result) }}
+{{ nextArticles(result) }}
+{{ relatedArticles(result) }}
   </div>
 </div>
 {%- endmacro %}

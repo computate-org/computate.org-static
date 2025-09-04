@@ -8,15 +8,15 @@
             <wa-scroller>
               <wa-button-group size="small" class="no-gradient wa-cluster wa-gap-xs " id="htmPaginationButtons">
                 <wa-button id="PaginationButtonsPrevious" variant="brand"{% if pagination.pagePrevious is defined %} href="{{pageUri}}?start={{pagination.pagePrevious.start}}&amp;rows={{pagination.rows}}"{% else %} disabled{% endif %}>
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-arrow-square-left "></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-square-left "></i>
                   Previous
                 </wa-button>
                 <wa-button id="PaginationButtonsDecrease" variant="brand"{% if pagination.rowsPrevious >= pagination['1L'] %} href="{{pageUri}}?start={{pagination.start}}&amp;rows={{ pagination.rowsPrevious }}"{% else %} disabled{% endif %}>
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-minus-square "></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-minus-square "></i>
                   Less
                 </wa-button>
                 <wa-button id="PaginationButtonsIncrease" variant="brand" href="{{pageUri}}?start={{pagination.start}}&amp;rows={{ pagination.rowsNext }}">
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-plus-square "></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-plus-square "></i>
                   More
                 </wa-button>
                 <wa-button id="PaginationButtonsNext" variant="brand"{% if pagination.pageNext is defined %} href="{{pageUri}}?start={{pagination.pageNext.start}}&amp;rows={{pagination.rows}}"{% else %} disabled{% endif %}>

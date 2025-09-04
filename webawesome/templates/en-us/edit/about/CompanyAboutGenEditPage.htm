@@ -59,6 +59,7 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -169,6 +170,7 @@
           deletefilterCompanyAbout(event.target);
           return false;
         });
+{%- block htmScriptInitCompanyAboutPage %}{%- endblock htmScriptInitCompanyAboutPage %}
       });
     </script>
 {%- endblock htmScriptCompanyAboutPage %}
@@ -193,7 +195,7 @@
           <div class="wa-flank ">
             <wa-tooltip for="return-to-CompanyAbout">back to all about</wa-tooltip>
             <wa-button id="return-to-CompanyAbout" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
+              <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all about
             </wa-button>
             <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-address-card"></i> {{ result.objectTitle | e }}</h1>
@@ -209,7 +211,7 @@
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyAboutPage %}
-        <div>
+        <div class="pageContent ">
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyAbout">back to all about</wa-tooltip></wa-tooltip>
@@ -255,7 +257,8 @@
 {%- endblock htmBodyMiddlePageLayout %}
 
 {%- block htmBodyEndPageLayout %}
-      {{ super() }}
 {%- block htmBodyEndCompanyAboutPage %}
+{%- include en-us/search/about/CompanyAboutLocation.htm %}
 {%- endblock htmBodyEndCompanyAboutPage %}
+      {{ super() }}
 {%- endblock htmBodyEndPageLayout %}

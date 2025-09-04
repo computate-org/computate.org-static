@@ -229,6 +229,43 @@ The course description. "
 {%- macro htmPriceCompanyCoursePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputPriceCompanyCoursePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
+{%- macro inputPageImageUriCompanyCoursePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_pageImageUri">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] imageUri"
+                      label="imageUri"
+                      hint="
+The page image URI"
+                      id="{{classApiMethodMethod}}_pageImageUri"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left {{classApiMethodMethod}}_pageImageUri setPageImageUri classCompanyCourse inputCompanyCourse{{ result.pageId }}PageImageUri "
+                      name="setPageImageUri"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left {{classApiMethodMethod}}_pageImageUri setPageImageUri classCompanyCourse inputCompanyCourse{{ result.pageId }}PageImageUri "
+                      name="setPageImageUri"
+    {%- else %}
+                      class="label-on-left {{classApiMethodMethod}}_pageImageUri valuePageImageUri classCompanyCourse inputCompanyCourse{{ result.pageId }}PageImageUri "
+                      name="pageImageUri"
+    {%- endif %}
+  {%- endif %}
+  {%- if "Page" == classApiMethodMethod %}
+                      value="{{result.pageImageUri | e }}"
+  {%- endif %}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmPageImageUriCompanyCoursePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputPageImageUriCompanyCoursePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
 {%- macro inputPageIdCompanyCoursePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageId">
@@ -321,7 +358,7 @@ Visit this course's landing page. "
                             {{ inputDisplayPageCompanyCoursePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
 
-{%- macro htmButton_patchCompanyCourse() %}<wa-button variant="brand" id="htmButton_patchCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+{%- macro htmButton_patchCompanyCourse() %}<wa-button variant="brand" id="htmButton_patchCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyCourse() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyCourse" duration="5000" closable class="wa-header-l ">
@@ -367,6 +404,18 @@ Visit this course's landing page. "
                 {%- endif %}
               {%- endif %}
               </div>
+              <div class="grid-with-subgrid-2col ">
+
+              {%- if "PATCH" in scopes %}
+                {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+              {%- else %}
+                {%- if "GET" in scopes %}
+                  {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {%- else %}
+                  {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {%- endif %}
+              {%- endif %}
+              </div>
             </wa-details>
             <wa-details open class="HtmRow" id="useful-urls">
               <div slot="summary">
@@ -400,7 +449,7 @@ Visit this course's landing page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_postCompanyCourse() %}<wa-button variant="brand" id="htmButton_postCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+{%- macro htmButton_postCompanyCourse() %}<wa-button variant="brand" id="htmButton_postCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyCourse() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyCourse" duration="5000" closable class="wa-header-l ">
@@ -447,6 +496,18 @@ Visit this course's landing page. "
                 {%- endif %}
               {%- endif %}
               </div>
+              <div class="grid-with-subgrid-2col ">
+
+              {%- if "POST" in scopes %}
+                {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+              {%- else %}
+                {%- if "GET" in scopes %}
+                  {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {%- else %}
+                  {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {%- endif %}
+              {%- endif %}
+              </div>
             </wa-details>
             <wa-details open class="HtmRow" id="useful-urls">
               <div slot="summary">
@@ -480,7 +541,7 @@ Visit this course's landing page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_deleteCompanyCourse() %}<wa-button variant="brand" id="htmButton_deleteCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+{%- macro htmButton_deleteCompanyCourse() %}<wa-button variant="brand" id="htmButton_deleteCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deleteCompanyCourse() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deleteCompanyCourse" duration="5000" closable class="wa-header-l ">
@@ -499,7 +560,7 @@ Visit this course's landing page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_putimportCompanyCourse() %}<wa-button variant="brand" id="htmButton_putimportCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+{%- macro htmButton_putimportCompanyCourse() %}<wa-button variant="brand" id="htmButton_putimportCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyCourse() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyCourse" duration="5000" closable class="wa-header-l ">
@@ -610,6 +671,18 @@ Visit this course's landing page. "
                 {%- endif %}
               {%- endif %}
               </div>
+              <div class="grid-with-subgrid-2col ">
+
+              {%- if "PATCH" in scopes %}
+                {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+              {%- else %}
+                {%- if "GET" in scopes %}
+                  {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {%- else %}
+                  {{ htmPageImageUriCompanyCoursePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {%- endif %}
+              {%- endif %}
+              </div>
             </wa-details>
             <wa-details open class="HtmRow" id="useful-urls">
               <div slot="summary">
@@ -642,7 +715,7 @@ Visit this course's landing page. "
         </div>
 {%- endmacro %}
 
-{%- macro htmButton_deletefilterCompanyCourse() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+{%- macro htmButton_deletefilterCompanyCourse() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deletefilterCompanyCourse() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterCompanyCourse" duration="5000" closable class="wa-header-l ">
@@ -668,7 +741,7 @@ Visit this course's landing page. "
     {% if resultCount >= 1 %}
                 <wa-button variant="brand" id="refreshThisCompanyCourseGenPage"
                      onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyCourseGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyCourseGenPage')); }); return false; ">
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
                   refresh
                 </wa-button>
     {% endif %}
@@ -676,7 +749,7 @@ Visit this course's landing page. "
                 <wa-button variant="brand" id="refreshAllCompanyCourseGenPage{{ result.pageId | e }}"
                      onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllCompanyCourseGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllCompanyCourseGenPage{{ result.pageId | e }}')); }); "
                     >
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
                   Refresh all 
                 </wa-button>
     {% endif %}

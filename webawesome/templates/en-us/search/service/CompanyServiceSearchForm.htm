@@ -312,7 +312,7 @@ The ID for this page. "
                             {{ inputDisplayPageCompanyServicePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
 
-{%- macro htmButton_patchCompanyService() %}<wa-button variant="brand" id="htmButton_patchCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+{%- macro htmButton_patchCompanyService() %}<wa-button variant="brand" id="htmButton_patchCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyService() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyService" duration="5000" closable class="wa-header-l ">
@@ -391,7 +391,7 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_postCompanyService() %}<wa-button variant="brand" id="htmButton_postCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+{%- macro htmButton_postCompanyService() %}<wa-button variant="brand" id="htmButton_postCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyService() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyService" duration="5000" closable class="wa-header-l ">
@@ -471,7 +471,7 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_putimportCompanyService() %}<wa-button variant="brand" id="htmButton_putimportCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+{%- macro htmButton_putimportCompanyService() %}<wa-button variant="brand" id="htmButton_putimportCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyService() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyService" duration="5000" closable class="wa-header-l ">
@@ -621,7 +621,7 @@ The ID for this page. "
     {% if resultCount >= 1 %}
                 <wa-button variant="brand" id="refreshThisCompanyServiceGenPage"
                      onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyServiceGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyServiceGenPage')); }); return false; ">
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
                   refresh
                 </wa-button>
     {% endif %}
@@ -629,7 +629,7 @@ The ID for this page. "
                 <wa-button variant="brand" id="refreshAllCompanyServiceGenPage{{ result.pageId | e }}"
                      onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllCompanyServiceGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllCompanyServiceGenPage{{ result.pageId | e }}')); }); "
                     >
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
                   Refresh all 
                 </wa-button>
     {% endif %}

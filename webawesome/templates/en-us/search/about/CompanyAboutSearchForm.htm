@@ -274,7 +274,7 @@ The ID for this page. "
                             {{ inputDisplayPageCompanyAboutPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
 
-{%- macro htmButton_patchCompanyAbout() %}<wa-button variant="brand" id="htmButton_patchCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+{%- macro htmButton_patchCompanyAbout() %}<wa-button variant="brand" id="htmButton_patchCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyAbout" duration="5000" closable class="wa-header-l ">
@@ -343,7 +343,7 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_postCompanyAbout() %}<wa-button variant="brand" id="htmButton_postCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+{%- macro htmButton_postCompanyAbout() %}<wa-button variant="brand" id="htmButton_postCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyAbout" duration="5000" closable class="wa-header-l ">
@@ -413,7 +413,7 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_deleteCompanyAbout() %}<wa-button variant="brand" id="htmButton_deleteCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+{%- macro htmButton_deleteCompanyAbout() %}<wa-button variant="brand" id="htmButton_deleteCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deleteCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deleteCompanyAbout" duration="5000" closable class="wa-header-l ">
@@ -432,7 +432,7 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_putimportCompanyAbout() %}<wa-button variant="brand" id="htmButton_putimportCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+{%- macro htmButton_putimportCompanyAbout() %}<wa-button variant="brand" id="htmButton_putimportCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyAbout" duration="5000" closable class="wa-header-l ">
@@ -565,7 +565,7 @@ The ID for this page. "
         </div>
 {%- endmacro %}
 
-{%- macro htmButton_deletefilterCompanyAbout() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+{%- macro htmButton_deletefilterCompanyAbout() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_deletefilterCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterCompanyAbout" duration="5000" closable class="wa-header-l ">
@@ -591,7 +591,7 @@ The ID for this page. "
     {% if resultCount >= 1 %}
                 <wa-button variant="brand" id="refreshThisCompanyAboutGenPage"
                      onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyAboutGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyAboutGenPage')); }); return false; ">
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
                   refresh
                 </wa-button>
     {% endif %}
@@ -599,7 +599,7 @@ The ID for this page. "
                 <wa-button variant="brand" id="refreshAllCompanyAboutGenPage{{ result.pageId | e }}"
                      onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllCompanyAboutGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllCompanyAboutGenPage{{ result.pageId | e }}')); }); "
                     >
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
                   Refresh all 
                 </wa-button>
     {% endif %}

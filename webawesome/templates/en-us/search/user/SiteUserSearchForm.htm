@@ -212,7 +212,7 @@ The primary key of this object in the database"
                       placeholder="[String] font size"
                       label="font size"
                       hint="
-The default font size for the site"
+The default font size for the site (small, medium, large). "
                       id="{{classApiMethodMethod}}_siteFontSize"
   {%- if "Page" == classApiMethodMethod %}
                       data-userId={{ result.userId | tojson }}
@@ -257,8 +257,8 @@ The default font size for the site"
                       id="{{classApiMethodMethod}}_awesomeEffect"
   {%- endif %}
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
-                      placeholder="awesome effect"
-                      label="awesome effect"
+                      placeholder="awesome effect (requires refresh)"
+                      label="awesome effect (requires refresh)"
                       hint="an awesome effect for the entire site"
   {%- if 'Page' == classApiMethodMethod %}
                       class="label-on-left {{classApiMethodMethod}}_awesomeEffect classSiteUser inputSiteUser{{ result.userId }}AwesomeEffect "
@@ -277,7 +277,7 @@ The default font size for the site"
                       checked
     {%- endif %}
                       data-userId={{ result.userId | tojson }}
-                      >awesome effect</wa-checkbox>
+                      >awesome effect (requires refresh)</wa-checkbox>
   {%- else %}
                       >
                     <wa-option value=""></wa-option>
@@ -302,7 +302,7 @@ The default font size for the site"
                       placeholder="[String] site theme"
                       label="site theme"
                       hint="
-The site theme, either light or dark"
+The site theme, either light or dark. "
                       id="{{classApiMethodMethod}}_siteTheme"
   {%- if "Page" == classApiMethodMethod %}
                       data-userId={{ result.userId | tojson }}
@@ -342,7 +342,7 @@ The site theme, either light or dark"
                       placeholder="[String] web components theme"
                       label="web components theme"
                       hint="
-The web components theme for the site"
+The web components theme for the site. "
                       id="{{classApiMethodMethod}}_webComponentsTheme"
   {%- if "Page" == classApiMethodMethod %}
                       data-userId={{ result.userId | tojson }}
@@ -383,7 +383,7 @@ The web components theme for the site"
                             {{ inputWebComponentsThemeSiteUserPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
 
-{%- macro htmButton_patchSiteUser() %}<wa-button variant="brand" id="htmButton_patchSiteUser" data-userId={{ result.userId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+{%- macro htmButton_patchSiteUser() %}<wa-button variant="brand" id="htmButton_patchSiteUser" data-userId={{ result.userId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchSiteUser() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchSiteUser" duration="5000" closable class="wa-header-l ">
@@ -459,7 +459,7 @@ The web components theme for the site"
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_postSiteUser() %}<wa-button variant="brand" id="htmButton_postSiteUser" data-userId={{ result.userId | tojson }}><i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+{%- macro htmButton_postSiteUser() %}<wa-button variant="brand" id="htmButton_postSiteUser" data-userId={{ result.userId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postSiteUser() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postSiteUser" duration="5000" closable class="wa-header-l ">
@@ -667,7 +667,7 @@ The web components theme for the site"
     {% if resultCount >= 1 %}
                 <wa-button variant="brand" id="refreshThisSiteUserGenPage"
                      onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'userId:{{ result.userId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisSiteUserGenPage')); }, function() { addError(document.querySelector('#refreshThisSiteUserGenPage')); }); return false; ">
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
                   refresh
                 </wa-button>
     {% endif %}
@@ -675,7 +675,7 @@ The web components theme for the site"
                 <wa-button variant="brand" id="refreshAllSiteUserGenPage{{ result.userId | e }}"
                      onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllSiteUserGenPage{{ result.userId | e }}')); }, function() { addError(document.querySelector('#refreshAllSiteUserGenPage{{ result.userId | e }}')); }); "
                     >
-                  <i slot="prefix" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
                   Refresh all 
                 </wa-button>
     {% endif %}

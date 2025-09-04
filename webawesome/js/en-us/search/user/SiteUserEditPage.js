@@ -107,7 +107,7 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setAwesomeEffect', event.currentTarget.checked
                   , event.currentTarget
-                , function(response, target) { addGlow(target); window.location.reload(); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }

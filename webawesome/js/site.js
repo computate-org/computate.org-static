@@ -59,8 +59,8 @@ function fqChange(classSimpleName, elem) {
 
 function fqReplace(classSimpleName, elem) {
 	var $fq = document.querySelector('#fq' + elem.getAttribute('data-class') + '_' + elem.getAttribute('data-var'));
-	$fq.val(elem.getAttribute('data-val'));
-	fqChange(classSimpleName, $fq[0]);
+	$fq.value = elem.getAttribute('data-val');
+	fqChange(classSimpleName, $fq);
 }
 
 function facetFieldChange(classSimpleName, elem) {
@@ -88,9 +88,20 @@ function sort(classSimpleName, sortVar, sortOrder) {
 	searchPage(classSimpleName);
 }
 
-function facetRangeStartChange(classSimpleName, elem, classSimpleName) {
-	facetRangeVal = document.querySelector("input[name='pageFacetRange']:checked").value;
-	if(facetRangeVal) {
+function facetRangeGapChange(classSimpleName, elem) {
+	var facetRangeGapVal = document.querySelector("#pageSearchVal-pageFacetRangeGap-" + classSimpleName + "-input").value;
+	if(facetRangeGapVal) {
+		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		document.querySelector("#pageSearchVal-pageFacetRangeGap-" + classSimpleName).innerText = "facet.range.gap=" + encodeURIComponent(document.querySelector("#pageSearchVal-pageFacetRangeGap-" + classSimpleName + "-input").value);
+	} else {
+		document.querySelector("#pageSearchVal-pageFacetRangeGap-" + classSimpleName).innerText = "";
+	}
+	searchPage(classSimpleName);
+}
+
+function facetRangeStartChange(classSimpleName, elem) {
+	var facetRangeStartVal = document.querySelector("input[name='pageFacetRange']:checked").value;
+	if(facetRangeStartVal) {
 		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 		document.querySelector("#pageSearchVal-pageFacetRangeStart-" + classSimpleName).innerText = "facet.range.start=" + encodeURIComponent(document.querySelector("#pageFacetRangeStart-" + classSimpleName).value + ":00.000[" + timeZone + "]");
 	} else {
@@ -99,9 +110,9 @@ function facetRangeStartChange(classSimpleName, elem, classSimpleName) {
 	searchPage(classSimpleName);
 }
 
-function facetRangeEndChange(classSimpleName, elem, classSimpleName) {
-	facetRangeVal = document.querySelector("input[name='pageFacetRange']:checked").value;
-	if(facetRangeVal) {
+function facetRangeEndChange(classSimpleName, elem) {
+	var facetRangeEndVal = document.querySelector("input[name='pageFacetRange']:checked").value;
+	if(facetRangeEndVal) {
 		var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 		document.querySelector("#pageSearchVal-pageFacetRangeEnd-" + classSimpleName).innerText = "facet.range.end=" + encodeURIComponent(document.querySelector("#pageFacetRangeEnd-" + classSimpleName).value + ":00.000[" + timeZone + "]");
 	} else {
@@ -122,7 +133,7 @@ function facetRangeChange(classSimpleName, facetRangeVal) {
 
 function facetPivotChange(classSimpleName, elem) {
 	var $listHidden = document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
-	if(elem.is(":checked")) {
+	if(elem.checked) {
 		var div = document.createElement("div");
 		div.setAttribute("id", "pageSearchVal-Pivot" + classSimpleName + "Hidden_" + elem.value);
 		div.setAttribute("class", "pageSearchVal-Pivot" + classSimpleName + "Hidden ");
@@ -131,12 +142,12 @@ function facetPivotChange(classSimpleName, elem) {
 	} else {
 		document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "Hidden_" + elem.value).remove();
 	}
-	document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "_1").remove();
+	document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "_1")?.remove();
 	var $list = document.querySelector("#pageSearchVal-Pivot" + classSimpleName);
 	var $listHidden = document.querySelector("#pageSearchVal-Pivot" + classSimpleName + "Hidden");
-	if($listHidden.children().length > 0) {
+	if($listHidden.hasChildNodes()) {
 		var pivotVal = '';
-		$listHidden.children().each(function(index, pivotElem) {
+		Array.from($listHidden.children).forEach((index, pivotElem) => {
 			if(pivotVal)
 				pivotVal += ",";
 			pivotVal += pivotElem.innerText;
@@ -152,7 +163,7 @@ function facetPivotChange(classSimpleName, elem) {
 
 function facetFieldListChange(classSimpleName, elem) {
 	var $listHidden = document.querySelector("#pageSearchVal-FieldList" + classSimpleName + "Hidden");
-	if(elem.is(":checked")) {
+	if(elem.checked) {
 		var div = document.createElement("div");
 		div.setAttribute("id", "pageSearchVal-FieldList" + classSimpleName + "Hidden_" + elem.value);
 		div.setAttribute("class", "pageSearchVal-FieldList" + classSimpleName + "Hidden ");
@@ -176,7 +187,7 @@ function facetFieldListChange(classSimpleName, elem) {
 
 function facetStatsChange(classSimpleName, elem) {
 	var $list = document.querySelector("#pageSearchVal-Stats" + classSimpleName);
-	if(elem.is(":checked")) {
+	if(elem.checked) {
 		var div = document.createElement("div");
 		div.setAttribute("id", "pageSearchVal-Stats" + classSimpleName + "_" + elem.value);
 		div.setAttribute("class", "pageSearchVal pageSearchVal-Stats" + classSimpleName + "_" + elem.value + " ");

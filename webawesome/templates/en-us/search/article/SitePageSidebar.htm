@@ -61,7 +61,7 @@
                     <label for="fqSitePage_{{ key }}">{{ value.displayName }}<sup> ({{ value.classSimpleName }})</sup></label>
                     <wa-tooltip for="buttonFacetSitePage_{{ key }}">see values</wa-tooltip>
                     <div class="flex round-column pill-smart-border-radius ">
-                      <wa-button variant="brand" id="buttonFacetSitePage_{{ key }}" data-var="{{ value.var }}" data-clear="{% if value.facetField is defined %}true{% else %}false{% endif %}"><i class="{{ FONTAWESOME_STYLE }} fa-list "></i></wa-button>
+                      <wa-button variant="brand" id="buttonFacetSitePage_{{ key }}" data-var="{{ value.var }}" data-clear="{% if value.facetField is defined %}true{% else %}false{% endif %}"><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-list "></i></wa-button>
                       <wa-input id="fqSitePage_{{ key }}" placeholder="{{ value.displayName }}" class="" onchange="fqChange('SitePage', this); " data-var="{{ value.var }}" autocomplete="off=" value="{{ value.val }}"></wa-input>
                     </div>
                     <div class="pageSearchVal " id="pageSearchVal-fqSitePage_{{ key }}">{% if value.val is defined %}fq={{ value.var }}:{{ value.val | urlencode() }}{% endif %}</div>
@@ -97,15 +97,29 @@
               {% endif %}
               {% endfor %}
               </div>
-              {% for key, value in varsFq.items() %}
               <div>
-                <wa-radio-group orientation="horizontal" name="pageFacetSort" class="pageFacetSort " id="pageFacetSortSitePage_{{ key }}" value="{% if (key + ' asc') in defaultSortVars %}asc{% else %}{% if (key + ' desc') in defaultSortVars %}desc{% endif %}{% endif %}"{% if pivot is defined %} checked="checked"{% endif %} label={{ value.displayName | tojson }} size="small">
-                  <wa-radio-button value="" pill>none</wa-radio-button>
-                  <wa-radio-button value="asc" pill>ascending</wa-radio-button>
-                  <wa-radio-button value="desc" pill>descending</wa-radio-button>
-                </wa-radio-group>
+                {% for key, value in varsFq.items() %}
+                <wa-details
+                    summary="{{ value.displayName | e }}"
+                    class="pageDetailsSort "
+                    id="pageDetailsSortSitePage_{{ key }}"
+                        data-value="{{ value.var | e }}"
+                        {% if value.sort is defined %}open{% endif %}
+                    >
+                  <wa-select with-clear
+                      orientation="horizontal"
+                      class="pageSelectSort "
+                      id="pageSelectSortSitePage_{{ key }}"
+                      {% if value.sort is defined %}value="{{ value.sort | e }}"{% endif %}
+                      label={{ value.displayName | tojson }}
+                      size="small"
+                      >
+                    <wa-option value="asc">ascending</wa-option>
+                    <wa-option value="desc">descending</wa-option>
+                  </wa-select>
+                </wa-details>
+                {% endfor %}
               </div>
-              {% endfor %}
               {%- endblock htmBodySortSitePagePage %}
             </div>
           </wa-drawer>
@@ -136,8 +150,8 @@
                       <wa-option value="+1YEAR"{% if defaultRangeGap == '+1YEAR' %} selected="selected"{% else %}{% endif %}>Year</wa-option>
                       <wa-option value="+1MONTH"{% if defaultRangeGap == '+1MONTH' %} selected="selected"{% else %}{% endif %}>Month</wa-option>
                       <wa-option value="+1WEEK"{% if defaultRangeGap == '+1WEEK' %} selected="selected"{% else %}{% endif %}>Week</wa-option>
-                      <wa-option value="+1DAY"{% if defaultRangeGap == '+1DAY' %} selected="selected"{% else %}{% if defaultRangeGap is defined %}{% else %} selected="selected"{% endif %}{% endif %}>Day</wa-option>
-                      <wa-option value="+1HOUR"{% if defaultRangeGap == '+1HOUR' %} selected="selected"{% else %}{% endif %}>Hour</wa-option>
+                      <wa-option value="+1DAY"{% if defaultRangeGap == '+1DAY' %} selected="selected"{% else %}{% endif %}>Day</wa-option>
+                      <wa-option value="+1HOUR"{% if defaultRangeGap == '+1HOUR' %} selected="selected"{% else %}{% if defaultRangeGap is defined %}{% else %} selected="selected"{% endif %}{% endif %}>Hour</wa-option>
                       <wa-option value="+1MINUTE"{% if defaultRangeGap == '+1MINUTE' %} selected="selected"{% else %}{% endif %}>Minute</wa-option>
                       <wa-option value="+1SECOND"{% if defaultRangeGap == '+1SECOND' %} selected="selected"{% else %}{% endif %}>Second</wa-option>
                     </wa-select>
@@ -145,22 +159,22 @@
                 </tr>
                 <tr class="">
                   <td class="" colspan="2">
-                    <span>Range Start</span>
+                    <span>Range Start ({{ formatZonedDateTime(defaultRangeStart, "VV", defaultLocaleId, defaultZoneId) }})</span>
                   </td>
                 </tr>
                 <tr class="">
                   <td class="" colspan="2">
-                    <span><wa-input type="datetime-local" name="facetRangeStart" id="pageFacetRangeStart-SitePage" value="{{ formatZonedDateTime(defaultRangeStart, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) }}" onclick="facetRangeStartChange('SitePage', this); "></wa-input></span>
+                    <span><wa-input type="datetime-local" name="facetRangeStart" id="pageSearchVal-pageFacetRangeStart-SitePage-input" value="{{ formatZonedDateTime(defaultRangeStart, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) }}" onchange="facetRangeStartChange('SitePage', this, '{{ defaultZoneId }}'); "></wa-input></span>
                   </td>
                 </tr>
                 <tr class="">
                   <td class="" colspan="2">
-                    <span>Range End</span>
+                    <span>Range End ({{ formatZonedDateTime(defaultRangeStart, "VV", defaultLocaleId, defaultZoneId) }})</span>
                   </td>
                 </tr>
                 <tr class="">
                   <td class="" colspan="2">
-                    <span><wa-input type="datetime-local" name="facetRangeEnd" id="pageFacetRangeEnd-SitePage" value="{{ formatZonedDateTime(defaultRangeEnd, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) }}" onclick="facetRangeEndChange('SitePage', this); "></wa-input></span>
+                    <span><wa-input type="datetime-local" name="facetRangeEnd" id="pageSearchVal-pageFacetRangeEnd-SitePage-input" value="{{ formatZonedDateTime(defaultRangeEnd, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) }}" onchange="facetRangeEndChange('SitePage', this, '{{ defaultZoneId }}'); "></wa-input></span>
                   </td>
                 </tr>
               </table>
@@ -242,44 +256,37 @@
                   {% endfor %}
                 {% endif %}
               </div>
-              <table>
+              <div>
                 {% for key, value in varsFq.items() %}
-                  {% if enableStats is defined %}
-                    <tr class="">
-                      <td class="">
-                        <span><wa-checkbox name="pageStats" class="pageStats " id="pageStatsSitePage_{{ key }}" value="{{ value.var }}"{% if value.stats is defined %} checked="checked"{% endif %} onclick="facetStatsChange('SitePage', value); ">{{ value.displayName }}</wa-checkbox></span>
-                      </td>
-                      <td>
-                        <div>
-                          <label for="pageStatsSitePage_{{ key }}">{{ value.displayName }}</label>
-                        </div>
-                        <div class="pageStatsField pageStatsFieldSitePage_{{ key }} " id="pageStatsFieldSitePage_{{ key }}">
-                          {% if value.stats is defined %}
-                            {% for item in value.stats %}
-                              {% if item.key == 'name' %}{% else %}
-                                <div data-class="SitePage" data-var="{{ item.var }}" data-val="{{ item.key }}">{{ item.key }}: {{ item }}</div>
-                              {% endif %}
-                            {% endfor %}
-                            {% if value.stats.max is defined %}
-                              <div>
-                                <span> step </span>
-                                <wa-input id="animateStatsStep" placeholder="step" value="1" style="width: 4em; "></wa-input>
-                                <span> min </span>
-                                <wa-input id="animateStatsMin" placeholder="min" value="{{ value.stats.min }}" style="width: 4em; "></wa-input>
-                                <span> max </span>
-                                <wa-input id="animateStatsMax" placeholder="max" value="{{ value.stats.max }}" style="width: 4em; "></wa-input>
-                                <span> speed in seconds </span>
-                                <wa-input id="animateStatsSpeed" placeholder="speed" value="1" style="width: 4em; "></wa-input>
-                                <wa-button variant="brand" onclick="animateStats(); ">animate</wa-button>
+                  {% if value.enableStats is defined %}
+                    <wa-details
+                        summary="{{ value.displayName | e }}"
+                        class="pageStats "
+                        id="pageStatsSitePage_{{ key }}"
+                        data-value="{{ value.var | e }}"
+                        {% if value.stats is defined %}open{% endif %}
+                        >
+                      <div class="wa-stack pageStatsField pageStatsFieldSitePage_{{ key }} " id="pageStatsFieldSitePage_{{ key }}">
+                        {% if value.stats is defined %}
+                          {% for itemKey, itemValue in value.stats.items() %}
+                            {% if itemKey == 'name' %}{% else %}
+                              <div
+                                   class="wa-split "
+                                   data-class="SitePage"
+                                   data-var="{{ itemKey }}"
+                                   data-val="{{ itemValue }}"
+                                  >
+                                <span>{{ itemKey | e }}</span>
+                                <span>{{ itemValue | e }}</span>
                               </div>
                             {% endif %}
-                          {% endif %}
-                        </div>
-                      </td>
-                    </tr>
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                    </wa-details>
                   {% endif %}
                 {% endfor %}
-              </table>
+              </div>
 {%- endblock htmBodyStatsSitePagePage %}
             </div>
           </wa-drawer>

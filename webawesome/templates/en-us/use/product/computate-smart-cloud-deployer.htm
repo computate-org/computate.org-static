@@ -48,13 +48,12 @@ wa-button::part(base), wa-details::part(base) {
                 </div>
                 {% else %}
                 <div class="wa-stack ">
-                  <div>You will use your GitHub username shown in the menu during checkout. </div>
-                  <div>
-                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.storeUrl }}" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                      Order here
+                  <form style="display: inline-block; " method="post" target="_blank" action="{{ AUTHORIZE_NET_URL }}/payment/payment">
+                    <input type="hidden" name="token" value="{{ hostedPaymentToken }}"/>
+                    <wa-button type="submit">
+                      Make a payment by credit card. 
                     </wa-button>
-                  </div>
+                  </form>
                 </div>
                 {% endif %}
                 {% else %}

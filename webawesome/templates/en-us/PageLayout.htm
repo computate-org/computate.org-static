@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ SITE_LOCALE }}" class="wa-{{ userSiteTheme | default(SITE_THEME) }}">
+<html lang="{{ SITE_LOCALE }}" class="wa-{{ userSiteTheme | default(SITE_THEME) }} wa-theme-{{ userWebComponentsTheme | default('default') }} ">
   <head>
 {%- block htmHeadPageLayout %}
     <meta charset="UTF-8" />
@@ -27,7 +27,8 @@
 {%- block htmStylesPageLayout %}
     <link rel="icon" href="{{ STATIC_BASE_URL }}/favicon.svg" />
     {{ WEB_COMPONENTS_CSS }}
-<link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-alpha.12/dist/styles/themes/{{ userWebComponentsTheme | default('glossy') }}.css" />
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.4/dist/styles/webawesome.css" />
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.4/dist/styles/themes/{{ userWebComponentsTheme | default('tailspin') }}.css" />
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.draw.css" />
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.contextmenu.css"/>
@@ -65,7 +66,7 @@
               response.json().then(function(body) {
                 dropdownMenu.innerHTML = '';
                 body.list.forEach((o) => {
-                  var menuItem = document.createElement('wa-menu-item');
+                  var menuItem = document.createElement('wa-dropdown-item');
                   menuItem.innerText = o.objectTitle;
                   menuItem.setAttribute('data-href', o.displayPage);
                   dropdownMenu.appendChild(menuItem);
@@ -98,7 +99,7 @@
         });
       });
     </script>
-    {{ WEB_COMPONENTS_JS }}
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-beta.4/dist/webawesome.loader.js"></script>
     <script src="{{ STATIC_BASE_URL }}/js/site.js"></script>
     <script src="{{ STATIC_BASE_URL }}/js/sockjs.js"></script>
     <script src="{{ STATIC_BASE_URL }}/js/vertx-eventbus.js"></script>
@@ -126,21 +127,19 @@
             </a>
           </div>
           <div class="wa-cluster " style="justify-content: center;">
-            <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="youtube" family="brands" label="Follow us on Youtube" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank"></wa-icon-button>
-            <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="github" family="brands" label="View our source code on GitHub" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank"></wa-icon-button>
-            <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="linkedin" family="brands" label="Share on LinkedIn" href="https://www.linkedin.com/company/computate/" target="_blank"></wa-icon-button>
-            <wa-icon-button style="font-size: var(--wa-font-size-2xl); color: inherit;" name="envelope-open" label="Share with email" href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank"></wa-icon-button>
+            <wa-button style="font-size: var(--wa-font-size-2xl); color: inherit;" label="Follow us on Youtube" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank">
+              <i slot="start" class="fa-brands fa-youtube"></i>
+            </wa-button>
+            <wa-button style="font-size: var(--wa-font-size-2xl); color: inherit;" label="View our source code on GitHub" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank">
+              <i slot="start" class="fa-brands fa-github"></i>
+            </wa-button>
+            <wa-button style="font-size: var(--wa-font-size-2xl); color: inherit;" label="Share on LinkedIn" href="https://www.linkedin.com/company/computate/" target="_blank">
+              <i slot="start" class="fa-brands fa-linkedin"></i>
+            </wa-button>
+            <wa-button style="font-size: var(--wa-font-size-2xl); color: inherit;" label="Share with email" href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank">
+              <i slot="start" class="fa-duotone fa-regular fa-envelope-open"></i>
+            </wa-button>
           </div>
-          <wa-tooltip for="site-aside-left-model-button-CompanyAbout" placement="right" hoist>Learn about our team, company, culture, and values. </wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-UseCase" placement="right" hoist>See computate use cases for real organizations. </wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-CompanyCourse" placement="right" hoist>Take an exciting hands-on course on your own computer with computate</wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-SitePage" placement="right" hoist>Read the latest articles to learn more</wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-CompanyProduct" placement="right" hoist>See the computate products that will help you build your own data-driven platforms</wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-CompanyEvent" placement="right" hoist>See the upcoming computate in-person and online events</wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-CompanyWebinar" placement="right" hoist>Join the Computate community for regular weekly webinars</wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-CompanyService" placement="right" hoist>See the services provided by computate that will help you build your own data-driven platforms</wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-CompanyResearch" placement="right" hoist>Read about the computate project related research going on at Red Hat research</wa-tooltip>
-          <wa-tooltip for="site-aside-left-model-button-CompanyWebsite" placement="right" hoist>See the live websites built with computate</wa-tooltip>
           <div class="wa-stack ">
             <div>
 {%- if userName is defined %}
@@ -155,14 +154,23 @@
                 <wa-tooltip for="site-button-logout" placement="right">sign out</wa-tooltip>
                 <div>
                   <wa-button id="site-button-user-page" variant="brand" href="{{ SITE_BASE_URL }}/en-us/edit/user/{{ userId }}" label="see or change your user profile">
-                    <i slot="prefix" class="fa-duotone fa-regular  fa-house-user"></i>
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-house-user"></i>
                     <span>my user page</span>
                   </wa-button>
                   <wa-button id="site-button-logout" variant="brand" href="{{ logoutUrl }}" label="sign out">
-                    <i slot="prefix" class="fa-duotone fa-regular  fa-person-from-portal"></i>
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-person-from-portal"></i>
                     <span>sign out</span>
                   </wa-button>
                 </div>
+                <wa-details summary="User groups" open="true">
+                  <div class="wa-stack ">
+                    <div>
+                      {% for group in userGroups %}
+                      <wa-badge variant="success">{{ group }}</wa-badge>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </wa-details>
                 <wa-details summary="Current scopes" open="true">
                   <div class="wa-stack ">
                     <div>
@@ -178,63 +186,69 @@
               </wa-details>
 {%- else %}
               <wa-button variant="brand" href="{{ SITE_BASE_URL }}/en-us/search/user">
-                <i class="fa-duotone fa-regular  fa-person-to-portal"></i> login
+                <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-person-to-portal"></i> login
               </wa-button>
 {%- endif %}
             </div>
             <div>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyAbout" href="{{ SITE_BASE_URL }}/en-us/search/about">
-                <i class="fa-duotone fa-regular fa-address-card"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-address-card"></i>
                 about
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-UseCase" href="{{ SITE_BASE_URL }}/en-us/search/use-case">
-                <i class="fa-duotone fa-regular fa-file-invoice"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-file-invoice"></i>
                 use cases
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyCourse" href="{{ SITE_BASE_URL }}/en-us/search/course">
-                <i class="fa-duotone fa-regular fa-notebook"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-notebook"></i>
                 courses
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SitePage" href="{{ SITE_BASE_URL }}/en-us/search/article">
-                <i class="fa-duotone fa-regular fa-newspaper"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-newspaper"></i>
                 articles
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}/en-us/search/product">
-                <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-conveyor-belt"></i>
                 products
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyEvent" href="{{ SITE_BASE_URL }}/en-us/search/event">
-                <i class="fa-duotone fa-regular fa-map-location-dot"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-map-location-dot"></i>
                 events
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyWebinar" href="{{ SITE_BASE_URL }}/en-us/search/webinar">
-                <i class="fa-duotone fa-regular fa-video"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-video"></i>
                 webinars
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyService" href="{{ SITE_BASE_URL }}/en-us/search/service">
-                <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-conveyor-belt"></i>
                 services
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyResearch" href="{{ SITE_BASE_URL }}/en-us/search/research">
-                <i class="fa-duotone fa-regular fa-school"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-school"></i>
                 research
               </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyWebsite" href="{{ SITE_BASE_URL }}/en-us/search/website">
-                <i class="fa-duotone fa-regular fa-globe-pointer"></i>
+                <i slot="start" class="fa-duotone fa-regular fa-globe-pointer"></i>
                 websites
               </wa-button>
             </div>
           </div>
       </nav>
-      <main>
+      <main class="wa-stack ">
+        <wa-drawer id="warnings-drawer" label="Warnings">
+          <div id="warnings-drawer-stack" class="wa-stack ">
+          </div>
+        </wa-drawer>
         <header slot="header" class="wa-flank margin-block ">
-          <wa-icon-button data-toggle-nav name="bars" class="nav-toggle-button hide-desktop " label="open menu" appearance="text"></wa-icon-button>
+          <wa-button data-toggle-nav variant="brand" label="open menu">
+            <i slot="start" class="fa-duotone fa-regular fa-bars"></i>
+          </wa-button>
           <wa-popup  placement="bottom-start" id="siteSearchDropdown">
             <wa-input slot="anchor" placeholder="search" id="siteSearchInput">
-              <i slot="prefix" class="fa-duotone fa-regular  fa-magnifying-glass"></i>
+              <i slot="start" class="fa-duotone fa-regular  fa-magnifying-glass"></i>
             </wa-input>
-            <wa-menu id="siteSearchDropdownMenu">
-            </wa-menu>
+            <div id="siteSearchDropdownMenu">
+            </div>
           </wa-popup>
         </header>
 {%- endblock htmBodyStartPageLayout %}

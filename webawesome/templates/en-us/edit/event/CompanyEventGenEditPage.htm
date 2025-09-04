@@ -141,6 +141,7 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -251,6 +252,7 @@
           deletefilterCompanyEvent(event.target);
           return false;
         });
+{%- block htmScriptInitCompanyEventPage %}{%- endblock htmScriptInitCompanyEventPage %}
       });
     </script>
 {%- endblock htmScriptCompanyEventPage %}
@@ -275,7 +277,7 @@
           <div class="wa-flank ">
             <wa-tooltip for="return-to-CompanyEvent">back to all events</wa-tooltip>
             <wa-button id="return-to-CompanyEvent" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
+              <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
               all events
             </wa-button>
             <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-map-location-dot"></i> {{ result.objectTitle | e }}</h1>
@@ -291,7 +293,7 @@
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyEventPage %}
-        <div>
+        <div class="pageContent ">
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyEvent">back to all events</wa-tooltip></wa-tooltip>
@@ -337,7 +339,8 @@
 {%- endblock htmBodyMiddlePageLayout %}
 
 {%- block htmBodyEndPageLayout %}
-      {{ super() }}
 {%- block htmBodyEndCompanyEventPage %}
+{%- include en-us/search/event/CompanyEventLocation.htm %}
 {%- endblock htmBodyEndCompanyEventPage %}
+      {{ super() }}
 {%- endblock htmBodyEndPageLayout %}

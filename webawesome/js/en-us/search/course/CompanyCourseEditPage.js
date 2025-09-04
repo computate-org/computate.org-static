@@ -120,6 +120,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH pageImageUri
+          document.querySelector('#Page_pageImageUri')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageImageUri');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyCourseVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPageImageUri', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_pageImageUri')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_pageImageUri')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageImageUri');
+            const valid = form.reportValidity();
+          });
+
           // PATCH pageId
           document.querySelector('#Page_pageId')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_pageId');
@@ -285,6 +306,27 @@ Promise.all([
           });
           document.querySelector('#Page_courseNum')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_courseNum');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH pageImageAlt
+          document.querySelector('#Page_pageImageAlt')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageImageAlt');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyCourseVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPageImageAlt', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_pageImageAlt')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_pageImageAlt')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageImageAlt');
             const valid = form.reportValidity();
           });
 

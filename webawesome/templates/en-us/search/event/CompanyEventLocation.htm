@@ -1,0 +1,15 @@
+{%- block htmBodyLocationCompanyEventPage %}
+        <wa-details open>
+          <div slot="summary">Map of events</div>
+
+{%- block htmBodyGraphLocationCompanyEventPage %}
+{% if resultCount > 0 %}
+        <div id="htmBodyGraphLocationCompanyEventPage" class="htmBodyGraphLocation "></div>
+{% endif %}
+{%- endblock htmBodyGraphLocationCompanyEventPage %}
+
+{%- block htmBodyGraphCompanyEventPage %}
+        <div id="htmBodyGraphCompanyEventPage" class="htmBodyGraph "></div>
+{%- endblock htmBodyGraphCompanyEventPage %}
+        </wa-details>
+{%- endblock htmBodyLocationCompanyEventPage %}
