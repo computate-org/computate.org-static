@@ -127,17 +127,17 @@
             </a>
           </div>
           <div class="wa-cluster " style="justify-content: center;">
-            <wa-button style="font-size: var(--wa-font-size-2xl); color: inherit;" label="Follow us on Youtube" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank">
-              <i slot="start" class="fa-brands fa-youtube"></i>
+            <wa-button href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank">
+              <i label="Follow us on Youtube" class="fa-brands fa-youtube fa-2xl"></i>
             </wa-button>
-            <wa-button style="font-size: var(--wa-font-size-2xl); color: inherit;" label="View our source code on GitHub" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank">
-              <i slot="start" class="fa-brands fa-github"></i>
+            <wa-button href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank">
+              <i label="View our source code on GitHub" class="fa-brands fa-github fa-2xl"></i>
             </wa-button>
-            <wa-button style="font-size: var(--wa-font-size-2xl); color: inherit;" label="Share on LinkedIn" href="https://www.linkedin.com/company/computate/" target="_blank">
-              <i slot="start" class="fa-brands fa-linkedin"></i>
+            <wa-button href="https://www.linkedin.com/company/computate/" target="_blank">
+              <i label="Share on LinkedIn" class="fa-brands fa-linkedin fa-2xl"></i>
             </wa-button>
-            <wa-button style="font-size: var(--wa-font-size-2xl); color: inherit;" label="Share with email" href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank">
-              <i slot="start" class="fa-duotone fa-regular fa-envelope-open"></i>
+            <wa-button href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank">
+              <i label="Share with email" class="{{ FONTAWESOME_STYLE }} fa-envelope-open fa-2xl"></i>
             </wa-button>
           </div>
           <div class="wa-stack ">
@@ -241,11 +241,11 @@
         </wa-drawer>
         <header slot="header" class="wa-flank margin-block ">
           <wa-button data-toggle-nav variant="brand" label="open menu">
-            <i slot="start" class="fa-duotone fa-regular fa-bars"></i>
+            <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-bars"></i>
           </wa-button>
           <wa-popup  placement="bottom-start" id="siteSearchDropdown">
             <wa-input slot="anchor" placeholder="search" id="siteSearchInput">
-              <i slot="start" class="fa-duotone fa-regular  fa-magnifying-glass"></i>
+              <i slot="start" class="{{ FONTAWESOME_STYLE }}  fa-magnifying-glass"></i>
             </wa-input>
             <div id="siteSearchDropdownMenu">
             </div>
