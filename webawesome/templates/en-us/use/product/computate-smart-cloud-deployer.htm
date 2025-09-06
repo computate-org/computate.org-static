@@ -49,12 +49,7 @@ wa-button::part(base), wa-details::part(base) {
                 </div>
                 {% else %}
                 <div class="wa-stack ">
-                  <form style="display: inline-block; " method="post" target="_blank" action="{{ AUTHORIZE_NET_URL }}/payment/payment">
-                    <input type="hidden" name="token" value="{{ hostedPaymentToken }}"/>
-                    <wa-button type="submit">
-                      Make a payment by credit card. 
-                    </wa-button>
-                  </form>
+                  We are currently migrating from Square payment processor to Authorize.net, so this is unavailable for a few days. 
                 </div>
                 {% endif %}
                 {% else %}
