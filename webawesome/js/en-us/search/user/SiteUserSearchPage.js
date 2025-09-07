@@ -348,6 +348,17 @@ Promise.all([
     facetStatsChange('SiteUser', 'displayName', false);
   });
 
+  document.querySelector('#pageSelectSortSiteUser_customerProfileId')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'customerProfileId', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSiteUser_customerProfileId')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SiteUser', 'customerProfileId', true);
+  });
+  document.querySelector('#pageStatsSiteUser_customerProfileId')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SiteUser', 'customerProfileId', false);
+  });
+
   document.querySelector('#htmButton_patchSiteUser')?.addEventListener('click', (event) => {
     document.querySelector('#patchSiteUserDialog').open = true;
   });

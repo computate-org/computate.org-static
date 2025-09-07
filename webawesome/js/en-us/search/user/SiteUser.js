@@ -156,6 +156,10 @@ function searchSiteUserFilters($formFilters) {
     var filterDisplayName = $formFilters.querySelector('.valueDisplayName')?.value;
     if(filterDisplayName != null && filterDisplayName !== '')
       filters.push({ name: 'fq', value: 'displayName:' + filterDisplayName });
+
+    var filterCustomerProfileId = $formFilters.querySelector('.valueCustomerProfileId')?.value;
+    if(filterCustomerProfileId != null && filterCustomerProfileId !== '')
+      filters.push({ name: 'fq', value: 'customerProfileId:' + filterCustomerProfileId });
   }
   return filters;
 }
@@ -466,6 +470,18 @@ async function patchSiteUser($formFilters, $formValues, target, userId, success,
   if(removeDisplayName != null && removeDisplayName !== '')
     vals['removeDisplayName'] = removeDisplayName;
 
+  var valueCustomerProfileId = $formValues.querySelector('.valueCustomerProfileId')?.value;
+  var removeCustomerProfileId = $formValues.querySelector('.removeCustomerProfileId')?.value === 'true';
+  var setCustomerProfileId = removeCustomerProfileId ? null : $formValues.querySelector('.setCustomerProfileId')?.value;
+  var addCustomerProfileId = $formValues.querySelector('.addCustomerProfileId')?.value;
+  if(removeCustomerProfileId || setCustomerProfileId != null && setCustomerProfileId !== '')
+    vals['setCustomerProfileId'] = setCustomerProfileId;
+  if(addCustomerProfileId != null && addCustomerProfileId !== '')
+    vals['addCustomerProfileId'] = addCustomerProfileId;
+  var removeCustomerProfileId = $formValues.querySelector('.removeCustomerProfileId')?.value;
+  if(removeCustomerProfileId != null && removeCustomerProfileId !== '')
+    vals['removeCustomerProfileId'] = removeCustomerProfileId;
+
   patchSiteUserVals(userId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'userId:' + userId}], vals, target, success, error);
 }
 
@@ -615,6 +631,10 @@ function patchSiteUserFilters($formFilters) {
     var filterDisplayName = $formFilters.querySelector('.valueDisplayName')?.value;
     if(filterDisplayName != null && filterDisplayName !== '')
       filters.push({ name: 'fq', value: 'displayName:' + filterDisplayName });
+
+    var filterCustomerProfileId = $formFilters.querySelector('.valueCustomerProfileId')?.value;
+    if(filterCustomerProfileId != null && filterCustomerProfileId !== '')
+      filters.push({ name: 'fq', value: 'customerProfileId:' + filterCustomerProfileId });
   }
   return filters;
 }
@@ -741,6 +761,10 @@ async function postSiteUser($formValues, target, success, error) {
   var valueDisplayName = $formValues.querySelector('.valueDisplayName')?.value;
   if(valueDisplayName != null && valueDisplayName !== '')
     vals['displayName'] = valueDisplayName;
+
+  var valueCustomerProfileId = $formValues.querySelector('.valueCustomerProfileId')?.value;
+  if(valueCustomerProfileId != null && valueCustomerProfileId !== '')
+    vals['customerProfileId'] = valueCustomerProfileId;
 
   fetch(
     '/en-us/api/user'
@@ -889,6 +913,7 @@ async function websocketSiteUserInner(apiRequest) {
         var inputUserLastName = null;
         var inputUserFullName = null;
         var inputDisplayName = null;
+        var inputCustomerProfileId = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('.Page_pk');
@@ -952,6 +977,8 @@ async function websocketSiteUserInner(apiRequest) {
           inputUserFullName = $response.querySelector('.Page_userFullName');
         if(vars.includes('displayName'))
           inputDisplayName = $response.querySelector('.Page_displayName');
+        if(vars.includes('customerProfileId'))
+          inputCustomerProfileId = $response.querySelector('.Page_customerProfileId');
 
         jsWebsocketSiteUser(userId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -1266,6 +1293,16 @@ async function websocketSiteUserInner(apiRequest) {
               item.textContent = inputDisplayName.textContent;
           });
           addGlow(document.querySelector('.Page_displayName'));
+        }
+
+        if(inputCustomerProfileId) {
+          document.querySelectorAll('.Page_customerProfileId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCustomerProfileId.getAttribute('value');
+            else
+              item.textContent = inputCustomerProfileId.textContent;
+          });
+          addGlow(document.querySelector('.Page_customerProfileId'));
         }
 
           pageGraphSiteUser();

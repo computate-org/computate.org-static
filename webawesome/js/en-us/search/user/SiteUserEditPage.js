@@ -395,4 +395,25 @@ Promise.all([
             const form = document.querySelector('#PageForm_displayName');
             const valid = form.reportValidity();
           });
+
+          // PATCH customerProfileId
+          document.querySelector('#Page_customerProfileId')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_customerProfileId');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
+                  , 'setCustomerProfileId', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_customerProfileId')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_customerProfileId')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_customerProfileId');
+            const valid = form.reportValidity();
+          });
 });
