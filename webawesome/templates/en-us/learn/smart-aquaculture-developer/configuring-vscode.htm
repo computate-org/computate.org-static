@@ -1,0 +1,26 @@
+{% extends "en-us/PageLayout.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Getting started with the Smart Aquaculture Platform on your own computer" />
+    <meta name="result.description" content="How to install recommended extensions and configurations for VSCode. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-10-01T10:21:46.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/smart-aquaculture-enterprise-dashboard.png" />
+    <meta name="result.pageImageAlt" content="Smart Aquaculture Enterprise Dashboard" />
+    <meta name="result.labelsString" content="getting-started" />
+{% endblock htmMetaPageLayout %}
+{% block htmStylePageLayout %}
+{% endblock htmStylePageLayout %}
+{% block htmBodyMiddlePageLayout %}
+
+    <div class="wa-stack">
+      <h1>
+        How to install the Smart Aquaculture platform for development on your own computer with OpenShift Local
+      </h1>
+      <p>
+        Create a new Repo in ArgoCD. 
+      </p>
+    </div>
+{% endblock %}

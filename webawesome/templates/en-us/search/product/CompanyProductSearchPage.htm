@@ -1,1 +1,35 @@
 {% extends "en-us/search/product/CompanyProductGenSearchPage.htm" %}
+{%- block htmBodyMiddleCompanyProductPage %}
+{% if resultCount > 0 %}
+<div class="wa-stack wa-align-items-center" style="max-width: 105ch; margin: 0 auto;">
+  <div class="wa-grid" style="--min-column-size: 40ch;">
+    {% for result in listCompanyProduct %}
+    <wa-card with-image style="height: 100%">
+      <div class="wa-frame:landscape wa-border-radius-l "{% if result.pageImageWidth %} style="aspect-ratio: {{ result.pageImageWidth }} / {{ result.pageImageHeight }}; "{% endif %}>
+        <img
+            slot="media"
+            src="{{ STATIC_BASE_URL }}{{ result.pageImageUri }}"
+            {% if result.pageImageAlt is defined %}
+            alt="{{ result.pageImageAlt | e }}"
+            {% endif %}
+            />
+      </div>
+      <div class="wa-stack">
+        <h2 class="wa-heading-m">{{ result.name | e }}</h2>
+        <p class="wa-caption-l">
+          {{ result.description | e }}
+        </p>
+        {% if result.price == "0.00" %}
+        <h1>Price: Free!</h1>
+        {% else %}
+        <h1>Price: <wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number></h1>
+        {% endif %}
+        {% include result.dialogTemplate %}
+      </div>
+    </wa-card>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}
+{%- endblock htmBodyMiddleCompanyProductPage %}

@@ -1,6 +1,12 @@
 {% extends "en-us/PageLayout.htm" %}
 {% block htmMetaPageLayout %}
 {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}"/>
+    <meta name="result.emailTemplate" content="/en-us/email/order-details.htm"/>
+    <meta name="result.name" content="Smart Aquaculture Developer"/>
+    <meta name="result.description" content="Learn the skills of a professional cloud application developer, building smart data-driven applications to solve ecological data problems with the {{ result.name }}"/>
+    <meta name="result.productNum" content="3"/>
+    <meta name="result.price" content="512.00"/>
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
 
@@ -21,20 +27,12 @@ wa-button::part(base), wa-details::part(base) {
 
           <wa-card class="pink-purple-background ">
             <div class="main-content ">
-              <h2>
-                Are you interested to learn how to deploy open source smart device microservices to the cloud? 
-              </h2>
-              <div class="wa-flank ">
-                <i class="fa-duotone fa-regular fa-browser fa-7x "></i>
-                <div>
-                  <h2>
-                    Deploy modern open source microservices including Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications
-                  </h2>
-                  <h1>
-                    with the {{ result.name }}
-                  </h1>
-                </div>
-              </div>
+              <h1>
+                {{ result.name | e }}
+              </h1>
+              <p>
+                {{ result.description | e }}
+              </p>
               <wa-card>
                 {% if userName is defined %}
                 {% if scopes is defined and "GET" in scopes %}

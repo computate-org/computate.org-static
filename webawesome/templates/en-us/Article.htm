@@ -1,4 +1,7 @@
 {% extends "en-us/PageLayout.htm" %}
+{%- macro code(code) %}
+<div class="wa-flank wa-gap-2xs "><wa-copy-button value="{{ code | e }}"></wa-copy-button><wa-scroller><pre><code>{{ code | e }}</code></pre></wa-scroller></div>
+{%- endmacro %}
 {%- macro articleH1(resultName) -%}
     <h1 class="wa-heading-3xl">
       {{ result.name | e }}

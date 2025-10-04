@@ -1,0 +1,264 @@
+{% extends "en-us/PageLayout.htm" %}
+{%- block htmTitlePageLayout %}
+{%- block htmTitleSmartAquacultureDeveloperPage %}
+    <title>{{ result.objectTitle }}</title>
+{%- endblock htmTitleSmartAquacultureDeveloperPage %}
+{%- endblock htmTitlePageLayout %}
+
+{%- block htmStylesPageLayout %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloper.css"/>
+{%- block htmStylesSmartAquacultureDeveloperPage %}
+{%- endblock htmStylesSmartAquacultureDeveloperPage %}
+{%- endblock htmStylesPageLayout %}
+
+{%- block htmStylePageLayout %}
+      :root {
+        --site-results-number-of-columns: 2;
+      }
+{{ super() }}
+{%- block htmStyleSmartAquacultureDeveloperPage %}
+{%- endblock htmStyleSmartAquacultureDeveloperPage %}
+{%- endblock htmStylePageLayout %}
+
+{%- block htmScriptsPageLayout %}
+{{ super() }}
+{%- block htmScriptsSmartAquacultureDeveloperPage %}
+    <script src="{{staticBaseUrl}}/js/en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloper.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchPage.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperEditPage.js"></script>
+{%- endblock htmScriptsSmartAquacultureDeveloperPage %}
+{%- endblock htmScriptsPageLayout %}
+
+{%- block htmScriptPageLayout %}
+{%- block htmScriptSmartAquacultureDeveloperPage %}
+    <script>
+
+      function jsWebsocketSmartAquacultureDeveloper(pageId, vars, $response) {
+{%- block jsWebsocketSmartAquacultureDeveloperPage %}{%- endblock %}
+      }
+
+      function jsTooltipSmartAquacultureDeveloper(e, feature) {
+{%- block jsTooltipSmartAquacultureDeveloperPage %}{%- endblock %}
+      }
+
+      function htmTooltipSmartAquacultureDeveloper(feature, layer) {
+        return `{%- block htmTooltipSmartAquacultureDeveloperPage %}
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
+{%- endblock htmTooltipSmartAquacultureDeveloperPage %}`;
+      }
+    </script>
+    <script type="module">
+{% if DEFAULT_MAP_LOCATION is defined %}
+      window.DEFAULT_MAP_LOCATION = { type: 'Point', coordinates: [ {{ DEFAULT_MAP_LOCATION.coordinates[0] }}, {{ DEFAULT_MAP_LOCATION.coordinates[1] }} ]};
+{% endif %}
+{% if DEFAULT_MAP_ZOOM is defined %}
+      window.DEFAULT_MAP_ZOOM = {{ DEFAULT_MAP_ZOOM }};
+{% endif %}
+      window.DEFAULT_ZONE_ID = '{{ defaultZoneId }}';
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+      ]).then(() => {
+
+        var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
+
+        if(pageId == null) {
+          document.querySelector('#grid-toggle-details')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-list', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-details');
+          });
+          document.querySelector('#grid-toggle-list')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-list');
+          });
+          document.querySelector('#grid-toggle-card')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-list');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-card');
+          });
+        } else {
+          var o = document.querySelector('.pageForm .result')?.value;
+          if(o)
+            window.result = JSON.parse(o);
+        {% if result.pageId is defined %}
+        {% endif %}
+        }
+        var l = document.querySelector('.pageForm .listSmartAquacultureDeveloper')?.value;
+        if(l)
+          window.listSmartAquacultureDeveloper = JSON.parse(l);
+        window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
+        window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
+        window.defaultRangeVar = '{{ defaultRangeVar }}';
+        pageGraphSmartAquacultureDeveloper();
+        {% for key, value in varsQ.items() %}
+
+        document.querySelector('#qSmartAquacultureDeveloper_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
+          qChange('SmartAquacultureDeveloper', event.target, document.querySelector('#qSmartAquacultureDeveloperDiv_{{ key }}'));
+        });
+        {% endfor %}
+
+        document.querySelector('#qSmartAquacultureDeveloper_rows')?.addEventListener('change', event => {
+          paramChange('SmartAquacultureDeveloper', event.target, document.querySelector('#qSmartAquacultureDeveloperDiv_rows'));
+        });
+
+        document.querySelector('#qSmartAquacultureDeveloper_start')?.addEventListener('change', event => {
+          paramChange('SmartAquacultureDeveloper', event.target, document.querySelector('#qSmartAquacultureDeveloperDiv_start'));
+        });
+
+
+        var submitForm_patchSmartAquacultureDeveloper = document.querySelector('#htmForm_patchSmartAquacultureDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_patchSmartAquacultureDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          patchSmartAquacultureDeveloper(null, document.querySelector('#htmForm_patchSmartAquacultureDeveloper'), document.querySelector('#htmFormButton_patchSmartAquacultureDeveloper'), event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_postSmartAquacultureDeveloper = document.querySelector('#htmForm_postSmartAquacultureDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_postSmartAquacultureDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          postSmartAquacultureDeveloper(document.querySelector('#htmForm_postSmartAquacultureDeveloper')
+          , document.querySelector('#htmFormButton_postSmartAquacultureDeveloper')
+          , (json, target) => {
+            window.location.href = json.editPage;
+          });
+          return false;
+        });
+
+        var submitForm_deleteSmartAquacultureDeveloper = document.querySelector('#htmForm_deleteSmartAquacultureDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deleteSmartAquacultureDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          deleteSmartAquacultureDeveloper(event.target, event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_putimportSmartAquacultureDeveloper = document.querySelector('#htmForm_putimportSmartAquacultureDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_putimportSmartAquacultureDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          putimportSmartAquacultureDeveloper(document.querySelector('#htmForm_putimportSmartAquacultureDeveloper'), document.querySelector('#htmFormButton_putimportSmartAquacultureDeveloper'));
+          return false;
+        });
+
+        var submitForm_searchpageSmartAquacultureDeveloper = document.querySelector('#htmForm_searchpageSmartAquacultureDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_searchpageSmartAquacultureDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          searchpageSmartAquacultureDeveloper();
+          return false;
+        });
+
+        var submitForm_deletefilterSmartAquacultureDeveloper = document.querySelector('#htmForm_deletefilterSmartAquacultureDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deletefilterSmartAquacultureDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          deletefilterSmartAquacultureDeveloper(event.target);
+          return false;
+        });
+{%- block htmScriptInitSmartAquacultureDeveloperPage %}{%- endblock htmScriptInitSmartAquacultureDeveloperPage %}
+      });
+    </script>
+{%- endblock htmScriptSmartAquacultureDeveloperPage %}
+{%- endblock htmScriptPageLayout %}
+
+{%- block websocketPageLayout %}
+{%- block websocketSmartAquacultureDeveloperPage %}
+{% if resultCount > 0 %}
+        window.eventBus = new EventBus('/eventbus');
+        window.eventBus.enableReconnect(true);
+        websocketSmartAquacultureDeveloper(websocketSmartAquacultureDeveloperInner);
+{% endif %}
+{%- endblock websocketSmartAquacultureDeveloperPage %}
+{%- endblock websocketPageLayout %}
+
+{%- block htmUrlSmartAquacultureDeveloperPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlSmartAquacultureDeveloperPage %}
+
+{%- block htmBodyStartPageLayout %}
+    {{ super() }}
+{%- block htmBodyStartSmartAquacultureDeveloperPage %}
+{% if resultCount > 0 %}
+          <div class="wa-flank ">
+            <wa-tooltip for="return-to-SmartAquacultureDeveloper">back to all Smart Aquaculture Developer courses</wa-tooltip>
+            <wa-button id="return-to-SmartAquacultureDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
+              all Smart Aquaculture Developer courses
+            </wa-button>
+            <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-fish"></i> {{ result.objectTitle | e }}</h1>
+          </div>
+          <div class="margin-block">
+          </div>
+{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchForm.htm %}
+          <wa-divider></wa-divider>
+{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchButtons.htm %}
+{% endif %}
+{%- endblock htmBodyStartSmartAquacultureDeveloperPage %}
+{%- endblock htmBodyStartPageLayout %}
+
+{%- block htmBodyMiddlePageLayout %}
+{%- block htmBodyMiddleSmartAquacultureDeveloperPage %}
+        <div class="pageContent ">
+{% if resultCount == 0 %}
+        <div class="wa-stack ">
+          <wa-tooltip for="return-to-SmartAquacultureDeveloper">back to all Smart Aquaculture Developer courses</wa-tooltip></wa-tooltip>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-SmartAquacultureDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-fish"></i>
+              all Smart Aquaculture Developer courses
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no Smart Aquaculture Developer course found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-fish"></i>
+            </div>
+            <span class="wa-heading-m ">no Smart Aquaculture Developer course found</span>
+            <p class="wa-caption-l ">Learn how to become a Smart Aquaculture platform developer — Understanding fish population and ocean health, tracking fishing boat movements, monitoring fish species landed and their weight, tracking processing and delivery times, providing net-zero waste solutions for seafood, promoting SA/IF innovation through community outreach, startup support, and IoT applications. </p>
+{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchForm.htm %}
+          </div>
+        </div>
+{% else %}
+{%- include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSidebar.htm %}
+{%- include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSuggestedSearch.htm %}
+{% endif %}
+{%- block htmFormSmartAquacultureDeveloperPage %}
+          <form action="/en-us/api/smart-aquaculture-developer" id="SmartAquacultureDeveloperForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+{% if result.pageId is defined %}
+            <input name="pageId" class="valuePageId" type="hidden" value="{{ result.pageId }}"/>
+            {% endif %}
+            <input name="focusId" type="hidden"/>
+            <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+            <input name="result" id="result" class="result"  value='{{ toJsonObjectStringInApostrophes(result) }}' type="hidden"/>
+            <input name="listSmartAquacultureDeveloper" id="listSmartAquacultureDeveloper" class="listSmartAquacultureDeveloper"  value='{{ toJsonArrayStringInApostrophes(listSmartAquacultureDeveloper) }}' type="hidden"/>
+          </form>
+  {% if solrId is defined %}
+          {{ htmButton_searchpageSmartAquacultureDeveloper() }}
+          {{ htmForm_searchpageSmartAquacultureDeveloper() }}
+  {% endif %}
+{%- endblock htmFormSmartAquacultureDeveloperPage %}
+        </div>
+{%- endblock htmBodyMiddleSmartAquacultureDeveloperPage %}
+{%- endblock htmBodyMiddlePageLayout %}
+
+{%- block htmBodyEndPageLayout %}
+{%- block htmBodyEndSmartAquacultureDeveloperPage %}
+{%- include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperLocation.htm %}
+{%- endblock htmBodyEndSmartAquacultureDeveloperPage %}
+      {{ super() }}
+{%- endblock htmBodyEndPageLayout %}

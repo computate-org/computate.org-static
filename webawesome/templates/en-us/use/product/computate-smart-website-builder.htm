@@ -51,7 +51,12 @@ wa-button::part(base), wa-details::part(base) {
                 </div>
                 {% else %}
                 <div class="wa-stack ">
-                  We are currently migrating from Square payment processor to Authorize.net, so this is unavailable for a few days. 
+                  <form id="formAuthorizeNet" name="formAuthorizeNet" method="post" action="{{ AUTHORIZE_NET_URL }}/payment/payment">
+                    <input type="hidden" name="token" value="{{ hostedPaymentResponseToken | e }}" />
+                    <wa-button type="submit" id="btnContinue">
+                      Buy now at authorize.net
+                    </wa-button>
+                  </form>
                 </div>
                 {% endif %}
                 {% else %}

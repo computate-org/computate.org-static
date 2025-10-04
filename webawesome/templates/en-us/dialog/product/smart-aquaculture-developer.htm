@@ -1,0 +1,13 @@
+<wa-dialog label="Dialog" id="dialog-overview">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  <wa-button slot="footer" variant="brand" data-dialog="close">Close</wa-button>
+</wa-dialog>
+
+<wa-button>Open Dialog</wa-button>
+
+<script>
+  const dialog = document.querySelector('#dialog-overview');
+  const openButton = dialog.nextElementSibling;
+
+  openButton.addEventListener('click', () => (dialog.open = true));
+</script>
