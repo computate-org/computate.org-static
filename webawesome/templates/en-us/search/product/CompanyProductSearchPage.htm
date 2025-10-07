@@ -1,32 +1,61 @@
 {% extends "en-us/search/product/CompanyProductGenSearchPage.htm" %}
 {%- block htmBodyMiddleCompanyProductPage %}
 {% if resultCount > 0 %}
+<script type="module">
+  Promise.all([
+    customElements.whenDefined('wa-button')
+    , customElements.whenDefined('wa-input')
+  ]).then(() => {
+    {% for result in listCompanyProduct %}
+    document.querySelector('#dialog-button-{{ result.pageId }}').addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
+    document.querySelector('#dialog-card-link-{{ result.pageId }}').addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('#dialog-{{ result.pageId }}').open = true;
+      return false;
+    });
+    {% endfor %}
+  });
+</script>
 <div class="wa-stack wa-align-items-center" style="max-width: 105ch; margin: 0 auto;">
   <div class="wa-grid" style="--min-column-size: 40ch;">
     {% for result in listCompanyProduct %}
-    <wa-card with-image style="height: 100%">
-      <div class="wa-frame:landscape wa-border-radius-l "{% if result.pageImageWidth %} style="aspect-ratio: {{ result.pageImageWidth }} / {{ result.pageImageHeight }}; "{% endif %}>
-        <img
-            slot="media"
-            src="{{ STATIC_BASE_URL }}{{ result.pageImageUri }}"
-            {% if result.pageImageAlt is defined %}
-            alt="{{ result.pageImageAlt | e }}"
+    <a class="wa-link-plain " href="{{ result.userPage }}" id="dialog-card-link-{{ result.pageId }}">
+      <wa-card with-image style="height: 100%" class="hover-card">
+        <div class="wa-frame:landscape wa-border-radius-l "{% if result.pageImageWidth %} style="aspect-ratio: {{ result.pageImageWidth }} / {{ result.pageImageHeight }}; "{% endif %}>
+          <img
+              slot="media"
+              src="{{ STATIC_BASE_URL }}{{ result.pageImageUri }}"
+              {% if result.pageImageAlt is defined %}
+              alt="{{ result.pageImageAlt | e }}"
+              {% endif %}
+              />
+        </div>
+        <div class="margin-block-start ">
+          <h3>{{ result.name | e }}</h3>
+          <p class="wa-caption-l">
+            {{ result.description | e }}
+          </p>
+          <p>
+            {% if result.price == "0.00" %}
+            This product is Free!
+            {% else %}
+            This product costs <code><wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number></code>
             {% endif %}
-            />
-      </div>
-      <div class="wa-stack">
-        <h2 class="wa-heading-m">{{ result.name | e }}</h2>
-        <p class="wa-caption-l">
-          {{ result.description | e }}
-        </p>
+          </p>
+          <wa-button variant="brand" id="dialog-button-{{ result.pageId }}">Learn more</wa-button>
+        </div>
+      </wa-card>
+    </a>
+    <wa-dialog label="{{ result.name | e }}" id="dialog-{{ result.pageId }}" light-dismiss style="--width: 50vw; ">
+      {% include result.dialogTemplate %}
+      <wa-button slot="footer" variant="brand" href="{{ result.userPage }}">
         {% if result.price == "0.00" %}
-        <h1>Price: Free!</h1>
+        Learn for free!
         {% else %}
-        <h1>Price: <wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number></h1>
+        Buy
         {% endif %}
-        {% include result.dialogTemplate %}
-      </div>
-    </wa-card>
+      </wa-button>
+    </wa-dialog>
     {% endfor %}
   </div>
 </div>

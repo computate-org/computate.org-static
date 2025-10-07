@@ -609,3 +609,8 @@ main, footer {
     padding: var(--wa-space-xs) var(--wa-space-s);
   }
 }
+.hover-card {
+  &:hover {
+    background: var(--wa-color-surface-raised);
+  }
+}
