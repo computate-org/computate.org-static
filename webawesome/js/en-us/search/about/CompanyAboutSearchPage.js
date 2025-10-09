@@ -304,4 +304,40 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyAbout_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyAbout', event.currentTarget);
           });
+          document.querySelector('#fqCompanyAbout_editPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyAbout_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyAbout_userPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyAbout_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyAbout_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyAbout_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyAbout', event.currentTarget);
+          });
 });

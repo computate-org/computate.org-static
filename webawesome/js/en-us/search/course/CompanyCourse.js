@@ -113,6 +113,10 @@ function searchCompanyCourseFilters($formFilters) {
     if(filterDownloadUri != null && filterDownloadUri !== '')
       filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
 
+    var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
+    if(filterCourseNum != null && filterCourseNum !== '')
+      filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
@@ -327,6 +331,42 @@ async function patchCompanyCourse($formFilters, $formValues, target, pageId, suc
   if(removeObjectTitle != null && removeObjectTitle !== '')
     vals['removeObjectTitle'] = removeObjectTitle;
 
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
+  var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
+  var addEditPage = $formValues.querySelector('.addEditPage')?.value;
+  if(removeEditPage || setEditPage != null && setEditPage !== '')
+    vals['setEditPage'] = setEditPage;
+  if(addEditPage != null && addEditPage !== '')
+    vals['addEditPage'] = addEditPage;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value;
+  if(removeEditPage != null && removeEditPage !== '')
+    vals['removeEditPage'] = removeEditPage;
+
+  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
+  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value === 'true';
+  var setUserPage = removeUserPage ? null : $formValues.querySelector('.setUserPage')?.value;
+  var addUserPage = $formValues.querySelector('.addUserPage')?.value;
+  if(removeUserPage || setUserPage != null && setUserPage !== '')
+    vals['setUserPage'] = setUserPage;
+  if(addUserPage != null && addUserPage !== '')
+    vals['addUserPage'] = addUserPage;
+  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value;
+  if(removeUserPage != null && removeUserPage !== '')
+    vals['removeUserPage'] = removeUserPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value === 'true';
+  var setDownload = removeDownload ? null : $formValues.querySelector('.setDownload')?.value;
+  var addDownload = $formValues.querySelector('.addDownload')?.value;
+  if(removeDownload || setDownload != null && setDownload !== '')
+    vals['setDownload'] = setDownload;
+  if(addDownload != null && addDownload !== '')
+    vals['addDownload'] = addDownload;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value;
+  if(removeDownload != null && removeDownload !== '')
+    vals['removeDownload'] = removeDownload;
+
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   var removeSolrId = $formValues.querySelector('.removeSolrId')?.value === 'true';
   var setSolrId = removeSolrId ? null : $formValues.querySelector('.setSolrId')?.value;
@@ -374,6 +414,18 @@ async function patchCompanyCourse($formFilters, $formValues, target, pageId, suc
   var removeDownloadUri = $formValues.querySelector('.removeDownloadUri')?.value;
   if(removeDownloadUri != null && removeDownloadUri !== '')
     vals['removeDownloadUri'] = removeDownloadUri;
+
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
+  var setCourseNum = removeCourseNum ? null : $formValues.querySelector('.setCourseNum')?.value;
+  var addCourseNum = $formValues.querySelector('.addCourseNum')?.value;
+  if(removeCourseNum || setCourseNum != null && setCourseNum !== '')
+    vals['setCourseNum'] = setCourseNum;
+  if(addCourseNum != null && addCourseNum !== '')
+    vals['addCourseNum'] = addCourseNum;
+  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value;
+  if(removeCourseNum != null && removeCourseNum !== '')
+    vals['removeCourseNum'] = removeCourseNum;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
@@ -505,6 +557,10 @@ function patchCompanyCourseFilters($formFilters) {
     if(filterDownloadUri != null && filterDownloadUri !== '')
       filters.push({ name: 'fq', value: 'downloadUri:' + filterDownloadUri });
 
+    var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
+    if(filterCourseNum != null && filterCourseNum !== '')
+      filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
@@ -611,6 +667,18 @@ async function postCompanyCourse($formValues, target, success, error) {
   if(valueObjectTitle != null && valueObjectTitle !== '')
     vals['objectTitle'] = valueObjectTitle;
 
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  if(valueEditPage != null && valueEditPage !== '')
+    vals['editPage'] = valueEditPage;
+
+  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
+  if(valueUserPage != null && valueUserPage !== '')
+    vals['userPage'] = valueUserPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  if(valueDownload != null && valueDownload !== '')
+    vals['download'] = valueDownload;
+
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   if(valueSolrId != null && valueSolrId !== '')
     vals['solrId'] = valueSolrId;
@@ -626,6 +694,10 @@ async function postCompanyCourse($formValues, target, success, error) {
   var valueDownloadUri = $formValues.querySelector('.valueDownloadUri')?.value;
   if(valueDownloadUri != null && valueDownloadUri !== '')
     vals['downloadUri'] = valueDownloadUri;
+
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  if(valueCourseNum != null && valueCourseNum !== '')
+    vals['courseNum'] = valueCourseNum;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
@@ -865,12 +937,12 @@ async function websocketCompanyCourseInner(apiRequest) {
         var inputEmailTemplate = null;
         var inputStoreUrl = null;
         var inputDownloadUri = null;
+        var inputCourseNum = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
         var inputPageImageAlt = null;
         var inputRelatedArticleIds = null;
-        var inputRelatedArticles = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.Page_created');
@@ -918,6 +990,8 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputStoreUrl = $response.querySelector('.Page_storeUrl');
         if(vars.includes('downloadUri'))
           inputDownloadUri = $response.querySelector('.Page_downloadUri');
+        if(vars.includes('courseNum'))
+          inputCourseNum = $response.querySelector('.Page_courseNum');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
@@ -928,8 +1002,6 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputPageImageAlt = $response.querySelector('.Page_pageImageAlt');
         if(vars.includes('relatedArticleIds'))
           inputRelatedArticleIds = $response.querySelector('.Page_relatedArticleIds');
-        if(vars.includes('relatedArticles'))
-          inputRelatedArticles = $response.querySelector('.Page_relatedArticles');
 
         jsWebsocketCompanyCourse(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -1166,6 +1238,16 @@ async function websocketCompanyCourseInner(apiRequest) {
           addGlow(document.querySelector('.Page_downloadUri'));
         }
 
+        if(inputCourseNum) {
+          document.querySelectorAll('.Page_courseNum').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCourseNum.getAttribute('value');
+            else
+              item.textContent = inputCourseNum.textContent;
+          });
+          addGlow(document.querySelector('.Page_courseNum'));
+        }
+
         if(inputPageImageWidth) {
           document.querySelectorAll('.Page_pageImageWidth').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1214,16 +1296,6 @@ async function websocketCompanyCourseInner(apiRequest) {
               item.textContent = inputRelatedArticleIds.textContent;
           });
           addGlow(document.querySelector('.Page_relatedArticleIds'));
-        }
-
-        if(inputRelatedArticles) {
-          document.querySelectorAll('.Page_relatedArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputRelatedArticles.getAttribute('value');
-            else
-              item.textContent = inputRelatedArticles.textContent;
-          });
-          addGlow(document.querySelector('.Page_relatedArticles'));
         }
 
           pageGraphCompanyCourse();

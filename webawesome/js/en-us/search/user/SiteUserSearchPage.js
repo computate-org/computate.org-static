@@ -406,4 +406,40 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSiteUser_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('SiteUser', event.currentTarget);
           });
+          document.querySelector('#fqSiteUser_editPage')?.addEventListener('change', (event) => {
+            fqChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetSiteUser_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSiteUser_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSiteUser_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#fqSiteUser_userPage')?.addEventListener('change', (event) => {
+            fqChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetSiteUser_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSiteUser_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSiteUser_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#fqSiteUser_download')?.addEventListener('change', (event) => {
+            fqChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetSiteUser_download')?.addEventListener('click', (event) => {
+            facetFieldChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSiteUser_download')?.addEventListener('change', (event) => {
+            facetPivotChange('SiteUser', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSiteUser_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SiteUser', event.currentTarget);
+          });
 });

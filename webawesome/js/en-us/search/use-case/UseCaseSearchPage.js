@@ -327,4 +327,40 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapUseCase_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
           });
+          document.querySelector('#fqUseCase_editPage')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetUseCase_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_userPage')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetUseCase_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_download')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetUseCase_download')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_download')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
 });

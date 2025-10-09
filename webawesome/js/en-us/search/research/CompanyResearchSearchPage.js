@@ -280,4 +280,40 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyResearch_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
           });
+          document.querySelector('#fqCompanyResearch_editPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyResearch_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyResearch_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyResearch_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyResearch_userPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyResearch_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyResearch_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyResearch_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyResearch_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyResearch_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyResearch_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyResearch_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyResearch', event.currentTarget);
+          });
 });

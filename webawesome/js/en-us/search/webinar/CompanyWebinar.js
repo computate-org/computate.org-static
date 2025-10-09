@@ -403,6 +403,42 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pageId, su
   if(removeDisplayPage != null && removeDisplayPage !== '')
     vals['removeDisplayPage'] = removeDisplayPage;
 
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
+  var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
+  var addEditPage = $formValues.querySelector('.addEditPage')?.value;
+  if(removeEditPage || setEditPage != null && setEditPage !== '')
+    vals['setEditPage'] = setEditPage;
+  if(addEditPage != null && addEditPage !== '')
+    vals['addEditPage'] = addEditPage;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value;
+  if(removeEditPage != null && removeEditPage !== '')
+    vals['removeEditPage'] = removeEditPage;
+
+  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
+  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value === 'true';
+  var setUserPage = removeUserPage ? null : $formValues.querySelector('.setUserPage')?.value;
+  var addUserPage = $formValues.querySelector('.addUserPage')?.value;
+  if(removeUserPage || setUserPage != null && setUserPage !== '')
+    vals['setUserPage'] = setUserPage;
+  if(addUserPage != null && addUserPage !== '')
+    vals['addUserPage'] = addUserPage;
+  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value;
+  if(removeUserPage != null && removeUserPage !== '')
+    vals['removeUserPage'] = removeUserPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value === 'true';
+  var setDownload = removeDownload ? null : $formValues.querySelector('.setDownload')?.value;
+  var addDownload = $formValues.querySelector('.addDownload')?.value;
+  if(removeDownload || setDownload != null && setDownload !== '')
+    vals['setDownload'] = setDownload;
+  if(addDownload != null && addDownload !== '')
+    vals['addDownload'] = addDownload;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value;
+  if(removeDownload != null && removeDownload !== '')
+    vals['removeDownload'] = removeDownload;
+
   var valueJoinUri = $formValues.querySelector('.valueJoinUri')?.value;
   var removeJoinUri = $formValues.querySelector('.removeJoinUri')?.value === 'true';
   var setJoinUri = removeJoinUri ? null : $formValues.querySelector('.setJoinUri')?.value;
@@ -666,6 +702,18 @@ async function postCompanyWebinar($formValues, target, success, error) {
   var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
   if(valueDisplayPage != null && valueDisplayPage !== '')
     vals['displayPage'] = valueDisplayPage;
+
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  if(valueEditPage != null && valueEditPage !== '')
+    vals['editPage'] = valueEditPage;
+
+  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
+  if(valueUserPage != null && valueUserPage !== '')
+    vals['userPage'] = valueUserPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  if(valueDownload != null && valueDownload !== '')
+    vals['download'] = valueDownload;
 
   var valueJoinUri = $formValues.querySelector('.valueJoinUri')?.value;
   if(valueJoinUri != null && valueJoinUri !== '')

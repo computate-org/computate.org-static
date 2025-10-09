@@ -291,6 +291,42 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyWebsite_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebsite', event.currentTarget);
           });
+          document.querySelector('#fqCompanyWebsite_editPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyWebsite_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyWebsite_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyWebsite_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyWebsite_userPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyWebsite_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyWebsite_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyWebsite_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyWebsite_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyWebsite_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyWebsite_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyWebsite', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyWebsite_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyWebsite', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebsite_websiteNum')?.addEventListener('change', (event) => {
             fqChange('CompanyWebsite', event.currentTarget);
           });

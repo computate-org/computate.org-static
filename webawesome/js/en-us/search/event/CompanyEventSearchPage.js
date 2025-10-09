@@ -451,6 +451,42 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyEvent_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyEvent', event.currentTarget);
           });
+          document.querySelector('#fqCompanyEvent_editPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyEvent_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyEvent_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyEvent_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyEvent_userPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyEvent_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyEvent_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyEvent_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyEvent_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyEvent_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyEvent_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyEvent', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyEvent_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyEvent', event.currentTarget);
+          });
           document.querySelector('#fqCompanyEvent_emailTemplate')?.addEventListener('change', (event) => {
             fqChange('CompanyEvent', event.currentTarget);
           });

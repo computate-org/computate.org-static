@@ -101,6 +101,22 @@ function searchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
+    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
+    if(filterPageImageWidth != null && filterPageImageWidth !== '')
+      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
+
+    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
+    if(filterPageImageType != null && filterPageImageType !== '')
+      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
+
+    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
+    if(filterPageImageAlt != null && filterPageImageAlt !== '')
+      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -117,29 +133,13 @@ function searchCompanyProductFilters($formFilters) {
     if(filterProductNum != null && filterProductNum !== '')
       filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
 
-    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
-    if(filterPageImageWidth != null && filterPageImageWidth !== '')
-      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
-
     var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
     if(filterPageImageHeight != null && filterPageImageHeight !== '')
       filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
 
-    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
-    if(filterPageImageType != null && filterPageImageType !== '')
-      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
-
-    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
-    if(filterPageImageAlt != null && filterPageImageAlt !== '')
-      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
-
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -343,6 +343,42 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeObjectTitle != null && removeObjectTitle !== '')
     vals['removeObjectTitle'] = removeObjectTitle;
 
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
+  var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
+  var addEditPage = $formValues.querySelector('.addEditPage')?.value;
+  if(removeEditPage || setEditPage != null && setEditPage !== '')
+    vals['setEditPage'] = setEditPage;
+  if(addEditPage != null && addEditPage !== '')
+    vals['addEditPage'] = addEditPage;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value;
+  if(removeEditPage != null && removeEditPage !== '')
+    vals['removeEditPage'] = removeEditPage;
+
+  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
+  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value === 'true';
+  var setUserPage = removeUserPage ? null : $formValues.querySelector('.setUserPage')?.value;
+  var addUserPage = $formValues.querySelector('.addUserPage')?.value;
+  if(removeUserPage || setUserPage != null && setUserPage !== '')
+    vals['setUserPage'] = setUserPage;
+  if(addUserPage != null && addUserPage !== '')
+    vals['addUserPage'] = addUserPage;
+  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value;
+  if(removeUserPage != null && removeUserPage !== '')
+    vals['removeUserPage'] = removeUserPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value === 'true';
+  var setDownload = removeDownload ? null : $formValues.querySelector('.setDownload')?.value;
+  var addDownload = $formValues.querySelector('.addDownload')?.value;
+  if(removeDownload || setDownload != null && setDownload !== '')
+    vals['setDownload'] = setDownload;
+  if(addDownload != null && addDownload !== '')
+    vals['addDownload'] = addDownload;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value;
+  if(removeDownload != null && removeDownload !== '')
+    vals['removeDownload'] = removeDownload;
+
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   var removeSolrId = $formValues.querySelector('.removeSolrId')?.value === 'true';
   var setSolrId = removeSolrId ? null : $formValues.querySelector('.setSolrId')?.value;
@@ -354,6 +390,30 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   var removeSolrId = $formValues.querySelector('.removeSolrId')?.value;
   if(removeSolrId != null && removeSolrId !== '')
     vals['removeSolrId'] = removeSolrId;
+
+  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
+  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
+  var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
+  var addPageImageAlt = $formValues.querySelector('.addPageImageAlt')?.value;
+  if(removePageImageAlt || setPageImageAlt != null && setPageImageAlt !== '')
+    vals['setPageImageAlt'] = setPageImageAlt;
+  if(addPageImageAlt != null && addPageImageAlt !== '')
+    vals['addPageImageAlt'] = addPageImageAlt;
+  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
+  if(removePageImageAlt != null && removePageImageAlt !== '')
+    vals['removePageImageAlt'] = removePageImageAlt;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
+  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
+  var addLabels = $formValues.querySelector('.addLabels')?.value;
+  if(removeLabels || setLabels != null && setLabels !== '')
+    vals['setLabels'] = JSON.parse(setLabels);
+  if(addLabels != null && addLabels !== '')
+    vals['addLabels'] = addLabels;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
+  if(removeLabels != null && removeLabels !== '')
+    vals['removeLabels'] = removeLabels;
 
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value === 'true';
@@ -403,18 +463,6 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeProductNum != null && removeProductNum !== '')
     vals['removeProductNum'] = removeProductNum;
 
-  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
-  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
-  var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
-  var addPageImageAlt = $formValues.querySelector('.addPageImageAlt')?.value;
-  if(removePageImageAlt || setPageImageAlt != null && setPageImageAlt !== '')
-    vals['setPageImageAlt'] = setPageImageAlt;
-  if(addPageImageAlt != null && addPageImageAlt !== '')
-    vals['addPageImageAlt'] = addPageImageAlt;
-  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
-  if(removePageImageAlt != null && removePageImageAlt !== '')
-    vals['removePageImageAlt'] = removePageImageAlt;
-
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
   var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
@@ -426,18 +474,6 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value;
   if(removeLabelsString != null && removeLabelsString !== '')
     vals['removeLabelsString'] = removeLabelsString;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
-  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
-  var addLabels = $formValues.querySelector('.addLabels')?.value;
-  if(removeLabels || setLabels != null && setLabels !== '')
-    vals['setLabels'] = JSON.parse(setLabels);
-  if(addLabels != null && addLabels !== '')
-    vals['addLabels'] = addLabels;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
-  if(removeLabels != null && removeLabels !== '')
-    vals['removeLabels'] = removeLabels;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
@@ -545,6 +581,22 @@ function patchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
+    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
+    if(filterPageImageWidth != null && filterPageImageWidth !== '')
+      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
+
+    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
+    if(filterPageImageType != null && filterPageImageType !== '')
+      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
+
+    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
+    if(filterPageImageAlt != null && filterPageImageAlt !== '')
+      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -561,29 +613,13 @@ function patchCompanyProductFilters($formFilters) {
     if(filterProductNum != null && filterProductNum !== '')
       filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
 
-    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
-    if(filterPageImageWidth != null && filterPageImageWidth !== '')
-      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
-
     var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
     if(filterPageImageHeight != null && filterPageImageHeight !== '')
       filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
 
-    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
-    if(filterPageImageType != null && filterPageImageType !== '')
-      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
-
-    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
-    if(filterPageImageAlt != null && filterPageImageAlt !== '')
-      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
-
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -679,9 +715,29 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueObjectTitle != null && valueObjectTitle !== '')
     vals['objectTitle'] = valueObjectTitle;
 
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  if(valueEditPage != null && valueEditPage !== '')
+    vals['editPage'] = valueEditPage;
+
+  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
+  if(valueUserPage != null && valueUserPage !== '')
+    vals['userPage'] = valueUserPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  if(valueDownload != null && valueDownload !== '')
+    vals['download'] = valueDownload;
+
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   if(valueSolrId != null && valueSolrId !== '')
     vals['solrId'] = valueSolrId;
+
+  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
+  if(valuePageImageAlt != null && valuePageImageAlt !== '')
+    vals['pageImageAlt'] = valuePageImageAlt;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  if(valueLabels != null && valueLabels !== '')
+    vals['labels'] = JSON.parse(valueLabels);
 
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   if(valueEmailTemplate != null && valueEmailTemplate !== '')
@@ -699,17 +755,9 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueProductNum != null && valueProductNum !== '')
     vals['productNum'] = valueProductNum;
 
-  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
-  if(valuePageImageAlt != null && valuePageImageAlt !== '')
-    vals['pageImageAlt'] = valuePageImageAlt;
-
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   if(valueLabelsString != null && valueLabelsString !== '')
     vals['labelsString'] = valueLabelsString;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  if(valueLabels != null && valueLabels !== '')
-    vals['labels'] = JSON.parse(valueLabels);
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   if(valueRelatedArticleIds != null && valueRelatedArticleIds !== '')

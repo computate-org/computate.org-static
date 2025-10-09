@@ -446,6 +446,42 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSitePage_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('SitePage', event.currentTarget);
           });
+          document.querySelector('#fqSitePage_editPage')?.addEventListener('change', (event) => {
+            fqChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetSitePage_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSitePage_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSitePage_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#fqSitePage_userPage')?.addEventListener('change', (event) => {
+            fqChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetSitePage_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSitePage_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSitePage_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#fqSitePage_download')?.addEventListener('change', (event) => {
+            fqChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetSitePage_download')?.addEventListener('click', (event) => {
+            facetFieldChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSitePage_download')?.addEventListener('change', (event) => {
+            facetPivotChange('SitePage', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSitePage_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SitePage', event.currentTarget);
+          });
           document.querySelector('#fqSitePage_courseNum')?.addEventListener('change', (event) => {
             fqChange('SitePage', event.currentTarget);
           });

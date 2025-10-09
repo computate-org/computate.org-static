@@ -227,6 +227,50 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'solrId', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyProduct_pageImageWidth')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'pageImageWidth', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_pageImageWidth')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'pageImageWidth', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_pageImageWidth')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'pageImageWidth', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyProduct_pageImageType')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'pageImageType', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_pageImageType')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'pageImageType', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_pageImageType')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'pageImageType', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyProduct_pageImageAlt')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'pageImageAlt', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_pageImageAlt')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'pageImageAlt', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_pageImageAlt')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'pageImageAlt', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyProduct_labels')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'labels', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_labels')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'labels', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_labels')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'labels', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'emailTemplate', event.currentTarget.value);
   });
@@ -271,17 +315,6 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'productNum', false);
   });
 
-  document.querySelector('#pageSelectSortCompanyProduct_pageImageWidth')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'pageImageWidth', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_pageImageWidth')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'pageImageWidth', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_pageImageWidth')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'pageImageWidth', false);
-  });
-
   document.querySelector('#pageSelectSortCompanyProduct_pageImageHeight')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'pageImageHeight', event.currentTarget.value);
   });
@@ -293,28 +326,6 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'pageImageHeight', false);
   });
 
-  document.querySelector('#pageSelectSortCompanyProduct_pageImageType')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'pageImageType', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_pageImageType')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'pageImageType', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_pageImageType')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'pageImageType', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyProduct_pageImageAlt')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'pageImageAlt', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_pageImageAlt')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'pageImageAlt', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_pageImageAlt')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'pageImageAlt', false);
-  });
-
   document.querySelector('#pageSelectSortCompanyProduct_labelsString')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'labelsString', event.currentTarget.value);
   });
@@ -324,17 +335,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsCompanyProduct_labelsString')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyProduct', 'labelsString', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyProduct_labels')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'labels', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_labels')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'labels', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_labels')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'labels', false);
   });
 
   document.querySelector('#pageSelectSortCompanyProduct_relatedArticleIds')?.addEventListener('change', (event) => {

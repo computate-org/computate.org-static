@@ -1,0 +1,16 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Deploying AI Telemetry on OpenShift Local" />
+    <meta name="result.description" content="How to get started for free with OpenShift Local and deploying the AI Telemetry platform with GitOps. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-08-29T12:23:40.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/ai-telemetry-on-openshift-local.png" />
+    <meta name="result.pageImageAlt" content="" />
+    <meta name="result.prerequisiteArticleIds" content="computer-requirements-for-ai-telemetry-development, install-openshift-local-on-your-computer" />
+    <meta name="result.productNum" content="1"/>
+    <meta name="result.price" content="0"/>
+    <meta name="result.userPage" content="{{ SITE_BASE_URL }}/en-us/view/article/{{ result.pageId }}"/>
+{% endblock htmMetaPageLayout %}
