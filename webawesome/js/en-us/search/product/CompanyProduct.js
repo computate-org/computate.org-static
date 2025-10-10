@@ -101,6 +101,10 @@ function searchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
+    var filterDialogTemplate = $formFilters.querySelector('.valueDialogTemplate')?.value;
+    if(filterDialogTemplate != null && filterDialogTemplate !== '')
+      filters.push({ name: 'fq', value: 'dialogTemplate:' + filterDialogTemplate });
+
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -144,10 +148,6 @@ function searchCompanyProductFilters($formFilters) {
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
       filters.push({ name: 'fq', value: 'relatedArticleIds:' + filterRelatedArticleIds });
-
-    var filterDialogTemplate = $formFilters.querySelector('.valueDialogTemplate')?.value;
-    if(filterDialogTemplate != null && filterDialogTemplate !== '')
-      filters.push({ name: 'fq', value: 'dialogTemplate:' + filterDialogTemplate });
   }
   return filters;
 }
@@ -581,6 +581,10 @@ function patchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
+    var filterDialogTemplate = $formFilters.querySelector('.valueDialogTemplate')?.value;
+    if(filterDialogTemplate != null && filterDialogTemplate !== '')
+      filters.push({ name: 'fq', value: 'dialogTemplate:' + filterDialogTemplate });
+
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -624,10 +628,6 @@ function patchCompanyProductFilters($formFilters) {
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
       filters.push({ name: 'fq', value: 'relatedArticleIds:' + filterRelatedArticleIds });
-
-    var filterDialogTemplate = $formFilters.querySelector('.valueDialogTemplate')?.value;
-    if(filterDialogTemplate != null && filterDialogTemplate !== '')
-      filters.push({ name: 'fq', value: 'dialogTemplate:' + filterDialogTemplate });
   }
   return filters;
 }
@@ -990,6 +990,7 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
+        var inputDialogTemplate = null;
         var inputEmailTemplate = null;
         var inputStoreUrl = null;
         var inputDownloadUrl = null;
@@ -1002,7 +1003,6 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputLabels = null;
         var inputRelatedArticleIds = null;
         var inputRelatedArticles = null;
-        var inputDialogTemplate = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.Page_created');
@@ -1044,6 +1044,8 @@ async function websocketCompanyProductInner(apiRequest) {
           inputObjectText = $response.querySelector('.Page_objectText');
         if(vars.includes('solrId'))
           inputSolrId = $response.querySelector('.Page_solrId');
+        if(vars.includes('dialogTemplate'))
+          inputDialogTemplate = $response.querySelector('.Page_dialogTemplate');
         if(vars.includes('emailTemplate'))
           inputEmailTemplate = $response.querySelector('.Page_emailTemplate');
         if(vars.includes('storeUrl'))
@@ -1068,8 +1070,6 @@ async function websocketCompanyProductInner(apiRequest) {
           inputRelatedArticleIds = $response.querySelector('.Page_relatedArticleIds');
         if(vars.includes('relatedArticles'))
           inputRelatedArticles = $response.querySelector('.Page_relatedArticles');
-        if(vars.includes('dialogTemplate'))
-          inputDialogTemplate = $response.querySelector('.Page_dialogTemplate');
 
         jsWebsocketCompanyProduct(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -1276,6 +1276,16 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('.Page_solrId'));
         }
 
+        if(inputDialogTemplate) {
+          document.querySelectorAll('.Page_dialogTemplate').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDialogTemplate.getAttribute('value');
+            else
+              item.textContent = inputDialogTemplate.textContent;
+          });
+          addGlow(document.querySelector('.Page_dialogTemplate'));
+        }
+
         if(inputEmailTemplate) {
           document.querySelectorAll('.Page_emailTemplate').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1394,16 +1404,6 @@ async function websocketCompanyProductInner(apiRequest) {
               item.textContent = inputRelatedArticles.textContent;
           });
           addGlow(document.querySelector('.Page_relatedArticles'));
-        }
-
-        if(inputDialogTemplate) {
-          document.querySelectorAll('.Page_dialogTemplate').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputDialogTemplate.getAttribute('value');
-            else
-              item.textContent = inputDialogTemplate.textContent;
-          });
-          addGlow(document.querySelector('.Page_dialogTemplate'));
         }
 
           pageGraphCompanyProduct();

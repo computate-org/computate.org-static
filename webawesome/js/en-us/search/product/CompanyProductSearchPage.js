@@ -227,6 +227,17 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'solrId', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyProduct_dialogTemplate')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'dialogTemplate', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_dialogTemplate')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'dialogTemplate', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_dialogTemplate')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'dialogTemplate', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'emailTemplate', event.currentTarget.value);
   });
@@ -346,17 +357,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsCompanyProduct_relatedArticleIds')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyProduct', 'relatedArticleIds', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyProduct_dialogTemplate')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'dialogTemplate', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_dialogTemplate')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'dialogTemplate', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_dialogTemplate')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'dialogTemplate', false);
   });
 
   document.querySelector('#htmButton_patchCompanyProduct')?.addEventListener('click', (event) => {
