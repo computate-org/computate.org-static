@@ -101,22 +101,6 @@ function searchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
-    if(filterPageImageWidth != null && filterPageImageWidth !== '')
-      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
-
-    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
-    if(filterPageImageType != null && filterPageImageType !== '')
-      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
-
-    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
-    if(filterPageImageAlt != null && filterPageImageAlt !== '')
-      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
-
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -133,13 +117,29 @@ function searchCompanyProductFilters($formFilters) {
     if(filterProductNum != null && filterProductNum !== '')
       filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
 
+    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
+    if(filterPageImageWidth != null && filterPageImageWidth !== '')
+      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
+
     var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
     if(filterPageImageHeight != null && filterPageImageHeight !== '')
       filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
 
+    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
+    if(filterPageImageType != null && filterPageImageType !== '')
+      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
+
+    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
+    if(filterPageImageAlt != null && filterPageImageAlt !== '')
+      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -391,30 +391,6 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeSolrId != null && removeSolrId !== '')
     vals['removeSolrId'] = removeSolrId;
 
-  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
-  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
-  var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
-  var addPageImageAlt = $formValues.querySelector('.addPageImageAlt')?.value;
-  if(removePageImageAlt || setPageImageAlt != null && setPageImageAlt !== '')
-    vals['setPageImageAlt'] = setPageImageAlt;
-  if(addPageImageAlt != null && addPageImageAlt !== '')
-    vals['addPageImageAlt'] = addPageImageAlt;
-  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
-  if(removePageImageAlt != null && removePageImageAlt !== '')
-    vals['removePageImageAlt'] = removePageImageAlt;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
-  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
-  var addLabels = $formValues.querySelector('.addLabels')?.value;
-  if(removeLabels || setLabels != null && setLabels !== '')
-    vals['setLabels'] = JSON.parse(setLabels);
-  if(addLabels != null && addLabels !== '')
-    vals['addLabels'] = addLabels;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
-  if(removeLabels != null && removeLabels !== '')
-    vals['removeLabels'] = removeLabels;
-
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value === 'true';
   var setEmailTemplate = removeEmailTemplate ? null : $formValues.querySelector('.setEmailTemplate')?.value;
@@ -463,6 +439,18 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeProductNum != null && removeProductNum !== '')
     vals['removeProductNum'] = removeProductNum;
 
+  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
+  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
+  var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
+  var addPageImageAlt = $formValues.querySelector('.addPageImageAlt')?.value;
+  if(removePageImageAlt || setPageImageAlt != null && setPageImageAlt !== '')
+    vals['setPageImageAlt'] = setPageImageAlt;
+  if(addPageImageAlt != null && addPageImageAlt !== '')
+    vals['addPageImageAlt'] = addPageImageAlt;
+  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
+  if(removePageImageAlt != null && removePageImageAlt !== '')
+    vals['removePageImageAlt'] = removePageImageAlt;
+
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
   var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
@@ -474,6 +462,18 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value;
   if(removeLabelsString != null && removeLabelsString !== '')
     vals['removeLabelsString'] = removeLabelsString;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
+  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
+  var addLabels = $formValues.querySelector('.addLabels')?.value;
+  if(removeLabels || setLabels != null && setLabels !== '')
+    vals['setLabels'] = JSON.parse(setLabels);
+  if(addLabels != null && addLabels !== '')
+    vals['addLabels'] = addLabels;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
+  if(removeLabels != null && removeLabels !== '')
+    vals['removeLabels'] = removeLabels;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
@@ -581,22 +581,6 @@ function patchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
-    if(filterPageImageWidth != null && filterPageImageWidth !== '')
-      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
-
-    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
-    if(filterPageImageType != null && filterPageImageType !== '')
-      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
-
-    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
-    if(filterPageImageAlt != null && filterPageImageAlt !== '')
-      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
-
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -613,13 +597,29 @@ function patchCompanyProductFilters($formFilters) {
     if(filterProductNum != null && filterProductNum !== '')
       filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
 
+    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
+    if(filterPageImageWidth != null && filterPageImageWidth !== '')
+      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
+
     var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
     if(filterPageImageHeight != null && filterPageImageHeight !== '')
       filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
 
+    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
+    if(filterPageImageType != null && filterPageImageType !== '')
+      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
+
+    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
+    if(filterPageImageAlt != null && filterPageImageAlt !== '')
+      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -731,14 +731,6 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueSolrId != null && valueSolrId !== '')
     vals['solrId'] = valueSolrId;
 
-  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
-  if(valuePageImageAlt != null && valuePageImageAlt !== '')
-    vals['pageImageAlt'] = valuePageImageAlt;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  if(valueLabels != null && valueLabels !== '')
-    vals['labels'] = JSON.parse(valueLabels);
-
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   if(valueEmailTemplate != null && valueEmailTemplate !== '')
     vals['emailTemplate'] = valueEmailTemplate;
@@ -755,9 +747,17 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueProductNum != null && valueProductNum !== '')
     vals['productNum'] = valueProductNum;
 
+  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
+  if(valuePageImageAlt != null && valuePageImageAlt !== '')
+    vals['pageImageAlt'] = valuePageImageAlt;
+
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   if(valueLabelsString != null && valueLabelsString !== '')
     vals['labelsString'] = valueLabelsString;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  if(valueLabels != null && valueLabels !== '')
+    vals['labels'] = JSON.parse(valueLabels);
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   if(valueRelatedArticleIds != null && valueRelatedArticleIds !== '')
@@ -970,12 +970,441 @@ async function websocketCompanyProductInner(apiRequest) {
     fetch(uri).then(response => {
       response.text().then(text => {
         var $response = new DOMParser().parseFromString(text, 'text/html');
+        var inputCreated = null;
+        var inputModified = null;
+        var inputArchived = null;
+        var inputName = null;
+        var inputDescription = null;
+        var inputPrice = null;
+        var inputPageImageUri = null;
+        var inputPageId = null;
+        var inputDisplayPage = null;
+        var inputClassCanonicalName = null;
+        var inputClassSimpleName = null;
+        var inputClassCanonicalNames = null;
+        var inputSaves = null;
+        var inputObjectTitle = null;
+        var inputEditPage = null;
+        var inputUserPage = null;
+        var inputDownload = null;
+        var inputObjectSuggest = null;
+        var inputObjectText = null;
+        var inputSolrId = null;
+        var inputEmailTemplate = null;
+        var inputStoreUrl = null;
+        var inputDownloadUrl = null;
+        var inputProductNum = null;
+        var inputPageImageWidth = null;
+        var inputPageImageHeight = null;
+        var inputPageImageType = null;
+        var inputPageImageAlt = null;
+        var inputLabelsString = null;
+        var inputLabels = null;
+        var inputRelatedArticleIds = null;
+        var inputRelatedArticles = null;
+        var inputDialogTemplate = null;
 
+        if(vars.includes('created'))
+          inputCreated = $response.querySelector('.Page_created');
+        if(vars.includes('modified'))
+          inputModified = $response.querySelector('.Page_modified');
+        if(vars.includes('archived'))
+          inputArchived = $response.querySelector('.Page_archived');
+        if(vars.includes('name'))
+          inputName = $response.querySelector('.Page_name');
+        if(vars.includes('description'))
+          inputDescription = $response.querySelector('.Page_description');
+        if(vars.includes('price'))
+          inputPrice = $response.querySelector('.Page_price');
+        if(vars.includes('pageImageUri'))
+          inputPageImageUri = $response.querySelector('.Page_pageImageUri');
+        if(vars.includes('pageId'))
+          inputPageId = $response.querySelector('.Page_pageId');
+        if(vars.includes('displayPage'))
+          inputDisplayPage = $response.querySelector('.Page_displayPage');
+        if(vars.includes('classCanonicalName'))
+          inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
+        if(vars.includes('classSimpleName'))
+          inputClassSimpleName = $response.querySelector('.Page_classSimpleName');
+        if(vars.includes('classCanonicalNames'))
+          inputClassCanonicalNames = $response.querySelector('.Page_classCanonicalNames');
+        if(vars.includes('saves'))
+          inputSaves = $response.querySelector('.Page_saves');
+        if(vars.includes('objectTitle'))
+          inputObjectTitle = $response.querySelector('.Page_objectTitle');
+        if(vars.includes('editPage'))
+          inputEditPage = $response.querySelector('.Page_editPage');
+        if(vars.includes('userPage'))
+          inputUserPage = $response.querySelector('.Page_userPage');
+        if(vars.includes('download'))
+          inputDownload = $response.querySelector('.Page_download');
+        if(vars.includes('objectSuggest'))
+          inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
+        if(vars.includes('objectText'))
+          inputObjectText = $response.querySelector('.Page_objectText');
+        if(vars.includes('solrId'))
+          inputSolrId = $response.querySelector('.Page_solrId');
+        if(vars.includes('emailTemplate'))
+          inputEmailTemplate = $response.querySelector('.Page_emailTemplate');
+        if(vars.includes('storeUrl'))
+          inputStoreUrl = $response.querySelector('.Page_storeUrl');
+        if(vars.includes('downloadUrl'))
+          inputDownloadUrl = $response.querySelector('.Page_downloadUrl');
+        if(vars.includes('productNum'))
+          inputProductNum = $response.querySelector('.Page_productNum');
+        if(vars.includes('pageImageWidth'))
+          inputPageImageWidth = $response.querySelector('.Page_pageImageWidth');
+        if(vars.includes('pageImageHeight'))
+          inputPageImageHeight = $response.querySelector('.Page_pageImageHeight');
+        if(vars.includes('pageImageType'))
+          inputPageImageType = $response.querySelector('.Page_pageImageType');
+        if(vars.includes('pageImageAlt'))
+          inputPageImageAlt = $response.querySelector('.Page_pageImageAlt');
+        if(vars.includes('labelsString'))
+          inputLabelsString = $response.querySelector('.Page_labelsString');
+        if(vars.includes('labels'))
+          inputLabels = $response.querySelector('.Page_labels');
+        if(vars.includes('relatedArticleIds'))
+          inputRelatedArticleIds = $response.querySelector('.Page_relatedArticleIds');
+        if(vars.includes('relatedArticles'))
+          inputRelatedArticles = $response.querySelector('.Page_relatedArticles');
+        if(vars.includes('dialogTemplate'))
+          inputDialogTemplate = $response.querySelector('.Page_dialogTemplate');
 
         jsWebsocketCompanyProduct(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
         window.listCompanyProduct = JSON.parse($response.querySelector('.pageForm .listCompanyProduct')?.value);
 
+
+        if(inputCreated) {
+          document.querySelectorAll('.Page_created').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCreated.getAttribute('value');
+            else
+              item.textContent = inputCreated.textContent;
+          });
+          addGlow(document.querySelector('.Page_created'));
+        }
+
+        if(inputModified) {
+          document.querySelectorAll('.Page_modified').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputModified.getAttribute('value');
+            else
+              item.textContent = inputModified.textContent;
+          });
+          addGlow(document.querySelector('.Page_modified'));
+        }
+
+        if(inputArchived) {
+          document.querySelectorAll('.Page_archived').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputArchived.getAttribute('value');
+            else
+              item.textContent = inputArchived.textContent;
+          });
+          addGlow(document.querySelector('.Page_archived'));
+        }
+
+        if(inputName) {
+          document.querySelectorAll('.Page_name').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputName.getAttribute('value');
+            else
+              item.textContent = inputName.textContent;
+          });
+          addGlow(document.querySelector('.Page_name'));
+        }
+
+        if(inputDescription) {
+          document.querySelectorAll('.Page_description').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDescription.getAttribute('value');
+            else
+              item.textContent = inputDescription.textContent;
+          });
+          addGlow(document.querySelector('.Page_description'));
+        }
+
+        if(inputPrice) {
+          document.querySelectorAll('.Page_price').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrice.getAttribute('value');
+            else
+              item.textContent = inputPrice.textContent;
+          });
+          addGlow(document.querySelector('.Page_price'));
+        }
+
+        if(inputPageImageUri) {
+          document.querySelectorAll('.Page_pageImageUri').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageUri.getAttribute('value');
+            else
+              item.textContent = inputPageImageUri.textContent;
+          });
+          addGlow(document.querySelector('.Page_pageImageUri'));
+        }
+
+        if(inputPageId) {
+          document.querySelectorAll('.Page_pageId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageId.getAttribute('value');
+            else
+              item.textContent = inputPageId.textContent;
+          });
+          addGlow(document.querySelector('.Page_pageId'));
+        }
+
+        if(inputDisplayPage) {
+          document.querySelectorAll('.Page_displayPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDisplayPage.getAttribute('value');
+            else
+              item.textContent = inputDisplayPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_displayPage'));
+        }
+
+        if(inputClassCanonicalName) {
+          document.querySelectorAll('.Page_classCanonicalName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalName.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalName.textContent;
+          });
+          addGlow(document.querySelector('.Page_classCanonicalName'));
+        }
+
+        if(inputClassSimpleName) {
+          document.querySelectorAll('.Page_classSimpleName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassSimpleName.getAttribute('value');
+            else
+              item.textContent = inputClassSimpleName.textContent;
+          });
+          addGlow(document.querySelector('.Page_classSimpleName'));
+        }
+
+        if(inputClassCanonicalNames) {
+          document.querySelectorAll('.Page_classCanonicalNames').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalNames.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalNames.textContent;
+          });
+          addGlow(document.querySelector('.Page_classCanonicalNames'));
+        }
+
+        if(inputSaves) {
+          document.querySelectorAll('.Page_saves').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSaves.getAttribute('value');
+            else
+              item.textContent = inputSaves.textContent;
+          });
+          addGlow(document.querySelector('.Page_saves'));
+        }
+
+        if(inputObjectTitle) {
+          document.querySelectorAll('.Page_objectTitle').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectTitle.getAttribute('value');
+            else
+              item.textContent = inputObjectTitle.textContent;
+          });
+          addGlow(document.querySelector('.Page_objectTitle'));
+        }
+
+        if(inputEditPage) {
+          document.querySelectorAll('.Page_editPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEditPage.getAttribute('value');
+            else
+              item.textContent = inputEditPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_editPage'));
+        }
+
+        if(inputUserPage) {
+          document.querySelectorAll('.Page_userPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputUserPage.getAttribute('value');
+            else
+              item.textContent = inputUserPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_userPage'));
+        }
+
+        if(inputDownload) {
+          document.querySelectorAll('.Page_download').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDownload.getAttribute('value');
+            else
+              item.textContent = inputDownload.textContent;
+          });
+          addGlow(document.querySelector('.Page_download'));
+        }
+
+        if(inputObjectSuggest) {
+          document.querySelectorAll('.Page_objectSuggest').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectSuggest.getAttribute('value');
+            else
+              item.textContent = inputObjectSuggest.textContent;
+          });
+          addGlow(document.querySelector('.Page_objectSuggest'));
+        }
+
+        if(inputObjectText) {
+          document.querySelectorAll('.Page_objectText').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectText.getAttribute('value');
+            else
+              item.textContent = inputObjectText.textContent;
+          });
+          addGlow(document.querySelector('.Page_objectText'));
+        }
+
+        if(inputSolrId) {
+          document.querySelectorAll('.Page_solrId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolrId.getAttribute('value');
+            else
+              item.textContent = inputSolrId.textContent;
+          });
+          addGlow(document.querySelector('.Page_solrId'));
+        }
+
+        if(inputEmailTemplate) {
+          document.querySelectorAll('.Page_emailTemplate').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEmailTemplate.getAttribute('value');
+            else
+              item.textContent = inputEmailTemplate.textContent;
+          });
+          addGlow(document.querySelector('.Page_emailTemplate'));
+        }
+
+        if(inputStoreUrl) {
+          document.querySelectorAll('.Page_storeUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputStoreUrl.getAttribute('value');
+            else
+              item.textContent = inputStoreUrl.textContent;
+          });
+          addGlow(document.querySelector('.Page_storeUrl'));
+        }
+
+        if(inputDownloadUrl) {
+          document.querySelectorAll('.Page_downloadUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDownloadUrl.getAttribute('value');
+            else
+              item.textContent = inputDownloadUrl.textContent;
+          });
+          addGlow(document.querySelector('.Page_downloadUrl'));
+        }
+
+        if(inputProductNum) {
+          document.querySelectorAll('.Page_productNum').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputProductNum.getAttribute('value');
+            else
+              item.textContent = inputProductNum.textContent;
+          });
+          addGlow(document.querySelector('.Page_productNum'));
+        }
+
+        if(inputPageImageWidth) {
+          document.querySelectorAll('.Page_pageImageWidth').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageWidth.getAttribute('value');
+            else
+              item.textContent = inputPageImageWidth.textContent;
+          });
+          addGlow(document.querySelector('.Page_pageImageWidth'));
+        }
+
+        if(inputPageImageHeight) {
+          document.querySelectorAll('.Page_pageImageHeight').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageHeight.getAttribute('value');
+            else
+              item.textContent = inputPageImageHeight.textContent;
+          });
+          addGlow(document.querySelector('.Page_pageImageHeight'));
+        }
+
+        if(inputPageImageType) {
+          document.querySelectorAll('.Page_pageImageType').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageType.getAttribute('value');
+            else
+              item.textContent = inputPageImageType.textContent;
+          });
+          addGlow(document.querySelector('.Page_pageImageType'));
+        }
+
+        if(inputPageImageAlt) {
+          document.querySelectorAll('.Page_pageImageAlt').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageAlt.getAttribute('value');
+            else
+              item.textContent = inputPageImageAlt.textContent;
+          });
+          addGlow(document.querySelector('.Page_pageImageAlt'));
+        }
+
+        if(inputLabelsString) {
+          document.querySelectorAll('.Page_labelsString').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabelsString.getAttribute('value');
+            else
+              item.textContent = inputLabelsString.textContent;
+          });
+          addGlow(document.querySelector('.Page_labelsString'));
+        }
+
+        if(inputLabels) {
+          document.querySelectorAll('.Page_labels').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabels.getAttribute('value');
+            else
+              item.textContent = inputLabels.textContent;
+          });
+          addGlow(document.querySelector('.Page_labels'));
+        }
+
+        if(inputRelatedArticleIds) {
+          document.querySelectorAll('.Page_relatedArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticleIds.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.Page_relatedArticleIds'));
+        }
+
+        if(inputRelatedArticles) {
+          document.querySelectorAll('.Page_relatedArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticles.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticles.textContent;
+          });
+          addGlow(document.querySelector('.Page_relatedArticles'));
+        }
+
+        if(inputDialogTemplate) {
+          document.querySelectorAll('.Page_dialogTemplate').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDialogTemplate.getAttribute('value');
+            else
+              item.textContent = inputDialogTemplate.textContent;
+          });
+          addGlow(document.querySelector('.Page_dialogTemplate'));
+        }
 
           pageGraphCompanyProduct();
       });

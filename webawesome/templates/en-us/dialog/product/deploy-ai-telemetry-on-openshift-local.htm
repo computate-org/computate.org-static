@@ -1,0 +1,87 @@
+{% include "en-us/ArticlePart.htm" %}
+<div class="wa-gap-3xl wa-stack" style="max-width: 960px; margin: 0 auto;">
+  <div class="wa-align-items-center wa-grid">
+    <div>
+      <span class="wa-heading-xl">Deploy secure, multi-tenant, cloud observability tools for your workloads</span>
+      <p class="wa-caption-l">
+        Use our AI Telemetry platform built with sovereign AI open source tools built with zero-trust fine-grained access control at the admin, hub, cluster, and project level. 
+        You can get started for free! 
+      </p>
+    </div>
+    {{ articleImage(result) }}
+  </div>
+  <h2>
+    Use cases: 
+  </h2>
+  <div class="wa-grid">
+    <div class="wa-stack wa-gap-xs">
+      <div>
+        <i class="{{ FONTAWESOME_STYLE }} fa-tower-control fa-2xl "></i>
+      </div>
+      <div class="wa-heading-s">Data center admin observability</div>
+      <p class="wa-caption-m">
+        Data center administrators are granted access to see metrics across multiple Red Hat Advanced Cluster Management hubs, managed OpenShift clusters, and OpenShift projects. 
+      </p>
+    </div>
+    <div class="wa-stack wa-gap-xs">
+      <div>
+        <i class="{{ FONTAWESOME_STYLE }} fa-server fa-2xl "></i>
+      </div>
+      <div class="wa-heading-s">Multi-cluster owner observability</div>
+      <p class="wa-caption-m">
+        Cluster owners are granted access to each of their clusters individually, but observable together in one dashboard. 
+      </p>
+    </div>
+    <div class="wa-stack wa-gap-xs">
+      <div>
+        <i class="{{ FONTAWESOME_STYLE }} fa-people-group fa-2xl "></i>
+      </div>
+      <div class="wa-heading-s">Project observability</div>
+      <p class="wa-caption-m">
+        OpenShift users with project role bindings can view all their project metrics in one dashboard, and each project is also observable individually. 
+      </p>
+    </div>
+    <div class="wa-stack wa-gap-xs">
+      <div>
+        <i class="{{ FONTAWESOME_STYLE }} fa-network-wired fa-2xl "></i>
+      </div>
+      <div class="wa-heading-s">Bare Metal and VM observability</div>
+      <p class="wa-caption-m">
+        Custom integrations in the Mass Open Cloud are also being developed for observing OpenStack bare metal nodes, and OpenShift Virtualization virtual machines. 
+      </p>
+    </div>
+    <div class="wa-stack wa-gap-xs">
+      <div>
+        <i class="{{ FONTAWESOME_STYLE }} fa-user-key fa-2xl "></i>
+      </div>
+      <div class="wa-heading-s">Keycloak fine-grained access control</div>
+      <p class="wa-caption-m">
+        Permissions, policies, scopes, groups, and resources in AI Telemetry are handled with Single Sign-On standards with Keycloak Authorization Services for strict zero-trust access control to metrics. 
+      </p>
+    </div>
+  </div>
+  <h2>
+    <i class="{{ FONTAWESOME_STYLE }} fa-head-side-gear fa-2xl "></i>
+    Things you'll learn: 
+  </h2>
+  <ol>
+    <li>
+      How to deploy the AI Telemetry platform on OpenShift Local on your own computer. 
+    </li>
+    <li>
+      Set up Hashicorp Vault secrets for AI Telemetry with PushSecrets and ExternalSecrets. 
+    </li>
+    <li>
+      Deploy a Prometheus Keycloak Proxy providing strict zero-trust access control to metrics. 
+    </li>
+    <li>
+      Integrate the Prometheus Keycloak Proxy with AI Telemetry and Keycloak Single Sign-On for seamless and secure metrics dashboards per user. 
+    </li>
+    <li>
+      Run Kubernetes Jobs to configure the database, configure Keycloak Realms and Clients, and configure all the secrets automatically. 
+    </li>
+    <li>
+      Set up role bindings between service accounts and secrets. 
+    </li>
+  </ol>
+</div>

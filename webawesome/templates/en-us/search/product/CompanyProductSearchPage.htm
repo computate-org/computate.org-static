@@ -46,6 +46,8 @@
         </div>
       </wa-card>
     </a>
+    {% endfor %}
+    {% for result in listCompanyProduct %}
     <wa-dialog label="{{ result.name | e }}" id="dialog-{{ result.pageId }}" light-dismiss style="--width: 50vw; ">
       {% include result.dialogTemplate %}
       <wa-button slot="footer" variant="brand" href="{{ result.userPage }}">
