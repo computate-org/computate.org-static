@@ -1,3 +1,63 @@
+{%- macro paymentCallouts(result) %}
+{% if result.price != "0.00" %}
+  <div class="wa-stack ">
+    <wa-callout>
+      <i slot="icon" class="fa-brands fa-github fa-2xl"></i>
+      <div class="wa-stack ">
+        <div class="wa-heading-m ">
+          GitHub identity provider
+        </div>
+        <p>
+          To purchase the {{ result.name }}, you simply log into our secure payment pages with your GitHub account. 
+          We use GitHub to grant you access to the course as a private repository on GitHub. 
+        </p>
+      </div>
+    </wa-callout>
+    <wa-callout>
+      <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-credit-card fa-2xl"></i>
+      <div class="wa-stack ">
+        <div class="wa-heading-m ">
+          Authorize.net payment provider
+        </div>
+        <p>
+          After you log into GitHub, there will be a button sending you to authorize.net to purchase the {{ result.name }} securely. 
+        </p>
+      </div>
+    </wa-callout>
+    <wa-callout>
+      <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-shield-halved fa-2xl"></i>
+      <div class="wa-stack ">
+        <div class="wa-heading-m ">
+          Data privacy
+        </div>
+        <p>
+          We don't collect your personal information other than your GitHub account information, 
+          to grant you access to the private repositories. 
+          We don't have any analytics configured on this site. 
+          We don't sell your data to anyone. 
+          The very little information about your GitHub account username, first name, last name, and email is secure. 
+        </p>
+      </div>
+    </wa-callout>
+    <wa-callout>
+      <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-dollar fa-2xl"></i>
+      <div class="wa-stack ">
+        <div class="wa-heading-m ">
+          How the money is used
+        </div>
+        <div class="wa-grid ">
+          <p>
+            Paying for this course will directly benefit the Smart Aquaculture community without overhead — 
+            creating software developer jobs, paying for cloud compute costs, 
+            training events, and open source conferences in the future. 
+          </p>
+          <img src="{{ STATIC_BASE_URL }}/svg/palais-des-saveurs-bordeaux.svg" alt="Palais Des Saveurs Bordeaux"/>
+        </div>
+      </div>
+    </wa-callout>
+  </div>
+{% endif %}
+{%- endmacro %}
 {%- macro code(code) %}
 <div class="wa-flank wa-gap-2xs "><wa-copy-button value="{{ code | e }}"></wa-copy-button><wa-scroller><pre><code>{{ code | e }}</code></pre></wa-scroller></div>
 {%- endmacro %}
