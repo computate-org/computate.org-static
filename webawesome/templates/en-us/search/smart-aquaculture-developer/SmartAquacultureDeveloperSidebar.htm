@@ -71,7 +71,7 @@
                     <div class="pageFacetField pageFacetFieldSmartAquacultureDeveloper_{{ key }} " id="pageFacetFieldSmartAquacultureDeveloper_{{ key }}">
                       {% for facetFieldKey, facetFieldValue in value.facetField.counts.items() %}
                       <div>
-                        <wa-tooltip content="{{ facetFieldValue | e }} Smart Aquaculture Developer course total with {{ value.facetField.var | e }} &quot;{{ facetFieldKey | e }}&quot;"></wa-tooltip>
+                        <wa-tooltip content="{{ facetFieldValue | e }} Smart Aquaculture Developer total with {{ value.facetField.var | e }} &quot;{{ facetFieldKey | e }}&quot;"></wa-tooltip>
                         <div class="cursor-pointer raised-item " data-class="SmartAquacultureDeveloper" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="if(document.querySelector('#fqSmartAquacultureDeveloper_{{ key }}')?.value === '{{ facetFieldKey }}') this.setAttribute('data-val', ''); fqReplace('SmartAquacultureDeveloper', this); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
                       </div>
                       {% endfor %}

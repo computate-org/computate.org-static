@@ -614,11 +614,3 @@ main, footer {
     background: var(--wa-color-surface-raised);
   }
 }
-wa-dialog {
-  --width: 60vw;
-}
-@media (max-width: 768px) {
-  wa-dialog {
-    --width: 100%;
-  }
-}

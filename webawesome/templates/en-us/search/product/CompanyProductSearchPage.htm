@@ -3,6 +3,7 @@
 {%- block htmBodyMiddleCompanyProductPage %}
 {% if resultCount > 0 %}
 <script type="module">
+
   Promise.all([
     customElements.whenDefined('wa-button')
     , customElements.whenDefined('wa-input')
@@ -49,7 +50,7 @@
     </a>
     {% endfor %}
     {% for result in listCompanyProduct %}
-    <wa-dialog label="{{ result.name | e }}" id="dialog-{{ result.pageId }}" light-dismiss>
+    <wa-dialog label="{{ result.name | e }}" id="dialog-{{ result.pageId }}" light-dismiss style="--width: 60rem; ">
       <div class="wa-stack ">
         {% include result.dialogTemplate %}
         {{ paymentCallouts(result) }}

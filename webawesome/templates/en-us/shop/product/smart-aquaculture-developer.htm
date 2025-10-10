@@ -23,194 +23,97 @@ wa-button::part(base), wa-details::part(base) {
 {% block htmTitlePageLayout %}
     <title>{{ result.title }}</title>
 {% endblock htmTitlePageLayout %}
+{% block htmScriptsPageLayout %}
+{{ super() }}
+<script type="module">
+  Promise.all([
+    customElements.whenDefined('wa-button')
+    , customElements.whenDefined('wa-input')
+  ]).then(() => {
+    document.querySelector('#dialog-button-{{ result.pageId }}').addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
+    document.querySelector('#dialog-card-link-{{ result.pageId }}').addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('#dialog-{{ result.pageId }}').open = true;
+      return false;
+    });
+  });
+</script>
+{% endblock htmScriptsPageLayout %}
 {% block htmBodyMiddlePageLayout %}
 
-        <div class="wa-stack pink-purple-background-headers ">
-
-          <wa-card class="pink-purple-background ">
-            <div class="main-content ">
-              <h1>
-                {{ result.name | e }}
-              </h1>
-              <p>
-                {{ result.description | e }}
-              </p>
-              <wa-card>
-                {% if userName is defined %}
-                {% if scopes is defined and "GET" in scopes %}
-                <div class="wa-stack ">
-                  <div>Download your copy of the {{ result.name }}! </div>
-                  <div>
-                    <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.downloadUrl }}" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                      Download
-                    </wa-button>
-                  </div>
-                </div>
-                {% else %}
-                <div class="wa-stack ">
-                  <form id="formAuthorizeNet" name="formAuthorizeNet" method="post" action="{{ AUTHORIZE_NET_URL }}/payment/payment">
-                    <input type="hidden" name="token" value="{{ hostedPaymentResponseToken | e }}" />
-                    <wa-button type="submit" id="btnContinue">
-                      Buy now at authorize.net
-                    </wa-button>
-                  </form>
-                </div>
-                {% endif %}
-                {% else %}
-                <div class="wa-stack ">
-                  <div>Want to get started with the {{ result.name }}? Start by logging into computate.org with your GitHub account. </div>
-                  <div>
-                      <wa-button pill size="large" id="order-button" class="gradient-button pink-purple-background" href="{{ result.userPage }}" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-right-to-bracket"></i>
-                      Log in with GitHub
-                    </wa-button>
-                  </div>
-                </div>
-                {% endif %}
-              </wa-card>
+<div class="wa-stack main-content ">
+  <div class="wa-heading-2xl ">
+    {{ result.name }}
+  </div>
+  {% if userName is defined and scopes is defined and "GET" in scopes -%}
+  <div class="wa-stack pink-purple-background-headers ">
+    <wa-card class="pink-purple-background ">
+      <div class="main-content ">
+        <h1>
+          {{ result.name | e }}
+        </h1>
+        <p>
+          {{ result.description | e }}
+        </p>
+        <wa-card>
+          <div class="wa-stack ">
+            <div>Download your copy of the {{ result.name }}! </div>
+            <div>
+              <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.downloadUrl }}" variant="neutral">
+                <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+                Download
+              </wa-button>
             </div>
-          </wa-card>
-
-          <wa-card class="red-pink-background background border-radius-x-large ">
-            <div class="wa-grid ">
-              <div>
-              <div class="wa-crown">
-                <h1>
-                  <i class="fa-duotone fa-regular fa-video fa-2x "></i>
-                  System requirements
-                </h1>
-              </div>
-              <h2>
-                The {{ result.name }} is an open source project builder that runs on a Linux x86_64 computer. 
-                Supported Linux distributions include: 
-              </h2>
-
-              <ul>
-                <li>
-                  <i class="fa-brands fa-redhat fa-2xl fa-red" style="color: red; "></i>
-                  Red Hat Enterprise Linux 9
-                </li>
-                <li>
-                  <i class="fa-brands fa-centos fa-2xl "></i>
-                  CentOS Stream 9
-                </li>
-                <li>
-                  <i class="fa-brands fa-fedora fa-2xl "></i>
-                  Fedora 34+
-                </li>
-                <li>
-                  Other Linux distros may also be supported
-                </li>
-              </ul>
-              </div>
-              <wa-card class="zoom-details ">
-                <div class="wa-stack ">
-                  <div>
-                    Microsoft Windows and MacOSX users can also start computating with the very similar Smart Aquaculture Cloud Sandbox course. 
-                    This course runs entirely in the cloud to allow all users access to the same tools. 
-                    Try the <a href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox">Smart Aquaculture Cloud Sandbox course</a>. 
-                  </div>
-                  <div>
-                    <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="{{ SITE_BASE_URL }}/en-us/shop/course/smart-aquaculture-cloud-sandbox" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                      Try the course
-                    </wa-button>
-                  </div>
-                  <div>
-                    If you are ready to back up the files on your computer and switch to Linux, 
-                    just like I did back in the year 2005, 
-                    read my article about how to <a href="{{ SITE_BASE_URL }}/en-us/article/choose-your-operating-system">choose your operating system</a>. 
-                  </div>
-                  <div>
-                    <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="{{ SITE_BASE_URL }}/en-us/article/choose-your-operating-system" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                      Switch to Linux
-                    </wa-button>
-                  </div>
-                  <div>
-                    If you are already running a supported version of Linux, 
-                  </div>
-                  <div>
-                    <wa-button pill id="order-button" size="large" class="gradient-button red-pink-background" href="#install-python-prerequisites" variant="neutral">
-                      <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-                      Continue with the {{ result.name }}
-                    </wa-button>
-                  </div>
-                </div>
-              </wa-card>
-
-            </div>
-          </wa-card>
-
-          <wa-card with-header class="summary-wrapper">
-            <div slot="header" class="main-content ">
-              <h1>
-                Install the right development environment VSCode
-              </h1>
-              <p>
-                <a href="https://code.visualstudio.com/download">Click here to download VSCode</a>
-              </p>
-              <p>
-                Following the recommended system requirements above for running Linux, you will want to download the <b>.rpm x64</b> version of VSCode. 
-              </p>
-            </div>
-          </wa-card>
-
-          <wa-card class="purple-blue-background ">
-            <div class="main-content ">
-              <div class="wa-flank">
-                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
-                <h1>
-                  Watch the free Computate AI Developer Webinar on Zoom or live streaming to Youtube. 
-                </h1>
-              </div>
-              <div class="wa-stack ">
-                <div class="wa-flank">
-                  <p>
-                    Watch the smart-aquaculture project use the Computate Smart Cloud Deployer to deploy all the required microservices to the cloud, 
-                    then do live development adding new features to the smart-aquaculture project in OpenShift AI VSCode Java Workbench. 
-                  </p>
-                </div>
-                <h3 class="brand-font">
-                  The {{ result.name }} series will occur live each weekday. 
-                </h3>
-
-                <wa-card class="wa-stack ">
-                  <div class="wa-flank zoom-link font-size-large">
-                    <i class="fa-duotone fa-regular fa-earth-americas fa-xl"></i>
-                  <div class="wa-flank ">
-                      <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}/en-us/view/webinar/computate-ai-developer-webinar" variant="neutral">
-                        <i class="fa-duotone fa-regular fa-video"></i>
-                        Learn more
-                      </wa-button>
-                      <div>
-                        <div class="font-size-x-small">
-                          Monday 1:30 PM Eastern US time
-                        </div>
-                        <div class="font-size-x-small">
-                          Tuesday 1:30 PM Eastern US time
-                        </div>
-                        <div class="font-size-x-small">
-                          Wednesday 12:00 PM noon Eastern US time
-                        </div>
-                        <div class="font-size-x-small">
-                          Thursday 1:30 PM Eastern US time
-                        </div>
-                        <div class="font-size-x-small">
-                          Friday 10:30 AM Eastern US time
-                        </div>
-                        <div class="font-size-x-small">
-                          Friday 1:30 PM Eastern US time
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </wa-card>
-              </div>
-            </div>
-          </wa-card>
-
-        </div>
+          </div>
+        </wa-card>
+      </div>
+    </wa-card>
+  </div>
+  {% else %}
+  <div class="wa-stack ">
+    <form id="formAuthorizeNet" name="formAuthorizeNet" method="post" action="{{ AUTHORIZE_NET_URL }}/payment/payment">
+      <input type="hidden" name="token" value="{{ hostedPaymentResponseToken | e }}" />
+      <wa-button type="submit" id="btnContinue">
+        Buy now at authorize.net
+      </wa-button>
+    </form>
+  </div>
+  <a class="wa-link-plain " href="{{ result.displayPage }}" id="dialog-card-link-{{ result.pageId }}">
+    <wa-card with-image style="height: 100%" class="hover-card">
+      <div class="wa-frame:landscape wa-border-radius-l "{% if result.pageImageWidth %} style="aspect-ratio: {{ result.pageImageWidth }} / {{ result.pageImageHeight }}; "{% endif %}>
+        <img
+            slot="media"
+            src="{{ STATIC_BASE_URL }}{{ result.pageImageUri }}"
+            {% if result.pageImageAlt is defined %}
+            alt="{{ result.pageImageAlt | e }}"
+            {% endif %}
+            />
+      </div>
+      <div class="margin-block-start ">
+        <h3>{{ result.name | e }}</h3>
+        <p class="wa-caption-l">
+          {{ result.description | e }}
+        </p>
+        <p>
+          {% if result.price == "0.00" %}
+          This is Free!
+          {% else %}
+          This costs <code><wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number></code>
+          {% endif %}
+        </p>
+      </div>
+    </wa-card>
+  </a>
+  {% include result.dialogTemplate %}
+  {{ paymentCallouts(result) }}
+  <div class="wa-stack ">
+    <form id="formAuthorizeNet" name="formAuthorizeNet" method="post" action="{{ AUTHORIZE_NET_URL }}/payment/payment">
+      <input type="hidden" name="token" value="{{ hostedPaymentResponseToken | e }}" />
+      <wa-button type="submit" id="btnContinue">
+        Buy now at authorize.net
+      </wa-button>
+    </form>
+  </div>
+</div>
+{% endif %}
 {% endblock %}

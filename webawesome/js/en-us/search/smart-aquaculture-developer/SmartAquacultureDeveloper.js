@@ -888,7 +888,7 @@ async function websocketSmartAquacultureDeveloper(success) {
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify Smart Aquaculture Developer courses in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify Smart Aquaculture Developers in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
       $x.setAttribute('onclick', 'document.querySelector("#card-' + pageId + '");');
@@ -1386,7 +1386,7 @@ function pageGraphSmartAquacultureDeveloper(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'Smart Aquaculture Developer courses';
+          layout['title'] = 'Smart Aquaculture Developers';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
