@@ -125,10 +125,6 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterJoinUri = $formFilters.querySelector('.valueJoinUri')?.value;
-    if(filterJoinUri != null && filterJoinUri !== '')
-      filters.push({ name: 'fq', value: 'joinUri:' + filterJoinUri });
-
     var filterNextWebinarsBegin = $formFilters.querySelector('.valueNextWebinarsBegin')?.value;
     if(filterNextWebinarsBegin != null && filterNextWebinarsBegin !== '')
       filters.push({ name: 'fq', value: 'nextWebinarsBegin:' + filterNextWebinarsBegin });
@@ -136,6 +132,10 @@ function searchCompanyWebinarFilters($formFilters) {
     var filterJoinUrl = $formFilters.querySelector('.valueJoinUrl')?.value;
     if(filterJoinUrl != null && filterJoinUrl !== '')
       filters.push({ name: 'fq', value: 'joinUrl:' + filterJoinUrl });
+
+    var filterJoinUri = $formFilters.querySelector('.valueJoinUri')?.value;
+    if(filterJoinUri != null && filterJoinUri !== '')
+      filters.push({ name: 'fq', value: 'joinUri:' + filterJoinUri });
   }
   return filters;
 }
@@ -439,18 +439,6 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pageId, su
   if(removeDownload != null && removeDownload !== '')
     vals['removeDownload'] = removeDownload;
 
-  var valueJoinUri = $formValues.querySelector('.valueJoinUri')?.value;
-  var removeJoinUri = $formValues.querySelector('.removeJoinUri')?.value === 'true';
-  var setJoinUri = removeJoinUri ? null : $formValues.querySelector('.setJoinUri')?.value;
-  var addJoinUri = $formValues.querySelector('.addJoinUri')?.value;
-  if(removeJoinUri || setJoinUri != null && setJoinUri !== '')
-    vals['setJoinUri'] = setJoinUri;
-  if(addJoinUri != null && addJoinUri !== '')
-    vals['addJoinUri'] = addJoinUri;
-  var removeJoinUri = $formValues.querySelector('.removeJoinUri')?.value;
-  if(removeJoinUri != null && removeJoinUri !== '')
-    vals['removeJoinUri'] = removeJoinUri;
-
   var valueJoinUrl = $formValues.querySelector('.valueJoinUrl')?.value;
   var removeJoinUrl = $formValues.querySelector('.removeJoinUrl')?.value === 'true';
   var setJoinUrl = removeJoinUrl ? null : $formValues.querySelector('.setJoinUrl')?.value;
@@ -462,6 +450,18 @@ async function patchCompanyWebinar($formFilters, $formValues, target, pageId, su
   var removeJoinUrl = $formValues.querySelector('.removeJoinUrl')?.value;
   if(removeJoinUrl != null && removeJoinUrl !== '')
     vals['removeJoinUrl'] = removeJoinUrl;
+
+  var valueJoinUri = $formValues.querySelector('.valueJoinUri')?.value;
+  var removeJoinUri = $formValues.querySelector('.removeJoinUri')?.value === 'true';
+  var setJoinUri = removeJoinUri ? null : $formValues.querySelector('.setJoinUri')?.value;
+  var addJoinUri = $formValues.querySelector('.addJoinUri')?.value;
+  if(removeJoinUri || setJoinUri != null && setJoinUri !== '')
+    vals['setJoinUri'] = setJoinUri;
+  if(addJoinUri != null && addJoinUri !== '')
+    vals['addJoinUri'] = addJoinUri;
+  var removeJoinUri = $formValues.querySelector('.removeJoinUri')?.value;
+  if(removeJoinUri != null && removeJoinUri !== '')
+    vals['removeJoinUri'] = removeJoinUri;
 
   patchCompanyWebinarVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
 }
@@ -581,10 +581,6 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterJoinUri = $formFilters.querySelector('.valueJoinUri')?.value;
-    if(filterJoinUri != null && filterJoinUri !== '')
-      filters.push({ name: 'fq', value: 'joinUri:' + filterJoinUri });
-
     var filterNextWebinarsBegin = $formFilters.querySelector('.valueNextWebinarsBegin')?.value;
     if(filterNextWebinarsBegin != null && filterNextWebinarsBegin !== '')
       filters.push({ name: 'fq', value: 'nextWebinarsBegin:' + filterNextWebinarsBegin });
@@ -592,6 +588,10 @@ function patchCompanyWebinarFilters($formFilters) {
     var filterJoinUrl = $formFilters.querySelector('.valueJoinUrl')?.value;
     if(filterJoinUrl != null && filterJoinUrl !== '')
       filters.push({ name: 'fq', value: 'joinUrl:' + filterJoinUrl });
+
+    var filterJoinUri = $formFilters.querySelector('.valueJoinUri')?.value;
+    if(filterJoinUri != null && filterJoinUri !== '')
+      filters.push({ name: 'fq', value: 'joinUri:' + filterJoinUri });
   }
   return filters;
 }
@@ -715,13 +715,13 @@ async function postCompanyWebinar($formValues, target, success, error) {
   if(valueDownload != null && valueDownload !== '')
     vals['download'] = valueDownload;
 
-  var valueJoinUri = $formValues.querySelector('.valueJoinUri')?.value;
-  if(valueJoinUri != null && valueJoinUri !== '')
-    vals['joinUri'] = valueJoinUri;
-
   var valueJoinUrl = $formValues.querySelector('.valueJoinUrl')?.value;
   if(valueJoinUrl != null && valueJoinUrl !== '')
     vals['joinUrl'] = valueJoinUrl;
+
+  var valueJoinUri = $formValues.querySelector('.valueJoinUri')?.value;
+  if(valueJoinUri != null && valueJoinUri !== '')
+    vals['joinUri'] = valueJoinUri;
 
   fetch(
     '/en-us/api/webinar'
@@ -956,9 +956,9 @@ async function websocketCompanyWebinarInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
-        var inputJoinUri = null;
         var inputNextWebinarsBegin = null;
         var inputJoinUrl = null;
+        var inputJoinUri = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('.Page_pk');
@@ -1012,12 +1012,12 @@ async function websocketCompanyWebinarInner(apiRequest) {
           inputObjectText = $response.querySelector('.Page_objectText');
         if(vars.includes('solrId'))
           inputSolrId = $response.querySelector('.Page_solrId');
-        if(vars.includes('joinUri'))
-          inputJoinUri = $response.querySelector('.Page_joinUri');
         if(vars.includes('nextWebinarsBegin'))
           inputNextWebinarsBegin = $response.querySelector('.Page_nextWebinarsBegin');
         if(vars.includes('joinUrl'))
           inputJoinUrl = $response.querySelector('.Page_joinUrl');
+        if(vars.includes('joinUri'))
+          inputJoinUri = $response.querySelector('.Page_joinUri');
 
         jsWebsocketCompanyWebinar(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -1284,16 +1284,6 @@ async function websocketCompanyWebinarInner(apiRequest) {
           addGlow(document.querySelector('.Page_solrId'));
         }
 
-        if(inputJoinUri) {
-          document.querySelectorAll('.Page_joinUri').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputJoinUri.getAttribute('value');
-            else
-              item.textContent = inputJoinUri.textContent;
-          });
-          addGlow(document.querySelector('.Page_joinUri'));
-        }
-
         if(inputNextWebinarsBegin) {
           document.querySelectorAll('.Page_nextWebinarsBegin').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1312,6 +1302,16 @@ async function websocketCompanyWebinarInner(apiRequest) {
               item.textContent = inputJoinUrl.textContent;
           });
           addGlow(document.querySelector('.Page_joinUrl'));
+        }
+
+        if(inputJoinUri) {
+          document.querySelectorAll('.Page_joinUri').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputJoinUri.getAttribute('value');
+            else
+              item.textContent = inputJoinUri.textContent;
+          });
+          addGlow(document.querySelector('.Page_joinUri'));
         }
 
           pageGraphCompanyWebinar();

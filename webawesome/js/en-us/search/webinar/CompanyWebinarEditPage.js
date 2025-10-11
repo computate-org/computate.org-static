@@ -351,27 +351,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH joinUri
-          document.querySelector('#Page_joinUri')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_joinUri');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchCompanyWebinarVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setJoinUri', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_joinUri')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_joinUri')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_joinUri');
-            const valid = form.reportValidity();
-          });
-
           // PATCH joinUrl
           document.querySelector('#Page_joinUrl')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_joinUrl');
@@ -390,6 +369,27 @@ Promise.all([
           });
           document.querySelector('#Page_joinUrl')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_joinUrl');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH joinUri
+          document.querySelector('#Page_joinUri')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_joinUri');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyWebinarVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setJoinUri', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_joinUri')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_joinUri')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_joinUri');
             const valid = form.reportValidity();
           });
 });

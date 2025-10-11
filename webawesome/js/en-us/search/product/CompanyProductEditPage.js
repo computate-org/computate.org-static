@@ -455,4 +455,25 @@ Promise.all([
             const form = document.querySelector('#PageForm_relatedArticleIds');
             const valid = form.reportValidity();
           });
+
+          // PATCH dialogTemplate
+          document.querySelector('#Page_dialogTemplate')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_dialogTemplate');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setDialogTemplate', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_dialogTemplate')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_dialogTemplate')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_dialogTemplate');
+            const valid = form.reportValidity();
+          });
 });
