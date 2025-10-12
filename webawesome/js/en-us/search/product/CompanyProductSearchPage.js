@@ -150,17 +150,6 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'saves', false);
   });
 
-  document.querySelector('#pageSelectSortCompanyProduct_objectTitle')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'objectTitle', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_objectTitle')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'objectTitle', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_objectTitle')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'objectTitle', false);
-  });
-
   document.querySelector('#pageSelectSortCompanyProduct_editPage')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'editPage', event.currentTarget.value);
   });
@@ -181,28 +170,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsCompanyProduct_userPage')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyProduct', 'userPage', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyProduct_download')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'download', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_download')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'download', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_download')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'download', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyProduct_objectSuggest')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'objectSuggest', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_objectSuggest')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'objectSuggest', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_objectSuggest')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'objectSuggest', false);
   });
 
   document.querySelector('#pageSelectSortCompanyProduct_objectText')?.addEventListener('change', (event) => {
@@ -359,6 +326,39 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'dialogTemplate', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyProduct_objectTitle')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'objectTitle', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_objectTitle')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'objectTitle', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_objectTitle')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'objectTitle', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyProduct_download')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'download', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_download')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'download', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_download')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'download', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyProduct_objectSuggest')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'objectSuggest', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_objectSuggest')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'objectSuggest', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_objectSuggest')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'objectSuggest', false);
+  });
+
   document.querySelector('#htmButton_patchCompanyProduct')?.addEventListener('click', (event) => {
     document.querySelector('#patchCompanyProductDialog').open = true;
   });
@@ -506,18 +506,6 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyProduct_userPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyProduct', event.currentTarget);
           });
-          document.querySelector('#fqCompanyProduct_download')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_download')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_download')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_download')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
           document.querySelector('#fqCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
             fqChange('CompanyProduct', event.currentTarget);
           });
@@ -564,6 +552,18 @@ Promise.all([
             facetPivotChange('CompanyProduct', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeGapCompanyProduct_productNum')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_download')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyProduct', event.currentTarget);
           });
 });
