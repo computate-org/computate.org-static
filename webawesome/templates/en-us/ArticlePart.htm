@@ -74,12 +74,6 @@
         <p>
           Learn with the {{ SITE_NAME }} open source community as we build the platform together. 
         </p>
-        <div>
-          <wa-button id="webinar-button" class="gradient-button blue-teal-background" href="{{ SITE_BASE_URL }}/en-us/view/webinar/computate-ai-developer-webinar" variant="neutral">
-            <i slot="start" class="fa-duotone fa-regular fa-video"></i>
-            Learn more
-          </wa-button>
-        </div>
       </div>
     </wa-card>
 {% if result.price != "0.00" %}
@@ -133,11 +127,25 @@
           How the money is used
         </div>
         <div class="wa-grid ">
-          <p>
-            Paying for this course will directly benefit the {{ result.name }} community without overhead — 
-            creating software developer jobs, paying for cloud compute costs, 
-            training events, and open source conferences in the future. 
-          </p>
+          <div>
+            <p>
+              Paying for this course will directly benefit the {{ result.name }} community without overhead — 
+              creating software developer jobs, paying for cloud compute costs, 
+              training events, and open source conferences in the future. 
+            </p>
+            <p>
+              Because Computate LLC is located in the state of Utah, USA, 
+              Customers who also live in Utah are required to pay the 7.25% sales tax rate. 
+              To purchase the {{ result.name | e }}, please select whether you live in Utah, or not. 
+            </p>
+            <p>
+              Click the right button below to purchase the {{ result.name | e }}. 
+            </p>
+            <p>
+              <strong>
+                You will only pay <wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number> total, no matter where you live. </strong>
+            </p>
+          </div>
           <img src="{{ STATIC_BASE_URL }}/svg/palais-des-saveurs-bordeaux.svg" alt="Palais Des Saveurs Bordeaux"/>
         </div>
       </div>

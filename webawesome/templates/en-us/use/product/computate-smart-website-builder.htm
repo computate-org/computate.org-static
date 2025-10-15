@@ -54,7 +54,7 @@ wa-button::part(base), wa-details::part(base) {
                   <form id="formAuthorizeNet" name="formAuthorizeNet" method="post" action="{{ AUTHORIZE_NET_URL }}/payment/payment">
                     <input type="hidden" name="token" value="{{ hostedPaymentResponseToken | e }}" />
                     <wa-button type="submit" id="btnContinue">
-                      Buy now at authorize.net
+                      Buy now for ${{ result.price }}
                     </wa-button>
                   </form>
                 </div>
