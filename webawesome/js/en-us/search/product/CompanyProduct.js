@@ -101,6 +101,10 @@ function searchCompanyProductFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
+    var filterProductResource = $formFilters.querySelector('.valueProductResource')?.value;
+    if(filterProductResource != null && filterProductResource !== '')
+      filters.push({ name: 'fq', value: 'productResource:' + filterProductResource });
+
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -391,6 +395,18 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeEditPage != null && removeEditPage !== '')
     vals['removeEditPage'] = removeEditPage;
 
+  var valueProductResource = $formValues.querySelector('.valueProductResource')?.value;
+  var removeProductResource = $formValues.querySelector('.removeProductResource')?.value === 'true';
+  var setProductResource = removeProductResource ? null : $formValues.querySelector('.setProductResource')?.value;
+  var addProductResource = $formValues.querySelector('.addProductResource')?.value;
+  if(removeProductResource || setProductResource != null && setProductResource !== '')
+    vals['setProductResource'] = setProductResource;
+  if(addProductResource != null && addProductResource !== '')
+    vals['addProductResource'] = addProductResource;
+  var removeProductResource = $formValues.querySelector('.removeProductResource')?.value;
+  if(removeProductResource != null && removeProductResource !== '')
+    vals['removeProductResource'] = removeProductResource;
+
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value === 'true';
   var setEmailTemplate = removeEmailTemplate ? null : $formValues.querySelector('.setEmailTemplate')?.value;
@@ -593,6 +609,10 @@ function patchCompanyProductFilters($formFilters) {
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
 
+    var filterProductResource = $formFilters.querySelector('.valueProductResource')?.value;
+    if(filterProductResource != null && filterProductResource !== '')
+      filters.push({ name: 'fq', value: 'productResource:' + filterProductResource });
+
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -742,6 +762,10 @@ async function postCompanyProduct($formValues, target, success, error) {
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   if(valueEditPage != null && valueEditPage !== '')
     vals['editPage'] = valueEditPage;
+
+  var valueProductResource = $formValues.querySelector('.valueProductResource')?.value;
+  if(valueProductResource != null && valueProductResource !== '')
+    vals['productResource'] = valueProductResource;
 
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   if(valueEmailTemplate != null && valueEmailTemplate !== '')
@@ -1006,6 +1030,7 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputEditPage = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
+        var inputProductResource = null;
         var inputEmailTemplate = null;
         var inputStoreUrl = null;
         var inputDownloadUrl = null;
@@ -1060,6 +1085,8 @@ async function websocketCompanyProductInner(apiRequest) {
           inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('.Page_objectText');
+        if(vars.includes('productResource'))
+          inputProductResource = $response.querySelector('.Page_productResource');
         if(vars.includes('emailTemplate'))
           inputEmailTemplate = $response.querySelector('.Page_emailTemplate');
         if(vars.includes('storeUrl'))
@@ -1290,6 +1317,16 @@ async function websocketCompanyProductInner(apiRequest) {
               item.textContent = inputObjectText.textContent;
           });
           addGlow(document.querySelector('.Page_objectText'));
+        }
+
+        if(inputProductResource) {
+          document.querySelectorAll('.Page_productResource').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputProductResource.getAttribute('value');
+            else
+              item.textContent = inputProductResource.textContent;
+          });
+          addGlow(document.querySelector('.Page_productResource'));
         }
 
         if(inputEmailTemplate) {
