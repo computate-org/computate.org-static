@@ -1,5 +1,4 @@
 {%- macro paymentCallouts(result) %}
-{% if result.price != "0.00" %}
   <div class="wa-stack ">
     <wa-card class="red-pink-background ">
       <div class="wa-stack ">
@@ -57,7 +56,6 @@
         </wa-callout>
       </div>
     </wa-card>
-{% endif %}
 
     <wa-card class="purple-blue-background ">
       <div class="wa-stack ">
