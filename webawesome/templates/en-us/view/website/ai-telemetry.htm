@@ -1,0 +1,16 @@
+{% extends "en-us/PageLayout.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}"/>
+    <meta name="result.displayPage" content="https://aitelemetry.apps.obs.nerc.mghpcc.org/"/>
+    <meta name="result.name" content="AI Telemetry — Fine grained access control OpenShift cluster metrics"/>
+    <meta name="result.description" content="An upstream open source collaboration with academic partners in Red Hat Research provides fine-grained access control to Red Hat Advanced Cluster Management Observability metrics at the multi-hub, multi-cluster, multi-project level, currently unavailable in Red Hat OpenShift. "/>
+    <meta name="result.websiteNum" content="5"/>
+{% endblock htmMetaPageLayout %}
+{% block htmStylePageLayout %}
+{% endblock htmStylePageLayout %}
+{% block htmTitlePageLayout %}
+    <title>{{ title }}</title>
+{% endblock htmTitlePageLayout %}
+{% block htmBodyMiddlePageLayout %}
+{% endblock %}
