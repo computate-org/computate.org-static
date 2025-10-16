@@ -115,7 +115,7 @@
 
           <div class="wa-stack main-content ">
             <div class="wa-flank">
-              <i class="fa-duotone fa-regular fa-video fa-2x "></i>
+              <i class="{{ FONTAWESOME_STYLE }} fa-video fa-2x "></i>
               <h2>
                 Watch the free Computate AI Developer Webinar on Zoom or live streaming to Youtube. 
               </h2>
@@ -134,7 +134,7 @@
                     <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" time-zone-name="short" date=""></wa-format-date>
                   </div>
                   <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
-                    <i slot="start" class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-video" aria-hidden="true"></i>
                     Join webinar
                   </wa-button>
                 </div>
@@ -146,7 +146,7 @@
 
                 <div class="wa-flank ">
                   <wa-button id="webinar-button" variant="brand" href="{{ SITE_BASE_URL }}/en-us/view/webinar/computate-ai-developer-webinar">
-                    <i slot="start" class="fa-duotone fa-regular fa-video"></i>
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-video"></i>
                     Learn more
                   </wa-button>
                   <div class="wa-stack wa-gap-m ">
@@ -179,7 +179,7 @@
               <wa-card>
                 <div>
                   <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ SITE_BASE_URL }}/en-us/shop/use-case/smart-aquaculture-use-case">
-                    <i slot="start" class="fa-duotone fa-regular fa-video" aria-hidden="true"></i>
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-video" aria-hidden="true"></i>
                     Read use case
                   </wa-button>
                 </div>
@@ -223,7 +223,12 @@
 
           <div class="wa-stack">
             <div class="wa-split">
-              <h3 class="wa-heading-l">The path to computer enlightenment</h3>
+              <h2 class="wa-heading-l wa-flank ">
+                <i class="{{ FONTAWESOME_STYLE }} fa-road fa-3x "></i>
+                <div>
+                  The path to computer enlightenment
+                </div>
+              </h2>
               <a href="{{ SITE_BASE_URL }}/en-us/search/article" class="wa-cluster">
                 <span>Browse all articles</span>
                 <wa-icon name="arrow-right"></wa-icon>
@@ -233,7 +238,7 @@
               Learn how to become a super-talented cloud software developer with this series of articles that I call, 
               "the path the computer enlightenment." 
             </p>
-            <wa-carousel navigation pagination slides-per-page="4" slides-per-move="4" style="--aspect-ratio: initial">
+            <wa-carousel navigation pagination slides-per-page="2" slides-per-move="2" style="--aspect-ratio: initial">
               {% for article in pathToComputerEnlightenment %}
               <wa-carousel-item>
                 <a href="{{ article.displayPage }}" class="wa-link-plain">
@@ -261,8 +266,13 @@
 
           <div class="wa-stack">
             <div class="wa-split">
-              <h3 class="wa-heading-l">Free courses in cloud computing on your own computer</h2>
-              <a href="{{ SITE_BASE_URL }}/en-us/search/course" class="wa-cluster">
+              <h2 class="wa-heading-l wa-flank ">
+                <i class="{{ FONTAWESOME_STYLE }} fa-chalkboard-user fa-3x "></i>
+                <div>
+                  Free courses in cloud computing on your own computer
+                </div>
+              </h2>
+              <a href="{{ SITE_BASE_URL }}/en-us/search/product" class="wa-cluster">
                 <span>Browse all courses</span>
                 <wa-icon name="arrow-right"></wa-icon>
               </a>
@@ -296,57 +306,36 @@
           <wa-card class="pink-purple-background wa-stack ">
             <div class="wa-stack main-content ">
               <div class="wa-flank">
-                <i class="fa-duotone fa-regular fa-conveyor-belt fa-5x "></i>
+                <i class="{{ FONTAWESOME_STYLE }} fa-conveyor-belt fa-5x "></i>
                 <h1>
                   Latest available products: 
                 </h1>
               </div>
-              <h2>
+              <p>
                 Learn how to deploy open source smart device microservices to the cloud
                 with the <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-cloud-deployer">Computate Smart Cloud Deployer</a> and <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-website-builder">Computate Smart Website Builder</a>. 
-              </h2>
+              </p>
               <div class="wa-grid" style="--min-column-size: 50ch">
                 <div class="wa-grid">
-                  <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-cloud-deployer" class="wa-link-plain">
+                  {% for product in topProducts %}
+                  <a href="{{ product.displayPage }}" class="wa-link-plain">
                     <wa-card>
-                      <img slot="image"
-                        src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/png/smart-aquaculture-openshift-topology.png"
-                        alt="Deploy modern open source microservices including Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications. "
+                      <img slot="media"
+                        src="{{ STATIC_BASE_URL }}{{ product.pageImageUri }}"
+                        alt="{{ product.pageImageAlt | e }}"
                       />
                       <div class="wa-stack">
                         <div class="wa-flank:end wa-align-items-start wa-heading-m">
-                          <span>Computate Smart Cloud Deployer</span>
-                          <span>$1,024</span>
+                          <span>{{ product.name }}</span>
+                          <span>${{ product.price }}</span>
                         </div>
-                        <p class="wa-caption-m">
-                          Learn how to deploy open source smart device microservices to the cloud. 
-                        </p>
                         <em class="wa-caption-m">
-                          Deploy modern open source microservices including Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications. 
+                          {{ product.description }}
                         </em>
                       </div>
                     </wa-card>
                   </a>
-                  <a href="{{ SITE_BASE_URL }}/en-us/shop/product/computate-smart-website-builder" class="wa-link-plain">
-                    <wa-card>
-                      <img slot="image"
-                        src="{{ STATIC_BASE_URL }}/smart-aquaculture-static/webawesome/png/smart-aquaculture-fish-populations.png"
-                        alt="Build a custom data-driven website for your own ideas on your own computer. "
-                      />
-                      <div class="wa-stack">
-                        <div class="wa-flank:end wa-align-items-start wa-heading-m">
-                          <span>Computate Smart Website Builder</span>
-                          <span>$2,048</span>
-                        </div>
-                        <p class="wa-caption-m">
-                          Are you a software developer interested in building digital twins, or a custom website? 
-                        </p>
-                        <em class="wa-caption-m">
-                          Build a custom data-driven website for your own ideas on your own computer. 
-                        </em>
-                      </div>
-                    </wa-card>
-                  </a>
+                  {% endfor %}
                 </div>
               </div>
             </div>
