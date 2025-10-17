@@ -21,6 +21,7 @@
 <div class="wa-stack wa-align-items-center" style="max-width: 105ch; margin: 0 auto;">
   <div class="wa-grid" style="--min-column-size: 40ch;">
     {% for result in listCompanyProduct %}
+    <a class="wa-link-plain " href="{{ result.displayPage }}" id="dialog-card-link-{{ result.pageId }}">
       <wa-card with-image style="height: 100%" class="hover-card">
         <div class="wa-frame:landscape wa-border-radius-l "{% if result.pageImageWidth %} style="aspect-ratio: {{ result.pageImageWidth }} / {{ result.pageImageHeight }}; "{% endif %}>
           <img
@@ -46,6 +47,7 @@
           <wa-button variant="brand" id="dialog-button-{{ result.pageId }}">Learn more</wa-button>
         </div>
       </wa-card>
+    </a>
     {% endfor %}
     {% for result in listCompanyProduct %}
     <wa-dialog label="{{ result.name | e }}" id="dialog-{{ result.pageId }}" light-dismiss style="--width: 60rem; ">
