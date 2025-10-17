@@ -1,155 +1,155 @@
 {%- macro paymentCallouts(result) %}
-  <div class="wa-stack ">
-    <wa-card class="red-pink-background ">
-      <div class="wa-stack ">
-        <div class="wa-flank ">
-          <i class="{{ FONTAWESOME_STYLE }} fa-video fa-2x "></i>
-          <div class="wa-heading-l ">
-            Recommended operating systems
-          </div>
-        </div>
-        <p>
-          The {{ result.name }} runs on a Microsoft Windows 11 Professional computer, or Linux x86_64 computer. 
-          Supported operating systems and Linux distributions include: 
-        </p>
-        <div class="wa-grid">
-          <wa-card with-image style="height: 100%">
-            <div slot="media" class="wa-frame:landscape ">
-              <i class="fa-brands fa-windows " style="font-size: 9rem; color: #74C0FC;"></i>
-            </div>
-            <div class="wa-stack wa-gap-xs">
-              <span class="wa-caption-l">Microsoft Windows 11 Pro</span>
+        <div class="wa-stack ">
+          <wa-card class="red-pink-background ">
+            <div class="wa-stack ">
+              <div class="wa-flank ">
+                <i class="{{ FONTAWESOME_STYLE }} fa-video fa-2x "></i>
+                <div class="wa-heading-l ">
+                  Recommended operating systems
+                </div>
+              </div>
+              <p>
+                The {{ result.name }} runs on a Microsoft Windows 11 Professional computer, or Linux x86_64 computer. 
+                Supported operating systems and Linux distributions include: 
+              </p>
+              <div class="wa-grid">
+                <wa-card with-image style="height: 100%">
+                  <div slot="media" class="wa-frame:landscape ">
+                    <i class="fa-brands fa-windows " style="font-size: 9rem; color: #74C0FC;"></i>
+                  </div>
+                  <div class="wa-stack wa-gap-xs">
+                    <span class="wa-caption-l">Microsoft Windows 11 Pro</span>
+                  </div>
+                </wa-card>
+                <wa-card with-image style="height: 100%">
+                  <div slot="media" class="wa-frame:landscape ">
+                    <i class="fa-brands fa-redhat fa-red" style="font-size: 9rem; color: red; "></i>
+                  </div>
+                  <div class="wa-stack wa-gap-xs">
+                    <span class="wa-caption-l">Red Hat Enterprise Linux 9</span>
+                  </div>
+                </wa-card>
+                <wa-card with-image style="height: 100%">
+                  <div slot="media" class="wa-frame:landscape ">
+                    <i class="fa-brands fa-centos " style="font-size: 9rem; "></i>
+                  </div>
+                  <div class="wa-stack wa-gap-xs">
+                    <span class="wa-caption-l">CentOS Stream 9</span>
+                  </div>
+                </wa-card>
+                <wa-card with-image style="height: 100%">
+                  <div slot="media" class="wa-frame:landscape ">
+                    <i class="fa-brands fa-fedora " style="font-size: 9rem; "></i>
+                  </div>
+                  <div class="wa-stack wa-gap-xs">
+                    <span class="wa-caption-l">Fedora 34+</span>
+                  </div>
+                </wa-card>
+              </div>
+              <p>
+                Other Linux distros may also be supported
+              </p>
+              <wa-callout variant="brand">
+                <i class="{{ FONTAWESOME_STYLE }} fa-circle-info fa-xl"></i>
+                <strong>MacOS operating system unsupported</strong><br />
+                Unfortunately, MacOS is not supported with OpenShift Local since MacOS became ARM64 architecture. 
+              </wa-callout>
             </div>
           </wa-card>
-          <wa-card with-image style="height: 100%">
-            <div slot="media" class="wa-frame:landscape ">
-              <i class="fa-brands fa-redhat fa-red" style="font-size: 9rem; color: red; "></i>
-            </div>
-            <div class="wa-stack wa-gap-xs">
-              <span class="wa-caption-l">Red Hat Enterprise Linux 9</span>
-            </div>
-          </wa-card>
-          <wa-card with-image style="height: 100%">
-            <div slot="media" class="wa-frame:landscape ">
-              <i class="fa-brands fa-centos " style="font-size: 9rem; "></i>
-            </div>
-            <div class="wa-stack wa-gap-xs">
-              <span class="wa-caption-l">CentOS Stream 9</span>
-            </div>
-          </wa-card>
-          <wa-card with-image style="height: 100%">
-            <div slot="media" class="wa-frame:landscape ">
-              <i class="fa-brands fa-fedora " style="font-size: 9rem; "></i>
-            </div>
-            <div class="wa-stack wa-gap-xs">
-              <span class="wa-caption-l">Fedora 34+</span>
-            </div>
-          </wa-card>
-        </div>
-        <p>
-          Other Linux distros may also be supported
-        </p>
-        <wa-callout variant="brand">
-          <i class="{{ FONTAWESOME_STYLE }} fa-circle-info fa-xl"></i>
-          <strong>MacOS operating system unsupported</strong><br />
-          Unfortunately, MacOS is not supported with OpenShift Local since MacOS became ARM64 architecture. 
-        </wa-callout>
-      </div>
-    </wa-card>
 
-    <wa-card class="purple-blue-background ">
-      <div class="wa-stack ">
-        <div class="wa-flank">
-          <i class="fa-duotone fa-regular fa-video fa-2x "></i>
-          <div class="wa-heading-xl ">
-            Join the free Computate AI Developer Webinar on Zoom or live streaming to Youtube. 
-          </div>
-        </div>
-        <p class="wa-caption-xl ">
-          Get your questions answered. 
-          The webinars will occur live most weekdays. 
-        </p>
-        <p>
-          Learn with the {{ SITE_NAME }} open source community as we build the platform together. 
-        </p>
-      </div>
-    </wa-card>
+          <wa-card class="purple-blue-background ">
+            <div class="wa-stack ">
+              <div class="wa-flank">
+                <i class="fa-duotone fa-regular fa-video fa-2x "></i>
+                <div class="wa-heading-xl ">
+                  Join the free Computate AI Developer Webinar on Zoom or live streaming to Youtube. 
+                </div>
+              </div>
+              <p class="wa-caption-xl ">
+                Get your questions answered. 
+                The webinars will occur live most weekdays. 
+              </p>
+              <p>
+                Learn with the {{ SITE_NAME }} open source community as we build the platform together. 
+              </p>
+            </div>
+          </wa-card>
 {% if result.price != "0.00" %}
 
-    <wa-callout>
-      <i slot="icon" class="fa-brands fa-github fa-2xl"></i>
-      <div class="wa-stack ">
-        <div class="wa-heading-m ">
-          GitHub identity provider
-        </div>
-        <p>
-          To purchase the {{ result.name }}, you simply log into our secure payment pages with your GitHub account. 
-          We use GitHub to grant you access to the course as a private repository on GitHub. 
-        </p>
-      </div>
-    </wa-callout>
-    <wa-callout>
-      <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-credit-card fa-2xl"></i>
-      <div class="wa-stack ">
-        <div class="wa-heading-m ">
-          Authorize.net payment provider
-        </div>
-        <p>
-          After you log into GitHub, there will be a button sending you to authorize.net to purchase the {{ result.name }} securely. 
-        </p>
-      </div>
-    </wa-callout>
-    <wa-callout>
-      <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-shield-halved fa-2xl"></i>
-      <div class="wa-stack ">
-        <div class="wa-heading-m ">
-          Data privacy
-        </div>
-        <p>
-          We don't collect your personal information other than your GitHub account information, 
-          to grant you access to the private GitHub repositories. 
-          We don't have any analytics configured on this site. 
-          We don't sell your data to anyone. 
-          The very little information about your GitHub account username, first name, last name, and email is secure. 
-        </p>
-        <p>
-          The only cookies used are for single sign-on session IDs before and after you log in (sessionIdBefore, vertx-web.session, JSESSIONID, CSRF-Token, username), 
-          and remembering your site customization preferences so you can choose between dark theme or light theme and other visual preferences across the whole site (SITE_FONT_SIZE, SITE_THEME, WEB_COMPONENTS_THEME). 
-        </p>
-      </div>
-    </wa-callout>
-    <wa-callout>
-      <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-dollar fa-2xl"></i>
-      <div class="wa-stack ">
-        <div class="wa-heading-m ">
-          How the money is used
-        </div>
-        <div class="wa-grid ">
-          <div>
-            <p>
-              Paying for this course will directly benefit the {{ result.name }} community without overhead — 
-              creating software developer jobs, paying for cloud compute costs, 
-              training events, and open source conferences in the future. 
-            </p>
-            <p>
-              Because Computate LLC is located in the state of Utah, USA, 
-              Customers who also live in Utah are required to pay the 7.25% sales tax rate. 
-              To purchase the {{ result.name | e }}, please select whether you live in Utah, or not. 
-            </p>
-            <p>
-              Click the right button below to purchase the {{ result.name | e }}. 
-            </p>
-            <p>
-              <strong>
-                You will only pay <wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number> total, no matter where you live. </strong>
-            </p>
-          </div>
-          <img src="{{ STATIC_BASE_URL }}/svg/palais-des-saveurs-bordeaux.svg" alt="Palais Des Saveurs Bordeaux"/>
-        </div>
-      </div>
-    </wa-callout>
-  </div>
+          <wa-callout>
+            <i slot="icon" class="fa-brands fa-github fa-2xl"></i>
+            <div class="wa-stack ">
+              <div class="wa-heading-m ">
+                GitHub identity provider
+              </div>
+              <p>
+                To purchase the {{ result.name }}, you simply log into our secure payment pages with your GitHub account. 
+                We use GitHub to grant you access to the course as a private repository on GitHub. 
+              </p>
+            </div>
+          </wa-callout>
+          <wa-callout>
+            <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-credit-card fa-2xl"></i>
+            <div class="wa-stack ">
+              <div class="wa-heading-m ">
+                Authorize.net payment provider
+              </div>
+              <p>
+                After you log into GitHub, there will be a button sending you to authorize.net to purchase the {{ result.name }} securely. 
+              </p>
+            </div>
+          </wa-callout>
+          <wa-callout>
+            <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-shield-halved fa-2xl"></i>
+            <div class="wa-stack ">
+              <div class="wa-heading-m ">
+                Data privacy
+              </div>
+              <p>
+                We don't collect your personal information other than your GitHub account information, 
+                to grant you access to the private GitHub repositories. 
+                We don't have any analytics configured on this site. 
+                We don't sell your data to anyone. 
+                The very little information about your GitHub account username, first name, last name, and email is secure. 
+              </p>
+              <p>
+                The only cookies used are for single sign-on session IDs before and after you log in (sessionIdBefore, vertx-web.session, JSESSIONID, CSRF-Token, username), 
+                and remembering your site customization preferences so you can choose between dark theme or light theme and other visual preferences across the whole site (SITE_FONT_SIZE, SITE_THEME, WEB_COMPONENTS_THEME). 
+              </p>
+            </div>
+          </wa-callout>
+          <wa-callout>
+            <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-dollar fa-2xl"></i>
+            <div class="wa-stack ">
+              <div class="wa-heading-m ">
+                How the money is used
+              </div>
+              <div class="wa-grid ">
+                <div>
+                  <p>
+                    Paying for this course will directly benefit the {{ result.name }} community without overhead — 
+                    creating software developer jobs, paying for cloud compute costs, 
+                    training events, and open source conferences in the future. 
+                  </p>
+                  <p>
+                    Because Computate LLC is located in the state of Utah, USA, 
+                    Customers who also live in Utah are required to pay the 7.25% sales tax rate. 
+                    To purchase the {{ result.name | e }}, please select whether you live in Utah, or not. 
+                  </p>
+                  <p>
+                    Click the right button below to purchase the {{ result.name | e }}. 
+                  </p>
+                  <p>
+                    <strong>
+                      You will only pay <wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number> total, no matter where you live. </strong>
+                  </p>
+                </div>
+                <img src="{{ STATIC_BASE_URL }}/svg/palais-des-saveurs-bordeaux.svg" alt="Palais Des Saveurs Bordeaux"/>
+              </div>
+            </div>
+          </wa-callout>
 {% endif %}
+        </div>
 {%- endmacro %}
 {%- macro code(code) %}
 <div class="wa-flank wa-gap-2xs "><wa-copy-button value="{{ code | e }}"></wa-copy-button><wa-scroller><pre><code>{{ code | e }}</code></pre></wa-scroller></div>
