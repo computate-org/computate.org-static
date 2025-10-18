@@ -57,14 +57,6 @@ function searchSitePageFilters($formFilters) {
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
       filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
 
-    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
-    if(filterClassSimpleName != null && filterClassSimpleName !== '')
-      filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
-
-    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
-    if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
-      filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
-
     var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
@@ -72,10 +64,6 @@ function searchSitePageFilters($formFilters) {
     var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
     if(filterObjectTitle != null && filterObjectTitle !== '')
       filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
-
-    var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
-    if(filterEditPage != null && filterEditPage !== '')
-      filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
 
     var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
     if(filterUserPage != null && filterUserPage !== '')
@@ -85,6 +73,22 @@ function searchSitePageFilters($formFilters) {
     if(filterDownload != null && filterDownload !== '')
       filters.push({ name: 'fq', value: 'download:' + filterDownload });
 
+    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
+    if(filterSolrId != null && filterSolrId !== '')
+      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
+
+    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
+    if(filterClassSimpleName != null && filterClassSimpleName !== '')
+      filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
+
+    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
+    if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
+      filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
+
+    var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
+    if(filterEditPage != null && filterEditPage !== '')
+      filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
       filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
@@ -92,10 +96,6 @@ function searchSitePageFilters($formFilters) {
     var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
-
-    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
-    if(filterSolrId != null && filterSolrId !== '')
-      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
@@ -137,6 +137,14 @@ function searchSitePageFilters($formFilters) {
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
 
+    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
+    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
+      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
+
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
@@ -176,7 +184,7 @@ function suggestSitePageObjectSuggest($formFilters, $list, target) {
     if($list) {
       $list.innerHTML = '';
       data['list'].forEach((o, i) => {
-        var $i = document.querySelector('<i class="fa-duotone fa-regular fa-newspaper"></i>');
+        var $i = document.querySelector('<i class="fa-duotone fa-regularfa-newspaper"></i>');
         var $span = document.createElement('span');        $span.setAttribute('class', '');        $span.innerText = o['objectTitle'];
         var $li = document.createElement('li');
         var $a = document.createElement('a').setAttribute('href', o['editPage']);
@@ -332,18 +340,6 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   if(removeObjectTitle != null && removeObjectTitle !== '')
     vals['removeObjectTitle'] = removeObjectTitle;
 
-  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
-  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
-  var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
-  var addEditPage = $formValues.querySelector('.addEditPage')?.value;
-  if(removeEditPage || setEditPage != null && setEditPage !== '')
-    vals['setEditPage'] = setEditPage;
-  if(addEditPage != null && addEditPage !== '')
-    vals['addEditPage'] = addEditPage;
-  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value;
-  if(removeEditPage != null && removeEditPage !== '')
-    vals['removeEditPage'] = removeEditPage;
-
   var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
   var removeUserPage = $formValues.querySelector('.removeUserPage')?.value === 'true';
   var setUserPage = removeUserPage ? null : $formValues.querySelector('.setUserPage')?.value;
@@ -379,6 +375,18 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   var removeSolrId = $formValues.querySelector('.removeSolrId')?.value;
   if(removeSolrId != null && removeSolrId !== '')
     vals['removeSolrId'] = removeSolrId;
+
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
+  var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
+  var addEditPage = $formValues.querySelector('.addEditPage')?.value;
+  if(removeEditPage || setEditPage != null && setEditPage !== '')
+    vals['setEditPage'] = setEditPage;
+  if(addEditPage != null && addEditPage !== '')
+    vals['addEditPage'] = addEditPage;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value;
+  if(removeEditPage != null && removeEditPage !== '')
+    vals['removeEditPage'] = removeEditPage;
 
   var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
   var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
@@ -463,6 +471,30 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
   if(removePageImageAlt != null && removePageImageAlt !== '')
     vals['removePageImageAlt'] = removePageImageAlt;
+
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value === 'true';
+  var setPrerequisiteArticleIds = removePrerequisiteArticleIds ? null : $formValues.querySelector('.setPrerequisiteArticleIds')?.value;
+  var addPrerequisiteArticleIds = $formValues.querySelector('.addPrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds || setPrerequisiteArticleIds != null && setPrerequisiteArticleIds !== '')
+    vals['setPrerequisiteArticleIds'] = setPrerequisiteArticleIds;
+  if(addPrerequisiteArticleIds != null && addPrerequisiteArticleIds !== '')
+    vals['addPrerequisiteArticleIds'] = addPrerequisiteArticleIds;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds != null && removePrerequisiteArticleIds !== '')
+    vals['removePrerequisiteArticleIds'] = removePrerequisiteArticleIds;
+
+  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
+  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value === 'true';
+  var setNextArticleIds = removeNextArticleIds ? null : $formValues.querySelector('.setNextArticleIds')?.value;
+  var addNextArticleIds = $formValues.querySelector('.addNextArticleIds')?.value;
+  if(removeNextArticleIds || setNextArticleIds != null && setNextArticleIds !== '')
+    vals['setNextArticleIds'] = setNextArticleIds;
+  if(addNextArticleIds != null && addNextArticleIds !== '')
+    vals['addNextArticleIds'] = addNextArticleIds;
+  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value;
+  if(removeNextArticleIds != null && removeNextArticleIds !== '')
+    vals['removeNextArticleIds'] = removeNextArticleIds;
 
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
@@ -550,14 +582,6 @@ function patchSitePageFilters($formFilters) {
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
       filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
 
-    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
-    if(filterClassSimpleName != null && filterClassSimpleName !== '')
-      filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
-
-    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
-    if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
-      filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
-
     var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
     if(filterSaves != null && filterSaves !== '')
       filters.push({ name: 'fq', value: 'saves:' + filterSaves });
@@ -565,10 +589,6 @@ function patchSitePageFilters($formFilters) {
     var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
     if(filterObjectTitle != null && filterObjectTitle !== '')
       filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
-
-    var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
-    if(filterEditPage != null && filterEditPage !== '')
-      filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
 
     var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
     if(filterUserPage != null && filterUserPage !== '')
@@ -578,6 +598,22 @@ function patchSitePageFilters($formFilters) {
     if(filterDownload != null && filterDownload !== '')
       filters.push({ name: 'fq', value: 'download:' + filterDownload });
 
+    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
+    if(filterSolrId != null && filterSolrId !== '')
+      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
+
+    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
+    if(filterClassSimpleName != null && filterClassSimpleName !== '')
+      filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
+
+    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
+    if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
+      filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
+
+    var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
+    if(filterEditPage != null && filterEditPage !== '')
+      filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
     var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
       filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
@@ -585,10 +621,6 @@ function patchSitePageFilters($formFilters) {
     var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
     if(filterObjectText != null && filterObjectText !== '')
       filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
-
-    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
-    if(filterSolrId != null && filterSolrId !== '')
-      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
@@ -629,6 +661,14 @@ function patchSitePageFilters($formFilters) {
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
+    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
+      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
+
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
 
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
@@ -724,10 +764,6 @@ async function postSitePage($formValues, target, success, error) {
   if(valueObjectTitle != null && valueObjectTitle !== '')
     vals['objectTitle'] = valueObjectTitle;
 
-  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
-  if(valueEditPage != null && valueEditPage !== '')
-    vals['editPage'] = valueEditPage;
-
   var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
   if(valueUserPage != null && valueUserPage !== '')
     vals['userPage'] = valueUserPage;
@@ -739,6 +775,10 @@ async function postSitePage($formValues, target, success, error) {
   var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
   if(valueSolrId != null && valueSolrId !== '')
     vals['solrId'] = valueSolrId;
+
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  if(valueEditPage != null && valueEditPage !== '')
+    vals['editPage'] = valueEditPage;
 
   var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
   if(valueCourseNum != null && valueCourseNum !== '')
@@ -767,6 +807,14 @@ async function postSitePage($formValues, target, success, error) {
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
     vals['pageImageAlt'] = valuePageImageAlt;
+
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  if(valuePrerequisiteArticleIds != null && valuePrerequisiteArticleIds !== '')
+    vals['prerequisiteArticleIds'] = valuePrerequisiteArticleIds;
+
+  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
+  if(valueNextArticleIds != null && valueNextArticleIds !== '')
+    vals['nextArticleIds'] = valueNextArticleIds;
 
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   if(valueLabelsString != null && valueLabelsString !== '')
@@ -869,7 +917,7 @@ async function websocketSitePage(success) {
       $header.setAttribute('class', 'w3-container fa- ');
       $header.setAttribute('id', 'header-' + pageId);
       var iTemplate = document.createElement('template');
-      iTemplate.innerHTML = '<i class="fa-duotone fa-regular fa-newspaper"></i>';
+      iTemplate.innerHTML = '<i class="fa-duotone fa-regularfa-newspaper"></i>';
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
@@ -932,16 +980,16 @@ async function websocketSitePageInner(apiRequest) {
         var inputPageId = null;
         var inputDisplayPage = null;
         var inputClassCanonicalName = null;
-        var inputClassSimpleName = null;
-        var inputClassCanonicalNames = null;
         var inputSaves = null;
         var inputObjectTitle = null;
-        var inputEditPage = null;
         var inputUserPage = null;
         var inputDownload = null;
+        var inputSolrId = null;
+        var inputClassSimpleName = null;
+        var inputClassCanonicalNames = null;
+        var inputEditPage = null;
         var inputObjectSuggest = null;
         var inputObjectText = null;
-        var inputSolrId = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
         var inputName = null;
@@ -952,6 +1000,10 @@ async function websocketSitePageInner(apiRequest) {
         var inputPageImageHeight = null;
         var inputPageImageType = null;
         var inputPageImageAlt = null;
+        var inputPrerequisiteArticleIds = null;
+        var inputPrerequisiteArticles = null;
+        var inputNextArticleIds = null;
+        var inputNextArticles = null;
         var inputLabelsString = null;
         var inputLabels = null;
         var inputRelatedArticleIds = null;
@@ -975,26 +1027,26 @@ async function websocketSitePageInner(apiRequest) {
           inputDisplayPage = $response.querySelector('.Page_displayPage');
         if(vars.includes('classCanonicalName'))
           inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
-        if(vars.includes('classSimpleName'))
-          inputClassSimpleName = $response.querySelector('.Page_classSimpleName');
-        if(vars.includes('classCanonicalNames'))
-          inputClassCanonicalNames = $response.querySelector('.Page_classCanonicalNames');
         if(vars.includes('saves'))
           inputSaves = $response.querySelector('.Page_saves');
         if(vars.includes('objectTitle'))
           inputObjectTitle = $response.querySelector('.Page_objectTitle');
-        if(vars.includes('editPage'))
-          inputEditPage = $response.querySelector('.Page_editPage');
         if(vars.includes('userPage'))
           inputUserPage = $response.querySelector('.Page_userPage');
         if(vars.includes('download'))
           inputDownload = $response.querySelector('.Page_download');
+        if(vars.includes('solrId'))
+          inputSolrId = $response.querySelector('.Page_solrId');
+        if(vars.includes('classSimpleName'))
+          inputClassSimpleName = $response.querySelector('.Page_classSimpleName');
+        if(vars.includes('classCanonicalNames'))
+          inputClassCanonicalNames = $response.querySelector('.Page_classCanonicalNames');
+        if(vars.includes('editPage'))
+          inputEditPage = $response.querySelector('.Page_editPage');
         if(vars.includes('objectSuggest'))
           inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
         if(vars.includes('objectText'))
           inputObjectText = $response.querySelector('.Page_objectText');
-        if(vars.includes('solrId'))
-          inputSolrId = $response.querySelector('.Page_solrId');
         if(vars.includes('courseNum'))
           inputCourseNum = $response.querySelector('.Page_courseNum');
         if(vars.includes('lessonNum'))
@@ -1015,6 +1067,14 @@ async function websocketSitePageInner(apiRequest) {
           inputPageImageType = $response.querySelector('.Page_pageImageType');
         if(vars.includes('pageImageAlt'))
           inputPageImageAlt = $response.querySelector('.Page_pageImageAlt');
+        if(vars.includes('prerequisiteArticleIds'))
+          inputPrerequisiteArticleIds = $response.querySelector('.Page_prerequisiteArticleIds');
+        if(vars.includes('prerequisiteArticles'))
+          inputPrerequisiteArticles = $response.querySelector('.Page_prerequisiteArticles');
+        if(vars.includes('nextArticleIds'))
+          inputNextArticleIds = $response.querySelector('.Page_nextArticleIds');
+        if(vars.includes('nextArticles'))
+          inputNextArticles = $response.querySelector('.Page_nextArticles');
         if(vars.includes('labelsString'))
           inputLabelsString = $response.querySelector('.Page_labelsString');
         if(vars.includes('labels'))
@@ -1119,26 +1179,6 @@ async function websocketSitePageInner(apiRequest) {
           addGlow(document.querySelector('.Page_classCanonicalName'));
         }
 
-        if(inputClassSimpleName) {
-          document.querySelectorAll('.Page_classSimpleName').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputClassSimpleName.getAttribute('value');
-            else
-              item.textContent = inputClassSimpleName.textContent;
-          });
-          addGlow(document.querySelector('.Page_classSimpleName'));
-        }
-
-        if(inputClassCanonicalNames) {
-          document.querySelectorAll('.Page_classCanonicalNames').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputClassCanonicalNames.getAttribute('value');
-            else
-              item.textContent = inputClassCanonicalNames.textContent;
-          });
-          addGlow(document.querySelector('.Page_classCanonicalNames'));
-        }
-
         if(inputSaves) {
           document.querySelectorAll('.Page_saves').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1157,16 +1197,6 @@ async function websocketSitePageInner(apiRequest) {
               item.textContent = inputObjectTitle.textContent;
           });
           addGlow(document.querySelector('.Page_objectTitle'));
-        }
-
-        if(inputEditPage) {
-          document.querySelectorAll('.Page_editPage').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputEditPage.getAttribute('value');
-            else
-              item.textContent = inputEditPage.textContent;
-          });
-          addGlow(document.querySelector('.Page_editPage'));
         }
 
         if(inputUserPage) {
@@ -1189,6 +1219,46 @@ async function websocketSitePageInner(apiRequest) {
           addGlow(document.querySelector('.Page_download'));
         }
 
+        if(inputSolrId) {
+          document.querySelectorAll('.Page_solrId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolrId.getAttribute('value');
+            else
+              item.textContent = inputSolrId.textContent;
+          });
+          addGlow(document.querySelector('.Page_solrId'));
+        }
+
+        if(inputClassSimpleName) {
+          document.querySelectorAll('.Page_classSimpleName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassSimpleName.getAttribute('value');
+            else
+              item.textContent = inputClassSimpleName.textContent;
+          });
+          addGlow(document.querySelector('.Page_classSimpleName'));
+        }
+
+        if(inputClassCanonicalNames) {
+          document.querySelectorAll('.Page_classCanonicalNames').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalNames.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalNames.textContent;
+          });
+          addGlow(document.querySelector('.Page_classCanonicalNames'));
+        }
+
+        if(inputEditPage) {
+          document.querySelectorAll('.Page_editPage').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputEditPage.getAttribute('value');
+            else
+              item.textContent = inputEditPage.textContent;
+          });
+          addGlow(document.querySelector('.Page_editPage'));
+        }
+
         if(inputObjectSuggest) {
           document.querySelectorAll('.Page_objectSuggest').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1207,16 +1277,6 @@ async function websocketSitePageInner(apiRequest) {
               item.textContent = inputObjectText.textContent;
           });
           addGlow(document.querySelector('.Page_objectText'));
-        }
-
-        if(inputSolrId) {
-          document.querySelectorAll('.Page_solrId').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputSolrId.getAttribute('value');
-            else
-              item.textContent = inputSolrId.textContent;
-          });
-          addGlow(document.querySelector('.Page_solrId'));
         }
 
         if(inputCourseNum) {
@@ -1317,6 +1377,46 @@ async function websocketSitePageInner(apiRequest) {
               item.textContent = inputPageImageAlt.textContent;
           });
           addGlow(document.querySelector('.Page_pageImageAlt'));
+        }
+
+        if(inputPrerequisiteArticleIds) {
+          document.querySelectorAll('.Page_prerequisiteArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticleIds.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.Page_prerequisiteArticleIds'));
+        }
+
+        if(inputPrerequisiteArticles) {
+          document.querySelectorAll('.Page_prerequisiteArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticles.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticles.textContent;
+          });
+          addGlow(document.querySelector('.Page_prerequisiteArticles'));
+        }
+
+        if(inputNextArticleIds) {
+          document.querySelectorAll('.Page_nextArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticleIds.getAttribute('value');
+            else
+              item.textContent = inputNextArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.Page_nextArticleIds'));
+        }
+
+        if(inputNextArticles) {
+          document.querySelectorAll('.Page_nextArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticles.getAttribute('value');
+            else
+              item.textContent = inputNextArticles.textContent;
+          });
+          addGlow(document.querySelector('.Page_nextArticles'));
         }
 
         if(inputLabelsString) {
