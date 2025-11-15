@@ -106,28 +106,6 @@ Promise.all([
     facetStatsChange('SiteUser', 'webComponentsTheme', false);
   });
 
-  document.querySelector('#pageSelectSortSiteUser_classCanonicalName')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'classCanonicalName', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsSiteUser_classCanonicalName')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SiteUser', 'classCanonicalName', true);
-  });
-  document.querySelector('#pageStatsSiteUser_classCanonicalName')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SiteUser', 'classCanonicalName', false);
-  });
-
-  document.querySelector('#pageSelectSortSiteUser_classSimpleName')?.addEventListener('change', (event) => {
-    sort('SiteUser', 'classSimpleName', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsSiteUser_classSimpleName')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SiteUser', 'classSimpleName', true);
-  });
-  document.querySelector('#pageStatsSiteUser_classSimpleName')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SiteUser', 'classSimpleName', false);
-  });
-
   document.querySelector('#pageSelectSortSiteUser_classCanonicalNames')?.addEventListener('change', (event) => {
     sort('SiteUser', 'classCanonicalNames', event.currentTarget.value);
   });
@@ -258,6 +236,28 @@ Promise.all([
   });
   document.querySelector('#pageStatsSiteUser_solrId')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('SiteUser', 'solrId', false);
+  });
+
+  document.querySelector('#pageSelectSortSiteUser_classSimpleName')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'classSimpleName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSiteUser_classSimpleName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SiteUser', 'classSimpleName', true);
+  });
+  document.querySelector('#pageStatsSiteUser_classSimpleName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SiteUser', 'classSimpleName', false);
+  });
+
+  document.querySelector('#pageSelectSortSiteUser_classCanonicalName')?.addEventListener('change', (event) => {
+    sort('SiteUser', 'classCanonicalName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSiteUser_classCanonicalName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SiteUser', 'classCanonicalName', true);
+  });
+  document.querySelector('#pageStatsSiteUser_classCanonicalName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SiteUser', 'classCanonicalName', false);
   });
 
   document.querySelector('#pageSelectSortSiteUser_userKeys')?.addEventListener('change', (event) => {

@@ -501,6 +501,25 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
+{%- macro htmButton_deleteSitePage() %}<wa-button variant="brand" id="htmButton_deleteSitePage" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+
+{%- macro htmFormButton_deleteSitePage() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deleteSitePage" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deleteSitePage"
+                >Delete article</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deleteSitePage"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_deleteSitePage() %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteSitePageDialog" label="Delete article">
+          <form id="htmForm_deleteSitePage" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deleteSitePage() }}
+        </wa-dialog>
+{%- endmacro %}
+
 {%- macro htmButton_searchpageSitePage() %}{%- endmacro %}
 
 {%- macro htmFormButton_searchpageSitePage() %}
@@ -618,6 +637,25 @@ The ID for this page. "
           </div>
         </div>
 {%- endmacro %}
+
+{%- macro htmButton_deletefilterSitePage() %}<wa-button variant="brand" id="htmButton_deletefilterSitePage" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+
+{%- macro htmFormButton_deletefilterSitePage() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterSitePage" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deletefilterSitePage"
+                >Delete article</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deletefilterSitePage"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_deletefilterSitePage() %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterSitePageDialog" label="Delete article">
+          <form id="htmForm_deletefilterSitePage" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deletefilterSitePage() }}
+        </wa-dialog>
+{%- endmacro %}
           <div id="htmSearchForm">
             <wa-scroller>
               <wa-button-group>
@@ -657,6 +695,18 @@ The ID for this page. "
 {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {{ htmButton_putimportSitePage() }}
 {%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if result is defined %}
+    {{ htmButton_deleteSitePage() }}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if result is not defined %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+    {{ htmButton_deletefilterSitePage() }}
+    {%- endif %}
+  {%- endif %}
+{%- endif %}
 
               </wa-button-group>
             </wa-scroller>
@@ -674,4 +724,16 @@ The ID for this page. "
 {%- endif %}
 {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
   {{ htmForm_putimportSitePage() }}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deleteSitePage() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deletefilterSitePage() }}
+  {%- else %}
+  {%- endif %}
 {%- endif %}

@@ -137,6 +137,14 @@ function searchSitePageFilters($formFilters) {
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
 
+    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
+    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
+      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
+
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
@@ -464,6 +472,30 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   if(removePageImageAlt != null && removePageImageAlt !== '')
     vals['removePageImageAlt'] = removePageImageAlt;
 
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value === 'true';
+  var setPrerequisiteArticleIds = removePrerequisiteArticleIds ? null : $formValues.querySelector('.setPrerequisiteArticleIds')?.value;
+  var addPrerequisiteArticleIds = $formValues.querySelector('.addPrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds || setPrerequisiteArticleIds != null && setPrerequisiteArticleIds !== '')
+    vals['setPrerequisiteArticleIds'] = setPrerequisiteArticleIds;
+  if(addPrerequisiteArticleIds != null && addPrerequisiteArticleIds !== '')
+    vals['addPrerequisiteArticleIds'] = addPrerequisiteArticleIds;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds != null && removePrerequisiteArticleIds !== '')
+    vals['removePrerequisiteArticleIds'] = removePrerequisiteArticleIds;
+
+  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
+  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value === 'true';
+  var setNextArticleIds = removeNextArticleIds ? null : $formValues.querySelector('.setNextArticleIds')?.value;
+  var addNextArticleIds = $formValues.querySelector('.addNextArticleIds')?.value;
+  if(removeNextArticleIds || setNextArticleIds != null && setNextArticleIds !== '')
+    vals['setNextArticleIds'] = setNextArticleIds;
+  if(addNextArticleIds != null && addNextArticleIds !== '')
+    vals['addNextArticleIds'] = addNextArticleIds;
+  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value;
+  if(removeNextArticleIds != null && removeNextArticleIds !== '')
+    vals['removeNextArticleIds'] = removeNextArticleIds;
+
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
   var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
@@ -630,6 +662,14 @@ function patchSitePageFilters($formFilters) {
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
 
+    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
+    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
+      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
+
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
@@ -768,6 +808,14 @@ async function postSitePage($formValues, target, success, error) {
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
     vals['pageImageAlt'] = valuePageImageAlt;
 
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  if(valuePrerequisiteArticleIds != null && valuePrerequisiteArticleIds !== '')
+    vals['prerequisiteArticleIds'] = valuePrerequisiteArticleIds;
+
+  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
+  if(valueNextArticleIds != null && valueNextArticleIds !== '')
+    vals['nextArticleIds'] = valueNextArticleIds;
+
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   if(valueLabelsString != null && valueLabelsString !== '')
     vals['labelsString'] = valueLabelsString;
@@ -837,6 +885,70 @@ function putimportSitePageVals(json, target, success, error) {
         response.json().then((json) => {
           success(json, target);
         })
+      } else {
+        error(response, target);
+      }
+    })
+    .catch(response => error(response, target));
+}
+
+// DELETE //
+
+async function deleteSitePage(target, pageId, success, error) {
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target, jqXhr);
+      var url = data['editPage'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, target2 ) {
+      addError(target, jqXhr);
+    };
+  }
+
+  fetch(
+    '/en-us/api/article/' + encodeURIComponent(pageId)
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'DELETE'
+    }).then(response => {
+      if(response.ok) {
+        success(response, target);
+      } else {
+        error(response, target);
+      }
+    })
+    .catch(response => error(response, target));
+}
+
+// DELETEFilter //
+
+async function deletefilterSitePage(target, success, error) {
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target, jqXhr);
+      var url = data['editPage'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, target2 ) {
+      addError(target, jqXhr);
+    };
+  }
+
+  fetch(
+    '/en-us/api/article'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'DELETE'
+    }).then(response => {
+      if(response.ok) {
+        success(response, target);
       } else {
         error(response, target);
       }
@@ -952,6 +1064,10 @@ async function websocketSitePageInner(apiRequest) {
         var inputPageImageHeight = null;
         var inputPageImageType = null;
         var inputPageImageAlt = null;
+        var inputPrerequisiteArticleIds = null;
+        var inputPrerequisiteArticles = null;
+        var inputNextArticleIds = null;
+        var inputNextArticles = null;
         var inputLabelsString = null;
         var inputLabels = null;
         var inputRelatedArticleIds = null;
@@ -1015,6 +1131,14 @@ async function websocketSitePageInner(apiRequest) {
           inputPageImageType = $response.querySelector('.Page_pageImageType');
         if(vars.includes('pageImageAlt'))
           inputPageImageAlt = $response.querySelector('.Page_pageImageAlt');
+        if(vars.includes('prerequisiteArticleIds'))
+          inputPrerequisiteArticleIds = $response.querySelector('.Page_prerequisiteArticleIds');
+        if(vars.includes('prerequisiteArticles'))
+          inputPrerequisiteArticles = $response.querySelector('.Page_prerequisiteArticles');
+        if(vars.includes('nextArticleIds'))
+          inputNextArticleIds = $response.querySelector('.Page_nextArticleIds');
+        if(vars.includes('nextArticles'))
+          inputNextArticles = $response.querySelector('.Page_nextArticles');
         if(vars.includes('labelsString'))
           inputLabelsString = $response.querySelector('.Page_labelsString');
         if(vars.includes('labels'))
@@ -1317,6 +1441,46 @@ async function websocketSitePageInner(apiRequest) {
               item.textContent = inputPageImageAlt.textContent;
           });
           addGlow(document.querySelector('.Page_pageImageAlt'));
+        }
+
+        if(inputPrerequisiteArticleIds) {
+          document.querySelectorAll('.Page_prerequisiteArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticleIds.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.Page_prerequisiteArticleIds'));
+        }
+
+        if(inputPrerequisiteArticles) {
+          document.querySelectorAll('.Page_prerequisiteArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticles.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticles.textContent;
+          });
+          addGlow(document.querySelector('.Page_prerequisiteArticles'));
+        }
+
+        if(inputNextArticleIds) {
+          document.querySelectorAll('.Page_nextArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticleIds.getAttribute('value');
+            else
+              item.textContent = inputNextArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.Page_nextArticleIds'));
+        }
+
+        if(inputNextArticles) {
+          document.querySelectorAll('.Page_nextArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticles.getAttribute('value');
+            else
+              item.textContent = inputNextArticles.textContent;
+          });
+          addGlow(document.querySelector('.Page_nextArticles'));
         }
 
         if(inputLabelsString) {

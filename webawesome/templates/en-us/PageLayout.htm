@@ -26,9 +26,6 @@
 {%- endblock htmTitlePageLayout %}
 {%- block htmStylesPageLayout %}
     <link rel="icon" href="{{ STATIC_BASE_URL }}/favicon.svg" />
-    {{ WEB_COMPONENTS_CSS }}
-    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.4/dist/styles/webawesome.css" />
-    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.4/dist/styles/themes/{{ userWebComponentsTheme | default(WEB_COMPONENTS_THEME) }}.css" />
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.draw.css" />
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/leaflet.contextmenu.css"/>
@@ -99,7 +96,9 @@
         });
       });
     </script>
-    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-beta.4/dist/webawesome.loader.js"></script>
+    {%- if WEB_COMPONENTS_KIT is defined %}
+    {{ WEB_COMPONENTS_KIT }}
+    {%- endif %}
     <script src="{{ STATIC_BASE_URL }}/js/site.js"></script>
     <script src="{{ STATIC_BASE_URL }}/js/sockjs.js"></script>
     <script src="{{ STATIC_BASE_URL }}/js/vertx-eventbus.js"></script>
@@ -127,62 +126,67 @@
             </a>
           </div>
           <div class="wa-cluster " style="justify-content: center;">
-            <wa-button href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank">
-              <i label="Follow us on Youtube" class="fa-brands fa-youtube fa-2xl"></i>
+            <wa-button variant="brand" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" variant="brand" target="_blank">
+              Youtube
+              <i slot="start" label="Follow us on Youtube" class="fa-brands fa-youtube fa-2xl"></i>
             </wa-button>
-            <wa-button href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank">
-              <i label="View our source code on GitHub" class="fa-brands fa-github fa-2xl"></i>
+            <wa-button variant="brand" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" variant="brand" target="_blank">
+              GitHub
+              <i slot="start" label="View our source code on GitHub" class="fa-brands fa-github fa-2xl"></i>
             </wa-button>
-            <wa-button href="https://www.linkedin.com/company/computate/" target="_blank">
-              <i label="Share on LinkedIn" class="fa-brands fa-linkedin fa-2xl"></i>
+            <wa-button variant="brand" href="https://www.linkedin.com/company/computate/" variant="brand" target="_blank">
+              LinkedIn
+              <i slot="start" label="Share on LinkedIn" class="fa-brands fa-linkedin fa-2xl"></i>
             </wa-button>
-            <wa-button href="mailto:{{ MAILING_LIST_EMAIL }}" target="_blank">
-              <i label="Share with email" class="{{ FONTAWESOME_STYLE }} fa-envelope-open fa-2xl"></i>
+            <wa-button variant="brand" href="mailto:{{ MAILING_LIST_EMAIL }}" variant="brand" target="_blank">
+              Email
+              <i slot="start" label="Share with email" class="{{ FONTAWESOME_STYLE }} fa-envelope-open fa-2xl"></i>
             </wa-button>
           </div>
           <div class="wa-stack ">
             <div>
 {%- if userName is defined %}
               <wa-details>
-                <div slot="summary">
+                <div slot="summary" class="wa-stack ">
                   <wa-avatar label="user"></wa-avatar>
                   user: {{userName}}
                 </div>
-                <div>{{ userFullName }}</div>
-                <div>{{ userEmail }}</div>
-                <wa-tooltip for="site-button-user-page">see or change your user profile</wa-tooltip>
-                <wa-tooltip for="site-button-logout" placement="right">sign out</wa-tooltip>
-                <div>
-                  <wa-button id="site-button-user-page" variant="brand" href="{{ SITE_BASE_URL }}{% if userId is defined %}/en-us/edit/user/{{ userId }}{% else %}/en-us/search/user{% endif %}" label="see or change your user profile">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-house-user"></i>
-                    <span>my user page</span>
-                  </wa-button>
-                  <wa-button id="site-button-logout" variant="brand" href="{{ logoutUrl }}" label="sign out">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-person-from-portal"></i>
-                    <span>sign out</span>
-                  </wa-button>
+                <div class="wa-stack ">
+                  <div>{{ userFullName }}{% if userEmail is defined %} &lt;{{ userEmail }}{% endif %}&gt;</div>
+                  <wa-tooltip for="site-button-user-page">see or change your user profile</wa-tooltip>
+                  <wa-tooltip for="site-button-logout" placement="right">sign out</wa-tooltip>
+                  <div>
+                    <wa-button id="site-button-user-page" variant="brand" href="{{ SITE_BASE_URL }}{% if userId is defined %}/en-us/edit/user/{{ userId }}{% else %}/en-us/search/user{% endif %}" label="see or change your user profile">
+                      <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-house-user"></i>
+                      <span>my user page</span>
+                    </wa-button>
+                    <wa-button id="site-button-logout" variant="brand" href="{{ logoutUrl }}" label="sign out">
+                      <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-person-from-portal"></i>
+                      <span>sign out</span>
+                    </wa-button>
+                  </div>
+                  <wa-details summary="User groups" open="true">
+                    <div class="wa-stack ">
+                      <div>
+                        {% for group in userGroups %}
+                        <wa-badge variant="success">{{ group }}</wa-badge>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </wa-details>
+                  <wa-details summary="Current scopes" open="true">
+                    <div class="wa-stack ">
+                      <div>
+                        <wa-tag variant="neutral">{{ pageUri }}</wa-tag>
+                      </div>
+                      <div>
+                        {% for scope in scopes %}
+                        <wa-badge variant="success">{{ scope }}</wa-badge>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </wa-details>
                 </div>
-                <wa-details summary="User groups" open="true">
-                  <div class="wa-stack ">
-                    <div>
-                      {% for group in userGroups %}
-                      <wa-badge variant="success">{{ group }}</wa-badge>
-                      {% endfor %}
-                    </div>
-                  </div>
-                </wa-details>
-                <wa-details summary="Current scopes" open="true">
-                  <div class="wa-stack ">
-                    <div>
-                      <wa-tag variant="neutral">{{ pageUri }}</wa-tag>
-                    </div>
-                    <div>
-                      {% for scope in scopes %}
-                      <wa-badge variant="success">{{ scope }}</wa-badge>
-                      {% endfor %}
-                    </div>
-                  </div>
-                </wa-details>
               </wa-details>
 {%- else %}
               <wa-button variant="brand" href="{{ SITE_BASE_URL }}/en-us/search/user">
@@ -257,14 +261,14 @@
         </header>
 {%- endblock htmBodyStartPageLayout %}
 {% block htmBodyMiddlePageLayout %}
-        <div class="pageContent wa-stack wa-gap-3xl ">
+        <main slot="main" class="pageContent wa-stack wa-gap-3xl ">
           put stuff here
-        </div>
+        </main>
 {%- endblock htmBodyMiddlePageLayout %}
 {%- block htmBodyEndPageLayout %}
-        <footer class="no-gradient text-center">
+        <footer class="no-gradient wa-cluster wa-align-items-center " slot="main-footer">
           {% if GITHUB_ORG is defined %}
-          <wa-button href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank" appearance="filled outlined" class="tile">
+          <wa-button variant="brand" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" variant="brand" target="_blank" appearance="filled outlined" class="tile">
             <div class="wa-cluster" style="gap: 1ch;">
               <span>This site is</span>
               <i class="fa-brands fa-github fa-xl"></i>
@@ -272,14 +276,14 @@
             </div>
           </wa-button>
           {% endif %}
-          <wa-button href="https://www.computate.org/" target="_blank" id="footer-generated-by" appearance="filled outlined" class="tile">
+          <wa-button variant="brand" href="https://computate.org/" variant="brand" target="_blank" id="footer-generated-by" appearance="filled outlined" class="tile">
             <div class="wa-cluster" style="gap: 1ch;">
               <span>Generated with </span>
               <img class="footer-img" style="font-weight: var(--wa-font-weight-bold);" src="{{ STATIC_BASE_URL }}/svg/computate-keys.svg" alt="Computate"/>
             </div>
           </wa-button>
           {% if SITE_POWERED_BY_URL is defined %}
-          <wa-button href="{{ SITE_POWERED_BY_URL }}" target="_blank" id="footer-powered-by" appearance="filled outlined" class="tile">
+          <wa-button variant="brand" href="{{ SITE_POWERED_BY_URL }}" variant="brand" target="_blank" id="footer-powered-by" appearance="filled outlined" class="tile">
             <div class="wa-cluster" style="gap: 1ch;">
               <span>Powered by </span>
               <i class="fa-brands fa-redhat fa-xl" style="color: #ff0000;"></i>

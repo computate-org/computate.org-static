@@ -11,8 +11,8 @@ footer > a > wa-card {
   width: 100%;
   text-align: center;
 }
-wa-dropdown {
-  z-index: 1;
+#siteSearchDropdownMenu {
+  background-color: var(--wa-color-surface-default);
 }
 .display-flex-center {
   display: flex;
@@ -51,75 +51,6 @@ wa-dropdown {
   --wa-color-purple-05: #1e0532;
   --wa-color-purple: var(--wa-color-purple-50);
 }
-
-/* :root {
-  --gradient-template: linear-gradient(130deg, var(--gradient-color-0, var(--wa-color-purple-50)), var(--gradient-color-1, var(--wa-color-blue-50)));
-
-  --gradient-template-hover: linear-gradient(130deg,
-    color-mix(in oklab,
-      var(--gradient-color-0, var(--wa-color-purple-50)),
-      var(--wa-color-mix-hover)
-    ),
-    color-mix(in oklab,
-      var(--gradient-color-1, var(--wa-color-blue-50)),
-      var(--wa-color-mix-hover)
-    )
-  );
-
-  --gradient-template-active: linear-gradient(130deg,
-    color-mix(in oklab,
-      var(--gradient-color-0, var(--wa-color-purple-50)),
-      var(--wa-color-mix-active)
-    ),
-    color-mix(in oklab,
-      var(--gradient-color-1, var(--wa-color-blue-50)),
-      var(--wa-color-mix-active)
-    )
-  );
-} */
-
-.gradient, :is(wa-button, wa-icon-button):not(.no-gradient):not(:is(.no-gradient *))::part(base) {
-  background: linear-gradient(130deg, var(--gradient-color-0, var(--wa-color-purple-50)), var(--gradient-color-1, var(--wa-color-blue-50)));
-}
-
-:is(wa-button, wa-icon-button):not(.no-gradient):not(:is(.no-gradient *)) {
-  &:hover {
-    &::part(base) {
-      background: linear-gradient(130deg,
-        color-mix(in oklab,
-          var(--gradient-color-0, var(--wa-color-purple-50)),
-          var(--wa-color-mix-hover)
-        ),
-        color-mix(in oklab,
-          var(--gradient-color-1, var(--wa-color-blue-50)),
-          var(--wa-color-mix-hover)
-        )
-      );
-    }
-  }
-  &:active {
-    &::part(base) {
-      background: linear-gradient(130deg,
-        color-mix(in oklab,
-          var(--gradient-color-0, var(--wa-color-purple-50)),
-          var(--wa-color-mix-active)
-        ),
-        color-mix(in oklab,
-          var(--gradient-color-1, var(--wa-color-blue-50)),
-          var(--wa-color-mix-active)
-        )
-      );
-  }
-}
-}
-
-.gradient-card-header::part(header) {
-  background: linear-gradient(130deg, var(--gradient-color-0, var(--wa-color-purple-50)), var(--gradient-color-1, var(--wa-color-blue-50)));
-}
-
-/* .custom-gradient {
-  background: linear-gradient(130deg, var(--custom-gradient-color-0, var(--gradient-color-0)), var(--custom-gradient-color-1, var(--gradient-color-0)));
-} */
 
 footer {
   margin-block-start: 100px;
@@ -607,10 +538,5 @@ main, footer {
     border-radius: var(--wa-border-radius-m);
 
     padding: var(--wa-space-xs) var(--wa-space-s);
-  }
-}
-.hover-card {
-  &:hover {
-    background: var(--wa-color-surface-raised);
   }
 }
