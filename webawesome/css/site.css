@@ -20,38 +20,6 @@ footer > a > wa-card {
   align-items: center;
 }
 
-:where(:root),
-:host,
-:where([class^='wa-theme-'], [class*=' wa-theme-']),
-.wa-palette-default {
-
-  --wa-color-pink-95: #feeff9;
-  --wa-color-pink-90: #feddf0;
-  --wa-color-pink-80: #fcb5d8;
-  --wa-color-pink-70: #f78dbf;
-  --wa-color-pink-60: #e66ba3;
-  --wa-color-pink-50: #c84382;
-  --wa-color-pink-40: #9e2a6c;
-  --wa-color-pink-30: #7d1e58;
-  --wa-color-pink-20: #5e1342;
-  --wa-color-pink-10: #3c0828;
-  --wa-color-pink-05: #28041a;
-  --wa-color-pink: var(--wa-color-pink-50);
-
-  --wa-color-purple-95: #f7f0ff;
-  --wa-color-purple-90: #eedfff;
-  --wa-color-purple-80: #ddbdff;
-  --wa-color-purple-70: #ca99ff;
-  --wa-color-purple-60: #b678f5;
-  --wa-color-purple-50: #9951db;
-  --wa-color-purple-40: #7936b3;
-  --wa-color-purple-30: #612692;
-  --wa-color-purple-20: #491870;
-  --wa-color-purple-10: #2d0b48;
-  --wa-color-purple-05: #1e0532;
-  --wa-color-purple: var(--wa-color-purple-50);
-}
-
 footer {
   margin-block-start: 100px;
 }
