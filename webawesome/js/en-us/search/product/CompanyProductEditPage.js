@@ -288,6 +288,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH productResource
+          document.querySelector('#Page_productResource')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_productResource');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setProductResource', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_productResource')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_productResource')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_productResource');
+            const valid = form.reportValidity();
+          });
+
           // PATCH emailTemplate
           document.querySelector('#Page_emailTemplate')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_emailTemplate');

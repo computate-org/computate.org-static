@@ -372,6 +372,48 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH prerequisiteArticleIds
+          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPrerequisiteArticleIds', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH nextArticleIds
+          document.querySelector('#Page_nextArticleIds')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_nextArticleIds');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setNextArticleIds', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_nextArticleIds')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_nextArticleIds')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_nextArticleIds');
+            const valid = form.reportValidity();
+          });
+
           // PATCH labelsString
           document.querySelector('#Page_labelsString')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_labelsString');

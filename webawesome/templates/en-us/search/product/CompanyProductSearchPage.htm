@@ -55,13 +55,26 @@
         {% include result.dialogTemplate %}
         {{ paymentCallouts(result) }}
       </div>
+      {% if result.price == "0.00" %}
       <wa-button slot="footer" variant="brand" href="{{ result.userPage }}">
-        {% if result.price == "0.00" %}
         Learn for free!
-        {% else %}
-        Buy for ${{ result.price }}
-        {% endif %}
       </wa-button>
+      {% else %}
+      <div slot="footer" class="wa-stack ">
+        <div class="wa-cluster ">
+          <div>
+            <wa-button slot="footer" variant="brand" href="{{ result.userPage }}?var=utah:true">
+              I live in Utah, USA
+            </wa-button>
+          </div>
+          <div>
+            <wa-button slot="footer" variant="brand" href="{{ result.userPage }}?var=utah:false">
+              I live somewhere else
+            </wa-button>
+          </div>
+        </div>
+      </div>
+      {% endif %}
     </wa-dialog>
     {% endfor %}
   </div>

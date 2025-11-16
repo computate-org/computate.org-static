@@ -1471,7 +1471,7 @@ function pageGraphCompanyEvent(apiRequest) {
           contextmenuItems.push({
             text: 'Set location of ' + result.objectTitle
             , callback: function(event2) {
-              patchLocation(event.layer, { coordinates: [event.layer.getLatLng()['lng'], event.layer.getLatLng()['lat']], type: "Point" });
+              patchCompanyEventLocation(event.layer, { coordinates: [event.layer.getLatLng()['lng'], event.layer.getLatLng()['lat']], type: "Point" });
             }
           });
         }
@@ -1483,7 +1483,7 @@ function pageGraphCompanyEvent(apiRequest) {
     }
   }
 }
-function patchLocation(target, location) {
+function patchCompanyEventLocation(target, location) {
   patchCompanyEventVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + result.pageId }]
       , 'setLocation', location
       , target

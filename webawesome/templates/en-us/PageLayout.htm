@@ -125,7 +125,7 @@
               <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}/svg/logo-{{ userSiteTheme | default(SITE_THEME) }}.svg"/>
             </a>
           </div>
-          <div class="wa-cluster " style="justify-content: center;">
+          <div class="wa-grid " style="--min-column-size: 15ch; ">
             <wa-button variant="brand" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" variant="brand" target="_blank">
               Youtube
               <i slot="start" label="Follow us on Youtube" class="fa-brands fa-youtube fa-2xl"></i>
@@ -148,11 +148,21 @@
 {%- if userName is defined %}
               <wa-details>
                 <div slot="summary" class="wa-stack ">
-                  <wa-avatar label="user"></wa-avatar>
-                  user: {{userName}}
+                  <wa-tooltip for="siteUserSummary">
+                    <div class="wa-stack ">
+                      <div>
+                        {{ userFullName }}{% if userEmail is defined %} &lt;{{ userEmail | e }}&gt;{% endif %}
+                      </div>
+                    </div>
+                  </wa-tooltip>
+                  <div id="siteUserSummary" class="wa-cluster ">
+                    <wa-avatar label="user"></wa-avatar>
+                    <div>
+                      user: {{ userName | e }}
+                    </div>
+                  </div>
                 </div>
                 <div class="wa-stack ">
-                  <div>{{ userFullName }}{% if userEmail is defined %} &lt;{{ userEmail }}{% endif %}&gt;</div>
                   <wa-tooltip for="site-button-user-page">see or change your user profile</wa-tooltip>
                   <wa-tooltip for="site-button-logout" placement="right">sign out</wa-tooltip>
                   <div>
@@ -167,24 +177,36 @@
                   </div>
                   <wa-details summary="User groups" open="true">
                     <div class="wa-stack ">
-                      <div>
+                    <wa-scroller>
                         {% for group in userGroups %}
-                        <wa-badge variant="success">{{ group }}</wa-badge>
+                        <div>
+                          <a target="_blank" href="{{ AUTH_URL }}/admin/master/console/#/{{ AUTH_REALM | urlencode() }}/clients/{{ AUTH_CLIENT | urlencode() }}/authorization/policy/{{ AUTH_REALM | urlencode() }}-group-{{ group | regex_replace('/?(.*)', '$1') | urlencode() }}/group">
+                            <wa-badge variant="success">
+                              {{ group | e }}
+                            </wa-badge>
+                          </a>
+                        </div>
                         {% endfor %}
-                      </div>
+                    </wa-scroller>
                     </div>
                   </wa-details>
                   <wa-details summary="Current scopes" open="true">
-                    <div class="wa-stack ">
-                      <div>
-                        <wa-tag variant="neutral">{{ pageUri }}</wa-tag>
+                    <wa-scroller>
+                      <div class="wa-stack ">
+                        <div>
+                          <wa-tag variant="neutral">{{ pageUri }}</wa-tag>
+                        </div>
+                        <div>
+                          {% for scope in scopes %}
+                          <a target="_blank" href="{{ AUTH_URL }}/admin/master/console/#/{{ AUTH_REALM | urlencode() }}/clients/{{ AUTH_CLIENT | urlencode() }}/authorization/scope/{{ AUTH_REALM | urlencode() }}-{{ scope | urlencode() }}">
+                            <wa-badge variant="success">
+                              {{ scope }}
+                            </wa-badge>
+                          </a>
+                          {% endfor %}
+                        </div>
                       </div>
-                      <div>
-                        {% for scope in scopes %}
-                        <wa-badge variant="success">{{ scope }}</wa-badge>
-                        {% endfor %}
-                      </div>
-                    </div>
+                    </wa-scroller>
                   </wa-details>
                 </div>
               </wa-details>

@@ -238,6 +238,28 @@ Promise.all([
     facetStatsChange('CompanyCourse', 'emailTemplate', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyCourse_pageImageHeight')?.addEventListener('change', (event) => {
+    sort('CompanyCourse', 'pageImageHeight', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyCourse_pageImageHeight')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyCourse', 'pageImageHeight', true);
+  });
+  document.querySelector('#pageStatsCompanyCourse_pageImageHeight')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyCourse', 'pageImageHeight', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyCourse_pageImageType')?.addEventListener('change', (event) => {
+    sort('CompanyCourse', 'pageImageType', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyCourse_pageImageType')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyCourse', 'pageImageType', true);
+  });
+  document.querySelector('#pageStatsCompanyCourse_pageImageType')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyCourse', 'pageImageType', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyCourse_storeUrl')?.addEventListener('change', (event) => {
     sort('CompanyCourse', 'storeUrl', event.currentTarget.value);
   });
@@ -280,28 +302,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsCompanyCourse_pageImageWidth')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyCourse', 'pageImageWidth', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyCourse_pageImageHeight')?.addEventListener('change', (event) => {
-    sort('CompanyCourse', 'pageImageHeight', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyCourse_pageImageHeight')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyCourse', 'pageImageHeight', true);
-  });
-  document.querySelector('#pageStatsCompanyCourse_pageImageHeight')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyCourse', 'pageImageHeight', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyCourse_pageImageType')?.addEventListener('change', (event) => {
-    sort('CompanyCourse', 'pageImageType', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyCourse_pageImageType')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyCourse', 'pageImageType', true);
-  });
-  document.querySelector('#pageStatsCompanyCourse_pageImageType')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyCourse', 'pageImageType', false);
   });
 
   document.querySelector('#pageSelectSortCompanyCourse_pageImageAlt')?.addEventListener('change', (event) => {

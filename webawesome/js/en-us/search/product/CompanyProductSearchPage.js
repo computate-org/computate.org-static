@@ -227,6 +227,17 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'solrId', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyProduct_productResource')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'productResource', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_productResource')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'productResource', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_productResource')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'productResource', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'emailTemplate', event.currentTarget.value);
   });
@@ -516,6 +527,18 @@ Promise.all([
             facetPivotChange('CompanyProduct', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeGapCompanyProduct_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_productResource')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_productResource')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_productResource')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_productResource')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyProduct', event.currentTarget);
           });
           document.querySelector('#fqCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
