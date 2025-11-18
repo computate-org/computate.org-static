@@ -267,6 +267,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH importance
+          document.querySelector('#Page_importance')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_importance');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSitePageVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setImportance', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_importance')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_importance')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_importance');
+            const valid = form.reportValidity();
+          });
+
           // PATCH courseNum
           document.querySelector('#Page_courseNum')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_courseNum');
