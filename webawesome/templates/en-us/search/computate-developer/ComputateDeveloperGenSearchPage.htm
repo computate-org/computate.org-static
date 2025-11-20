@@ -1,0 +1,310 @@
+{% extends "en-us/PageLayout.htm" %}
+
+{%- block htmTitlePageLayout %}
+{%- block htmTitleComputateDeveloperPage %}
+    <title>{% if resultCount == 0 %}no Computate Developer found{% else %}Computate Developers{% endif %}</title>
+{%- endblock htmTitleComputateDeveloperPage %}
+{%- endblock htmTitlePageLayout %}
+
+{%- block htmStylesPageLayout %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/computate-developer/ComputateDeveloper.css"/>
+{%- block htmStylesComputateDeveloperPage %}
+{%- endblock htmStylesComputateDeveloperPage %}
+{%- endblock htmStylesPageLayout %}
+
+{%- block htmStylePageLayout %}
+      :root {
+        --site-results-number-of-columns: 2;
+      }
+{{ super() }}
+{%- block htmStyleComputateDeveloperPage %}
+{%- endblock htmStyleComputateDeveloperPage %}
+{%- endblock htmStylePageLayout %}
+
+{%- block htmScriptsPageLayout %}
+{{ super() }}
+{%- block htmScriptsComputateDeveloperPage %}
+    <script src="{{staticBaseUrl}}/js/en-us/search/computate-developer/ComputateDeveloper.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/computate-developer/ComputateDeveloperSearchPage.js"></script>
+{%- endblock htmScriptsComputateDeveloperPage %}
+{%- endblock htmScriptsPageLayout %}
+
+{%- block htmScriptPageLayout %}
+{%- block htmScriptComputateDeveloperPage %}
+    <script>
+
+      function jsWebsocketComputateDeveloper(pageId, vars, $response) {
+{%- block jsWebsocketComputateDeveloperPage %}{%- endblock %}
+      }
+
+      function jsTooltipComputateDeveloper(e, feature) {
+{%- block jsTooltipComputateDeveloperPage %}{%- endblock %}
+      }
+
+      function htmTooltipComputateDeveloper(feature, layer) {
+        return `{%- block htmTooltipComputateDeveloperPage %}
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
+{%- endblock htmTooltipComputateDeveloperPage %}`;
+      }
+    </script>
+    <script type="module">
+{% if DEFAULT_MAP_LOCATION is defined %}
+      window.DEFAULT_MAP_LOCATION = { type: 'Point', coordinates: [ {{ DEFAULT_MAP_LOCATION.coordinates[0] }}, {{ DEFAULT_MAP_LOCATION.coordinates[1] }} ]};
+{% endif %}
+{% if DEFAULT_MAP_ZOOM is defined %}
+      window.DEFAULT_MAP_ZOOM = {{ DEFAULT_MAP_ZOOM }};
+{% endif %}
+      window.DEFAULT_ZONE_ID = '{{ defaultZoneId }}';
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+      ]).then(() => {
+
+        var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
+
+        if(pageId == null) {
+          document.querySelector('#grid-toggle-details')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-list', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-details');
+          });
+          document.querySelector('#grid-toggle-list')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-list');
+          });
+          document.querySelector('#grid-toggle-card')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-list');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-card');
+          });
+        } else {
+          var o = document.querySelector('.pageForm .result')?.value;
+          if(o)
+            window.result = JSON.parse(o);
+        {% if result.pageId is defined %}
+        {% endif %}
+        }
+        var l = document.querySelector('.pageForm .listComputateDeveloper')?.value;
+        if(l)
+          window.listComputateDeveloper = JSON.parse(l);
+        window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
+        window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
+        window.defaultRangeVar = '{{ defaultRangeVar }}';
+        pageGraphComputateDeveloper();
+        {% for key, value in varsQ.items() %}
+
+        document.querySelector('#qComputateDeveloper_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
+          qChange('ComputateDeveloper', event.target, document.querySelector('#qComputateDeveloperDiv_{{ key }}'));
+        });
+        {% endfor %}
+
+        document.querySelector('#qComputateDeveloper_rows')?.addEventListener('change', event => {
+          paramChange('ComputateDeveloper', event.target, document.querySelector('#qComputateDeveloperDiv_rows'));
+        });
+
+        document.querySelector('#qComputateDeveloper_start')?.addEventListener('change', event => {
+          paramChange('ComputateDeveloper', event.target, document.querySelector('#qComputateDeveloperDiv_start'));
+        });
+
+
+        var submitForm_patchComputateDeveloper = document.querySelector('#htmForm_patchComputateDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_patchComputateDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          patchComputateDeveloper(null, document.querySelector('#htmForm_patchComputateDeveloper'), document.querySelector('#htmFormButton_patchComputateDeveloper'), event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_postComputateDeveloper = document.querySelector('#htmForm_postComputateDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_postComputateDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          postComputateDeveloper(document.querySelector('#htmForm_postComputateDeveloper')
+          , document.querySelector('#htmFormButton_postComputateDeveloper')
+          , (json, target) => {
+            window.location.href = json.editPage;
+          });
+          return false;
+        });
+
+        var submitForm_deleteComputateDeveloper = document.querySelector('#htmForm_deleteComputateDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deleteComputateDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          deleteComputateDeveloper(event.target, event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_putimportComputateDeveloper = document.querySelector('#htmForm_putimportComputateDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_putimportComputateDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          putimportComputateDeveloper(document.querySelector('#htmForm_putimportComputateDeveloper'), document.querySelector('#htmFormButton_putimportComputateDeveloper'));
+          return false;
+        });
+
+        var submitForm_searchpageComputateDeveloper = document.querySelector('#htmForm_searchpageComputateDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_searchpageComputateDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          searchpageComputateDeveloper();
+          return false;
+        });
+
+        var submitForm_deletefilterComputateDeveloper = document.querySelector('#htmForm_deletefilterComputateDeveloper')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deletefilterComputateDeveloper')?.addEventListener('click', event => {
+          event.preventDefault();
+          deletefilterComputateDeveloper(event.target);
+          return false;
+        });
+{%- block htmScriptInitComputateDeveloperPage %}{%- endblock htmScriptInitComputateDeveloperPage %}
+      });
+    </script>
+{%- endblock htmScriptComputateDeveloperPage %}
+{%- endblock htmScriptPageLayout %}
+
+{%- block websocketPageLayout %}
+{%- block websocketComputateDeveloperPage %}
+{% if resultCount > 0 %}
+        window.eventBus = new EventBus('/eventbus');
+        window.eventBus.enableReconnect(true);
+        websocketComputateDeveloper(websocketComputateDeveloperInner);
+{% endif %}
+{%- endblock websocketComputateDeveloperPage %}
+{%- endblock websocketPageLayout %}
+
+{%- block htmUrlComputateDeveloperPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlComputateDeveloperPage %}
+
+{%- block htmBodyStartPageLayout %}
+{{ super() }}
+{%- block htmBodyStartComputateDeveloperPage %}
+{% if resultCount == 0 %}
+        <div class="wa-stack ">
+          <wa-tooltip for="return-to-ComputateDeveloper">back to all Computate Developers</wa-tooltip></wa-tooltip>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-ComputateDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-kit fa-computate-c-key"></i>
+              all Computate Developers
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no Computate Developer found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-kit fa-computate-c-key"></i>
+            </div>
+            <span class="wa-heading-m ">no Computate Developer found</span>
+            <p class="wa-caption-l ">Learn how to become a Computate platform developer — Learn how to build your own data-driven website on your own computer for your own ideas. </p>
+{% include en-us/search/computate-developer/ComputateDeveloperSearchForm.htm %}
+          </div>
+        </div>
+{% else %}
+{%- include en-us/search/computate-developer/ComputateDeveloperSidebar.htm %}
+{%- include en-us/search/computate-developer/ComputateDeveloperSuggestedSearch.htm %}
+          <div class="pageContent ">
+            <form action="/en-us/api/computate-developer" id="ComputateDeveloperForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="focusId" type="hidden"/>
+              <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+              <input name="listComputateDeveloper" id="listComputateDeveloper" class="listComputateDeveloper"  value='{{ toJsonArrayStringInApostrophes(listComputateDeveloper) }}' type="hidden"/>
+            </form>
+            <div id="site-calendar-box">
+              <div id="site-calendar"><!-- // --></div>
+            </div>
+            <div class="wa-stack wa-gap-m ">
+              <wa-tooltip for="return-to-ComputateDeveloper">back to all Computate Developers</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-ComputateDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-kit fa-computate-c-key"></i>
+                  all Computate Developers
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search Computate Developers
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{% include en-us/search/computate-developer/ComputateDeveloperSearchForm.htm %}
+{% include en-us/search/computate-developer/ComputateDeveloperSearchButtons.htm %}
+{% endif %}
+{%- endblock htmBodyStartComputateDeveloperPage %}
+{%- endblock htmBodyStartPageLayout %}
+
+{%- block htmBodyMiddlePageLayout %}
+{%- block htmBodyMiddleComputateDeveloperPage %}
+{% if resultCount > 0 %}
+              <div class="wa-stack wa-gap-0 ">
+{% include en-us/search/computate-developer/ComputateDeveloperPaginationButtons.htm %}
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
+              <wa-dropdown id="htmDropdown-name">
+                <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
+                <wa-menu>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                    sort by course name ascending
+                  </wa-menu-item>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                    sort by course name descending
+                  </wa-menu-item>
+                </wa-menu>
+              </wa-dropdown>
+              <wa-dropdown id="htmDropdown-description">
+                <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
+                <wa-menu>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                    sort by course description ascending
+                  </wa-menu-item>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                    sort by course description descending
+                  </wa-menu-item>
+                </wa-menu>
+              </wa-dropdown>
+                  </div>
+                  {% for item in listComputateDeveloper%}
+                  <div>
+              <a href="{{ item.displayPage }}">
+                <i class="fa-kit fa-computate-c-key"></i>
+              <span>{{ item.name | e }}
+</span>              </a>
+              <a href="{{ item.displayPage }}">
+              <span>{{ item.description | e }}
+</span>              </a>
+                  </div>
+                  {% endfor %}
+              {% if getColumnName is defined %}
+                <div>
+                </div>
+              {% endif %}
+              {% if getColumnDescription is defined %}
+                <div>
+                </div>
+              {% endif %}
+                </div>
+{% include en-us/search/computate-developer/ComputateDeveloperPaginationButtons.htm %}
+              </div>
+            </div>
+          </div>
+{% endif %}
+{%- endblock htmBodyMiddleComputateDeveloperPage %}
+{%- endblock htmBodyMiddlePageLayout %}
+
+{%- block htmBodyEndPageLayout %}
+{%- block htmBodyEndComputateDeveloperPage %}
+{%- include en-us/search/computate-developer/ComputateDeveloperLocation.htm %}
+{%- endblock htmBodyEndComputateDeveloperPage %}
+  {{ super() }}
+{%- endblock htmBodyEndPageLayout %}

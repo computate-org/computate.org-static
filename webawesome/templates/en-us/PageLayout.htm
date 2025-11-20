@@ -116,10 +116,17 @@
     </script>
    </head>
   <body class="wa-body-{{ userFontSize }} wa-size-{{ userFontSize }} wa-cloak ">
+    {% if WEB_COMPONENTS_PRO == 'true' -%}
     <wa-page disable-sticky="header">
+    {%- else -%}
+    <div id="site-grid">
+    {%- endif %}
 {%- block htmBodyPageLayout %}
 {%- block htmBodyStartPageLayout %}
-      <nav slot="navigation">
+      {% if WEB_COMPONENTS_PRO == 'false' -%}
+      <wa-drawer placement="start" id="site-aside-left" class="margin-block-end-1rem ">
+        {%- endif %}
+        <nav{% if WEB_COMPONENTS_PRO == 'true' %} slot="navigation"{% endif %}>
           <div class="display-flex-center ">
             <a href="/">
               <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}/svg/logo-{{ userSiteTheme | default(SITE_THEME) }}.svg"/>
@@ -177,22 +184,22 @@
                   </div>
                   <wa-details summary="User groups" open="true">
                     <div class="wa-stack ">
-                    <wa-scroller>
-                        {% for group in userGroups %}
-                        <div>
-                          <a target="_blank" href="{{ AUTH_URL }}/admin/master/console/#/{{ AUTH_REALM | urlencode() }}/clients/{{ AUTH_CLIENT | urlencode() }}/authorization/policy/{{ AUTH_REALM | urlencode() }}-group-{{ group | regex_replace('/?(.*)', '$1') | urlencode() }}/group">
-                            <wa-badge variant="success">
-                              {{ group | e }}
-                            </wa-badge>
-                          </a>
-                        </div>
-                        {% endfor %}
-                    </wa-scroller>
+                      <wa-scroller>
+                          {% for group in userGroups %}
+                          <div>
+                            <a target="_blank" href="{{ AUTH_URL }}/admin/master/console/#/{{ AUTH_REALM | urlencode() }}/clients/{{ AUTH_CLIENT | urlencode() }}/authorization/policy/{{ AUTH_REALM | urlencode() }}-group-{{ group | regex_replace('/?(.*)', '$1') | urlencode() }}/group">
+                              <wa-badge variant="success">
+                                {{ group | e }}
+                              </wa-badge>
+                            </a>
+                          </div>
+                          {% endfor %}
+                      </wa-scroller>
                     </div>
                   </wa-details>
                   <wa-details summary="Current scopes" open="true">
-                    <wa-scroller>
-                      <div class="wa-stack ">
+                    <div class="wa-stack ">
+                      <wa-scroller>
                         <div>
                           <wa-tag variant="neutral">{{ pageUri }}</wa-tag>
                         </div>
@@ -205,8 +212,8 @@
                           </a>
                           {% endfor %}
                         </div>
-                      </div>
-                    </wa-scroller>
+                      </wa-scroller>
+                    </div>
                   </wa-details>
                 </div>
               </wa-details>
@@ -261,16 +268,27 @@
                 <i slot="start" class="fa-duotone fa-regular fa-fish"></i>
                 Smart Aquaculture Developers
               </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-AiTelemetryDeveloper" href="{{ SITE_BASE_URL }}/en-us/search/ai-telemetry-developer">
+                <i slot="start" class="fa-duotone fa-regular fa-chart-fft"></i>
+                AI Telemetry developers
+              </wa-button>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-ComputateDeveloper" href="{{ SITE_BASE_URL }}/en-us/search/computate-developer">
+                <i slot="start" class="fa-kit fa-computate-c-key"></i>
+                Computate Developers
+              </wa-button>
             </div>
           </div>
-      </nav>
+        </nav>
+      {% if WEB_COMPONENTS_PRO == 'false' -%}
+      </wa-drawer>
+      {% endif %}
       <main class="wa-stack ">
         <wa-drawer id="warnings-drawer" label="Warnings">
           <div id="warnings-drawer-stack" class="wa-stack ">
           </div>
         </wa-drawer>
         <header slot="header" class="wa-flank margin-block ">
-          <wa-button data-toggle-nav variant="brand" label="open menu">
+          <wa-button data-toggle-nav variant="brand" label="open menu"{% if WEB_COMPONENTS_PRO == 'false' %} onclick="document.querySelector('#site-aside-left').open = true;"{% endif %}>
             <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-bars"></i>
           </wa-button>
           <wa-popup  placement="bottom-start" id="siteSearchDropdown">
@@ -315,7 +333,11 @@
           {% endif %}
         </footer>
       </main>
+    {% if WEB_COMPONENTS_PREFIX == 'wa-' -%}
     </wa-page>
+    {%- else -%}
+    </div>
+    {% endif %}
 {%- endblock htmBodyEndPageLayout %}
 {%- endblock htmBodyPageLayout %}
   </body>
