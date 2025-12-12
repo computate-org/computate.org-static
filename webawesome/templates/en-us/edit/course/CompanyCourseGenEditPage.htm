@@ -47,6 +47,56 @@
 <h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipCompanyCoursePage %}`;
       }
+
+      function facetSimpleRangeCompanyCourseSuccess(pageContent) {
+{% block facetSimpleRangeCompanyCourseSuccess %}{%- endblock facetSimpleRangeCompanyCourseSuccess %}
+      }
+      function facetSimpleRangeCompanyCourseError(pageContent) {
+{% block facetSimpleRangeCompanyCourseError %}{%- endblock facetSimpleRangeCompanyCourseError %}
+      }
+      function facetSimpleRangeCompanyCourse(e) {
+        facetSimpleRange(e, facetSimpleRangeCompanyCourseSuccess, facetSimpleRangeCompanyCourseError);
+      }
+
+      function facetRangeTimeZoneCompanyCourseSuccess(pageContent) {
+{% block facetRangeTimeZoneCompanyCourseSuccess %}{%- endblock facetRangeTimeZoneCompanyCourseSuccess %}
+      }
+      function facetRangeTimeZoneCompanyCourseError(pageContent) {
+{% block facetRangeTimeZoneCompanyCourseError %}{%- endblock facetRangeTimeZoneCompanyCourseError %}
+      }
+      function facetRangeTimeZoneCompanyCourse(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneCompanyCourseSuccess, facetRangeTimeZoneCompanyCourseError);
+      }
+
+      function facetRangeGapChangeCompanyCourseSuccess(pageContent) {
+{% block facetRangeGapChangeCompanyCourseSuccess %}{%- endblock facetRangeGapChangeCompanyCourseSuccess %}
+      }
+      function facetRangeGapChangeCompanyCourseError(pageContent) {
+{% block facetRangeGapChangeCompanyCourseError %}{%- endblock facetRangeGapChangeCompanyCourseError %}
+      }
+      function facetRangeGapChangeCompanyCourse(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyCourseSuccess, facetRangeGapChangeCompanyCourseError);
+      }
+
+      function facetRangeStartChangeCompanyCourseSuccess(pageContent) {
+{% block facetRangeStartChangeCompanyCourseSuccess %}{%- endblock facetRangeStartChangeCompanyCourseSuccess %}
+      }
+      function facetRangeStartChangeCompanyCourseError(pageContent) {
+{% block facetRangeStartChangeCompanyCourseError %}{%- endblock facetRangeStartChangeCompanyCourseError %}
+      }
+      function facetRangeStartChangeCompanyCourse(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyCourseSuccess, facetRangeStartChangeCompanyCourseError);
+      }
+
+      function facetRangeEndChangeCompanyCourseSuccess(pageContent) {
+{% block facetRangeEndChangeCompanyCourseSuccess %}{%- endblock facetRangeEndChangeCompanyCourseSuccess %}
+      }
+      function facetRangeEndChangeCompanyCourseError(pageContent) {
+{% block facetRangeEndChangeCompanyCourseError %}{%- endblock facetRangeEndChangeCompanyCourseError %}
+      }
+      function facetRangeEndChangeCompanyCourse(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyCourseSuccess, facetRangeEndChangeCompanyCourseError);
+      }
     </script>
     <script type="module">
 {% if DEFAULT_MAP_LOCATION is defined %}
@@ -59,6 +109,9 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -89,6 +142,11 @@
         window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
         window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
         window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyCourse);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyCourse);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneCompanyCourse);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeCompanyCourse);
         pageGraphCompanyCourse();
         {% for key, value in varsQ.items() %}
 
@@ -211,6 +269,7 @@
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyCoursePage %}
         <div class="pageContent ">
+{%- include en-us/search/course/CompanyCourseSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip></wa-tooltip>
@@ -233,7 +292,6 @@
           </div>
         </div>
 {% else %}
-{%- include en-us/search/course/CompanyCourseSidebar.htm %}
 {%- include en-us/search/course/CompanyCourseSuggestedSearch.htm %}
 {% endif %}
 {%- block htmFormCompanyCoursePage %}

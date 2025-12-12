@@ -47,6 +47,56 @@
 <h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipSmartAquacultureDeveloperPage %}`;
       }
+
+      function facetSimpleRangeSmartAquacultureDeveloperSuccess(pageContent) {
+{% block facetSimpleRangeSmartAquacultureDeveloperSuccess %}{%- endblock facetSimpleRangeSmartAquacultureDeveloperSuccess %}
+      }
+      function facetSimpleRangeSmartAquacultureDeveloperError(pageContent) {
+{% block facetSimpleRangeSmartAquacultureDeveloperError %}{%- endblock facetSimpleRangeSmartAquacultureDeveloperError %}
+      }
+      function facetSimpleRangeSmartAquacultureDeveloper(e) {
+        facetSimpleRange(e, facetSimpleRangeSmartAquacultureDeveloperSuccess, facetSimpleRangeSmartAquacultureDeveloperError);
+      }
+
+      function facetRangeTimeZoneSmartAquacultureDeveloperSuccess(pageContent) {
+{% block facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}
+      }
+      function facetRangeTimeZoneSmartAquacultureDeveloperError(pageContent) {
+{% block facetRangeTimeZoneSmartAquacultureDeveloperError %}{%- endblock facetRangeTimeZoneSmartAquacultureDeveloperError %}
+      }
+      function facetRangeTimeZoneSmartAquacultureDeveloper(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneSmartAquacultureDeveloperSuccess, facetRangeTimeZoneSmartAquacultureDeveloperError);
+      }
+
+      function facetRangeGapChangeSmartAquacultureDeveloperSuccess(pageContent) {
+{% block facetRangeGapChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeGapChangeSmartAquacultureDeveloperSuccess %}
+      }
+      function facetRangeGapChangeSmartAquacultureDeveloperError(pageContent) {
+{% block facetRangeGapChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeGapChangeSmartAquacultureDeveloperError %}
+      }
+      function facetRangeGapChangeSmartAquacultureDeveloper(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeSmartAquacultureDeveloperSuccess, facetRangeGapChangeSmartAquacultureDeveloperError);
+      }
+
+      function facetRangeStartChangeSmartAquacultureDeveloperSuccess(pageContent) {
+{% block facetRangeStartChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeStartChangeSmartAquacultureDeveloperSuccess %}
+      }
+      function facetRangeStartChangeSmartAquacultureDeveloperError(pageContent) {
+{% block facetRangeStartChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeStartChangeSmartAquacultureDeveloperError %}
+      }
+      function facetRangeStartChangeSmartAquacultureDeveloper(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeSmartAquacultureDeveloperSuccess, facetRangeStartChangeSmartAquacultureDeveloperError);
+      }
+
+      function facetRangeEndChangeSmartAquacultureDeveloperSuccess(pageContent) {
+{% block facetRangeEndChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeEndChangeSmartAquacultureDeveloperSuccess %}
+      }
+      function facetRangeEndChangeSmartAquacultureDeveloperError(pageContent) {
+{% block facetRangeEndChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeEndChangeSmartAquacultureDeveloperError %}
+      }
+      function facetRangeEndChangeSmartAquacultureDeveloper(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeSmartAquacultureDeveloperSuccess, facetRangeEndChangeSmartAquacultureDeveloperError);
+      }
     </script>
     <script type="module">
 {% if DEFAULT_MAP_LOCATION is defined %}
@@ -59,6 +109,9 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -89,6 +142,11 @@
         window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
         window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
         window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSmartAquacultureDeveloper);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSmartAquacultureDeveloper);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneSmartAquacultureDeveloper);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeSmartAquacultureDeveloper);
         pageGraphSmartAquacultureDeveloper();
         {% for key, value in varsQ.items() %}
 
@@ -211,6 +269,7 @@
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleSmartAquacultureDeveloperPage %}
         <div class="pageContent ">
+{%- include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-SmartAquacultureDeveloper">back to all Smart Aquaculture Developers</wa-tooltip></wa-tooltip>
@@ -233,7 +292,6 @@
           </div>
         </div>
 {% else %}
-{%- include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSidebar.htm %}
 {%- include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSuggestedSearch.htm %}
 {% endif %}
 {%- block htmFormSmartAquacultureDeveloperPage %}

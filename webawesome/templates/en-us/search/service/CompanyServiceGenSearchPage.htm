@@ -47,6 +47,56 @@
 <h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipCompanyServicePage %}`;
       }
+
+      function facetSimpleRangeCompanyServiceSuccess(pageContent) {
+{% block facetSimpleRangeCompanyServiceSuccess %}{%- endblock facetSimpleRangeCompanyServiceSuccess %}
+      }
+      function facetSimpleRangeCompanyServiceError(pageContent) {
+{% block facetSimpleRangeCompanyServiceError %}{%- endblock facetSimpleRangeCompanyServiceError %}
+      }
+      function facetSimpleRangeCompanyService(e) {
+        facetSimpleRange(e, facetSimpleRangeCompanyServiceSuccess, facetSimpleRangeCompanyServiceError);
+      }
+
+      function facetRangeTimeZoneCompanyServiceSuccess(pageContent) {
+{% block facetRangeTimeZoneCompanyServiceSuccess %}{%- endblock facetRangeTimeZoneCompanyServiceSuccess %}
+      }
+      function facetRangeTimeZoneCompanyServiceError(pageContent) {
+{% block facetRangeTimeZoneCompanyServiceError %}{%- endblock facetRangeTimeZoneCompanyServiceError %}
+      }
+      function facetRangeTimeZoneCompanyService(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneCompanyServiceSuccess, facetRangeTimeZoneCompanyServiceError);
+      }
+
+      function facetRangeGapChangeCompanyServiceSuccess(pageContent) {
+{% block facetRangeGapChangeCompanyServiceSuccess %}{%- endblock facetRangeGapChangeCompanyServiceSuccess %}
+      }
+      function facetRangeGapChangeCompanyServiceError(pageContent) {
+{% block facetRangeGapChangeCompanyServiceError %}{%- endblock facetRangeGapChangeCompanyServiceError %}
+      }
+      function facetRangeGapChangeCompanyService(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyServiceSuccess, facetRangeGapChangeCompanyServiceError);
+      }
+
+      function facetRangeStartChangeCompanyServiceSuccess(pageContent) {
+{% block facetRangeStartChangeCompanyServiceSuccess %}{%- endblock facetRangeStartChangeCompanyServiceSuccess %}
+      }
+      function facetRangeStartChangeCompanyServiceError(pageContent) {
+{% block facetRangeStartChangeCompanyServiceError %}{%- endblock facetRangeStartChangeCompanyServiceError %}
+      }
+      function facetRangeStartChangeCompanyService(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyServiceSuccess, facetRangeStartChangeCompanyServiceError);
+      }
+
+      function facetRangeEndChangeCompanyServiceSuccess(pageContent) {
+{% block facetRangeEndChangeCompanyServiceSuccess %}{%- endblock facetRangeEndChangeCompanyServiceSuccess %}
+      }
+      function facetRangeEndChangeCompanyServiceError(pageContent) {
+{% block facetRangeEndChangeCompanyServiceError %}{%- endblock facetRangeEndChangeCompanyServiceError %}
+      }
+      function facetRangeEndChangeCompanyService(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyServiceSuccess, facetRangeEndChangeCompanyServiceError);
+      }
     </script>
     <script type="module">
 {% if DEFAULT_MAP_LOCATION is defined %}
@@ -59,6 +109,9 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -89,6 +142,11 @@
         window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
         window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
         window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyService);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyService);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneCompanyService);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeCompanyService);
         pageGraphCompanyService();
         {% for key, value in varsQ.items() %}
 
@@ -166,10 +224,25 @@
 {%- endblock websocketPageLayout %}
 
 {%- block htmUrlCompanyServicePage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlCompanyServicePage %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                  all services
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search services
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
 
 {%- block htmBodyStartPageLayout %}
 {{ super() }}
 {%- block htmBodyStartCompanyServicePage %}
+{% include en-us/search/service/CompanyServiceSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip></wa-tooltip>
@@ -192,8 +265,7 @@
           </div>
         </div>
 {% else %}
-{%- include en-us/search/service/CompanyServiceSidebar.htm %}
-{%- include en-us/search/service/CompanyServiceSuggestedSearch.htm %}
+{% include en-us/search/service/CompanyServiceSuggestedSearch.htm %}
           <div class="pageContent ">
             <form action="/en-us/api/service" id="CompanyServiceForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
               <input name="focusId" type="hidden"/>
@@ -204,21 +276,19 @@
               <div id="site-calendar"><!-- // --></div>
             </div>
             <div class="wa-stack wa-gap-m ">
-              <wa-tooltip for="return-to-CompanyService">back to all services</wa-tooltip>
-              <wa-breadcrumb>
-                <wa-breadcrumb-item id="return-to-CompanyService" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-                  <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
-                  all services
-                </wa-breadcrumb-item>
-                <wa-breadcrumb-item>
-                  search services
-                </wa-breadcrumb-item>
-              </wa-breadcrumb>
-{% include en-us/search/service/CompanyServiceSearchForm.htm %}
-{% include en-us/search/service/CompanyServiceSearchButtons.htm %}
 {% endif %}
 {%- endblock htmBodyStartCompanyServicePage %}
 {%- endblock htmBodyStartPageLayout %}
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/service/CompanyServiceSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchForm is not defined %}
+{%- set pageSearchForm %}
+{% include en-us/search/service/CompanyServiceSearchForm.htm %}
+{%- endset pageSearchForm %}
+{%- endif %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyServicePage %}

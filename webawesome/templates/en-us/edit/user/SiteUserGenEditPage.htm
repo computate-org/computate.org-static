@@ -47,6 +47,56 @@
 <h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipSiteUserPage %}`;
       }
+
+      function facetSimpleRangeSiteUserSuccess(pageContent) {
+{% block facetSimpleRangeSiteUserSuccess %}{%- endblock facetSimpleRangeSiteUserSuccess %}
+      }
+      function facetSimpleRangeSiteUserError(pageContent) {
+{% block facetSimpleRangeSiteUserError %}{%- endblock facetSimpleRangeSiteUserError %}
+      }
+      function facetSimpleRangeSiteUser(e) {
+        facetSimpleRange(e, facetSimpleRangeSiteUserSuccess, facetSimpleRangeSiteUserError);
+      }
+
+      function facetRangeTimeZoneSiteUserSuccess(pageContent) {
+{% block facetRangeTimeZoneSiteUserSuccess %}{%- endblock facetRangeTimeZoneSiteUserSuccess %}
+      }
+      function facetRangeTimeZoneSiteUserError(pageContent) {
+{% block facetRangeTimeZoneSiteUserError %}{%- endblock facetRangeTimeZoneSiteUserError %}
+      }
+      function facetRangeTimeZoneSiteUser(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneSiteUserSuccess, facetRangeTimeZoneSiteUserError);
+      }
+
+      function facetRangeGapChangeSiteUserSuccess(pageContent) {
+{% block facetRangeGapChangeSiteUserSuccess %}{%- endblock facetRangeGapChangeSiteUserSuccess %}
+      }
+      function facetRangeGapChangeSiteUserError(pageContent) {
+{% block facetRangeGapChangeSiteUserError %}{%- endblock facetRangeGapChangeSiteUserError %}
+      }
+      function facetRangeGapChangeSiteUser(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeSiteUserSuccess, facetRangeGapChangeSiteUserError);
+      }
+
+      function facetRangeStartChangeSiteUserSuccess(pageContent) {
+{% block facetRangeStartChangeSiteUserSuccess %}{%- endblock facetRangeStartChangeSiteUserSuccess %}
+      }
+      function facetRangeStartChangeSiteUserError(pageContent) {
+{% block facetRangeStartChangeSiteUserError %}{%- endblock facetRangeStartChangeSiteUserError %}
+      }
+      function facetRangeStartChangeSiteUser(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeSiteUserSuccess, facetRangeStartChangeSiteUserError);
+      }
+
+      function facetRangeEndChangeSiteUserSuccess(pageContent) {
+{% block facetRangeEndChangeSiteUserSuccess %}{%- endblock facetRangeEndChangeSiteUserSuccess %}
+      }
+      function facetRangeEndChangeSiteUserError(pageContent) {
+{% block facetRangeEndChangeSiteUserError %}{%- endblock facetRangeEndChangeSiteUserError %}
+      }
+      function facetRangeEndChangeSiteUser(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeSiteUserSuccess, facetRangeEndChangeSiteUserError);
+      }
     </script>
     <script type="module">
 {% if DEFAULT_MAP_LOCATION is defined %}
@@ -59,6 +109,9 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
       ]).then(() => {
 
         var userId = {% if result.userId is defined %}{{ result.userId | tojson }}{% else %}null{% endif %};
@@ -89,6 +142,11 @@
         window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
         window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
         window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSiteUser);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSiteUser);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneSiteUser);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeSiteUser);
         pageGraphSiteUser();
         {% for key, value in varsQ.items() %}
 
@@ -181,6 +239,7 @@
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleSiteUserPage %}
         <div class="pageContent ">
+{%- include en-us/search/user/SiteUserSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-SiteUser">back to all site users</wa-tooltip></wa-tooltip>
@@ -203,7 +262,6 @@
           </div>
         </div>
 {% else %}
-{%- include en-us/search/user/SiteUserSidebar.htm %}
 {%- include en-us/search/user/SiteUserSuggestedSearch.htm %}
 {% endif %}
 {%- block htmFormSiteUserPage %}

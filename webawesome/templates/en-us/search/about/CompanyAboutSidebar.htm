@@ -1,4 +1,4 @@
-          <div class="htmBodySidebarCompanyAboutPage ">
+        <div class="htmBodySidebarCompanyAboutPage ">
 {%- block htmBodySidebarCompanyAboutPage %}
           <wa-drawer with-header light-dismiss placement="end" id="siteSidebarToggleSearch">
             <div slot="label">
@@ -133,6 +133,7 @@
               <table>
                 <tr>
                   <td colspan="2">
+                    <div class="pageSearchVal " id="pageSearchVal-pageFacetRangeTimeZone-CompanyAbout">{% if rangeGap is defined %}var=defaultZoneId:{{ defaultZoneId | urlencode() }}{% endif %}</div>
                     <div class="pageSearchVal " id="pageSearchVal-pageFacetRangeGap-CompanyAbout">{% if rangeGap is defined %}facet.range.gap={{ rangeGap | urlencode() }}{% endif %}</div>
                     <div class="pageSearchVal " id="pageSearchVal-pageFacetRangeStart-CompanyAbout">{% if rangeStart is defined %}facet.range.start={{ rangeStart | urlencode() }}{% endif %}</div>
                     <div class="pageSearchVal " id="pageSearchVal-pageFacetRangeEnd-CompanyAbout">{% if rangeEnd is defined %}facet.range.end={{ rangeEnd | urlencode() }}{% endif %}</div>
@@ -140,13 +141,93 @@
                   </td>
                 </tr>
               </table>
+              <div>
+                <wa-popup placement="bottom-start" id="pageFacetRangeTimeZonePopup">
+                  <wa-input type="text" slot="anchor" placeholder="time zone" label="time zone" hint="The local time zone of this about page. " id="pageFacetRangeTimeZoneInput" data-popup="pageFacetRangeTimeZonePopup" data-list="pageFacetRangeTimeZoneList" data-classSimpleName="CompanyAbout" autocomplete="off" value="{{ defaultZoneId | e }}" size="medium" appearance="outlined"></wa-input>
+                  <div id="pageFacetRangeTimeZoneList"></div>
+                </wa-popup>
+              </div>
+              <div>
+                <wa-dropdown id="pageFacetSimpleRangeDropdown" data-classSimpleName="CompanyAbout">
+                  <wa-button slot="trigger" with-caret>simple ranges</wa-button>
+                  <wa-dropdown-item value="last-minutes">
+                    last few minutes
+                    <wa-dropdown-item slot="submenu" value="last-minutes-1-hours">
+                    last 1 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-minutes-3-hours">
+                    last 3 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-minutes-6-hours">
+                    last 6 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-minutes-12-hours">
+                    last 12 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-minutes-24-hours">
+                    last 24 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-minutes-2-days">
+                    last 2 days
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-minutes-7-days">
+                    last 7 days
+                    </wa-dropdown-item>
+                  </wa-dropdown-item>
+                  <wa-dropdown-item value="last-hours">
+                    last few hours
+                    <wa-dropdown-item slot="submenu" value="last-hours-1-hours">
+                    last 1 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-hours-3-hours">
+                    last 3 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-hours-6-hours">
+                    last 6 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-hours-12-hours">
+                    last 12 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-hours-24-hours">
+                    last 24 hours
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-hours-2-days">
+                    last 2 days
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-hours-7-days">
+                    last 7 days
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-hours-30-days">
+                    last 30 days
+                    </wa-dropdown-item>
+                  </wa-dropdown-item>
+                  <wa-dropdown-item value="last-days">
+                    last few days
+                    <wa-dropdown-item slot="submenu" value="last-days-1-days">
+                    last 1 days
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-days-2-days">
+                    last 2 days
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-days-7-days">
+                    last 7 days
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-days-30-days">
+                    last 30 days
+                    </wa-dropdown-item>
+                    <wa-dropdown-item slot="submenu" value="last-days-90-days">
+                    last 90 days
+                    </wa-dropdown-item>
+                  </wa-dropdown-item>
+                </wa-dropdown>
+              </div>
               <table>
                 <tr class="">
                   <td class="">
                     <span>Range Gap</span>
                   </td>
                   <td class="">
-                    <wa-select name="facet.range.gap" id="pageSearchVal-pageFacetRangeGap-CompanyAbout-input" onchange="facetRangeGapChange('CompanyAbout', this); ">
+                    <wa-select name="facet.range.gap" id="pageSearchVal-pageFacetRangeGap-CompanyAbout-input" onchange="facetRangeGapChangeCompanyAbout('CompanyAbout', this); ">
                       <wa-option value="+1YEAR"{% if defaultRangeGap == '+1YEAR' %} selected="selected"{% else %}{% endif %}>Year</wa-option>
                       <wa-option value="+1MONTH"{% if defaultRangeGap == '+1MONTH' %} selected="selected"{% else %}{% endif %}>Month</wa-option>
                       <wa-option value="+1WEEK"{% if defaultRangeGap == '+1WEEK' %} selected="selected"{% else %}{% endif %}>Week</wa-option>
@@ -164,7 +245,7 @@
                 </tr>
                 <tr class="">
                   <td class="" colspan="2">
-                    <span><wa-input type="datetime-local" name="facetRangeStart" id="pageSearchVal-pageFacetRangeStart-CompanyAbout-input" value="{{ formatZonedDateTime(defaultRangeStart, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) }}" onchange="facetRangeStartChange('CompanyAbout', this, '{{ defaultZoneId }}'); "></wa-input></span>
+                    <span><wa-input type="datetime-local" name="facetRangeStart" id="pageSearchVal-pageFacetRangeStart-CompanyAbout-input" value="{{ formatZonedDateTime(defaultRangeStart, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) }}" onchange="facetRangeStartChangeCompanyAbout('CompanyAbout', this, '{{ defaultZoneId }}'); "></wa-input></span>
                   </td>
                 </tr>
                 <tr class="">
@@ -174,7 +255,7 @@
                 </tr>
                 <tr class="">
                   <td class="" colspan="2">
-                    <span><wa-input type="datetime-local" name="facetRangeEnd" id="pageSearchVal-pageFacetRangeEnd-CompanyAbout-input" value="{{ formatZonedDateTime(defaultRangeEnd, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) }}" onchange="facetRangeEndChange('CompanyAbout', this, '{{ defaultZoneId }}'); "></wa-input></span>
+                    <span><wa-input type="datetime-local" name="facetRangeEnd" id="pageSearchVal-pageFacetRangeEnd-CompanyAbout-input" value="{{ formatZonedDateTime(defaultRangeEnd, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) }}" onchange="facetRangeEndChangeCompanyAbout('CompanyAbout', this, '{{ defaultZoneId }}'); "></wa-input></span>
                   </td>
                 </tr>
               </table>

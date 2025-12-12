@@ -1,6 +1,9 @@
 Promise.all([
     customElements.whenDefined('wa-button')
     , customElements.whenDefined('wa-input')
+    , customElements.whenDefined('wa-select')
+    , customElements.whenDefined('wa-radio')
+    , customElements.whenDefined('wa-checkbox')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeSmartAquacultureDeveloper')?.addEventListener('change', (event) => {
@@ -410,6 +413,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_created')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_created')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_created')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqSmartAquacultureDeveloper_name')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
           });
@@ -421,6 +430,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_name')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_name')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_name')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
           document.querySelector('#fqSmartAquacultureDeveloper_description')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
@@ -434,6 +449,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_description')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_description')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
           });
@@ -445,6 +466,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
           document.querySelector('#fqSmartAquacultureDeveloper_authorUrl')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
@@ -458,6 +485,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_authorUrl')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqSmartAquacultureDeveloper_pageImageUri')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
           });
@@ -469,6 +502,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_pageImageUri')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
           document.querySelector('#fqSmartAquacultureDeveloper_pageId')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
@@ -482,6 +521,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_pageId')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_pageId')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_pageId')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqSmartAquacultureDeveloper_displayPage')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
           });
@@ -493,6 +538,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_displayPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_displayPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
           document.querySelector('#fqSmartAquacultureDeveloper_editPage')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
@@ -506,6 +557,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_editPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_editPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_editPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqSmartAquacultureDeveloper_userPage')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
           });
@@ -517,6 +574,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_userPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_userPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_userPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
           document.querySelector('#fqSmartAquacultureDeveloper_download')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
@@ -530,6 +593,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_download')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_download')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqSmartAquacultureDeveloper_courseNum')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
           });
@@ -542,6 +611,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_courseNum')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqSmartAquacultureDeveloper_lessonNum')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget);
           });
@@ -553,5 +628,11 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_lessonNum')?.addEventListener('change', (event) => {
             facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
 });

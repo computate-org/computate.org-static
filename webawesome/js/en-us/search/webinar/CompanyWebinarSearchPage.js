@@ -1,6 +1,9 @@
 Promise.all([
     customElements.whenDefined('wa-button')
     , customElements.whenDefined('wa-input')
+    , customElements.whenDefined('wa-select')
+    , customElements.whenDefined('wa-radio')
+    , customElements.whenDefined('wa-checkbox')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeCompanyWebinar')?.addEventListener('change', (event) => {
@@ -377,6 +380,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyWebinar_created')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_created')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_created')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebinar_archived')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
           });
@@ -388,6 +397,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyWebinar_archived')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_archived')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_archived')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
           });
           document.querySelector('#fqCompanyWebinar_name')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
@@ -401,6 +416,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyWebinar_name')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_name')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_name')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebinar_description')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
           });
@@ -412,6 +433,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyWebinar_description')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_description')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
           });
           document.querySelector('#fqCompanyWebinar_webinarUrlAmericas')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
@@ -425,6 +452,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyWebinar_webinarUrlAmericas')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_webinarUrlAmericas')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_webinarUrlAmericas')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebinar_webinarUrlApac')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
           });
@@ -436,6 +469,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyWebinar_webinarUrlApac')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_webinarUrlApac')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_webinarUrlApac')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
           });
           document.querySelector('#fqCompanyWebinar_webinarUrlEmea')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
@@ -449,6 +488,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyWebinar_webinarUrlEmea')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_webinarUrlEmea')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_webinarUrlEmea')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebinar_icalUrl')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
           });
@@ -460,6 +505,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyWebinar_icalUrl')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_icalUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_icalUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
           });
           document.querySelector('#fqCompanyWebinar_pageId')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
@@ -473,6 +524,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyWebinar_pageId')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_pageId')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_pageId')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebinar_displayPage')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
           });
@@ -484,6 +541,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyWebinar_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_displayPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_displayPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
           });
           document.querySelector('#fqCompanyWebinar_editPage')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
@@ -497,6 +560,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyWebinar_editPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_editPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_editPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebinar_userPage')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
           });
@@ -508,6 +577,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyWebinar_userPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_userPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_userPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
           });
           document.querySelector('#fqCompanyWebinar_download')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
@@ -521,6 +596,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyWebinar_download')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_download')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
+          });
           document.querySelector('#fqCompanyWebinar_joinUri')?.addEventListener('change', (event) => {
             fqChange('CompanyWebinar', event.currentTarget);
           });
@@ -532,5 +613,11 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyWebinar_joinUri')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyWebinar_joinUri')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyWebinar', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyWebinar_joinUri')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyWebinar', event.currentTarget);
           });
 });

@@ -1,6 +1,9 @@
 Promise.all([
     customElements.whenDefined('wa-button')
     , customElements.whenDefined('wa-input')
+    , customElements.whenDefined('wa-select')
+    , customElements.whenDefined('wa-radio')
+    , customElements.whenDefined('wa-checkbox')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeAiTelemetryDeveloper')?.addEventListener('change', (event) => {
@@ -410,6 +413,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
           });
@@ -421,6 +430,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
           });
           document.querySelector('#fqAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
@@ -434,6 +449,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
           });
@@ -445,6 +466,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
           });
           document.querySelector('#fqAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
@@ -458,6 +485,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
           });
@@ -469,6 +502,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
           });
           document.querySelector('#fqAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
@@ -482,6 +521,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
           });
@@ -493,6 +538,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
           });
           document.querySelector('#fqAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
@@ -506,6 +557,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
           });
@@ -517,6 +574,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
           });
           document.querySelector('#fqAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
@@ -530,6 +593,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
           });
@@ -542,6 +611,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
           document.querySelector('#fqAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget);
           });
@@ -553,5 +628,11 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
             facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
           });
 });

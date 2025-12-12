@@ -1,6 +1,9 @@
 Promise.all([
     customElements.whenDefined('wa-button')
     , customElements.whenDefined('wa-input')
+    , customElements.whenDefined('wa-select')
+    , customElements.whenDefined('wa-radio')
+    , customElements.whenDefined('wa-checkbox')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeCompanyResearch')?.addEventListener('change', (event) => {
@@ -232,6 +235,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyResearch_created')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyResearch_created')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyResearch_created')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyResearch', event.currentTarget);
+          });
           document.querySelector('#fqCompanyResearch_name')?.addEventListener('change', (event) => {
             fqChange('CompanyResearch', event.currentTarget);
           });
@@ -243,6 +252,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyResearch_name')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyResearch_name')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyResearch_name')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_description')?.addEventListener('change', (event) => {
             fqChange('CompanyResearch', event.currentTarget);
@@ -256,6 +271,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyResearch_description')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyResearch_description')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyResearch_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyResearch', event.currentTarget);
+          });
           document.querySelector('#fqCompanyResearch_pageId')?.addEventListener('change', (event) => {
             fqChange('CompanyResearch', event.currentTarget);
           });
@@ -267,6 +288,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyResearch_pageId')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyResearch_pageId')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyResearch_pageId')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_displayPage')?.addEventListener('change', (event) => {
             fqChange('CompanyResearch', event.currentTarget);
@@ -280,6 +307,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyResearch_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyResearch_displayPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyResearch_displayPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyResearch', event.currentTarget);
+          });
           document.querySelector('#fqCompanyResearch_editPage')?.addEventListener('change', (event) => {
             fqChange('CompanyResearch', event.currentTarget);
           });
@@ -291,6 +324,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyResearch_editPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyResearch_editPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyResearch_editPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_userPage')?.addEventListener('change', (event) => {
             fqChange('CompanyResearch', event.currentTarget);
@@ -304,6 +343,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapCompanyResearch_userPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartCompanyResearch_userPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyResearch_userPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyResearch', event.currentTarget);
+          });
           document.querySelector('#fqCompanyResearch_download')?.addEventListener('change', (event) => {
             fqChange('CompanyResearch', event.currentTarget);
           });
@@ -315,5 +360,11 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapCompanyResearch_download')?.addEventListener('change', (event) => {
             facetRangeGapChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyResearch_download')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyResearch', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyResearch_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
 });

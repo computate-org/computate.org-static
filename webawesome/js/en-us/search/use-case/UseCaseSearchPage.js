@@ -1,6 +1,9 @@
 Promise.all([
     customElements.whenDefined('wa-button')
     , customElements.whenDefined('wa-input')
+    , customElements.whenDefined('wa-select')
+    , customElements.whenDefined('wa-radio')
+    , customElements.whenDefined('wa-checkbox')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeUseCase')?.addEventListener('change', (event) => {
@@ -267,6 +270,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapUseCase_created')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartUseCase_created')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_created')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
           document.querySelector('#fqUseCase_name')?.addEventListener('change', (event) => {
             fqChange('UseCase', event.currentTarget);
           });
@@ -278,6 +287,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapUseCase_name')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_name')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_name')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
           });
           document.querySelector('#fqUseCase_authorName')?.addEventListener('change', (event) => {
             fqChange('UseCase', event.currentTarget);
@@ -291,6 +306,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapUseCase_authorName')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartUseCase_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
           document.querySelector('#fqUseCase_description')?.addEventListener('change', (event) => {
             fqChange('UseCase', event.currentTarget);
           });
@@ -302,6 +323,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapUseCase_description')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_description')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
           });
           document.querySelector('#fqUseCase_pageId')?.addEventListener('change', (event) => {
             fqChange('UseCase', event.currentTarget);
@@ -315,6 +342,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapUseCase_pageId')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartUseCase_pageId')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_pageId')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
           document.querySelector('#fqUseCase_displayPage')?.addEventListener('change', (event) => {
             fqChange('UseCase', event.currentTarget);
           });
@@ -326,6 +359,12 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapUseCase_displayPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_displayPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_displayPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
           });
           document.querySelector('#fqUseCase_editPage')?.addEventListener('change', (event) => {
             fqChange('UseCase', event.currentTarget);
@@ -339,6 +378,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapUseCase_editPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartUseCase_editPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_editPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
           document.querySelector('#fqUseCase_userPage')?.addEventListener('change', (event) => {
             fqChange('UseCase', event.currentTarget);
           });
@@ -351,6 +396,12 @@ Promise.all([
           document.querySelector('#pageFacetRangeGapUseCase_userPage')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
           });
+          document.querySelector('#pageFacetRangeStartUseCase_userPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_userPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
           document.querySelector('#fqUseCase_download')?.addEventListener('change', (event) => {
             fqChange('UseCase', event.currentTarget);
           });
@@ -362,5 +413,11 @@ Promise.all([
           });
           document.querySelector('#pageFacetRangeGapUseCase_download')?.addEventListener('change', (event) => {
             facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_download')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
           });
 });

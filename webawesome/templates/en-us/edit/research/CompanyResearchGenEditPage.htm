@@ -47,6 +47,56 @@
 <h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipCompanyResearchPage %}`;
       }
+
+      function facetSimpleRangeCompanyResearchSuccess(pageContent) {
+{% block facetSimpleRangeCompanyResearchSuccess %}{%- endblock facetSimpleRangeCompanyResearchSuccess %}
+      }
+      function facetSimpleRangeCompanyResearchError(pageContent) {
+{% block facetSimpleRangeCompanyResearchError %}{%- endblock facetSimpleRangeCompanyResearchError %}
+      }
+      function facetSimpleRangeCompanyResearch(e) {
+        facetSimpleRange(e, facetSimpleRangeCompanyResearchSuccess, facetSimpleRangeCompanyResearchError);
+      }
+
+      function facetRangeTimeZoneCompanyResearchSuccess(pageContent) {
+{% block facetRangeTimeZoneCompanyResearchSuccess %}{%- endblock facetRangeTimeZoneCompanyResearchSuccess %}
+      }
+      function facetRangeTimeZoneCompanyResearchError(pageContent) {
+{% block facetRangeTimeZoneCompanyResearchError %}{%- endblock facetRangeTimeZoneCompanyResearchError %}
+      }
+      function facetRangeTimeZoneCompanyResearch(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneCompanyResearchSuccess, facetRangeTimeZoneCompanyResearchError);
+      }
+
+      function facetRangeGapChangeCompanyResearchSuccess(pageContent) {
+{% block facetRangeGapChangeCompanyResearchSuccess %}{%- endblock facetRangeGapChangeCompanyResearchSuccess %}
+      }
+      function facetRangeGapChangeCompanyResearchError(pageContent) {
+{% block facetRangeGapChangeCompanyResearchError %}{%- endblock facetRangeGapChangeCompanyResearchError %}
+      }
+      function facetRangeGapChangeCompanyResearch(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyResearchSuccess, facetRangeGapChangeCompanyResearchError);
+      }
+
+      function facetRangeStartChangeCompanyResearchSuccess(pageContent) {
+{% block facetRangeStartChangeCompanyResearchSuccess %}{%- endblock facetRangeStartChangeCompanyResearchSuccess %}
+      }
+      function facetRangeStartChangeCompanyResearchError(pageContent) {
+{% block facetRangeStartChangeCompanyResearchError %}{%- endblock facetRangeStartChangeCompanyResearchError %}
+      }
+      function facetRangeStartChangeCompanyResearch(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyResearchSuccess, facetRangeStartChangeCompanyResearchError);
+      }
+
+      function facetRangeEndChangeCompanyResearchSuccess(pageContent) {
+{% block facetRangeEndChangeCompanyResearchSuccess %}{%- endblock facetRangeEndChangeCompanyResearchSuccess %}
+      }
+      function facetRangeEndChangeCompanyResearchError(pageContent) {
+{% block facetRangeEndChangeCompanyResearchError %}{%- endblock facetRangeEndChangeCompanyResearchError %}
+      }
+      function facetRangeEndChangeCompanyResearch(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyResearchSuccess, facetRangeEndChangeCompanyResearchError);
+      }
     </script>
     <script type="module">
 {% if DEFAULT_MAP_LOCATION is defined %}
@@ -59,6 +109,9 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -89,6 +142,11 @@
         window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
         window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
         window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyResearch);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyResearch);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneCompanyResearch);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeCompanyResearch);
         pageGraphCompanyResearch();
         {% for key, value in varsQ.items() %}
 
@@ -191,6 +249,7 @@
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyResearchPage %}
         <div class="pageContent ">
+{%- include en-us/search/research/CompanyResearchSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyResearch">back to all research</wa-tooltip></wa-tooltip>
@@ -213,7 +272,6 @@
           </div>
         </div>
 {% else %}
-{%- include en-us/search/research/CompanyResearchSidebar.htm %}
 {%- include en-us/search/research/CompanyResearchSuggestedSearch.htm %}
 {% endif %}
 {%- block htmFormCompanyResearchPage %}

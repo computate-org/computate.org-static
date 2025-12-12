@@ -33,12 +33,37 @@
               second: 'numeric',
             };
             var nextWebinarFormatter = new Intl.DateTimeFormat('en-US', nextWebinarOptions);
+            const prettyWebinarOptions = {
+              timeZone: nextWebinarZone,
+              weekday: 'short',
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+              second: 'numeric',
+              timeZoneName: 'long'
+            };
+            var prettyWebinarFormatter = new Intl.DateTimeFormat('en-US', prettyWebinarOptions);
             var nextWebinarTz = moment.tz(nextWebinarDateStr, nextWebinarZone);
             var userTz = moment.tz.guess();
             var nextWebinar = nextWebinarFormatter.format(nextWebinarTz.clone().tz(userTz));
             document.querySelector('#webinar-button').setAttribute('href', result.webinarUrlAmericas);
             document.querySelector('#webinar-relative-time').setAttribute('date', nextWebinar);
             document.querySelector('#webinar-format-time').setAttribute('date', nextWebinar);
+            var $webinarsTbody = document.querySelector('#webinars-tbody');
+            $webinarsTbody.innerHTML = '';
+            var sortedDates = result.nextWebinarsBegin.map(weekdayWebinarStr => moment.tz(weekdayWebinarStr.substring(0, result.nextWebinar.indexOf('[')), nextWebinarZone)).sort((a, b) => {
+              return a.isAfter(b);
+            });
+            sortedDates.forEach((weekdayWebinarTz, index) => {
+              var $tr = document.createElement('tr');
+              var $td = document.createElement('td');
+              var weekdayWebinar = prettyWebinarFormatter.format(weekdayWebinarTz.clone().tz(userTz));
+              $td.innerText = weekdayWebinar;
+              $tr.append($td);
+              $webinarsTbody.append($tr);
+            });
           });
         } else {
           throw new Error(`Failed to query GPU nodes total: ${response.status}`);
@@ -142,6 +167,19 @@
               <h3 class="brand-font">
                 The Computate AI Developer Webinar will occur live each weekday. 
               </h3>
+              <wa-callout variant="brand" appearance="filled-outlined">
+                <i slot="icon" class="fa-kit fa-computate-c-key fa-bounce fa-2xl"></i>
+                <p>
+                  Here are the upcoming webinars for the next week. 
+                </p>
+                <wa-callout variant="brand" appearance="outlined">
+                  <table class="wa-zebra-rows wa-hover-rows">
+                    <tbody id="webinars-tbody">
+                    </tbody>
+                  </table>
+                </wa-callout>
+              </wa-callout>
+
               <wa-card id="webinar-calendar" class="wa-stack ">
 
                 <div class="wa-flank ">

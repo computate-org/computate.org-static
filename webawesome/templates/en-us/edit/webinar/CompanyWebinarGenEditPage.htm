@@ -47,6 +47,56 @@
 <h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipCompanyWebinarPage %}`;
       }
+
+      function facetSimpleRangeCompanyWebinarSuccess(pageContent) {
+{% block facetSimpleRangeCompanyWebinarSuccess %}{%- endblock facetSimpleRangeCompanyWebinarSuccess %}
+      }
+      function facetSimpleRangeCompanyWebinarError(pageContent) {
+{% block facetSimpleRangeCompanyWebinarError %}{%- endblock facetSimpleRangeCompanyWebinarError %}
+      }
+      function facetSimpleRangeCompanyWebinar(e) {
+        facetSimpleRange(e, facetSimpleRangeCompanyWebinarSuccess, facetSimpleRangeCompanyWebinarError);
+      }
+
+      function facetRangeTimeZoneCompanyWebinarSuccess(pageContent) {
+{% block facetRangeTimeZoneCompanyWebinarSuccess %}{%- endblock facetRangeTimeZoneCompanyWebinarSuccess %}
+      }
+      function facetRangeTimeZoneCompanyWebinarError(pageContent) {
+{% block facetRangeTimeZoneCompanyWebinarError %}{%- endblock facetRangeTimeZoneCompanyWebinarError %}
+      }
+      function facetRangeTimeZoneCompanyWebinar(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneCompanyWebinarSuccess, facetRangeTimeZoneCompanyWebinarError);
+      }
+
+      function facetRangeGapChangeCompanyWebinarSuccess(pageContent) {
+{% block facetRangeGapChangeCompanyWebinarSuccess %}{%- endblock facetRangeGapChangeCompanyWebinarSuccess %}
+      }
+      function facetRangeGapChangeCompanyWebinarError(pageContent) {
+{% block facetRangeGapChangeCompanyWebinarError %}{%- endblock facetRangeGapChangeCompanyWebinarError %}
+      }
+      function facetRangeGapChangeCompanyWebinar(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyWebinarSuccess, facetRangeGapChangeCompanyWebinarError);
+      }
+
+      function facetRangeStartChangeCompanyWebinarSuccess(pageContent) {
+{% block facetRangeStartChangeCompanyWebinarSuccess %}{%- endblock facetRangeStartChangeCompanyWebinarSuccess %}
+      }
+      function facetRangeStartChangeCompanyWebinarError(pageContent) {
+{% block facetRangeStartChangeCompanyWebinarError %}{%- endblock facetRangeStartChangeCompanyWebinarError %}
+      }
+      function facetRangeStartChangeCompanyWebinar(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyWebinarSuccess, facetRangeStartChangeCompanyWebinarError);
+      }
+
+      function facetRangeEndChangeCompanyWebinarSuccess(pageContent) {
+{% block facetRangeEndChangeCompanyWebinarSuccess %}{%- endblock facetRangeEndChangeCompanyWebinarSuccess %}
+      }
+      function facetRangeEndChangeCompanyWebinarError(pageContent) {
+{% block facetRangeEndChangeCompanyWebinarError %}{%- endblock facetRangeEndChangeCompanyWebinarError %}
+      }
+      function facetRangeEndChangeCompanyWebinar(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyWebinarSuccess, facetRangeEndChangeCompanyWebinarError);
+      }
     </script>
     <script type="module">
 {% if DEFAULT_MAP_LOCATION is defined %}
@@ -59,6 +109,9 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -89,6 +142,11 @@
         window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
         window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
         window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyWebinar);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyWebinar);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneCompanyWebinar);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeCompanyWebinar);
         pageGraphCompanyWebinar();
         {% for key, value in varsQ.items() %}
 
@@ -211,6 +269,7 @@
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyWebinarPage %}
         <div class="pageContent ">
+{%- include en-us/search/webinar/CompanyWebinarSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyWebinar">back to all webinars</wa-tooltip></wa-tooltip>
@@ -233,7 +292,6 @@
           </div>
         </div>
 {% else %}
-{%- include en-us/search/webinar/CompanyWebinarSidebar.htm %}
 {%- include en-us/search/webinar/CompanyWebinarSuggestedSearch.htm %}
 {% endif %}
 {%- block htmFormCompanyWebinarPage %}

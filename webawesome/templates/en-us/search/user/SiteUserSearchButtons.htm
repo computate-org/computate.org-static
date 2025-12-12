@@ -1,5 +1,9 @@
           <wa-scroller>
             <wa-button-group class="no-gradient" id="htmSearchButtons">
+              <wa-button class="SearchButtons_Search SearchButtons_Search_SiteUser " variant="brand" onclick="document.querySelector('#siteSidebarToggleSearch').open = true; ">
+                <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-magnifying-glass hover-box-shadow "></i> 
+                search
+              </wa-button>
               <wa-button class="SearchButtons_Filters SearchButtons_Filters_SiteUser " variant="brand" onclick="document.querySelector('#siteSidebarToggleFilters').open = true; ">
                 <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-filters hover-box-shadow "></i> 
                 filters
@@ -13,10 +17,6 @@
               <wa-button class="SearchButtons_Range SearchButtons_Range_SiteUser " variant="brand" onclick="document.querySelector('#siteSidebarToggleRange').open = true; ">
                 <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-calendar-range hover-box-shadow "></i> 
                 range
-              </wa-button>
-              <wa-button class="SearchButtons_Pivot SearchButtons_Pivot_SiteUser " variant="brand" onclick="document.querySelector('#siteSidebarTogglePivot').open = true; ">
-                <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-table-pivot hover-box-shadow "></i> 
-                pivot
               </wa-button>
               {% if solrId is not defined %}
               <wa-button class="SearchButtons_Stats SearchButtons_Stats_SiteUser " variant="brand" onclick="document.querySelector('#siteSidebarToggleStats').open = true; ">

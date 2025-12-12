@@ -47,6 +47,56 @@
 <h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
 {%- endblock htmTooltipSitePagePage %}`;
       }
+
+      function facetSimpleRangeSitePageSuccess(pageContent) {
+{% block facetSimpleRangeSitePageSuccess %}{%- endblock facetSimpleRangeSitePageSuccess %}
+      }
+      function facetSimpleRangeSitePageError(pageContent) {
+{% block facetSimpleRangeSitePageError %}{%- endblock facetSimpleRangeSitePageError %}
+      }
+      function facetSimpleRangeSitePage(e) {
+        facetSimpleRange(e, facetSimpleRangeSitePageSuccess, facetSimpleRangeSitePageError);
+      }
+
+      function facetRangeTimeZoneSitePageSuccess(pageContent) {
+{% block facetRangeTimeZoneSitePageSuccess %}{%- endblock facetRangeTimeZoneSitePageSuccess %}
+      }
+      function facetRangeTimeZoneSitePageError(pageContent) {
+{% block facetRangeTimeZoneSitePageError %}{%- endblock facetRangeTimeZoneSitePageError %}
+      }
+      function facetRangeTimeZoneSitePage(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneSitePageSuccess, facetRangeTimeZoneSitePageError);
+      }
+
+      function facetRangeGapChangeSitePageSuccess(pageContent) {
+{% block facetRangeGapChangeSitePageSuccess %}{%- endblock facetRangeGapChangeSitePageSuccess %}
+      }
+      function facetRangeGapChangeSitePageError(pageContent) {
+{% block facetRangeGapChangeSitePageError %}{%- endblock facetRangeGapChangeSitePageError %}
+      }
+      function facetRangeGapChangeSitePage(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeSitePageSuccess, facetRangeGapChangeSitePageError);
+      }
+
+      function facetRangeStartChangeSitePageSuccess(pageContent) {
+{% block facetRangeStartChangeSitePageSuccess %}{%- endblock facetRangeStartChangeSitePageSuccess %}
+      }
+      function facetRangeStartChangeSitePageError(pageContent) {
+{% block facetRangeStartChangeSitePageError %}{%- endblock facetRangeStartChangeSitePageError %}
+      }
+      function facetRangeStartChangeSitePage(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeSitePageSuccess, facetRangeStartChangeSitePageError);
+      }
+
+      function facetRangeEndChangeSitePageSuccess(pageContent) {
+{% block facetRangeEndChangeSitePageSuccess %}{%- endblock facetRangeEndChangeSitePageSuccess %}
+      }
+      function facetRangeEndChangeSitePageError(pageContent) {
+{% block facetRangeEndChangeSitePageError %}{%- endblock facetRangeEndChangeSitePageError %}
+      }
+      function facetRangeEndChangeSitePage(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeSitePageSuccess, facetRangeEndChangeSitePageError);
+      }
     </script>
     <script type="module">
 {% if DEFAULT_MAP_LOCATION is defined %}
@@ -59,6 +109,9 @@
       Promise.all([
         customElements.whenDefined('wa-button')
         , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -89,6 +142,11 @@
         window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
         window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
         window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSitePage);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSitePage);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneSitePage);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeSitePage);
         pageGraphSitePage();
         {% for key, value in varsQ.items() %}
 
@@ -186,10 +244,25 @@
 {%- endblock websocketPageLayout %}
 
 {%- block htmUrlSitePagePage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlSitePagePage %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-SitePage">back to all articles</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-SitePage" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-newspaper"></i>
+                  all articles
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search articles
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
 
 {%- block htmBodyStartPageLayout %}
 {{ super() }}
 {%- block htmBodyStartSitePagePage %}
+{% include en-us/search/article/SitePageSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-SitePage">back to all articles</wa-tooltip></wa-tooltip>
@@ -212,8 +285,7 @@
           </div>
         </div>
 {% else %}
-{%- include en-us/search/article/SitePageSidebar.htm %}
-{%- include en-us/search/article/SitePageSuggestedSearch.htm %}
+{% include en-us/search/article/SitePageSuggestedSearch.htm %}
           <div class="pageContent ">
             <form action="/en-us/api/article" id="SitePageForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
               <input name="focusId" type="hidden"/>
@@ -224,21 +296,19 @@
               <div id="site-calendar"><!-- // --></div>
             </div>
             <div class="wa-stack wa-gap-m ">
-              <wa-tooltip for="return-to-SitePage">back to all articles</wa-tooltip>
-              <wa-breadcrumb>
-                <wa-breadcrumb-item id="return-to-SitePage" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-                  <i class="fa-duotone fa-regular fa-newspaper"></i>
-                  all articles
-                </wa-breadcrumb-item>
-                <wa-breadcrumb-item>
-                  search articles
-                </wa-breadcrumb-item>
-              </wa-breadcrumb>
-{% include en-us/search/article/SitePageSearchForm.htm %}
-{% include en-us/search/article/SitePageSearchButtons.htm %}
 {% endif %}
 {%- endblock htmBodyStartSitePagePage %}
 {%- endblock htmBodyStartPageLayout %}
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/article/SitePageSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchForm is not defined %}
+{%- set pageSearchForm %}
+{% include en-us/search/article/SitePageSearchForm.htm %}
+{%- endset pageSearchForm %}
+{%- endif %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleSitePagePage %}
