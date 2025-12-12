@@ -59,7 +59,7 @@
             sortedDates.forEach((weekdayWebinarTz, index) => {
               var $tr = document.createElement('tr');
               var $td = document.createElement('td');
-              var weekdayWebinar = prettyWebinarFormatter.format(weekdayWebinarTz.clone().tz(userTz));
+              var weekdayWebinar = weekdayWebinarTz.clone().tz(userTz).format('LLLL zz') + " " + userTz;
               $td.innerText = weekdayWebinar;
               $tr.append($td);
               $webinarsTbody.append($tr);
@@ -154,61 +154,40 @@
               </div>
               <wa-card>
                 <div class="wa-stack ">
+                  <wa-callout variant="brand" appearance="filled-outlined">
+                    <i slot="icon" class="fa-kit fa-computate-c-key fa-bounce fa-2xl"></i>
+                    <h3 class="brand-font">
+                      The Computate AI Developer Webinar will occur live each weekday. 
+                    </h3>
+                  </wa-callout>
+                  <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-video fa-2xl" aria-hidden="true"></i>
+                    Join webinar
+                  </wa-button>
                   <div class="wa-flank ">
                     <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
                     <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" time-zone-name="short" date=""></wa-format-date>
                   </div>
-                  <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="{{ result.webinarUrlAmericas }}">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-video" aria-hidden="true"></i>
-                    Join webinar
-                  </wa-button>
-                </div>
-              </wa-card>
-              <h3 class="brand-font">
-                The Computate AI Developer Webinar will occur live each weekday. 
-              </h3>
-              <wa-callout variant="brand" appearance="filled-outlined">
-                <i slot="icon" class="fa-kit fa-computate-c-key fa-bounce fa-2xl"></i>
-                <p>
-                  Here are the upcoming webinars for the next week. 
-                </p>
-                <wa-callout variant="brand" appearance="outlined">
-                  <table class="wa-zebra-rows wa-hover-rows">
-                    <tbody id="webinars-tbody">
-                    </tbody>
-                  </table>
-                </wa-callout>
-              </wa-callout>
-
-              <wa-card id="webinar-calendar" class="wa-stack ">
-
-                <div class="wa-flank ">
-                  <wa-button id="webinar-button" variant="brand" href="{{ SITE_BASE_URL }}/en-us/view/webinar/computate-ai-developer-webinar">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-video"></i>
-                    Learn more
-                  </wa-button>
-                  <div class="wa-stack wa-gap-m ">
-                    <div class="font-size-x-small">
-                      Monday 1:30 PM Eastern US time
-                    </div>
-                    <div class="font-size-x-small">
-                      Tuesday 1:30 PM Eastern US time
-                    </div>
-                    <div class="font-size-x-small">
-                      Wednesday 12:00 PM noon Eastern US time
-                    </div>
-                    <div class="font-size-x-small">
-                      Thursday 1:30 PM Eastern US time
-                    </div>
-                    <div class="font-size-x-small">
-                      Friday 10:30 AM Eastern US time
-                    </div>
-                    <div class="font-size-x-small">
-                      Friday 1:30 PM Eastern US time
-                    </div>
+                  <div>
+                    <p>
+                      Here are the rest of the upcoming webinars for the next week: 
+                    </p>
+                    <table class="wa-zebra-rows wa-hover-rows">
+                      <tbody id="webinars-tbody">
+                      </tbody>
+                    </table>
                   </div>
+                  <h3>
+                    Previous livestreams
+                  </h3>
+                  <div>
+                    Previous livestreams are available on youtube for Smart Aquaculture, and AI Telemetry related topics. 
+                  </div>
+                  <wa-button id="webinar-button" variant="brand" label="Join the webinar" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/">
+                    <i slot="start" label="Follow us on Youtube" class="fa-brands fa-youtube fa-2xl"></i>
+                    View livestreams
+                  </wa-button>
                 </div>
-
               </wa-card>
 
               <div>
