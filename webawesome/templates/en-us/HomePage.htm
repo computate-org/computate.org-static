@@ -47,10 +47,10 @@
             var prettyWebinarFormatter = new Intl.DateTimeFormat('en-US', prettyWebinarOptions);
             var nextWebinarTz = moment.tz(nextWebinarDateStr, nextWebinarZone);
             var userTz = moment.tz.guess();
-            var nextWebinar = nextWebinarFormatter.format(nextWebinarTz.clone().tz(userTz));
+            var nextWebinar = nextWebinarTz.clone().tz(userTz).format('LLLL zz') + " " + userTz;
             document.querySelector('#webinar-button').setAttribute('href', result.webinarUrlAmericas);
-            document.querySelector('#webinar-relative-time').setAttribute('date', nextWebinar);
-            document.querySelector('#webinar-format-time').setAttribute('date', nextWebinar);
+            document.querySelector('#webinar-relative-time').setAttribute('date', nextWebinarTz.toISOString());
+            document.querySelector('#webinar-format-time').innerText = nextWebinar;
             var $webinarsTbody = document.querySelector('#webinars-tbody');
             $webinarsTbody.innerHTML = '';
             var sortedDates = result.nextWebinarsBegin.map(weekdayWebinarStr => moment.tz(weekdayWebinarStr.substring(0, result.nextWebinar.indexOf('[')), nextWebinarZone)).sort((a, b) => {
@@ -166,7 +166,7 @@
                   </wa-button>
                   <div class="wa-flank ">
                     <wa-relative-time id="webinar-relative-time" format="long" sync="true" date=""></wa-relative-time>
-                    <wa-format-date id="webinar-format-time" weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" time-zone-name="short" date=""></wa-format-date>
+                    <div id="webinar-format-time"></div>
                   </div>
                   <div>
                     <p>
