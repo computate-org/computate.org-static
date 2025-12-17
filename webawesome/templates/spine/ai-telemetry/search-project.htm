@@ -1,0 +1,116 @@
+          <div class="wa-split ">
+            <wa-tooltip for="PaginationButtonsPrevious" placement="top">Show the previous results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsDecrease" placement="top">Show half the results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsIncrease" placement="top">Show double the results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsNext" placement="top">Show the next results. </wa-tooltip>
+            <div class="wa-caption-l ">1 – 1 of 1 projects</div>
+            <wa-scroller>
+              <wa-button-group size="small" class="no-gradient wa-cluster wa-gap-xs " id="htmPaginationButtons">
+                <wa-button id="PaginationButtonsPrevious" variant="brand" disabled>
+                  <i slot="start" class="fa-regular  fa-arrow-square-left "></i>
+                  previous
+                </wa-button>
+                <wa-button id="PaginationButtonsDecrease" variant="brand" href="/en-us/search/project?start=0&amp;rows=50">
+                  <i slot="start" class="fa-regular  fa-minus-square "></i>
+                  less
+                </wa-button>
+                <wa-button id="PaginationButtonsIncrease" variant="brand" href="/en-us/search/project?start=0&amp;rows=200">
+                  <i slot="start" class="fa-regular  fa-plus-square "></i>
+                  more
+                </wa-button>
+                <wa-button id="PaginationButtonsNext" variant="brand" disabled>
+                  next
+                  <i slot="suffix" class="fa-regular  fa-arrow-square-right "></i>
+                </wa-button>
+              </wa-button-group>
+            </wa-scroller>
+          </div>
+
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
+              <wa-dropdown id="htmDropdown-hubId">
+                <wa-button variant="brand" slot="trigger" caret>ACM Hub</wa-button>
+                <wa-menu>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortProject_hubId'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-Project').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-hubId-asc">
+                    <i slot="start" class="fa-regular  fa-arrow-down-a-z"></i>
+                    sort by ACM Hub ascending
+                  </wa-menu-item>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortProject_hubId'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-Project').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-hubId-desc">
+                    <i slot="start" class="fa-regular  fa-arrow-down-z-a"></i>
+                    sort by ACM Hub descending
+                  </wa-menu-item>
+                </wa-menu>
+              </wa-dropdown>
+              <wa-dropdown id="htmDropdown-clusterName">
+                <wa-button variant="brand" slot="trigger" caret>cluster name</wa-button>
+                <wa-menu>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortProject_clusterName'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-Project').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-clusterName-asc">
+                    <i slot="start" class="fa-regular  fa-arrow-down-a-z"></i>
+                    sort by cluster name ascending
+                  </wa-menu-item>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortProject_clusterName'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-Project').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-clusterName-desc">
+                    <i slot="start" class="fa-regular  fa-arrow-down-z-a"></i>
+                    sort by cluster name descending
+                  </wa-menu-item>
+                </wa-menu>
+              </wa-dropdown>
+              <wa-dropdown id="htmDropdown-projectName">
+                <wa-button variant="brand" slot="trigger" caret>project name</wa-button>
+                <wa-menu>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortProject_projectName'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-Project').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-projectName-asc">
+                    <i slot="start" class="fa-regular  fa-arrow-down-a-z"></i>
+                    sort by project name ascending
+                  </wa-menu-item>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortProject_projectName'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-Project').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-projectName-desc">
+                    <i slot="start" class="fa-regular  fa-arrow-down-z-a"></i>
+                    sort by project name descending
+                  </wa-menu-item>
+                </wa-menu>
+              </wa-dropdown>
+                  </div>
+                  
+                  <div>
+              <a href="https://aitelemetry.apps.obs.nerc.mghpcc.org/en-us/edit/project/HUB-moc-CLUSTER-nerc-ocp-obs-PROJECT-aitelemetry">
+                <i class="fa-regular fa-people-line"></i>
+              <span>moc
+</span>              </a>
+              <a href="https://aitelemetry.apps.obs.nerc.mghpcc.org/en-us/edit/project/HUB-moc-CLUSTER-nerc-ocp-obs-PROJECT-aitelemetry">
+              <span>nerc-ocp-obs
+</span>              </a>
+              <a href="https://aitelemetry.apps.obs.nerc.mghpcc.org/en-us/edit/project/HUB-moc-CLUSTER-nerc-ocp-obs-PROJECT-aitelemetry">
+              <span>aitelemetry
+</span>              </a>
+                  </div>
+                  
+              
+              
+              
+                </div>
+
+          <div class="wa-split ">
+            <wa-tooltip for="PaginationButtonsPrevious" placement="top">Show the previous results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsDecrease" placement="top">Show half the results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsIncrease" placement="top">Show double the results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsNext" placement="top">Show the next results. </wa-tooltip>
+            <div class="wa-caption-l ">1 – 1 of 1 projects</div>
+            <wa-scroller>
+              <wa-button-group size="small" class="no-gradient wa-cluster wa-gap-xs " id="htmPaginationButtons">
+                <wa-button id="PaginationButtonsPrevious" variant="brand" disabled>
+                  <i slot="start" class="fa-regular  fa-arrow-square-left "></i>
+                  previous
+                </wa-button>
+                <wa-button id="PaginationButtonsDecrease" variant="brand" href="/en-us/search/project?start=0&amp;rows=50">
+                  <i slot="start" class="fa-regular  fa-minus-square "></i>
+                  less
+                </wa-button>
+                <wa-button id="PaginationButtonsIncrease" variant="brand" href="/en-us/search/project?start=0&amp;rows=200">
+                  <i slot="start" class="fa-regular  fa-plus-square "></i>
+                  more
+                </wa-button>
+                <wa-button id="PaginationButtonsNext" variant="brand" disabled>
+                  next
+                  <i slot="suffix" class="fa-regular  fa-arrow-square-right "></i>
+                </wa-button>
+              </wa-button-group>
+            </wa-scroller>
+          </div>

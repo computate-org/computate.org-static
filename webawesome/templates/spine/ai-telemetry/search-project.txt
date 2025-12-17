@@ -1,0 +1,18 @@
+
+/**
+ * AName: a project
+ * Description: A research project using AI and GPUs
+ * Rows: 100
+ * 
+ * ApiUri: /en-us/api/project
+ * SearchPageUri: /en-us/search/project
+ * ApiMethod:
+ *   Search:
+ *   GET:
+ * 
+ * AuthGroup:
+ *   Admin:
+ *     GET:
+ */
+public class Project extends ProjectGen<BaseModel> {
+}

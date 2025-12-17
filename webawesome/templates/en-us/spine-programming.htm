@@ -1,25 +1,93 @@
+
+        {%- macro typed(summary, id, codeTemplate, skeletonTemplate, htmTemplate, typeSpeed=20, backSpeed=10, smartBackspace=true) -%}
+        {% set macroCode -%}
+        {%- include codeTemplate -%}
+        {%- endset -%}
+        <wa-details summary="{{ summary | e }}" id="{{ id | e }}-details" open>
+          <wa-split-panel>
+            <div slot="start" class="wa-stack " style="background-color: var(--wa-color-surface-lowered); ">
+              <wa-scroller><pre><code id="{{ id | e }}"></code></pre></wa-scroller>
+              <script type="module">
+                let typed = null;
+                function initTyped() {
+                  if(typed) {
+                    typed.destroy();
+                  }
+                  typed = new Typed('#{{ id | e }}', {
+                    strings: [ 
+                      {{ macroCode | tojson }} 
+                    ]
+                    , typeSpeed: {{ typeSpeed }}
+                    , backSpeed: {{ backSpeed }}
+                    , smartBackspace: {{ smartBackspace }}
+                    , onComplete: (self) => {
+                      document.getElementById('{{ id | e }}-details-after').show();
+                    }
+                  });
+                }
+                Promise.all([
+                  customElements.whenDefined('wa-page')
+                  , customElements.whenDefined('wa-split-panel')
+                ]).then(() => {
+                  var details = document.getElementById('{{ id | e }}-details');
+                  details.addEventListener('wa-after-show', (e) => {
+                    if(e.target.id == '{{ id | e }}-details') {
+                      initTyped();
+                    }
+                  });
+                  details.addEventListener('wa-after-hide', (e) => {
+                    if(e.target.id == '{{ id | e }}-details') {
+                      if(typed) {
+                        typed.destroy();
+                      }
+                      document.getElementById('{{ id | e }}').innerHTML = '';
+                      document.getElementById('{{ id | e }}-details-before').show();
+                    }
+                  });
+                  initTyped();
+                });
+              </script>
+            </div>
+            <div slot="end" class="wa-stack wa-gap-0 ">
+              <wa-details summary="Before" name="{{ id | e }}-split-panel-end" id="{{ id | e }}-details-before" open>
+                {% include skeletonTemplate %}
+              </wa-details>
+              <wa-details summary="After" name="{{ id | e }}-split-panel-end" id="{{ id | e }}-details-after">
+                {% include htmTemplate %}
+              </wa-details>
+            </div>
+          </wa-split-panel>
+        </wa-details>
+        {%- endmacro -%}
+
 <!DOCTYPE html>
-<html lang="{{ SITE_LOCALE }}" class="wa-{{ userSiteTheme | default(SITE_THEME) }} wa-theme-{{ userWebComponentsTheme | default(WEB_COMPONENTS_THEME) }} ">
+<html lang="{{ SITE_LOCALE }}" class="wa-cloak wa-{{ userSiteTheme | default(SITE_THEME) }} wa-theme-{{ userWebComponentsTheme | default(WEB_COMPONENTS_THEME) }} ">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About SPINE Programming</title>
-
     {{ WEB_COMPONENTS_KIT }}
-
-    <style>
-      .content {
-        max-width: 80ch;
-        margin-inline: auto;
-        padding-block-start: var(--wa-space-3xl);
-      }
-    </style>
+    <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/site.css"/>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   </head>
   <body>
-    <div class="content">
-      <h1>SPINE Programming</h1>
-      <p>By Christopher Tate</p>
-      <p>Spine programming is a thing that exists sometimes when I feel like it.</p>
-    </div>
+    <wa-page>
+      <div class="wa-stack ">
+        <h1>SPINE Programming</h1>
+        <p>By Christopher Tate</p>
+        <h2>
+          AI Telemetry overview
+        </h2>
+        <div>
+          AI Telemetry provides access control to Red Hat OpenShift Observability metrics at the project, cluster, hub, and custom tenant level. 
+        </div>
+        {{ typed('Build a search page and API for OpenShift projects'
+            , 'search-project'
+            , 'spine/ai-telemetry/search-project.txt'
+            , 'spine/ai-telemetry/search-project-before.htm'
+            , 'spine/ai-telemetry/search-project.htm'
+            ) }}
+      </div>
+    </wa-page>
   </body>
 </html>
