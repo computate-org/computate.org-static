@@ -1,0 +1,6 @@
+^1000$ oc -n solr get pod^1000
+`NAME                             READY   STATUS      RESTARTS   AGE
+solr-operator-65bb7c4fc9-ncwpq   1/1     Running     9          83d
+solr-setup-6c5ps                 0/1     Completed   1          83d
+solr-solrcloud-0                 1/1     Running     9          83d`
+`$ `

@@ -1,8 +1,8 @@
 
-async function websocketComputateDeveloper(success) {
+async function websocketSpineProgramming(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketComputateDeveloper', function (error, message) {
+    window.eventBus.registerHandler('websocketSpineProgramming', function (error, message) {
       var json = JSON.parse(message['body']);
       var pageId = json['id'];
       var solrIds = json['solrIds'];
@@ -24,11 +24,11 @@ async function websocketComputateDeveloper(success) {
       $header.setAttribute('class', 'w3-container fa- ');
       $header.setAttribute('id', 'header-' + pageId);
       var iTemplate = document.createElement('template');
-      iTemplate.innerHTML = '<i class="fa-kit fa-computate-c-key"></i>';
+      iTemplate.innerHTML = '<i class="fa-kit fa-spine"></i>';
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify Computate Developers in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify SPINE Programming lessons in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
       $x.setAttribute('onclick', 'document.querySelector("#card-' + pageId + '");');
@@ -66,7 +66,7 @@ async function websocketComputateDeveloper(success) {
     });
   }
 }
-async function websocketComputateDeveloperInner(apiRequest) {
+async function websocketSpineProgrammingInner(apiRequest) {
   var pageId = apiRequest['id'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
@@ -81,26 +81,27 @@ async function websocketComputateDeveloperInner(apiRequest) {
         var inputCreated = null;
         var inputModified = null;
         var inputArchived = null;
-        var inputName = null;
-        var inputDescription = null;
         var inputAuthorName = null;
         var inputAuthorUrl = null;
         var inputPageImageUri = null;
         var inputPageId = null;
         var inputDisplayPage = null;
         var inputClassCanonicalName = null;
-        var inputSaves = null;
-        var inputObjectTitle = null;
-        var inputObjectText = null;
-        var inputSolrId = null;
         var inputClassSimpleName = null;
         var inputClassCanonicalNames = null;
+        var inputSaves = null;
+        var inputObjectTitle = null;
         var inputEditPage = null;
         var inputUserPage = null;
         var inputDownload = null;
         var inputObjectSuggest = null;
+        var inputObjectText = null;
+        var inputSolrId = null;
+        var inputImportance = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
+        var inputName = null;
+        var inputDescription = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
@@ -120,10 +121,6 @@ async function websocketComputateDeveloperInner(apiRequest) {
           inputModified = $response.querySelector('.Page_modified');
         if(vars.includes('archived'))
           inputArchived = $response.querySelector('.Page_archived');
-        if(vars.includes('name'))
-          inputName = $response.querySelector('.Page_name');
-        if(vars.includes('description'))
-          inputDescription = $response.querySelector('.Page_description');
         if(vars.includes('authorName'))
           inputAuthorName = $response.querySelector('.Page_authorName');
         if(vars.includes('authorUrl'))
@@ -136,18 +133,14 @@ async function websocketComputateDeveloperInner(apiRequest) {
           inputDisplayPage = $response.querySelector('.Page_displayPage');
         if(vars.includes('classCanonicalName'))
           inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
-        if(vars.includes('saves'))
-          inputSaves = $response.querySelector('.Page_saves');
-        if(vars.includes('objectTitle'))
-          inputObjectTitle = $response.querySelector('.Page_objectTitle');
-        if(vars.includes('objectText'))
-          inputObjectText = $response.querySelector('.Page_objectText');
-        if(vars.includes('solrId'))
-          inputSolrId = $response.querySelector('.Page_solrId');
         if(vars.includes('classSimpleName'))
           inputClassSimpleName = $response.querySelector('.Page_classSimpleName');
         if(vars.includes('classCanonicalNames'))
           inputClassCanonicalNames = $response.querySelector('.Page_classCanonicalNames');
+        if(vars.includes('saves'))
+          inputSaves = $response.querySelector('.Page_saves');
+        if(vars.includes('objectTitle'))
+          inputObjectTitle = $response.querySelector('.Page_objectTitle');
         if(vars.includes('editPage'))
           inputEditPage = $response.querySelector('.Page_editPage');
         if(vars.includes('userPage'))
@@ -156,10 +149,20 @@ async function websocketComputateDeveloperInner(apiRequest) {
           inputDownload = $response.querySelector('.Page_download');
         if(vars.includes('objectSuggest'))
           inputObjectSuggest = $response.querySelector('.Page_objectSuggest');
+        if(vars.includes('objectText'))
+          inputObjectText = $response.querySelector('.Page_objectText');
+        if(vars.includes('solrId'))
+          inputSolrId = $response.querySelector('.Page_solrId');
+        if(vars.includes('importance'))
+          inputImportance = $response.querySelector('.Page_importance');
         if(vars.includes('courseNum'))
           inputCourseNum = $response.querySelector('.Page_courseNum');
         if(vars.includes('lessonNum'))
           inputLessonNum = $response.querySelector('.Page_lessonNum');
+        if(vars.includes('name'))
+          inputName = $response.querySelector('.Page_name');
+        if(vars.includes('description'))
+          inputDescription = $response.querySelector('.Page_description');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
@@ -185,9 +188,9 @@ async function websocketComputateDeveloperInner(apiRequest) {
         if(vars.includes('relatedArticles'))
           inputRelatedArticles = $response.querySelector('.Page_relatedArticles');
 
-        jsWebsocketComputateDeveloper(pageId, vars, $response);
+        jsWebsocketSpineProgramming(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
-        window.listComputateDeveloper = JSON.parse($response.querySelector('.pageForm .listComputateDeveloper')?.value);
+        window.listSpineProgramming = JSON.parse($response.querySelector('.pageForm .listSpineProgramming')?.value);
 
 
         if(inputCreated) {
@@ -218,26 +221,6 @@ async function websocketComputateDeveloperInner(apiRequest) {
               item.textContent = inputArchived.textContent;
           });
           addGlow(document.querySelector('.Page_archived'));
-        }
-
-        if(inputName) {
-          document.querySelectorAll('.Page_name').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputName.getAttribute('value');
-            else
-              item.textContent = inputName.textContent;
-          });
-          addGlow(document.querySelector('.Page_name'));
-        }
-
-        if(inputDescription) {
-          document.querySelectorAll('.Page_description').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputDescription.getAttribute('value');
-            else
-              item.textContent = inputDescription.textContent;
-          });
-          addGlow(document.querySelector('.Page_description'));
         }
 
         if(inputAuthorName) {
@@ -300,46 +283,6 @@ async function websocketComputateDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.Page_classCanonicalName'));
         }
 
-        if(inputSaves) {
-          document.querySelectorAll('.Page_saves').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputSaves.getAttribute('value');
-            else
-              item.textContent = inputSaves.textContent;
-          });
-          addGlow(document.querySelector('.Page_saves'));
-        }
-
-        if(inputObjectTitle) {
-          document.querySelectorAll('.Page_objectTitle').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputObjectTitle.getAttribute('value');
-            else
-              item.textContent = inputObjectTitle.textContent;
-          });
-          addGlow(document.querySelector('.Page_objectTitle'));
-        }
-
-        if(inputObjectText) {
-          document.querySelectorAll('.Page_objectText').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputObjectText.getAttribute('value');
-            else
-              item.textContent = inputObjectText.textContent;
-          });
-          addGlow(document.querySelector('.Page_objectText'));
-        }
-
-        if(inputSolrId) {
-          document.querySelectorAll('.Page_solrId').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputSolrId.getAttribute('value');
-            else
-              item.textContent = inputSolrId.textContent;
-          });
-          addGlow(document.querySelector('.Page_solrId'));
-        }
-
         if(inputClassSimpleName) {
           document.querySelectorAll('.Page_classSimpleName').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -358,6 +301,26 @@ async function websocketComputateDeveloperInner(apiRequest) {
               item.textContent = inputClassCanonicalNames.textContent;
           });
           addGlow(document.querySelector('.Page_classCanonicalNames'));
+        }
+
+        if(inputSaves) {
+          document.querySelectorAll('.Page_saves').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSaves.getAttribute('value');
+            else
+              item.textContent = inputSaves.textContent;
+          });
+          addGlow(document.querySelector('.Page_saves'));
+        }
+
+        if(inputObjectTitle) {
+          document.querySelectorAll('.Page_objectTitle').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectTitle.getAttribute('value');
+            else
+              item.textContent = inputObjectTitle.textContent;
+          });
+          addGlow(document.querySelector('.Page_objectTitle'));
         }
 
         if(inputEditPage) {
@@ -400,6 +363,36 @@ async function websocketComputateDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.Page_objectSuggest'));
         }
 
+        if(inputObjectText) {
+          document.querySelectorAll('.Page_objectText').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputObjectText.getAttribute('value');
+            else
+              item.textContent = inputObjectText.textContent;
+          });
+          addGlow(document.querySelector('.Page_objectText'));
+        }
+
+        if(inputSolrId) {
+          document.querySelectorAll('.Page_solrId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolrId.getAttribute('value');
+            else
+              item.textContent = inputSolrId.textContent;
+          });
+          addGlow(document.querySelector('.Page_solrId'));
+        }
+
+        if(inputImportance) {
+          document.querySelectorAll('.Page_importance').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputImportance.getAttribute('value');
+            else
+              item.textContent = inputImportance.textContent;
+          });
+          addGlow(document.querySelector('.Page_importance'));
+        }
+
         if(inputCourseNum) {
           document.querySelectorAll('.Page_courseNum').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -418,6 +411,26 @@ async function websocketComputateDeveloperInner(apiRequest) {
               item.textContent = inputLessonNum.textContent;
           });
           addGlow(document.querySelector('.Page_lessonNum'));
+        }
+
+        if(inputName) {
+          document.querySelectorAll('.Page_name').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputName.getAttribute('value');
+            else
+              item.textContent = inputName.textContent;
+          });
+          addGlow(document.querySelector('.Page_name'));
+        }
+
+        if(inputDescription) {
+          document.querySelectorAll('.Page_description').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDescription.getAttribute('value');
+            else
+              item.textContent = inputDescription.textContent;
+          });
+          addGlow(document.querySelector('.Page_description'));
         }
 
         if(inputPageImageWidth) {
@@ -540,13 +553,13 @@ async function websocketComputateDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.Page_relatedArticles'));
         }
 
-          pageGraphComputateDeveloper();
+          pageGraphSpineProgramming();
       });
     });
   }
 }
 
-function pageGraphComputateDeveloper(apiRequest) {
+function pageGraphSpineProgramming(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -578,7 +591,7 @@ function pageGraphComputateDeveloper(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'Computate Developers';
+          layout['title'] = 'SPINE Programming lessons';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -641,7 +654,7 @@ function pageGraphComputateDeveloper(apiRequest) {
               data.push(trace);
             });
           }
-          Plotly.react('htmBodyGraphComputateDeveloperPage', data, layout);
+          Plotly.react('htmBodyGraphSpineProgrammingPage', data, layout);
         }
       }
     }
@@ -649,8 +662,8 @@ function pageGraphComputateDeveloper(apiRequest) {
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqComputateDeveloper_time').innerText = '';
-  searchPage('ComputateDeveloper', function() {
+  document.querySelector('#pageSearchVal-fqSpineProgramming_time').innerText = '';
+  searchPage('SpineProgramming', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -662,26 +675,26 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqComputateDeveloper_time').value = x;
-      document.querySelector('#fqComputateDeveloper_time').onchange();
-      searchPage('ComputateDeveloper');
+      document.querySelector('#fqSpineProgramming_time').value = x;
+      document.querySelector('#fqSpineProgramming_time').onchange();
+      searchPage('SpineProgramming');
     }, speedRate);
   });
 }
 
 // Search //
 
-async function searchComputateDeveloper($formFilters, success, error) {
-  var filters = searchComputateDeveloperFilters($formFilters);
+async function searchSpineProgramming($formFilters, success, error) {
+  var filters = searchSpineProgrammingFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, target2 ) {};
 
-  searchComputateDeveloperVals(filters, target, success, error);
+  searchSpineProgrammingVals(filters, target, success, error);
 }
 
-function searchComputateDeveloperFilters($formFilters) {
+function searchSpineProgrammingFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -702,14 +715,6 @@ function searchComputateDeveloperFilters($formFilters) {
       filterArchived = filterArchivedSelectVal == 'true';
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
-
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
-
-    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
-    if(filterDescription != null && filterDescription !== '')
-      filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
     var filterAuthorName = $formFilters.querySelector('.valueAuthorName')?.value;
     if(filterAuthorName != null && filterAuthorName !== '')
@@ -735,22 +740,6 @@ function searchComputateDeveloperFilters($formFilters) {
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
       filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
 
-    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
-    if(filterSaves != null && filterSaves !== '')
-      filters.push({ name: 'fq', value: 'saves:' + filterSaves });
-
-    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
-    if(filterObjectTitle != null && filterObjectTitle !== '')
-      filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
-
-    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
-    if(filterObjectText != null && filterObjectText !== '')
-      filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
-
-    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
-    if(filterSolrId != null && filterSolrId !== '')
-      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
-
     var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
     if(filterClassSimpleName != null && filterClassSimpleName !== '')
       filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
@@ -758,6 +747,14 @@ function searchComputateDeveloperFilters($formFilters) {
     var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
     if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
       filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
+
+    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
+    if(filterSaves != null && filterSaves !== '')
+      filters.push({ name: 'fq', value: 'saves:' + filterSaves });
+
+    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
+    if(filterObjectTitle != null && filterObjectTitle !== '')
+      filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
 
     var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
     if(filterEditPage != null && filterEditPage !== '')
@@ -775,6 +772,18 @@ function searchComputateDeveloperFilters($formFilters) {
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
       filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
 
+    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
+    if(filterObjectText != null && filterObjectText !== '')
+      filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
+
+    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
+    if(filterSolrId != null && filterSolrId !== '')
+      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
+
+    var filterImportance = $formFilters.querySelector('.valueImportance')?.value;
+    if(filterImportance != null && filterImportance !== '')
+      filters.push({ name: 'fq', value: 'importance:' + filterImportance });
+
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
@@ -782,6 +791,14 @@ function searchComputateDeveloperFilters($formFilters) {
     var filterLessonNum = $formFilters.querySelector('.valueLessonNum')?.value;
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
+
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
+
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -822,10 +839,11 @@ function searchComputateDeveloperFilters($formFilters) {
   return filters;
 }
 
-function searchComputateDeveloperVals(filters, target, success, error) {
+function searchSpineProgrammingVals(filters, target, success, error) {
+
 
   fetch(
-    '/en-us/api/computate-developer?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/en-us/api/spine-programming?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -840,12 +858,12 @@ function searchComputateDeveloperVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestComputateDeveloperObjectSuggest($formFilters, $list, target) {
+function suggestSpineProgrammingObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     if($list) {
       $list.innerHTML = '';
       data['list'].forEach((o, i) => {
-        var $i = document.querySelector('<i class="fa-kit fa-computate-c-key"></i>');
+        var $i = document.querySelector('<i class="fa-kit fa-spine"></i>');
         var $span = document.createElement('span');        $span.setAttribute('class', '');        $span.innerText = o['objectTitle'];
         var $li = document.createElement('li');
         var $a = document.createElement('a').setAttribute('href', o['editPage']);
@@ -857,14 +875,14 @@ function suggestComputateDeveloperObjectSuggest($formFilters, $list, target) {
     }
   };
   error = function( jqXhr, target2 ) {};
-  searchComputateDeveloperVals($formFilters, target, success, error);
+  searchSpineProgrammingVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getComputateDeveloper() {
+async function getSpineProgramming() {
   fetch(
-    '/en-us/api/computate-developer/' + pageId
+    '/en-us/api/spine-programming/' + pageId
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -881,8 +899,8 @@ async function getComputateDeveloper() {
 
 // PATCH //
 
-async function patchComputateDeveloper($formFilters, $formValues, target, pageId, success, error) {
-  var filters = patchComputateDeveloperFilters($formFilters);
+async function patchSpineProgramming($formFilters, $formValues, target, pageId, success, error) {
+  var filters = patchSpineProgrammingFilters($formFilters);
 
   var vals = {};
 
@@ -928,30 +946,6 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   var removeArchived = $formValues.querySelector('.removeArchived')?.checked;
   if(removeArchived != null && removeArchived !== '')
     vals['removeArchived'] = removeArchived;
-
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
-  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
-  var addName = $formValues.querySelector('.addName')?.value;
-  if(removeName || setName != null && setName !== '')
-    vals['setName'] = setName;
-  if(addName != null && addName !== '')
-    vals['addName'] = addName;
-  var removeName = $formValues.querySelector('.removeName')?.value;
-  if(removeName != null && removeName !== '')
-    vals['removeName'] = removeName;
-
-  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
-  var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
-  var setDescription = removeDescription ? null : $formValues.querySelector('.setDescription')?.value;
-  var addDescription = $formValues.querySelector('.addDescription')?.value;
-  if(removeDescription || setDescription != null && setDescription !== '')
-    vals['setDescription'] = setDescription;
-  if(addDescription != null && addDescription !== '')
-    vals['addDescription'] = addDescription;
-  var removeDescription = $formValues.querySelector('.removeDescription')?.value;
-  if(removeDescription != null && removeDescription !== '')
-    vals['removeDescription'] = removeDescription;
 
   var valueAuthorName = $formValues.querySelector('.valueAuthorName')?.value;
   var removeAuthorName = $formValues.querySelector('.removeAuthorName')?.value === 'true';
@@ -1025,18 +1019,6 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   if(removeObjectTitle != null && removeObjectTitle !== '')
     vals['removeObjectTitle'] = removeObjectTitle;
 
-  var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
-  var removeSolrId = $formValues.querySelector('.removeSolrId')?.value === 'true';
-  var setSolrId = removeSolrId ? null : $formValues.querySelector('.setSolrId')?.value;
-  var addSolrId = $formValues.querySelector('.addSolrId')?.value;
-  if(removeSolrId || setSolrId != null && setSolrId !== '')
-    vals['setSolrId'] = setSolrId;
-  if(addSolrId != null && addSolrId !== '')
-    vals['addSolrId'] = addSolrId;
-  var removeSolrId = $formValues.querySelector('.removeSolrId')?.value;
-  if(removeSolrId != null && removeSolrId !== '')
-    vals['removeSolrId'] = removeSolrId;
-
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
   var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
@@ -1073,6 +1055,30 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   if(removeDownload != null && removeDownload !== '')
     vals['removeDownload'] = removeDownload;
 
+  var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
+  var removeSolrId = $formValues.querySelector('.removeSolrId')?.value === 'true';
+  var setSolrId = removeSolrId ? null : $formValues.querySelector('.setSolrId')?.value;
+  var addSolrId = $formValues.querySelector('.addSolrId')?.value;
+  if(removeSolrId || setSolrId != null && setSolrId !== '')
+    vals['setSolrId'] = setSolrId;
+  if(addSolrId != null && addSolrId !== '')
+    vals['addSolrId'] = addSolrId;
+  var removeSolrId = $formValues.querySelector('.removeSolrId')?.value;
+  if(removeSolrId != null && removeSolrId !== '')
+    vals['removeSolrId'] = removeSolrId;
+
+  var valueImportance = $formValues.querySelector('.valueImportance')?.value;
+  var removeImportance = $formValues.querySelector('.removeImportance')?.value === 'true';
+  var setImportance = removeImportance ? null : $formValues.querySelector('.setImportance')?.value;
+  var addImportance = $formValues.querySelector('.addImportance')?.value;
+  if(removeImportance || setImportance != null && setImportance !== '')
+    vals['setImportance'] = setImportance;
+  if(addImportance != null && addImportance !== '')
+    vals['addImportance'] = addImportance;
+  var removeImportance = $formValues.querySelector('.removeImportance')?.value;
+  if(removeImportance != null && removeImportance !== '')
+    vals['removeImportance'] = removeImportance;
+
   var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
   var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
   var setCourseNum = removeCourseNum ? null : $formValues.querySelector('.setCourseNum')?.value;
@@ -1096,6 +1102,30 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   var removeLessonNum = $formValues.querySelector('.removeLessonNum')?.value;
   if(removeLessonNum != null && removeLessonNum !== '')
     vals['removeLessonNum'] = removeLessonNum;
+
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  var removeName = $formValues.querySelector('.removeName')?.value === 'true';
+  var setName = removeName ? null : $formValues.querySelector('.setName')?.value;
+  var addName = $formValues.querySelector('.addName')?.value;
+  if(removeName || setName != null && setName !== '')
+    vals['setName'] = setName;
+  if(addName != null && addName !== '')
+    vals['addName'] = addName;
+  var removeName = $formValues.querySelector('.removeName')?.value;
+  if(removeName != null && removeName !== '')
+    vals['removeName'] = removeName;
+
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value === 'true';
+  var setDescription = removeDescription ? null : $formValues.querySelector('.setDescription')?.value;
+  var addDescription = $formValues.querySelector('.addDescription')?.value;
+  if(removeDescription || setDescription != null && setDescription !== '')
+    vals['setDescription'] = setDescription;
+  if(addDescription != null && addDescription !== '')
+    vals['addDescription'] = addDescription;
+  var removeDescription = $formValues.querySelector('.removeDescription')?.value;
+  if(removeDescription != null && removeDescription !== '')
+    vals['removeDescription'] = removeDescription;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
@@ -1169,10 +1199,10 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   if(removeRelatedArticleIds != null && removeRelatedArticleIds !== '')
     vals['removeRelatedArticleIds'] = removeRelatedArticleIds;
 
-  patchComputateDeveloperVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
+  patchSpineProgrammingVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
 }
 
-function patchComputateDeveloperFilters($formFilters) {
+function patchSpineProgrammingFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -1194,14 +1224,6 @@ function patchComputateDeveloperFilters($formFilters) {
       filterArchived = filterArchivedSelectVal == 'true';
     if(filterArchived != null && filterArchived === true)
       filters.push({ name: 'fq', value: 'archived:' + filterArchived });
-
-    var filterName = $formFilters.querySelector('.valueName')?.value;
-    if(filterName != null && filterName !== '')
-      filters.push({ name: 'fq', value: 'name:' + filterName });
-
-    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
-    if(filterDescription != null && filterDescription !== '')
-      filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
     var filterAuthorName = $formFilters.querySelector('.valueAuthorName')?.value;
     if(filterAuthorName != null && filterAuthorName !== '')
@@ -1227,22 +1249,6 @@ function patchComputateDeveloperFilters($formFilters) {
     if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
       filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
 
-    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
-    if(filterSaves != null && filterSaves !== '')
-      filters.push({ name: 'fq', value: 'saves:' + filterSaves });
-
-    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
-    if(filterObjectTitle != null && filterObjectTitle !== '')
-      filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
-
-    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
-    if(filterObjectText != null && filterObjectText !== '')
-      filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
-
-    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
-    if(filterSolrId != null && filterSolrId !== '')
-      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
-
     var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
     if(filterClassSimpleName != null && filterClassSimpleName !== '')
       filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
@@ -1250,6 +1256,14 @@ function patchComputateDeveloperFilters($formFilters) {
     var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
     if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
       filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
+
+    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
+    if(filterSaves != null && filterSaves !== '')
+      filters.push({ name: 'fq', value: 'saves:' + filterSaves });
+
+    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
+    if(filterObjectTitle != null && filterObjectTitle !== '')
+      filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
 
     var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
     if(filterEditPage != null && filterEditPage !== '')
@@ -1267,6 +1281,18 @@ function patchComputateDeveloperFilters($formFilters) {
     if(filterObjectSuggest != null && filterObjectSuggest !== '')
       filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
 
+    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
+    if(filterObjectText != null && filterObjectText !== '')
+      filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
+
+    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
+    if(filterSolrId != null && filterSolrId !== '')
+      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
+
+    var filterImportance = $formFilters.querySelector('.valueImportance')?.value;
+    if(filterImportance != null && filterImportance !== '')
+      filters.push({ name: 'fq', value: 'importance:' + filterImportance });
+
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
@@ -1274,6 +1300,14 @@ function patchComputateDeveloperFilters($formFilters) {
     var filterLessonNum = $formFilters.querySelector('.valueLessonNum')?.value;
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
+
+    var filterName = $formFilters.querySelector('.valueName')?.value;
+    if(filterName != null && filterName !== '')
+      filters.push({ name: 'fq', value: 'name:' + filterName });
+
+    var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
+    if(filterDescription != null && filterDescription !== '')
+      filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1314,15 +1348,15 @@ function patchComputateDeveloperFilters($formFilters) {
   return filters;
 }
 
-function patchComputateDeveloperVal(filters, v, val, target, success, error) {
+function patchSpineProgrammingVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateDeveloperVals(filters, vals, target, success, error);
+  patchSpineProgrammingVals(filters, vals, target, success, error);
 }
 
-function patchComputateDeveloperVals(filters, vals, target, success, error) {
+function patchSpineProgrammingVals(filters, vals, target, success, error) {
   fetch(
-    '/en-us/api/computate-developer?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/en-us/api/spine-programming?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -1341,7 +1375,7 @@ function patchComputateDeveloperVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postComputateDeveloper($formValues, target, success, error) {
+async function postSpineProgramming($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -1369,14 +1403,6 @@ async function postComputateDeveloper($formValues, target, success, error) {
   if(valueArchived != null && valueArchived !== '')
     vals['archived'] = valueArchived == 'true';
 
-  var valueName = $formValues.querySelector('.valueName')?.value;
-  if(valueName != null && valueName !== '')
-    vals['name'] = valueName;
-
-  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
-  if(valueDescription != null && valueDescription !== '')
-    vals['description'] = valueDescription;
-
   var valueAuthorName = $formValues.querySelector('.valueAuthorName')?.value;
   if(valueAuthorName != null && valueAuthorName !== '')
     vals['authorName'] = valueAuthorName;
@@ -1401,10 +1427,6 @@ async function postComputateDeveloper($formValues, target, success, error) {
   if(valueObjectTitle != null && valueObjectTitle !== '')
     vals['objectTitle'] = valueObjectTitle;
 
-  var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
-  if(valueSolrId != null && valueSolrId !== '')
-    vals['solrId'] = valueSolrId;
-
   var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
   if(valueEditPage != null && valueEditPage !== '')
     vals['editPage'] = valueEditPage;
@@ -1417,6 +1439,14 @@ async function postComputateDeveloper($formValues, target, success, error) {
   if(valueDownload != null && valueDownload !== '')
     vals['download'] = valueDownload;
 
+  var valueSolrId = $formValues.querySelector('.valueSolrId')?.value;
+  if(valueSolrId != null && valueSolrId !== '')
+    vals['solrId'] = valueSolrId;
+
+  var valueImportance = $formValues.querySelector('.valueImportance')?.value;
+  if(valueImportance != null && valueImportance !== '')
+    vals['importance'] = valueImportance;
+
   var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
   if(valueCourseNum != null && valueCourseNum !== '')
     vals['courseNum'] = valueCourseNum;
@@ -1424,6 +1454,14 @@ async function postComputateDeveloper($formValues, target, success, error) {
   var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
   if(valueLessonNum != null && valueLessonNum !== '')
     vals['lessonNum'] = valueLessonNum;
+
+  var valueName = $formValues.querySelector('.valueName')?.value;
+  if(valueName != null && valueName !== '')
+    vals['name'] = valueName;
+
+  var valueDescription = $formValues.querySelector('.valueDescription')?.value;
+  if(valueDescription != null && valueDescription !== '')
+    vals['description'] = valueDescription;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
@@ -1450,7 +1488,7 @@ async function postComputateDeveloper($formValues, target, success, error) {
     vals['relatedArticleIds'] = valueRelatedArticleIds;
 
   fetch(
-    '/en-us/api/computate-developer'
+    '/en-us/api/spine-programming'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -1467,9 +1505,9 @@ async function postComputateDeveloper($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postComputateDeveloperVals(vals, target, success, error) {
+function postSpineProgrammingVals(vals, target, success, error) {
   fetch(
-    '/en-us/api/computate-developer'
+    '/en-us/api/spine-programming'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -1479,38 +1517,6 @@ function postComputateDeveloperVals(vals, target, success, error) {
         response.json().then((json) => {
           success(json, target);
         })
-      } else {
-        error(response, target);
-      }
-    })
-    .catch(response => error(response, target));
-}
-
-// DELETE //
-
-async function deleteComputateDeveloper(target, pageId, success, error) {
-  if(success == null) {
-    success = function( data, textStatus, jQxhr ) {
-      addGlow(target, jqXhr);
-      var url = data['editPage'];
-      if(url)
-        window.location.href = url;
-    };
-  }
-  if(error == null) {
-    error = function( jqXhr, target2 ) {
-      addError(target, jqXhr);
-    };
-  }
-
-  fetch(
-    '/en-us/api/computate-developer/' + encodeURIComponent(pageId)
-    , {
-      headers: {'Content-Type':'application/json; charset=utf-8'}
-      , method: 'DELETE'
-    }).then(response => {
-      if(response.ok) {
-        success(response, target);
       } else {
         error(response, target);
       }
@@ -1520,15 +1526,15 @@ async function deleteComputateDeveloper(target, pageId, success, error) {
 
 // PUTImport //
 
-async function putimportComputateDeveloper($formValues, target, pageId, success, error) {
+async function putimportSpineProgramming($formValues, target, pageId, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateDeveloperVals(JSON.parse(json), target, success, error);
+    putimportSpineProgrammingVals(JSON.parse(json), target, success, error);
 }
 
-function putimportComputateDeveloperVals(json, target, success, error) {
+function putimportSpineProgrammingVals(json, target, success, error) {
   fetch(
-    '/en-us/api/computate-developer-import'
+    '/en-us/api/spine-programming-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -1545,9 +1551,9 @@ function putimportComputateDeveloperVals(json, target, success, error) {
     .catch(response => error(response, target));
 }
 
-// DELETEFilter //
+// DELETE //
 
-async function deletefilterComputateDeveloper(target, success, error) {
+async function deleteSpineProgramming(target, pageId, success, error) {
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
       addGlow(target, jqXhr);
@@ -1563,7 +1569,39 @@ async function deletefilterComputateDeveloper(target, success, error) {
   }
 
   fetch(
-    '/en-us/api/computate-developer'
+    '/en-us/api/spine-programming/' + encodeURIComponent(pageId)
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'DELETE'
+    }).then(response => {
+      if(response.ok) {
+        success(response, target);
+      } else {
+        error(response, target);
+      }
+    })
+    .catch(response => error(response, target));
+}
+
+// DELETEFilter //
+
+async function deletefilterSpineProgramming(target, success, error) {
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target, jqXhr);
+      var url = data['editPage'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, target2 ) {
+      addError(target, jqXhr);
+    };
+  }
+
+  fetch(
+    '/en-us/api/spine-programming'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'DELETE'

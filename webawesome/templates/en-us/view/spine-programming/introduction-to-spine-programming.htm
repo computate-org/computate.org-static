@@ -1,0 +1,70 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Introduction to SPINE Programming" />
+    <meta name="result.description" content="Learn how to become a SPINE Programmer building data-driven websites and increase your developer productivity up to 4900%. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-01-07T21:12:25.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/spine-programming-lesson-model.png" />
+    <meta name="result.pageImageAlt" content="SPINE Programming lesson model Java Class" />
+    <meta name="result.importance" content="0" />
+{% endblock htmMetaPageLayout %}
+{% block htmScriptsPageLayout %}
+{{ super()}}
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+{% endblock htmScriptsPageLayout %}
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+
+    <div class="wa-stack wa-gap-3xl ">
+      <h2>
+        <i class="fa-kit fa-spine"></i>
+        How SPINE Programming works
+      </h2>
+      {{ typed('SPINE Programming is a form of on-device, local, sovereign AI code indexing and open source code generation for Linux. '
+          , 'check-your-operating-system'
+          , 'spine/introduction/check-your-operating-system.txt'
+          ) }}
+      {{ typed('A watcher service runs locally to watch a project directory for code files created and modified, and parses code files as changes occur. '
+          , 'watcher-log'
+          , 'spine/introduction/watcher-log.txt'
+          ) }}
+      {{ typed('A distributed application cluster manager, Apache Zookeeper, provides scalable file locking capabilities when generating code without conflicts. '
+          , 'check-zookeeper-cluster-manager'
+          , 'spine/introduction/check-zookeeper-cluster-manager.txt'
+          ) }}
+      {{ typed('An open source search engine, Apache Solr, running locally is used to index introspection data about the modified code classes, constructors, methods, fields, and comments. '
+          , 'check-solr-search-engine'
+          , 'spine/introduction/check-solr-search-engine.txt'
+          ) }}
+      <p>
+        Any Java class can become a SPINE program by extending a non-existent super class that will be generated after the code is saved. 
+      </p>
+      <p>
+        A class can become a Spine data model by adding class comments with YAML rules describing language context, persistence, caching, APIs and web pages for creating, patching, deleting, and viewing models, with authorization groups and scopes for fine-grained access control.
+      </p>
+      <p>
+        This process of SPINE Programming, development, self-documentation, code indexing, and code generation lets developers focus on business logic, allowing the models, backend APIs and interfaces, HTML page templates, OpenAPI specification, and database schema to be generated entirely as AI generated code. 
+        All SPINE Programming models, backend APIs, and HTML templates are built with inheritance, with additional classes and templates automatically created for developers to override any part of the AI generated code, and implement additional business logic on top of the default APIs. 
+        On average, SPINE Programmers write 2% - 4% of the project’s code by hand, and the other 96% - 98% of the code is AI generated, resulting in 33 to 50 times faster software development. 
+        SPINE Programming is a recursive acronym that stands for "SPINE Programming is not easy" because of the depth of knowledge required to be a SPINE Programmer—which is the purpose of this research, to explain the actions programmers can take to increase their software development productivity by 4900% entirely on their own computer. 
+      </p>
+      <p>
+        Data driven websites are built for organizational outcomes to model actual data that can be accessed publicly or access controlled using an external identity provider for authentication and authorization. 
+        Users must enter authentication credentials before being authorized to access certain data in the website. 
+        SPINE Programming Theory has easy to follow rules into code comments for defining data models and web pages for creating, accessing, and modifying data. 
+        A SPINE Programmer installs a local AI agent watcher service, provided by the Java java.nio.file.WatchService, to watch the programmer’s code project directories for created and modified file events. 
+        A distributed application cluster manager provides scalable file locking capabilities when generating code without conflicts. 
+        An open source search engine is used by the watcher service to store a complete structured index of your local code parts as they are added or modified. 
+        The same event driven watcher service that is used to index your codebase, performs introspection on the code and generates additional code for the developer running directly on the developer's computer. 
+      </p>
+      <p>
+        Additional rules can be written into the Java class comments for defining user groups with policies and permissions to access resources with various scopes to GET, POST, PATCH, DELETE and import data. 
+        Data driven websites require data APIs to query, create, and patch data in web compatible formats like JSON. 
+        The same scope based permissions for accessing data in a website should be the same as accessing the data in a JSON API. 
+        For this reason, SPINE Programming makes it easy to build consistent APIs and web pages with the same permissions required for each user on each request to access the model data, whether that is in web page form or as a JSON API. 
+      </p>
+    </div>
+{% endblock %}

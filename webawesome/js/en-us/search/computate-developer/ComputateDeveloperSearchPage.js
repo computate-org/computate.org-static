@@ -132,28 +132,6 @@ Promise.all([
     facetStatsChange('ComputateDeveloper', 'classCanonicalName', false);
   });
 
-  document.querySelector('#pageSelectSortComputateDeveloper_classSimpleName')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'classSimpleName', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_classSimpleName')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'classSimpleName', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_classSimpleName')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'classSimpleName', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_classCanonicalNames')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'classCanonicalNames', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_classCanonicalNames')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'classCanonicalNames', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_classCanonicalNames')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'classCanonicalNames', false);
-  });
-
   document.querySelector('#pageSelectSortComputateDeveloper_saves')?.addEventListener('change', (event) => {
     sort('ComputateDeveloper', 'saves', event.currentTarget.value);
   });
@@ -174,6 +152,50 @@ Promise.all([
   });
   document.querySelector('#pageStatsComputateDeveloper_objectTitle')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('ComputateDeveloper', 'objectTitle', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_objectText')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'objectText', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_objectText')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'objectText', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_objectText')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'objectText', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_solrId')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'solrId', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_solrId')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'solrId', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_solrId')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'solrId', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_classSimpleName')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'classSimpleName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_classSimpleName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'classSimpleName', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_classSimpleName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'classSimpleName', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_classCanonicalNames')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'classCanonicalNames', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_classCanonicalNames')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'classCanonicalNames', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_classCanonicalNames')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'classCanonicalNames', false);
   });
 
   document.querySelector('#pageSelectSortComputateDeveloper_editPage')?.addEventListener('change', (event) => {
@@ -220,26 +242,15 @@ Promise.all([
     facetStatsChange('ComputateDeveloper', 'objectSuggest', false);
   });
 
-  document.querySelector('#pageSelectSortComputateDeveloper_objectText')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'objectText', event.currentTarget.value);
+  document.querySelector('#pageSelectSortComputateDeveloper_courseNum')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'courseNum', event.currentTarget.value);
   });
 
-  document.querySelector('#pageStatsComputateDeveloper_objectText')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'objectText', true);
+  document.querySelector('#pageStatsComputateDeveloper_courseNum')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'courseNum', true);
   });
-  document.querySelector('#pageStatsComputateDeveloper_objectText')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'objectText', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_solrId')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'solrId', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_solrId')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'solrId', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_solrId')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'solrId', false);
+  document.querySelector('#pageStatsComputateDeveloper_courseNum')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'courseNum', false);
   });
 
   document.querySelector('#pageSelectSortComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
@@ -264,6 +275,28 @@ Promise.all([
     facetStatsChange('ComputateDeveloper', 'pageImageWidth', false);
   });
 
+  document.querySelector('#pageSelectSortComputateDeveloper_pageImageHeight')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'pageImageHeight', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_pageImageHeight')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageImageHeight', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_pageImageHeight')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageImageHeight', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_pageImageType')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'pageImageType', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_pageImageType')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageImageType', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_pageImageType')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageImageType', false);
+  });
+
   document.querySelector('#pageSelectSortComputateDeveloper_pageImageAlt')?.addEventListener('change', (event) => {
     sort('ComputateDeveloper', 'pageImageAlt', event.currentTarget.value);
   });
@@ -273,6 +306,17 @@ Promise.all([
   });
   document.querySelector('#pageStatsComputateDeveloper_pageImageAlt')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('ComputateDeveloper', 'pageImageAlt', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'prerequisiteArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_prerequisiteArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'prerequisiteArticleIds', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'prerequisiteArticleIds', false);
   });
 
   document.querySelector('#pageSelectSortComputateDeveloper_nextArticleIds')?.addEventListener('change', (event) => {
@@ -317,50 +361,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsComputateDeveloper_relatedArticleIds')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('ComputateDeveloper', 'relatedArticleIds', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_courseNum')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'courseNum', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_courseNum')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'courseNum', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_courseNum')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'courseNum', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_pageImageHeight')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'pageImageHeight', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_pageImageHeight')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'pageImageHeight', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_pageImageHeight')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'pageImageHeight', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_pageImageType')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'pageImageType', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_pageImageType')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'pageImageType', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_pageImageType')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'pageImageType', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_prerequisiteArticleIds')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'prerequisiteArticleIds', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_prerequisiteArticleIds')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'prerequisiteArticleIds', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'prerequisiteArticleIds', false);
   });
           document.querySelector('#fqComputateDeveloper_created')?.addEventListener('change', (event) => {
             fqChange('ComputateDeveloper', event.currentTarget, facetChangeComputateDeveloperSuccess, facetChangeComputateDeveloperError);
@@ -560,24 +560,6 @@ Promise.all([
           document.querySelector('#pageFacetRangeEndComputateDeveloper_download')?.addEventListener('change', (event) => {
             facetRangeEndChange('ComputateDeveloper', event.currentTarget);
           });
-          document.querySelector('#fqComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            fqChange('ComputateDeveloper', event.currentTarget, facetChangeComputateDeveloperSuccess, facetChangeComputateDeveloperError);
-          });
-          document.querySelector('#buttonFacetComputateDeveloper_lessonNum')?.addEventListener('click', (event) => {
-            facetFieldChange('ComputateDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            facetPivotChange('ComputateDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            facetRangeGapChange('ComputateDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            facetRangeStartChange('ComputateDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            facetRangeEndChange('ComputateDeveloper', event.currentTarget);
-          });
           document.querySelector('#fqComputateDeveloper_courseNum')?.addEventListener('change', (event) => {
             fqChange('ComputateDeveloper', event.currentTarget, facetChangeComputateDeveloperSuccess, facetChangeComputateDeveloperError);
           });
@@ -594,6 +576,24 @@ Promise.all([
             facetRangeStartChange('ComputateDeveloper', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndComputateDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            fqChange('ComputateDeveloper', event.currentTarget, facetChangeComputateDeveloperSuccess, facetChangeComputateDeveloperError);
+          });
+          document.querySelector('#buttonFacetComputateDeveloper_lessonNum')?.addEventListener('click', (event) => {
+            facetFieldChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetPivotChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeGapChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
             facetRangeEndChange('ComputateDeveloper', event.currentTarget);
           });
 });

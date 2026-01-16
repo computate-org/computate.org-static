@@ -106,8 +106,8 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
         var inputPageImageType = null;
         var inputPageImageAlt = null;
         var inputPrerequisiteArticleIds = null;
-        var inputPrerequisiteArticles = null;
         var inputNextArticleIds = null;
+        var inputPrerequisiteArticles = null;
         var inputNextArticles = null;
         var inputLabelsString = null;
         var inputLabels = null;
@@ -170,10 +170,10 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
           inputPageImageAlt = $response.querySelector('.Page_pageImageAlt');
         if(vars.includes('prerequisiteArticleIds'))
           inputPrerequisiteArticleIds = $response.querySelector('.Page_prerequisiteArticleIds');
-        if(vars.includes('prerequisiteArticles'))
-          inputPrerequisiteArticles = $response.querySelector('.Page_prerequisiteArticles');
         if(vars.includes('nextArticleIds'))
           inputNextArticleIds = $response.querySelector('.Page_nextArticleIds');
+        if(vars.includes('prerequisiteArticles'))
+          inputPrerequisiteArticles = $response.querySelector('.Page_prerequisiteArticles');
         if(vars.includes('nextArticles'))
           inputNextArticles = $response.querySelector('.Page_nextArticles');
         if(vars.includes('labelsString'))
@@ -470,16 +470,6 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.Page_prerequisiteArticleIds'));
         }
 
-        if(inputPrerequisiteArticles) {
-          document.querySelectorAll('.Page_prerequisiteArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPrerequisiteArticles.getAttribute('value');
-            else
-              item.textContent = inputPrerequisiteArticles.textContent;
-          });
-          addGlow(document.querySelector('.Page_prerequisiteArticles'));
-        }
-
         if(inputNextArticleIds) {
           document.querySelectorAll('.Page_nextArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -488,6 +478,16 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
               item.textContent = inputNextArticleIds.textContent;
           });
           addGlow(document.querySelector('.Page_nextArticleIds'));
+        }
+
+        if(inputPrerequisiteArticles) {
+          document.querySelectorAll('.Page_prerequisiteArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticles.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticles.textContent;
+          });
+          addGlow(document.querySelector('.Page_prerequisiteArticles'));
         }
 
         if(inputNextArticles) {

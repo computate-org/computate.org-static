@@ -1,0 +1,392 @@
+{% extends "en-us/PageLayout.htm" %}
+
+{%- block htmTitlePageLayout %}
+{%- block htmTitleSpineProgrammingPage %}
+    <title>{% if resultCount == 0 %}no article found{% else %}articles{% endif %}</title>
+{%- endblock htmTitleSpineProgrammingPage %}
+{%- endblock htmTitlePageLayout %}
+
+{%- block htmStylesPageLayout %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/article/SpineProgramming.css"/>
+{%- block htmStylesSpineProgrammingPage %}
+{%- endblock htmStylesSpineProgrammingPage %}
+{%- endblock htmStylesPageLayout %}
+
+{%- block htmStylePageLayout %}
+      :root {
+        --site-results-number-of-columns: 2;
+      }
+{{ super() }}
+{%- block htmStyleSpineProgrammingPage %}
+{%- endblock htmStyleSpineProgrammingPage %}
+{%- endblock htmStylePageLayout %}
+
+{%- block htmScriptsPageLayout %}
+{{ super() }}
+{%- block htmScriptsSpineProgrammingPage %}
+    <script src="{{staticBaseUrl}}/js/en-us/search/article/SpineProgramming.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/article/SpineProgrammingSearchPage.js"></script>
+{%- endblock htmScriptsSpineProgrammingPage %}
+{%- endblock htmScriptsPageLayout %}
+
+{%- block htmScriptPageLayout %}
+{%- block htmScriptSpineProgrammingPage %}
+    <script>
+
+      function jsWebsocketSpineProgramming(pageId, vars, $response) {
+{%- block jsWebsocketSpineProgrammingPage %}{%- endblock %}
+      }
+
+      function jsTooltipSpineProgramming(e, feature) {
+{%- block jsTooltipSpineProgrammingPage %}{%- endblock %}
+      }
+
+      function htmTooltipSpineProgramming(feature, layer) {
+        return `{%- block htmTooltipSpineProgrammingPage %}
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
+{%- endblock htmTooltipSpineProgrammingPage %}`;
+      }
+
+      function facetChangeSpineProgrammingSuccess(e) {
+        var l = e.querySelector('.pageForm .listSpineProgramming')?.value;
+        if(l)
+          window.listSpineProgramming = JSON.parse(l);
+{% block facetChangeSpineProgrammingSuccess %}{%- endblock facetSpineProgrammingSuccess %}
+      }
+      function facetChangeSpineProgrammingError(e) {
+{% block facetChangeSpineProgrammingError %}{%- endblock facetSpineProgrammingError %}
+      }
+
+      function facetSimpleRangeSpineProgrammingSuccess(e) {
+{% block facetSimpleRangeSpineProgrammingSuccess %}      facetChangeSpineProgrammingSuccess(e);{% endblock facetSimpleRangeSpineProgrammingSuccess %}
+      }
+      function facetSimpleRangeSpineProgrammingError(e) {
+{% block facetSimpleRangeSpineProgrammingError %}      facetChangeSpineProgrammingError(e);{% endblock facetSimpleRangeSpineProgrammingError %}
+      }
+      function facetSimpleRangeSpineProgramming(e) {
+        facetSimpleRange(e, facetSimpleRangeSpineProgrammingSuccess, facetSimpleRangeSpineProgrammingError);
+      }
+
+      function facetRangeTimeZoneSpineProgrammingSuccess(e) {
+{% block facetRangeTimeZoneSpineProgrammingSuccess %}      facetChangeSpineProgrammingSuccess(e);{% endblock facetRangeTimeZoneSpineProgrammingSuccess %}
+      }
+      function facetRangeTimeZoneSpineProgrammingError(e) {
+{% block facetRangeTimeZoneSpineProgrammingError %}      facetChangeSpineProgrammingError(e);{%- endblock facetRangeTimeZoneSpineProgrammingError %}
+      }
+      function facetRangeTimeZoneSpineProgramming(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneSpineProgrammingSuccess, facetRangeTimeZoneSpineProgrammingError);
+      }
+
+      function facetRangeGapChangeSpineProgrammingSuccess(e) {
+{% block facetRangeGapChangeSpineProgrammingSuccess %}      facetChangeSpineProgrammingSuccess(e);{% endblock facetRangeGapChangeSpineProgrammingSuccess %}
+      }
+      function facetRangeGapChangeSpineProgrammingError(e) {
+{% block facetRangeGapChangeSpineProgrammingError %}      facetChangeSpineProgrammingError(e);{%- endblock facetRangeGapChangeSpineProgrammingError %}
+      }
+      function facetRangeGapChangeSpineProgramming(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeSpineProgrammingSuccess, facetRangeGapChangeSpineProgrammingError);
+      }
+
+      function facetRangeStartChangeSpineProgrammingSuccess(e) {
+{% block facetRangeStartChangeSpineProgrammingSuccess %}      facetChangeSpineProgrammingSuccess(e);{% endblock facetRangeStartChangeSpineProgrammingSuccess %}
+      }
+      function facetRangeStartChangeSpineProgrammingError(e) {
+{% block facetRangeStartChangeSpineProgrammingError %}      facetChangeSpineProgrammingError(e);{%- endblock facetRangeStartChangeSpineProgrammingError %}
+      }
+      function facetRangeStartChangeSpineProgramming(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeSpineProgrammingSuccess, facetRangeStartChangeSpineProgrammingError);
+      }
+
+      function facetRangeEndChangeSpineProgrammingSuccess(e) {
+{% block facetRangeEndChangeSpineProgrammingSuccess %}      facetChangeSpineProgrammingSuccess(e);{% endblock facetRangeEndChangeSpineProgrammingSuccess %}
+      }
+      function facetRangeEndChangeSpineProgrammingError(e) {
+{% block facetRangeEndChangeSpineProgrammingError %}      facetChangeSpineProgrammingError(e);{%- endblock facetRangeEndChangeSpineProgrammingError %}
+      }
+      function facetRangeEndChangeSpineProgramming(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeSpineProgrammingSuccess, facetRangeEndChangeSpineProgrammingError);
+      }
+    </script>
+    <script type="module">
+{% if DEFAULT_MAP_LOCATION is defined %}
+      window.DEFAULT_MAP_LOCATION = { type: 'Point', coordinates: [ {{ DEFAULT_MAP_LOCATION.coordinates[0] }}, {{ DEFAULT_MAP_LOCATION.coordinates[1] }} ]};
+{% endif %}
+{% if DEFAULT_MAP_ZOOM is defined %}
+      window.DEFAULT_MAP_ZOOM = {{ DEFAULT_MAP_ZOOM }};
+{% endif %}
+      window.DEFAULT_ZONE_ID = '{{ defaultZoneId }}';
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
+      ]).then(() => {
+
+        var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
+
+        if(pageId == null) {
+          document.querySelector('#grid-toggle-details')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-list', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-details');
+          });
+          document.querySelector('#grid-toggle-list')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-list');
+          });
+          document.querySelector('#grid-toggle-card')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-list');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-card');
+          });
+        } else {
+          var o = document.querySelector('.pageForm .result')?.value;
+          if(o)
+            window.result = JSON.parse(o);
+        {% if result.pageId is defined %}
+        {% endif %}
+        }
+        var l = document.querySelector('.pageForm .listSpineProgramming')?.value;
+        if(l)
+          window.listSpineProgramming = JSON.parse(l);
+        window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
+        window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
+        window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSpineProgramming);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSpineProgramming);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneSpineProgramming);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeSpineProgramming);
+        pageGraphSpineProgramming();
+        {% for key, value in varsQ.items() %}
+
+        document.querySelector('#qSpineProgramming_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
+          qChange('SpineProgramming', event.target, document.querySelector('#qSpineProgrammingDiv_{{ key }}'));
+        });
+        {% endfor %}
+
+        document.querySelector('#qSpineProgramming_rows')?.addEventListener('change', event => {
+          paramChange('SpineProgramming', event.target, document.querySelector('#qSpineProgrammingDiv_rows'));
+        });
+
+        document.querySelector('#qSpineProgramming_start')?.addEventListener('change', event => {
+          paramChange('SpineProgramming', event.target, document.querySelector('#qSpineProgrammingDiv_start'));
+        });
+
+
+        var submitForm_patchSpineProgramming = document.querySelector('#htmForm_patchSpineProgramming')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_patchSpineProgramming')?.addEventListener('click', event => {
+          event.preventDefault();
+          patchSpineProgramming(null, document.querySelector('#htmForm_patchSpineProgramming'), document.querySelector('#htmFormButton_patchSpineProgramming'), event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_postSpineProgramming = document.querySelector('#htmForm_postSpineProgramming')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_postSpineProgramming')?.addEventListener('click', event => {
+          event.preventDefault();
+          postSpineProgramming(document.querySelector('#htmForm_postSpineProgramming')
+          , document.querySelector('#htmFormButton_postSpineProgramming')
+          , (json, target) => {
+            window.location.href = json.editPage;
+          });
+          return false;
+        });
+
+        var submitForm_putimportSpineProgramming = document.querySelector('#htmForm_putimportSpineProgramming')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_putimportSpineProgramming')?.addEventListener('click', event => {
+          event.preventDefault();
+          putimportSpineProgramming(document.querySelector('#htmForm_putimportSpineProgramming'), document.querySelector('#htmFormButton_putimportSpineProgramming'));
+          return false;
+        });
+
+        var submitForm_deleteSpineProgramming = document.querySelector('#htmForm_deleteSpineProgramming')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deleteSpineProgramming')?.addEventListener('click', event => {
+          event.preventDefault();
+          deleteSpineProgramming(event.target, event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_searchpageSpineProgramming = document.querySelector('#htmForm_searchpageSpineProgramming')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_searchpageSpineProgramming')?.addEventListener('click', event => {
+          event.preventDefault();
+          searchpageSpineProgramming();
+          return false;
+        });
+
+        var submitForm_deletefilterSpineProgramming = document.querySelector('#htmForm_deletefilterSpineProgramming')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deletefilterSpineProgramming')?.addEventListener('click', event => {
+          event.preventDefault();
+          deletefilterSpineProgramming(event.target);
+          return false;
+        });
+{%- block htmScriptInitSpineProgrammingPage %}{%- endblock htmScriptInitSpineProgrammingPage %}
+      });
+    </script>
+{%- endblock htmScriptSpineProgrammingPage %}
+{%- endblock htmScriptPageLayout %}
+
+{%- block websocketPageLayout %}
+{%- block websocketSpineProgrammingPage %}
+{% if resultCount > 0 %}
+        window.eventBus = new EventBus('/eventbus');
+        window.eventBus.enableReconnect(true);
+        websocketSpineProgramming(websocketSpineProgrammingInner);
+{% endif %}
+{%- endblock websocketSpineProgrammingPage %}
+{%- endblock websocketPageLayout %}
+
+{%- block htmUrlSpineProgrammingPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlSpineProgrammingPage %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-SpineProgramming">back to all articles</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-SpineProgramming" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-newspaper"></i>
+                  all articles
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search articles
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
+{%- block htmBodyStartPageLayout %}
+{{ super() }}
+{%- block htmBodyStartSpineProgrammingPage %}
+{% include en-us/search/article/SpineProgrammingSidebar.htm %}
+{% if resultCount == 0 %}
+        <div class="wa-stack ">
+          <wa-tooltip for="return-to-SpineProgramming">back to all articles</wa-tooltip></wa-tooltip>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-SpineProgramming" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-newspaper"></i>
+              all articles
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no article found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-newspaper"></i>
+            </div>
+            <span class="wa-heading-m ">no article found</span>
+            <p class="wa-caption-l ">Read the latest articles to learn more</p>
+{% include en-us/search/article/SpineProgrammingSearchForm.htm %}
+          </div>
+        </div>
+{% else %}
+{% include en-us/search/article/SpineProgrammingSuggestedSearch.htm %}
+          <div class="pageContent ">
+            <form action="/en-us/api/article" id="SpineProgrammingForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="focusId" type="hidden"/>
+              <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+              <input name="listSpineProgramming" id="listSpineProgramming" class="listSpineProgramming"  value='{{ toJsonArrayStringInApostrophes(listSpineProgramming) }}' type="hidden"/>
+            </form>
+            <div id="site-calendar-box">
+              <div id="site-calendar"><!-- // --></div>
+            </div>
+            <div class="wa-stack wa-gap-m ">
+{% endif %}
+{%- endblock htmBodyStartSpineProgrammingPage %}
+{%- endblock htmBodyStartPageLayout %}
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/article/SpineProgrammingSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/article/SpineProgrammingSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+{% include en-us/search/article/SpineProgrammingSearchForm.htm %}
+
+{%- block htmBodyMiddlePageLayout %}
+{%- block htmBodyMiddleSpineProgrammingPage %}
+{% if resultCount > 0 %}
+              <div class="wa-stack wa-gap-0 ">
+{% include en-us/search/article/SpineProgrammingPaginationButtons.htm %}
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
+              <wa-dropdown id="htmDropdown-name">
+                <wa-button variant="brand" slot="trigger" caret>title</wa-button>
+                <wa-menu>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSpineProgramming_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SpineProgramming').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                    sort by title ascending
+                  </wa-menu-item>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSpineProgramming_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SpineProgramming').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                    sort by title descending
+                  </wa-menu-item>
+                </wa-menu>
+              </wa-dropdown>
+              <wa-dropdown id="htmDropdown-description">
+                <wa-button variant="brand" slot="trigger" caret>description</wa-button>
+                <wa-menu>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSpineProgramming_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SpineProgramming').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                    sort by description ascending
+                  </wa-menu-item>
+                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSpineProgramming_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SpineProgramming').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                    sort by description descending
+                  </wa-menu-item>
+                </wa-menu>
+              </wa-dropdown>
+                  </div>
+                  {% for item in listSpineProgramming%}
+                  <div>
+              <a href="{{ item.displayPage }}">
+                <i class="fa-duotone fa-regular fa-newspaper"></i>
+              <span>{{ item.name | e }}
+</span>              </a>
+              <a href="{{ item.displayPage }}">
+              <span>{{ item.description | e }}
+</span>              </a>
+                  </div>
+                  {% endfor %}
+              {% if getColumnName is defined %}
+                <div>
+                </div>
+              {% endif %}
+              {% if getColumnDescription is defined %}
+                <div>
+                </div>
+              {% endif %}
+                </div>
+{% include en-us/search/article/SpineProgrammingPaginationButtons.htm %}
+              </div>
+            </div>
+          </div>
+{% endif %}
+{%- endblock htmBodyMiddleSpineProgrammingPage %}
+{%- endblock htmBodyMiddlePageLayout %}
+
+{%- block htmBodyEndPageLayout %}
+{%- block htmBodyEndSpineProgrammingPage %}
+{%- include en-us/search/article/SpineProgrammingLocation.htm %}
+{%- endblock htmBodyEndSpineProgrammingPage %}
+  {{ super() }}
+{%- endblock htmBodyEndPageLayout %}

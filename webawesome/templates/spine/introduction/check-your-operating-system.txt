@@ -1,0 +1,6 @@
+^1000$ cat /etc/os-release ^1000
+`NAME="Red Hat Enterprise Linux"
+VERSION="9.7 (Plow)"
+ID="rhel"
+ID_LIKE="fedora"`
+`$ `

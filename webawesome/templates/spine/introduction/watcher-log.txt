@@ -1,0 +1,8 @@
+^1000$ systemctl --user restart watch-computate.org^1000
+$ journalctl -f --user-unit watch-computate.org^1000
+`Jan 05 07:42:18 tower1 systemd[7404]: Started Watch the computate app and generate Java code when the Java source files are modified..`^1000
+`Jan 05 07:42:26 tower1 watchnow.sh[7977]: 2026-01-05 07:42:26:673-0700 [main] INFO org.computate.frFR.java.RegarderRepertoire - Ready`^1000
+`Jan 05 07:42:27 tower1 watchnow.sh[7977]: 2026-01-05 07:42:27:437-0700 [main] INFO io.vertx.core.spi.resolver.ResolverProvider - Using the default address resolver as the dns resolver could not be loaded`
+`Jan 05 07:42:27 tower1 watchnow.sh[7977]: 2026-01-05 07:42:27:506-0700 [main] INFO org.computate.frFR.java.RegarderRepertoire - instances: 4`^1000
+`Jan 05 07:42:28 tower1 watchnow.sh[7977]: 2026-01-05 07:42:28:971-0700 [vert.x-eventloop-thread-4-worker-0] INFO org.computate.frFR.java.RegarderRepertoire - Watch /home/ctate/.local/src/computate.org/src/main/java/org/computate/site`
+`$ `

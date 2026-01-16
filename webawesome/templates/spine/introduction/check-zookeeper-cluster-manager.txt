@@ -1,0 +1,6 @@
+^1000$ oc -n zookeeper get pod^1000
+`NAME                                            READY   STATUS    RESTARTS       AGE
+persistent-metrics-zookeeper-5445f47b6c-g7bjn   1/1     Running   3 (4d4h ago)   30d
+zookeeper-0                                     1/1     Running   10             83d
+zookeeper-operator-767fd99d5d-7q8hj             1/1     Running   8              80d`
+`$ `
