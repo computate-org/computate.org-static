@@ -124,8 +124,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] about name"
                       label="about name"
-                      hint="
-The about name. "
+                      hint="The about name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -161,8 +160,7 @@ The about name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] about description"
                       label="about description"
-                      hint="
-The about description. "
+                      hint="The about description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -198,8 +196,7 @@ The about description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      hint="
-The ID for this page. "
+                      hint="The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -274,8 +271,6 @@ The ID for this page. "
                             {{ inputDisplayPageCompanyAboutPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
 
-{%- macro htmButton_patchCompanyAbout() %}<wa-button variant="brand" id="htmButton_patchCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_patchCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyAbout" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -342,8 +337,6 @@ The ID for this page. "
           {{ htmFormButton_patchCompanyAbout() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_postCompanyAbout() %}<wa-button variant="brand" id="htmButton_postCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyAbout" duration="5000" closable class="wa-header-l ">
@@ -413,8 +406,6 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_deleteCompanyAbout() %}<wa-button variant="brand" id="htmButton_deleteCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deleteCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deleteCompanyAbout" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -431,8 +422,6 @@ The ID for this page. "
           {{ htmFormButton_deleteCompanyAbout() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_putimportCompanyAbout() %}<wa-button variant="brand" id="htmButton_putimportCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyAbout" duration="5000" closable class="wa-header-l ">
@@ -457,17 +446,6 @@ The ID for this page. "
           </form>
           {{ htmFormButton_putimportCompanyAbout() }}
         </wa-dialog>
-{%- endmacro %}
-
-{%- macro htmButton_searchpageCompanyAbout() %}{%- endmacro %}
-
-{%- macro htmFormButton_searchpageCompanyAbout() %}
-          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageCompanyAbout" duration="5000" closable class="wa-header-l ">
-            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
-                 id="htmFormButton_searchpageCompanyAbout"
-                >Search about</wa-button>
-            <wa-badge class="alertPopup" id="alertPopupButton_searchpageCompanyAbout"></wa-badge>
-          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyAbout() %}
@@ -565,8 +543,6 @@ The ID for this page. "
         </div>
 {%- endmacro %}
 
-{%- macro htmButton_deletefilterCompanyAbout() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyAbout" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deletefilterCompanyAbout() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterCompanyAbout" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -583,61 +559,6 @@ The ID for this page. "
           {{ htmFormButton_deletefilterCompanyAbout() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmSearchForm">
-            <wa-scroller>
-              <wa-button-group>
-{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {% if "PATCH" in scopes %}
-    {% if resultCount >= 1 %}
-                <wa-button variant="brand" id="refreshThisCompanyAboutGenPage"
-                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyAboutGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyAboutGenPage')); }); return false; ">
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
-                  refresh
-                </wa-button>
-    {% endif %}
-    {% if resultCount > 0 %}
-                <wa-button variant="brand" id="refreshAllCompanyAboutGenPage{{ result.pageId | e }}"
-                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllCompanyAboutGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllCompanyAboutGenPage{{ result.pageId | e }}')); }); "
-                    >
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
-                  refresh all 
-                </wa-button>
-    {% endif %}
-  {% endif %}
-{% endif %}
-{%- if 'PATCH' in scopes %}
-  {%- if resultCount > 0 %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_patchCompanyAbout() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-{%- if 'POST' in scopes %}
-  {%- if resultCount >= 1 %}
-    {{ htmButton_postCompanyAbout() }}
-  {%- else %}
-    {{ htmButton_postCompanyAbout() }}
-  {%- endif %}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is defined %}
-    {{ htmButton_deleteCompanyAbout() }}
-  {%- endif %}
-{%- endif %}
-{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {{ htmButton_putimportCompanyAbout() }}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is not defined %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_deletefilterCompanyAbout() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-
-              </wa-button-group>
-            </wa-scroller>
-          </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchCompanyAbout() }}
   {%- endif %}

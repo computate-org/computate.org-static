@@ -124,8 +124,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] course name"
                       label="course name"
-                      hint="
-The course name. "
+                      hint="The course name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -161,8 +160,7 @@ The course name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] course description"
                       label="course description"
-                      hint="
-The course description. "
+                      hint="The course description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -198,8 +196,7 @@ The course description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] author name"
                       label="author name"
-                      hint="
-The author name"
+                      hint="The author name"
                       id="{{classApiMethodMethod}}_authorName"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -235,8 +232,7 @@ The author name"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] author URL"
                       label="author URL"
-                      hint="
-The author URL"
+                      hint="The author URL"
                       id="{{classApiMethodMethod}}_authorUrl"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -272,8 +268,7 @@ The author URL"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] imageUri"
                       label="imageUri"
-                      hint="
-The page image URI"
+                      hint="The page image URI"
                       id="{{classApiMethodMethod}}_pageImageUri"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -309,8 +304,7 @@ The page image URI"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] page ID"
                       label="page ID"
-                      hint="
-The ID for this page. "
+                      hint="The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -384,8 +378,6 @@ The ID for this page. "
 {%- macro htmDisplayPageSmartAquacultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDisplayPageSmartAquacultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-
-{%- macro htmButton_patchSmartAquacultureDeveloper() %}<wa-button variant="brand" id="htmButton_patchSmartAquacultureDeveloper" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchSmartAquacultureDeveloper() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchSmartAquacultureDeveloper" duration="5000" closable class="wa-header-l ">
@@ -489,8 +481,6 @@ The ID for this page. "
           {{ htmFormButton_patchSmartAquacultureDeveloper() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_postSmartAquacultureDeveloper() %}<wa-button variant="brand" id="htmButton_postSmartAquacultureDeveloper" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postSmartAquacultureDeveloper() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postSmartAquacultureDeveloper" duration="5000" closable class="wa-header-l ">
@@ -596,8 +586,6 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_deleteSmartAquacultureDeveloper() %}<wa-button variant="brand" id="htmButton_deleteSmartAquacultureDeveloper" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deleteSmartAquacultureDeveloper() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deleteSmartAquacultureDeveloper" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -614,8 +602,6 @@ The ID for this page. "
           {{ htmFormButton_deleteSmartAquacultureDeveloper() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_putimportSmartAquacultureDeveloper() %}<wa-button variant="brand" id="htmButton_putimportSmartAquacultureDeveloper" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportSmartAquacultureDeveloper() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportSmartAquacultureDeveloper" duration="5000" closable class="wa-header-l ">
@@ -640,17 +626,6 @@ The ID for this page. "
           </form>
           {{ htmFormButton_putimportSmartAquacultureDeveloper() }}
         </wa-dialog>
-{%- endmacro %}
-
-{%- macro htmButton_searchpageSmartAquacultureDeveloper() %}{%- endmacro %}
-
-{%- macro htmFormButton_searchpageSmartAquacultureDeveloper() %}
-          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageSmartAquacultureDeveloper" duration="5000" closable class="wa-header-l ">
-            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
-                 id="htmFormButton_searchpageSmartAquacultureDeveloper"
-                >Search Smart Aquaculture Developers</wa-button>
-            <wa-badge class="alertPopup" id="alertPopupButton_searchpageSmartAquacultureDeveloper"></wa-badge>
-          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageSmartAquacultureDeveloper() %}
@@ -785,8 +760,6 @@ The ID for this page. "
         </div>
 {%- endmacro %}
 
-{%- macro htmButton_deletefilterSmartAquacultureDeveloper() %}<wa-button variant="brand" id="htmButton_deletefilterSmartAquacultureDeveloper" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deletefilterSmartAquacultureDeveloper() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterSmartAquacultureDeveloper" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -803,61 +776,6 @@ The ID for this page. "
           {{ htmFormButton_deletefilterSmartAquacultureDeveloper() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmSearchForm">
-            <wa-scroller>
-              <wa-button-group>
-{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {% if "PATCH" in scopes %}
-    {% if resultCount >= 1 %}
-                <wa-button variant="brand" id="refreshThisSmartAquacultureDeveloperGenPage"
-                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisSmartAquacultureDeveloperGenPage')); }, function() { addError(document.querySelector('#refreshThisSmartAquacultureDeveloperGenPage')); }); return false; ">
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
-                  refresh
-                </wa-button>
-    {% endif %}
-    {% if resultCount > 0 %}
-                <wa-button variant="brand" id="refreshAllSmartAquacultureDeveloperGenPage{{ result.pageId | e }}"
-                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllSmartAquacultureDeveloperGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllSmartAquacultureDeveloperGenPage{{ result.pageId | e }}')); }); "
-                    >
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
-                  refresh all 
-                </wa-button>
-    {% endif %}
-  {% endif %}
-{% endif %}
-{%- if 'PATCH' in scopes %}
-  {%- if resultCount > 0 %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_patchSmartAquacultureDeveloper() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-{%- if 'POST' in scopes %}
-  {%- if resultCount >= 1 %}
-    {{ htmButton_postSmartAquacultureDeveloper() }}
-  {%- else %}
-    {{ htmButton_postSmartAquacultureDeveloper() }}
-  {%- endif %}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is defined %}
-    {{ htmButton_deleteSmartAquacultureDeveloper() }}
-  {%- endif %}
-{%- endif %}
-{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {{ htmButton_putimportSmartAquacultureDeveloper() }}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is not defined %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_deletefilterSmartAquacultureDeveloper() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-
-              </wa-button-group>
-            </wa-scroller>
-          </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchSmartAquacultureDeveloper() }}
   {%- endif %}

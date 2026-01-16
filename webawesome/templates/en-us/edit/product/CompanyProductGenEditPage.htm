@@ -48,51 +48,61 @@
 {%- endblock htmTooltipCompanyProductPage %}`;
       }
 
-      function facetSimpleRangeCompanyProductSuccess(pageContent) {
-{% block facetSimpleRangeCompanyProductSuccess %}{%- endblock facetSimpleRangeCompanyProductSuccess %}
+      function facetChangeCompanyProductSuccess(e) {
+        var l = e.querySelector('.pageForm .listCompanyProduct')?.value;
+        if(l)
+          window.listCompanyProduct = JSON.parse(l);
+{% block facetChangeCompanyProductSuccess %}{%- endblock facetCompanyProductSuccess %}
       }
-      function facetSimpleRangeCompanyProductError(pageContent) {
-{% block facetSimpleRangeCompanyProductError %}{%- endblock facetSimpleRangeCompanyProductError %}
+      function facetChangeCompanyProductError(e) {
+{% block facetChangeCompanyProductError %}{%- endblock facetCompanyProductError %}
+      }
+
+      function facetSimpleRangeCompanyProductSuccess(e) {
+{% block facetSimpleRangeCompanyProductSuccess %}      facetChangeCompanyProductSuccess(e);{% endblock facetSimpleRangeCompanyProductSuccess %}
+      }
+      function facetSimpleRangeCompanyProductError(e) {
+{% block facetSimpleRangeCompanyProductError %}      facetChangeCompanyProductError(e);{% endblock facetSimpleRangeCompanyProductError %}
       }
       function facetSimpleRangeCompanyProduct(e) {
         facetSimpleRange(e, facetSimpleRangeCompanyProductSuccess, facetSimpleRangeCompanyProductError);
       }
 
-      function facetRangeTimeZoneCompanyProductSuccess(pageContent) {
-{% block facetRangeTimeZoneCompanyProductSuccess %}{%- endblock facetRangeTimeZoneCompanyProductSuccess %}
+      function facetRangeTimeZoneCompanyProductSuccess(e) {
+{% block facetRangeTimeZoneCompanyProductSuccess %}      facetChangeCompanyProductSuccess(e);{% endblock facetRangeTimeZoneCompanyProductSuccess %}
       }
-      function facetRangeTimeZoneCompanyProductError(pageContent) {
-{% block facetRangeTimeZoneCompanyProductError %}{%- endblock facetRangeTimeZoneCompanyProductError %}
+      function facetRangeTimeZoneCompanyProductError(e) {
+{% block facetRangeTimeZoneCompanyProductError %}      facetChangeCompanyProductError(e);{%- endblock facetRangeTimeZoneCompanyProductError %}
       }
       function facetRangeTimeZoneCompanyProduct(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneCompanyProductSuccess, facetRangeTimeZoneCompanyProductError);
       }
 
-      function facetRangeGapChangeCompanyProductSuccess(pageContent) {
-{% block facetRangeGapChangeCompanyProductSuccess %}{%- endblock facetRangeGapChangeCompanyProductSuccess %}
+      function facetRangeGapChangeCompanyProductSuccess(e) {
+{% block facetRangeGapChangeCompanyProductSuccess %}      facetChangeCompanyProductSuccess(e);{% endblock facetRangeGapChangeCompanyProductSuccess %}
       }
-      function facetRangeGapChangeCompanyProductError(pageContent) {
-{% block facetRangeGapChangeCompanyProductError %}{%- endblock facetRangeGapChangeCompanyProductError %}
+      function facetRangeGapChangeCompanyProductError(e) {
+{% block facetRangeGapChangeCompanyProductError %}      facetChangeCompanyProductError(e);{%- endblock facetRangeGapChangeCompanyProductError %}
       }
       function facetRangeGapChangeCompanyProduct(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyProductSuccess, facetRangeGapChangeCompanyProductError);
       }
 
-      function facetRangeStartChangeCompanyProductSuccess(pageContent) {
-{% block facetRangeStartChangeCompanyProductSuccess %}{%- endblock facetRangeStartChangeCompanyProductSuccess %}
+      function facetRangeStartChangeCompanyProductSuccess(e) {
+{% block facetRangeStartChangeCompanyProductSuccess %}      facetChangeCompanyProductSuccess(e);{% endblock facetRangeStartChangeCompanyProductSuccess %}
       }
-      function facetRangeStartChangeCompanyProductError(pageContent) {
-{% block facetRangeStartChangeCompanyProductError %}{%- endblock facetRangeStartChangeCompanyProductError %}
+      function facetRangeStartChangeCompanyProductError(e) {
+{% block facetRangeStartChangeCompanyProductError %}      facetChangeCompanyProductError(e);{%- endblock facetRangeStartChangeCompanyProductError %}
       }
       function facetRangeStartChangeCompanyProduct(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyProductSuccess, facetRangeStartChangeCompanyProductError);
       }
 
-      function facetRangeEndChangeCompanyProductSuccess(pageContent) {
-{% block facetRangeEndChangeCompanyProductSuccess %}{%- endblock facetRangeEndChangeCompanyProductSuccess %}
+      function facetRangeEndChangeCompanyProductSuccess(e) {
+{% block facetRangeEndChangeCompanyProductSuccess %}      facetChangeCompanyProductSuccess(e);{% endblock facetRangeEndChangeCompanyProductSuccess %}
       }
-      function facetRangeEndChangeCompanyProductError(pageContent) {
-{% block facetRangeEndChangeCompanyProductError %}{%- endblock facetRangeEndChangeCompanyProductError %}
+      function facetRangeEndChangeCompanyProductError(e) {
+{% block facetRangeEndChangeCompanyProductError %}      facetChangeCompanyProductError(e);{%- endblock facetRangeEndChangeCompanyProductError %}
       }
       function facetRangeEndChangeCompanyProduct(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyProductSuccess, facetRangeEndChangeCompanyProductError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -245,31 +256,47 @@
 
 {%- block htmUrlCompanyProductPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlCompanyProductPage %}
 
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/product/CompanyProductSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/product/CompanyProductSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-CompanyProduct" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                  all products
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  a product
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
 {%- block htmBodyStartPageLayout %}
     {{ super() }}
 {%- block htmBodyStartCompanyProductPage %}
 {% if resultCount > 0 %}
           <div class="wa-flank ">
-            <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip>
-            <wa-button id="return-to-CompanyProduct" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all products
-            </wa-button>
             <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> {{ result.objectTitle | e }}</h1>
           </div>
-          <div class="margin-block">
-          </div>
-{% include en-us/search/product/CompanyProductSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/product/CompanyProductSearchButtons.htm %}
 {% endif %}
+{% include en-us/search/product/CompanyProductSearchForm.htm %}
 {%- endblock htmBodyStartCompanyProductPage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyProductPage %}
-        <div class="pageContent ">
 {%- include en-us/search/product/CompanyProductSidebar.htm %}
+        <div class="pageContent ">
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip></wa-tooltip>
@@ -305,7 +332,6 @@
             <input name="listCompanyProduct" id="listCompanyProduct" class="listCompanyProduct"  value='{{ toJsonArrayStringInApostrophes(listCompanyProduct) }}' type="hidden"/>
           </form>
   {% if solrId is defined %}
-          {{ htmButton_searchpageCompanyProduct() }}
           {{ htmForm_searchpageCompanyProduct() }}
   {% endif %}
 {%- endblock htmFormCompanyProductPage %}

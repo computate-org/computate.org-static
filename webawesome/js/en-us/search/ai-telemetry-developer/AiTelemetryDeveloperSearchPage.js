@@ -4,6 +4,7 @@ Promise.all([
     , customElements.whenDefined('wa-select')
     , customElements.whenDefined('wa-radio')
     , customElements.whenDefined('wa-checkbox')
+    , customElements.whenDefined('wa-dropdown')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeAiTelemetryDeveloper')?.addEventListener('change', (event) => {
@@ -361,6 +362,241 @@ Promise.all([
   document.querySelector('#pageStatsAiTelemetryDeveloper_relatedArticleIds')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('AiTelemetryDeveloper', 'relatedArticleIds', false);
   });
+          document.querySelector('#fqAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_created')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_name')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_description')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_authorName')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_authorUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_pageImageUri')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_pageId')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_displayPage')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_download')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_courseNum')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_lessonNum')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+});
 
   document.querySelector('#htmButton_patchAiTelemetryDeveloper')?.addEventListener('click', (event) => {
     document.querySelector('#patchAiTelemetryDeveloperDialog').open = true;
@@ -401,238 +637,3 @@ Promise.all([
           );
     }
   });
-          document.querySelector('#fqAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_created')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_created')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_name')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_name')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_description')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_description')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_authorName')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_authorName')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_authorUrl')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_authorUrl')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_pageImageUri')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_pageImageUri')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_pageId')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_pageId')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_displayPage')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_displayPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_editPage')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_editPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_userPage')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_userPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_download')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_courseNum')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#fqAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_lessonNum')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-});

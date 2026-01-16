@@ -7,8 +7,7 @@
                       placeholder="[Long] primary key"
                       label="primary key"
                       type="number"
-                      hint="
-The primary key of this object in the database"
+                      hint="The primary key of this object in the database"
                       id="{{classApiMethodMethod}}_pk"
   {%- if "Page" == classApiMethodMethod %}
                       data-userId={{ result.userId | tojson }}
@@ -211,8 +210,7 @@ The primary key of this object in the database"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] font size"
                       label="font size"
-                      hint="
-The default font size for the site"
+                      hint="The default font size for the site"
                       id="{{classApiMethodMethod}}_siteFontSize"
   {%- if "Page" == classApiMethodMethod %}
                       data-userId={{ result.userId | tojson }}
@@ -301,8 +299,7 @@ The default font size for the site"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] site theme"
                       label="site theme"
-                      hint="
-The site theme, either light or dark. "
+                      hint="The site theme, either light or dark. "
                       id="{{classApiMethodMethod}}_siteTheme"
   {%- if "Page" == classApiMethodMethod %}
                       data-userId={{ result.userId | tojson }}
@@ -341,8 +338,7 @@ The site theme, either light or dark. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] web components theme"
                       label="web components theme"
-                      hint="
-The web components theme for the site. "
+                      hint="The web components theme for the site. "
                       id="{{classApiMethodMethod}}_webComponentsTheme"
   {%- if "Page" == classApiMethodMethod %}
                       data-userId={{ result.userId | tojson }}
@@ -382,8 +378,6 @@ The web components theme for the site. "
 {%- macro htmWebComponentsThemeSiteUserPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputWebComponentsThemeSiteUserPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-
-{%- macro htmButton_patchSiteUser() %}<wa-button variant="brand" id="htmButton_patchSiteUser" data-userId={{ result.userId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchSiteUser() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchSiteUser" duration="5000" closable class="wa-header-l ">
@@ -459,8 +453,6 @@ The web components theme for the site. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_postSiteUser() %}<wa-button variant="brand" id="htmButton_postSiteUser" data-userId={{ result.userId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_postSiteUser() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postSiteUser" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -534,17 +526,6 @@ The web components theme for the site. "
           </form>
           {{ htmFormButton_postSiteUser() }}
         </wa-dialog>
-{%- endmacro %}
-
-{%- macro htmButton_searchpageSiteUser() %}{%- endmacro %}
-
-{%- macro htmFormButton_searchpageSiteUser() %}
-          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageSiteUser" duration="5000" closable class="wa-header-l ">
-            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
-                 id="htmFormButton_searchpageSiteUser"
-                >Search site users</wa-button>
-            <wa-badge class="alertPopup" id="alertPopupButton_searchpageSiteUser"></wa-badge>
-          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageSiteUser() %}
@@ -659,46 +640,6 @@ The web components theme for the site. "
           </div>
         </div>
 {%- endmacro %}
-          <div id="htmSearchForm">
-            <wa-scroller>
-              <wa-button-group>
-{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {% if "PATCH" in scopes %}
-    {% if resultCount >= 1 %}
-                <wa-button variant="brand" id="refreshThisSiteUserGenPage"
-                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'userId:{{ result.userId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisSiteUserGenPage')); }, function() { addError(document.querySelector('#refreshThisSiteUserGenPage')); }); return false; ">
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
-                  refresh
-                </wa-button>
-    {% endif %}
-    {% if resultCount > 0 %}
-                <wa-button variant="brand" id="refreshAllSiteUserGenPage{{ result.userId | e }}"
-                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllSiteUserGenPage{{ result.userId | e }}')); }, function() { addError(document.querySelector('#refreshAllSiteUserGenPage{{ result.userId | e }}')); }); "
-                    >
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
-                  refresh all 
-                </wa-button>
-    {% endif %}
-  {% endif %}
-{% endif %}
-{%- if 'PATCH' in scopes %}
-  {%- if resultCount > 0 %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_patchSiteUser() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-{%- if 'POST' in scopes %}
-  {%- if resultCount >= 1 %}
-    {{ htmButton_postSiteUser() }}
-  {%- else %}
-    {{ htmButton_postSiteUser() }}
-  {%- endif %}
-{%- endif %}
-
-              </wa-button-group>
-            </wa-scroller>
-          </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchSiteUser() }}
   {%- endif %}

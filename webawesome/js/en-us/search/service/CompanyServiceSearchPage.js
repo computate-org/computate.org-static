@@ -4,6 +4,7 @@ Promise.all([
     , customElements.whenDefined('wa-select')
     , customElements.whenDefined('wa-radio')
     , customElements.whenDefined('wa-checkbox')
+    , customElements.whenDefined('wa-dropdown')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeCompanyService')?.addEventListener('change', (event) => {
@@ -218,24 +219,8 @@ Promise.all([
   document.querySelector('#pageStatsCompanyService_solrId')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyService', 'solrId', false);
   });
-
-  document.querySelector('#htmButton_patchCompanyService')?.addEventListener('click', (event) => {
-    document.querySelector('#patchCompanyServiceDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postCompanyService')?.addEventListener('click', (event) => {
-    document.querySelector('#postCompanyServiceDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_putimportCompanyService')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportCompanyServiceDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageCompanyService')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageCompanyServiceDialog').open = true;
-  });
           document.querySelector('#fqCompanyService_created')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_created')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -253,7 +238,7 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#fqCompanyService_name')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_name')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -271,7 +256,7 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#fqCompanyService_description')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_description')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -289,7 +274,7 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#fqCompanyService_price')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_price')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -307,7 +292,7 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#fqCompanyService_pageId')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -325,7 +310,7 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#fqCompanyService_displayPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_displayPage')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -343,7 +328,7 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#fqCompanyService_editPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_editPage')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -361,7 +346,7 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#fqCompanyService_userPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_userPage')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -379,7 +364,7 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
           document.querySelector('#fqCompanyService_download')?.addEventListener('change', (event) => {
-            fqChange('CompanyService', event.currentTarget);
+            fqChange('CompanyService', event.currentTarget, facetChangeCompanyServiceSuccess, facetChangeCompanyServiceError);
           });
           document.querySelector('#buttonFacetCompanyService_download')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyService', event.currentTarget);
@@ -397,3 +382,19 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
 });
+
+  document.querySelector('#htmButton_patchCompanyService')?.addEventListener('click', (event) => {
+    document.querySelector('#patchCompanyServiceDialog').open = true;
+  });
+
+  document.querySelector('#htmButton_postCompanyService')?.addEventListener('click', (event) => {
+    document.querySelector('#postCompanyServiceDialog').open = true;
+  });
+
+  document.querySelector('#htmButton_putimportCompanyService')?.addEventListener('click', (event) => {
+    document.querySelector('#putimportCompanyServiceDialog').open = true;
+  });
+
+  document.querySelector('#htmButton_searchpageCompanyService')?.addEventListener('click', (event) => {
+    document.querySelector('#searchpageCompanyServiceDialog').open = true;
+  });

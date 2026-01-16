@@ -48,51 +48,61 @@
 {%- endblock htmTooltipSmartAquacultureDeveloperPage %}`;
       }
 
-      function facetSimpleRangeSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetSimpleRangeSmartAquacultureDeveloperSuccess %}{%- endblock facetSimpleRangeSmartAquacultureDeveloperSuccess %}
+      function facetChangeSmartAquacultureDeveloperSuccess(e) {
+        var l = e.querySelector('.pageForm .listSmartAquacultureDeveloper')?.value;
+        if(l)
+          window.listSmartAquacultureDeveloper = JSON.parse(l);
+{% block facetChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetSmartAquacultureDeveloperSuccess %}
       }
-      function facetSimpleRangeSmartAquacultureDeveloperError(pageContent) {
-{% block facetSimpleRangeSmartAquacultureDeveloperError %}{%- endblock facetSimpleRangeSmartAquacultureDeveloperError %}
+      function facetChangeSmartAquacultureDeveloperError(e) {
+{% block facetChangeSmartAquacultureDeveloperError %}{%- endblock facetSmartAquacultureDeveloperError %}
+      }
+
+      function facetSimpleRangeSmartAquacultureDeveloperSuccess(e) {
+{% block facetSimpleRangeSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetSimpleRangeSmartAquacultureDeveloperSuccess %}
+      }
+      function facetSimpleRangeSmartAquacultureDeveloperError(e) {
+{% block facetSimpleRangeSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{% endblock facetSimpleRangeSmartAquacultureDeveloperError %}
       }
       function facetSimpleRangeSmartAquacultureDeveloper(e) {
         facetSimpleRange(e, facetSimpleRangeSmartAquacultureDeveloperSuccess, facetSimpleRangeSmartAquacultureDeveloperError);
       }
 
-      function facetRangeTimeZoneSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}
+      function facetRangeTimeZoneSmartAquacultureDeveloperSuccess(e) {
+{% block facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}
       }
-      function facetRangeTimeZoneSmartAquacultureDeveloperError(pageContent) {
-{% block facetRangeTimeZoneSmartAquacultureDeveloperError %}{%- endblock facetRangeTimeZoneSmartAquacultureDeveloperError %}
+      function facetRangeTimeZoneSmartAquacultureDeveloperError(e) {
+{% block facetRangeTimeZoneSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{%- endblock facetRangeTimeZoneSmartAquacultureDeveloperError %}
       }
       function facetRangeTimeZoneSmartAquacultureDeveloper(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneSmartAquacultureDeveloperSuccess, facetRangeTimeZoneSmartAquacultureDeveloperError);
       }
 
-      function facetRangeGapChangeSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetRangeGapChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeGapChangeSmartAquacultureDeveloperSuccess %}
+      function facetRangeGapChangeSmartAquacultureDeveloperSuccess(e) {
+{% block facetRangeGapChangeSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetRangeGapChangeSmartAquacultureDeveloperSuccess %}
       }
-      function facetRangeGapChangeSmartAquacultureDeveloperError(pageContent) {
-{% block facetRangeGapChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeGapChangeSmartAquacultureDeveloperError %}
+      function facetRangeGapChangeSmartAquacultureDeveloperError(e) {
+{% block facetRangeGapChangeSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{%- endblock facetRangeGapChangeSmartAquacultureDeveloperError %}
       }
       function facetRangeGapChangeSmartAquacultureDeveloper(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeSmartAquacultureDeveloperSuccess, facetRangeGapChangeSmartAquacultureDeveloperError);
       }
 
-      function facetRangeStartChangeSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetRangeStartChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeStartChangeSmartAquacultureDeveloperSuccess %}
+      function facetRangeStartChangeSmartAquacultureDeveloperSuccess(e) {
+{% block facetRangeStartChangeSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetRangeStartChangeSmartAquacultureDeveloperSuccess %}
       }
-      function facetRangeStartChangeSmartAquacultureDeveloperError(pageContent) {
-{% block facetRangeStartChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeStartChangeSmartAquacultureDeveloperError %}
+      function facetRangeStartChangeSmartAquacultureDeveloperError(e) {
+{% block facetRangeStartChangeSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{%- endblock facetRangeStartChangeSmartAquacultureDeveloperError %}
       }
       function facetRangeStartChangeSmartAquacultureDeveloper(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeSmartAquacultureDeveloperSuccess, facetRangeStartChangeSmartAquacultureDeveloperError);
       }
 
-      function facetRangeEndChangeSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetRangeEndChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeEndChangeSmartAquacultureDeveloperSuccess %}
+      function facetRangeEndChangeSmartAquacultureDeveloperSuccess(e) {
+{% block facetRangeEndChangeSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetRangeEndChangeSmartAquacultureDeveloperSuccess %}
       }
-      function facetRangeEndChangeSmartAquacultureDeveloperError(pageContent) {
-{% block facetRangeEndChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeEndChangeSmartAquacultureDeveloperError %}
+      function facetRangeEndChangeSmartAquacultureDeveloperError(e) {
+{% block facetRangeEndChangeSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{%- endblock facetRangeEndChangeSmartAquacultureDeveloperError %}
       }
       function facetRangeEndChangeSmartAquacultureDeveloper(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeSmartAquacultureDeveloperSuccess, facetRangeEndChangeSmartAquacultureDeveloperError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -304,11 +315,12 @@
 {% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
-{%- if pageSearchForm is not defined %}
-{%- set pageSearchForm %}
-{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchForm.htm %}
-{%- endset pageSearchForm %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
 {%- endif %}
+{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleSmartAquacultureDeveloperPage %}
@@ -317,42 +329,42 @@
 {% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperPaginationButtons.htm %}
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
-              <wa-dropdown id="htmDropdown-name">
-                <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAquacultureDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAquacultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by course name ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAquacultureDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAquacultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by course name descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-description">
-                <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAquacultureDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAquacultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by course description ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAquacultureDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAquacultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by course description descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAquacultureDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAquacultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by course name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAquacultureDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAquacultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by course name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAquacultureDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAquacultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by course description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAquacultureDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAquacultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by course description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
                   </div>
                   {% for item in listSmartAquacultureDeveloper%}
                   <div>
-              <a href="{{ item.displayPage }}">
-                <i class="fa-duotone fa-regular fa-fish"></i>
-              <span>{{ item.name | e }}
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span>{{ item.description | e }}
-</span>              </a>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-duotone fa-regular fa-fish"></i>
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.description | e }}</span>
+                    </a>
                   </div>
                   {% endfor %}
               {% if getColumnName is defined %}

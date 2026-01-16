@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ SITE_LOCALE }}" class="wa-{{ userSiteTheme | default(SITE_THEME) }} wa-theme-{{ userWebComponentsTheme | default(WEB_COMPONENTS_THEME) }} ">
+<html lang="{{ SITE_LOCALE }}" class="wa-cloak wa-{{ userSiteTheme | default(SITE_THEME) }} wa-theme-{{ userWebComponentsTheme | default(WEB_COMPONENTS_THEME) }} ">
   <head>
 {%- block htmHeadPageLayout %}
     <meta charset="UTF-8" />
@@ -96,8 +96,33 @@
         });
       });
     </script>
-    {%- if WEB_COMPONENTS_KIT is defined %}
+    {%- if WEB_COMPONENTS_KIT is defined and WEB_COMPONENTS_KIT != '' %}
     {{ WEB_COMPONENTS_KIT }}
+    {%- else %}
+    <script async src="https://ga.jspm.io/npm:es-module-shims@2.6.2/dist/es-module-shims.js" crossorigin="anonymous"></script>
+    <script type="importmap">
+    {
+      "imports": {
+    "@patternfly/elements/pf-card/pf-card.js": "https://ga.jspm.io/npm:@patternfly/elements@4.2.0/pf-card/pf-card.js"
+      },
+      "scopes": {
+    "https://ga.jspm.io/": {
+    "@lit/reactive-element": "https://ga.jspm.io/npm:@lit/reactive-element@2.1.1/reactive-element.js",
+    "@lit/reactive-element/decorators/": "https://ga.jspm.io/npm:@lit/reactive-element@2.1.1/decorators/",
+    "@patternfly/pfe-core/controllers/slot-controller.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.4/controllers/slot-controller.js",
+    "lit": "https://ga.jspm.io/npm:lit@3.3.1/index.js",
+    "lit-element/lit-element.js": "https://ga.jspm.io/npm:lit-element@4.2.1/lit-element.js",
+    "lit-html": "https://ga.jspm.io/npm:lit-html@3.3.1/lit-html.js",
+    "lit-html/": "https://ga.jspm.io/npm:lit-html@3.3.1/",
+    "lit/": "https://ga.jspm.io/npm:lit@3.3.1/",
+    "tslib": "https://ga.jspm.io/npm:tslib@2.8.1/tslib.es6.mjs"
+    }
+      }
+    }
+    </script>
+    <script type="module">
+      import "@patternfly/elements/pf-card/pf-card.js";
+    </script>
     {%- endif %}
     <script src="{{ STATIC_BASE_URL }}/js/site.js"></script>
     <script src="{{ STATIC_BASE_URL }}/js/sockjs.js"></script>
@@ -114,13 +139,42 @@
     <script>
 {%- block websocketPageLayout %}{%- endblock websocketPageLayout %}
     </script>
-   </head>
-  <body class="wa-body-{{ userFontSize }} wa-size-{{ userFontSize }} wa-cloak ">
+  </head>
+  <body class="wa-body-{{ userFontSize }} wa-size-{{ userFontSize }} ">
     {% if WEB_COMPONENTS_PRO == 'true' -%}
     <wa-page disable-sticky="header">
     {%- else -%}
     <div id="site-grid">
     {%- endif %}
+      <header slot="header">
+        <div class="wa-cluster ">
+          <wa-button size="small" data-toggle-nav variant="brand" label="open menu"{% if WEB_COMPONENTS_PRO == 'false' %} onclick="document.querySelector('#site-aside-left').open = true;"{% endif %}>
+            <i class="{{ FONTAWESOME_STYLE }} fa-bars"></i>
+          </wa-button>
+          <wa-popup placement="bottom-start" id="siteSearchDropdown">
+            <wa-input size="small" slot="anchor" placeholder="search" id="siteSearchInput">
+              <i slot="start" class="{{ FONTAWESOME_STYLE }}  fa-magnifying-glass"></i>
+            </wa-input>
+            <div id="siteSearchDropdownMenu">
+            </div>
+          </wa-popup>
+          {% if pageSearchFormButtons is defined or pageBreadcrumb is defined -%}
+          {{ pageSearchFormButtons | default('') }}
+          {%- endif %}
+        </div>
+      </header>
+      {% if pageSearchButtons is defined or pageBreadcrumb is defined -%}
+      <header slot="subheader">
+        <div class="wa-cluster ">
+          <div>
+            {{ pageBreadcrumb | default('') }}
+          </div>
+          <div>
+            {{ pageSearchButtons | default('') }}
+          </div>
+        </div>
+      </header>
+      {%- endif %}
 {%- block htmBodyPageLayout %}
 {%- block htmBodyStartPageLayout %}
       {% if WEB_COMPONENTS_PRO == 'false' -%}
@@ -224,6 +278,10 @@
 {%- endif %}
             </div>
             <div>
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SpineProgramming" href="{{ SITE_BASE_URL }}/en-us/search/spine-programming">
+                <i slot="start" class="fa-kit fa-spine"></i>
+                SPINE Programming lessons
+              </wa-button>
               <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyAbout" href="{{ SITE_BASE_URL }}/en-us/search/about">
                 <i slot="start" class="fa-duotone fa-regular fa-address-card"></i>
                 about
@@ -282,23 +340,11 @@
       {% if WEB_COMPONENTS_PRO == 'false' -%}
       </wa-drawer>
       {% endif %}
-      <main class="wa-stack ">
+      <main id="site-main" class="wa-stack ">
         <wa-drawer id="warnings-drawer" label="Warnings">
           <div id="warnings-drawer-stack" class="wa-stack ">
           </div>
         </wa-drawer>
-        <header slot="header" class="wa-flank margin-block ">
-          <wa-button data-toggle-nav variant="brand" label="open menu"{% if WEB_COMPONENTS_PRO == 'false' %} onclick="document.querySelector('#site-aside-left').open = true;"{% endif %}>
-            <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-bars"></i>
-          </wa-button>
-          <wa-popup  placement="bottom-start" id="siteSearchDropdown">
-            <wa-input slot="anchor" placeholder="search" id="siteSearchInput">
-              <i slot="start" class="{{ FONTAWESOME_STYLE }}  fa-magnifying-glass"></i>
-            </wa-input>
-            <div id="siteSearchDropdownMenu">
-            </div>
-          </wa-popup>
-        </header>
 {%- endblock htmBodyStartPageLayout %}
 {% block htmBodyMiddlePageLayout %}
         <main slot="main" class="pageContent wa-stack wa-gap-3xl ">

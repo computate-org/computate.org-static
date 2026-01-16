@@ -62,7 +62,7 @@
                     <wa-tooltip for="buttonFacetCompanyAbout_{{ key }}">see values</wa-tooltip>
                     <div class="flex round-column pill-smart-border-radius ">
                       <wa-button variant="brand" id="buttonFacetCompanyAbout_{{ key }}" data-var="{{ value.var }}" data-clear="{% if value.facetField is defined %}true{% else %}false{% endif %}"><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-list "></i></wa-button>
-                      <wa-input id="fqCompanyAbout_{{ key }}" placeholder="{{ value.displayName }}" class="" onchange="fqChange('CompanyAbout', this); " data-var="{{ value.var }}" autocomplete="off=" value="{{ value.val }}"></wa-input>
+                      <wa-input id="fqCompanyAbout_{{ key }}" placeholder="{{ value.displayName }}" class="" onchange="fqChange('CompanyAbout', this, facetChangeCompanyAboutSuccess, facetChangeCompanyAboutError); " data-var="{{ value.var }}" autocomplete="off=" value="{{ value.val }}"></wa-input>
                     </div>
                     <div class="pageSearchVal " id="pageSearchVal-fqCompanyAbout_{{ key }}">{% if value.val is defined %}fq={{ value.var }}:{{ value.val | urlencode() }}{% endif %}</div>
                     <div class="pageSearchVal " id="pageSearchVal-buttonFacetCompanyAbout_{{ key }}">{% if value.facetField.var is defined %}facet.field={{ value.facetField.var }}{% endif %}</div>
@@ -72,7 +72,7 @@
                       {% for facetFieldKey, facetFieldValue in value.facetField.counts.items() %}
                       <div>
                         <wa-tooltip content="{{ facetFieldValue | e }} about page total with {{ value.facetField.var | e }} &quot;{{ facetFieldKey | e }}&quot;"></wa-tooltip>
-                        <div class="cursor-pointer raised-item " data-class="CompanyAbout" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="if(document.querySelector('#fqCompanyAbout_{{ key }}')?.value === '{{ facetFieldKey }}') this.setAttribute('data-val', ''); fqReplace('CompanyAbout', this); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
+                        <div class="cursor-pointer raised-item " data-class="CompanyAbout" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="if(document.querySelector('#fqCompanyAbout_{{ key }}')?.value === '{{ facetFieldKey }}') this.setAttribute('data-val', ''); fqReplace('CompanyAbout', this, facetChangeCompanyAboutSuccess, facetChangeCompanyAboutError); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
                       </div>
                       {% endfor %}
                     </div>

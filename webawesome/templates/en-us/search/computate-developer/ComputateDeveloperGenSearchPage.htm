@@ -48,51 +48,61 @@
 {%- endblock htmTooltipComputateDeveloperPage %}`;
       }
 
-      function facetSimpleRangeComputateDeveloperSuccess(pageContent) {
-{% block facetSimpleRangeComputateDeveloperSuccess %}{%- endblock facetSimpleRangeComputateDeveloperSuccess %}
+      function facetChangeComputateDeveloperSuccess(e) {
+        var l = e.querySelector('.pageForm .listComputateDeveloper')?.value;
+        if(l)
+          window.listComputateDeveloper = JSON.parse(l);
+{% block facetChangeComputateDeveloperSuccess %}{%- endblock facetComputateDeveloperSuccess %}
       }
-      function facetSimpleRangeComputateDeveloperError(pageContent) {
-{% block facetSimpleRangeComputateDeveloperError %}{%- endblock facetSimpleRangeComputateDeveloperError %}
+      function facetChangeComputateDeveloperError(e) {
+{% block facetChangeComputateDeveloperError %}{%- endblock facetComputateDeveloperError %}
+      }
+
+      function facetSimpleRangeComputateDeveloperSuccess(e) {
+{% block facetSimpleRangeComputateDeveloperSuccess %}      facetChangeComputateDeveloperSuccess(e);{% endblock facetSimpleRangeComputateDeveloperSuccess %}
+      }
+      function facetSimpleRangeComputateDeveloperError(e) {
+{% block facetSimpleRangeComputateDeveloperError %}      facetChangeComputateDeveloperError(e);{% endblock facetSimpleRangeComputateDeveloperError %}
       }
       function facetSimpleRangeComputateDeveloper(e) {
         facetSimpleRange(e, facetSimpleRangeComputateDeveloperSuccess, facetSimpleRangeComputateDeveloperError);
       }
 
-      function facetRangeTimeZoneComputateDeveloperSuccess(pageContent) {
-{% block facetRangeTimeZoneComputateDeveloperSuccess %}{%- endblock facetRangeTimeZoneComputateDeveloperSuccess %}
+      function facetRangeTimeZoneComputateDeveloperSuccess(e) {
+{% block facetRangeTimeZoneComputateDeveloperSuccess %}      facetChangeComputateDeveloperSuccess(e);{% endblock facetRangeTimeZoneComputateDeveloperSuccess %}
       }
-      function facetRangeTimeZoneComputateDeveloperError(pageContent) {
-{% block facetRangeTimeZoneComputateDeveloperError %}{%- endblock facetRangeTimeZoneComputateDeveloperError %}
+      function facetRangeTimeZoneComputateDeveloperError(e) {
+{% block facetRangeTimeZoneComputateDeveloperError %}      facetChangeComputateDeveloperError(e);{%- endblock facetRangeTimeZoneComputateDeveloperError %}
       }
       function facetRangeTimeZoneComputateDeveloper(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneComputateDeveloperSuccess, facetRangeTimeZoneComputateDeveloperError);
       }
 
-      function facetRangeGapChangeComputateDeveloperSuccess(pageContent) {
-{% block facetRangeGapChangeComputateDeveloperSuccess %}{%- endblock facetRangeGapChangeComputateDeveloperSuccess %}
+      function facetRangeGapChangeComputateDeveloperSuccess(e) {
+{% block facetRangeGapChangeComputateDeveloperSuccess %}      facetChangeComputateDeveloperSuccess(e);{% endblock facetRangeGapChangeComputateDeveloperSuccess %}
       }
-      function facetRangeGapChangeComputateDeveloperError(pageContent) {
-{% block facetRangeGapChangeComputateDeveloperError %}{%- endblock facetRangeGapChangeComputateDeveloperError %}
+      function facetRangeGapChangeComputateDeveloperError(e) {
+{% block facetRangeGapChangeComputateDeveloperError %}      facetChangeComputateDeveloperError(e);{%- endblock facetRangeGapChangeComputateDeveloperError %}
       }
       function facetRangeGapChangeComputateDeveloper(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeComputateDeveloperSuccess, facetRangeGapChangeComputateDeveloperError);
       }
 
-      function facetRangeStartChangeComputateDeveloperSuccess(pageContent) {
-{% block facetRangeStartChangeComputateDeveloperSuccess %}{%- endblock facetRangeStartChangeComputateDeveloperSuccess %}
+      function facetRangeStartChangeComputateDeveloperSuccess(e) {
+{% block facetRangeStartChangeComputateDeveloperSuccess %}      facetChangeComputateDeveloperSuccess(e);{% endblock facetRangeStartChangeComputateDeveloperSuccess %}
       }
-      function facetRangeStartChangeComputateDeveloperError(pageContent) {
-{% block facetRangeStartChangeComputateDeveloperError %}{%- endblock facetRangeStartChangeComputateDeveloperError %}
+      function facetRangeStartChangeComputateDeveloperError(e) {
+{% block facetRangeStartChangeComputateDeveloperError %}      facetChangeComputateDeveloperError(e);{%- endblock facetRangeStartChangeComputateDeveloperError %}
       }
       function facetRangeStartChangeComputateDeveloper(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeComputateDeveloperSuccess, facetRangeStartChangeComputateDeveloperError);
       }
 
-      function facetRangeEndChangeComputateDeveloperSuccess(pageContent) {
-{% block facetRangeEndChangeComputateDeveloperSuccess %}{%- endblock facetRangeEndChangeComputateDeveloperSuccess %}
+      function facetRangeEndChangeComputateDeveloperSuccess(e) {
+{% block facetRangeEndChangeComputateDeveloperSuccess %}      facetChangeComputateDeveloperSuccess(e);{% endblock facetRangeEndChangeComputateDeveloperSuccess %}
       }
-      function facetRangeEndChangeComputateDeveloperError(pageContent) {
-{% block facetRangeEndChangeComputateDeveloperError %}{%- endblock facetRangeEndChangeComputateDeveloperError %}
+      function facetRangeEndChangeComputateDeveloperError(e) {
+{% block facetRangeEndChangeComputateDeveloperError %}      facetChangeComputateDeveloperError(e);{%- endblock facetRangeEndChangeComputateDeveloperError %}
       }
       function facetRangeEndChangeComputateDeveloper(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeComputateDeveloperSuccess, facetRangeEndChangeComputateDeveloperError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -304,11 +315,12 @@
 {% include en-us/search/computate-developer/ComputateDeveloperSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
-{%- if pageSearchForm is not defined %}
-{%- set pageSearchForm %}
-{% include en-us/search/computate-developer/ComputateDeveloperSearchForm.htm %}
-{%- endset pageSearchForm %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/computate-developer/ComputateDeveloperSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
 {%- endif %}
+{% include en-us/search/computate-developer/ComputateDeveloperSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleComputateDeveloperPage %}
@@ -317,42 +329,42 @@
 {% include en-us/search/computate-developer/ComputateDeveloperPaginationButtons.htm %}
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
-              <wa-dropdown id="htmDropdown-name">
-                <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by course name ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by course name descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-description">
-                <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by course description ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by course description descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by course name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by course name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by course description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortComputateDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-ComputateDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by course description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
                   </div>
                   {% for item in listComputateDeveloper%}
                   <div>
-              <a href="{{ item.displayPage }}">
-                <i class="fa-kit fa-computate-c-key"></i>
-              <span>{{ item.name | e }}
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span>{{ item.description | e }}
-</span>              </a>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-kit fa-computate-c-key"></i>
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.description | e }}</span>
+                    </a>
                   </div>
                   {% endfor %}
               {% if getColumnName is defined %}

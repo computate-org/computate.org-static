@@ -4,6 +4,7 @@ Promise.all([
     , customElements.whenDefined('wa-select')
     , customElements.whenDefined('wa-radio')
     , customElements.whenDefined('wa-checkbox')
+    , customElements.whenDefined('wa-dropdown')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeCompanyResearch')?.addEventListener('change', (event) => {
@@ -207,24 +208,8 @@ Promise.all([
   document.querySelector('#pageStatsCompanyResearch_solrId')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyResearch', 'solrId', false);
   });
-
-  document.querySelector('#htmButton_patchCompanyResearch')?.addEventListener('click', (event) => {
-    document.querySelector('#patchCompanyResearchDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postCompanyResearch')?.addEventListener('click', (event) => {
-    document.querySelector('#postCompanyResearchDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_putimportCompanyResearch')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportCompanyResearchDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageCompanyResearch')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageCompanyResearchDialog').open = true;
-  });
           document.querySelector('#fqCompanyResearch_created')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
+            fqChange('CompanyResearch', event.currentTarget, facetChangeCompanyResearchSuccess, facetChangeCompanyResearchError);
           });
           document.querySelector('#buttonFacetCompanyResearch_created')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.currentTarget);
@@ -242,7 +227,7 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_name')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
+            fqChange('CompanyResearch', event.currentTarget, facetChangeCompanyResearchSuccess, facetChangeCompanyResearchError);
           });
           document.querySelector('#buttonFacetCompanyResearch_name')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.currentTarget);
@@ -260,7 +245,7 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_description')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
+            fqChange('CompanyResearch', event.currentTarget, facetChangeCompanyResearchSuccess, facetChangeCompanyResearchError);
           });
           document.querySelector('#buttonFacetCompanyResearch_description')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.currentTarget);
@@ -278,7 +263,7 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_pageId')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
+            fqChange('CompanyResearch', event.currentTarget, facetChangeCompanyResearchSuccess, facetChangeCompanyResearchError);
           });
           document.querySelector('#buttonFacetCompanyResearch_pageId')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.currentTarget);
@@ -296,7 +281,7 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_displayPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
+            fqChange('CompanyResearch', event.currentTarget, facetChangeCompanyResearchSuccess, facetChangeCompanyResearchError);
           });
           document.querySelector('#buttonFacetCompanyResearch_displayPage')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.currentTarget);
@@ -314,7 +299,7 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_editPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
+            fqChange('CompanyResearch', event.currentTarget, facetChangeCompanyResearchSuccess, facetChangeCompanyResearchError);
           });
           document.querySelector('#buttonFacetCompanyResearch_editPage')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.currentTarget);
@@ -332,7 +317,7 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_userPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
+            fqChange('CompanyResearch', event.currentTarget, facetChangeCompanyResearchSuccess, facetChangeCompanyResearchError);
           });
           document.querySelector('#buttonFacetCompanyResearch_userPage')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.currentTarget);
@@ -350,7 +335,7 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
           document.querySelector('#fqCompanyResearch_download')?.addEventListener('change', (event) => {
-            fqChange('CompanyResearch', event.currentTarget);
+            fqChange('CompanyResearch', event.currentTarget, facetChangeCompanyResearchSuccess, facetChangeCompanyResearchError);
           });
           document.querySelector('#buttonFacetCompanyResearch_download')?.addEventListener('click', (event) => {
             facetFieldChange('CompanyResearch', event.currentTarget);
@@ -368,3 +353,19 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
 });
+
+  document.querySelector('#htmButton_patchCompanyResearch')?.addEventListener('click', (event) => {
+    document.querySelector('#patchCompanyResearchDialog').open = true;
+  });
+
+  document.querySelector('#htmButton_postCompanyResearch')?.addEventListener('click', (event) => {
+    document.querySelector('#postCompanyResearchDialog').open = true;
+  });
+
+  document.querySelector('#htmButton_putimportCompanyResearch')?.addEventListener('click', (event) => {
+    document.querySelector('#putimportCompanyResearchDialog').open = true;
+  });
+
+  document.querySelector('#htmButton_searchpageCompanyResearch')?.addEventListener('click', (event) => {
+    document.querySelector('#searchpageCompanyResearchDialog').open = true;
+  });

@@ -7,8 +7,7 @@
                       placeholder="[Long] primary key"
                       label="primary key"
                       type="number"
-                      hint="
-The primary key of this object in the database"
+                      hint="The primary key of this object in the database"
                       id="{{classApiMethodMethod}}_pk"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -162,8 +161,7 @@ The primary key of this object in the database"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] name"
                       label="name"
-                      hint="
-The name of this webinar"
+                      hint="The name of this webinar"
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -199,8 +197,7 @@ The name of this webinar"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] description"
                       label="description"
-                      hint="
-A description of this webinar"
+                      hint="A description of this webinar"
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -236,8 +233,7 @@ A description of this webinar"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Webinar URL Americas"
                       label="Webinar URL Americas"
-                      hint="
-The actual link to the Webinar in Americas"
+                      hint="The actual link to the Webinar in Americas"
                       id="{{classApiMethodMethod}}_webinarUrlAmericas"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -273,8 +269,7 @@ The actual link to the Webinar in Americas"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Webinar URL APAC"
                       label="Webinar URL APAC"
-                      hint="
-The actual link to the Webinar in APAC"
+                      hint="The actual link to the Webinar in APAC"
                       id="{{classApiMethodMethod}}_webinarUrlApac"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -310,8 +305,7 @@ The actual link to the Webinar in APAC"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Webinar URL EMEA"
                       label="Webinar URL EMEA"
-                      hint="
-The actual link to the Webinar in EMEA"
+                      hint="The actual link to the Webinar in EMEA"
                       id="{{classApiMethodMethod}}_webinarUrlEmea"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -347,8 +341,7 @@ The actual link to the Webinar in EMEA"
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] ICal URL"
                       label="ICal URL"
-                      hint="
-The ICalendar URL for the events. "
+                      hint="The ICalendar URL for the events. "
                       id="{{classApiMethodMethod}}_icalUrl"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -412,8 +405,7 @@ The ICalendar URL for the events. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      hint="
-The ID for this page. "
+                      hint="The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -441,8 +433,6 @@ The ID for this page. "
 {%- macro htmPageIdCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputPageIdCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-
-{%- macro htmButton_patchCompanyWebinar() %}<wa-button variant="brand" id="htmButton_patchCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyWebinar() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyWebinar" duration="5000" closable class="wa-header-l ">
@@ -556,8 +546,6 @@ The ID for this page. "
           {{ htmFormButton_patchCompanyWebinar() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_postCompanyWebinar() %}<wa-button variant="brand" id="htmButton_postCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyWebinar() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyWebinar" duration="5000" closable class="wa-header-l ">
@@ -673,8 +661,6 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_deleteCompanyWebinar() %}<wa-button variant="brand" id="htmButton_deleteCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deleteCompanyWebinar() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deleteCompanyWebinar" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -691,8 +677,6 @@ The ID for this page. "
           {{ htmFormButton_deleteCompanyWebinar() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_putimportCompanyWebinar() %}<wa-button variant="brand" id="htmButton_putimportCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyWebinar() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyWebinar" duration="5000" closable class="wa-header-l ">
@@ -717,17 +701,6 @@ The ID for this page. "
           </form>
           {{ htmFormButton_putimportCompanyWebinar() }}
         </wa-dialog>
-{%- endmacro %}
-
-{%- macro htmButton_searchpageCompanyWebinar() %}{%- endmacro %}
-
-{%- macro htmFormButton_searchpageCompanyWebinar() %}
-          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageCompanyWebinar" duration="5000" closable class="wa-header-l ">
-            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
-                 id="htmFormButton_searchpageCompanyWebinar"
-                >Search webinars</wa-button>
-            <wa-badge class="alertPopup" id="alertPopupButton_searchpageCompanyWebinar"></wa-badge>
-          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyWebinar() %}
@@ -882,8 +855,6 @@ The ID for this page. "
         </div>
 {%- endmacro %}
 
-{%- macro htmButton_deletefilterCompanyWebinar() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyWebinar" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deletefilterCompanyWebinar() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterCompanyWebinar" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -900,61 +871,6 @@ The ID for this page. "
           {{ htmFormButton_deletefilterCompanyWebinar() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmSearchForm">
-            <wa-scroller>
-              <wa-button-group>
-{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {% if "PATCH" in scopes %}
-    {% if resultCount >= 1 %}
-                <wa-button variant="brand" id="refreshThisCompanyWebinarGenPage"
-                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyWebinarGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyWebinarGenPage')); }); return false; ">
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
-                  refresh
-                </wa-button>
-    {% endif %}
-    {% if resultCount > 0 %}
-                <wa-button variant="brand" id="refreshAllCompanyWebinarGenPage{{ result.pageId | e }}"
-                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllCompanyWebinarGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllCompanyWebinarGenPage{{ result.pageId | e }}')); }); "
-                    >
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
-                  refresh all 
-                </wa-button>
-    {% endif %}
-  {% endif %}
-{% endif %}
-{%- if 'PATCH' in scopes %}
-  {%- if resultCount > 0 %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_patchCompanyWebinar() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-{%- if 'POST' in scopes %}
-  {%- if resultCount >= 1 %}
-    {{ htmButton_postCompanyWebinar() }}
-  {%- else %}
-    {{ htmButton_postCompanyWebinar() }}
-  {%- endif %}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is defined %}
-    {{ htmButton_deleteCompanyWebinar() }}
-  {%- endif %}
-{%- endif %}
-{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {{ htmButton_putimportCompanyWebinar() }}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is not defined %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_deletefilterCompanyWebinar() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-
-              </wa-button-group>
-            </wa-scroller>
-          </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchCompanyWebinar() }}
   {%- endif %}

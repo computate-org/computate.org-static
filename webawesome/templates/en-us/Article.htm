@@ -1,6 +1,131 @@
 {% extends "en-us/PageLayout.htm" %}
+
+{%- macro typed(summary, id, codeTemplate, skeletonTemplate=null, htmTemplate=null, typeSpeed=20, backSpeed=10, smartBackspace=true) -%}
+{% set macroCode -%}
+{%- include codeTemplate -%}
+{%- endset -%}
+<wa-intersection-observer id="{{ id | e }}-intersection-observer" threshold="1" intersect-class="visible" once>
+  <wa-details summary="{{ summary | e }}" id="{{ id | e }}-details" icon-placement="start" open>
+    <i slot="expand-icon" class="fa-kit fa-spine fa-2xl"></i>
+    <i slot="collapse-icon" class="fa-kit fa-spine fa-2xl"></i>
+    {% if skeletonTemplate is defined and htmTemplate is defined %}
+    <wa-split-panel>
+      <div slot="start" class="wa-stack " style="background-color: var(--wa-color-surface-lowered); ">
+        <wa-scroller><pre class="wa-border-radius-square"><code id="{{ id | e }}"></code></pre></wa-scroller>
+        <script type="module">
+          let typed = null;
+          function initTyped() {
+            if(typed) {
+              typed.destroy();
+            }
+            typed = new Typed('#{{ id | e }}', {
+              strings: [ 
+                {{ macroCode | tojson }} 
+              ]
+              , typeSpeed: {{ typeSpeed }}
+              , backSpeed: {{ backSpeed }}
+              , smartBackspace: {{ smartBackspace }}
+              , onComplete: (self) => {
+                document.getElementById('{{ id | e }}-details-after').show();
+              }
+            });
+          }
+          Promise.all([
+            customElements.whenDefined('wa-page')
+            , customElements.whenDefined('wa-scroller')
+            , customElements.whenDefined('wa-split-panel')
+            , customElements.whenDefined('wa-intersection-observer')
+          ]).then(() => {
+            var details = document.getElementById('{{ id | e }}-details');
+            details.addEventListener('wa-after-show', (e) => {
+              if(e.target.id == '{{ id | e }}-details') {
+                initTyped();
+              }
+            });
+            details.addEventListener('wa-after-hide', (e) => {
+              if(e.target.id == '{{ id | e }}-details') {
+                if(typed) {
+                  typed.destroy();
+                }
+                document.getElementById('{{ id | e }}').innerHTML = '';
+                document.getElementById('{{ id | e }}-details-before').show();
+              }
+            });
+            document.getElementById('{{ id | e }}-intersection-observer').addEventListener('wa-intersect', event => {
+              const entry = event.detail.entry;
+              if (entry.isIntersecting) {
+                initTyped();
+              }
+            });
+          });
+        </script>
+      </div>
+      {% if skeletonTemplate is defined and htmTemplate is defined %}
+      <div slot="end" class="wa-stack wa-gap-0 ">
+        <wa-details summary="Before" name="{{ id | e }}-split-panel-end" id="{{ id | e }}-details-before" open>
+          {% include skeletonTemplate %}
+        </wa-details>
+        <wa-details summary="After" name="{{ id | e }}-split-panel-end" id="{{ id | e }}-details-after">
+          {% include htmTemplate %}
+        </wa-details>
+      </div>
+      {% endif %}
+    </wa-split-panel>
+    {% else %}
+    <div class="wa-stack " style="background-color: var(--wa-color-surface-lowered); ">
+      <wa-scroller><pre class="wa-border-radius-square"><code id="{{ id | e }}"></code></pre></wa-scroller>
+      <script type="module">
+        let typed = null;
+        function initTyped() {
+          if(typed) {
+            typed.destroy();
+          }
+          typed = new Typed('#{{ id | e }}', {
+            strings: [ 
+              {{ macroCode | tojson }} 
+            ]
+            , typeSpeed: {{ typeSpeed }}
+            , backSpeed: {{ backSpeed }}
+            , smartBackspace: {{ smartBackspace }}
+          });
+        }
+        Promise.all([
+          customElements.whenDefined('wa-page')
+          , customElements.whenDefined('wa-scroller')
+          , customElements.whenDefined('wa-intersection-observer')
+        ]).then(() => {
+          var details = document.getElementById('{{ id | e }}-details');
+          details.addEventListener('wa-after-show', (e) => {
+            if(e.target.id == '{{ id | e }}-details') {
+              initTyped();
+            }
+          });
+          details.addEventListener('wa-after-hide', (e) => {
+            if(e.target.id == '{{ id | e }}-details') {
+              if(typed) {
+                typed.destroy();
+              }
+              document.getElementById('{{ id | e }}').innerHTML = '';
+              document.getElementById('{{ id | e }}-details-before').show();
+            }
+          });
+          document.getElementById('{{ id | e }}-intersection-observer').addEventListener('wa-intersect', event => {
+            const entry = event.detail.entry;
+            if (entry.isIntersecting) {
+              var details = document.getElementById('{{ id | e }}-details');
+              initTyped();
+            }
+          });
+        });
+      </script>
+    </div>
+    {% endif %}
+  </wa-details>
+</wa-intersection-observer>
+{%- endmacro -%}
+
 {%- macro code(code) %}
-<div class="wa-flank wa-gap-2xs "><wa-copy-button value="{{ code | e }}"></wa-copy-button><wa-scroller><pre><code>{{ code | e }}</code></pre></wa-scroller></div>
+<div class="wa-flank wa-gap-2xs "><wa-copy-button value="{{ code | e }}"></wa-copy-button><wa-scroller><pre class="wa-border-radius-square"><code>{{ code | e }}</code></pre></wa-scroller></div>
 {%- endmacro %}
 {%- macro articleH1(resultName) -%}
     <h1 class="wa-heading-3xl">

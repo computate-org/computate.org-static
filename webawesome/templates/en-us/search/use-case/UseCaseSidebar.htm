@@ -62,7 +62,7 @@
                     <wa-tooltip for="buttonFacetUseCase_{{ key }}">see values</wa-tooltip>
                     <div class="flex round-column pill-smart-border-radius ">
                       <wa-button variant="brand" id="buttonFacetUseCase_{{ key }}" data-var="{{ value.var }}" data-clear="{% if value.facetField is defined %}true{% else %}false{% endif %}"><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-list "></i></wa-button>
-                      <wa-input id="fqUseCase_{{ key }}" placeholder="{{ value.displayName }}" class="" onchange="fqChange('UseCase', this); " data-var="{{ value.var }}" autocomplete="off=" value="{{ value.val }}"></wa-input>
+                      <wa-input id="fqUseCase_{{ key }}" placeholder="{{ value.displayName }}" class="" onchange="fqChange('UseCase', this, facetChangeUseCaseSuccess, facetChangeUseCaseError); " data-var="{{ value.var }}" autocomplete="off=" value="{{ value.val }}"></wa-input>
                     </div>
                     <div class="pageSearchVal " id="pageSearchVal-fqUseCase_{{ key }}">{% if value.val is defined %}fq={{ value.var }}:{{ value.val | urlencode() }}{% endif %}</div>
                     <div class="pageSearchVal " id="pageSearchVal-buttonFacetUseCase_{{ key }}">{% if value.facetField.var is defined %}facet.field={{ value.facetField.var }}{% endif %}</div>
@@ -72,7 +72,7 @@
                       {% for facetFieldKey, facetFieldValue in value.facetField.counts.items() %}
                       <div>
                         <wa-tooltip content="{{ facetFieldValue | e }} use case total with {{ value.facetField.var | e }} &quot;{{ facetFieldKey | e }}&quot;"></wa-tooltip>
-                        <div class="cursor-pointer raised-item " data-class="UseCase" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="if(document.querySelector('#fqUseCase_{{ key }}')?.value === '{{ facetFieldKey }}') this.setAttribute('data-val', ''); fqReplace('UseCase', this); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
+                        <div class="cursor-pointer raised-item " data-class="UseCase" data-var="{{ value.facetField.var }}" data-val="{{ facetFieldKey }}" onclick="if(document.querySelector('#fqUseCase_{{ key }}')?.value === '{{ facetFieldKey }}') this.setAttribute('data-val', ''); fqReplace('UseCase', this, facetChangeUseCaseSuccess, facetChangeUseCaseError); ">{{ facetFieldValue }}: {{ facetFieldKey }}</div>
                       </div>
                       {% endfor %}
                     </div>

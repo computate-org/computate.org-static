@@ -124,8 +124,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] event name"
                       label="event name"
-                      hint="
-The event name. "
+                      hint="The event name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -196,8 +195,7 @@ The event name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] event description"
                       label="event description"
-                      hint="
-The event description. "
+                      hint="The event description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -290,8 +288,8 @@ The event description. "
                       placeholder="[BigDecimal] price"
                       label="price"
                       type="number"
-                      hint="
-The price of the product per developer. "
+                      step="0.01"
+                      hint="The price of the product per developer. "
                       id="{{classApiMethodMethod}}_price"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -327,8 +325,7 @@ The price of the product per developer. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      hint="
-The ID for this page. "
+                      hint="The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -402,8 +399,6 @@ The ID for this page. "
 {%- macro htmDisplayPageCompanyEventPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDisplayPageCompanyEventPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-
-{%- macro htmButton_patchCompanyEvent() %}<wa-button variant="brand" id="htmButton_patchCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchCompanyEvent() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyEvent" duration="5000" closable class="wa-header-l ">
@@ -511,8 +506,6 @@ The ID for this page. "
           {{ htmFormButton_patchCompanyEvent() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_postCompanyEvent() %}<wa-button variant="brand" id="htmButton_postCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyEvent() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyEvent" duration="5000" closable class="wa-header-l ">
@@ -622,8 +615,6 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_deleteCompanyEvent() %}<wa-button variant="brand" id="htmButton_deleteCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deleteCompanyEvent() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deleteCompanyEvent" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -640,8 +631,6 @@ The ID for this page. "
           {{ htmFormButton_deleteCompanyEvent() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_putimportCompanyEvent() %}<wa-button variant="brand" id="htmButton_putimportCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportCompanyEvent() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyEvent" duration="5000" closable class="wa-header-l ">
@@ -666,17 +655,6 @@ The ID for this page. "
           </form>
           {{ htmFormButton_putimportCompanyEvent() }}
         </wa-dialog>
-{%- endmacro %}
-
-{%- macro htmButton_searchpageCompanyEvent() %}{%- endmacro %}
-
-{%- macro htmFormButton_searchpageCompanyEvent() %}
-          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageCompanyEvent" duration="5000" closable class="wa-header-l ">
-            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
-                 id="htmFormButton_searchpageCompanyEvent"
-                >Search events</wa-button>
-            <wa-badge class="alertPopup" id="alertPopupButton_searchpageCompanyEvent"></wa-badge>
-          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyEvent() %}
@@ -814,8 +792,6 @@ The ID for this page. "
         </div>
 {%- endmacro %}
 
-{%- macro htmButton_deletefilterCompanyEvent() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyEvent" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deletefilterCompanyEvent() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterCompanyEvent" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -832,61 +808,6 @@ The ID for this page. "
           {{ htmFormButton_deletefilterCompanyEvent() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmSearchForm">
-            <wa-scroller>
-              <wa-button-group>
-{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {% if "PATCH" in scopes %}
-    {% if resultCount >= 1 %}
-                <wa-button variant="brand" id="refreshThisCompanyEventGenPage"
-                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyEventGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyEventGenPage')); }); return false; ">
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
-                  refresh
-                </wa-button>
-    {% endif %}
-    {% if resultCount > 0 %}
-                <wa-button variant="brand" id="refreshAllCompanyEventGenPage{{ result.pageId | e }}"
-                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllCompanyEventGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllCompanyEventGenPage{{ result.pageId | e }}')); }); "
-                    >
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
-                  refresh all 
-                </wa-button>
-    {% endif %}
-  {% endif %}
-{% endif %}
-{%- if 'PATCH' in scopes %}
-  {%- if resultCount > 0 %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_patchCompanyEvent() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-{%- if 'POST' in scopes %}
-  {%- if resultCount >= 1 %}
-    {{ htmButton_postCompanyEvent() }}
-  {%- else %}
-    {{ htmButton_postCompanyEvent() }}
-  {%- endif %}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is defined %}
-    {{ htmButton_deleteCompanyEvent() }}
-  {%- endif %}
-{%- endif %}
-{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {{ htmButton_putimportCompanyEvent() }}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is not defined %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_deletefilterCompanyEvent() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-
-              </wa-button-group>
-            </wa-scroller>
-          </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchCompanyEvent() }}
   {%- endif %}

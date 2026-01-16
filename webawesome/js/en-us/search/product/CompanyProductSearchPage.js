@@ -4,6 +4,7 @@ Promise.all([
     , customElements.whenDefined('wa-select')
     , customElements.whenDefined('wa-radio')
     , customElements.whenDefined('wa-checkbox')
+    , customElements.whenDefined('wa-dropdown')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeCompanyProduct')?.addEventListener('change', (event) => {
@@ -372,6 +373,277 @@ Promise.all([
   document.querySelector('#pageStatsCompanyProduct_dialogTemplate')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyProduct', 'dialogTemplate', false);
   });
+          document.querySelector('#fqCompanyProduct_created')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_created')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_created')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_created')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_created')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_created')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_name')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_name')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_name')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_name')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_name')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_name')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_description')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_description')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_description')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_description')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_description')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_price')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_price')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_price')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_price')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_price')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_price')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_pageImageUri')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_pageId')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_pageId')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_pageId')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_pageId')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_pageId')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_pageId')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_displayPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_displayPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_displayPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_displayPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_displayPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_displayPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_editPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_editPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_editPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_userPage')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_userPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_userPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_download')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_download')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_download')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_download')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_productResource')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_productResource')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_productResource')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_productResource')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_productResource')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_productResource')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_emailTemplate')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_storeUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_downloadUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_productNum')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_productNum')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_productNum')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_productNum')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_productNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_productNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+});
 
   document.querySelector('#htmButton_patchCompanyProduct')?.addEventListener('click', (event) => {
     document.querySelector('#patchCompanyProductDialog').open = true;
@@ -412,274 +684,3 @@ Promise.all([
           );
     }
   });
-          document.querySelector('#fqCompanyProduct_created')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_created')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_created')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_created')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_created')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_created')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_name')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_name')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_name')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_name')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_name')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_name')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_description')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_description')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_description')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_description')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_description')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_description')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_price')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_price')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_price')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_price')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_price')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_price')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_pageImageUri')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_pageImageUri')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_pageId')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_pageId')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_pageId')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_pageId')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_pageId')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_pageId')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_displayPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_displayPage')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_displayPage')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_displayPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_displayPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_displayPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_editPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_editPage')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_editPage')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_editPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_editPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_editPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_userPage')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_userPage')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_userPage')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_userPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_userPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_userPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_download')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_download')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_download')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_download')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_download')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_download')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_productResource')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_productResource')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_productResource')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_productResource')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_productResource')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_productResource')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_emailTemplate')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_storeUrl')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_storeUrl')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_downloadUrl')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#fqCompanyProduct_productNum')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_productNum')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_productNum')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_productNum')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_productNum')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_productNum')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
-});

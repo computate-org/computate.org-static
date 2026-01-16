@@ -124,8 +124,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] research name"
                       label="research name"
-                      hint="
-The research name. "
+                      hint="The research name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -161,8 +160,7 @@ The research name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] research description"
                       label="research description"
-                      hint="
-The research description. "
+                      hint="The research description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -198,8 +196,7 @@ The research description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      hint="
-The ID for this page. "
+                      hint="The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -274,8 +271,6 @@ The ID for this page. "
                             {{ inputDisplayPageCompanyResearchPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
 
-{%- macro htmButton_patchCompanyResearch() %}<wa-button variant="brand" id="htmButton_patchCompanyResearch" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_patchCompanyResearch() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchCompanyResearch" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -342,8 +337,6 @@ The ID for this page. "
           {{ htmFormButton_patchCompanyResearch() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_postCompanyResearch() %}<wa-button variant="brand" id="htmButton_postCompanyResearch" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postCompanyResearch() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postCompanyResearch" duration="5000" closable class="wa-header-l ">
@@ -413,8 +406,6 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_putimportCompanyResearch() %}<wa-button variant="brand" id="htmButton_putimportCompanyResearch" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_putimportCompanyResearch() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportCompanyResearch" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -438,17 +429,6 @@ The ID for this page. "
           </form>
           {{ htmFormButton_putimportCompanyResearch() }}
         </wa-dialog>
-{%- endmacro %}
-
-{%- macro htmButton_searchpageCompanyResearch() %}{%- endmacro %}
-
-{%- macro htmFormButton_searchpageCompanyResearch() %}
-          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageCompanyResearch" duration="5000" closable class="wa-header-l ">
-            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
-                 id="htmFormButton_searchpageCompanyResearch"
-                >Search research</wa-button>
-            <wa-badge class="alertPopup" id="alertPopupButton_searchpageCompanyResearch"></wa-badge>
-          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyResearch() %}
@@ -545,49 +525,6 @@ The ID for this page. "
           </div>
         </div>
 {%- endmacro %}
-          <div id="htmSearchForm">
-            <wa-scroller>
-              <wa-button-group>
-{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {% if "PATCH" in scopes %}
-    {% if resultCount >= 1 %}
-                <wa-button variant="brand" id="refreshThisCompanyResearchGenPage"
-                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisCompanyResearchGenPage')); }, function() { addError(document.querySelector('#refreshThisCompanyResearchGenPage')); }); return false; ">
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
-                  refresh
-                </wa-button>
-    {% endif %}
-    {% if resultCount > 0 %}
-                <wa-button variant="brand" id="refreshAllCompanyResearchGenPage{{ result.pageId | e }}"
-                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllCompanyResearchGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllCompanyResearchGenPage{{ result.pageId | e }}')); }); "
-                    >
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
-                  refresh all 
-                </wa-button>
-    {% endif %}
-  {% endif %}
-{% endif %}
-{%- if 'PATCH' in scopes %}
-  {%- if resultCount > 0 %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_patchCompanyResearch() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-{%- if 'POST' in scopes %}
-  {%- if resultCount >= 1 %}
-    {{ htmButton_postCompanyResearch() }}
-  {%- else %}
-    {{ htmButton_postCompanyResearch() }}
-  {%- endif %}
-{%- endif %}
-{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {{ htmButton_putimportCompanyResearch() }}
-{%- endif %}
-
-              </wa-button-group>
-            </wa-scroller>
-          </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchCompanyResearch() }}
   {%- endif %}

@@ -14,5 +14,5 @@
  *   Admin:
  *     GET:
  */
-public class Project extends ProjectGen<BaseModel> {
+public class Project extends ProjectGen&lt;BaseModel&gt; {
 }

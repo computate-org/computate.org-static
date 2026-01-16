@@ -1,65 +1,4 @@
 
-        {%- macro typed(summary, id, codeTemplate, skeletonTemplate, htmTemplate, typeSpeed=20, backSpeed=10, smartBackspace=true) -%}
-        {% set macroCode -%}
-        {%- include codeTemplate -%}
-        {%- endset -%}
-        <wa-details summary="{{ summary | e }}" id="{{ id | e }}-details" open>
-          <wa-split-panel>
-            <div slot="start" class="wa-stack " style="background-color: var(--wa-color-surface-lowered); ">
-              <wa-scroller><pre><code id="{{ id | e }}"></code></pre></wa-scroller>
-              <script type="module">
-                let typed = null;
-                function initTyped() {
-                  if(typed) {
-                    typed.destroy();
-                  }
-                  typed = new Typed('#{{ id | e }}', {
-                    strings: [ 
-                      {{ macroCode | tojson }} 
-                    ]
-                    , typeSpeed: {{ typeSpeed }}
-                    , backSpeed: {{ backSpeed }}
-                    , smartBackspace: {{ smartBackspace }}
-                    , onComplete: (self) => {
-                      document.getElementById('{{ id | e }}-details-after').show();
-                    }
-                  });
-                }
-                Promise.all([
-                  customElements.whenDefined('wa-page')
-                  , customElements.whenDefined('wa-split-panel')
-                ]).then(() => {
-                  var details = document.getElementById('{{ id | e }}-details');
-                  details.addEventListener('wa-after-show', (e) => {
-                    if(e.target.id == '{{ id | e }}-details') {
-                      initTyped();
-                    }
-                  });
-                  details.addEventListener('wa-after-hide', (e) => {
-                    if(e.target.id == '{{ id | e }}-details') {
-                      if(typed) {
-                        typed.destroy();
-                      }
-                      document.getElementById('{{ id | e }}').innerHTML = '';
-                      document.getElementById('{{ id | e }}-details-before').show();
-                    }
-                  });
-                  initTyped();
-                });
-              </script>
-            </div>
-            <div slot="end" class="wa-stack wa-gap-0 ">
-              <wa-details summary="Before" name="{{ id | e }}-split-panel-end" id="{{ id | e }}-details-before" open>
-                {% include skeletonTemplate %}
-              </wa-details>
-              <wa-details summary="After" name="{{ id | e }}-split-panel-end" id="{{ id | e }}-details-after">
-                {% include htmTemplate %}
-              </wa-details>
-            </div>
-          </wa-split-panel>
-        </wa-details>
-        {%- endmacro -%}
-
 <!DOCTYPE html>
 <html lang="{{ SITE_LOCALE }}" class="wa-cloak wa-{{ userSiteTheme | default(SITE_THEME) }} wa-theme-{{ userWebComponentsTheme | default(WEB_COMPONENTS_THEME) }} ">
   <head>
@@ -69,6 +8,8 @@
     {{ WEB_COMPONENTS_KIT }}
     <link rel="stylesheet" href="{{ STATIC_BASE_URL }}/css/site.css"/>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
   </head>
   <body>
     <wa-page>

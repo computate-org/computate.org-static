@@ -48,51 +48,61 @@
 {%- endblock htmTooltipUseCasePage %}`;
       }
 
-      function facetSimpleRangeUseCaseSuccess(pageContent) {
-{% block facetSimpleRangeUseCaseSuccess %}{%- endblock facetSimpleRangeUseCaseSuccess %}
+      function facetChangeUseCaseSuccess(e) {
+        var l = e.querySelector('.pageForm .listUseCase')?.value;
+        if(l)
+          window.listUseCase = JSON.parse(l);
+{% block facetChangeUseCaseSuccess %}{%- endblock facetUseCaseSuccess %}
       }
-      function facetSimpleRangeUseCaseError(pageContent) {
-{% block facetSimpleRangeUseCaseError %}{%- endblock facetSimpleRangeUseCaseError %}
+      function facetChangeUseCaseError(e) {
+{% block facetChangeUseCaseError %}{%- endblock facetUseCaseError %}
+      }
+
+      function facetSimpleRangeUseCaseSuccess(e) {
+{% block facetSimpleRangeUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetSimpleRangeUseCaseSuccess %}
+      }
+      function facetSimpleRangeUseCaseError(e) {
+{% block facetSimpleRangeUseCaseError %}      facetChangeUseCaseError(e);{% endblock facetSimpleRangeUseCaseError %}
       }
       function facetSimpleRangeUseCase(e) {
         facetSimpleRange(e, facetSimpleRangeUseCaseSuccess, facetSimpleRangeUseCaseError);
       }
 
-      function facetRangeTimeZoneUseCaseSuccess(pageContent) {
-{% block facetRangeTimeZoneUseCaseSuccess %}{%- endblock facetRangeTimeZoneUseCaseSuccess %}
+      function facetRangeTimeZoneUseCaseSuccess(e) {
+{% block facetRangeTimeZoneUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetRangeTimeZoneUseCaseSuccess %}
       }
-      function facetRangeTimeZoneUseCaseError(pageContent) {
-{% block facetRangeTimeZoneUseCaseError %}{%- endblock facetRangeTimeZoneUseCaseError %}
+      function facetRangeTimeZoneUseCaseError(e) {
+{% block facetRangeTimeZoneUseCaseError %}      facetChangeUseCaseError(e);{%- endblock facetRangeTimeZoneUseCaseError %}
       }
       function facetRangeTimeZoneUseCase(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneUseCaseSuccess, facetRangeTimeZoneUseCaseError);
       }
 
-      function facetRangeGapChangeUseCaseSuccess(pageContent) {
-{% block facetRangeGapChangeUseCaseSuccess %}{%- endblock facetRangeGapChangeUseCaseSuccess %}
+      function facetRangeGapChangeUseCaseSuccess(e) {
+{% block facetRangeGapChangeUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetRangeGapChangeUseCaseSuccess %}
       }
-      function facetRangeGapChangeUseCaseError(pageContent) {
-{% block facetRangeGapChangeUseCaseError %}{%- endblock facetRangeGapChangeUseCaseError %}
+      function facetRangeGapChangeUseCaseError(e) {
+{% block facetRangeGapChangeUseCaseError %}      facetChangeUseCaseError(e);{%- endblock facetRangeGapChangeUseCaseError %}
       }
       function facetRangeGapChangeUseCase(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeUseCaseSuccess, facetRangeGapChangeUseCaseError);
       }
 
-      function facetRangeStartChangeUseCaseSuccess(pageContent) {
-{% block facetRangeStartChangeUseCaseSuccess %}{%- endblock facetRangeStartChangeUseCaseSuccess %}
+      function facetRangeStartChangeUseCaseSuccess(e) {
+{% block facetRangeStartChangeUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetRangeStartChangeUseCaseSuccess %}
       }
-      function facetRangeStartChangeUseCaseError(pageContent) {
-{% block facetRangeStartChangeUseCaseError %}{%- endblock facetRangeStartChangeUseCaseError %}
+      function facetRangeStartChangeUseCaseError(e) {
+{% block facetRangeStartChangeUseCaseError %}      facetChangeUseCaseError(e);{%- endblock facetRangeStartChangeUseCaseError %}
       }
       function facetRangeStartChangeUseCase(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeUseCaseSuccess, facetRangeStartChangeUseCaseError);
       }
 
-      function facetRangeEndChangeUseCaseSuccess(pageContent) {
-{% block facetRangeEndChangeUseCaseSuccess %}{%- endblock facetRangeEndChangeUseCaseSuccess %}
+      function facetRangeEndChangeUseCaseSuccess(e) {
+{% block facetRangeEndChangeUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetRangeEndChangeUseCaseSuccess %}
       }
-      function facetRangeEndChangeUseCaseError(pageContent) {
-{% block facetRangeEndChangeUseCaseError %}{%- endblock facetRangeEndChangeUseCaseError %}
+      function facetRangeEndChangeUseCaseError(e) {
+{% block facetRangeEndChangeUseCaseError %}      facetChangeUseCaseError(e);{%- endblock facetRangeEndChangeUseCaseError %}
       }
       function facetRangeEndChangeUseCase(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeUseCaseSuccess, facetRangeEndChangeUseCaseError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -245,31 +256,47 @@
 
 {%- block htmUrlUseCasePage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlUseCasePage %}
 
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/use-case/UseCaseSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/use-case/UseCaseSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-UseCase">back to all use cases</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-UseCase" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-file-invoice"></i>
+                  all use cases
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  a use case
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
 {%- block htmBodyStartPageLayout %}
     {{ super() }}
 {%- block htmBodyStartUseCasePage %}
 {% if resultCount > 0 %}
           <div class="wa-flank ">
-            <wa-tooltip for="return-to-UseCase">back to all use cases</wa-tooltip>
-            <wa-button id="return-to-UseCase" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all use cases
-            </wa-button>
             <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-file-invoice"></i> {{ result.objectTitle | e }}</h1>
           </div>
-          <div class="margin-block">
-          </div>
-{% include en-us/search/use-case/UseCaseSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/use-case/UseCaseSearchButtons.htm %}
 {% endif %}
+{% include en-us/search/use-case/UseCaseSearchForm.htm %}
 {%- endblock htmBodyStartUseCasePage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleUseCasePage %}
-        <div class="pageContent ">
 {%- include en-us/search/use-case/UseCaseSidebar.htm %}
+        <div class="pageContent ">
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-UseCase">back to all use cases</wa-tooltip></wa-tooltip>
@@ -305,7 +332,6 @@
             <input name="listUseCase" id="listUseCase" class="listUseCase"  value='{{ toJsonArrayStringInApostrophes(listUseCase) }}' type="hidden"/>
           </form>
   {% if solrId is defined %}
-          {{ htmButton_searchpageUseCase() }}
           {{ htmForm_searchpageUseCase() }}
   {% endif %}
 {%- endblock htmFormUseCasePage %}

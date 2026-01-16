@@ -1,856 +1,4 @@
 
-// Search //
-
-async function searchSiteUser($formFilters, success, error) {
-  var filters = searchSiteUserFilters($formFilters);
-  if(success == null)
-    success = function( data, textStatus, jQxhr ) {};
-  if(error == null)
-    error = function( jqXhr, target2 ) {};
-
-  searchSiteUserVals(filters, target, success, error);
-}
-
-function searchSiteUserFilters($formFilters) {
-  var filters = [];
-  if($formFilters) {
-
-    var filterPk = $formFilters.querySelector('.valuePk')?.value;
-    if(filterPk != null && filterPk !== '')
-      filters.push({ name: 'fq', value: 'pk:' + filterPk });
-
-    var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
-    if(filterCreated != null && filterCreated !== '')
-      filters.push({ name: 'fq', value: 'created:' + filterCreated });
-
-    var filterModified = $formFilters.querySelector('.valueModified')?.value;
-    if(filterModified != null && filterModified !== '')
-      filters.push({ name: 'fq', value: 'modified:' + filterModified });
-
-    var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
-    var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
-    var filterArchived = $filterArchivedSelect.length ? $filterArchivedSelect.value : $filterArchivedCheckbox.checked;
-    var filterArchivedSelectVal = $formFilters.querySelector('select.filterArchived')?.value;
-    var filterArchived = null;
-    if(filterArchivedSelectVal !== '')
-      filterArchived = filterArchivedSelectVal == 'true';
-    if(filterArchived != null && filterArchived === true)
-      filters.push({ name: 'fq', value: 'archived:' + filterArchived });
-
-    var $filterSeeArchivedCheckbox = $formFilters.querySelector('input.valueSeeArchived[type = "checkbox"]');
-    var $filterSeeArchivedSelect = $formFilters.querySelector('select.valueSeeArchived');
-    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.value : $filterSeeArchivedCheckbox.checked;
-    var filterSeeArchivedSelectVal = $formFilters.querySelector('select.filterSeeArchived')?.value;
-    var filterSeeArchived = null;
-    if(filterSeeArchivedSelectVal !== '')
-      filterSeeArchived = filterSeeArchivedSelectVal == 'true';
-    if(filterSeeArchived != null && filterSeeArchived === true)
-      filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
-
-    var filterSiteFontSize = $formFilters.querySelector('.valueSiteFontSize')?.value;
-    if(filterSiteFontSize != null && filterSiteFontSize !== '')
-      filters.push({ name: 'fq', value: 'siteFontSize:' + filterSiteFontSize });
-
-    var $filterAwesomeEffectCheckbox = $formFilters.querySelector('input.valueAwesomeEffect[type = "checkbox"]');
-    var $filterAwesomeEffectSelect = $formFilters.querySelector('select.valueAwesomeEffect');
-    var filterAwesomeEffect = $filterAwesomeEffectSelect.length ? $filterAwesomeEffectSelect.value : $filterAwesomeEffectCheckbox.checked;
-    var filterAwesomeEffectSelectVal = $formFilters.querySelector('select.filterAwesomeEffect')?.value;
-    var filterAwesomeEffect = null;
-    if(filterAwesomeEffectSelectVal !== '')
-      filterAwesomeEffect = filterAwesomeEffectSelectVal == 'true';
-    if(filterAwesomeEffect != null && filterAwesomeEffect === true)
-      filters.push({ name: 'fq', value: 'awesomeEffect:' + filterAwesomeEffect });
-
-    var filterSiteTheme = $formFilters.querySelector('.valueSiteTheme')?.value;
-    if(filterSiteTheme != null && filterSiteTheme !== '')
-      filters.push({ name: 'fq', value: 'siteTheme:' + filterSiteTheme });
-
-    var filterWebComponentsTheme = $formFilters.querySelector('.valueWebComponentsTheme')?.value;
-    if(filterWebComponentsTheme != null && filterWebComponentsTheme !== '')
-      filters.push({ name: 'fq', value: 'webComponentsTheme:' + filterWebComponentsTheme });
-
-    var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
-    if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
-      filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
-
-    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
-    if(filterClassSimpleName != null && filterClassSimpleName !== '')
-      filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
-
-    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
-    if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
-      filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
-
-    var filterSessionId = $formFilters.querySelector('.valueSessionId')?.value;
-    if(filterSessionId != null && filterSessionId !== '')
-      filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
-
-    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
-    if(filterUserKey != null && filterUserKey !== '')
-      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
-
-    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
-    if(filterSaves != null && filterSaves !== '')
-      filters.push({ name: 'fq', value: 'saves:' + filterSaves });
-
-    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
-    if(filterObjectTitle != null && filterObjectTitle !== '')
-      filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
-
-    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
-    if(filterDisplayPage != null && filterDisplayPage !== '')
-      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
-
-    var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
-    if(filterEditPage != null && filterEditPage !== '')
-      filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
-
-    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
-    if(filterUserPage != null && filterUserPage !== '')
-      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
-
-    var filterDownload = $formFilters.querySelector('.valueDownload')?.value;
-    if(filterDownload != null && filterDownload !== '')
-      filters.push({ name: 'fq', value: 'download:' + filterDownload });
-
-    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
-    if(filterObjectSuggest != null && filterObjectSuggest !== '')
-      filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
-
-    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
-    if(filterObjectText != null && filterObjectText !== '')
-      filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
-
-    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
-    if(filterSolrId != null && filterSolrId !== '')
-      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
-
-    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
-    if(filterUserKeys != null && filterUserKeys !== '')
-      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
-
-    var filterUserId = $formFilters.querySelector('.valueUserId')?.value;
-    if(filterUserId != null && filterUserId !== '')
-      filters.push({ name: 'fq', value: 'userId:' + filterUserId });
-
-    var filterUserName = $formFilters.querySelector('.valueUserName')?.value;
-    if(filterUserName != null && filterUserName !== '')
-      filters.push({ name: 'fq', value: 'userName:' + filterUserName });
-
-    var filterUserEmail = $formFilters.querySelector('.valueUserEmail')?.value;
-    if(filterUserEmail != null && filterUserEmail !== '')
-      filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
-
-    var filterUserFirstName = $formFilters.querySelector('.valueUserFirstName')?.value;
-    if(filterUserFirstName != null && filterUserFirstName !== '')
-      filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
-
-    var filterUserLastName = $formFilters.querySelector('.valueUserLastName')?.value;
-    if(filterUserLastName != null && filterUserLastName !== '')
-      filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
-
-    var filterUserFullName = $formFilters.querySelector('.valueUserFullName')?.value;
-    if(filterUserFullName != null && filterUserFullName !== '')
-      filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
-
-    var filterDisplayName = $formFilters.querySelector('.valueDisplayName')?.value;
-    if(filterDisplayName != null && filterDisplayName !== '')
-      filters.push({ name: 'fq', value: 'displayName:' + filterDisplayName });
-
-    var filterCustomerProfileId = $formFilters.querySelector('.valueCustomerProfileId')?.value;
-    if(filterCustomerProfileId != null && filterCustomerProfileId !== '')
-      filters.push({ name: 'fq', value: 'customerProfileId:' + filterCustomerProfileId });
-  }
-  return filters;
-}
-
-function searchSiteUserVals(filters, target, success, error) {
-
-  fetch(
-    '/en-us/api/user?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
-    , {
-      headers: {'Content-Type':'application/json; charset=utf-8'}
-    }).then(response => {
-      if(response.ok) {
-        response.json().then((json) => {
-          success(json, target);
-        })
-      } else {
-        error(response, target);
-      }
-    })
-    .catch(response => error(response, target));
-}
-
-function suggestSiteUserObjectSuggest($formFilters, $list, target) {
-  success = function( data, textStatus, jQxhr ) {
-    if($list) {
-      $list.innerHTML = '';
-      data['list'].forEach((o, i) => {
-        var $i = document.querySelector('<i class="fa-duotone fa-regular fa-user-gear"></i>');
-        var $span = document.createElement('span');        $span.setAttribute('class', '');        $span.innerText = o['objectTitle'];
-        var $li = document.createElement('li');
-        var $a = document.createElement('a').setAttribute('href', o['editPage']);
-        $a.append($i);
-        $a.append($span);
-        $li.append($a);
-        $list.append($li);
-      });
-    }
-  };
-  error = function( jqXhr, target2 ) {};
-  searchSiteUserVals($formFilters, target, success, error);
-}
-
-// PATCH //
-
-async function patchSiteUser($formFilters, $formValues, target, userId, success, error) {
-  var filters = patchSiteUserFilters($formFilters);
-
-  var vals = {};
-
-  var valuePk = $formValues.querySelector('.valuePk')?.value;
-  var removePk = $formValues.querySelector('.removePk')?.value === 'true';
-  var setPk = removePk ? null : $formValues.querySelector('.setPk')?.value;
-  var addPk = $formValues.querySelector('.addPk')?.value;
-  if(removePk || setPk != null && setPk !== '')
-    vals['setPk'] = setPk;
-  if(addPk != null && addPk !== '')
-    vals['addPk'] = addPk;
-  var removePk = $formValues.querySelector('.removePk')?.value;
-  if(removePk != null && removePk !== '')
-    vals['removePk'] = removePk;
-
-  var valueCreated = $formValues.querySelector('.valueCreated')?.value;
-  var removeCreated = $formValues.querySelector('.removeCreated')?.value === 'true';
-  var setCreated = removeCreated ? null : $formValues.querySelector('.setCreated')?.value;
-  var addCreated = $formValues.querySelector('.addCreated')?.value;
-  if(removeCreated || setCreated != null && setCreated !== '')
-    vals['setCreated'] = setCreated;
-  if(addCreated != null && addCreated !== '')
-    vals['addCreated'] = addCreated;
-  var removeCreated = $formValues.querySelector('.removeCreated')?.value;
-  if(removeCreated != null && removeCreated !== '')
-    vals['removeCreated'] = removeCreated;
-
-  var valueModified = $formValues.querySelector('.valueModified')?.value;
-  var removeModified = $formValues.querySelector('.removeModified')?.value === 'true';
-  var setModified = removeModified ? null : $formValues.querySelector('.setModified')?.value;
-  var addModified = $formValues.querySelector('.addModified')?.value;
-  if(removeModified || setModified != null && setModified !== '')
-    vals['setModified'] = setModified;
-  if(addModified != null && addModified !== '')
-    vals['addModified'] = addModified;
-  var removeModified = $formValues.querySelector('.removeModified')?.value;
-  if(removeModified != null && removeModified !== '')
-    vals['removeModified'] = removeModified;
-
-  var valueArchived = $formValues.querySelector('.valueArchived')?.value;
-  var removeArchived = $formValues.querySelector('.removeArchived')?.value === 'true';
-  if(valueArchived != null)
-    valueArchived = valueArchived === 'true';
-  var valueArchivedSelectVal = $formValues.querySelector('select.setArchived')?.value;
-  if(valueArchivedSelectVal != null)
-    valueArchivedSelectVal = valueArchivedSelectVal === 'true';
-  if(valueArchivedSelectVal != null && valueArchivedSelectVal !== '')
-    valueArchived = valueArchivedSelectVal == 'true';
-  var setArchived = removeArchived ? null : valueArchived;
-  var addArchived = $formValues.querySelector('.addArchived')?.checked;
-  if(removeArchived || setArchived != null && setArchived !== '')
-    vals['setArchived'] = setArchived;
-  if(addArchived != null && addArchived !== '')
-    vals['addArchived'] = addArchived;
-  var removeArchived = $formValues.querySelector('.removeArchived')?.checked;
-  if(removeArchived != null && removeArchived !== '')
-    vals['removeArchived'] = removeArchived;
-
-  var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
-  var removeSeeArchived = $formValues.querySelector('.removeSeeArchived')?.value === 'true';
-  if(valueSeeArchived != null)
-    valueSeeArchived = valueSeeArchived === 'true';
-  var valueSeeArchivedSelectVal = $formValues.querySelector('select.setSeeArchived')?.value;
-  if(valueSeeArchivedSelectVal != null)
-    valueSeeArchivedSelectVal = valueSeeArchivedSelectVal === 'true';
-  if(valueSeeArchivedSelectVal != null && valueSeeArchivedSelectVal !== '')
-    valueSeeArchived = valueSeeArchivedSelectVal == 'true';
-  var setSeeArchived = removeSeeArchived ? null : valueSeeArchived;
-  var addSeeArchived = $formValues.querySelector('.addSeeArchived')?.checked;
-  if(removeSeeArchived || setSeeArchived != null && setSeeArchived !== '')
-    vals['setSeeArchived'] = setSeeArchived;
-  if(addSeeArchived != null && addSeeArchived !== '')
-    vals['addSeeArchived'] = addSeeArchived;
-  var removeSeeArchived = $formValues.querySelector('.removeSeeArchived')?.checked;
-  if(removeSeeArchived != null && removeSeeArchived !== '')
-    vals['removeSeeArchived'] = removeSeeArchived;
-
-  var valueSiteFontSize = $formValues.querySelector('.valueSiteFontSize')?.value;
-  var removeSiteFontSize = $formValues.querySelector('.removeSiteFontSize')?.value === 'true';
-  var setSiteFontSize = removeSiteFontSize ? null : $formValues.querySelector('.setSiteFontSize')?.value;
-  var addSiteFontSize = $formValues.querySelector('.addSiteFontSize')?.value;
-  if(removeSiteFontSize || setSiteFontSize != null && setSiteFontSize !== '')
-    vals['setSiteFontSize'] = setSiteFontSize;
-  if(addSiteFontSize != null && addSiteFontSize !== '')
-    vals['addSiteFontSize'] = addSiteFontSize;
-  var removeSiteFontSize = $formValues.querySelector('.removeSiteFontSize')?.value;
-  if(removeSiteFontSize != null && removeSiteFontSize !== '')
-    vals['removeSiteFontSize'] = removeSiteFontSize;
-
-  var valueAwesomeEffect = $formValues.querySelector('.valueAwesomeEffect')?.value;
-  var removeAwesomeEffect = $formValues.querySelector('.removeAwesomeEffect')?.value === 'true';
-  if(valueAwesomeEffect != null)
-    valueAwesomeEffect = valueAwesomeEffect === 'true';
-  var valueAwesomeEffectSelectVal = $formValues.querySelector('select.setAwesomeEffect')?.value;
-  if(valueAwesomeEffectSelectVal != null)
-    valueAwesomeEffectSelectVal = valueAwesomeEffectSelectVal === 'true';
-  if(valueAwesomeEffectSelectVal != null && valueAwesomeEffectSelectVal !== '')
-    valueAwesomeEffect = valueAwesomeEffectSelectVal == 'true';
-  var setAwesomeEffect = removeAwesomeEffect ? null : valueAwesomeEffect;
-  var addAwesomeEffect = $formValues.querySelector('.addAwesomeEffect')?.checked;
-  if(removeAwesomeEffect || setAwesomeEffect != null && setAwesomeEffect !== '')
-    vals['setAwesomeEffect'] = setAwesomeEffect;
-  if(addAwesomeEffect != null && addAwesomeEffect !== '')
-    vals['addAwesomeEffect'] = addAwesomeEffect;
-  var removeAwesomeEffect = $formValues.querySelector('.removeAwesomeEffect')?.checked;
-  if(removeAwesomeEffect != null && removeAwesomeEffect !== '')
-    vals['removeAwesomeEffect'] = removeAwesomeEffect;
-
-  var valueSiteTheme = $formValues.querySelector('.valueSiteTheme')?.value;
-  var removeSiteTheme = $formValues.querySelector('.removeSiteTheme')?.value === 'true';
-  var setSiteTheme = removeSiteTheme ? null : $formValues.querySelector('.setSiteTheme')?.value;
-  var addSiteTheme = $formValues.querySelector('.addSiteTheme')?.value;
-  if(removeSiteTheme || setSiteTheme != null && setSiteTheme !== '')
-    vals['setSiteTheme'] = setSiteTheme;
-  if(addSiteTheme != null && addSiteTheme !== '')
-    vals['addSiteTheme'] = addSiteTheme;
-  var removeSiteTheme = $formValues.querySelector('.removeSiteTheme')?.value;
-  if(removeSiteTheme != null && removeSiteTheme !== '')
-    vals['removeSiteTheme'] = removeSiteTheme;
-
-  var valueWebComponentsTheme = $formValues.querySelector('.valueWebComponentsTheme')?.value;
-  var removeWebComponentsTheme = $formValues.querySelector('.removeWebComponentsTheme')?.value === 'true';
-  var setWebComponentsTheme = removeWebComponentsTheme ? null : $formValues.querySelector('.setWebComponentsTheme')?.value;
-  var addWebComponentsTheme = $formValues.querySelector('.addWebComponentsTheme')?.value;
-  if(removeWebComponentsTheme || setWebComponentsTheme != null && setWebComponentsTheme !== '')
-    vals['setWebComponentsTheme'] = setWebComponentsTheme;
-  if(addWebComponentsTheme != null && addWebComponentsTheme !== '')
-    vals['addWebComponentsTheme'] = addWebComponentsTheme;
-  var removeWebComponentsTheme = $formValues.querySelector('.removeWebComponentsTheme')?.value;
-  if(removeWebComponentsTheme != null && removeWebComponentsTheme !== '')
-    vals['removeWebComponentsTheme'] = removeWebComponentsTheme;
-
-  var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
-  var removeSessionId = $formValues.querySelector('.removeSessionId')?.value === 'true';
-  var setSessionId = removeSessionId ? null : $formValues.querySelector('.setSessionId')?.value;
-  var addSessionId = $formValues.querySelector('.addSessionId')?.value;
-  if(removeSessionId || setSessionId != null && setSessionId !== '')
-    vals['setSessionId'] = setSessionId;
-  if(addSessionId != null && addSessionId !== '')
-    vals['addSessionId'] = addSessionId;
-  var removeSessionId = $formValues.querySelector('.removeSessionId')?.value;
-  if(removeSessionId != null && removeSessionId !== '')
-    vals['removeSessionId'] = removeSessionId;
-
-  var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
-  var removeUserKey = $formValues.querySelector('.removeUserKey')?.value === 'true';
-  var setUserKey = removeUserKey ? null : $formValues.querySelector('.setUserKey')?.value;
-  var addUserKey = $formValues.querySelector('.addUserKey')?.value;
-  if(removeUserKey || setUserKey != null && setUserKey !== '')
-    vals['setUserKey'] = setUserKey;
-  if(addUserKey != null && addUserKey !== '')
-    vals['addUserKey'] = addUserKey;
-  var removeUserKey = $formValues.querySelector('.removeUserKey')?.value;
-  if(removeUserKey != null && removeUserKey !== '')
-    vals['removeUserKey'] = removeUserKey;
-
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
-  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
-  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
-  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
-    vals['setObjectTitle'] = setObjectTitle;
-  if(addObjectTitle != null && addObjectTitle !== '')
-    vals['addObjectTitle'] = addObjectTitle;
-  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
-  if(removeObjectTitle != null && removeObjectTitle !== '')
-    vals['removeObjectTitle'] = removeObjectTitle;
-
-  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
-  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value === 'true';
-  var setDisplayPage = removeDisplayPage ? null : $formValues.querySelector('.setDisplayPage')?.value;
-  var addDisplayPage = $formValues.querySelector('.addDisplayPage')?.value;
-  if(removeDisplayPage || setDisplayPage != null && setDisplayPage !== '')
-    vals['setDisplayPage'] = setDisplayPage;
-  if(addDisplayPage != null && addDisplayPage !== '')
-    vals['addDisplayPage'] = addDisplayPage;
-  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value;
-  if(removeDisplayPage != null && removeDisplayPage !== '')
-    vals['removeDisplayPage'] = removeDisplayPage;
-
-  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
-  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
-  var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
-  var addEditPage = $formValues.querySelector('.addEditPage')?.value;
-  if(removeEditPage || setEditPage != null && setEditPage !== '')
-    vals['setEditPage'] = setEditPage;
-  if(addEditPage != null && addEditPage !== '')
-    vals['addEditPage'] = addEditPage;
-  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value;
-  if(removeEditPage != null && removeEditPage !== '')
-    vals['removeEditPage'] = removeEditPage;
-
-  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
-  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value === 'true';
-  var setUserPage = removeUserPage ? null : $formValues.querySelector('.setUserPage')?.value;
-  var addUserPage = $formValues.querySelector('.addUserPage')?.value;
-  if(removeUserPage || setUserPage != null && setUserPage !== '')
-    vals['setUserPage'] = setUserPage;
-  if(addUserPage != null && addUserPage !== '')
-    vals['addUserPage'] = addUserPage;
-  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value;
-  if(removeUserPage != null && removeUserPage !== '')
-    vals['removeUserPage'] = removeUserPage;
-
-  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
-  var removeDownload = $formValues.querySelector('.removeDownload')?.value === 'true';
-  var setDownload = removeDownload ? null : $formValues.querySelector('.setDownload')?.value;
-  var addDownload = $formValues.querySelector('.addDownload')?.value;
-  if(removeDownload || setDownload != null && setDownload !== '')
-    vals['setDownload'] = setDownload;
-  if(addDownload != null && addDownload !== '')
-    vals['addDownload'] = addDownload;
-  var removeDownload = $formValues.querySelector('.removeDownload')?.value;
-  if(removeDownload != null && removeDownload !== '')
-    vals['removeDownload'] = removeDownload;
-
-  var valueUserId = $formValues.querySelector('.valueUserId')?.value;
-  var removeUserId = $formValues.querySelector('.removeUserId')?.value === 'true';
-  var setUserId = removeUserId ? null : $formValues.querySelector('.setUserId')?.value;
-  var addUserId = $formValues.querySelector('.addUserId')?.value;
-  if(removeUserId || setUserId != null && setUserId !== '')
-    vals['setUserId'] = setUserId;
-  if(addUserId != null && addUserId !== '')
-    vals['addUserId'] = addUserId;
-  var removeUserId = $formValues.querySelector('.removeUserId')?.value;
-  if(removeUserId != null && removeUserId !== '')
-    vals['removeUserId'] = removeUserId;
-
-  var valueUserName = $formValues.querySelector('.valueUserName')?.value;
-  var removeUserName = $formValues.querySelector('.removeUserName')?.value === 'true';
-  var setUserName = removeUserName ? null : $formValues.querySelector('.setUserName')?.value;
-  var addUserName = $formValues.querySelector('.addUserName')?.value;
-  if(removeUserName || setUserName != null && setUserName !== '')
-    vals['setUserName'] = setUserName;
-  if(addUserName != null && addUserName !== '')
-    vals['addUserName'] = addUserName;
-  var removeUserName = $formValues.querySelector('.removeUserName')?.value;
-  if(removeUserName != null && removeUserName !== '')
-    vals['removeUserName'] = removeUserName;
-
-  var valueUserEmail = $formValues.querySelector('.valueUserEmail')?.value;
-  var removeUserEmail = $formValues.querySelector('.removeUserEmail')?.value === 'true';
-  var setUserEmail = removeUserEmail ? null : $formValues.querySelector('.setUserEmail')?.value;
-  var addUserEmail = $formValues.querySelector('.addUserEmail')?.value;
-  if(removeUserEmail || setUserEmail != null && setUserEmail !== '')
-    vals['setUserEmail'] = setUserEmail;
-  if(addUserEmail != null && addUserEmail !== '')
-    vals['addUserEmail'] = addUserEmail;
-  var removeUserEmail = $formValues.querySelector('.removeUserEmail')?.value;
-  if(removeUserEmail != null && removeUserEmail !== '')
-    vals['removeUserEmail'] = removeUserEmail;
-
-  var valueUserFirstName = $formValues.querySelector('.valueUserFirstName')?.value;
-  var removeUserFirstName = $formValues.querySelector('.removeUserFirstName')?.value === 'true';
-  var setUserFirstName = removeUserFirstName ? null : $formValues.querySelector('.setUserFirstName')?.value;
-  var addUserFirstName = $formValues.querySelector('.addUserFirstName')?.value;
-  if(removeUserFirstName || setUserFirstName != null && setUserFirstName !== '')
-    vals['setUserFirstName'] = setUserFirstName;
-  if(addUserFirstName != null && addUserFirstName !== '')
-    vals['addUserFirstName'] = addUserFirstName;
-  var removeUserFirstName = $formValues.querySelector('.removeUserFirstName')?.value;
-  if(removeUserFirstName != null && removeUserFirstName !== '')
-    vals['removeUserFirstName'] = removeUserFirstName;
-
-  var valueUserLastName = $formValues.querySelector('.valueUserLastName')?.value;
-  var removeUserLastName = $formValues.querySelector('.removeUserLastName')?.value === 'true';
-  var setUserLastName = removeUserLastName ? null : $formValues.querySelector('.setUserLastName')?.value;
-  var addUserLastName = $formValues.querySelector('.addUserLastName')?.value;
-  if(removeUserLastName || setUserLastName != null && setUserLastName !== '')
-    vals['setUserLastName'] = setUserLastName;
-  if(addUserLastName != null && addUserLastName !== '')
-    vals['addUserLastName'] = addUserLastName;
-  var removeUserLastName = $formValues.querySelector('.removeUserLastName')?.value;
-  if(removeUserLastName != null && removeUserLastName !== '')
-    vals['removeUserLastName'] = removeUserLastName;
-
-  var valueUserFullName = $formValues.querySelector('.valueUserFullName')?.value;
-  var removeUserFullName = $formValues.querySelector('.removeUserFullName')?.value === 'true';
-  var setUserFullName = removeUserFullName ? null : $formValues.querySelector('.setUserFullName')?.value;
-  var addUserFullName = $formValues.querySelector('.addUserFullName')?.value;
-  if(removeUserFullName || setUserFullName != null && setUserFullName !== '')
-    vals['setUserFullName'] = setUserFullName;
-  if(addUserFullName != null && addUserFullName !== '')
-    vals['addUserFullName'] = addUserFullName;
-  var removeUserFullName = $formValues.querySelector('.removeUserFullName')?.value;
-  if(removeUserFullName != null && removeUserFullName !== '')
-    vals['removeUserFullName'] = removeUserFullName;
-
-  var valueDisplayName = $formValues.querySelector('.valueDisplayName')?.value;
-  var removeDisplayName = $formValues.querySelector('.removeDisplayName')?.value === 'true';
-  var setDisplayName = removeDisplayName ? null : $formValues.querySelector('.setDisplayName')?.value;
-  var addDisplayName = $formValues.querySelector('.addDisplayName')?.value;
-  if(removeDisplayName || setDisplayName != null && setDisplayName !== '')
-    vals['setDisplayName'] = setDisplayName;
-  if(addDisplayName != null && addDisplayName !== '')
-    vals['addDisplayName'] = addDisplayName;
-  var removeDisplayName = $formValues.querySelector('.removeDisplayName')?.value;
-  if(removeDisplayName != null && removeDisplayName !== '')
-    vals['removeDisplayName'] = removeDisplayName;
-
-  var valueCustomerProfileId = $formValues.querySelector('.valueCustomerProfileId')?.value;
-  var removeCustomerProfileId = $formValues.querySelector('.removeCustomerProfileId')?.value === 'true';
-  var setCustomerProfileId = removeCustomerProfileId ? null : $formValues.querySelector('.setCustomerProfileId')?.value;
-  var addCustomerProfileId = $formValues.querySelector('.addCustomerProfileId')?.value;
-  if(removeCustomerProfileId || setCustomerProfileId != null && setCustomerProfileId !== '')
-    vals['setCustomerProfileId'] = setCustomerProfileId;
-  if(addCustomerProfileId != null && addCustomerProfileId !== '')
-    vals['addCustomerProfileId'] = addCustomerProfileId;
-  var removeCustomerProfileId = $formValues.querySelector('.removeCustomerProfileId')?.value;
-  if(removeCustomerProfileId != null && removeCustomerProfileId !== '')
-    vals['removeCustomerProfileId'] = removeCustomerProfileId;
-
-  patchSiteUserVals(userId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'userId:' + userId}], vals, target, success, error);
-}
-
-function patchSiteUserFilters($formFilters) {
-  var filters = [];
-  if($formFilters) {
-    filters.push({ name: 'softCommit', value: 'true' });
-
-    var filterPk = $formFilters.querySelector('.valuePk')?.value;
-    if(filterPk != null && filterPk !== '')
-      filters.push({ name: 'fq', value: 'pk:' + filterPk });
-
-    var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
-    if(filterCreated != null && filterCreated !== '')
-      filters.push({ name: 'fq', value: 'created:' + filterCreated });
-
-    var filterModified = $formFilters.querySelector('.valueModified')?.value;
-    if(filterModified != null && filterModified !== '')
-      filters.push({ name: 'fq', value: 'modified:' + filterModified });
-
-    var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
-    var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
-    var filterArchived = $filterArchivedSelect.length ? $filterArchivedSelect.value : $filterArchivedCheckbox.checked;
-    var filterArchivedSelectVal = $formFilters.querySelector('select.filterArchived')?.value;
-    var filterArchived = null;
-    if(filterArchivedSelectVal !== '')
-      filterArchived = filterArchivedSelectVal == 'true';
-    if(filterArchived != null && filterArchived === true)
-      filters.push({ name: 'fq', value: 'archived:' + filterArchived });
-
-    var $filterSeeArchivedCheckbox = $formFilters.querySelector('input.valueSeeArchived[type = "checkbox"]');
-    var $filterSeeArchivedSelect = $formFilters.querySelector('select.valueSeeArchived');
-    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.value : $filterSeeArchivedCheckbox.checked;
-    var filterSeeArchivedSelectVal = $formFilters.querySelector('select.filterSeeArchived')?.value;
-    var filterSeeArchived = null;
-    if(filterSeeArchivedSelectVal !== '')
-      filterSeeArchived = filterSeeArchivedSelectVal == 'true';
-    if(filterSeeArchived != null && filterSeeArchived === true)
-      filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
-
-    var filterSiteFontSize = $formFilters.querySelector('.valueSiteFontSize')?.value;
-    if(filterSiteFontSize != null && filterSiteFontSize !== '')
-      filters.push({ name: 'fq', value: 'siteFontSize:' + filterSiteFontSize });
-
-    var $filterAwesomeEffectCheckbox = $formFilters.querySelector('input.valueAwesomeEffect[type = "checkbox"]');
-    var $filterAwesomeEffectSelect = $formFilters.querySelector('select.valueAwesomeEffect');
-    var filterAwesomeEffect = $filterAwesomeEffectSelect.length ? $filterAwesomeEffectSelect.value : $filterAwesomeEffectCheckbox.checked;
-    var filterAwesomeEffectSelectVal = $formFilters.querySelector('select.filterAwesomeEffect')?.value;
-    var filterAwesomeEffect = null;
-    if(filterAwesomeEffectSelectVal !== '')
-      filterAwesomeEffect = filterAwesomeEffectSelectVal == 'true';
-    if(filterAwesomeEffect != null && filterAwesomeEffect === true)
-      filters.push({ name: 'fq', value: 'awesomeEffect:' + filterAwesomeEffect });
-
-    var filterSiteTheme = $formFilters.querySelector('.valueSiteTheme')?.value;
-    if(filterSiteTheme != null && filterSiteTheme !== '')
-      filters.push({ name: 'fq', value: 'siteTheme:' + filterSiteTheme });
-
-    var filterWebComponentsTheme = $formFilters.querySelector('.valueWebComponentsTheme')?.value;
-    if(filterWebComponentsTheme != null && filterWebComponentsTheme !== '')
-      filters.push({ name: 'fq', value: 'webComponentsTheme:' + filterWebComponentsTheme });
-
-    var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
-    if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
-      filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
-
-    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
-    if(filterClassSimpleName != null && filterClassSimpleName !== '')
-      filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
-
-    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
-    if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
-      filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
-
-    var filterSessionId = $formFilters.querySelector('.valueSessionId')?.value;
-    if(filterSessionId != null && filterSessionId !== '')
-      filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
-
-    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
-    if(filterUserKey != null && filterUserKey !== '')
-      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
-
-    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
-    if(filterSaves != null && filterSaves !== '')
-      filters.push({ name: 'fq', value: 'saves:' + filterSaves });
-
-    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
-    if(filterObjectTitle != null && filterObjectTitle !== '')
-      filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
-
-    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
-    if(filterDisplayPage != null && filterDisplayPage !== '')
-      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
-
-    var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
-    if(filterEditPage != null && filterEditPage !== '')
-      filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
-
-    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
-    if(filterUserPage != null && filterUserPage !== '')
-      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
-
-    var filterDownload = $formFilters.querySelector('.valueDownload')?.value;
-    if(filterDownload != null && filterDownload !== '')
-      filters.push({ name: 'fq', value: 'download:' + filterDownload });
-
-    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
-    if(filterObjectSuggest != null && filterObjectSuggest !== '')
-      filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
-
-    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
-    if(filterObjectText != null && filterObjectText !== '')
-      filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
-
-    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
-    if(filterSolrId != null && filterSolrId !== '')
-      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
-
-    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
-    if(filterUserKeys != null && filterUserKeys !== '')
-      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
-
-    var filterUserId = $formFilters.querySelector('.valueUserId')?.value;
-    if(filterUserId != null && filterUserId !== '')
-      filters.push({ name: 'fq', value: 'userId:' + filterUserId });
-
-    var filterUserName = $formFilters.querySelector('.valueUserName')?.value;
-    if(filterUserName != null && filterUserName !== '')
-      filters.push({ name: 'fq', value: 'userName:' + filterUserName });
-
-    var filterUserEmail = $formFilters.querySelector('.valueUserEmail')?.value;
-    if(filterUserEmail != null && filterUserEmail !== '')
-      filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
-
-    var filterUserFirstName = $formFilters.querySelector('.valueUserFirstName')?.value;
-    if(filterUserFirstName != null && filterUserFirstName !== '')
-      filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
-
-    var filterUserLastName = $formFilters.querySelector('.valueUserLastName')?.value;
-    if(filterUserLastName != null && filterUserLastName !== '')
-      filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
-
-    var filterUserFullName = $formFilters.querySelector('.valueUserFullName')?.value;
-    if(filterUserFullName != null && filterUserFullName !== '')
-      filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
-
-    var filterDisplayName = $formFilters.querySelector('.valueDisplayName')?.value;
-    if(filterDisplayName != null && filterDisplayName !== '')
-      filters.push({ name: 'fq', value: 'displayName:' + filterDisplayName });
-
-    var filterCustomerProfileId = $formFilters.querySelector('.valueCustomerProfileId')?.value;
-    if(filterCustomerProfileId != null && filterCustomerProfileId !== '')
-      filters.push({ name: 'fq', value: 'customerProfileId:' + filterCustomerProfileId });
-  }
-  return filters;
-}
-
-function patchSiteUserVal(filters, v, val, target, success, error) {
-  var vals = {};
-  vals[v] = val;
-  patchSiteUserVals(filters, vals, target, success, error);
-}
-
-function patchSiteUserVals(filters, vals, target, success, error) {
-  fetch(
-    '/en-us/api/user?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
-    , {
-      headers: {'Content-Type':'application/json; charset=utf-8'}
-      , method: 'PATCH'
-      , body: JSON.stringify(vals)
-    }).then(response => {
-      if(response.ok) {
-        response.json().then((json) => {
-          success(json, target);
-        })
-      } else {
-        error(response, target);
-      }
-    })
-    .catch(response => error(response, target));
-}
-
-// POST //
-
-async function postSiteUser($formValues, target, success, error) {
-  var vals = {};
-  if(success == null) {
-    success = function( data, textStatus, jQxhr ) {
-      addGlow(target, jqXhr);
-      var url = data['editPage'];
-      if(url)
-        window.location.href = url;
-    };
-  }
-  if(error == null) {
-    error = function( jqXhr, target2 ) {
-      addError(target, jqXhr);
-    };
-  }
-
-  var valuePk = $formValues.querySelector('.valuePk')?.value;
-  if(valuePk != null && valuePk !== '')
-    vals['pk'] = valuePk;
-
-  var valueCreated = $formValues.querySelector('.valueCreated')?.value;
-  if(valueCreated != null && valueCreated !== '')
-    vals['created'] = valueCreated;
-
-  var valueModified = $formValues.querySelector('.valueModified')?.value;
-  if(valueModified != null && valueModified !== '')
-    vals['modified'] = valueModified;
-
-  var valueArchived = $formValues.querySelector('.valueArchived')?.value;
-  if(valueArchived != null && valueArchived !== '')
-    vals['archived'] = valueArchived == 'true';
-
-  var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
-  if(valueSeeArchived != null && valueSeeArchived !== '')
-    vals['seeArchived'] = valueSeeArchived == 'true';
-
-  var valueSiteFontSize = $formValues.querySelector('.valueSiteFontSize')?.value;
-  if(valueSiteFontSize != null && valueSiteFontSize !== '')
-    vals['siteFontSize'] = valueSiteFontSize;
-
-  var valueAwesomeEffect = $formValues.querySelector('.valueAwesomeEffect')?.value;
-  if(valueAwesomeEffect != null && valueAwesomeEffect !== '')
-    vals['awesomeEffect'] = valueAwesomeEffect == 'true';
-
-  var valueSiteTheme = $formValues.querySelector('.valueSiteTheme')?.value;
-  if(valueSiteTheme != null && valueSiteTheme !== '')
-    vals['siteTheme'] = valueSiteTheme;
-
-  var valueWebComponentsTheme = $formValues.querySelector('.valueWebComponentsTheme')?.value;
-  if(valueWebComponentsTheme != null && valueWebComponentsTheme !== '')
-    vals['webComponentsTheme'] = valueWebComponentsTheme;
-
-  var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
-  if(valueSessionId != null && valueSessionId !== '')
-    vals['sessionId'] = valueSessionId;
-
-  var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
-  if(valueUserKey != null && valueUserKey !== '')
-    vals['userKey'] = valueUserKey;
-
-  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
-  if(valueObjectTitle != null && valueObjectTitle !== '')
-    vals['objectTitle'] = valueObjectTitle;
-
-  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
-  if(valueDisplayPage != null && valueDisplayPage !== '')
-    vals['displayPage'] = valueDisplayPage;
-
-  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
-  if(valueEditPage != null && valueEditPage !== '')
-    vals['editPage'] = valueEditPage;
-
-  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
-  if(valueUserPage != null && valueUserPage !== '')
-    vals['userPage'] = valueUserPage;
-
-  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
-  if(valueDownload != null && valueDownload !== '')
-    vals['download'] = valueDownload;
-
-  var valueUserId = $formValues.querySelector('.valueUserId')?.value;
-  if(valueUserId != null && valueUserId !== '')
-    vals['userId'] = valueUserId;
-
-  var valueUserName = $formValues.querySelector('.valueUserName')?.value;
-  if(valueUserName != null && valueUserName !== '')
-    vals['userName'] = valueUserName;
-
-  var valueUserEmail = $formValues.querySelector('.valueUserEmail')?.value;
-  if(valueUserEmail != null && valueUserEmail !== '')
-    vals['userEmail'] = valueUserEmail;
-
-  var valueUserFirstName = $formValues.querySelector('.valueUserFirstName')?.value;
-  if(valueUserFirstName != null && valueUserFirstName !== '')
-    vals['userFirstName'] = valueUserFirstName;
-
-  var valueUserLastName = $formValues.querySelector('.valueUserLastName')?.value;
-  if(valueUserLastName != null && valueUserLastName !== '')
-    vals['userLastName'] = valueUserLastName;
-
-  var valueUserFullName = $formValues.querySelector('.valueUserFullName')?.value;
-  if(valueUserFullName != null && valueUserFullName !== '')
-    vals['userFullName'] = valueUserFullName;
-
-  var valueDisplayName = $formValues.querySelector('.valueDisplayName')?.value;
-  if(valueDisplayName != null && valueDisplayName !== '')
-    vals['displayName'] = valueDisplayName;
-
-  var valueCustomerProfileId = $formValues.querySelector('.valueCustomerProfileId')?.value;
-  if(valueCustomerProfileId != null && valueCustomerProfileId !== '')
-    vals['customerProfileId'] = valueCustomerProfileId;
-
-  fetch(
-    '/en-us/api/user'
-    , {
-      headers: {'Content-Type':'application/json; charset=utf-8'}
-      , method: 'POST'
-      , body: JSON.stringify(vals)
-    }).then(response => {
-      if(response.ok) {
-        response.json().then((json) => {
-          success(json, target);
-        })
-      } else {
-        error(response, target);
-      }
-    })
-    .catch(response => error(response, target));
-}
-
-function postSiteUserVals(vals, target, success, error) {
-  fetch(
-    '/en-us/api/user'
-    , {
-      headers: {'Content-Type':'application/json; charset=utf-8'}
-      , method: 'POST'
-      , body: JSON.stringify(vals)
-    }).then(response => {
-      if(response.ok) {
-        response.json().then((json) => {
-          success(json, target);
-        })
-      } else {
-        error(response, target);
-      }
-    })
-    .catch(response => error(response, target));
-}
-
 async function websocketSiteUser(success) {
   window.eventBus.onopen = function () {
 
@@ -939,14 +87,14 @@ async function websocketSiteUserInner(apiRequest) {
         var inputAwesomeEffect = null;
         var inputSiteTheme = null;
         var inputWebComponentsTheme = null;
-        var inputClassCanonicalName = null;
         var inputClassSimpleName = null;
         var inputClassCanonicalNames = null;
-        var inputSessionId = null;
         var inputUserKey = null;
-        var inputSaves = null;
         var inputObjectTitle = null;
         var inputDisplayPage = null;
+        var inputClassCanonicalName = null;
+        var inputSessionId = null;
+        var inputSaves = null;
         var inputEditPage = null;
         var inputUserPage = null;
         var inputDownload = null;
@@ -981,22 +129,22 @@ async function websocketSiteUserInner(apiRequest) {
           inputSiteTheme = $response.querySelector('.Page_siteTheme');
         if(vars.includes('webComponentsTheme'))
           inputWebComponentsTheme = $response.querySelector('.Page_webComponentsTheme');
-        if(vars.includes('classCanonicalName'))
-          inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
         if(vars.includes('classSimpleName'))
           inputClassSimpleName = $response.querySelector('.Page_classSimpleName');
         if(vars.includes('classCanonicalNames'))
           inputClassCanonicalNames = $response.querySelector('.Page_classCanonicalNames');
-        if(vars.includes('sessionId'))
-          inputSessionId = $response.querySelector('.Page_sessionId');
         if(vars.includes('userKey'))
           inputUserKey = $response.querySelector('.Page_userKey');
-        if(vars.includes('saves'))
-          inputSaves = $response.querySelector('.Page_saves');
         if(vars.includes('objectTitle'))
           inputObjectTitle = $response.querySelector('.Page_objectTitle');
         if(vars.includes('displayPage'))
           inputDisplayPage = $response.querySelector('.Page_displayPage');
+        if(vars.includes('classCanonicalName'))
+          inputClassCanonicalName = $response.querySelector('.Page_classCanonicalName');
+        if(vars.includes('sessionId'))
+          inputSessionId = $response.querySelector('.Page_sessionId');
+        if(vars.includes('saves'))
+          inputSaves = $response.querySelector('.Page_saves');
         if(vars.includes('editPage'))
           inputEditPage = $response.querySelector('.Page_editPage');
         if(vars.includes('userPage'))
@@ -1123,16 +271,6 @@ async function websocketSiteUserInner(apiRequest) {
           addGlow(document.querySelector('.Page_webComponentsTheme'));
         }
 
-        if(inputClassCanonicalName) {
-          document.querySelectorAll('.Page_classCanonicalName').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputClassCanonicalName.getAttribute('value');
-            else
-              item.textContent = inputClassCanonicalName.textContent;
-          });
-          addGlow(document.querySelector('.Page_classCanonicalName'));
-        }
-
         if(inputClassSimpleName) {
           document.querySelectorAll('.Page_classSimpleName').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1153,16 +291,6 @@ async function websocketSiteUserInner(apiRequest) {
           addGlow(document.querySelector('.Page_classCanonicalNames'));
         }
 
-        if(inputSessionId) {
-          document.querySelectorAll('.Page_sessionId').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputSessionId.getAttribute('value');
-            else
-              item.textContent = inputSessionId.textContent;
-          });
-          addGlow(document.querySelector('.Page_sessionId'));
-        }
-
         if(inputUserKey) {
           document.querySelectorAll('.Page_userKey').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -1171,16 +299,6 @@ async function websocketSiteUserInner(apiRequest) {
               item.textContent = inputUserKey.textContent;
           });
           addGlow(document.querySelector('.Page_userKey'));
-        }
-
-        if(inputSaves) {
-          document.querySelectorAll('.Page_saves').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputSaves.getAttribute('value');
-            else
-              item.textContent = inputSaves.textContent;
-          });
-          addGlow(document.querySelector('.Page_saves'));
         }
 
         if(inputObjectTitle) {
@@ -1201,6 +319,36 @@ async function websocketSiteUserInner(apiRequest) {
               item.textContent = inputDisplayPage.textContent;
           });
           addGlow(document.querySelector('.Page_displayPage'));
+        }
+
+        if(inputClassCanonicalName) {
+          document.querySelectorAll('.Page_classCanonicalName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputClassCanonicalName.getAttribute('value');
+            else
+              item.textContent = inputClassCanonicalName.textContent;
+          });
+          addGlow(document.querySelector('.Page_classCanonicalName'));
+        }
+
+        if(inputSessionId) {
+          document.querySelectorAll('.Page_sessionId').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSessionId.getAttribute('value');
+            else
+              item.textContent = inputSessionId.textContent;
+          });
+          addGlow(document.querySelector('.Page_sessionId'));
+        }
+
+        if(inputSaves) {
+          document.querySelectorAll('.Page_saves').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSaves.getAttribute('value');
+            else
+              item.textContent = inputSaves.textContent;
+          });
+          addGlow(document.querySelector('.Page_saves'));
         }
 
         if(inputEditPage) {
@@ -1480,4 +628,856 @@ function animateStats() {
       searchPage('SiteUser');
     }, speedRate);
   });
+}
+
+// Search //
+
+async function searchSiteUser($formFilters, success, error) {
+  var filters = searchSiteUserFilters($formFilters);
+  if(success == null)
+    success = function( data, textStatus, jQxhr ) {};
+  if(error == null)
+    error = function( jqXhr, target2 ) {};
+
+  searchSiteUserVals(filters, target, success, error);
+}
+
+function searchSiteUserFilters($formFilters) {
+  var filters = [];
+  if($formFilters) {
+
+    var filterPk = $formFilters.querySelector('.valuePk')?.value;
+    if(filterPk != null && filterPk !== '')
+      filters.push({ name: 'fq', value: 'pk:' + filterPk });
+
+    var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
+    if(filterCreated != null && filterCreated !== '')
+      filters.push({ name: 'fq', value: 'created:' + filterCreated });
+
+    var filterModified = $formFilters.querySelector('.valueModified')?.value;
+    if(filterModified != null && filterModified !== '')
+      filters.push({ name: 'fq', value: 'modified:' + filterModified });
+
+    var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
+    var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
+    var filterArchived = $filterArchivedSelect.length ? $filterArchivedSelect.value : $filterArchivedCheckbox.checked;
+    var filterArchivedSelectVal = $formFilters.querySelector('select.filterArchived')?.value;
+    var filterArchived = null;
+    if(filterArchivedSelectVal !== '')
+      filterArchived = filterArchivedSelectVal == 'true';
+    if(filterArchived != null && filterArchived === true)
+      filters.push({ name: 'fq', value: 'archived:' + filterArchived });
+
+    var $filterSeeArchivedCheckbox = $formFilters.querySelector('input.valueSeeArchived[type = "checkbox"]');
+    var $filterSeeArchivedSelect = $formFilters.querySelector('select.valueSeeArchived');
+    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.value : $filterSeeArchivedCheckbox.checked;
+    var filterSeeArchivedSelectVal = $formFilters.querySelector('select.filterSeeArchived')?.value;
+    var filterSeeArchived = null;
+    if(filterSeeArchivedSelectVal !== '')
+      filterSeeArchived = filterSeeArchivedSelectVal == 'true';
+    if(filterSeeArchived != null && filterSeeArchived === true)
+      filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
+
+    var filterSiteFontSize = $formFilters.querySelector('.valueSiteFontSize')?.value;
+    if(filterSiteFontSize != null && filterSiteFontSize !== '')
+      filters.push({ name: 'fq', value: 'siteFontSize:' + filterSiteFontSize });
+
+    var $filterAwesomeEffectCheckbox = $formFilters.querySelector('input.valueAwesomeEffect[type = "checkbox"]');
+    var $filterAwesomeEffectSelect = $formFilters.querySelector('select.valueAwesomeEffect');
+    var filterAwesomeEffect = $filterAwesomeEffectSelect.length ? $filterAwesomeEffectSelect.value : $filterAwesomeEffectCheckbox.checked;
+    var filterAwesomeEffectSelectVal = $formFilters.querySelector('select.filterAwesomeEffect')?.value;
+    var filterAwesomeEffect = null;
+    if(filterAwesomeEffectSelectVal !== '')
+      filterAwesomeEffect = filterAwesomeEffectSelectVal == 'true';
+    if(filterAwesomeEffect != null && filterAwesomeEffect === true)
+      filters.push({ name: 'fq', value: 'awesomeEffect:' + filterAwesomeEffect });
+
+    var filterSiteTheme = $formFilters.querySelector('.valueSiteTheme')?.value;
+    if(filterSiteTheme != null && filterSiteTheme !== '')
+      filters.push({ name: 'fq', value: 'siteTheme:' + filterSiteTheme });
+
+    var filterWebComponentsTheme = $formFilters.querySelector('.valueWebComponentsTheme')?.value;
+    if(filterWebComponentsTheme != null && filterWebComponentsTheme !== '')
+      filters.push({ name: 'fq', value: 'webComponentsTheme:' + filterWebComponentsTheme });
+
+    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
+    if(filterClassSimpleName != null && filterClassSimpleName !== '')
+      filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
+
+    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
+    if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
+      filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
+
+    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
+    if(filterUserKey != null && filterUserKey !== '')
+      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
+
+    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
+    if(filterObjectTitle != null && filterObjectTitle !== '')
+      filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
+
+    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
+    if(filterDisplayPage != null && filterDisplayPage !== '')
+      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
+
+    var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
+    if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
+      filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
+
+    var filterSessionId = $formFilters.querySelector('.valueSessionId')?.value;
+    if(filterSessionId != null && filterSessionId !== '')
+      filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
+
+    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
+    if(filterSaves != null && filterSaves !== '')
+      filters.push({ name: 'fq', value: 'saves:' + filterSaves });
+
+    var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
+    if(filterEditPage != null && filterEditPage !== '')
+      filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
+    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
+    if(filterUserPage != null && filterUserPage !== '')
+      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
+
+    var filterDownload = $formFilters.querySelector('.valueDownload')?.value;
+    if(filterDownload != null && filterDownload !== '')
+      filters.push({ name: 'fq', value: 'download:' + filterDownload });
+
+    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
+    if(filterObjectSuggest != null && filterObjectSuggest !== '')
+      filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
+
+    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
+    if(filterObjectText != null && filterObjectText !== '')
+      filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
+
+    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
+    if(filterSolrId != null && filterSolrId !== '')
+      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
+
+    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
+    if(filterUserKeys != null && filterUserKeys !== '')
+      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
+
+    var filterUserId = $formFilters.querySelector('.valueUserId')?.value;
+    if(filterUserId != null && filterUserId !== '')
+      filters.push({ name: 'fq', value: 'userId:' + filterUserId });
+
+    var filterUserName = $formFilters.querySelector('.valueUserName')?.value;
+    if(filterUserName != null && filterUserName !== '')
+      filters.push({ name: 'fq', value: 'userName:' + filterUserName });
+
+    var filterUserEmail = $formFilters.querySelector('.valueUserEmail')?.value;
+    if(filterUserEmail != null && filterUserEmail !== '')
+      filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
+
+    var filterUserFirstName = $formFilters.querySelector('.valueUserFirstName')?.value;
+    if(filterUserFirstName != null && filterUserFirstName !== '')
+      filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
+
+    var filterUserLastName = $formFilters.querySelector('.valueUserLastName')?.value;
+    if(filterUserLastName != null && filterUserLastName !== '')
+      filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
+
+    var filterUserFullName = $formFilters.querySelector('.valueUserFullName')?.value;
+    if(filterUserFullName != null && filterUserFullName !== '')
+      filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
+
+    var filterDisplayName = $formFilters.querySelector('.valueDisplayName')?.value;
+    if(filterDisplayName != null && filterDisplayName !== '')
+      filters.push({ name: 'fq', value: 'displayName:' + filterDisplayName });
+
+    var filterCustomerProfileId = $formFilters.querySelector('.valueCustomerProfileId')?.value;
+    if(filterCustomerProfileId != null && filterCustomerProfileId !== '')
+      filters.push({ name: 'fq', value: 'customerProfileId:' + filterCustomerProfileId });
+  }
+  return filters;
+}
+
+function searchSiteUserVals(filters, target, success, error) {
+
+  fetch(
+    '/en-us/api/user?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+    }).then(response => {
+      if(response.ok) {
+        response.json().then((json) => {
+          success(json, target);
+        })
+      } else {
+        error(response, target);
+      }
+    })
+    .catch(response => error(response, target));
+}
+
+function suggestSiteUserObjectSuggest($formFilters, $list, target) {
+  success = function( data, textStatus, jQxhr ) {
+    if($list) {
+      $list.innerHTML = '';
+      data['list'].forEach((o, i) => {
+        var $i = document.querySelector('<i class="fa-duotone fa-regular fa-user-gear"></i>');
+        var $span = document.createElement('span');        $span.setAttribute('class', '');        $span.innerText = o['objectTitle'];
+        var $li = document.createElement('li');
+        var $a = document.createElement('a').setAttribute('href', o['editPage']);
+        $a.append($i);
+        $a.append($span);
+        $li.append($a);
+        $list.append($li);
+      });
+    }
+  };
+  error = function( jqXhr, target2 ) {};
+  searchSiteUserVals($formFilters, target, success, error);
+}
+
+// PATCH //
+
+async function patchSiteUser($formFilters, $formValues, target, userId, success, error) {
+  var filters = patchSiteUserFilters($formFilters);
+
+  var vals = {};
+
+  var valuePk = $formValues.querySelector('.valuePk')?.value;
+  var removePk = $formValues.querySelector('.removePk')?.value === 'true';
+  var setPk = removePk ? null : $formValues.querySelector('.setPk')?.value;
+  var addPk = $formValues.querySelector('.addPk')?.value;
+  if(removePk || setPk != null && setPk !== '')
+    vals['setPk'] = setPk;
+  if(addPk != null && addPk !== '')
+    vals['addPk'] = addPk;
+  var removePk = $formValues.querySelector('.removePk')?.value;
+  if(removePk != null && removePk !== '')
+    vals['removePk'] = removePk;
+
+  var valueCreated = $formValues.querySelector('.valueCreated')?.value;
+  var removeCreated = $formValues.querySelector('.removeCreated')?.value === 'true';
+  var setCreated = removeCreated ? null : $formValues.querySelector('.setCreated')?.value;
+  var addCreated = $formValues.querySelector('.addCreated')?.value;
+  if(removeCreated || setCreated != null && setCreated !== '')
+    vals['setCreated'] = setCreated;
+  if(addCreated != null && addCreated !== '')
+    vals['addCreated'] = addCreated;
+  var removeCreated = $formValues.querySelector('.removeCreated')?.value;
+  if(removeCreated != null && removeCreated !== '')
+    vals['removeCreated'] = removeCreated;
+
+  var valueModified = $formValues.querySelector('.valueModified')?.value;
+  var removeModified = $formValues.querySelector('.removeModified')?.value === 'true';
+  var setModified = removeModified ? null : $formValues.querySelector('.setModified')?.value;
+  var addModified = $formValues.querySelector('.addModified')?.value;
+  if(removeModified || setModified != null && setModified !== '')
+    vals['setModified'] = setModified;
+  if(addModified != null && addModified !== '')
+    vals['addModified'] = addModified;
+  var removeModified = $formValues.querySelector('.removeModified')?.value;
+  if(removeModified != null && removeModified !== '')
+    vals['removeModified'] = removeModified;
+
+  var valueArchived = $formValues.querySelector('.valueArchived')?.value;
+  var removeArchived = $formValues.querySelector('.removeArchived')?.value === 'true';
+  if(valueArchived != null)
+    valueArchived = valueArchived === 'true';
+  var valueArchivedSelectVal = $formValues.querySelector('select.setArchived')?.value;
+  if(valueArchivedSelectVal != null)
+    valueArchivedSelectVal = valueArchivedSelectVal === 'true';
+  if(valueArchivedSelectVal != null && valueArchivedSelectVal !== '')
+    valueArchived = valueArchivedSelectVal == 'true';
+  var setArchived = removeArchived ? null : valueArchived;
+  var addArchived = $formValues.querySelector('.addArchived')?.checked;
+  if(removeArchived || setArchived != null && setArchived !== '')
+    vals['setArchived'] = setArchived;
+  if(addArchived != null && addArchived !== '')
+    vals['addArchived'] = addArchived;
+  var removeArchived = $formValues.querySelector('.removeArchived')?.checked;
+  if(removeArchived != null && removeArchived !== '')
+    vals['removeArchived'] = removeArchived;
+
+  var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
+  var removeSeeArchived = $formValues.querySelector('.removeSeeArchived')?.value === 'true';
+  if(valueSeeArchived != null)
+    valueSeeArchived = valueSeeArchived === 'true';
+  var valueSeeArchivedSelectVal = $formValues.querySelector('select.setSeeArchived')?.value;
+  if(valueSeeArchivedSelectVal != null)
+    valueSeeArchivedSelectVal = valueSeeArchivedSelectVal === 'true';
+  if(valueSeeArchivedSelectVal != null && valueSeeArchivedSelectVal !== '')
+    valueSeeArchived = valueSeeArchivedSelectVal == 'true';
+  var setSeeArchived = removeSeeArchived ? null : valueSeeArchived;
+  var addSeeArchived = $formValues.querySelector('.addSeeArchived')?.checked;
+  if(removeSeeArchived || setSeeArchived != null && setSeeArchived !== '')
+    vals['setSeeArchived'] = setSeeArchived;
+  if(addSeeArchived != null && addSeeArchived !== '')
+    vals['addSeeArchived'] = addSeeArchived;
+  var removeSeeArchived = $formValues.querySelector('.removeSeeArchived')?.checked;
+  if(removeSeeArchived != null && removeSeeArchived !== '')
+    vals['removeSeeArchived'] = removeSeeArchived;
+
+  var valueSiteFontSize = $formValues.querySelector('.valueSiteFontSize')?.value;
+  var removeSiteFontSize = $formValues.querySelector('.removeSiteFontSize')?.value === 'true';
+  var setSiteFontSize = removeSiteFontSize ? null : $formValues.querySelector('.setSiteFontSize')?.value;
+  var addSiteFontSize = $formValues.querySelector('.addSiteFontSize')?.value;
+  if(removeSiteFontSize || setSiteFontSize != null && setSiteFontSize !== '')
+    vals['setSiteFontSize'] = setSiteFontSize;
+  if(addSiteFontSize != null && addSiteFontSize !== '')
+    vals['addSiteFontSize'] = addSiteFontSize;
+  var removeSiteFontSize = $formValues.querySelector('.removeSiteFontSize')?.value;
+  if(removeSiteFontSize != null && removeSiteFontSize !== '')
+    vals['removeSiteFontSize'] = removeSiteFontSize;
+
+  var valueAwesomeEffect = $formValues.querySelector('.valueAwesomeEffect')?.value;
+  var removeAwesomeEffect = $formValues.querySelector('.removeAwesomeEffect')?.value === 'true';
+  if(valueAwesomeEffect != null)
+    valueAwesomeEffect = valueAwesomeEffect === 'true';
+  var valueAwesomeEffectSelectVal = $formValues.querySelector('select.setAwesomeEffect')?.value;
+  if(valueAwesomeEffectSelectVal != null)
+    valueAwesomeEffectSelectVal = valueAwesomeEffectSelectVal === 'true';
+  if(valueAwesomeEffectSelectVal != null && valueAwesomeEffectSelectVal !== '')
+    valueAwesomeEffect = valueAwesomeEffectSelectVal == 'true';
+  var setAwesomeEffect = removeAwesomeEffect ? null : valueAwesomeEffect;
+  var addAwesomeEffect = $formValues.querySelector('.addAwesomeEffect')?.checked;
+  if(removeAwesomeEffect || setAwesomeEffect != null && setAwesomeEffect !== '')
+    vals['setAwesomeEffect'] = setAwesomeEffect;
+  if(addAwesomeEffect != null && addAwesomeEffect !== '')
+    vals['addAwesomeEffect'] = addAwesomeEffect;
+  var removeAwesomeEffect = $formValues.querySelector('.removeAwesomeEffect')?.checked;
+  if(removeAwesomeEffect != null && removeAwesomeEffect !== '')
+    vals['removeAwesomeEffect'] = removeAwesomeEffect;
+
+  var valueSiteTheme = $formValues.querySelector('.valueSiteTheme')?.value;
+  var removeSiteTheme = $formValues.querySelector('.removeSiteTheme')?.value === 'true';
+  var setSiteTheme = removeSiteTheme ? null : $formValues.querySelector('.setSiteTheme')?.value;
+  var addSiteTheme = $formValues.querySelector('.addSiteTheme')?.value;
+  if(removeSiteTheme || setSiteTheme != null && setSiteTheme !== '')
+    vals['setSiteTheme'] = setSiteTheme;
+  if(addSiteTheme != null && addSiteTheme !== '')
+    vals['addSiteTheme'] = addSiteTheme;
+  var removeSiteTheme = $formValues.querySelector('.removeSiteTheme')?.value;
+  if(removeSiteTheme != null && removeSiteTheme !== '')
+    vals['removeSiteTheme'] = removeSiteTheme;
+
+  var valueWebComponentsTheme = $formValues.querySelector('.valueWebComponentsTheme')?.value;
+  var removeWebComponentsTheme = $formValues.querySelector('.removeWebComponentsTheme')?.value === 'true';
+  var setWebComponentsTheme = removeWebComponentsTheme ? null : $formValues.querySelector('.setWebComponentsTheme')?.value;
+  var addWebComponentsTheme = $formValues.querySelector('.addWebComponentsTheme')?.value;
+  if(removeWebComponentsTheme || setWebComponentsTheme != null && setWebComponentsTheme !== '')
+    vals['setWebComponentsTheme'] = setWebComponentsTheme;
+  if(addWebComponentsTheme != null && addWebComponentsTheme !== '')
+    vals['addWebComponentsTheme'] = addWebComponentsTheme;
+  var removeWebComponentsTheme = $formValues.querySelector('.removeWebComponentsTheme')?.value;
+  if(removeWebComponentsTheme != null && removeWebComponentsTheme !== '')
+    vals['removeWebComponentsTheme'] = removeWebComponentsTheme;
+
+  var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
+  var removeUserKey = $formValues.querySelector('.removeUserKey')?.value === 'true';
+  var setUserKey = removeUserKey ? null : $formValues.querySelector('.setUserKey')?.value;
+  var addUserKey = $formValues.querySelector('.addUserKey')?.value;
+  if(removeUserKey || setUserKey != null && setUserKey !== '')
+    vals['setUserKey'] = setUserKey;
+  if(addUserKey != null && addUserKey !== '')
+    vals['addUserKey'] = addUserKey;
+  var removeUserKey = $formValues.querySelector('.removeUserKey')?.value;
+  if(removeUserKey != null && removeUserKey !== '')
+    vals['removeUserKey'] = removeUserKey;
+
+  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
+  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value === 'true';
+  var setObjectTitle = removeObjectTitle ? null : $formValues.querySelector('.setObjectTitle')?.value;
+  var addObjectTitle = $formValues.querySelector('.addObjectTitle')?.value;
+  if(removeObjectTitle || setObjectTitle != null && setObjectTitle !== '')
+    vals['setObjectTitle'] = setObjectTitle;
+  if(addObjectTitle != null && addObjectTitle !== '')
+    vals['addObjectTitle'] = addObjectTitle;
+  var removeObjectTitle = $formValues.querySelector('.removeObjectTitle')?.value;
+  if(removeObjectTitle != null && removeObjectTitle !== '')
+    vals['removeObjectTitle'] = removeObjectTitle;
+
+  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
+  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value === 'true';
+  var setDisplayPage = removeDisplayPage ? null : $formValues.querySelector('.setDisplayPage')?.value;
+  var addDisplayPage = $formValues.querySelector('.addDisplayPage')?.value;
+  if(removeDisplayPage || setDisplayPage != null && setDisplayPage !== '')
+    vals['setDisplayPage'] = setDisplayPage;
+  if(addDisplayPage != null && addDisplayPage !== '')
+    vals['addDisplayPage'] = addDisplayPage;
+  var removeDisplayPage = $formValues.querySelector('.removeDisplayPage')?.value;
+  if(removeDisplayPage != null && removeDisplayPage !== '')
+    vals['removeDisplayPage'] = removeDisplayPage;
+
+  var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
+  var removeSessionId = $formValues.querySelector('.removeSessionId')?.value === 'true';
+  var setSessionId = removeSessionId ? null : $formValues.querySelector('.setSessionId')?.value;
+  var addSessionId = $formValues.querySelector('.addSessionId')?.value;
+  if(removeSessionId || setSessionId != null && setSessionId !== '')
+    vals['setSessionId'] = setSessionId;
+  if(addSessionId != null && addSessionId !== '')
+    vals['addSessionId'] = addSessionId;
+  var removeSessionId = $formValues.querySelector('.removeSessionId')?.value;
+  if(removeSessionId != null && removeSessionId !== '')
+    vals['removeSessionId'] = removeSessionId;
+
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value === 'true';
+  var setEditPage = removeEditPage ? null : $formValues.querySelector('.setEditPage')?.value;
+  var addEditPage = $formValues.querySelector('.addEditPage')?.value;
+  if(removeEditPage || setEditPage != null && setEditPage !== '')
+    vals['setEditPage'] = setEditPage;
+  if(addEditPage != null && addEditPage !== '')
+    vals['addEditPage'] = addEditPage;
+  var removeEditPage = $formValues.querySelector('.removeEditPage')?.value;
+  if(removeEditPage != null && removeEditPage !== '')
+    vals['removeEditPage'] = removeEditPage;
+
+  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
+  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value === 'true';
+  var setUserPage = removeUserPage ? null : $formValues.querySelector('.setUserPage')?.value;
+  var addUserPage = $formValues.querySelector('.addUserPage')?.value;
+  if(removeUserPage || setUserPage != null && setUserPage !== '')
+    vals['setUserPage'] = setUserPage;
+  if(addUserPage != null && addUserPage !== '')
+    vals['addUserPage'] = addUserPage;
+  var removeUserPage = $formValues.querySelector('.removeUserPage')?.value;
+  if(removeUserPage != null && removeUserPage !== '')
+    vals['removeUserPage'] = removeUserPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value === 'true';
+  var setDownload = removeDownload ? null : $formValues.querySelector('.setDownload')?.value;
+  var addDownload = $formValues.querySelector('.addDownload')?.value;
+  if(removeDownload || setDownload != null && setDownload !== '')
+    vals['setDownload'] = setDownload;
+  if(addDownload != null && addDownload !== '')
+    vals['addDownload'] = addDownload;
+  var removeDownload = $formValues.querySelector('.removeDownload')?.value;
+  if(removeDownload != null && removeDownload !== '')
+    vals['removeDownload'] = removeDownload;
+
+  var valueUserId = $formValues.querySelector('.valueUserId')?.value;
+  var removeUserId = $formValues.querySelector('.removeUserId')?.value === 'true';
+  var setUserId = removeUserId ? null : $formValues.querySelector('.setUserId')?.value;
+  var addUserId = $formValues.querySelector('.addUserId')?.value;
+  if(removeUserId || setUserId != null && setUserId !== '')
+    vals['setUserId'] = setUserId;
+  if(addUserId != null && addUserId !== '')
+    vals['addUserId'] = addUserId;
+  var removeUserId = $formValues.querySelector('.removeUserId')?.value;
+  if(removeUserId != null && removeUserId !== '')
+    vals['removeUserId'] = removeUserId;
+
+  var valueUserName = $formValues.querySelector('.valueUserName')?.value;
+  var removeUserName = $formValues.querySelector('.removeUserName')?.value === 'true';
+  var setUserName = removeUserName ? null : $formValues.querySelector('.setUserName')?.value;
+  var addUserName = $formValues.querySelector('.addUserName')?.value;
+  if(removeUserName || setUserName != null && setUserName !== '')
+    vals['setUserName'] = setUserName;
+  if(addUserName != null && addUserName !== '')
+    vals['addUserName'] = addUserName;
+  var removeUserName = $formValues.querySelector('.removeUserName')?.value;
+  if(removeUserName != null && removeUserName !== '')
+    vals['removeUserName'] = removeUserName;
+
+  var valueUserEmail = $formValues.querySelector('.valueUserEmail')?.value;
+  var removeUserEmail = $formValues.querySelector('.removeUserEmail')?.value === 'true';
+  var setUserEmail = removeUserEmail ? null : $formValues.querySelector('.setUserEmail')?.value;
+  var addUserEmail = $formValues.querySelector('.addUserEmail')?.value;
+  if(removeUserEmail || setUserEmail != null && setUserEmail !== '')
+    vals['setUserEmail'] = setUserEmail;
+  if(addUserEmail != null && addUserEmail !== '')
+    vals['addUserEmail'] = addUserEmail;
+  var removeUserEmail = $formValues.querySelector('.removeUserEmail')?.value;
+  if(removeUserEmail != null && removeUserEmail !== '')
+    vals['removeUserEmail'] = removeUserEmail;
+
+  var valueUserFirstName = $formValues.querySelector('.valueUserFirstName')?.value;
+  var removeUserFirstName = $formValues.querySelector('.removeUserFirstName')?.value === 'true';
+  var setUserFirstName = removeUserFirstName ? null : $formValues.querySelector('.setUserFirstName')?.value;
+  var addUserFirstName = $formValues.querySelector('.addUserFirstName')?.value;
+  if(removeUserFirstName || setUserFirstName != null && setUserFirstName !== '')
+    vals['setUserFirstName'] = setUserFirstName;
+  if(addUserFirstName != null && addUserFirstName !== '')
+    vals['addUserFirstName'] = addUserFirstName;
+  var removeUserFirstName = $formValues.querySelector('.removeUserFirstName')?.value;
+  if(removeUserFirstName != null && removeUserFirstName !== '')
+    vals['removeUserFirstName'] = removeUserFirstName;
+
+  var valueUserLastName = $formValues.querySelector('.valueUserLastName')?.value;
+  var removeUserLastName = $formValues.querySelector('.removeUserLastName')?.value === 'true';
+  var setUserLastName = removeUserLastName ? null : $formValues.querySelector('.setUserLastName')?.value;
+  var addUserLastName = $formValues.querySelector('.addUserLastName')?.value;
+  if(removeUserLastName || setUserLastName != null && setUserLastName !== '')
+    vals['setUserLastName'] = setUserLastName;
+  if(addUserLastName != null && addUserLastName !== '')
+    vals['addUserLastName'] = addUserLastName;
+  var removeUserLastName = $formValues.querySelector('.removeUserLastName')?.value;
+  if(removeUserLastName != null && removeUserLastName !== '')
+    vals['removeUserLastName'] = removeUserLastName;
+
+  var valueUserFullName = $formValues.querySelector('.valueUserFullName')?.value;
+  var removeUserFullName = $formValues.querySelector('.removeUserFullName')?.value === 'true';
+  var setUserFullName = removeUserFullName ? null : $formValues.querySelector('.setUserFullName')?.value;
+  var addUserFullName = $formValues.querySelector('.addUserFullName')?.value;
+  if(removeUserFullName || setUserFullName != null && setUserFullName !== '')
+    vals['setUserFullName'] = setUserFullName;
+  if(addUserFullName != null && addUserFullName !== '')
+    vals['addUserFullName'] = addUserFullName;
+  var removeUserFullName = $formValues.querySelector('.removeUserFullName')?.value;
+  if(removeUserFullName != null && removeUserFullName !== '')
+    vals['removeUserFullName'] = removeUserFullName;
+
+  var valueDisplayName = $formValues.querySelector('.valueDisplayName')?.value;
+  var removeDisplayName = $formValues.querySelector('.removeDisplayName')?.value === 'true';
+  var setDisplayName = removeDisplayName ? null : $formValues.querySelector('.setDisplayName')?.value;
+  var addDisplayName = $formValues.querySelector('.addDisplayName')?.value;
+  if(removeDisplayName || setDisplayName != null && setDisplayName !== '')
+    vals['setDisplayName'] = setDisplayName;
+  if(addDisplayName != null && addDisplayName !== '')
+    vals['addDisplayName'] = addDisplayName;
+  var removeDisplayName = $formValues.querySelector('.removeDisplayName')?.value;
+  if(removeDisplayName != null && removeDisplayName !== '')
+    vals['removeDisplayName'] = removeDisplayName;
+
+  var valueCustomerProfileId = $formValues.querySelector('.valueCustomerProfileId')?.value;
+  var removeCustomerProfileId = $formValues.querySelector('.removeCustomerProfileId')?.value === 'true';
+  var setCustomerProfileId = removeCustomerProfileId ? null : $formValues.querySelector('.setCustomerProfileId')?.value;
+  var addCustomerProfileId = $formValues.querySelector('.addCustomerProfileId')?.value;
+  if(removeCustomerProfileId || setCustomerProfileId != null && setCustomerProfileId !== '')
+    vals['setCustomerProfileId'] = setCustomerProfileId;
+  if(addCustomerProfileId != null && addCustomerProfileId !== '')
+    vals['addCustomerProfileId'] = addCustomerProfileId;
+  var removeCustomerProfileId = $formValues.querySelector('.removeCustomerProfileId')?.value;
+  if(removeCustomerProfileId != null && removeCustomerProfileId !== '')
+    vals['removeCustomerProfileId'] = removeCustomerProfileId;
+
+  patchSiteUserVals(userId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'userId:' + userId}], vals, target, success, error);
+}
+
+function patchSiteUserFilters($formFilters) {
+  var filters = [];
+  if($formFilters) {
+    filters.push({ name: 'softCommit', value: 'true' });
+
+    var filterPk = $formFilters.querySelector('.valuePk')?.value;
+    if(filterPk != null && filterPk !== '')
+      filters.push({ name: 'fq', value: 'pk:' + filterPk });
+
+    var filterCreated = $formFilters.querySelector('.valueCreated')?.value;
+    if(filterCreated != null && filterCreated !== '')
+      filters.push({ name: 'fq', value: 'created:' + filterCreated });
+
+    var filterModified = $formFilters.querySelector('.valueModified')?.value;
+    if(filterModified != null && filterModified !== '')
+      filters.push({ name: 'fq', value: 'modified:' + filterModified });
+
+    var $filterArchivedCheckbox = $formFilters.querySelector('input.valueArchived[type = "checkbox"]');
+    var $filterArchivedSelect = $formFilters.querySelector('select.valueArchived');
+    var filterArchived = $filterArchivedSelect.length ? $filterArchivedSelect.value : $filterArchivedCheckbox.checked;
+    var filterArchivedSelectVal = $formFilters.querySelector('select.filterArchived')?.value;
+    var filterArchived = null;
+    if(filterArchivedSelectVal !== '')
+      filterArchived = filterArchivedSelectVal == 'true';
+    if(filterArchived != null && filterArchived === true)
+      filters.push({ name: 'fq', value: 'archived:' + filterArchived });
+
+    var $filterSeeArchivedCheckbox = $formFilters.querySelector('input.valueSeeArchived[type = "checkbox"]');
+    var $filterSeeArchivedSelect = $formFilters.querySelector('select.valueSeeArchived');
+    var filterSeeArchived = $filterSeeArchivedSelect.length ? $filterSeeArchivedSelect.value : $filterSeeArchivedCheckbox.checked;
+    var filterSeeArchivedSelectVal = $formFilters.querySelector('select.filterSeeArchived')?.value;
+    var filterSeeArchived = null;
+    if(filterSeeArchivedSelectVal !== '')
+      filterSeeArchived = filterSeeArchivedSelectVal == 'true';
+    if(filterSeeArchived != null && filterSeeArchived === true)
+      filters.push({ name: 'fq', value: 'seeArchived:' + filterSeeArchived });
+
+    var filterSiteFontSize = $formFilters.querySelector('.valueSiteFontSize')?.value;
+    if(filterSiteFontSize != null && filterSiteFontSize !== '')
+      filters.push({ name: 'fq', value: 'siteFontSize:' + filterSiteFontSize });
+
+    var $filterAwesomeEffectCheckbox = $formFilters.querySelector('input.valueAwesomeEffect[type = "checkbox"]');
+    var $filterAwesomeEffectSelect = $formFilters.querySelector('select.valueAwesomeEffect');
+    var filterAwesomeEffect = $filterAwesomeEffectSelect.length ? $filterAwesomeEffectSelect.value : $filterAwesomeEffectCheckbox.checked;
+    var filterAwesomeEffectSelectVal = $formFilters.querySelector('select.filterAwesomeEffect')?.value;
+    var filterAwesomeEffect = null;
+    if(filterAwesomeEffectSelectVal !== '')
+      filterAwesomeEffect = filterAwesomeEffectSelectVal == 'true';
+    if(filterAwesomeEffect != null && filterAwesomeEffect === true)
+      filters.push({ name: 'fq', value: 'awesomeEffect:' + filterAwesomeEffect });
+
+    var filterSiteTheme = $formFilters.querySelector('.valueSiteTheme')?.value;
+    if(filterSiteTheme != null && filterSiteTheme !== '')
+      filters.push({ name: 'fq', value: 'siteTheme:' + filterSiteTheme });
+
+    var filterWebComponentsTheme = $formFilters.querySelector('.valueWebComponentsTheme')?.value;
+    if(filterWebComponentsTheme != null && filterWebComponentsTheme !== '')
+      filters.push({ name: 'fq', value: 'webComponentsTheme:' + filterWebComponentsTheme });
+
+    var filterClassSimpleName = $formFilters.querySelector('.valueClassSimpleName')?.value;
+    if(filterClassSimpleName != null && filterClassSimpleName !== '')
+      filters.push({ name: 'fq', value: 'classSimpleName:' + filterClassSimpleName });
+
+    var filterClassCanonicalNames = $formFilters.querySelector('.valueClassCanonicalNames')?.value;
+    if(filterClassCanonicalNames != null && filterClassCanonicalNames !== '')
+      filters.push({ name: 'fq', value: 'classCanonicalNames:' + filterClassCanonicalNames });
+
+    var filterUserKey = $formFilters.querySelector('.valueUserKey')?.value;
+    if(filterUserKey != null && filterUserKey !== '')
+      filters.push({ name: 'fq', value: 'userKey:' + filterUserKey });
+
+    var filterObjectTitle = $formFilters.querySelector('.valueObjectTitle')?.value;
+    if(filterObjectTitle != null && filterObjectTitle !== '')
+      filters.push({ name: 'fq', value: 'objectTitle:' + filterObjectTitle });
+
+    var filterDisplayPage = $formFilters.querySelector('.valueDisplayPage')?.value;
+    if(filterDisplayPage != null && filterDisplayPage !== '')
+      filters.push({ name: 'fq', value: 'displayPage:' + filterDisplayPage });
+
+    var filterClassCanonicalName = $formFilters.querySelector('.valueClassCanonicalName')?.value;
+    if(filterClassCanonicalName != null && filterClassCanonicalName !== '')
+      filters.push({ name: 'fq', value: 'classCanonicalName:' + filterClassCanonicalName });
+
+    var filterSessionId = $formFilters.querySelector('.valueSessionId')?.value;
+    if(filterSessionId != null && filterSessionId !== '')
+      filters.push({ name: 'fq', value: 'sessionId:' + filterSessionId });
+
+    var filterSaves = $formFilters.querySelector('.valueSaves')?.value;
+    if(filterSaves != null && filterSaves !== '')
+      filters.push({ name: 'fq', value: 'saves:' + filterSaves });
+
+    var filterEditPage = $formFilters.querySelector('.valueEditPage')?.value;
+    if(filterEditPage != null && filterEditPage !== '')
+      filters.push({ name: 'fq', value: 'editPage:' + filterEditPage });
+
+    var filterUserPage = $formFilters.querySelector('.valueUserPage')?.value;
+    if(filterUserPage != null && filterUserPage !== '')
+      filters.push({ name: 'fq', value: 'userPage:' + filterUserPage });
+
+    var filterDownload = $formFilters.querySelector('.valueDownload')?.value;
+    if(filterDownload != null && filterDownload !== '')
+      filters.push({ name: 'fq', value: 'download:' + filterDownload });
+
+    var filterObjectSuggest = $formFilters.querySelector('.valueObjectSuggest')?.value;
+    if(filterObjectSuggest != null && filterObjectSuggest !== '')
+      filters.push({ name: 'q', value: 'objectSuggest:' + filterObjectSuggest });
+
+    var filterObjectText = $formFilters.querySelector('.valueObjectText')?.value;
+    if(filterObjectText != null && filterObjectText !== '')
+      filters.push({ name: 'fq', value: 'objectText:' + filterObjectText });
+
+    var filterSolrId = $formFilters.querySelector('.valueSolrId')?.value;
+    if(filterSolrId != null && filterSolrId !== '')
+      filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
+
+    var filterUserKeys = $formFilters.querySelector('.valueUserKeys')?.value;
+    if(filterUserKeys != null && filterUserKeys !== '')
+      filters.push({ name: 'fq', value: 'userKeys:' + filterUserKeys });
+
+    var filterUserId = $formFilters.querySelector('.valueUserId')?.value;
+    if(filterUserId != null && filterUserId !== '')
+      filters.push({ name: 'fq', value: 'userId:' + filterUserId });
+
+    var filterUserName = $formFilters.querySelector('.valueUserName')?.value;
+    if(filterUserName != null && filterUserName !== '')
+      filters.push({ name: 'fq', value: 'userName:' + filterUserName });
+
+    var filterUserEmail = $formFilters.querySelector('.valueUserEmail')?.value;
+    if(filterUserEmail != null && filterUserEmail !== '')
+      filters.push({ name: 'fq', value: 'userEmail:' + filterUserEmail });
+
+    var filterUserFirstName = $formFilters.querySelector('.valueUserFirstName')?.value;
+    if(filterUserFirstName != null && filterUserFirstName !== '')
+      filters.push({ name: 'fq', value: 'userFirstName:' + filterUserFirstName });
+
+    var filterUserLastName = $formFilters.querySelector('.valueUserLastName')?.value;
+    if(filterUserLastName != null && filterUserLastName !== '')
+      filters.push({ name: 'fq', value: 'userLastName:' + filterUserLastName });
+
+    var filterUserFullName = $formFilters.querySelector('.valueUserFullName')?.value;
+    if(filterUserFullName != null && filterUserFullName !== '')
+      filters.push({ name: 'fq', value: 'userFullName:' + filterUserFullName });
+
+    var filterDisplayName = $formFilters.querySelector('.valueDisplayName')?.value;
+    if(filterDisplayName != null && filterDisplayName !== '')
+      filters.push({ name: 'fq', value: 'displayName:' + filterDisplayName });
+
+    var filterCustomerProfileId = $formFilters.querySelector('.valueCustomerProfileId')?.value;
+    if(filterCustomerProfileId != null && filterCustomerProfileId !== '')
+      filters.push({ name: 'fq', value: 'customerProfileId:' + filterCustomerProfileId });
+  }
+  return filters;
+}
+
+function patchSiteUserVal(filters, v, val, target, success, error) {
+  var vals = {};
+  vals[v] = val;
+  patchSiteUserVals(filters, vals, target, success, error);
+}
+
+function patchSiteUserVals(filters, vals, target, success, error) {
+  fetch(
+    '/en-us/api/user?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'PATCH'
+      , body: JSON.stringify(vals)
+    }).then(response => {
+      if(response.ok) {
+        response.json().then((json) => {
+          success(json, target);
+        })
+      } else {
+        error(response, target);
+      }
+    })
+    .catch(response => error(response, target));
+}
+
+// POST //
+
+async function postSiteUser($formValues, target, success, error) {
+  var vals = {};
+  if(success == null) {
+    success = function( data, textStatus, jQxhr ) {
+      addGlow(target, jqXhr);
+      var url = data['editPage'];
+      if(url)
+        window.location.href = url;
+    };
+  }
+  if(error == null) {
+    error = function( jqXhr, target2 ) {
+      addError(target, jqXhr);
+    };
+  }
+
+  var valuePk = $formValues.querySelector('.valuePk')?.value;
+  if(valuePk != null && valuePk !== '')
+    vals['pk'] = valuePk;
+
+  var valueCreated = $formValues.querySelector('.valueCreated')?.value;
+  if(valueCreated != null && valueCreated !== '')
+    vals['created'] = valueCreated;
+
+  var valueModified = $formValues.querySelector('.valueModified')?.value;
+  if(valueModified != null && valueModified !== '')
+    vals['modified'] = valueModified;
+
+  var valueArchived = $formValues.querySelector('.valueArchived')?.value;
+  if(valueArchived != null && valueArchived !== '')
+    vals['archived'] = valueArchived == 'true';
+
+  var valueSeeArchived = $formValues.querySelector('.valueSeeArchived')?.value;
+  if(valueSeeArchived != null && valueSeeArchived !== '')
+    vals['seeArchived'] = valueSeeArchived == 'true';
+
+  var valueSiteFontSize = $formValues.querySelector('.valueSiteFontSize')?.value;
+  if(valueSiteFontSize != null && valueSiteFontSize !== '')
+    vals['siteFontSize'] = valueSiteFontSize;
+
+  var valueAwesomeEffect = $formValues.querySelector('.valueAwesomeEffect')?.value;
+  if(valueAwesomeEffect != null && valueAwesomeEffect !== '')
+    vals['awesomeEffect'] = valueAwesomeEffect == 'true';
+
+  var valueSiteTheme = $formValues.querySelector('.valueSiteTheme')?.value;
+  if(valueSiteTheme != null && valueSiteTheme !== '')
+    vals['siteTheme'] = valueSiteTheme;
+
+  var valueWebComponentsTheme = $formValues.querySelector('.valueWebComponentsTheme')?.value;
+  if(valueWebComponentsTheme != null && valueWebComponentsTheme !== '')
+    vals['webComponentsTheme'] = valueWebComponentsTheme;
+
+  var valueUserKey = $formValues.querySelector('.valueUserKey')?.value;
+  if(valueUserKey != null && valueUserKey !== '')
+    vals['userKey'] = valueUserKey;
+
+  var valueObjectTitle = $formValues.querySelector('.valueObjectTitle')?.value;
+  if(valueObjectTitle != null && valueObjectTitle !== '')
+    vals['objectTitle'] = valueObjectTitle;
+
+  var valueDisplayPage = $formValues.querySelector('.valueDisplayPage')?.value;
+  if(valueDisplayPage != null && valueDisplayPage !== '')
+    vals['displayPage'] = valueDisplayPage;
+
+  var valueSessionId = $formValues.querySelector('.valueSessionId')?.value;
+  if(valueSessionId != null && valueSessionId !== '')
+    vals['sessionId'] = valueSessionId;
+
+  var valueEditPage = $formValues.querySelector('.valueEditPage')?.value;
+  if(valueEditPage != null && valueEditPage !== '')
+    vals['editPage'] = valueEditPage;
+
+  var valueUserPage = $formValues.querySelector('.valueUserPage')?.value;
+  if(valueUserPage != null && valueUserPage !== '')
+    vals['userPage'] = valueUserPage;
+
+  var valueDownload = $formValues.querySelector('.valueDownload')?.value;
+  if(valueDownload != null && valueDownload !== '')
+    vals['download'] = valueDownload;
+
+  var valueUserId = $formValues.querySelector('.valueUserId')?.value;
+  if(valueUserId != null && valueUserId !== '')
+    vals['userId'] = valueUserId;
+
+  var valueUserName = $formValues.querySelector('.valueUserName')?.value;
+  if(valueUserName != null && valueUserName !== '')
+    vals['userName'] = valueUserName;
+
+  var valueUserEmail = $formValues.querySelector('.valueUserEmail')?.value;
+  if(valueUserEmail != null && valueUserEmail !== '')
+    vals['userEmail'] = valueUserEmail;
+
+  var valueUserFirstName = $formValues.querySelector('.valueUserFirstName')?.value;
+  if(valueUserFirstName != null && valueUserFirstName !== '')
+    vals['userFirstName'] = valueUserFirstName;
+
+  var valueUserLastName = $formValues.querySelector('.valueUserLastName')?.value;
+  if(valueUserLastName != null && valueUserLastName !== '')
+    vals['userLastName'] = valueUserLastName;
+
+  var valueUserFullName = $formValues.querySelector('.valueUserFullName')?.value;
+  if(valueUserFullName != null && valueUserFullName !== '')
+    vals['userFullName'] = valueUserFullName;
+
+  var valueDisplayName = $formValues.querySelector('.valueDisplayName')?.value;
+  if(valueDisplayName != null && valueDisplayName !== '')
+    vals['displayName'] = valueDisplayName;
+
+  var valueCustomerProfileId = $formValues.querySelector('.valueCustomerProfileId')?.value;
+  if(valueCustomerProfileId != null && valueCustomerProfileId !== '')
+    vals['customerProfileId'] = valueCustomerProfileId;
+
+  fetch(
+    '/en-us/api/user'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'POST'
+      , body: JSON.stringify(vals)
+    }).then(response => {
+      if(response.ok) {
+        response.json().then((json) => {
+          success(json, target);
+        })
+      } else {
+        error(response, target);
+      }
+    })
+    .catch(response => error(response, target));
+}
+
+function postSiteUserVals(vals, target, success, error) {
+  fetch(
+    '/en-us/api/user'
+    , {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+      , method: 'POST'
+      , body: JSON.stringify(vals)
+    }).then(response => {
+      if(response.ok) {
+        response.json().then((json) => {
+          success(json, target);
+        })
+      } else {
+        error(response, target);
+      }
+    })
+    .catch(response => error(response, target));
 }

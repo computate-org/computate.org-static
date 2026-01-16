@@ -1,13 +1,17 @@
           <wa-scroller>
             <wa-button-group class="no-gradient" id="htmSearchButtons">
+              {% if solrId is not defined %}
               <wa-button class="SearchButtons_Search SearchButtons_Search_AiTelemetryDeveloper " variant="brand" onclick="document.querySelector('#siteSidebarToggleSearch').open = true; ">
                 <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-magnifying-glass hover-box-shadow "></i> 
                 search
               </wa-button>
+              {% endif %}
+              {% if solrId is not defined %}
               <wa-button class="SearchButtons_Filters SearchButtons_Filters_AiTelemetryDeveloper " variant="brand" onclick="document.querySelector('#siteSidebarToggleFilters').open = true; ">
                 <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-filters hover-box-shadow "></i> 
                 filters
               </wa-button>
+              {% endif %}
               {% if solrId is not defined %}
               <wa-button class="SearchButtons_Sort SearchButtons_Sort_AiTelemetryDeveloper " variant="brand" onclick="document.querySelector('#siteSidebarToggleSort').open = true; ">
                 <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z hover-box-shadow "></i> 

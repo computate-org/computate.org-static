@@ -124,8 +124,7 @@
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] use case name"
                       label="use case name"
-                      hint="
-The use case name. "
+                      hint="The use case name. "
                       id="{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -161,8 +160,7 @@ The use case name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] author name"
                       label="author name"
-                      hint="
-The author name. "
+                      hint="The author name. "
                       id="{{classApiMethodMethod}}_authorName"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -198,8 +196,7 @@ The author name. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] use case description"
                       label="use case description"
-                      hint="
-The use case description. "
+                      hint="The use case description. "
                       id="{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -235,8 +232,7 @@ The use case description. "
                       {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
                       placeholder="[String] Page ID"
                       label="Page ID"
-                      hint="
-The ID for this page. "
+                      hint="The ID for this page. "
                       id="{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
@@ -310,8 +306,6 @@ The ID for this page. "
 {%- macro htmDisplayPageUseCasePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDisplayPageUseCasePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-
-{%- macro htmButton_patchUseCase() %}<wa-button variant="brand" id="htmButton_patchUseCase" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_patchUseCase() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_patchUseCase" duration="5000" closable class="wa-header-l ">
@@ -389,8 +383,6 @@ The ID for this page. "
           {{ htmFormButton_patchUseCase() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_postUseCase() %}<wa-button variant="brand" id="htmButton_postUseCase" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_postUseCase() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_postUseCase" duration="5000" closable class="wa-header-l ">
@@ -470,8 +462,6 @@ The ID for this page. "
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmButton_deleteUseCase() %}<wa-button variant="brand" id="htmButton_deleteUseCase" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deleteUseCase() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deleteUseCase" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -488,8 +478,6 @@ The ID for this page. "
           {{ htmFormButton_deleteUseCase() }}
         </wa-dialog>
 {%- endmacro %}
-
-{%- macro htmButton_putimportUseCase() %}<wa-button variant="brand" id="htmButton_putimportUseCase" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmFormButton_putimportUseCase() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_putimportUseCase" duration="5000" closable class="wa-header-l ">
@@ -514,17 +502,6 @@ The ID for this page. "
           </form>
           {{ htmFormButton_putimportUseCase() }}
         </wa-dialog>
-{%- endmacro %}
-
-{%- macro htmButton_searchpageUseCase() %}{%- endmacro %}
-
-{%- macro htmFormButton_searchpageUseCase() %}
-          <wa-popup  auto-size="both" placement="top" id="alertButton_searchpageUseCase" duration="5000" closable class="wa-header-l ">
-            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
-                 id="htmFormButton_searchpageUseCase"
-                >Search use cases</wa-button>
-            <wa-badge class="alertPopup" id="alertPopupButton_searchpageUseCase"></wa-badge>
-          </wa-popup>
 {%- endmacro %}
 
 {%- macro htmForm_searchpageUseCase() %}
@@ -632,8 +609,6 @@ The ID for this page. "
         </div>
 {%- endmacro %}
 
-{%- macro htmButton_deletefilterUseCase() %}<wa-button variant="brand" id="htmButton_deletefilterUseCase" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
-
 {%- macro htmFormButton_deletefilterUseCase() %}
           <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterUseCase" duration="5000" closable class="wa-header-l ">
             <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
@@ -650,61 +625,6 @@ The ID for this page. "
           {{ htmFormButton_deletefilterUseCase() }}
         </wa-dialog>
 {%- endmacro %}
-          <div id="htmSearchForm">
-            <wa-scroller>
-              <wa-button-group>
-{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {% if "PATCH" in scopes %}
-    {% if resultCount >= 1 %}
-                <wa-button variant="brand" id="refreshThisUseCaseGenPage"
-                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisUseCaseGenPage')); }, function() { addError(document.querySelector('#refreshThisUseCaseGenPage')); }); return false; ">
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
-                  refresh
-                </wa-button>
-    {% endif %}
-    {% if resultCount > 0 %}
-                <wa-button variant="brand" id="refreshAllUseCaseGenPage{{ result.pageId | e }}"
-                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllUseCaseGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllUseCaseGenPage{{ result.pageId | e }}')); }); "
-                    >
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
-                  refresh all 
-                </wa-button>
-    {% endif %}
-  {% endif %}
-{% endif %}
-{%- if 'PATCH' in scopes %}
-  {%- if resultCount > 0 %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_patchUseCase() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-{%- if 'POST' in scopes %}
-  {%- if resultCount >= 1 %}
-    {{ htmButton_postUseCase() }}
-  {%- else %}
-    {{ htmButton_postUseCase() }}
-  {%- endif %}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is defined %}
-    {{ htmButton_deleteUseCase() }}
-  {%- endif %}
-{%- endif %}
-{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-  {{ htmButton_putimportUseCase() }}
-{%- endif %}
-{%- if 'DELETE' in scopes %}
-  {%- if result is not defined %}
-    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
-    {{ htmButton_deletefilterUseCase() }}
-    {%- endif %}
-  {%- endif %}
-{%- endif %}
-
-              </wa-button-group>
-            </wa-scroller>
-          </div>
 {%- if 'DELETE' in scopes %}
     {{ htmForm_patchUseCase() }}
   {%- endif %}

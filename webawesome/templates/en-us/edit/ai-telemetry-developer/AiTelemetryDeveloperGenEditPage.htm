@@ -48,51 +48,61 @@
 {%- endblock htmTooltipAiTelemetryDeveloperPage %}`;
       }
 
-      function facetSimpleRangeAiTelemetryDeveloperSuccess(pageContent) {
-{% block facetSimpleRangeAiTelemetryDeveloperSuccess %}{%- endblock facetSimpleRangeAiTelemetryDeveloperSuccess %}
+      function facetChangeAiTelemetryDeveloperSuccess(e) {
+        var l = e.querySelector('.pageForm .listAiTelemetryDeveloper')?.value;
+        if(l)
+          window.listAiTelemetryDeveloper = JSON.parse(l);
+{% block facetChangeAiTelemetryDeveloperSuccess %}{%- endblock facetAiTelemetryDeveloperSuccess %}
       }
-      function facetSimpleRangeAiTelemetryDeveloperError(pageContent) {
-{% block facetSimpleRangeAiTelemetryDeveloperError %}{%- endblock facetSimpleRangeAiTelemetryDeveloperError %}
+      function facetChangeAiTelemetryDeveloperError(e) {
+{% block facetChangeAiTelemetryDeveloperError %}{%- endblock facetAiTelemetryDeveloperError %}
+      }
+
+      function facetSimpleRangeAiTelemetryDeveloperSuccess(e) {
+{% block facetSimpleRangeAiTelemetryDeveloperSuccess %}      facetChangeAiTelemetryDeveloperSuccess(e);{% endblock facetSimpleRangeAiTelemetryDeveloperSuccess %}
+      }
+      function facetSimpleRangeAiTelemetryDeveloperError(e) {
+{% block facetSimpleRangeAiTelemetryDeveloperError %}      facetChangeAiTelemetryDeveloperError(e);{% endblock facetSimpleRangeAiTelemetryDeveloperError %}
       }
       function facetSimpleRangeAiTelemetryDeveloper(e) {
         facetSimpleRange(e, facetSimpleRangeAiTelemetryDeveloperSuccess, facetSimpleRangeAiTelemetryDeveloperError);
       }
 
-      function facetRangeTimeZoneAiTelemetryDeveloperSuccess(pageContent) {
-{% block facetRangeTimeZoneAiTelemetryDeveloperSuccess %}{%- endblock facetRangeTimeZoneAiTelemetryDeveloperSuccess %}
+      function facetRangeTimeZoneAiTelemetryDeveloperSuccess(e) {
+{% block facetRangeTimeZoneAiTelemetryDeveloperSuccess %}      facetChangeAiTelemetryDeveloperSuccess(e);{% endblock facetRangeTimeZoneAiTelemetryDeveloperSuccess %}
       }
-      function facetRangeTimeZoneAiTelemetryDeveloperError(pageContent) {
-{% block facetRangeTimeZoneAiTelemetryDeveloperError %}{%- endblock facetRangeTimeZoneAiTelemetryDeveloperError %}
+      function facetRangeTimeZoneAiTelemetryDeveloperError(e) {
+{% block facetRangeTimeZoneAiTelemetryDeveloperError %}      facetChangeAiTelemetryDeveloperError(e);{%- endblock facetRangeTimeZoneAiTelemetryDeveloperError %}
       }
       function facetRangeTimeZoneAiTelemetryDeveloper(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneAiTelemetryDeveloperSuccess, facetRangeTimeZoneAiTelemetryDeveloperError);
       }
 
-      function facetRangeGapChangeAiTelemetryDeveloperSuccess(pageContent) {
-{% block facetRangeGapChangeAiTelemetryDeveloperSuccess %}{%- endblock facetRangeGapChangeAiTelemetryDeveloperSuccess %}
+      function facetRangeGapChangeAiTelemetryDeveloperSuccess(e) {
+{% block facetRangeGapChangeAiTelemetryDeveloperSuccess %}      facetChangeAiTelemetryDeveloperSuccess(e);{% endblock facetRangeGapChangeAiTelemetryDeveloperSuccess %}
       }
-      function facetRangeGapChangeAiTelemetryDeveloperError(pageContent) {
-{% block facetRangeGapChangeAiTelemetryDeveloperError %}{%- endblock facetRangeGapChangeAiTelemetryDeveloperError %}
+      function facetRangeGapChangeAiTelemetryDeveloperError(e) {
+{% block facetRangeGapChangeAiTelemetryDeveloperError %}      facetChangeAiTelemetryDeveloperError(e);{%- endblock facetRangeGapChangeAiTelemetryDeveloperError %}
       }
       function facetRangeGapChangeAiTelemetryDeveloper(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeAiTelemetryDeveloperSuccess, facetRangeGapChangeAiTelemetryDeveloperError);
       }
 
-      function facetRangeStartChangeAiTelemetryDeveloperSuccess(pageContent) {
-{% block facetRangeStartChangeAiTelemetryDeveloperSuccess %}{%- endblock facetRangeStartChangeAiTelemetryDeveloperSuccess %}
+      function facetRangeStartChangeAiTelemetryDeveloperSuccess(e) {
+{% block facetRangeStartChangeAiTelemetryDeveloperSuccess %}      facetChangeAiTelemetryDeveloperSuccess(e);{% endblock facetRangeStartChangeAiTelemetryDeveloperSuccess %}
       }
-      function facetRangeStartChangeAiTelemetryDeveloperError(pageContent) {
-{% block facetRangeStartChangeAiTelemetryDeveloperError %}{%- endblock facetRangeStartChangeAiTelemetryDeveloperError %}
+      function facetRangeStartChangeAiTelemetryDeveloperError(e) {
+{% block facetRangeStartChangeAiTelemetryDeveloperError %}      facetChangeAiTelemetryDeveloperError(e);{%- endblock facetRangeStartChangeAiTelemetryDeveloperError %}
       }
       function facetRangeStartChangeAiTelemetryDeveloper(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeAiTelemetryDeveloperSuccess, facetRangeStartChangeAiTelemetryDeveloperError);
       }
 
-      function facetRangeEndChangeAiTelemetryDeveloperSuccess(pageContent) {
-{% block facetRangeEndChangeAiTelemetryDeveloperSuccess %}{%- endblock facetRangeEndChangeAiTelemetryDeveloperSuccess %}
+      function facetRangeEndChangeAiTelemetryDeveloperSuccess(e) {
+{% block facetRangeEndChangeAiTelemetryDeveloperSuccess %}      facetChangeAiTelemetryDeveloperSuccess(e);{% endblock facetRangeEndChangeAiTelemetryDeveloperSuccess %}
       }
-      function facetRangeEndChangeAiTelemetryDeveloperError(pageContent) {
-{% block facetRangeEndChangeAiTelemetryDeveloperError %}{%- endblock facetRangeEndChangeAiTelemetryDeveloperError %}
+      function facetRangeEndChangeAiTelemetryDeveloperError(e) {
+{% block facetRangeEndChangeAiTelemetryDeveloperError %}      facetChangeAiTelemetryDeveloperError(e);{%- endblock facetRangeEndChangeAiTelemetryDeveloperError %}
       }
       function facetRangeEndChangeAiTelemetryDeveloper(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeAiTelemetryDeveloperSuccess, facetRangeEndChangeAiTelemetryDeveloperError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -245,31 +256,47 @@
 
 {%- block htmUrlAiTelemetryDeveloperPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlAiTelemetryDeveloperPage %}
 
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/ai-telemetry-developer/AiTelemetryDeveloperSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/ai-telemetry-developer/AiTelemetryDeveloperSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-AiTelemetryDeveloper">back to all AI Telemetry developers</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-AiTelemetryDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-chart-fft"></i>
+                  all AI Telemetry developers
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  an AI Telemetry developer
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
 {%- block htmBodyStartPageLayout %}
     {{ super() }}
 {%- block htmBodyStartAiTelemetryDeveloperPage %}
 {% if resultCount > 0 %}
           <div class="wa-flank ">
-            <wa-tooltip for="return-to-AiTelemetryDeveloper">back to all AI Telemetry developers</wa-tooltip>
-            <wa-button id="return-to-AiTelemetryDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all AI Telemetry developers
-            </wa-button>
             <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-chart-fft"></i> {{ result.objectTitle | e }}</h1>
           </div>
-          <div class="margin-block">
-          </div>
-{% include en-us/search/ai-telemetry-developer/AiTelemetryDeveloperSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/ai-telemetry-developer/AiTelemetryDeveloperSearchButtons.htm %}
 {% endif %}
+{% include en-us/search/ai-telemetry-developer/AiTelemetryDeveloperSearchForm.htm %}
 {%- endblock htmBodyStartAiTelemetryDeveloperPage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleAiTelemetryDeveloperPage %}
-        <div class="pageContent ">
 {%- include en-us/search/ai-telemetry-developer/AiTelemetryDeveloperSidebar.htm %}
+        <div class="pageContent ">
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-AiTelemetryDeveloper">back to all AI Telemetry developers</wa-tooltip></wa-tooltip>
@@ -305,7 +332,6 @@
             <input name="listAiTelemetryDeveloper" id="listAiTelemetryDeveloper" class="listAiTelemetryDeveloper"  value='{{ toJsonArrayStringInApostrophes(listAiTelemetryDeveloper) }}' type="hidden"/>
           </form>
   {% if solrId is defined %}
-          {{ htmButton_searchpageAiTelemetryDeveloper() }}
           {{ htmForm_searchpageAiTelemetryDeveloper() }}
   {% endif %}
 {%- endblock htmFormAiTelemetryDeveloperPage %}

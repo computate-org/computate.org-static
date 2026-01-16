@@ -48,51 +48,61 @@
 {%- endblock htmTooltipCompanyCoursePage %}`;
       }
 
-      function facetSimpleRangeCompanyCourseSuccess(pageContent) {
-{% block facetSimpleRangeCompanyCourseSuccess %}{%- endblock facetSimpleRangeCompanyCourseSuccess %}
+      function facetChangeCompanyCourseSuccess(e) {
+        var l = e.querySelector('.pageForm .listCompanyCourse')?.value;
+        if(l)
+          window.listCompanyCourse = JSON.parse(l);
+{% block facetChangeCompanyCourseSuccess %}{%- endblock facetCompanyCourseSuccess %}
       }
-      function facetSimpleRangeCompanyCourseError(pageContent) {
-{% block facetSimpleRangeCompanyCourseError %}{%- endblock facetSimpleRangeCompanyCourseError %}
+      function facetChangeCompanyCourseError(e) {
+{% block facetChangeCompanyCourseError %}{%- endblock facetCompanyCourseError %}
+      }
+
+      function facetSimpleRangeCompanyCourseSuccess(e) {
+{% block facetSimpleRangeCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetSimpleRangeCompanyCourseSuccess %}
+      }
+      function facetSimpleRangeCompanyCourseError(e) {
+{% block facetSimpleRangeCompanyCourseError %}      facetChangeCompanyCourseError(e);{% endblock facetSimpleRangeCompanyCourseError %}
       }
       function facetSimpleRangeCompanyCourse(e) {
         facetSimpleRange(e, facetSimpleRangeCompanyCourseSuccess, facetSimpleRangeCompanyCourseError);
       }
 
-      function facetRangeTimeZoneCompanyCourseSuccess(pageContent) {
-{% block facetRangeTimeZoneCompanyCourseSuccess %}{%- endblock facetRangeTimeZoneCompanyCourseSuccess %}
+      function facetRangeTimeZoneCompanyCourseSuccess(e) {
+{% block facetRangeTimeZoneCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetRangeTimeZoneCompanyCourseSuccess %}
       }
-      function facetRangeTimeZoneCompanyCourseError(pageContent) {
-{% block facetRangeTimeZoneCompanyCourseError %}{%- endblock facetRangeTimeZoneCompanyCourseError %}
+      function facetRangeTimeZoneCompanyCourseError(e) {
+{% block facetRangeTimeZoneCompanyCourseError %}      facetChangeCompanyCourseError(e);{%- endblock facetRangeTimeZoneCompanyCourseError %}
       }
       function facetRangeTimeZoneCompanyCourse(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneCompanyCourseSuccess, facetRangeTimeZoneCompanyCourseError);
       }
 
-      function facetRangeGapChangeCompanyCourseSuccess(pageContent) {
-{% block facetRangeGapChangeCompanyCourseSuccess %}{%- endblock facetRangeGapChangeCompanyCourseSuccess %}
+      function facetRangeGapChangeCompanyCourseSuccess(e) {
+{% block facetRangeGapChangeCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetRangeGapChangeCompanyCourseSuccess %}
       }
-      function facetRangeGapChangeCompanyCourseError(pageContent) {
-{% block facetRangeGapChangeCompanyCourseError %}{%- endblock facetRangeGapChangeCompanyCourseError %}
+      function facetRangeGapChangeCompanyCourseError(e) {
+{% block facetRangeGapChangeCompanyCourseError %}      facetChangeCompanyCourseError(e);{%- endblock facetRangeGapChangeCompanyCourseError %}
       }
       function facetRangeGapChangeCompanyCourse(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyCourseSuccess, facetRangeGapChangeCompanyCourseError);
       }
 
-      function facetRangeStartChangeCompanyCourseSuccess(pageContent) {
-{% block facetRangeStartChangeCompanyCourseSuccess %}{%- endblock facetRangeStartChangeCompanyCourseSuccess %}
+      function facetRangeStartChangeCompanyCourseSuccess(e) {
+{% block facetRangeStartChangeCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetRangeStartChangeCompanyCourseSuccess %}
       }
-      function facetRangeStartChangeCompanyCourseError(pageContent) {
-{% block facetRangeStartChangeCompanyCourseError %}{%- endblock facetRangeStartChangeCompanyCourseError %}
+      function facetRangeStartChangeCompanyCourseError(e) {
+{% block facetRangeStartChangeCompanyCourseError %}      facetChangeCompanyCourseError(e);{%- endblock facetRangeStartChangeCompanyCourseError %}
       }
       function facetRangeStartChangeCompanyCourse(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyCourseSuccess, facetRangeStartChangeCompanyCourseError);
       }
 
-      function facetRangeEndChangeCompanyCourseSuccess(pageContent) {
-{% block facetRangeEndChangeCompanyCourseSuccess %}{%- endblock facetRangeEndChangeCompanyCourseSuccess %}
+      function facetRangeEndChangeCompanyCourseSuccess(e) {
+{% block facetRangeEndChangeCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetRangeEndChangeCompanyCourseSuccess %}
       }
-      function facetRangeEndChangeCompanyCourseError(pageContent) {
-{% block facetRangeEndChangeCompanyCourseError %}{%- endblock facetRangeEndChangeCompanyCourseError %}
+      function facetRangeEndChangeCompanyCourseError(e) {
+{% block facetRangeEndChangeCompanyCourseError %}      facetChangeCompanyCourseError(e);{%- endblock facetRangeEndChangeCompanyCourseError %}
       }
       function facetRangeEndChangeCompanyCourse(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyCourseSuccess, facetRangeEndChangeCompanyCourseError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -304,11 +315,12 @@
 {% include en-us/search/course/CompanyCourseSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
-{%- if pageSearchForm is not defined %}
-{%- set pageSearchForm %}
-{% include en-us/search/course/CompanyCourseSearchForm.htm %}
-{%- endset pageSearchForm %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/course/CompanyCourseSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
 {%- endif %}
+{% include en-us/search/course/CompanyCourseSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyCoursePage %}
@@ -317,42 +329,42 @@
 {% include en-us/search/course/CompanyCoursePaginationButtons.htm %}
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
-              <wa-dropdown id="htmDropdown-name">
-                <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyCourse_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyCourse').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by course name ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyCourse_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyCourse').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by course name descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-description">
-                <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyCourse_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyCourse').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by course description ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyCourse_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyCourse').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by course description descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyCourse_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyCourse').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by course name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyCourse_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyCourse').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by course name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyCourse_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyCourse').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by course description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyCourse_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyCourse').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by course description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
                   </div>
                   {% for item in listCompanyCourse%}
                   <div>
-              <a href="{{ item.displayPage }}">
-                <i class="fa-duotone fa-regular fa-notebook"></i>
-              <span>{{ item.name | e }}
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span class="white-space-pre-wrap ">{{ item.description | e }}
-</span>              </a>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-duotone fa-regular fa-notebook"></i>
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span class="white-space-pre-wrap ">{{ item.description | e }}</span>
+                    </a>
                   </div>
                   {% endfor %}
               {% if getColumnName is defined %}

@@ -48,51 +48,61 @@
 {%- endblock htmTooltipCompanyAboutPage %}`;
       }
 
-      function facetSimpleRangeCompanyAboutSuccess(pageContent) {
-{% block facetSimpleRangeCompanyAboutSuccess %}{%- endblock facetSimpleRangeCompanyAboutSuccess %}
+      function facetChangeCompanyAboutSuccess(e) {
+        var l = e.querySelector('.pageForm .listCompanyAbout')?.value;
+        if(l)
+          window.listCompanyAbout = JSON.parse(l);
+{% block facetChangeCompanyAboutSuccess %}{%- endblock facetCompanyAboutSuccess %}
       }
-      function facetSimpleRangeCompanyAboutError(pageContent) {
-{% block facetSimpleRangeCompanyAboutError %}{%- endblock facetSimpleRangeCompanyAboutError %}
+      function facetChangeCompanyAboutError(e) {
+{% block facetChangeCompanyAboutError %}{%- endblock facetCompanyAboutError %}
+      }
+
+      function facetSimpleRangeCompanyAboutSuccess(e) {
+{% block facetSimpleRangeCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetSimpleRangeCompanyAboutSuccess %}
+      }
+      function facetSimpleRangeCompanyAboutError(e) {
+{% block facetSimpleRangeCompanyAboutError %}      facetChangeCompanyAboutError(e);{% endblock facetSimpleRangeCompanyAboutError %}
       }
       function facetSimpleRangeCompanyAbout(e) {
         facetSimpleRange(e, facetSimpleRangeCompanyAboutSuccess, facetSimpleRangeCompanyAboutError);
       }
 
-      function facetRangeTimeZoneCompanyAboutSuccess(pageContent) {
-{% block facetRangeTimeZoneCompanyAboutSuccess %}{%- endblock facetRangeTimeZoneCompanyAboutSuccess %}
+      function facetRangeTimeZoneCompanyAboutSuccess(e) {
+{% block facetRangeTimeZoneCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetRangeTimeZoneCompanyAboutSuccess %}
       }
-      function facetRangeTimeZoneCompanyAboutError(pageContent) {
-{% block facetRangeTimeZoneCompanyAboutError %}{%- endblock facetRangeTimeZoneCompanyAboutError %}
+      function facetRangeTimeZoneCompanyAboutError(e) {
+{% block facetRangeTimeZoneCompanyAboutError %}      facetChangeCompanyAboutError(e);{%- endblock facetRangeTimeZoneCompanyAboutError %}
       }
       function facetRangeTimeZoneCompanyAbout(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneCompanyAboutSuccess, facetRangeTimeZoneCompanyAboutError);
       }
 
-      function facetRangeGapChangeCompanyAboutSuccess(pageContent) {
-{% block facetRangeGapChangeCompanyAboutSuccess %}{%- endblock facetRangeGapChangeCompanyAboutSuccess %}
+      function facetRangeGapChangeCompanyAboutSuccess(e) {
+{% block facetRangeGapChangeCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetRangeGapChangeCompanyAboutSuccess %}
       }
-      function facetRangeGapChangeCompanyAboutError(pageContent) {
-{% block facetRangeGapChangeCompanyAboutError %}{%- endblock facetRangeGapChangeCompanyAboutError %}
+      function facetRangeGapChangeCompanyAboutError(e) {
+{% block facetRangeGapChangeCompanyAboutError %}      facetChangeCompanyAboutError(e);{%- endblock facetRangeGapChangeCompanyAboutError %}
       }
       function facetRangeGapChangeCompanyAbout(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyAboutSuccess, facetRangeGapChangeCompanyAboutError);
       }
 
-      function facetRangeStartChangeCompanyAboutSuccess(pageContent) {
-{% block facetRangeStartChangeCompanyAboutSuccess %}{%- endblock facetRangeStartChangeCompanyAboutSuccess %}
+      function facetRangeStartChangeCompanyAboutSuccess(e) {
+{% block facetRangeStartChangeCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetRangeStartChangeCompanyAboutSuccess %}
       }
-      function facetRangeStartChangeCompanyAboutError(pageContent) {
-{% block facetRangeStartChangeCompanyAboutError %}{%- endblock facetRangeStartChangeCompanyAboutError %}
+      function facetRangeStartChangeCompanyAboutError(e) {
+{% block facetRangeStartChangeCompanyAboutError %}      facetChangeCompanyAboutError(e);{%- endblock facetRangeStartChangeCompanyAboutError %}
       }
       function facetRangeStartChangeCompanyAbout(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyAboutSuccess, facetRangeStartChangeCompanyAboutError);
       }
 
-      function facetRangeEndChangeCompanyAboutSuccess(pageContent) {
-{% block facetRangeEndChangeCompanyAboutSuccess %}{%- endblock facetRangeEndChangeCompanyAboutSuccess %}
+      function facetRangeEndChangeCompanyAboutSuccess(e) {
+{% block facetRangeEndChangeCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetRangeEndChangeCompanyAboutSuccess %}
       }
-      function facetRangeEndChangeCompanyAboutError(pageContent) {
-{% block facetRangeEndChangeCompanyAboutError %}{%- endblock facetRangeEndChangeCompanyAboutError %}
+      function facetRangeEndChangeCompanyAboutError(e) {
+{% block facetRangeEndChangeCompanyAboutError %}      facetChangeCompanyAboutError(e);{%- endblock facetRangeEndChangeCompanyAboutError %}
       }
       function facetRangeEndChangeCompanyAbout(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyAboutSuccess, facetRangeEndChangeCompanyAboutError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -304,11 +315,12 @@
 {% include en-us/search/about/CompanyAboutSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
-{%- if pageSearchForm is not defined %}
-{%- set pageSearchForm %}
-{% include en-us/search/about/CompanyAboutSearchForm.htm %}
-{%- endset pageSearchForm %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/about/CompanyAboutSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
 {%- endif %}
+{% include en-us/search/about/CompanyAboutSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyAboutPage %}
@@ -317,42 +329,42 @@
 {% include en-us/search/about/CompanyAboutPaginationButtons.htm %}
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
-              <wa-dropdown id="htmDropdown-name">
-                <wa-button variant="brand" slot="trigger" caret>about name</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by about name ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by about name descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-description">
-                <wa-button variant="brand" slot="trigger" caret>about description</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by about description ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by about description descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>about name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by about name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by about name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>about description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by about description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by about description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
                   </div>
                   {% for item in listCompanyAbout%}
                   <div>
-              <a href="{{ item.displayPage }}">
-                <i class="fa-duotone fa-regular fa-address-card"></i>
-              <span>{{ item.name | e }}
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span>{{ item.description | e }}
-</span>              </a>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-duotone fa-regular fa-address-card"></i>
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.description | e }}</span>
+                    </a>
                   </div>
                   {% endfor %}
               {% if getColumnName is defined %}

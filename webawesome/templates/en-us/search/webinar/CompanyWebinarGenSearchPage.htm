@@ -48,51 +48,61 @@
 {%- endblock htmTooltipCompanyWebinarPage %}`;
       }
 
-      function facetSimpleRangeCompanyWebinarSuccess(pageContent) {
-{% block facetSimpleRangeCompanyWebinarSuccess %}{%- endblock facetSimpleRangeCompanyWebinarSuccess %}
+      function facetChangeCompanyWebinarSuccess(e) {
+        var l = e.querySelector('.pageForm .listCompanyWebinar')?.value;
+        if(l)
+          window.listCompanyWebinar = JSON.parse(l);
+{% block facetChangeCompanyWebinarSuccess %}{%- endblock facetCompanyWebinarSuccess %}
       }
-      function facetSimpleRangeCompanyWebinarError(pageContent) {
-{% block facetSimpleRangeCompanyWebinarError %}{%- endblock facetSimpleRangeCompanyWebinarError %}
+      function facetChangeCompanyWebinarError(e) {
+{% block facetChangeCompanyWebinarError %}{%- endblock facetCompanyWebinarError %}
+      }
+
+      function facetSimpleRangeCompanyWebinarSuccess(e) {
+{% block facetSimpleRangeCompanyWebinarSuccess %}      facetChangeCompanyWebinarSuccess(e);{% endblock facetSimpleRangeCompanyWebinarSuccess %}
+      }
+      function facetSimpleRangeCompanyWebinarError(e) {
+{% block facetSimpleRangeCompanyWebinarError %}      facetChangeCompanyWebinarError(e);{% endblock facetSimpleRangeCompanyWebinarError %}
       }
       function facetSimpleRangeCompanyWebinar(e) {
         facetSimpleRange(e, facetSimpleRangeCompanyWebinarSuccess, facetSimpleRangeCompanyWebinarError);
       }
 
-      function facetRangeTimeZoneCompanyWebinarSuccess(pageContent) {
-{% block facetRangeTimeZoneCompanyWebinarSuccess %}{%- endblock facetRangeTimeZoneCompanyWebinarSuccess %}
+      function facetRangeTimeZoneCompanyWebinarSuccess(e) {
+{% block facetRangeTimeZoneCompanyWebinarSuccess %}      facetChangeCompanyWebinarSuccess(e);{% endblock facetRangeTimeZoneCompanyWebinarSuccess %}
       }
-      function facetRangeTimeZoneCompanyWebinarError(pageContent) {
-{% block facetRangeTimeZoneCompanyWebinarError %}{%- endblock facetRangeTimeZoneCompanyWebinarError %}
+      function facetRangeTimeZoneCompanyWebinarError(e) {
+{% block facetRangeTimeZoneCompanyWebinarError %}      facetChangeCompanyWebinarError(e);{%- endblock facetRangeTimeZoneCompanyWebinarError %}
       }
       function facetRangeTimeZoneCompanyWebinar(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneCompanyWebinarSuccess, facetRangeTimeZoneCompanyWebinarError);
       }
 
-      function facetRangeGapChangeCompanyWebinarSuccess(pageContent) {
-{% block facetRangeGapChangeCompanyWebinarSuccess %}{%- endblock facetRangeGapChangeCompanyWebinarSuccess %}
+      function facetRangeGapChangeCompanyWebinarSuccess(e) {
+{% block facetRangeGapChangeCompanyWebinarSuccess %}      facetChangeCompanyWebinarSuccess(e);{% endblock facetRangeGapChangeCompanyWebinarSuccess %}
       }
-      function facetRangeGapChangeCompanyWebinarError(pageContent) {
-{% block facetRangeGapChangeCompanyWebinarError %}{%- endblock facetRangeGapChangeCompanyWebinarError %}
+      function facetRangeGapChangeCompanyWebinarError(e) {
+{% block facetRangeGapChangeCompanyWebinarError %}      facetChangeCompanyWebinarError(e);{%- endblock facetRangeGapChangeCompanyWebinarError %}
       }
       function facetRangeGapChangeCompanyWebinar(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyWebinarSuccess, facetRangeGapChangeCompanyWebinarError);
       }
 
-      function facetRangeStartChangeCompanyWebinarSuccess(pageContent) {
-{% block facetRangeStartChangeCompanyWebinarSuccess %}{%- endblock facetRangeStartChangeCompanyWebinarSuccess %}
+      function facetRangeStartChangeCompanyWebinarSuccess(e) {
+{% block facetRangeStartChangeCompanyWebinarSuccess %}      facetChangeCompanyWebinarSuccess(e);{% endblock facetRangeStartChangeCompanyWebinarSuccess %}
       }
-      function facetRangeStartChangeCompanyWebinarError(pageContent) {
-{% block facetRangeStartChangeCompanyWebinarError %}{%- endblock facetRangeStartChangeCompanyWebinarError %}
+      function facetRangeStartChangeCompanyWebinarError(e) {
+{% block facetRangeStartChangeCompanyWebinarError %}      facetChangeCompanyWebinarError(e);{%- endblock facetRangeStartChangeCompanyWebinarError %}
       }
       function facetRangeStartChangeCompanyWebinar(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyWebinarSuccess, facetRangeStartChangeCompanyWebinarError);
       }
 
-      function facetRangeEndChangeCompanyWebinarSuccess(pageContent) {
-{% block facetRangeEndChangeCompanyWebinarSuccess %}{%- endblock facetRangeEndChangeCompanyWebinarSuccess %}
+      function facetRangeEndChangeCompanyWebinarSuccess(e) {
+{% block facetRangeEndChangeCompanyWebinarSuccess %}      facetChangeCompanyWebinarSuccess(e);{% endblock facetRangeEndChangeCompanyWebinarSuccess %}
       }
-      function facetRangeEndChangeCompanyWebinarError(pageContent) {
-{% block facetRangeEndChangeCompanyWebinarError %}{%- endblock facetRangeEndChangeCompanyWebinarError %}
+      function facetRangeEndChangeCompanyWebinarError(e) {
+{% block facetRangeEndChangeCompanyWebinarError %}      facetChangeCompanyWebinarError(e);{%- endblock facetRangeEndChangeCompanyWebinarError %}
       }
       function facetRangeEndChangeCompanyWebinar(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyWebinarSuccess, facetRangeEndChangeCompanyWebinarError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -304,11 +315,12 @@
 {% include en-us/search/webinar/CompanyWebinarSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
-{%- if pageSearchForm is not defined %}
-{%- set pageSearchForm %}
-{% include en-us/search/webinar/CompanyWebinarSearchForm.htm %}
-{%- endset pageSearchForm %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/webinar/CompanyWebinarSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
 {%- endif %}
+{% include en-us/search/webinar/CompanyWebinarSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyWebinarPage %}
@@ -317,71 +329,72 @@
 {% include en-us/search/webinar/CompanyWebinarPaginationButtons.htm %}
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
-              <wa-dropdown id="htmDropdown-name">
-                <wa-button variant="brand" slot="trigger" caret>name</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by name ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by name descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-nextWebinar">
-                <wa-button variant="brand" slot="trigger" caret>next webinar</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_nextWebinar'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-nextWebinar-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by next webinar ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_nextWebinar'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-nextWebinar-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by next webinar descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <div></div>
-              <wa-dropdown id="htmDropdown-description">
-                <wa-button variant="brand" slot="trigger" caret>description</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by description ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by description descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-nextWebinar">
+                      <wa-button variant="brand" slot="trigger" caret>next webinar</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_nextWebinar'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-nextWebinar-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by next webinar ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_nextWebinar'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-nextWebinar-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by next webinar descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <div></div>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyWebinar_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyWebinar').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
                   </div>
                   {% for item in listCompanyWebinar%}
                   <div>
-              <a href="{{ item.displayPage }}">
-                <i class="fa-duotone fa-regular fa-video"></i>
-              <span>{{ item.name | e }}
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span><wa-format-date weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" second="numeric" time-zone-name="short" date="{{ formatZonedDateTime(item.nextWebinar, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
-</span>              </a>
-              <wa-button variant="brand"
-                  id="{{classApiMethodMethod}}_joinUrl"
-                  placeholder="[String] Join the webinar"
-                  label="Join the webinar"
-                  title="Access the webinar links. "
-                  class="button-on-left {{classApiMethodMethod}}_joinUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}JoinUrl "
-                  name="setJoinUrl"
-                  href="{{ item.joinUrl | e }}"
-                  >
-                <i slot="start" class="fa-duotone fa-regular fa-video"></i>
-                Join the webinar
-              </wa-button>
-              <a href="{{ item.displayPage }}">
-              <span>{{ item.description | e }}
-</span>              </a>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-duotone fa-regular fa-video"></i>
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span><wa-format-date weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" second="numeric" time-zone-name="short" date="{{ formatZonedDateTime(item.nextWebinar, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
+</span>
+                    </a>
+                    <wa-button variant="brand"
+                      id="{{classApiMethodMethod}}_joinUrl"
+                      placeholder="[String] Join the webinar"
+                      label="Join the webinar"
+                      title="Access the webinar links. "
+                      class="button-on-left {{classApiMethodMethod}}_joinUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}JoinUrl "
+                      name="setJoinUrl"
+                      href="{{ item.joinUrl | e }}"
+                      >
+                        <i slot="start" class="fa-duotone fa-regular fa-video"></i>
+                        Join the webinar
+                    </wa-button>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.description | e }}</span>
+                    </a>
                   </div>
                   {% endfor %}
               {% if getColumnName is defined %}

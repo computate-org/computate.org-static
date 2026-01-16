@@ -48,51 +48,61 @@
 {%- endblock htmTooltipUseCasePage %}`;
       }
 
-      function facetSimpleRangeUseCaseSuccess(pageContent) {
-{% block facetSimpleRangeUseCaseSuccess %}{%- endblock facetSimpleRangeUseCaseSuccess %}
+      function facetChangeUseCaseSuccess(e) {
+        var l = e.querySelector('.pageForm .listUseCase')?.value;
+        if(l)
+          window.listUseCase = JSON.parse(l);
+{% block facetChangeUseCaseSuccess %}{%- endblock facetUseCaseSuccess %}
       }
-      function facetSimpleRangeUseCaseError(pageContent) {
-{% block facetSimpleRangeUseCaseError %}{%- endblock facetSimpleRangeUseCaseError %}
+      function facetChangeUseCaseError(e) {
+{% block facetChangeUseCaseError %}{%- endblock facetUseCaseError %}
+      }
+
+      function facetSimpleRangeUseCaseSuccess(e) {
+{% block facetSimpleRangeUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetSimpleRangeUseCaseSuccess %}
+      }
+      function facetSimpleRangeUseCaseError(e) {
+{% block facetSimpleRangeUseCaseError %}      facetChangeUseCaseError(e);{% endblock facetSimpleRangeUseCaseError %}
       }
       function facetSimpleRangeUseCase(e) {
         facetSimpleRange(e, facetSimpleRangeUseCaseSuccess, facetSimpleRangeUseCaseError);
       }
 
-      function facetRangeTimeZoneUseCaseSuccess(pageContent) {
-{% block facetRangeTimeZoneUseCaseSuccess %}{%- endblock facetRangeTimeZoneUseCaseSuccess %}
+      function facetRangeTimeZoneUseCaseSuccess(e) {
+{% block facetRangeTimeZoneUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetRangeTimeZoneUseCaseSuccess %}
       }
-      function facetRangeTimeZoneUseCaseError(pageContent) {
-{% block facetRangeTimeZoneUseCaseError %}{%- endblock facetRangeTimeZoneUseCaseError %}
+      function facetRangeTimeZoneUseCaseError(e) {
+{% block facetRangeTimeZoneUseCaseError %}      facetChangeUseCaseError(e);{%- endblock facetRangeTimeZoneUseCaseError %}
       }
       function facetRangeTimeZoneUseCase(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneUseCaseSuccess, facetRangeTimeZoneUseCaseError);
       }
 
-      function facetRangeGapChangeUseCaseSuccess(pageContent) {
-{% block facetRangeGapChangeUseCaseSuccess %}{%- endblock facetRangeGapChangeUseCaseSuccess %}
+      function facetRangeGapChangeUseCaseSuccess(e) {
+{% block facetRangeGapChangeUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetRangeGapChangeUseCaseSuccess %}
       }
-      function facetRangeGapChangeUseCaseError(pageContent) {
-{% block facetRangeGapChangeUseCaseError %}{%- endblock facetRangeGapChangeUseCaseError %}
+      function facetRangeGapChangeUseCaseError(e) {
+{% block facetRangeGapChangeUseCaseError %}      facetChangeUseCaseError(e);{%- endblock facetRangeGapChangeUseCaseError %}
       }
       function facetRangeGapChangeUseCase(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeUseCaseSuccess, facetRangeGapChangeUseCaseError);
       }
 
-      function facetRangeStartChangeUseCaseSuccess(pageContent) {
-{% block facetRangeStartChangeUseCaseSuccess %}{%- endblock facetRangeStartChangeUseCaseSuccess %}
+      function facetRangeStartChangeUseCaseSuccess(e) {
+{% block facetRangeStartChangeUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetRangeStartChangeUseCaseSuccess %}
       }
-      function facetRangeStartChangeUseCaseError(pageContent) {
-{% block facetRangeStartChangeUseCaseError %}{%- endblock facetRangeStartChangeUseCaseError %}
+      function facetRangeStartChangeUseCaseError(e) {
+{% block facetRangeStartChangeUseCaseError %}      facetChangeUseCaseError(e);{%- endblock facetRangeStartChangeUseCaseError %}
       }
       function facetRangeStartChangeUseCase(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeUseCaseSuccess, facetRangeStartChangeUseCaseError);
       }
 
-      function facetRangeEndChangeUseCaseSuccess(pageContent) {
-{% block facetRangeEndChangeUseCaseSuccess %}{%- endblock facetRangeEndChangeUseCaseSuccess %}
+      function facetRangeEndChangeUseCaseSuccess(e) {
+{% block facetRangeEndChangeUseCaseSuccess %}      facetChangeUseCaseSuccess(e);{% endblock facetRangeEndChangeUseCaseSuccess %}
       }
-      function facetRangeEndChangeUseCaseError(pageContent) {
-{% block facetRangeEndChangeUseCaseError %}{%- endblock facetRangeEndChangeUseCaseError %}
+      function facetRangeEndChangeUseCaseError(e) {
+{% block facetRangeEndChangeUseCaseError %}      facetChangeUseCaseError(e);{%- endblock facetRangeEndChangeUseCaseError %}
       }
       function facetRangeEndChangeUseCase(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeUseCaseSuccess, facetRangeEndChangeUseCaseError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -304,11 +315,12 @@
 {% include en-us/search/use-case/UseCaseSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
-{%- if pageSearchForm is not defined %}
-{%- set pageSearchForm %}
-{% include en-us/search/use-case/UseCaseSearchForm.htm %}
-{%- endset pageSearchForm %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/use-case/UseCaseSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
 {%- endif %}
+{% include en-us/search/use-case/UseCaseSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleUseCasePage %}
@@ -317,58 +329,58 @@
 {% include en-us/search/use-case/UseCasePaginationButtons.htm %}
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
-              <wa-dropdown id="htmDropdown-name">
-                <wa-button variant="brand" slot="trigger" caret>use case name</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by use case name ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by use case name descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-authorName">
-                <wa-button variant="brand" slot="trigger" caret>author name</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_authorName'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-authorName-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by author name ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_authorName'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-authorName-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by author name descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-description">
-                <wa-button variant="brand" slot="trigger" caret>use case description</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by use case description ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by use case description descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>use case name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by use case name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by use case name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-authorName">
+                      <wa-button variant="brand" slot="trigger" caret>author name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_authorName'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-authorName-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by author name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_authorName'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-authorName-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by author name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>use case description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by use case description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortUseCase_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-UseCase').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by use case description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
                   </div>
                   {% for item in listUseCase%}
                   <div>
-              <a href="{{ item.displayPage }}">
-                <i class="fa-duotone fa-regular fa-file-invoice"></i>
-              <span>{{ item.name | e }}
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span>{{ item.authorName | e }}
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span>{{ item.description | e }}
-</span>              </a>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-duotone fa-regular fa-file-invoice"></i>
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.authorName | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.description | e }}</span>
+                    </a>
                   </div>
                   {% endfor %}
               {% if getColumnName is defined %}

@@ -48,51 +48,61 @@
 {%- endblock htmTooltipSmartAquacultureDeveloperPage %}`;
       }
 
-      function facetSimpleRangeSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetSimpleRangeSmartAquacultureDeveloperSuccess %}{%- endblock facetSimpleRangeSmartAquacultureDeveloperSuccess %}
+      function facetChangeSmartAquacultureDeveloperSuccess(e) {
+        var l = e.querySelector('.pageForm .listSmartAquacultureDeveloper')?.value;
+        if(l)
+          window.listSmartAquacultureDeveloper = JSON.parse(l);
+{% block facetChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetSmartAquacultureDeveloperSuccess %}
       }
-      function facetSimpleRangeSmartAquacultureDeveloperError(pageContent) {
-{% block facetSimpleRangeSmartAquacultureDeveloperError %}{%- endblock facetSimpleRangeSmartAquacultureDeveloperError %}
+      function facetChangeSmartAquacultureDeveloperError(e) {
+{% block facetChangeSmartAquacultureDeveloperError %}{%- endblock facetSmartAquacultureDeveloperError %}
+      }
+
+      function facetSimpleRangeSmartAquacultureDeveloperSuccess(e) {
+{% block facetSimpleRangeSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetSimpleRangeSmartAquacultureDeveloperSuccess %}
+      }
+      function facetSimpleRangeSmartAquacultureDeveloperError(e) {
+{% block facetSimpleRangeSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{% endblock facetSimpleRangeSmartAquacultureDeveloperError %}
       }
       function facetSimpleRangeSmartAquacultureDeveloper(e) {
         facetSimpleRange(e, facetSimpleRangeSmartAquacultureDeveloperSuccess, facetSimpleRangeSmartAquacultureDeveloperError);
       }
 
-      function facetRangeTimeZoneSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}
+      function facetRangeTimeZoneSmartAquacultureDeveloperSuccess(e) {
+{% block facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetRangeTimeZoneSmartAquacultureDeveloperSuccess %}
       }
-      function facetRangeTimeZoneSmartAquacultureDeveloperError(pageContent) {
-{% block facetRangeTimeZoneSmartAquacultureDeveloperError %}{%- endblock facetRangeTimeZoneSmartAquacultureDeveloperError %}
+      function facetRangeTimeZoneSmartAquacultureDeveloperError(e) {
+{% block facetRangeTimeZoneSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{%- endblock facetRangeTimeZoneSmartAquacultureDeveloperError %}
       }
       function facetRangeTimeZoneSmartAquacultureDeveloper(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneSmartAquacultureDeveloperSuccess, facetRangeTimeZoneSmartAquacultureDeveloperError);
       }
 
-      function facetRangeGapChangeSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetRangeGapChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeGapChangeSmartAquacultureDeveloperSuccess %}
+      function facetRangeGapChangeSmartAquacultureDeveloperSuccess(e) {
+{% block facetRangeGapChangeSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetRangeGapChangeSmartAquacultureDeveloperSuccess %}
       }
-      function facetRangeGapChangeSmartAquacultureDeveloperError(pageContent) {
-{% block facetRangeGapChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeGapChangeSmartAquacultureDeveloperError %}
+      function facetRangeGapChangeSmartAquacultureDeveloperError(e) {
+{% block facetRangeGapChangeSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{%- endblock facetRangeGapChangeSmartAquacultureDeveloperError %}
       }
       function facetRangeGapChangeSmartAquacultureDeveloper(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeSmartAquacultureDeveloperSuccess, facetRangeGapChangeSmartAquacultureDeveloperError);
       }
 
-      function facetRangeStartChangeSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetRangeStartChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeStartChangeSmartAquacultureDeveloperSuccess %}
+      function facetRangeStartChangeSmartAquacultureDeveloperSuccess(e) {
+{% block facetRangeStartChangeSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetRangeStartChangeSmartAquacultureDeveloperSuccess %}
       }
-      function facetRangeStartChangeSmartAquacultureDeveloperError(pageContent) {
-{% block facetRangeStartChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeStartChangeSmartAquacultureDeveloperError %}
+      function facetRangeStartChangeSmartAquacultureDeveloperError(e) {
+{% block facetRangeStartChangeSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{%- endblock facetRangeStartChangeSmartAquacultureDeveloperError %}
       }
       function facetRangeStartChangeSmartAquacultureDeveloper(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeSmartAquacultureDeveloperSuccess, facetRangeStartChangeSmartAquacultureDeveloperError);
       }
 
-      function facetRangeEndChangeSmartAquacultureDeveloperSuccess(pageContent) {
-{% block facetRangeEndChangeSmartAquacultureDeveloperSuccess %}{%- endblock facetRangeEndChangeSmartAquacultureDeveloperSuccess %}
+      function facetRangeEndChangeSmartAquacultureDeveloperSuccess(e) {
+{% block facetRangeEndChangeSmartAquacultureDeveloperSuccess %}      facetChangeSmartAquacultureDeveloperSuccess(e);{% endblock facetRangeEndChangeSmartAquacultureDeveloperSuccess %}
       }
-      function facetRangeEndChangeSmartAquacultureDeveloperError(pageContent) {
-{% block facetRangeEndChangeSmartAquacultureDeveloperError %}{%- endblock facetRangeEndChangeSmartAquacultureDeveloperError %}
+      function facetRangeEndChangeSmartAquacultureDeveloperError(e) {
+{% block facetRangeEndChangeSmartAquacultureDeveloperError %}      facetChangeSmartAquacultureDeveloperError(e);{%- endblock facetRangeEndChangeSmartAquacultureDeveloperError %}
       }
       function facetRangeEndChangeSmartAquacultureDeveloper(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeSmartAquacultureDeveloperSuccess, facetRangeEndChangeSmartAquacultureDeveloperError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -245,31 +256,47 @@
 
 {%- block htmUrlSmartAquacultureDeveloperPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlSmartAquacultureDeveloperPage %}
 
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-SmartAquacultureDeveloper">back to all Smart Aquaculture Developers</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-SmartAquacultureDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-fish"></i>
+                  all Smart Aquaculture Developers
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  a Smart Aquaculture Developer
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
 {%- block htmBodyStartPageLayout %}
     {{ super() }}
 {%- block htmBodyStartSmartAquacultureDeveloperPage %}
 {% if resultCount > 0 %}
           <div class="wa-flank ">
-            <wa-tooltip for="return-to-SmartAquacultureDeveloper">back to all Smart Aquaculture Developers</wa-tooltip>
-            <wa-button id="return-to-SmartAquacultureDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all Smart Aquaculture Developers
-            </wa-button>
             <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-fish"></i> {{ result.objectTitle | e }}</h1>
           </div>
-          <div class="margin-block">
-          </div>
-{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchButtons.htm %}
 {% endif %}
+{% include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSearchForm.htm %}
 {%- endblock htmBodyStartSmartAquacultureDeveloperPage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleSmartAquacultureDeveloperPage %}
-        <div class="pageContent ">
 {%- include en-us/search/smart-aquaculture-developer/SmartAquacultureDeveloperSidebar.htm %}
+        <div class="pageContent ">
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-SmartAquacultureDeveloper">back to all Smart Aquaculture Developers</wa-tooltip></wa-tooltip>
@@ -305,7 +332,6 @@
             <input name="listSmartAquacultureDeveloper" id="listSmartAquacultureDeveloper" class="listSmartAquacultureDeveloper"  value='{{ toJsonArrayStringInApostrophes(listSmartAquacultureDeveloper) }}' type="hidden"/>
           </form>
   {% if solrId is defined %}
-          {{ htmButton_searchpageSmartAquacultureDeveloper() }}
           {{ htmForm_searchpageSmartAquacultureDeveloper() }}
   {% endif %}
 {%- endblock htmFormSmartAquacultureDeveloperPage %}

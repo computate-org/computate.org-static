@@ -4,6 +4,7 @@ Promise.all([
     , customElements.whenDefined('wa-select')
     , customElements.whenDefined('wa-radio')
     , customElements.whenDefined('wa-checkbox')
+    , customElements.whenDefined('wa-dropdown')
     ]).then(() => {
 
           // PATCH created
@@ -312,27 +313,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH courseNum
-          document.querySelector('#Page_courseNum')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_courseNum');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchComputateDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setCourseNum', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_courseNum')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_courseNum')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_courseNum');
-            const valid = form.reportValidity();
-          });
-
           // PATCH lessonNum
           document.querySelector('#Page_lessonNum')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_lessonNum');
@@ -372,27 +352,6 @@ Promise.all([
           });
           document.querySelector('#Page_pageImageAlt')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_pageImageAlt');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH prerequisiteArticleIds
-          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchComputateDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setPrerequisiteArticleIds', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
             const valid = form.reportValidity();
           });
 
@@ -477,6 +436,48 @@ Promise.all([
           });
           document.querySelector('#Page_relatedArticleIds')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_relatedArticleIds');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH courseNum
+          document.querySelector('#Page_courseNum')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_courseNum');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchComputateDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setCourseNum', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_courseNum')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_courseNum')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_courseNum');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH prerequisiteArticleIds
+          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchComputateDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPrerequisiteArticleIds', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_prerequisiteArticleIds')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
             const valid = form.reportValidity();
           });
 });

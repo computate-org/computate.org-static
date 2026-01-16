@@ -4,6 +4,7 @@ Promise.all([
     , customElements.whenDefined('wa-select')
     , customElements.whenDefined('wa-radio')
     , customElements.whenDefined('wa-checkbox')
+    , customElements.whenDefined('wa-dropdown')
     ]).then(() => {
 
   document.querySelector('#pageFacetRangeUseCase')?.addEventListener('change', (event) => {
@@ -218,6 +219,169 @@ Promise.all([
   document.querySelector('#pageStatsUseCase_solrId')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('UseCase', 'solrId', false);
   });
+          document.querySelector('#fqUseCase_created')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_created')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_created')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_created')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_created')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_created')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_name')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_name')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_name')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_name')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_name')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_name')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_authorName')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_authorName')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_authorName')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_authorName')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_description')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_description')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_description')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_description')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_description')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_pageId')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_pageId')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_pageId')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_pageId')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_pageId')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_pageId')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_displayPage')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_displayPage')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_displayPage')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_displayPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_displayPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_displayPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_editPage')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_editPage')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_editPage')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_editPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_editPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_editPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_userPage')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_userPage')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_userPage')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_userPage')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_userPage')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_userPage')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#fqUseCase_download')?.addEventListener('change', (event) => {
+            fqChange('UseCase', event.currentTarget, facetChangeUseCaseSuccess, facetChangeUseCaseError);
+          });
+          document.querySelector('#buttonFacetUseCase_download')?.addEventListener('click', (event) => {
+            facetFieldChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotUseCase_download')?.addEventListener('change', (event) => {
+            facetPivotChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapUseCase_download')?.addEventListener('change', (event) => {
+            facetRangeGapChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartUseCase_download')?.addEventListener('change', (event) => {
+            facetRangeStartChange('UseCase', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndUseCase_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('UseCase', event.currentTarget);
+          });
+});
 
   document.querySelector('#htmButton_patchUseCase')?.addEventListener('click', (event) => {
     document.querySelector('#patchUseCaseDialog').open = true;
@@ -258,166 +422,3 @@ Promise.all([
           );
     }
   });
-          document.querySelector('#fqUseCase_created')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_created')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_created')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_created')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_created')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_created')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#fqUseCase_name')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_name')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_name')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_name')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_name')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_name')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#fqUseCase_authorName')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_authorName')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_authorName')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_authorName')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_authorName')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_authorName')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#fqUseCase_description')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_description')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_description')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_description')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_description')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_description')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#fqUseCase_pageId')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_pageId')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_pageId')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_pageId')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_pageId')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_pageId')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#fqUseCase_displayPage')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_displayPage')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_displayPage')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_displayPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_displayPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_displayPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#fqUseCase_editPage')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_editPage')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_editPage')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_editPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_editPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_editPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#fqUseCase_userPage')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_userPage')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_userPage')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_userPage')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_userPage')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_userPage')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#fqUseCase_download')?.addEventListener('change', (event) => {
-            fqChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#buttonFacetUseCase_download')?.addEventListener('click', (event) => {
-            facetFieldChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotUseCase_download')?.addEventListener('change', (event) => {
-            facetPivotChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapUseCase_download')?.addEventListener('change', (event) => {
-            facetRangeGapChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartUseCase_download')?.addEventListener('change', (event) => {
-            facetRangeStartChange('UseCase', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndUseCase_download')?.addEventListener('change', (event) => {
-            facetRangeEndChange('UseCase', event.currentTarget);
-          });
-});

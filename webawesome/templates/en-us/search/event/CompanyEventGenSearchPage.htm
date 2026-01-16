@@ -130,51 +130,61 @@
 {%- endblock jsStyleCompanyEventPage %}
       }
 
-      function facetSimpleRangeCompanyEventSuccess(pageContent) {
-{% block facetSimpleRangeCompanyEventSuccess %}{%- endblock facetSimpleRangeCompanyEventSuccess %}
+      function facetChangeCompanyEventSuccess(e) {
+        var l = e.querySelector('.pageForm .listCompanyEvent')?.value;
+        if(l)
+          window.listCompanyEvent = JSON.parse(l);
+{% block facetChangeCompanyEventSuccess %}{%- endblock facetCompanyEventSuccess %}
       }
-      function facetSimpleRangeCompanyEventError(pageContent) {
-{% block facetSimpleRangeCompanyEventError %}{%- endblock facetSimpleRangeCompanyEventError %}
+      function facetChangeCompanyEventError(e) {
+{% block facetChangeCompanyEventError %}{%- endblock facetCompanyEventError %}
+      }
+
+      function facetSimpleRangeCompanyEventSuccess(e) {
+{% block facetSimpleRangeCompanyEventSuccess %}      facetChangeCompanyEventSuccess(e);{% endblock facetSimpleRangeCompanyEventSuccess %}
+      }
+      function facetSimpleRangeCompanyEventError(e) {
+{% block facetSimpleRangeCompanyEventError %}      facetChangeCompanyEventError(e);{% endblock facetSimpleRangeCompanyEventError %}
       }
       function facetSimpleRangeCompanyEvent(e) {
         facetSimpleRange(e, facetSimpleRangeCompanyEventSuccess, facetSimpleRangeCompanyEventError);
       }
 
-      function facetRangeTimeZoneCompanyEventSuccess(pageContent) {
-{% block facetRangeTimeZoneCompanyEventSuccess %}{%- endblock facetRangeTimeZoneCompanyEventSuccess %}
+      function facetRangeTimeZoneCompanyEventSuccess(e) {
+{% block facetRangeTimeZoneCompanyEventSuccess %}      facetChangeCompanyEventSuccess(e);{% endblock facetRangeTimeZoneCompanyEventSuccess %}
       }
-      function facetRangeTimeZoneCompanyEventError(pageContent) {
-{% block facetRangeTimeZoneCompanyEventError %}{%- endblock facetRangeTimeZoneCompanyEventError %}
+      function facetRangeTimeZoneCompanyEventError(e) {
+{% block facetRangeTimeZoneCompanyEventError %}      facetChangeCompanyEventError(e);{%- endblock facetRangeTimeZoneCompanyEventError %}
       }
       function facetRangeTimeZoneCompanyEvent(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneCompanyEventSuccess, facetRangeTimeZoneCompanyEventError);
       }
 
-      function facetRangeGapChangeCompanyEventSuccess(pageContent) {
-{% block facetRangeGapChangeCompanyEventSuccess %}{%- endblock facetRangeGapChangeCompanyEventSuccess %}
+      function facetRangeGapChangeCompanyEventSuccess(e) {
+{% block facetRangeGapChangeCompanyEventSuccess %}      facetChangeCompanyEventSuccess(e);{% endblock facetRangeGapChangeCompanyEventSuccess %}
       }
-      function facetRangeGapChangeCompanyEventError(pageContent) {
-{% block facetRangeGapChangeCompanyEventError %}{%- endblock facetRangeGapChangeCompanyEventError %}
+      function facetRangeGapChangeCompanyEventError(e) {
+{% block facetRangeGapChangeCompanyEventError %}      facetChangeCompanyEventError(e);{%- endblock facetRangeGapChangeCompanyEventError %}
       }
       function facetRangeGapChangeCompanyEvent(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyEventSuccess, facetRangeGapChangeCompanyEventError);
       }
 
-      function facetRangeStartChangeCompanyEventSuccess(pageContent) {
-{% block facetRangeStartChangeCompanyEventSuccess %}{%- endblock facetRangeStartChangeCompanyEventSuccess %}
+      function facetRangeStartChangeCompanyEventSuccess(e) {
+{% block facetRangeStartChangeCompanyEventSuccess %}      facetChangeCompanyEventSuccess(e);{% endblock facetRangeStartChangeCompanyEventSuccess %}
       }
-      function facetRangeStartChangeCompanyEventError(pageContent) {
-{% block facetRangeStartChangeCompanyEventError %}{%- endblock facetRangeStartChangeCompanyEventError %}
+      function facetRangeStartChangeCompanyEventError(e) {
+{% block facetRangeStartChangeCompanyEventError %}      facetChangeCompanyEventError(e);{%- endblock facetRangeStartChangeCompanyEventError %}
       }
       function facetRangeStartChangeCompanyEvent(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyEventSuccess, facetRangeStartChangeCompanyEventError);
       }
 
-      function facetRangeEndChangeCompanyEventSuccess(pageContent) {
-{% block facetRangeEndChangeCompanyEventSuccess %}{%- endblock facetRangeEndChangeCompanyEventSuccess %}
+      function facetRangeEndChangeCompanyEventSuccess(e) {
+{% block facetRangeEndChangeCompanyEventSuccess %}      facetChangeCompanyEventSuccess(e);{% endblock facetRangeEndChangeCompanyEventSuccess %}
       }
-      function facetRangeEndChangeCompanyEventError(pageContent) {
-{% block facetRangeEndChangeCompanyEventError %}{%- endblock facetRangeEndChangeCompanyEventError %}
+      function facetRangeEndChangeCompanyEventError(e) {
+{% block facetRangeEndChangeCompanyEventError %}      facetChangeCompanyEventError(e);{%- endblock facetRangeEndChangeCompanyEventError %}
       }
       function facetRangeEndChangeCompanyEvent(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyEventSuccess, facetRangeEndChangeCompanyEventError);
@@ -194,6 +204,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -386,11 +397,12 @@
 {% include en-us/search/event/CompanyEventSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
-{%- if pageSearchForm is not defined %}
-{%- set pageSearchForm %}
-{% include en-us/search/event/CompanyEventSearchForm.htm %}
-{%- endset pageSearchForm %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/event/CompanyEventSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
 {%- endif %}
+{% include en-us/search/event/CompanyEventSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyEventPage %}
@@ -399,58 +411,59 @@
 {% include en-us/search/event/CompanyEventPaginationButtons.htm %}
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
-              <wa-dropdown id="htmDropdown-startDateTime">
-                <wa-button variant="brand" slot="trigger" caret>start date time</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_startDateTime'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-startDateTime-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by start date time ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_startDateTime'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-startDateTime-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by start date time descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-name">
-                <wa-button variant="brand" slot="trigger" caret>event name</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by event name ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by event name descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
-              <wa-dropdown id="htmDropdown-description">
-                <wa-button variant="brand" slot="trigger" caret>event description</wa-button>
-                <wa-menu>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                    sort by event description ascending
-                  </wa-menu-item>
-                  <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
-                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                    sort by event description descending
-                  </wa-menu-item>
-                </wa-menu>
-              </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-startDateTime">
+                      <wa-button variant="brand" slot="trigger" caret>start date time</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_startDateTime'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-startDateTime-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by start date time ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_startDateTime'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-startDateTime-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by start date time descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>event name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by event name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by event name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>event description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by event description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyEvent_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyEvent').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by event description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
                   </div>
                   {% for item in listCompanyEvent%}
                   <div>
-              <a href="{{ item.displayPage }}">
-                <i class="fa-duotone fa-regular fa-map-location-dot"></i>
-              <span><wa-format-date weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" second="numeric" time-zone-name="short" date="{{ formatZonedDateTime(item.startDateTime, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span>{{ item.name | e }}
-</span>              </a>
-              <a href="{{ item.displayPage }}">
-              <span>{{ item.description | e }}
-</span>              </a>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-duotone fa-regular fa-map-location-dot"></i>
+                      <span><wa-format-date weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" second="numeric" time-zone-name="short" date="{{ formatZonedDateTime(item.startDateTime, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
+</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.description | e }}</span>
+                    </a>
                   </div>
                   {% endfor %}
               {% if getColumnStartDateTime is defined %}

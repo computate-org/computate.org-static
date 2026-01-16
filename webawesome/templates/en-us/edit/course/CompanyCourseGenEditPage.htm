@@ -48,51 +48,61 @@
 {%- endblock htmTooltipCompanyCoursePage %}`;
       }
 
-      function facetSimpleRangeCompanyCourseSuccess(pageContent) {
-{% block facetSimpleRangeCompanyCourseSuccess %}{%- endblock facetSimpleRangeCompanyCourseSuccess %}
+      function facetChangeCompanyCourseSuccess(e) {
+        var l = e.querySelector('.pageForm .listCompanyCourse')?.value;
+        if(l)
+          window.listCompanyCourse = JSON.parse(l);
+{% block facetChangeCompanyCourseSuccess %}{%- endblock facetCompanyCourseSuccess %}
       }
-      function facetSimpleRangeCompanyCourseError(pageContent) {
-{% block facetSimpleRangeCompanyCourseError %}{%- endblock facetSimpleRangeCompanyCourseError %}
+      function facetChangeCompanyCourseError(e) {
+{% block facetChangeCompanyCourseError %}{%- endblock facetCompanyCourseError %}
+      }
+
+      function facetSimpleRangeCompanyCourseSuccess(e) {
+{% block facetSimpleRangeCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetSimpleRangeCompanyCourseSuccess %}
+      }
+      function facetSimpleRangeCompanyCourseError(e) {
+{% block facetSimpleRangeCompanyCourseError %}      facetChangeCompanyCourseError(e);{% endblock facetSimpleRangeCompanyCourseError %}
       }
       function facetSimpleRangeCompanyCourse(e) {
         facetSimpleRange(e, facetSimpleRangeCompanyCourseSuccess, facetSimpleRangeCompanyCourseError);
       }
 
-      function facetRangeTimeZoneCompanyCourseSuccess(pageContent) {
-{% block facetRangeTimeZoneCompanyCourseSuccess %}{%- endblock facetRangeTimeZoneCompanyCourseSuccess %}
+      function facetRangeTimeZoneCompanyCourseSuccess(e) {
+{% block facetRangeTimeZoneCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetRangeTimeZoneCompanyCourseSuccess %}
       }
-      function facetRangeTimeZoneCompanyCourseError(pageContent) {
-{% block facetRangeTimeZoneCompanyCourseError %}{%- endblock facetRangeTimeZoneCompanyCourseError %}
+      function facetRangeTimeZoneCompanyCourseError(e) {
+{% block facetRangeTimeZoneCompanyCourseError %}      facetChangeCompanyCourseError(e);{%- endblock facetRangeTimeZoneCompanyCourseError %}
       }
       function facetRangeTimeZoneCompanyCourse(e) {
         facetRangeTimeZone(e, facetRangeTimeZoneCompanyCourseSuccess, facetRangeTimeZoneCompanyCourseError);
       }
 
-      function facetRangeGapChangeCompanyCourseSuccess(pageContent) {
-{% block facetRangeGapChangeCompanyCourseSuccess %}{%- endblock facetRangeGapChangeCompanyCourseSuccess %}
+      function facetRangeGapChangeCompanyCourseSuccess(e) {
+{% block facetRangeGapChangeCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetRangeGapChangeCompanyCourseSuccess %}
       }
-      function facetRangeGapChangeCompanyCourseError(pageContent) {
-{% block facetRangeGapChangeCompanyCourseError %}{%- endblock facetRangeGapChangeCompanyCourseError %}
+      function facetRangeGapChangeCompanyCourseError(e) {
+{% block facetRangeGapChangeCompanyCourseError %}      facetChangeCompanyCourseError(e);{%- endblock facetRangeGapChangeCompanyCourseError %}
       }
       function facetRangeGapChangeCompanyCourse(classSimpleName, event) {
         facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyCourseSuccess, facetRangeGapChangeCompanyCourseError);
       }
 
-      function facetRangeStartChangeCompanyCourseSuccess(pageContent) {
-{% block facetRangeStartChangeCompanyCourseSuccess %}{%- endblock facetRangeStartChangeCompanyCourseSuccess %}
+      function facetRangeStartChangeCompanyCourseSuccess(e) {
+{% block facetRangeStartChangeCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetRangeStartChangeCompanyCourseSuccess %}
       }
-      function facetRangeStartChangeCompanyCourseError(pageContent) {
-{% block facetRangeStartChangeCompanyCourseError %}{%- endblock facetRangeStartChangeCompanyCourseError %}
+      function facetRangeStartChangeCompanyCourseError(e) {
+{% block facetRangeStartChangeCompanyCourseError %}      facetChangeCompanyCourseError(e);{%- endblock facetRangeStartChangeCompanyCourseError %}
       }
       function facetRangeStartChangeCompanyCourse(classSimpleName, event) {
         facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyCourseSuccess, facetRangeStartChangeCompanyCourseError);
       }
 
-      function facetRangeEndChangeCompanyCourseSuccess(pageContent) {
-{% block facetRangeEndChangeCompanyCourseSuccess %}{%- endblock facetRangeEndChangeCompanyCourseSuccess %}
+      function facetRangeEndChangeCompanyCourseSuccess(e) {
+{% block facetRangeEndChangeCompanyCourseSuccess %}      facetChangeCompanyCourseSuccess(e);{% endblock facetRangeEndChangeCompanyCourseSuccess %}
       }
-      function facetRangeEndChangeCompanyCourseError(pageContent) {
-{% block facetRangeEndChangeCompanyCourseError %}{%- endblock facetRangeEndChangeCompanyCourseError %}
+      function facetRangeEndChangeCompanyCourseError(e) {
+{% block facetRangeEndChangeCompanyCourseError %}      facetChangeCompanyCourseError(e);{%- endblock facetRangeEndChangeCompanyCourseError %}
       }
       function facetRangeEndChangeCompanyCourse(classSimpleName, event) {
         facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyCourseSuccess, facetRangeEndChangeCompanyCourseError);
@@ -112,6 +122,7 @@
         , customElements.whenDefined('wa-select')
         , customElements.whenDefined('wa-radio')
         , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
@@ -245,31 +256,47 @@
 
 {%- block htmUrlCompanyCoursePage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlCompanyCoursePage %}
 
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/course/CompanyCourseSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/course/CompanyCourseSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-CompanyCourse" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-notebook"></i>
+                  all courses
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  a course
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
 {%- block htmBodyStartPageLayout %}
     {{ super() }}
 {%- block htmBodyStartCompanyCoursePage %}
 {% if resultCount > 0 %}
           <div class="wa-flank ">
-            <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip>
-            <wa-button id="return-to-CompanyCourse" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-angle-left"></i>
-              all courses
-            </wa-button>
             <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-notebook"></i> {{ result.objectTitle | e }}</h1>
           </div>
-          <div class="margin-block">
-          </div>
-{% include en-us/search/course/CompanyCourseSearchForm.htm %}
-          <wa-divider></wa-divider>
-{% include en-us/search/course/CompanyCourseSearchButtons.htm %}
 {% endif %}
+{% include en-us/search/course/CompanyCourseSearchForm.htm %}
 {%- endblock htmBodyStartCompanyCoursePage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyCoursePage %}
-        <div class="pageContent ">
 {%- include en-us/search/course/CompanyCourseSidebar.htm %}
+        <div class="pageContent ">
 {% if resultCount == 0 %}
         <div class="wa-stack ">
           <wa-tooltip for="return-to-CompanyCourse">back to all courses</wa-tooltip></wa-tooltip>
@@ -305,7 +332,6 @@
             <input name="listCompanyCourse" id="listCompanyCourse" class="listCompanyCourse"  value='{{ toJsonArrayStringInApostrophes(listCompanyCourse) }}' type="hidden"/>
           </form>
   {% if solrId is defined %}
-          {{ htmButton_searchpageCompanyCourse() }}
           {{ htmForm_searchpageCompanyCourse() }}
   {% endif %}
 {%- endblock htmFormCompanyCoursePage %}
