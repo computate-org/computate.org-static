@@ -47,10 +47,10 @@
 
       function siteSearchInput(event) {
         var filters = [];
-        if(event.target.value == '')
+        if(event.target.inputValue == '')
           filters.push({ name: 'q', value: '*:*' });
         else
-          filters.push({ name: 'q', value: event.target.value ? 'objectSuggest:' + event.target.value : '' });
+          filters.push({ name: 'q', value: event.target.inputValue ? 'objectSuggest:' + event.target.inputValue : '' });
 
         fetch(
           '{{ USER_SEARCH_URI if userName is defined else PUBLIC_SEARCH_URI }}?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
@@ -58,18 +58,19 @@
             headers: {'Content-Type':'application/json; charset=utf-8'}
           }).then(response => {
             if(response.ok) {
-              var dropdown = document.querySelector('#siteSearchDropdown');
-              var dropdownMenu = document.querySelector('#siteSearchDropdownMenu');
+              var combobox = document.querySelector('#siteSearchInput');
               response.json().then(function(body) {
-                dropdownMenu.innerHTML = '';
+                combobox.querySelectorAll('wa-option').forEach(option => option.remove());
                 body.list.forEach((o) => {
-                  var menuItem = document.createElement('wa-dropdown-item');
+                  var menuItem = document.createElement('wa-option');
                   menuItem.innerText = o.objectTitle;
                   menuItem.setAttribute('data-href', o.displayPage);
-                  dropdownMenu.appendChild(menuItem);
+                  menuItem.setAttribute('value', o.displayPage);
+                  combobox.appendChild(menuItem);
                   menuItem.addEventListener('click', (event) => window.location.href = event.target.getAttribute('data-href') );
                 });
-                dropdown.active = true;
+                if(!combobox.open)
+                  combobox.open = true;
               });
             } else {
               error(response, event.target);
@@ -79,21 +80,11 @@
       }
 
       Promise.all([
-        customElements.whenDefined('wa-button')
-        , customElements.whenDefined('wa-input')
+        customElements.whenDefined('wa-combobox')
       ]).then(() => {
         var input = document.querySelector('#siteSearchInput');
-        var dropdown = document.querySelector('#siteSearchDropdown');
         input.addEventListener('input', siteSearchInput);
         input.addEventListener('focus', siteSearchInput);
-        document.body.addEventListener('click', function(event) {
-          if(!dropdown.contains(event.target))
-            dropdown.active = false;
-        });
-        document.body.addEventListener('keyup', (event) => {
-          if (event.key === 'Escape' && dropdown.active)
-            dropdown.active = false;
-        });
       });
     </script>
     {%- if WEB_COMPONENTS_KIT is defined and WEB_COMPONENTS_KIT != '' %}
@@ -151,13 +142,11 @@
           <wa-button size="small" data-toggle-nav variant="brand" label="open menu"{% if WEB_COMPONENTS_PRO == 'false' %} onclick="document.querySelector('#site-aside-left').open = true;"{% endif %}>
             <i class="{{ FONTAWESOME_STYLE }} fa-bars"></i>
           </wa-button>
-          <wa-popup placement="bottom-start" id="siteSearchDropdown">
-            <wa-input size="small" slot="anchor" placeholder="search" id="siteSearchInput">
+          <div class="wa-stack ">
+            <wa-combobox id="siteSearchInput" placeholder="search" with-clear allow-custom-value>
               <i slot="start" class="{{ FONTAWESOME_STYLE }}  fa-magnifying-glass"></i>
-            </wa-input>
-            <div id="siteSearchDropdownMenu">
-            </div>
-          </wa-popup>
+            </wa-combobox>
+          </div>
           {% if pageSearchFormButtons is defined or pageBreadcrumb is defined -%}
           {{ pageSearchFormButtons | default('') }}
           {%- endif %}
