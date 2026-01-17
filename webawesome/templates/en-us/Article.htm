@@ -1,9 +1,20 @@
 {% extends "en-us/PageLayout.htm" %}
 
-{%- macro typed(summary, id, codeTemplate, skeletonTemplate=null, htmTemplate=null, typeSpeed=20, backSpeed=10, smartBackspace=true) -%}
+{%- macro typed(summary, id, codeTemplate, skeletonTemplate=null, htmTemplate=null, typeSpeed=20, backSpeed=10, smartBackspace=true, modelJsonTemplate=null) -%}
 {% set macroCode -%}
 {%- include codeTemplate -%}
 {%- endset -%}
+{% if modelJsonTemplate is defined -%}
+{% set modelJsonStr -%}
+{%- include modelJsonTemplate -%}
+{%- endset -%}
+{% set model = from_json(modelJsonStr).response.docs | first %}
+{% set classApiMethodPOST = ' *   POST' in codeTemplate %}
+{% set classApiMethodPATCH = ' *   PATCH' in codeTemplate %}
+{% set classApiMethodDELETE = ' *   DELETE' in codeTemplate %}
+{% set classApiMethodPUTImport = ' *   PUTImport' in codeTemplate %}
+{%- endif -%}
+
 <wa-intersection-observer id="{{ id | e }}-intersection-observer" threshold="1" intersect-class="visible" once>
   <wa-details summary="{{ summary | e }}" id="{{ id | e }}-details" icon-placement="start" open>
     <i slot="expand-icon" class="fa-kit fa-spine fa-2xl"></i>

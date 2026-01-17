@@ -1,0 +1,21 @@
+
+/**
+ * Description: A fishing boat that catches fish from a fish population and returns the fish to a dock. 
+ * SearchPageUri: /en-us/search/fishing-boat
+ * EditPageUri: /en-us/edit/fishing-boat/{entityShortId}
+ * ApiUri: /en-us/api/fishing-boat
+ * ApiMethod:
+ *   Search:
+ *   GET:
+ *   PATCH:
+ *   POST:
+ *   DELETE:
+ *   PUTImport:
+ * AuthGroup:
+ *   FishingBoatEditor:
+ *     GET:
+ *     POST:
+ *     PATCH:
+ */
+public class FishingBoat extends FishingBoatGen<MapModel> {
+}

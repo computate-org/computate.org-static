@@ -1,0 +1,44 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="SPINE Programming prerequisites" />
+    <meta name="result.description" content="Learn how to become a SPINE Programmer building data-driven websites and increase your developer productivity up to 4900%. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-01-07T21:12:25.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/spine-programming-lesson-model.png" />
+    <meta name="result.pageImageAlt" content="SPINE Programming lesson model Java Class" />
+    <meta name="result.importance" content="0" />
+    <meta name="result.prerequisiteArticleIds" content="introduction-to-spine-programming" />
+{% endblock htmMetaPageLayout %}
+{% block htmScriptsPageLayout %}
+{{ super()}}
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+{% endblock htmScriptsPageLayout %}
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+
+    <div class="wa-stack wa-gap-3xl ">
+      <h2>
+        <i class="fa-kit fa-spine"></i>
+        SPINE Programming prerequisites
+      </h2>
+      {{ typed('SPINE Programming is a form of on-device, local, sovereign AI code indexing and open source code generation for Linux. '
+          , 'check-your-operating-system'
+          , 'spine/spine-programming-prerequisites/check-your-operating-system.txt'
+          ) }}
+      {{ typed('A watcher service runs locally to watch a project directory for code files created and modified, and parses code files as changes occur. '
+          , 'watcher-log'
+          , 'spine/spine-programming-prerequisites/watcher-log.txt'
+          ) }}
+      {{ typed('A distributed application cluster manager, Apache Zookeeper, provides scalable file locking capabilities when generating code without conflicts. '
+          , 'check-zookeeper-cluster-manager'
+          , 'spine/spine-programming-prerequisites/check-zookeeper-cluster-manager.txt'
+          ) }}
+      {{ typed('An open source search engine, Apache Solr, running locally is used to index introspection data about the modified code classes, constructors, methods, fields, and comments. '
+          , 'check-solr-search-engine'
+          , 'spine/spine-programming-prerequisites/check-solr-search-engine.txt'
+          ) }}
+    </div>
+{% endblock %}

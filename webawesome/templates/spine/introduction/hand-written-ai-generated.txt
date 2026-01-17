@@ -1,0 +1,7 @@
+$ smart-aquaculture/bin/wc-hand-written.sh^1000
+`  5685 total
+hand written`
+$ smart-aquaculture/bin/wc-ai-generated.sh^1000
+`  268862 total
+AI generated`
+`$ `

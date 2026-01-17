@@ -1,0 +1,7 @@
+S: SPINE^500
+P: Programming^500
+I: Is^500
+N: Not^500
+E: Easy^500
+
+But you can crack the code on writing code

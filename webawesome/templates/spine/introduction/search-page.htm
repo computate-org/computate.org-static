@@ -1,0 +1,80 @@
+        <div class="wa-cluster ">
+          <wa-button size="small" data-toggle-nav variant="brand" label="open menu">
+            <i class="fa-duotone fa-regular  fa-bars"></i>
+          </wa-button>
+          <wa-popup placement="bottom-start" id="siteSearchDropdown">
+            <wa-input size="small" slot="anchor" placeholder="search" id="siteSearchInput">
+              <i slot="start" class="fa-duotone fa-regular   fa-magnifying-glass"></i>
+            </wa-input>
+            <div id="siteSearchDropdownMenu">
+            </div>
+          </wa-popup>
+
+          <div id="htmSearchForm">
+            <wa-scroller>
+              <wa-button-group>
+                {% if classApiMethodPATCH -%}
+                <wa-button variant="brand" id="refreshThis{{ model.classeNomSimple_stored_string }}GenPage">
+                  <i slot="start" class="fa-duotone fa-regular  fa-sync-alt "></i>
+                  refresh
+                </wa-button>
+                <wa-button variant="brand" id="refreshAll{{ model.classeNomSimple_stored_string }}GenPage">
+                  <i slot="start" class="fa-duotone fa-regular  fa-arrows-rotate"></i>
+                  refresh all 
+                </wa-button>
+                <wa-button variant="brand" id="htmButton_patch{{ model.classeNomSimple_stored_string }}" data-entityShortId=null><i slot="start" class="fa-duotone fa-regular  fa-edit "></i>Modify</wa-button>
+                {%- endif -%}
+                {% if classApiMethodPOST -%}
+                <wa-button variant="brand" id="htmButton_post{{ model.classeNomSimple_stored_string }}" data-entityShortId=null><i slot="start" class="fa-duotone fa-regular  fa-file-plus "></i>Create</wa-button>
+                {%- endif -%}
+                {% if classApiMethodPUTImport -%}
+                <wa-button variant="brand" id="htmButton_putimport{{ model.classeNomSimple_stored_string }}" data-entityShortId=null><i slot="start" class="fa-duotone fa-regular  fa-file-import "></i>Import</wa-button>
+                {%- endif -%}
+                {% if classApiMethodDELETE -%}
+                <wa-button variant="brand" id="htmButton_deletefilter{{ model.classeNomSimple_stored_string }}" data-entityShortId=null><i slot="start" class="fa-duotone fa-regular  fa-trash "></i>Delete</wa-button>
+                {%- endif -%}
+              </wa-button-group>
+            </wa-scroller>
+          </div>
+        </div>
+
+          <div>
+              <wa-tooltip for="return-to-{{ model.classeNomSimple_stored_string }}">back to {{ classeTousNom_enUS_stored_string }}</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-{{ model.classeNomSimple_stored_string }}" variant="brand" href="http://localhost:10230{{ model.classeApiUriSearchPage_enUS_stored_string }}">
+                  <i class="fa-duotone fa-regular fa-fish"></i>
+                  {{ model.classeTousNom_enUS_stored_string}}
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  {{ model.classeRechercherTousNom_enUS_stored_string }}
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+          </div>
+
+          <div class="wa-split ">
+            <wa-tooltip for="PaginationButtonsPrevious" placement="top">Show the previous results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsDecrease" placement="top">Show half the results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsIncrease" placement="top">Show double the results. </wa-tooltip>
+            <wa-tooltip for="PaginationButtonsNext" placement="top">Show the next results. </wa-tooltip>
+            <div class="wa-caption-l ">0 – 0 of 0 {{ classeNomPluriel_enUS_stored_string }}</div>
+            <wa-scroller>
+              <wa-button-group size="small" class="no-gradient wa-cluster wa-gap-xs " id="htmPaginationButtons">
+                <wa-button id="PaginationButtonsPrevious" variant="brand" disabled>
+                  <i slot="start" class="fa-duotone fa-regular  fa-arrow-square-left "></i>
+                  previous
+                </wa-button>
+                <wa-button id="PaginationButtonsDecrease" variant="brand" href="{{ model.classeApiUriSearchPage_enUS_stored_string }}?start=0&amp;rows=50">
+                  <i slot="start" class="fa-duotone fa-regular  fa-minus-square "></i>
+                  less
+                </wa-button>
+                <wa-button id="PaginationButtonsIncrease" variant="brand" href="{{ model.classeApiUriSearchPage_enUS_stored_string }}?start=0&amp;rows=200">
+                  <i slot="start" class="fa-duotone fa-regular  fa-plus-square "></i>
+                  more
+                </wa-button>
+                <wa-button id="PaginationButtonsNext" variant="brand" disabled>
+                  next
+                  <i slot="suffix" class="fa-duotone fa-regular  fa-arrow-square-right "></i>
+                </wa-button>
+              </wa-button-group>
+            </wa-scroller>
+          </div>
