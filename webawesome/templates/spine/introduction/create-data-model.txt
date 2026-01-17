@@ -1,0 +1,25 @@
+^1000$ echo '
+package org.computate.smartaquaculture.model.fiware.fishpopulation;
+import org.computate.smartaquaculture.model.mapmodel.MapModel;
+/**
+ * AName: a fish population
+ * Description: Tracking fish population counts, maturation, and incubation over time. 
+ * SearchPageUri: /en-us/search/fish-population
+ * EditPageUri: /en-us/edit/fish-population/{entityShortId}
+ * ApiUri: /en-us/api/fish-population
+ * ApiMethod:
+ *   Search:
+ *   GET:
+ *   PATCH:
+ *   POST:
+ *   DELETE:
+ *   PUTImport:
+ * AuthGroup:
+ *   FishPopulationViewer:
+ **/
+public class FishPopulation extends FishPopulationGen<MapModel> {
+}' > src/main/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulation.java ^1000
+$ journalctl -f --user-unit watch-smart-aquaculture^1000
+`Jan 16 15:45:57 Class FishPopulation touched`^2000
+`Jan 16 15:47:21 Class FishPopulation generated`^2000
+`$ `

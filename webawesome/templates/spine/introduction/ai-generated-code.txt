@@ -1,0 +1,13 @@
+$ find src/gen/java/org/computate/smartaquaculture/model/fiware/fishpopulation/ \
+  -type f -exec wc -l {} +^1000
+`     0 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationSuggestedSearch.htm
+     1 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationSearchPage.htm
+    28 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationPaginationButtons.htm
+    15 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationLocation.htm
+    65 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationSearchFormButtons.htm
+    36 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationSearchButtons.htm
+   375 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationSidebar.htm
+   474 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationGenSearchPage.htm
+   966 ../smart-aquaculture-static/webawesome/templates/en-us/search/fish-population/FishPopulationSearchForm.htm
+  1960 total`
+`$ `

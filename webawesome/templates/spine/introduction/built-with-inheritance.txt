@@ -1,0 +1,16 @@
+$ find src/gen/java/org/computate/smartaquaculture/model/fiware/fishpopulation/ \
+  -type f -exec wc -l {} +^1000
+`  694 src/gen/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulationGen.java
+  939 src/gen/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulationGenPageGen.java
+  419 src/gen/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulationPageGen.java
+ 2052 total`
+$ find src/main/java/org/computate/smartaquaculture/model/fiware/fishpopulation/ \
+  -type f -exec wc -l {} +^1000
+`   214 src/main/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulationEnUSApiServiceImpl.java
+     7 src/main/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulationPage.java
+    50 src/main/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulationEnUSGenApiService.java
+    23 src/main/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulation.java
+  3515 src/main/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulationEnUSGenApiServiceImpl.java
+   561 src/main/java/org/computate/smartaquaculture/model/fiware/fishpopulation/FishPopulationGenPage.java
+  4370 total`
+`$ `
