@@ -9,10 +9,10 @@
 {%- include modelJsonTemplate -%}
 {%- endset -%}
 {% set model = from_json(modelJsonStr).response.docs | first %}
-{% set classApiMethodPOST = ' *   POST' in codeTemplate %}
-{% set classApiMethodPATCH = ' *   PATCH' in codeTemplate %}
-{% set classApiMethodDELETE = ' *   DELETE' in codeTemplate %}
-{% set classApiMethodPUTImport = ' *   PUTImport' in codeTemplate %}
+{% set classApiMethodPOST = '  POST:' in macroCode %}
+{% set classApiMethodPATCH = '  PATCH:' in macroCode %}
+{% set classApiMethodDELETE = '  DELETE:' in macroCode %}
+{% set classApiMethodPUTImport = '  PUTImport:' in macroCode %}
 {%- endif -%}
 
 <wa-intersection-observer id="{{ id | e }}-intersection-observer" threshold="1" intersect-class="visible" once>
@@ -31,7 +31,7 @@
             }
             typed = new Typed('#{{ id | e }}', {
               strings: [ 
-                {{ macroCode | tojson }} 
+                {{ macroCode | e | tojson }} 
               ]
               , typeSpeed: {{ typeSpeed }}
               , backSpeed: {{ backSpeed }}
@@ -93,7 +93,7 @@
           }
           typed = new Typed('#{{ id | e }}', {
             strings: [ 
-              {{ macroCode | tojson }} 
+              {{ macroCode | e | tojson }} 
             ]
             , typeSpeed: {{ typeSpeed }}
             , backSpeed: {{ backSpeed }}
