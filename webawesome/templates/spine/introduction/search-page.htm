@@ -41,7 +41,7 @@
           <div>
               <wa-tooltip for="return-to-{{ model.classeNomSimple_stored_string }}">back to {{ classeTousNom_enUS_stored_string }}</wa-tooltip>
               <wa-breadcrumb>
-                <wa-breadcrumb-item id="return-to-{{ model.classeNomSimple_stored_string }}" variant="brand" href="http://localhost:10230{{ model.classeApiUriSearchPage_enUS_stored_string }}">
+                <wa-breadcrumb-item id="return-to-{{ model.classeNomSimple_stored_string }}" variant="brand">
                   <i class="fa-duotone fa-regular fa-fish"></i>
                   {{ model.classeTousNom_enUS_stored_string}}
                 </wa-breadcrumb-item>
@@ -63,11 +63,11 @@
                   <i slot="start" class="fa-duotone fa-regular  fa-arrow-square-left "></i>
                   previous
                 </wa-button>
-                <wa-button id="PaginationButtonsDecrease" variant="brand" href="{{ model.classeApiUriSearchPage_enUS_stored_string }}?start=0&amp;rows=50">
+                <wa-button id="PaginationButtonsDecrease" variant="brand">
                   <i slot="start" class="fa-duotone fa-regular  fa-minus-square "></i>
                   less
                 </wa-button>
-                <wa-button id="PaginationButtonsIncrease" variant="brand" href="{{ model.classeApiUriSearchPage_enUS_stored_string }}?start=0&amp;rows=200">
+                <wa-button id="PaginationButtonsIncrease" variant="brand">
                   <i slot="start" class="fa-duotone fa-regular  fa-plus-square "></i>
                   more
                 </wa-button>
