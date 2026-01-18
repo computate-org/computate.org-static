@@ -1,7 +1,19 @@
-S: SPINE^500
-P: Programming^500
-I: Is^500
-N: Not^500
-E: Easy^500
-
-Learn how to crack the code on writing code
+/**
+ * You might think that: ^500
+ * S: SPINE^500
+ * P: Programming^500
+ * I: Is^500
+ * N: Not^500
+ * E: Easy^500
+ * 
+ * until you learn how to: ^500
+ * S: Solve^500
+ * P: Problems^500
+ * I: In^500
+ * N: Neat^500
+ * E: Expressions^500
+ * 
+ * and learn how to crack the code on writing code. ^500
+ **/
+public class SpineProgramming extends SpineProgrammingGen<BaseResult> {
+}
