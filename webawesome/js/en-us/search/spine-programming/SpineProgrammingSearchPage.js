@@ -591,18 +591,6 @@ Promise.all([
           });
 });
 
-  document.querySelector('#htmButton_patchSpineProgramming')?.addEventListener('click', (event) => {
-    document.querySelector('#patchSpineProgrammingDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postSpineProgramming')?.addEventListener('click', (event) => {
-    document.querySelector('#postSpineProgrammingDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_putimportSpineProgramming')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportSpineProgrammingDialog').open = true;
-  });
-
   document.querySelector('#htmButton_deleteSpineProgramming')?.addEventListener('click', (event) => {
     var confirmResponse = confirm('Are you sure you want to delete that?'); 
     if(confirmResponse) { 
@@ -614,10 +602,6 @@ Promise.all([
           , function(response, target) { addError(target); }
           );
     }
-  });
-
-  document.querySelector('#htmButton_searchpageSpineProgramming')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageSpineProgrammingDialog').open = true;
   });
 
   document.querySelector('#htmButton_deletefilterSpineProgramming')?.addEventListener('click', (event) => {

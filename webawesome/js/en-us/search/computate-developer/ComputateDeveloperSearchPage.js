@@ -132,50 +132,6 @@ Promise.all([
     facetStatsChange('ComputateDeveloper', 'classCanonicalName', false);
   });
 
-  document.querySelector('#pageSelectSortComputateDeveloper_saves')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'saves', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_saves')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'saves', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_saves')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'saves', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_objectTitle')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'objectTitle', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_objectTitle')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'objectTitle', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_objectTitle')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'objectTitle', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_objectText')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'objectText', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_objectText')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'objectText', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_objectText')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'objectText', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_solrId')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'solrId', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_solrId')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'solrId', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_solrId')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'solrId', false);
-  });
-
   document.querySelector('#pageSelectSortComputateDeveloper_classSimpleName')?.addEventListener('change', (event) => {
     sort('ComputateDeveloper', 'classSimpleName', event.currentTarget.value);
   });
@@ -196,6 +152,28 @@ Promise.all([
   });
   document.querySelector('#pageStatsComputateDeveloper_classCanonicalNames')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('ComputateDeveloper', 'classCanonicalNames', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_saves')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'saves', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_saves')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'saves', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_saves')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'saves', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_objectTitle')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'objectTitle', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_objectTitle')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'objectTitle', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_objectTitle')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'objectTitle', false);
   });
 
   document.querySelector('#pageSelectSortComputateDeveloper_editPage')?.addEventListener('change', (event) => {
@@ -240,6 +218,28 @@ Promise.all([
   });
   document.querySelector('#pageStatsComputateDeveloper_objectSuggest')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('ComputateDeveloper', 'objectSuggest', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_objectText')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'objectText', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_objectText')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'objectText', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_objectText')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'objectText', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_solrId')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'solrId', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_solrId')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'solrId', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_solrId')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'solrId', false);
   });
 
   document.querySelector('#pageSelectSortComputateDeveloper_courseNum')?.addEventListener('change', (event) => {
@@ -598,14 +598,6 @@ Promise.all([
           });
 });
 
-  document.querySelector('#htmButton_patchComputateDeveloper')?.addEventListener('click', (event) => {
-    document.querySelector('#patchComputateDeveloperDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postComputateDeveloper')?.addEventListener('click', (event) => {
-    document.querySelector('#postComputateDeveloperDialog').open = true;
-  });
-
   document.querySelector('#htmButton_deleteComputateDeveloper')?.addEventListener('click', (event) => {
     var confirmResponse = confirm('Are you sure you want to delete that?'); 
     if(confirmResponse) { 
@@ -617,14 +609,6 @@ Promise.all([
           , function(response, target) { addError(target); }
           );
     }
-  });
-
-  document.querySelector('#htmButton_putimportComputateDeveloper')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportComputateDeveloperDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageComputateDeveloper')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageComputateDeveloperDialog').open = true;
   });
 
   document.querySelector('#htmButton_deletefilterComputateDeveloper')?.addEventListener('click', (event) => {

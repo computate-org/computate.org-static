@@ -1,11 +1,11 @@
 
-{%- macro htmButton_patchCompanyCourse() %}<wa-button variant="brand" id="htmButton_patchCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+{%- macro htmButton_patchCompanyCourse() %}<wa-button variant="brand" id="htmButton_patchCompanyCourse"  data-dialog="open patchCompanyCourseDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
-{%- macro htmButton_postCompanyCourse() %}<wa-button variant="brand" id="htmButton_postCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+{%- macro htmButton_postCompanyCourse() %}<wa-button variant="brand" id="htmButton_postCompanyCourse"  data-dialog="open postCompanyCourseDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
 {%- macro htmButton_deleteCompanyCourse() %}<wa-button variant="brand" id="htmButton_deleteCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 
-{%- macro htmButton_putimportCompanyCourse() %}<wa-button variant="brand" id="htmButton_putimportCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+{%- macro htmButton_putimportCompanyCourse() %}<wa-button variant="brand" id="htmButton_putimportCompanyCourse"  data-dialog="open putimportCompanyCourseDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmButton_deletefilterCompanyCourse() %}<wa-button variant="brand" id="htmButton_deletefilterCompanyCourse" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
           <div id="htmSearchForm">

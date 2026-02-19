@@ -292,7 +292,6 @@
             </div>
             <span class="wa-heading-m ">no Computate Developer found</span>
             <p class="wa-caption-l ">Learn how to become a Computate platform developer — Learn how to build your own data-driven website on your own computer for your own ideas. </p>
-{% include en-us/search/computate-developer/ComputateDeveloperSearchForm.htm %}
           </div>
         </div>
 {% else %}
@@ -308,6 +307,7 @@
             </div>
             <div class="wa-stack wa-gap-m ">
 {% endif %}
+{% include en-us/search/computate-developer/ComputateDeveloperSearchForm.htm %}
 {%- endblock htmBodyStartComputateDeveloperPage %}
 {%- endblock htmBodyStartPageLayout %}
 {%- if pageSearchButtons is not defined %}
@@ -320,7 +320,6 @@
 {% include en-us/search/computate-developer/ComputateDeveloperSearchFormButtons.htm %}
 {%- endset pageSearchFormButtons %}
 {%- endif %}
-{% include en-us/search/computate-developer/ComputateDeveloperSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleComputateDeveloperPage %}
@@ -378,8 +377,6 @@
                 </div>
 {% include en-us/search/computate-developer/ComputateDeveloperPaginationButtons.htm %}
               </div>
-            </div>
-          </div>
 {% endif %}
 {%- endblock htmBodyMiddleComputateDeveloperPage %}
 {%- endblock htmBodyMiddlePageLayout %}
@@ -387,6 +384,8 @@
 {%- block htmBodyEndPageLayout %}
 {%- block htmBodyEndComputateDeveloperPage %}
 {%- include en-us/search/computate-developer/ComputateDeveloperLocation.htm %}
+            </div>
+          </div>
 {%- endblock htmBodyEndComputateDeveloperPage %}
   {{ super() }}
 {%- endblock htmBodyEndPageLayout %}

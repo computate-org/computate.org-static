@@ -91,7 +91,14 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setSiteFontSize', event.currentTarget.value
                   , event.currentTarget
-                , function(response, target) { addGlow(target); window.location.reload(); }
+                , function(response, target) {
+                  addGlow(target);
+                  fetch('/refresh').then(response => {
+                    response.text().then(text => {
+                      window.location.reload();
+                    });
+                  });
+                }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -112,7 +119,14 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setAwesomeEffect', event.currentTarget.checked
                   , event.currentTarget
-                , function(response, target) { addGlow(target); window.location.reload(); }
+                , function(response, target) {
+                  addGlow(target);
+                  fetch('/refresh').then(response => {
+                    response.text().then(text => {
+                      window.location.reload();
+                    });
+                  });
+                }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -134,7 +148,14 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setSiteTheme', event.currentTarget.value
                   , event.currentTarget
-                , function(response, target) { addGlow(target); window.location.reload(); }
+                , function(response, target) {
+                  addGlow(target);
+                  fetch('/refresh').then(response => {
+                    response.text().then(text => {
+                      window.location.reload();
+                    });
+                  });
+                }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -156,7 +177,14 @@ Promise.all([
               patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
                   , 'setWebComponentsTheme', event.currentTarget.value
                   , event.currentTarget
-                , function(response, target) { addGlow(target); window.location.reload(); }
+                , function(response, target) {
+                  addGlow(target);
+                  fetch('/refresh').then(response => {
+                    response.text().then(text => {
+                      window.location.reload();
+                    });
+                  });
+                }
                   , function(response, target) { addError(target); }
                   );
             }
@@ -166,6 +194,27 @@ Promise.all([
           });
           document.querySelector('#Page_webComponentsTheme')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_webComponentsTheme');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH sessionId
+          document.querySelector('#Page_sessionId')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_sessionId');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
+                  , 'setSessionId', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_sessionId')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_sessionId')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_sessionId');
             const valid = form.reportValidity();
           });
 
@@ -229,27 +278,6 @@ Promise.all([
           });
           document.querySelector('#Page_displayPage')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_displayPage');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH sessionId
-          document.querySelector('#Page_sessionId')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_sessionId');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSiteUserVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'userId:' + event.currentTarget.getAttribute('data-userId') }]
-                  , 'setSessionId', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_sessionId')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_sessionId')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_sessionId');
             const valid = form.reportValidity();
           });
 

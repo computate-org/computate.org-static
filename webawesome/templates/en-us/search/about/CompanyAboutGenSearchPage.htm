@@ -292,7 +292,6 @@
             </div>
             <span class="wa-heading-m ">no about page found</span>
             <p class="wa-caption-l ">Learn about our team, company, culture, and values. </p>
-{% include en-us/search/about/CompanyAboutSearchForm.htm %}
           </div>
         </div>
 {% else %}
@@ -308,6 +307,7 @@
             </div>
             <div class="wa-stack wa-gap-m ">
 {% endif %}
+{% include en-us/search/about/CompanyAboutSearchForm.htm %}
 {%- endblock htmBodyStartCompanyAboutPage %}
 {%- endblock htmBodyStartPageLayout %}
 {%- if pageSearchButtons is not defined %}
@@ -320,7 +320,6 @@
 {% include en-us/search/about/CompanyAboutSearchFormButtons.htm %}
 {%- endset pageSearchFormButtons %}
 {%- endif %}
-{% include en-us/search/about/CompanyAboutSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyAboutPage %}

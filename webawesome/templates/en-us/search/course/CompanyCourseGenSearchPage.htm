@@ -292,7 +292,6 @@
             </div>
             <span class="wa-heading-m ">no course found</span>
             <p class="wa-caption-l ">Take an exciting hands-on course on your own computer with computate</p>
-{% include en-us/search/course/CompanyCourseSearchForm.htm %}
           </div>
         </div>
 {% else %}
@@ -308,6 +307,7 @@
             </div>
             <div class="wa-stack wa-gap-m ">
 {% endif %}
+{% include en-us/search/course/CompanyCourseSearchForm.htm %}
 {%- endblock htmBodyStartCompanyCoursePage %}
 {%- endblock htmBodyStartPageLayout %}
 {%- if pageSearchButtons is not defined %}
@@ -320,7 +320,6 @@
 {% include en-us/search/course/CompanyCourseSearchFormButtons.htm %}
 {%- endset pageSearchFormButtons %}
 {%- endif %}
-{% include en-us/search/course/CompanyCourseSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyCoursePage %}

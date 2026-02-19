@@ -1,9 +1,9 @@
 
-{%- macro htmButton_patchCompanyService() %}<wa-button variant="brand" id="htmButton_patchCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+{%- macro htmButton_patchCompanyService() %}<wa-button variant="brand" id="htmButton_patchCompanyService"  data-dialog="open patchCompanyServiceDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
-{%- macro htmButton_postCompanyService() %}<wa-button variant="brand" id="htmButton_postCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+{%- macro htmButton_postCompanyService() %}<wa-button variant="brand" id="htmButton_postCompanyService"  data-dialog="open postCompanyServiceDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
-{%- macro htmButton_putimportCompanyService() %}<wa-button variant="brand" id="htmButton_putimportCompanyService" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+{%- macro htmButton_putimportCompanyService() %}<wa-button variant="brand" id="htmButton_putimportCompanyService"  data-dialog="open putimportCompanyServiceDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
           <div id="htmSearchForm">
             <wa-scroller>
               <wa-button-group>

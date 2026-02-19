@@ -313,27 +313,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH lessonNum
-          document.querySelector('#Page_lessonNum')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_lessonNum');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLessonNum', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_lessonNum')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_lessonNum')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_lessonNum');
-            const valid = form.reportValidity();
-          });
-
           // PATCH courseNum
           document.querySelector('#Page_courseNum')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_courseNum');
@@ -352,6 +331,27 @@ Promise.all([
           });
           document.querySelector('#Page_courseNum')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_courseNum');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH lessonNum
+          document.querySelector('#Page_lessonNum')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_lessonNum');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setLessonNum', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_lessonNum')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_lessonNum')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_lessonNum');
             const valid = form.reportValidity();
           });
 
@@ -445,7 +445,7 @@ Promise.all([
             const valid = form.checkValidity();
             if(valid) {
               patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLabels', event.currentTarget.value.replace('[','').replace(']','').split(/[ ,]+/)
+                  , 'setLabels', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }

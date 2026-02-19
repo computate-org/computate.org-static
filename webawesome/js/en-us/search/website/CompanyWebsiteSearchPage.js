@@ -382,19 +382,3 @@ Promise.all([
             facetRangeEndChange('CompanyWebsite', event.currentTarget);
           });
 });
-
-  document.querySelector('#htmButton_patchCompanyWebsite')?.addEventListener('click', (event) => {
-    document.querySelector('#patchCompanyWebsiteDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postCompanyWebsite')?.addEventListener('click', (event) => {
-    document.querySelector('#postCompanyWebsiteDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_putimportCompanyWebsite')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportCompanyWebsiteDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageCompanyWebsite')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageCompanyWebsiteDialog').open = true;
-  });

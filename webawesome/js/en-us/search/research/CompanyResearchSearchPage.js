@@ -353,19 +353,3 @@ Promise.all([
             facetRangeEndChange('CompanyResearch', event.currentTarget);
           });
 });
-
-  document.querySelector('#htmButton_patchCompanyResearch')?.addEventListener('click', (event) => {
-    document.querySelector('#patchCompanyResearchDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postCompanyResearch')?.addEventListener('click', (event) => {
-    document.querySelector('#postCompanyResearchDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_putimportCompanyResearch')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportCompanyResearchDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageCompanyResearch')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageCompanyResearchDialog').open = true;
-  });

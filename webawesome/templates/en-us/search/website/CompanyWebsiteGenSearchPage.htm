@@ -272,7 +272,6 @@
             </div>
             <span class="wa-heading-m ">no website found</span>
             <p class="wa-caption-l ">See the live websites built with computate</p>
-{% include en-us/search/website/CompanyWebsiteSearchForm.htm %}
           </div>
         </div>
 {% else %}
@@ -288,6 +287,7 @@
             </div>
             <div class="wa-stack wa-gap-m ">
 {% endif %}
+{% include en-us/search/website/CompanyWebsiteSearchForm.htm %}
 {%- endblock htmBodyStartCompanyWebsitePage %}
 {%- endblock htmBodyStartPageLayout %}
 {%- if pageSearchButtons is not defined %}
@@ -300,7 +300,6 @@
 {% include en-us/search/website/CompanyWebsiteSearchFormButtons.htm %}
 {%- endset pageSearchFormButtons %}
 {%- endif %}
-{% include en-us/search/website/CompanyWebsiteSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyWebsitePage %}

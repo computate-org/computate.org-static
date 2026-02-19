@@ -645,14 +645,6 @@ Promise.all([
           });
 });
 
-  document.querySelector('#htmButton_patchCompanyProduct')?.addEventListener('click', (event) => {
-    document.querySelector('#patchCompanyProductDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postCompanyProduct')?.addEventListener('click', (event) => {
-    document.querySelector('#postCompanyProductDialog').open = true;
-  });
-
   document.querySelector('#htmButton_deleteCompanyProduct')?.addEventListener('click', (event) => {
     var confirmResponse = confirm('Are you sure you want to delete that?'); 
     if(confirmResponse) { 
@@ -664,14 +656,6 @@ Promise.all([
           , function(response, target) { addError(target); }
           );
     }
-  });
-
-  document.querySelector('#htmButton_putimportCompanyProduct')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportCompanyProductDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageCompanyProduct')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageCompanyProductDialog').open = true;
   });
 
   document.querySelector('#htmButton_deletefilterCompanyProduct')?.addEventListener('click', (event) => {

@@ -72,7 +72,7 @@
       function htmLegendCompanyEvent(map, shape, result, index, count) {
         var color = result.locationColors[index];
         var title = result.locationTitles[index];
-        var url = result.locationLinks[index];
+        var url = null;
         var htm = '';
         htm += `<div class="cursor-pointer " style="max-width: 400px; ">
 `;
@@ -374,7 +374,6 @@
             </div>
             <span class="wa-heading-m ">no event found</span>
             <p class="wa-caption-l ">See the upcoming computate in-person and online events</p>
-{% include en-us/search/event/CompanyEventSearchForm.htm %}
           </div>
         </div>
 {% else %}
@@ -390,6 +389,7 @@
             </div>
             <div class="wa-stack wa-gap-m ">
 {% endif %}
+{% include en-us/search/event/CompanyEventSearchForm.htm %}
 {%- endblock htmBodyStartCompanyEventPage %}
 {%- endblock htmBodyStartPageLayout %}
 {%- if pageSearchButtons is not defined %}
@@ -402,7 +402,6 @@
 {% include en-us/search/event/CompanyEventSearchFormButtons.htm %}
 {%- endset pageSearchFormButtons %}
 {%- endif %}
-{% include en-us/search/event/CompanyEventSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyEventPage %}

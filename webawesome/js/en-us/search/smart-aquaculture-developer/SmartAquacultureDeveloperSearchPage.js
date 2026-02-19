@@ -598,14 +598,6 @@ Promise.all([
           });
 });
 
-  document.querySelector('#htmButton_patchSmartAquacultureDeveloper')?.addEventListener('click', (event) => {
-    document.querySelector('#patchSmartAquacultureDeveloperDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postSmartAquacultureDeveloper')?.addEventListener('click', (event) => {
-    document.querySelector('#postSmartAquacultureDeveloperDialog').open = true;
-  });
-
   document.querySelector('#htmButton_deleteSmartAquacultureDeveloper')?.addEventListener('click', (event) => {
     var confirmResponse = confirm('Are you sure you want to delete that?'); 
     if(confirmResponse) { 
@@ -617,14 +609,6 @@ Promise.all([
           , function(response, target) { addError(target); }
           );
     }
-  });
-
-  document.querySelector('#htmButton_putimportSmartAquacultureDeveloper')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportSmartAquacultureDeveloperDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageSmartAquacultureDeveloper')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageSmartAquacultureDeveloperDialog').open = true;
   });
 
   document.querySelector('#htmButton_deletefilterSmartAquacultureDeveloper')?.addEventListener('click', (event) => {

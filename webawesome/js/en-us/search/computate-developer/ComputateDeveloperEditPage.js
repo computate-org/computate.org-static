@@ -229,27 +229,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH solrId
-          document.querySelector('#Page_solrId')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_solrId');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchComputateDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setSolrId', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#Page_solrId')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#Page_solrId')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_solrId');
-            const valid = form.reportValidity();
-          });
-
           // PATCH editPage
           document.querySelector('#Page_editPage')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_editPage');
@@ -310,6 +289,27 @@ Promise.all([
           });
           document.querySelector('#Page_download')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_download');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH solrId
+          document.querySelector('#Page_solrId')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_solrId');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchComputateDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setSolrId', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#Page_solrId')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#Page_solrId')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_solrId');
             const valid = form.reportValidity();
           });
 
@@ -445,7 +445,7 @@ Promise.all([
             const valid = form.checkValidity();
             if(valid) {
               patchComputateDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLabels', event.currentTarget.value.replace('[','').replace(']','').split(/[ ,]+/)
+                  , 'setLabels', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
                   , event.currentTarget
                   , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }

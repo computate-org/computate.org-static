@@ -354,14 +354,6 @@ Promise.all([
           });
 });
 
-  document.querySelector('#htmButton_patchCompanyAbout')?.addEventListener('click', (event) => {
-    document.querySelector('#patchCompanyAboutDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postCompanyAbout')?.addEventListener('click', (event) => {
-    document.querySelector('#postCompanyAboutDialog').open = true;
-  });
-
   document.querySelector('#htmButton_deleteCompanyAbout')?.addEventListener('click', (event) => {
     var confirmResponse = confirm('Are you sure you want to delete that?'); 
     if(confirmResponse) { 
@@ -373,14 +365,6 @@ Promise.all([
           , function(response, target) { addError(target); }
           );
     }
-  });
-
-  document.querySelector('#htmButton_putimportCompanyAbout')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportCompanyAboutDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageCompanyAbout')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageCompanyAboutDialog').open = true;
   });
 
   document.querySelector('#htmButton_deletefilterCompanyAbout')?.addEventListener('click', (event) => {

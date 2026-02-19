@@ -561,14 +561,6 @@ Promise.all([
           });
 });
 
-  document.querySelector('#htmButton_patchCompanyEvent')?.addEventListener('click', (event) => {
-    document.querySelector('#patchCompanyEventDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postCompanyEvent')?.addEventListener('click', (event) => {
-    document.querySelector('#postCompanyEventDialog').open = true;
-  });
-
   document.querySelector('#htmButton_deleteCompanyEvent')?.addEventListener('click', (event) => {
     var confirmResponse = confirm('Are you sure you want to delete that?'); 
     if(confirmResponse) { 
@@ -580,14 +572,6 @@ Promise.all([
           , function(response, target) { addError(target); }
           );
     }
-  });
-
-  document.querySelector('#htmButton_putimportCompanyEvent')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportCompanyEventDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageCompanyEvent')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageCompanyEventDialog').open = true;
   });
 
   document.querySelector('#htmButton_deletefilterCompanyEvent')?.addEventListener('click', (event) => {

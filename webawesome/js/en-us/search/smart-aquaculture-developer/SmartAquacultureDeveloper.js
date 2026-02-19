@@ -106,8 +106,8 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
         var inputPageImageType = null;
         var inputPageImageAlt = null;
         var inputPrerequisiteArticleIds = null;
-        var inputNextArticleIds = null;
         var inputPrerequisiteArticles = null;
+        var inputNextArticleIds = null;
         var inputNextArticles = null;
         var inputLabelsString = null;
         var inputLabels = null;
@@ -170,10 +170,10 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
           inputPageImageAlt = $response.querySelector('.Page_pageImageAlt');
         if(vars.includes('prerequisiteArticleIds'))
           inputPrerequisiteArticleIds = $response.querySelector('.Page_prerequisiteArticleIds');
-        if(vars.includes('nextArticleIds'))
-          inputNextArticleIds = $response.querySelector('.Page_nextArticleIds');
         if(vars.includes('prerequisiteArticles'))
           inputPrerequisiteArticles = $response.querySelector('.Page_prerequisiteArticles');
+        if(vars.includes('nextArticleIds'))
+          inputNextArticleIds = $response.querySelector('.Page_nextArticleIds');
         if(vars.includes('nextArticles'))
           inputNextArticles = $response.querySelector('.Page_nextArticles');
         if(vars.includes('labelsString'))
@@ -470,16 +470,6 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.Page_prerequisiteArticleIds'));
         }
 
-        if(inputNextArticleIds) {
-          document.querySelectorAll('.Page_nextArticleIds').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputNextArticleIds.getAttribute('value');
-            else
-              item.textContent = inputNextArticleIds.textContent;
-          });
-          addGlow(document.querySelector('.Page_nextArticleIds'));
-        }
-
         if(inputPrerequisiteArticles) {
           document.querySelectorAll('.Page_prerequisiteArticles').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -488,6 +478,16 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
               item.textContent = inputPrerequisiteArticles.textContent;
           });
           addGlow(document.querySelector('.Page_prerequisiteArticles'));
+        }
+
+        if(inputNextArticleIds) {
+          document.querySelectorAll('.Page_nextArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticleIds.getAttribute('value');
+            else
+              item.textContent = inputNextArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.Page_nextArticleIds'));
         }
 
         if(inputNextArticles) {
@@ -846,7 +846,9 @@ function suggestSmartAquacultureDeveloperObjectSuggest($formFilters, $list, targ
       $list.innerHTML = '';
       data['list'].forEach((o, i) => {
         var $i = document.querySelector('<i class="fa-duotone fa-regular fa-fish"></i>');
-        var $span = document.createElement('span');        $span.setAttribute('class', '');        $span.innerText = o['objectTitle'];
+        var $span = document.createElement('span');
+        $span.setAttribute('class', '');
+        $span.innerText = o['objectTitle'];
         var $li = document.createElement('li');
         var $a = document.createElement('a').setAttribute('href', o['editPage']);
         $a.append($i);
@@ -1353,7 +1355,23 @@ async function postSmartAquacultureDeveloper($formValues, target, success, error
   }
   if(error == null) {
     error = function( jqXhr, target2 ) {
-      addError(target, jqXhr);
+      if(jqXhr.status === 400) {
+        jqXhr.json().then((json) => {
+          if(json?.error?.message === 'Inactive Token') {
+            fetch('/refresh').then(refreshResponse => {
+              if(refreshResponse.ok) {
+                addErrorJson(target, jqXhr);
+              } else {
+                addErrorJson(target, jqXhr);
+              }
+            });
+          } else {
+            addError(target, jqXhr);
+          }
+        });
+      } else {
+        addError(target, jqXhr);
+      }
     };
   }
 
@@ -1499,7 +1517,23 @@ async function deleteSmartAquacultureDeveloper(target, pageId, success, error) {
   }
   if(error == null) {
     error = function( jqXhr, target2 ) {
-      addError(target, jqXhr);
+      if(jqXhr.status === 400) {
+        jqXhr.json().then((json) => {
+          if(json?.error?.message === 'Inactive Token') {
+            fetch('/refresh').then(refreshResponse => {
+              if(refreshResponse.ok) {
+                addErrorJson(target, jqXhr);
+              } else {
+                addErrorJson(target, jqXhr);
+              }
+            });
+          } else {
+            addError(target, jqXhr);
+          }
+        });
+      } else {
+        addError(target, jqXhr);
+      }
     };
   }
 
@@ -1558,7 +1592,23 @@ async function deletefilterSmartAquacultureDeveloper(target, success, error) {
   }
   if(error == null) {
     error = function( jqXhr, target2 ) {
-      addError(target, jqXhr);
+      if(jqXhr.status === 400) {
+        jqXhr.json().then((json) => {
+          if(json?.error?.message === 'Inactive Token') {
+            fetch('/refresh').then(refreshResponse => {
+              if(refreshResponse.ok) {
+                addErrorJson(target, jqXhr);
+              } else {
+                addErrorJson(target, jqXhr);
+              }
+            });
+          } else {
+            addError(target, jqXhr);
+          }
+        });
+      } else {
+        addError(target, jqXhr);
+      }
     };
   }
 

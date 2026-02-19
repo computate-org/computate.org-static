@@ -292,7 +292,6 @@
             </div>
             <span class="wa-heading-m ">no use case found</span>
             <p class="wa-caption-l ">See computate use cases for real organizations. </p>
-{% include en-us/search/use-case/UseCaseSearchForm.htm %}
           </div>
         </div>
 {% else %}
@@ -308,6 +307,7 @@
             </div>
             <div class="wa-stack wa-gap-m ">
 {% endif %}
+{% include en-us/search/use-case/UseCaseSearchForm.htm %}
 {%- endblock htmBodyStartUseCasePage %}
 {%- endblock htmBodyStartPageLayout %}
 {%- if pageSearchButtons is not defined %}
@@ -320,7 +320,6 @@
 {% include en-us/search/use-case/UseCaseSearchFormButtons.htm %}
 {%- endset pageSearchFormButtons %}
 {%- endif %}
-{% include en-us/search/use-case/UseCaseSearchForm.htm %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleUseCasePage %}

@@ -64,7 +64,7 @@
                 dropdownMenu.innerHTML = '';
                 body.list.forEach((o) => {
                   var menuItem = document.createElement('wa-dropdown-item');
-                  menuItem.innerText = o.objectTitle;
+                  menuItem.innerText = o.;
                   menuItem.setAttribute('data-href', o.displayPage);
                   dropdownMenu.appendChild(menuItem);
                   menuItem.addEventListener('click', (event) => window.location.href = event.target.getAttribute('data-href') );
@@ -152,7 +152,7 @@
             <i class="{{ FONTAWESOME_STYLE }} fa-bars"></i>
           </wa-button>
           <wa-popup placement="bottom-start" id="siteSearchDropdown">
-            <wa-input slot="anchor" placeholder="search" id="siteSearchInput">
+            <wa-input slot="anchor" placeholder="rechercher" id="siteSearchInput">
               <i slot="start" class="{{ FONTAWESOME_STYLE }}  fa-magnifying-glass"></i>
             </wa-input>
             <div id="siteSearchDropdownMenu" class="site-listbox">
@@ -200,8 +200,8 @@
               <i slot="start" label="Share on LinkedIn" class="fa-brands fa-linkedin fa-2xl"></i>
             </wa-button>
             <wa-button variant="brand" href="mailto:{{ MAILING_LIST_EMAIL }}" variant="brand" target="_blank">
-              Email
-              <i slot="start" label="Share with email" class="{{ FONTAWESOME_STYLE }} fa-envelope-open fa-2xl"></i>
+              Courriel
+              <i slot="start" label="Partager par courriel" class="{{ FONTAWESOME_STYLE }} fa-envelope-open fa-2xl"></i>
             </wa-button>
           </div>
           <div class="wa-stack ">
@@ -224,16 +224,16 @@
                   </div>
                 </div>
                 <div class="wa-stack ">
-                  <wa-tooltip for="site-button-user-page">see or change your user profile</wa-tooltip>
-                  <wa-tooltip for="site-button-logout" placement="right">log out</wa-tooltip>
+                  <wa-tooltip for="site-button-user-page">voir ou changer votre profile d'utilisateur</wa-tooltip>
+                  <wa-tooltip for="site-button-logout" placement="right">se déconnecter</wa-tooltip>
                   <div>
                     <wa-button id="site-button-user-page" variant="brand" href="{{ SITE_BASE_URL }}{% if userId is defined %}/en-us/edit/user/{{ userId }}{% else %}/en-us/search/user{% endif %}" label="see or change your user profile">
                       <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-house-user"></i>
-                      <span>my user page</span>
+                      <span>mon page d'utilisateur</span>
                     </wa-button>
                     <wa-button id="site-button-logout" variant="brand" href="{{ logoutUrl }}" label="sign out">
                       <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-person-from-portal"></i>
-                      <span>log out</span>
+                      <span>se déconnecter</span>
                     </wa-button>
                   </div>
                   <wa-details summary="User groups" open="true">
@@ -278,61 +278,61 @@
 {%- endif %}
             </div>
             <div>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SpineProgramming" href="{{ SITE_BASE_URL }}/en-us/search/spine-programming">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SpineProgramming" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-kit fa-spine"></i>
-                SPINE Programming lessons
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyAbout" href="{{ SITE_BASE_URL }}/en-us/search/about">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyAbout" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-address-card"></i>
-                about
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-UseCase" href="{{ SITE_BASE_URL }}/en-us/search/use-case">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-UseCase" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-file-invoice"></i>
-                use cases
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyCourse" href="{{ SITE_BASE_URL }}/en-us/search/course">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyCourse" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-notebook"></i>
-                courses
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SitePage" href="{{ SITE_BASE_URL }}/en-us/search/article">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SitePage" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-newspaper"></i>
-                articles
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}/en-us/search/product">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-conveyor-belt"></i>
-                products
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyEvent" href="{{ SITE_BASE_URL }}/en-us/search/event">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyEvent" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-map-location-dot"></i>
-                events
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyWebinar" href="{{ SITE_BASE_URL }}/en-us/search/webinar">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyWebinar" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-video"></i>
-                webinars
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyService" href="{{ SITE_BASE_URL }}/en-us/search/service">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyService" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-conveyor-belt"></i>
-                services
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyResearch" href="{{ SITE_BASE_URL }}/en-us/search/research">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyResearch" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-school"></i>
-                research
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyWebsite" href="{{ SITE_BASE_URL }}/en-us/search/website">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyWebsite" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-globe-pointer"></i>
-                websites
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SmartAquacultureDeveloper" href="{{ SITE_BASE_URL }}/en-us/search/smart-aquaculture-developer">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-SmartAquacultureDeveloper" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-fish"></i>
-                Smart Aquaculture Developers
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-AiTelemetryDeveloper" href="{{ SITE_BASE_URL }}/en-us/search/ai-telemetry-developer">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-AiTelemetryDeveloper" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-duotone fa-regular fa-chart-fft"></i>
-                AI Telemetry developers
+                
               </wa-button>
-              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-ComputateDeveloper" href="{{ SITE_BASE_URL }}/en-us/search/computate-developer">
+              <wa-button style="width: 100%; " variant="brand" id="site-aside-left-model-button-ComputateDeveloper" href="{{ SITE_BASE_URL }}">
                 <i slot="start" class="fa-kit fa-computate-c-key"></i>
-                Computate Developers
+                
               </wa-button>
             </div>
           </div>

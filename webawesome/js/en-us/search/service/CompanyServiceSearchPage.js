@@ -382,19 +382,3 @@ Promise.all([
             facetRangeEndChange('CompanyService', event.currentTarget);
           });
 });
-
-  document.querySelector('#htmButton_patchCompanyService')?.addEventListener('click', (event) => {
-    document.querySelector('#patchCompanyServiceDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postCompanyService')?.addEventListener('click', (event) => {
-    document.querySelector('#postCompanyServiceDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_putimportCompanyService')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportCompanyServiceDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageCompanyService')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageCompanyServiceDialog').open = true;
-  });

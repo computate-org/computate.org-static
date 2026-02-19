@@ -315,7 +315,6 @@
             </div>
             <span class="wa-heading-m ">no use case found</span>
             <p class="wa-caption-l ">See computate use cases for real organizations. </p>
-{% include en-us/search/use-case/UseCaseSearchForm.htm %}
           </div>
         </div>
 {% else %}
@@ -331,9 +330,9 @@
             <input name="result" id="result" class="result"  value='{{ toJsonObjectStringInApostrophes(result) }}' type="hidden"/>
             <input name="listUseCase" id="listUseCase" class="listUseCase"  value='{{ toJsonArrayStringInApostrophes(listUseCase) }}' type="hidden"/>
           </form>
-  {% if solrId is defined %}
+{%- if resultCount >= 1 %}
           {{ htmForm_searchpageUseCase() }}
-  {% endif %}
+{% endif -%}
 {%- endblock htmFormUseCasePage %}
         </div>
 {%- endblock htmBodyMiddleUseCasePage %}

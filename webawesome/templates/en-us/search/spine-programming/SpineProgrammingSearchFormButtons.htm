@@ -1,9 +1,9 @@
 
-{%- macro htmButton_patchSpineProgramming() %}<wa-button variant="brand" id="htmButton_patchSpineProgramming" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+{%- macro htmButton_patchSpineProgramming() %}<wa-button variant="brand" id="htmButton_patchSpineProgramming"  data-dialog="open patchSpineProgrammingDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
-{%- macro htmButton_postSpineProgramming() %}<wa-button variant="brand" id="htmButton_postSpineProgramming" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+{%- macro htmButton_postSpineProgramming() %}<wa-button variant="brand" id="htmButton_postSpineProgramming"  data-dialog="open postSpineProgrammingDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
-{%- macro htmButton_putimportSpineProgramming() %}<wa-button variant="brand" id="htmButton_putimportSpineProgramming" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+{%- macro htmButton_putimportSpineProgramming() %}<wa-button variant="brand" id="htmButton_putimportSpineProgramming"  data-dialog="open putimportSpineProgrammingDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
 
 {%- macro htmButton_deleteSpineProgramming() %}<wa-button variant="brand" id="htmButton_deleteSpineProgramming" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
 

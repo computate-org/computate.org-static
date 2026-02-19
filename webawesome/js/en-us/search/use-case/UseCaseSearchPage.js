@@ -383,14 +383,6 @@ Promise.all([
           });
 });
 
-  document.querySelector('#htmButton_patchUseCase')?.addEventListener('click', (event) => {
-    document.querySelector('#patchUseCaseDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_postUseCase')?.addEventListener('click', (event) => {
-    document.querySelector('#postUseCaseDialog').open = true;
-  });
-
   document.querySelector('#htmButton_deleteUseCase')?.addEventListener('click', (event) => {
     var confirmResponse = confirm('Are you sure you want to delete that?'); 
     if(confirmResponse) { 
@@ -402,14 +394,6 @@ Promise.all([
           , function(response, target) { addError(target); }
           );
     }
-  });
-
-  document.querySelector('#htmButton_putimportUseCase')?.addEventListener('click', (event) => {
-    document.querySelector('#putimportUseCaseDialog').open = true;
-  });
-
-  document.querySelector('#htmButton_searchpageUseCase')?.addEventListener('click', (event) => {
-    document.querySelector('#searchpageUseCaseDialog').open = true;
   });
 
   document.querySelector('#htmButton_deletefilterUseCase')?.addEventListener('click', (event) => {

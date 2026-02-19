@@ -1,9 +1,9 @@
 
-{%- macro htmButton_patchCompanyWebsite() %}<wa-button variant="brand" id="htmButton_patchCompanyWebsite" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+{%- macro htmButton_patchCompanyWebsite() %}<wa-button variant="brand" id="htmButton_patchCompanyWebsite"  data-dialog="open patchCompanyWebsiteDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
 
-{%- macro htmButton_postCompanyWebsite() %}<wa-button variant="brand" id="htmButton_postCompanyWebsite" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+{%- macro htmButton_postCompanyWebsite() %}<wa-button variant="brand" id="htmButton_postCompanyWebsite"  data-dialog="open postCompanyWebsiteDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
 
-{%- macro htmButton_putimportCompanyWebsite() %}<wa-button variant="brand" id="htmButton_putimportCompanyWebsite" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+{%- macro htmButton_putimportCompanyWebsite() %}<wa-button variant="brand" id="htmButton_putimportCompanyWebsite"  data-dialog="open putimportCompanyWebsiteDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
           <div id="htmSearchForm">
             <wa-scroller>
               <wa-button-group>
