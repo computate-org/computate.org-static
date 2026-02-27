@@ -355,6 +355,8 @@
                       </wa-menu>
                     </wa-dropdown>
                     <div></div>
+                    {% if item.joinUrl is defined -%}
+                    {% endif -%}
                     <wa-dropdown id="htmDropdown-description">
                       <wa-button variant="brand" slot="trigger" caret>description</wa-button>
                       <wa-menu>
@@ -379,18 +381,20 @@
                       <span><wa-format-date weekday="short" month="short" day="numeric" year="numeric" hour="numeric" minute="numeric" second="numeric" time-zone-name="short" date="{{ formatZonedDateTime(item.nextWebinar, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
 </span>
                     </a>
+                    {% if item.joinUrl is defined -%}
                     <wa-button variant="brand"
-                      id="{{classApiMethodMethod}}_joinUrl"
+                      id="CompanyWebinar_{{classApiMethodMethod}}_joinUrl"
                       placeholder="[String] Join the webinar"
                       label="Join the webinar"
                       title="Access the webinar links. "
-                      class="button-on-left {{classApiMethodMethod}}_joinUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}JoinUrl "
+                      class="button-on-left {{CompanyWebinar_classApiMethodMethod}}_joinUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}JoinUrl "
                       name="setJoinUrl"
                       href="{{ item.joinUrl | e }}"
                       >
                         <i slot="start" class="fa-duotone fa-regular fa-video"></i>
                         Join the webinar
                     </wa-button>
+                    {% endif -%}
                     <a href="{{ item.displayPage }}">
                       <span>{{ item.description | e }}</span>
                     </a>
@@ -415,8 +419,6 @@
                 </div>
 {% include en-us/search/webinar/CompanyWebinarPaginationButtons.htm %}
               </div>
-            </div>
-          </div>
 {% endif %}
 {%- endblock htmBodyMiddleCompanyWebinarPage %}
 {%- endblock htmBodyMiddlePageLayout %}
@@ -424,6 +426,8 @@
 {%- block htmBodyEndPageLayout %}
 {%- block htmBodyEndCompanyWebinarPage %}
 {%- include en-us/search/webinar/CompanyWebinarLocation.htm %}
+            </div>
+          </div>
 {%- endblock htmBodyEndCompanyWebinarPage %}
   {{ super() }}
 {%- endblock htmBodyEndPageLayout %}

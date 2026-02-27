@@ -99,6 +99,7 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
+        var inputRelatedArticles = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
         var inputPageImageWidth = null;
@@ -112,7 +113,6 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
         var inputLabelsString = null;
         var inputLabels = null;
         var inputRelatedArticleIds = null;
-        var inputRelatedArticles = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.Page_created');
@@ -156,6 +156,8 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
           inputObjectText = $response.querySelector('.Page_objectText');
         if(vars.includes('solrId'))
           inputSolrId = $response.querySelector('.Page_solrId');
+        if(vars.includes('relatedArticles'))
+          inputRelatedArticles = $response.querySelector('.Page_relatedArticles');
         if(vars.includes('courseNum'))
           inputCourseNum = $response.querySelector('.Page_courseNum');
         if(vars.includes('lessonNum'))
@@ -182,8 +184,6 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
           inputLabels = $response.querySelector('.Page_labels');
         if(vars.includes('relatedArticleIds'))
           inputRelatedArticleIds = $response.querySelector('.Page_relatedArticleIds');
-        if(vars.includes('relatedArticles'))
-          inputRelatedArticles = $response.querySelector('.Page_relatedArticles');
 
         jsWebsocketAiTelemetryDeveloper(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -400,6 +400,16 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.Page_solrId'));
         }
 
+        if(inputRelatedArticles) {
+          document.querySelectorAll('.Page_relatedArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticles.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticles.textContent;
+          });
+          addGlow(document.querySelector('.Page_relatedArticles'));
+        }
+
         if(inputCourseNum) {
           document.querySelectorAll('.Page_courseNum').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -528,16 +538,6 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
               item.textContent = inputRelatedArticleIds.textContent;
           });
           addGlow(document.querySelector('.Page_relatedArticleIds'));
-        }
-
-        if(inputRelatedArticles) {
-          document.querySelectorAll('.Page_relatedArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputRelatedArticles.getAttribute('value');
-            else
-              item.textContent = inputRelatedArticles.textContent;
-          });
-          addGlow(document.querySelector('.Page_relatedArticles'));
         }
 
           pageGraphAiTelemetryDeveloper();
