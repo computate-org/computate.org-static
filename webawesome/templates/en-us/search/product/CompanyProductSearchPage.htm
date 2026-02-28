@@ -1,7 +1,7 @@
-{% extends "en-us/search/product/CompanyProductGenSearchPage.htm" %}
 {% include "en-us/ArticlePart.htm" %}
-{%- block htmBodyMiddleCompanyProduct %}
-{{ resultCount }}
+{% extends "en-us/search/product/CompanyProductGenSearchPage.htm" %}
+{%- block htmBodyMiddleCompanyProductPage %}
+
 {% if resultCount > 0 %}
 <script type="module">
 
@@ -77,4 +77,4 @@
 </div>
 
 {% endif %}
-{%- endblock htmBodyMiddleCompanyProduct %}
+{%- endblock htmBodyMiddleCompanyProductPage %}
