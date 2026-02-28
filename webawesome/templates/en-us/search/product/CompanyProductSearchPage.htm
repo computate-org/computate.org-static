@@ -1,6 +1,7 @@
 {% extends "en-us/search/product/CompanyProductGenSearchPage.htm" %}
 {% include "en-us/ArticlePart.htm" %}
-{%- block htmBodyMiddleCompanyProductPage %}
+{%- block htmBodyMiddleCompanyProduct %}
+{{ resultCount }}
 {% if resultCount > 0 %}
 <script type="module">
 
@@ -9,7 +10,7 @@
     , customElements.whenDefined('wa-input')
   ]).then(() => {
     {% for result in listCompanyProduct %}
-    document.querySelector('#dialog-button-{{ result.pageId }}').addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
+    document.querySelector('#dialog-button-{{ result.pageId }}')?.addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
     document.querySelector('#dialog-card-link-{{ result.pageId }}').addEventListener('click', (event) => {
       event.preventDefault();
       document.querySelector('#dialog-{{ result.pageId }}').open = true;
@@ -63,13 +64,8 @@
       <div slot="footer" class="wa-stack ">
         <div class="wa-cluster ">
           <div>
-            <wa-button slot="footer" variant="brand" href="{{ result.userPage }}?var=utah:true">
-              I live in Utah, USA
-            </wa-button>
-          </div>
-          <div>
-            <wa-button slot="footer" variant="brand" href="{{ result.userPage }}?var=utah:false">
-              I live somewhere else
+            <wa-button slot="footer" variant="brand" href="{{ result.userPage }}">
+              Log in with GitHub to get started
             </wa-button>
           </div>
         </div>
@@ -81,4 +77,4 @@
 </div>
 
 {% endif %}
-{%- endblock htmBodyMiddleCompanyProductPage %}
+{%- endblock htmBodyMiddleCompanyProduct %}

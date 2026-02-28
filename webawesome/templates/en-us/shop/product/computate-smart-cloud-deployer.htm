@@ -32,7 +32,7 @@ wa-button::part(base), wa-details::part(base) {
     customElements.whenDefined('wa-button')
     , customElements.whenDefined('wa-input')
   ]).then(() => {
-    document.querySelector('#dialog-button-{{ result.pageId }}').addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
+    document.querySelector('#dialog-button-{{ result.pageId }}')?.addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
     document.querySelector('#dialog-card-link-{{ result.pageId }}').addEventListener('click', (event) => {
       event.preventDefault();
       document.querySelector('#dialog-{{ result.pageId }}').open = true;

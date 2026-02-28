@@ -1,0 +1,225 @@
+{% extends "en-us/PageLayout.htm" %}
+
+{% block htmTitlePageLayout %}
+    <title>{{ result.name }}</title>
+{% endblock htmTitlePageLayout %}
+{% block htmStylePageLayout %}
+wa-card::part(header) {
+  background-color: var(--wa-color-brand-fill-loud); 
+  color: var(--wa-color-brand-on-loud); 
+}
+{% endblock htmStylePageLayout %}
+{%- macro articleStart(result) -%}
+<div class="wa-flank:end wa-align-items-start wa-gap-3xl " style="--flank-size: 16rem;">
+  <div class="wa-stack ">
+    <wa-card appearance="filled">
+      <h1 slot="header" variant="brand">
+        <i slot="start" class="{{ FONTAWESOME_STYLE }}fa-credit-card fa-xl "></i>
+        Buy the {{ result.name }}
+      </h1>
+      <div class="wa-stack ">
+        <h4 class="wa-cluster wa-gap-2xs">
+          <i class="{{ FONTAWESOME_STYLE }}fa-lock-keyhole fa-xl "></i>
+          Secure payments processessed by 
+          <a target="_blank" href="https://www.authorize.net/"><img src="https://www.authorize.net/content/dam/anet-redesign/reseller/authorizenet-200x50.png" border="0" alt="Authorize.net Logo" width="200" height="50"/></a>
+        </h4>
+        <form id="paymentForm" method="POST">
+          <input type="hidden" name="dataValue" id="dataValue" />
+          <input type="hidden" name="dataDescriptor" id="dataDescriptor" />
+          <div class="wa-stack ">
+            <div id="paymentErrors" class="wa-stack "></div>
+            <div class="wa-grid wa-gap-2xl wa-align-items-baseline ">
+              <div class="wa-stack">
+                <h4>Billing</h4>
+                <div><label>Address*<textarea id="billingAddress" name="address" required autocomplete="billing address-line1" placeholder="Address">1034 Windsor Dr</textarea></div>
+                <div><label>Apartment<input id="billingApartment" name="apartment" autocomplete="billing address-line2" placeholder="Apartment" value=""></label></div>
+                <div><label>City*<input id="billingCity" name="city" required autocomplete="billing address-level2" placeholder="City" value="North Salt Lake"></label></div>
+                <div><label>State*<input id="billingState" name="state" required autocomplete="billing address-level1" placeholder="State" value="Utah"></label></div>
+                <div><label>ZIP / Postcode*<input id="billingPostcode" name="postcode" required autocomplete="billing postal-code" placeholder="ZIP / Postcode" value="84054"></label></div>
+                <div><label>Country*<input id="billingCountry" name="country" required autocomplete="billing country" placeholder="Country" value="US"></label></div>
+              </div>
+              <div class="wa-stack ">
+                <h4>Payment</h4>
+                <wa-input required value="Chris" name="firstName" id="firstName" placeholder="first name" label="First Name on card"></wa-input>
+                <wa-input required value="Tate" name="lastName" id="lastName" placeholder="last name" label="Last Name on card"></wa-input>
+                <wa-input required value="4111111111111111" name="cardNumber" id="cardNumber" minlength="13" maxlength="19" pattern="[0-9]*" placeholder="4111111111111111" label="Card Number"></wa-input>
+                <wa-input required value="01" label="Expiration Month" type="text" name="expMonth" id="expMonth" pattern="\d\d" minlength="2" maxlength="2" placeholder="MM"></wa-input>
+                <wa-input required value="29" label="Expiration Year" type="text" name="expYear" id="expYear" pattern="\d\d" minlength="2" maxlength="2" placeholder="YY"></wa-input>
+                <wa-input required value="000" label="CVV" name="cardCode" id="cardCode" minlength="3" maxlength="4" pattern="[0-9]+" placeholder="111"></wa-input>
+              </div>
+              <div class="wa-stack ">
+                <h4>Price</h4>
+                <wa-input value="" label="Item price" name="itemPrice" id="itemPrice" readonly disabled></wa-input>
+                <wa-input value="" label="Utah state sales tax rate" name="calculatedTaxRate" id="calculatedTaxRate" readonly disabled></wa-input>
+                <wa-input value="" label="Utah state sales tax if customer is in Utah, USA" name="calculatedTaxAmount" id="calculatedTaxAmount" readonly disabled></wa-input>
+                <wa-input value="" label="Total price" name="totalPrice" id="totalPrice" readonly disabled></wa-input>
+                <wa-button type="submit" variant="brand" size="large">
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }}fa-credit-card fa-xl "></i>
+                  Pay
+                </wa-button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </wa-card>
+  </div>
+  <wa-card appearance="filled">
+    <div slot="header" class="wa-frame wa-gap-2xl ">
+      <i class="fa-kit fa-spine " style="font-size: 12rem;"></i>
+    </div>
+    <div class="wa-stack ">
+      {% if productUseCases is defined -%}
+      {{ productUseCases | default('') }}
+      {% endif -%}
+    </div>
+  </wa-card>
+</div>
+{%- endmacro %}
+{%- macro articleEnd(result) -%}
+{%- endmacro %}
+
+{% block htmStylesPageLayout %}
+{{ super() }}
+<script type="text/javascript" src="https://jstest.authorize.net/v1/Accept.js" charset="utf-8"></script>
+<script id="search-js" defer="" src="https://api.mapbox.com/search-js/v1.5.1/web.js"></script>
+{% endblock htmStylesPageLayout %}
+{%- block htmScriptPageLayout %}
+    <script>
+
+      function calculatePayment() {
+        const formData = Object.fromEntries(new FormData(document.getElementById('paymentForm')).entries());
+        const relativeUri = window.location.pathname + window.location.search;
+        fetch(
+          relativeUri
+          , {
+            headers: {'Content-Type':'application/json; charset=utf-8'}
+            , method: 'PATCH'
+            , body: JSON.stringify(formData)
+          }).then(response => {
+            if(response.ok) {
+              response.json().then((json) => {
+                document.querySelector('#calculatedTaxRate').value = (json['calculatedTaxRate'] ? (json['calculatedTaxRate']) : '');
+                document.querySelector('#calculatedTaxAmount').value = (json['calculatedTaxAmount'] ? (json['calculatedTaxAmount']) : '');
+                document.querySelector('#itemPrice').value = json['itemPrice'];
+                document.querySelector('#totalPrice').value = json['totalPrice'];
+              })
+            } else {
+              error(response, target);
+            }
+          })
+          .catch(response => error(response, target));
+      }
+
+      function paymentResponseHandler(response) {
+        if (response.messages.resultCode === "Error") {
+          // Handle errors and display them to the user. 
+          var errorDiv = document.getElementById('paymentErrors');
+          for (var i = 0; i < response.messages.message.length; i++) {
+            var callout = document.createElement("wa-callout");
+            callout.setAttribute('variant', 'danger');
+            var icon = document.createElement('i');
+            icon.setAttribute('class', '{{ FONTAWESOME_STYLE }}fa-circle-exclamation ');
+            callout.appendChild(icon);
+            var strong = document.createElement('strong');
+            strong.innerText = response.messages.message[i].text;
+            callout.appendChild(strong);
+            errorDiv.appendChild(callout);
+          }
+        } else {
+          // Send payment nonce to backend. 
+          const relativeUri = window.location.pathname + window.location.search;
+          const formData = Object.fromEntries(new FormData(document.getElementById('paymentForm')).entries());
+          formData['itemPrice'] = document.querySelector('#itemPrice').value;
+          formData['calculatedTaxRate'] = document.querySelector('#calculatedTaxRate').value;
+          formData['calculatedTaxAmount'] = document.querySelector('#calculatedTaxAmount').value;
+          formData['totalPrice'] = document.querySelector('#totalPrice').value;
+          var createTransactionRequest = {
+            transactionRequest: {
+              transactionType: "authCaptureTransaction"
+              , amount: formData['totalPrice']
+              , payment: {
+                opaqueData: response.opaqueData
+              }
+              , lineItems: {
+                lineItem: {
+                  itemId: "1"
+                  , name: "{{ result.pageId }}"
+                  , description: "{{ result.name }}"
+                  , quantity: "1"
+                  , unitPrice: formData['totalPrice']
+                }
+              }
+              , billTo: {
+                firstName: formData['firstName']
+                , lastName: formData['lastName']
+                , address: formData['address']
+                , city: formData['city']
+                , state: formData['state']
+                , zip: formData['postcode']
+                , country: formData['country']
+              }
+            }
+          }
+          formData['createTransactionRequest'] = createTransactionRequest;
+
+          fetch(
+            relativeUri
+            , {
+              headers: {'Content-Type':'application/json; charset=utf-8'}
+              , method: 'PATCH'
+              , body: JSON.stringify(formData)
+            }).then(response => {
+              if(response.ok) {
+                response.json().then((json) => {
+                  success(json, target);
+                })
+              } else {
+                error(response, target);
+              }
+            })
+            .catch(response => error(response, target));
+          }
+      }
+
+      window.addEventListener('load', () => {
+        const collection = mapboxsearch.autofill({
+          accessToken: '{{ MAPBOX_TOKEN }}'
+        });
+      });
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+      ]).then(() => {
+        document.getElementById('billingState').addEventListener('change', calculatePayment);
+        calculatePayment();
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          document.getElementById('paymentErrors').textContent = '';
+          var secureData = {
+            authData: {
+              apiLoginID: '{{ AUTHORIZE_NET_API_LOGIN_ID }}'
+              , clientKey: '{{ AUTHORIZE_NET_PUBLIC_CLIENT_KEY }}'
+            }
+            , cardData: {
+              cardNumber: document.getElementById('cardNumber').value,
+              month: document.getElementById('expMonth').value,
+              year: document.getElementById('expYear').value,
+              cardCode: document.getElementById('cardCode').value
+            }
+          };
+          Accept.dispatchData(secureData, paymentResponseHandler);
+        });
+      });
+    </script>
+{%- endblock htmScriptPageLayout %}
+
+{% block htmTitlePageLayout %}
+    <title>{{ result.name | e }}</title>
+{% endblock htmTitlePageLayout %}
+{% block htmBodyMiddlePageLayout %}
+{{ articleStart(result) }}
+{% block htmBodyMiddleCompanyProduct %}{% endblock htmBodyMiddleCompanyProduct %}
+{{ articleEnd(result) }}
+{% endblock htmBodyMiddlePageLayout %}

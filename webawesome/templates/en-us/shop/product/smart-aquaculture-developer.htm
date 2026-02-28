@@ -1,4 +1,5 @@
-{% extends "en-us/PageLayout.htm" %}
+{% extends "en-us/CompanyProduct.htm" %}
+{% import "en-us/dialog/product/dialog-smart-aquaculture-developer.htm" %}
 {% block htmMetaPageLayout %}
 {{ super() }}
     <meta name="result.pageId" content="{{ result.shortFileName }}"/>
@@ -11,19 +12,6 @@
     <meta name="result.productNum" content="4"/>
     <meta name="result.price" content="512.00"/>
 {% endblock htmMetaPageLayout %}
-{% block htmStylePageLayout %}
-
-wa-button::part(base), wa-details::part(base) {
-  background: linear-gradient(130deg, var(--wa-color-pink-50), var(--wa-color-purple-40));
-  color: white;
-  &:is(wa-button, wa-dialog)::part(base) {
-    border: solid 1px var(--wa-color-pink-30);
-  }
-}
-{% endblock htmStylePageLayout %}
-{% block htmTitlePageLayout %}
-    <title>{{ result.title }}</title>
-{% endblock htmTitlePageLayout %}
 {% block htmScriptsPageLayout %}
 {{ super() }}
 {% if not (userName is defined and scopes is defined and "GET" in scopes) -%}
@@ -32,7 +20,7 @@ wa-button::part(base), wa-details::part(base) {
     customElements.whenDefined('wa-button')
     , customElements.whenDefined('wa-input')
   ]).then(() => {
-    document.querySelector('#dialog-button-{{ result.pageId }}').addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
+    document.querySelector('#dialog-button-{{ result.pageId }}')?.addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
     document.querySelector('#dialog-card-link-{{ result.pageId }}').addEventListener('click', (event) => {
       event.preventDefault();
       document.querySelector('#dialog-{{ result.pageId }}').open = true;
@@ -42,7 +30,7 @@ wa-button::part(base), wa-details::part(base) {
 </script>
 {% endif %}
 {% endblock htmScriptsPageLayout %}
-{% block htmBodyMiddlePageLayout %}
+{% block htmBodyMiddleCompanyProduct %}
 
 <div class="wa-stack main-content ">
   <div class="wa-heading-2xl ">
@@ -110,4 +98,4 @@ wa-button::part(base), wa-details::part(base) {
   </div>
 </div>
 {% endif %}
-{% endblock %}
+{% endblock htmBodyMiddleCompanyProduct %}

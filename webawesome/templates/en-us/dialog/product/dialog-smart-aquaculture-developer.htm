@@ -1,30 +1,5 @@
 {% include "en-us/ArticlePart.htm" %}
-<div class="wa-gap-3xl wa-stack">
-  <div class="wa-align-items-center wa-grid">
-    <div>
-      <span class="wa-heading-xl">Learn how to develop the Smart Aquaculture platform on your own computer the cloud-native, open source way</span>
-      <p class="wa-caption-l">
-        See how easy it is to get started with open source software development with the Smart Aquaculture developer platform. 
-      </p>
-    </div>
-    {{ articleImage(result) }}
-  </div>
-  <wa-callout>
-    <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-university fa-2xl"></i>
-    <div class="wa-stack ">
-      <div class="wa-heading-m ">
-        Universities
-      </div>
-      <p>
-        University research inquiries into clubs, training, program collaboration are being considered in 2026. 
-        Please email <a href="mailto:smaq@group.computate.org">smaq@group.computate.org</a> for more information. 
-      </p>
-    </div>
-  </wa-callout>
-  <h2>
-    Use cases: 
-  </h2>
-  <div class="wa-grid">
+{% set productUseCases -%}
     <div class="wa-stack wa-gap-xs">
       <div>
         <i class="{{ FONTAWESOME_STYLE }} fa-fishing-rod fa-2xl "></i>
@@ -79,6 +54,34 @@
         Integrate with IoT devices and university research programs to build modern edge-to-cloud solutions to improve aquaculture and fishery observability and GitOps for resilience against storms. 
       </p>
     </div>
+{% endset productUseCases -%}
+<div class="wa-gap-3xl wa-stack">
+  <div class="wa-align-items-center wa-grid">
+    <div>
+      <span class="wa-heading-xl">Learn how to develop the Smart Aquaculture platform on your own computer the cloud-native, open source way</span>
+      <p class="wa-caption-l">
+        See how easy it is to get started with open source software development with the Smart Aquaculture developer platform. 
+      </p>
+    </div>
+    {{ articleImage(result) }}
+  </div>
+  <wa-callout>
+    <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-university fa-2xl"></i>
+    <div class="wa-stack ">
+      <div class="wa-heading-m ">
+        Universities
+      </div>
+      <p>
+        University research inquiries into clubs, training, program collaboration are being considered in 2026. 
+        Please email <a href="mailto:smaq@group.computate.org">smaq@group.computate.org</a> for more information. 
+      </p>
+    </div>
+  </wa-callout>
+  <h2>
+    Use cases: 
+  </h2>
+  <div class="wa-grid">
+    {{ productUseCases }}
   </div>
   <h2>
     <i class="{{ FONTAWESOME_STYLE }} fa-head-side-gear fa-2xl "></i>
