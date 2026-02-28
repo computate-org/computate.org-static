@@ -31,21 +31,23 @@ wa-card::part(header) {
             <div class="wa-grid wa-gap-2xl wa-align-items-baseline ">
               <div class="wa-stack">
                 <h4>Billing</h4>
-                <div><label>Address*<textarea id="billingAddress" name="address" required autocomplete="billing address-line1" placeholder="Address">1034 Windsor Dr</textarea></div>
+                <div><label>Address*<textarea id="billingAddress" name="address" required autocomplete="billing address-line1" placeholder="Address"></textarea></div>
                 <div><label>Apartment<input id="billingApartment" name="apartment" autocomplete="billing address-line2" placeholder="Apartment" value=""></label></div>
-                <div><label>City*<input id="billingCity" name="city" required autocomplete="billing address-level2" placeholder="City" value="North Salt Lake"></label></div>
-                <div><label>State*<input id="billingState" name="state" required autocomplete="billing address-level1" placeholder="State" value="Utah"></label></div>
-                <div><label>ZIP / Postcode*<input id="billingPostcode" name="postcode" required autocomplete="billing postal-code" placeholder="ZIP / Postcode" value="84054"></label></div>
-                <div><label>Country*<input id="billingCountry" name="country" required autocomplete="billing country" placeholder="Country" value="US"></label></div>
+                <div><label>City*<input id="billingCity" name="city" required autocomplete="billing address-level2" placeholder="City" value=""></label></div>
+                <div><label>State*<input id="billingState" name="state" required autocomplete="billing address-level1" placeholder="State" value=""></label></div>
+                <div><label>ZIP / Postcode*<input id="billingPostcode" name="postcode" required autocomplete="billing postal-code" placeholder="ZIP / Postcode" value=""></label></div>
+                <div><label>Country*<input id="billingCountry" name="country" required autocomplete="billing country" placeholder="Country" value=""></label></div>
               </div>
               <div class="wa-stack ">
                 <h4>Payment</h4>
-                <wa-input required value="Chris" name="firstName" id="firstName" placeholder="first name" label="First Name on card"></wa-input>
-                <wa-input required value="Tate" name="lastName" id="lastName" placeholder="last name" label="Last Name on card"></wa-input>
-                <wa-input required value="4111111111111111" name="cardNumber" id="cardNumber" minlength="13" maxlength="19" pattern="[0-9]*" placeholder="4111111111111111" label="Card Number"></wa-input>
-                <wa-input required value="01" label="Expiration Month" type="text" name="expMonth" id="expMonth" pattern="\d\d" minlength="2" maxlength="2" placeholder="MM"></wa-input>
-                <wa-input required value="29" label="Expiration Year" type="text" name="expYear" id="expYear" pattern="\d\d" minlength="2" maxlength="2" placeholder="YY"></wa-input>
-                <wa-input required value="000" label="CVV" name="cardCode" id="cardCode" minlength="3" maxlength="4" pattern="[0-9]+" placeholder="111"></wa-input>
+                <wa-input required value="" name="firstName" id="firstName" placeholder="first name" label="First Name on card"></wa-input>
+                <wa-input required value="" name="lastName" id="lastName" placeholder="last name" label="Last Name on card"></wa-input>
+                <wa-input required value="" name="cardNumber" id="cardNumber" minlength="13" maxlength="19" pattern="[0-9]*" placeholder="4111111111111111" label="Card Number"></wa-input>
+                <div class="wa-grid " style="--min-column-size: 10ch; ">
+                  <wa-input required value="" label="Expiration Month" type="text" name="expMonth" id="expMonth" pattern="\d\d" minlength="2" maxlength="2" placeholder="MM"></wa-input>
+                  <wa-input required value="" label="Expiration Year" type="text" name="expYear" id="expYear" pattern="\d\d" minlength="2" maxlength="2" placeholder="YY"></wa-input>
+                </div>
+                <wa-input required value="" label="CVV" name="cardCode" id="cardCode" minlength="3" maxlength="4" pattern="[0-9]+" placeholder="111"></wa-input>
               </div>
               <div class="wa-stack ">
                 <h4>Price</h4>
