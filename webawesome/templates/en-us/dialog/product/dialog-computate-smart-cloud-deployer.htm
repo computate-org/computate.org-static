@@ -1,12 +1,5 @@
-
-          <wa-card class="summary-wrapper">
-            <h1>
-              What is the {{ result.name }}?
-            </h1>
-            <p>
-              Learn how to deploy open source smart device microservices to the cloud and try out your own secure IoT smart platform with built-in security. 
-            </p>
-
+{% include "en-us/ArticlePart.htm" %}
+{% set productUseCases -%}
             <div class="wa-stack ">
               <div>
                 <div class="wa-flank ">
@@ -81,6 +74,4 @@
                   Learn how to configure and deploy a custom data-driven website like computate.org with articles, events, courses, products, services, and smart data models, so that you can do it yourself. 
                 </p>
               </div>
-
-            </div>
-          </wa-card>
+{% endset productUseCases -%}

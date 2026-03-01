@@ -1,85 +1,160 @@
 {% extends "en-us/PageLayout.htm" %}
 
-{% block htmTitlePageLayout %}
-    <title>{{ result.name }}</title>
-{% endblock htmTitlePageLayout %}
-{% block htmStylePageLayout %}
+{% block htmTitlePageLayout -%}
+    {{ '    ' }}<title>{{ result.name }}</title>
+{% endblock htmTitlePageLayout -%}
+
+{% block htmScriptsPageLayout -%}
+{{ super() }}
+{% if not (userName is defined and scopes is defined and "GET" in scopes) -%}
+<script type="module">
+  Promise.all([
+    customElements.whenDefined('wa-button')
+    , customElements.whenDefined('wa-input')
+  ]).then(() => {
+    document.querySelector('#dialog-button-{{ result.pageId }}')?.addEventListener('click', (event) => (document.querySelector('#dialog-{{ result.pageId }}').open = true));
+    document.querySelector('#dialog-card-link-{{ result.pageId }}').addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('#dialog-{{ result.pageId }}').open = true;
+      return false;
+    });
+  });
+</script>
+{% endif %}
+{% endblock htmScriptsPageLayout -%}
+
+{% block htmStylePageLayout -%}
 wa-card::part(header) {
   background-color: var(--wa-color-brand-fill-loud); 
   color: var(--wa-color-brand-on-loud); 
 }
-{% endblock htmStylePageLayout %}
-{%- macro articleStart(result) -%}
-<div class="wa-flank:end wa-align-items-start wa-gap-3xl " style="--flank-size: 16rem;">
-  <div class="wa-stack ">
-    <wa-card appearance="filled">
-      <h1 slot="header" variant="brand">
-        <i slot="start" class="{{ FONTAWESOME_STYLE }}fa-credit-card fa-xl "></i>
-        Buy the {{ result.name }}
-      </h1>
-      <div class="wa-stack ">
-        <h4 class="wa-cluster wa-gap-2xs">
-          <i class="{{ FONTAWESOME_STYLE }}fa-lock-keyhole fa-xl "></i>
-          Secure payments processessed by 
-          <a target="_blank" href="https://www.authorize.net/"><img src="https://www.authorize.net/content/dam/anet-redesign/reseller/authorizenet-200x50.png" border="0" alt="Authorize.net Logo" width="200" height="50"/></a>
-        </h4>
-        <form id="paymentForm" method="POST">
-          <input type="hidden" name="dataValue" id="dataValue" />
-          <input type="hidden" name="dataDescriptor" id="dataDescriptor" />
-          <div class="wa-stack ">
-            <div id="paymentErrors" class="wa-stack "></div>
-            <div class="wa-grid wa-gap-2xl wa-align-items-baseline ">
-              <div class="wa-stack">
-                <h4>Billing</h4>
-                <div><label>Address*<textarea id="billingAddress" name="address" required autocomplete="billing address-line1" placeholder="Address"></textarea></div>
-                <div><label>Apartment<input id="billingApartment" name="apartment" autocomplete="billing address-line2" placeholder="Apartment" value=""></label></div>
-                <div><label>City*<input id="billingCity" name="city" required autocomplete="billing address-level2" placeholder="City" value=""></label></div>
-                <div><label>State*<input id="billingState" name="state" required autocomplete="billing address-level1" placeholder="State" value=""></label></div>
-                <div><label>ZIP / Postcode*<input id="billingPostcode" name="postcode" required autocomplete="billing postal-code" placeholder="ZIP / Postcode" value=""></label></div>
-                <div><label>Country*<input id="billingCountry" name="country" required autocomplete="billing country" placeholder="Country" value=""></label></div>
-              </div>
-              <div class="wa-stack ">
-                <h4>Payment</h4>
-                <wa-input required value="" name="firstName" id="firstName" placeholder="first name" label="First Name on card"></wa-input>
-                <wa-input required value="" name="lastName" id="lastName" placeholder="last name" label="Last Name on card"></wa-input>
-                <wa-input required value="" name="cardNumber" id="cardNumber" minlength="13" maxlength="19" pattern="[0-9]*" placeholder="4111111111111111" label="Card Number"></wa-input>
-                <div class="wa-grid " style="--min-column-size: 10ch; ">
-                  <wa-input required value="" label="Expiration Month" type="text" name="expMonth" id="expMonth" pattern="\d\d" minlength="2" maxlength="2" placeholder="MM"></wa-input>
-                  <wa-input required value="" label="Expiration Year" type="text" name="expYear" id="expYear" pattern="\d\d" minlength="2" maxlength="2" placeholder="YY"></wa-input>
+{% endblock htmStylePageLayout -%}
+
+{% macro articleStart(result) -%}
+<div class="wa-stack">
+  {% if userName is defined and scopes is defined and "GET" in scopes -%}
+  <p>
+    {{ result.description | e }}
+  </p>
+  <wa-card>
+    <div class="wa-stack ">
+      <div>Download your copy of the {{ result.name }}. </div>
+      <div>
+        <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.downloadUrl }}" target="_blank" variant="neutral">
+          <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+          Download
+        </wa-button>
+      </div>
+    </div>
+  </wa-card>
+  {% include result.dialogTemplate -%}
+  {% else -%}
+  <div class="wa-flank:end wa-align-items-start wa-gap-3xl " style="--flank-size: 16rem;">
+    <div class="wa-stack ">
+      <wa-card appearance="filled">
+        <h1 slot="header" variant="brand">
+          <i slot="start" class="{{ FONTAWESOME_STYLE }}fa-credit-card fa-xl "></i>
+          Buy the {{ result.name }}
+        </h1>
+        <div class="wa-stack ">
+          <h4 class="wa-cluster wa-gap-2xs">
+            <i class="{{ FONTAWESOME_STYLE }}fa-lock-keyhole fa-xl "></i>
+            Secure payments processessed by 
+            <a target="_blank" href="https://www.authorize.net/"><img src="https://www.authorize.net/content/dam/anet-redesign/reseller/authorizenet-200x50.png" border="0" alt="Authorize.net Logo" width="200" height="50"/></a>
+          </h4>
+          <form id="paymentForm" method="POST">
+            <input type="hidden" name="dataValue" id="dataValue" />
+            <input type="hidden" name="dataDescriptor" id="dataDescriptor" />
+            <div class="wa-stack ">
+              <div id="paymentErrors" class="wa-stack "></div>
+              <div class="wa-grid wa-gap-2xl wa-align-items-baseline ">
+                <div class="wa-stack">
+                  <h4>Billing</h4>
+                  <div><label>Address*<textarea id="billingAddress" name="address" required autocomplete="billing address-line1" placeholder="Address"></textarea></div>
+                  <div><label>Apartment<input id="billingApartment" name="apartment" autocomplete="billing address-line2" placeholder="Apartment" value=""></label></div>
+                  <div><label>City*<input id="billingCity" name="city" required autocomplete="billing address-level2" placeholder="City" value=""></label></div>
+                  <div><label>State*<input id="billingState" name="state" required autocomplete="billing address-level1" placeholder="State" value=""></label></div>
+                  <div><label>ZIP / Postcode*<input id="billingPostcode" name="postcode" required autocomplete="billing postal-code" placeholder="ZIP / Postcode" value=""></label></div>
+                  <div><label>Country*<input id="billingCountry" name="country" required autocomplete="billing country" placeholder="Country" value=""></label></div>
                 </div>
-                <wa-input required value="" label="CVV" name="cardCode" id="cardCode" minlength="3" maxlength="4" pattern="[0-9]+" placeholder="111"></wa-input>
-              </div>
-              <div class="wa-stack ">
-                <h4>Price</h4>
-                <wa-input value="" label="Item price" name="itemPrice" id="itemPrice" readonly disabled></wa-input>
-                <wa-input value="" label="Utah state sales tax rate" name="calculatedTaxRate" id="calculatedTaxRate" readonly disabled></wa-input>
-                <wa-input value="" label="Utah state sales tax if customer is in Utah, USA" name="calculatedTaxAmount" id="calculatedTaxAmount" readonly disabled></wa-input>
-                <wa-input value="" label="Total price" name="totalPrice" id="totalPrice" readonly disabled></wa-input>
-                <wa-button type="submit" variant="brand" size="large">
-                  <i slot="start" class="{{ FONTAWESOME_STYLE }}fa-credit-card fa-xl "></i>
-                  Pay
-                </wa-button>
+                <div class="wa-stack ">
+                  <h4>Payment</h4>
+                  <wa-input required value="" name="firstName" id="firstName" placeholder="first name" label="First Name on card"></wa-input>
+                  <wa-input required value="" name="lastName" id="lastName" placeholder="last name" label="Last Name on card"></wa-input>
+                  <wa-input required value="" name="cardNumber" id="cardNumber" minlength="13" maxlength="19" pattern="[0-9]*" placeholder="4111111111111111" label="Card Number"></wa-input>
+                  <div class="wa-grid " style="--min-column-size: 10ch; ">
+                    <wa-input required value="" label="Expiration Month" type="text" name="expMonth" id="expMonth" pattern="\d\d" minlength="2" maxlength="2" placeholder="MM"></wa-input>
+                    <wa-input required value="" label="Expiration Year" type="text" name="expYear" id="expYear" pattern="\d\d" minlength="2" maxlength="2" placeholder="YY"></wa-input>
+                  </div>
+                  <wa-input required value="" label="CVV" name="cardCode" id="cardCode" minlength="3" maxlength="4" pattern="[0-9]+" placeholder="111"></wa-input>
+                </div>
+                <div class="wa-stack ">
+                  <h4>Price</h4>
+                  <wa-input value="" label="Item price" name="itemPrice" id="itemPrice" readonly disabled></wa-input>
+                  <wa-input value="" label="Utah state sales tax rate" name="calculatedTaxRate" id="calculatedTaxRate" readonly disabled></wa-input>
+                  <wa-input value="" label="Utah state sales tax if customer is in Utah, USA" name="calculatedTaxAmount" id="calculatedTaxAmount" readonly disabled></wa-input>
+                  <wa-input value="" label="Total price" name="totalPrice" id="totalPrice" readonly disabled></wa-input>
+                  <wa-button type="submit" variant="brand" size="large">
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }}fa-credit-card fa-xl "></i>
+                    Pay
+                  </wa-button>
+                </div>
               </div>
             </div>
+          </form>
+        </div>
+      </wa-card>
+      {% if productIntro is defined -%}
+      {{ productIntro | default('') }}
+      {% else -%}
+      <a class="wa-link-plain " href="{{ result.displayPage }}" id="dialog-card-link-{{ result.pageId }}">
+        <wa-card with-image style="height: 100%" class="hover-card">
+          <div class="wa-frame:landscape wa-border-radius-l "{% if result.pageImageWidth %} style="aspect-ratio: {{ result.pageImageWidth }} / {{ result.pageImageHeight }}; "{% endif %}>
+            <img
+                slot="media"
+                src="{{ STATIC_BASE_URL }}{{ result.pageImageUri }}"
+                {% if result.pageImageAlt is defined %}
+                alt="{{ result.pageImageAlt | e }}"
+                {% endif %}
+                />
           </div>
-        </form>
-      </div>
-    </wa-card>
-  </div>
-  <wa-card appearance="filled">
-    <div slot="header" class="wa-frame wa-gap-2xl ">
-      <i class="fa-kit fa-spine " style="font-size: 12rem;"></i>
+          <div class="margin-block-start ">
+            <h3>{{ result.name | e }}</h3>
+            <p class="wa-caption-l">
+              {{ result.description | e }}
+            </p>
+            <p>
+              {% if result.price == "0.00" %}
+              This is Free!
+              {% else %}
+              This costs <code><wa-format-number type="currency" currency="USD" value="{{ result.price }}" lang="en-US"></wa-format-number></code>
+              {% endif %}
+            </p>
+          </div>
+        </wa-card>
+      </a>
+    {% endif -%}
     </div>
     <div class="wa-stack ">
       {% if productUseCases is defined -%}
       {{ productUseCases | default('') }}
       {% endif -%}
     </div>
-  </wa-card>
+  </div>
+  {% endif %}
+  {% if productGettingStarted is defined -%}
+  {{ productGettingStarted | default('') }}
+  {% endif -%}
+  {% if productThingsYoullLearn is defined -%}
+  {{ productThingsYoullLearn | default('') }}
+  {% endif -%}
+  {% if productCallouts is defined -%}
+  {{ productCallouts | default('') }}
+  {% endif -%}
 </div>
-{%- endmacro %}
-{%- macro articleEnd(result) -%}
-{%- endmacro %}
+{% endmacro -%}
+{% macro articleEnd(result) -%}
+{% endmacro -%}
 
 {% block htmStylesPageLayout %}
 {{ super() }}

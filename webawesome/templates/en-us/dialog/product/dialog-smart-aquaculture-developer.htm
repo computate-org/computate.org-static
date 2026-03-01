@@ -55,6 +55,7 @@
       </p>
     </div>
 {% endset productUseCases -%}
+{% set productGettingStarted -%}
 <div class="wa-gap-3xl wa-stack">
   <div class="wa-align-items-center wa-grid">
     <div>
@@ -65,6 +66,8 @@
     </div>
     {{ articleImage(result) }}
   </div>
+{% endset productGettingStarted -%}
+{% set productCallouts -%}
   <wa-callout>
     <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-university fa-2xl"></i>
     <div class="wa-stack ">
@@ -77,12 +80,8 @@
       </p>
     </div>
   </wa-callout>
-  <h2>
-    Use cases: 
-  </h2>
-  <div class="wa-grid">
-    {{ productUseCases }}
-  </div>
+{% endset productCallouts -%}
+{% set productThingsYoullLearn -%}
   <h2>
     <i class="{{ FONTAWESOME_STYLE }} fa-head-side-gear fa-2xl "></i>
     Things you'll learn: 
@@ -110,4 +109,5 @@
       Use Jupyter Notebooks that help you update your project with new APIs and data models and integrate them into your site. 
     </li>
   </ol>
+{% endset productThingsYoullLearn -%}
 </div>
