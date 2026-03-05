@@ -28,7 +28,7 @@ async function websocketSpineProgramming(success) {
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify SPINE Programming lessons in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify SPINE Programming Theory in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
       $x.setAttribute('onclick', 'document.querySelector("#card-' + pageId + '");');
@@ -591,7 +591,7 @@ function pageGraphSpineProgramming(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'SPINE Programming lessons';
+          layout['title'] = 'SPINE Programming Theory';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
