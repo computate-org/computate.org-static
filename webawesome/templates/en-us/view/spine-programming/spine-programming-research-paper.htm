@@ -1,0 +1,2929 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="SPINE Programming Theory research paper" />
+    <meta name="result.description" content="SPINE Programming theory (SPT) is a form of on-device, local, sovereign AI code indexing and code generation. A watcher service runs locally to watch a project directory for code files created and modified, and parses code files and code comments as changes occur. SPINE Programming development, code indexing, and code generation lets developers focus on business logic, allowing APIs, pages, access control, and database to be AI generated. On average, SPINE Programmers write 2% - 4% of code by hand, the other 96% - 98% of the code is AI generated, resulting in 33 to 50 times faster software development. " />
+    <meta name="result.authorName" content="Christopher Tate, Dewayne Branch, Denis Poussard" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-01-13T12:24:25.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/spine-programming-research-paper.png" />
+    <meta name="result.pageImageAlt" content="SPINE Programming research paper" />
+    <meta name="result.importance" content="0" />
+    <meta name="result.prerequisiteArticleIds" content="spine-programming-prerequisites" />
+    <meta name="result.courseNum" content="0"/>
+    <meta name="result.lessonNum" content="99"/>
+{% endblock htmMetaPageLayout %}
+{% block htmStylePageLayout %}
+  <style type="text/css">
+    @import url(https://themes.googleusercontent.com/fonts/css?kit=4yIq1rc1rFphj8l7wJmdVZL7vOSvx4v7qlc6j2MYNCRbV0WvE1cEyAoIq5yYZlSc);
+
+    .lst-kix_ux5aywbzrbyv-4>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-1, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-2, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-3, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-4, decimal) ". "
+    }
+
+    .lst-kix_ux5aywbzrbyv-5>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-5
+    }
+
+    .lst-kix_phyxw9dou4p-7>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-7
+    }
+
+    .lst-kix_ux5aywbzrbyv-2>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-1, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-2, decimal) ". "
+    }
+
+    .lst-kix_ux5aywbzrbyv-6>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-1, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-2, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-3, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-4, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-5, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-6, decimal) ". "
+    }
+
+    .lst-kix_ux5aywbzrbyv-3>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-1, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-2, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-3, decimal) ". "
+    }
+
+    .lst-kix_ux5aywbzrbyv-5>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-1, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-2, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-3, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-4, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-5, decimal) ". "
+    }
+
+    ol.lst-kix_phyxw9dou4p-1 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_xj2oycmukysr-0.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-0 0
+    }
+
+    ol.lst-kix_phyxw9dou4p-0 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-3 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-2 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-5 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-4 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-7.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-7 0
+    }
+
+    .lst-kix_phyxw9dou4p-6>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-6
+    }
+
+    ol.lst-kix_xj2oycmukysr-8.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-8 0
+    }
+
+    .lst-kix_ux5aywbzrbyv-7>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-1, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-2, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-3, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-4, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-5, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-6, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-7, decimal) ". "
+    }
+
+    .lst-kix_ux5aywbzrbyv-8>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-1, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-2, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-3, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-4, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-5, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-6, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-7, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-8, decimal) ". "
+    }
+
+    .lst-kix_xj2oycmukysr-4>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-4
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-4.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-4 0
+    }
+
+    .lst-kix_u609orw5e8gr-7>li:before {
+      content: "" counter(lst-ctn-kix_u609orw5e8gr-7, lower-latin) ". "
+    }
+
+    ol.lst-kix_u609orw5e8gr-6.start {
+      counter-reset: lst-ctn-kix_u609orw5e8gr-6 0
+    }
+
+    .lst-kix_u609orw5e8gr-8>li:before {
+      content: "" counter(lst-ctn-kix_u609orw5e8gr-8, lower-roman) ". "
+    }
+
+    ol.lst-kix_xj2oycmukysr-3.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-3 0
+    }
+
+    ol.lst-kix_xj2oycmukysr-5.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-5 0
+    }
+
+    ol.lst-kix_phyxw9dou4p-7 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-6 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-8 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-7.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-7 0
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-1.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-1 0
+    }
+
+    .lst-kix_ux5aywbzrbyv-7>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-7
+    }
+
+    .lst-kix_ux5aywbzrbyv-4>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-4
+    }
+
+    .lst-kix_phyxw9dou4p-5>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-5
+    }
+
+    .lst-kix_xj2oycmukysr-5>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-5
+    }
+
+    .lst-kix_phyxw9dou4p-8>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-8
+    }
+
+    .lst-kix_u609orw5e8gr-3>li {
+      counter-increment: lst-ctn-kix_u609orw5e8gr-3
+    }
+
+    .lst-kix_ux5aywbzrbyv-0>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) ". "
+    }
+
+    .lst-kix_xj2oycmukysr-2>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-2
+    }
+
+    .lst-kix_nn8jl6iyjhgl-0>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_ux5aywbzrbyv-1>li:before {
+      content: "" counter(lst-ctn-kix_ux5aywbzrbyv-0, decimal) "." counter(lst-ctn-kix_ux5aywbzrbyv-1, decimal) ". "
+    }
+
+    .lst-kix_phyxw9dou4p-6>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-6, decimal) ". "
+    }
+
+    .lst-kix_phyxw9dou4p-7>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-7, lower-latin) ". "
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-5.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-5 0
+    }
+
+    ol.lst-kix_u609orw5e8gr-7.start {
+      counter-reset: lst-ctn-kix_u609orw5e8gr-7 0
+    }
+
+    .lst-kix_phyxw9dou4p-4>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-4
+    }
+
+    .lst-kix_phyxw9dou4p-5>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-5, lower-roman) ". "
+    }
+
+    ol.lst-kix_u609orw5e8gr-3 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_u609orw5e8gr-4 {
+      list-style-type: none
+    }
+
+    .lst-kix_nn8jl6iyjhgl-1>li:before {
+      content: "-  "
+    }
+
+    ol.lst-kix_u609orw5e8gr-5 {
+      list-style-type: none
+    }
+
+    .lst-kix_u609orw5e8gr-5>li {
+      counter-increment: lst-ctn-kix_u609orw5e8gr-5
+    }
+
+    ol.lst-kix_u609orw5e8gr-6 {
+      list-style-type: none
+    }
+
+    .lst-kix_nn8jl6iyjhgl-2>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_phyxw9dou4p-2>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-2, lower-roman) ". "
+    }
+
+    .lst-kix_phyxw9dou4p-3>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-3, decimal) ". "
+    }
+
+    ol.lst-kix_u609orw5e8gr-7 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_u609orw5e8gr-8 {
+      list-style-type: none
+    }
+
+    .lst-kix_nn8jl6iyjhgl-4>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_phyxw9dou4p-4>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-4, lower-latin) ". "
+    }
+
+    .lst-kix_nn8jl6iyjhgl-3>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_nn8jl6iyjhgl-6>li:before {
+      content: "-  "
+    }
+
+    ol.lst-kix_phyxw9dou4p-4.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-4 0
+    }
+
+    .lst-kix_phyxw9dou4p-1>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-1, lower-latin) ". "
+    }
+
+    .lst-kix_nn8jl6iyjhgl-5>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_nn8jl6iyjhgl-8>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_phyxw9dou4p-0>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-0, decimal) ". "
+    }
+
+    .lst-kix_nn8jl6iyjhgl-7>li:before {
+      content: "-  "
+    }
+
+    .lst-kix_xj2oycmukysr-3>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-3
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-2 {
+      list-style-type: none
+    }
+
+    .lst-kix_u609orw5e8gr-6>li:before {
+      content: "" counter(lst-ctn-kix_u609orw5e8gr-6, decimal) ". "
+    }
+
+    .lst-kix_xj2oycmukysr-0>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-0
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_xj2oycmukysr-6>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-6
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-4 {
+      list-style-type: none
+    }
+
+    .lst-kix_u609orw5e8gr-5>li:before {
+      content: "" counter(lst-ctn-kix_u609orw5e8gr-5, lower-roman) ". "
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-3 {
+      list-style-type: none
+    }
+
+    .lst-kix_u609orw5e8gr-4>li:before {
+      content: "" counter(lst-ctn-kix_u609orw5e8gr-4, lower-latin) ". "
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-0 {
+      list-style-type: none
+    }
+
+    .lst-kix_u609orw5e8gr-2>li:before {
+      content: "\0025a0   "
+    }
+
+    .lst-kix_u609orw5e8gr-1>li:before {
+      content: "\0025cb   "
+    }
+
+    .lst-kix_u609orw5e8gr-3>li:before {
+      content: "" counter(lst-ctn-kix_u609orw5e8gr-3, decimal) ". "
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-6.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-6 0
+    }
+
+    .lst-kix_u609orw5e8gr-0>li:before {
+      content: "\0025cf   "
+    }
+
+    .lst-kix_ux5aywbzrbyv-6>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-6
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-0.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-0 0
+    }
+
+    .lst-kix_phyxw9dou4p-8>li:before {
+      content: "" counter(lst-ctn-kix_phyxw9dou4p-8, lower-roman) ". "
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-6 {
+      list-style-type: none
+    }
+
+    .lst-kix_phyxw9dou4p-1>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-1
+    }
+
+    .lst-kix_ux5aywbzrbyv-0>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-0
+    }
+
+    .lst-kix_ux5aywbzrbyv-3>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-3
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-5 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_xj2oycmukysr-4.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-4 0
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-8 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-5.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-5 0
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-7 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-6.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-6 0
+    }
+
+    ol.lst-kix_u609orw5e8gr-5.start {
+      counter-reset: lst-ctn-kix_u609orw5e8gr-5 0
+    }
+
+    .lst-kix_u609orw5e8gr-8>li {
+      counter-increment: lst-ctn-kix_u609orw5e8gr-8
+    }
+
+    .lst-kix_phyxw9dou4p-2>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-2
+    }
+
+    ol.lst-kix_u609orw5e8gr-8.start {
+      counter-reset: lst-ctn-kix_u609orw5e8gr-8 0
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-0 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-0.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-0 0
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_phyxw9dou4p-0>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-0
+    }
+
+    ul.lst-kix_u609orw5e8gr-2 {
+      list-style-type: none
+    }
+
+    .lst-kix_ux5aywbzrbyv-1>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-1
+    }
+
+    ul.lst-kix_u609orw5e8gr-0 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_u609orw5e8gr-1 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-8.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-8 0
+    }
+
+    ol.lst-kix_phyxw9dou4p-3.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-3 0
+    }
+
+    .lst-kix_u609orw5e8gr-6>li {
+      counter-increment: lst-ctn-kix_u609orw5e8gr-6
+    }
+
+    .lst-kix_xj2oycmukysr-8>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-8
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-6 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-7 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-8 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-2 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-3 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-4 {
+      list-style-type: none
+    }
+
+    ul.lst-kix_nn8jl6iyjhgl-5 {
+      list-style-type: none
+    }
+
+    .lst-kix_xj2oycmukysr-8>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-8, lower-roman) ". "
+    }
+
+    .lst-kix_ux5aywbzrbyv-2>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-2
+    }
+
+    .lst-kix_xj2oycmukysr-6>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-6, decimal) ". "
+    }
+
+    .lst-kix_xj2oycmukysr-7>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-7, lower-latin) ". "
+    }
+
+    ol.lst-kix_xj2oycmukysr-2.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-2 0
+    }
+
+    ol.lst-kix_phyxw9dou4p-8.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-8 0
+    }
+
+    .lst-kix_xj2oycmukysr-1>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-1, lower-latin) ". "
+    }
+
+    ol.lst-kix_xj2oycmukysr-6.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-6 0
+    }
+
+    .lst-kix_xj2oycmukysr-0>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-0, decimal) ". "
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-2.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-2 0
+    }
+
+    .lst-kix_xj2oycmukysr-1>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-1
+    }
+
+    .lst-kix_xj2oycmukysr-7>li {
+      counter-increment: lst-ctn-kix_xj2oycmukysr-7
+    }
+
+    .lst-kix_phyxw9dou4p-3>li {
+      counter-increment: lst-ctn-kix_phyxw9dou4p-3
+    }
+
+    ol.lst-kix_phyxw9dou4p-1.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-1 0
+    }
+
+    ol.lst-kix_u609orw5e8gr-3.start {
+      counter-reset: lst-ctn-kix_u609orw5e8gr-3 0
+    }
+
+    .lst-kix_ux5aywbzrbyv-8>li {
+      counter-increment: lst-ctn-kix_ux5aywbzrbyv-8
+    }
+
+    ol.lst-kix_xj2oycmukysr-6 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_xj2oycmukysr-5 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_xj2oycmukysr-8 {
+      list-style-type: none
+    }
+
+    .lst-kix_u609orw5e8gr-4>li {
+      counter-increment: lst-ctn-kix_u609orw5e8gr-4
+    }
+
+    ol.lst-kix_xj2oycmukysr-7 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_xj2oycmukysr-2 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_xj2oycmukysr-1 {
+      list-style-type: none
+    }
+
+    .lst-kix_u609orw5e8gr-7>li {
+      counter-increment: lst-ctn-kix_u609orw5e8gr-7
+    }
+
+    ol.lst-kix_xj2oycmukysr-4 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_xj2oycmukysr-3 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_xj2oycmukysr-0 {
+      list-style-type: none
+    }
+
+    ol.lst-kix_phyxw9dou4p-2.start {
+      counter-reset: lst-ctn-kix_phyxw9dou4p-2 0
+    }
+
+    ol.lst-kix_xj2oycmukysr-1.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-1 0
+    }
+
+    .lst-kix_xj2oycmukysr-2>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-2, lower-roman) ". "
+    }
+
+    .lst-kix_xj2oycmukysr-3>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-3, decimal) ". "
+    }
+
+    ol.lst-kix_xj2oycmukysr-7.start {
+      counter-reset: lst-ctn-kix_xj2oycmukysr-7 0
+    }
+
+    ol.lst-kix_u609orw5e8gr-4.start {
+      counter-reset: lst-ctn-kix_u609orw5e8gr-4 0
+    }
+
+    .lst-kix_xj2oycmukysr-4>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-4, lower-latin) ". "
+    }
+
+    ol.lst-kix_ux5aywbzrbyv-3.start {
+      counter-reset: lst-ctn-kix_ux5aywbzrbyv-3 0
+    }
+
+    .lst-kix_xj2oycmukysr-5>li:before {
+      content: "" counter(lst-ctn-kix_xj2oycmukysr-5, lower-roman) ". "
+    }
+
+    ol {
+      margin: 0;
+      padding: 0
+    }
+
+    table td,
+    table th {
+      padding: 0
+    }
+
+    .c32 {
+      border-right-style: solid;
+      padding: 5pt 5pt 5pt 5pt;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 234pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c13 {
+      border-right-style: solid;
+      padding: 5pt 5pt 5pt 5pt;
+      border-bottom-color: #000000;
+      border-top-width: 0pt;
+      border-right-width: 0pt;
+      border-left-color: #000000;
+      vertical-align: top;
+      border-right-color: #000000;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-left-style: solid;
+      border-bottom-width: 0pt;
+      width: 468pt;
+      border-top-color: #000000;
+      border-bottom-style: solid
+    }
+
+    .c1 {
+      background-color: #ffffff;
+      color: #008000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 11pt;
+      font-family: "Consolas";
+      font-style: normal
+    }
+
+    .c6 {
+      color: #000000;
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 11pt;
+      font-family: "Arial";
+      font-style: normal
+    }
+
+    .c5 {
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-size: 11pt;
+      font-family: "Arial";
+      font-style: normal
+    }
+
+    .c40 {
+      -webkit-text-decoration-skip: none;
+      font-weight: 400;
+      text-decoration: line-through;
+      vertical-align: baseline;
+      text-decoration-skip-ink: none;
+      font-family: "Arial";
+      font-style: normal
+    }
+
+    .c0 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.0;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    .c19 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.0;
+      orphans: 2;
+      widows: 2;
+      text-align: center
+    }
+
+    .c29 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.15;
+      orphans: 2;
+      widows: 2;
+      text-align: center
+    }
+
+    .c16 {
+      font-weight: 400;
+      text-decoration: none;
+      vertical-align: baseline;
+      font-family: "Arial";
+      font-style: normal
+    }
+
+    .c14 {
+      text-decoration-skip-ink: none;
+      -webkit-text-decoration-skip: none;
+      color: #1155cc;
+      text-decoration: underline
+    }
+
+    .c24 {
+      border-spacing: 0;
+      border-collapse: collapse;
+      margin-right: auto
+    }
+
+    .c33 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.0;
+      text-align: right
+    }
+
+    .c21 {
+      padding-top: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.0;
+      text-align: left
+    }
+
+    .c4 {
+      color: #0000ff;
+      font-weight: 400;
+      font-family: "Consolas"
+    }
+
+    .c26 {
+      text-decoration: none;
+      vertical-align: baseline;
+      font-style: normal
+    }
+
+    .c7 {
+      background-color: #ffffff;
+      font-weight: 400;
+      font-family: "Consolas"
+    }
+
+    .c34 {
+      text-decoration-skip-ink: none;
+      -webkit-text-decoration-skip: none;
+      text-decoration: underline
+    }
+
+    .c2 {
+      color: #a31515;
+      font-weight: 400;
+      font-family: "Consolas"
+    }
+
+    .c28 {
+      width: 33%;
+      height: 1px
+    }
+
+    .c31 {
+      font-weight: 400;
+      font-family: "Courier New"
+    }
+
+    .c20 {
+      color: inherit;
+      text-decoration: inherit
+    }
+
+    .c30 {
+      margin-left: 72pt;
+      text-indent: -72pt
+    }
+
+    .c8 {
+      font-weight: 400;
+      font-family: "Consolas"
+    }
+
+    .c35 {
+      orphans: 2;
+      widows: 2
+    }
+
+    .c27 {
+      max-width: 468pt;
+      padding: 72pt 72pt 72pt 72pt
+    }
+
+    .c38 {
+      font-weight: 700;
+      font-family: "Arial"
+    }
+
+    .c3 {
+      background-color: #ffffff;
+      color: #222222
+    }
+
+    .c17 {
+      color: #001d35;
+      font-size: 11pt
+    }
+
+    .c22 {
+      color: #008000
+    }
+
+    .c36 {
+      color: #0a0a0a
+    }
+
+    .c10 {
+      page-break-after: avoid
+    }
+
+    .c9 {
+      height: 11pt
+    }
+
+    .c11 {
+      background-color: #ffffff
+    }
+
+    .c12 {
+      color: #000000
+    }
+
+    .c25 {
+      height: 0pt
+    }
+
+    .c23 {
+      font-size: 11pt
+    }
+
+    .c15 {
+      font-size: 10pt
+    }
+
+    .c37 {
+      background-color: #00ff00
+    }
+
+    .c39 {
+      color: #434343
+    }
+
+    .c18 {
+      color: #a31515
+    }
+
+    .title {
+      padding-top: 0pt;
+      color: #000000;
+      font-weight: 700;
+      font-size: 18pt;
+      padding-bottom: 0pt;
+      font-family: "Helvetica Neue";
+      line-height: 1.0;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: justify
+    }
+
+    .subtitle {
+      padding-top: 0pt;
+      color: #666666;
+      font-size: 15pt;
+      padding-bottom: 16pt;
+      font-family: "Arial";
+      line-height: 1.0;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    li {
+      color: #000000;
+      font-size: 11pt;
+      font-family: "Arial"
+    }
+
+    p {
+      margin: 0;
+      color: #000000;
+      font-size: 11pt;
+      font-family: "Arial"
+    }
+
+    h1.c0 {
+      padding-top: 0pt;
+      color: #000000;
+      font-weight: 700;
+      font-size: 11pt;
+      padding-bottom: 0pt;
+      font-family: "Arial";
+      line-height: 1.0;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h2 {
+      padding-top: 0pt;
+      color: #000000;
+      font-weight: 700;
+      font-size: 11pt;
+      padding-bottom: 0pt;
+      font-family: "Arial";
+      line-height: 1.0;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h3 {
+      padding-top: 16pt;
+      color: #434343;
+      font-size: 14pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.0;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h4 {
+      border-right-style: solid;
+      color: #666666;
+      border-top-width: 0pt;
+      padding-left: 0pt;
+      font-size: 12pt;
+      border-left-style: solid;
+      font-family: "Arial";
+      orphans: 2;
+      text-align: left;
+      padding-top: 0pt;
+      border-right-width: 0pt;
+      padding-bottom: 0pt;
+      line-height: 1.0;
+      page-break-after: avoid;
+      border-left-width: 0pt;
+      border-top-style: solid;
+      border-bottom-width: 0pt;
+      border-bottom-style: solid;
+      widows: 2;
+      padding-right: 0pt
+    }
+
+    h5 {
+      padding-top: 12pt;
+      color: #666666;
+      font-size: 11pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.0;
+      page-break-after: avoid;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+
+    h6 {
+      padding-top: 12pt;
+      color: #666666;
+      font-size: 11pt;
+      padding-bottom: 4pt;
+      font-family: "Arial";
+      line-height: 1.0;
+      page-break-after: avoid;
+      font-style: italic;
+      orphans: 2;
+      widows: 2;
+      text-align: left
+    }
+  </style>
+{% endblock htmStylePageLayout %}
+{% block htmBodyMiddleArticle %}
+<div style="background-color: white; padding: 4em; ">
+  <div>
+    <p class="c0 c9"><span class="c6"></span></p>
+    <table class="c24">
+      <tr class="c25">
+        <td class="c32" colspan="1" rowspan="1">
+          <p class="c21"><span class="c6">Tate, Branch, Poussard</span></p>
+        </td>
+        <td class="c32" colspan="1" rowspan="1">
+          <p class="c33"><span class="c6">SPINE Programming Theory</span></p>
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <p class="c0 c9"><span class="c6"></span></p>
+    <p class="c0 c9"><span class="c6"></span></p>
+  </div>
+  <p class="c29"><span class="c23 c38">DECISION SCIENCES INSTITUTE</span></p>
+  <p class="c19"><span class="c6">API Code Generation of Zero Trust, Data-driven Websites, Digital Twins with SPINE
+      Programming Theory</span></p>
+  <p class="c19 c9"><span class="c6"></span></p>
+  <p class="c19"><span class="c6">Christopher Tate</span></p>
+  <p class="c19"><span>Computate LLC </span><span class="c6">CEO and Red Hat Research Principal Software Engineer</span>
+  </p>
+  <p class="c19"><span class="c6">Utah, USA</span></p>
+  <p class="c19 c9"><span class="c6"></span></p>
+  <p class="c19"><span>Benjamin </span><span class="c23">D</span><span>.</span><span class="c6">&nbsp;Branch</span></p>
+  <p class="c19"><span class="c23">CEO QSBG</span><span>, </span><span class="c23">S</span><span>PT Architect
+      &amp;</span><span class="c6">&nbsp;Researcher</span></p>
+  <p class="c19"><span>Doha, </span><span class="c6">Qatar</span></p>
+  <p class="c19 c9"><span class="c6"></span></p>
+  <p class="c19"><span class="c23">Denis Poussard<br></span><span class="c6">Smart Aquaculture Software Engineer</span>
+  </p>
+  <p class="c19"><span class="c6">France</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c19"><span class="c5">ABSTRACT</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming theory (SPT) is a form of on-device, local, sovereign AI code
+      indexing and code generation. A watcher service runs locally to watch a project directory for code files created
+      and modified, and parses code files and code comments as changes occur. SPINE Programming development, code
+      indexing, and code generation lets developers focus on business logic, allowing APIs, pages, access control, and
+      database to be AI generated. On average, SPINE Programmers write 2% - 4% of code by hand, the other 96% - 98% of
+      the code is AI generated, resulting in 33 to 50 times faster software development. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0 c30"><span class="c34">KEYWORDS</span><span
+      class="c6">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;software engineering, automatic programming,
+      human-computer interaction, HCI, generative AI, zero trust architecture, fine-grained access control, cloud
+      security, multi-tenant environments, adaptive feedback loops, open source geospatial tool</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.j6sahenzc68j"><span class="c5">INTRODUCTION</span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming theory (SPT) is a form of on-device, local, sovereign AI code
+      indexing and code generation. A watcher service runs locally to watch a project directory for code files created
+      and modified, and parses code files as changes occur. An open source search engine running locally is used to
+      index introspection data about the modified code classes, constructors, methods, fields, and comments. Any Java
+      class can become a SPINE program by extending a non-existent super class that will be generated after the code is
+      saved. A class can become a Spine data model by adding class comments with YAML rules describing language context,
+      persistence, caching, APIs and web pages for creating, patching, deleting, and viewing models, with authorization
+      groups and scopes for fine-grained access control.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">This process of SPINE Programming, development, self-documentation, code indexing, and
+      code generation lets developers focus on business logic, allowing the models, backend APIs and interfaces, HTML
+      page templates, OpenAPI specification, and database schema to be generated entirely as AI generated code. All
+      SPINE Programming models, backend APIs, and HTML templates are built with inheritance, with additional classes and
+      templates automatically created for developers to override any part of the AI generated code, and implement
+      additional business logic on top of the default APIs. On average, SPINE Programmers write 2% - 4% of the
+      project&rsquo;s code by hand, and the other 96% - 98% of the code is AI generated, resulting in 33 to 50 times
+      faster software development. SPINE Programming is a recursive acronym that stands for &quot;SPINE Programming is
+      not easy&quot; because of the depth of knowledge required to be a SPINE Programmer&mdash;which is the purpose of
+      this research, to explain the actions programmers can take to increase their software development productivity by
+      4900% entirely on their own computer. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Data driven websites are built for organizational outcomes to model actual data that
+      can be accessed publicly or access controlled using an external identity provider for authentication and
+      authorization. Users must enter authentication credentials before being authorized to access certain data in the
+      website. SPINE Programming Theory has easy to follow rules into code comments for defining data models and web
+      pages for creating, accessing, and modifying data. A SPINE Programmer installs a local AI agent watcher service,
+      provided by the Java java.nio.file.WatchService, to watch the programmer&rsquo;s code project directories for
+      created and modified file events. A distributed application cluster manager provides scalable file locking
+      capabilities when generating code without conflicts. An open source search engine is used by the watcher service
+      to store a complete structured index of your local code parts as they are added or modified. The same event driven
+      watcher service that is used to index your codebase, performs introspection on the code and generates additional
+      code for the developer running directly on the developer&#39;s computer. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Additional rules can be written into the Java class comments for defining user groups
+      with policies and permissions to access resources with various scopes to GET, POST, PATCH, DELETE and import data.
+      Data driven websites require data APIs to query, create, and patch data in web compatible formats like JSON. The
+      same scope based permissions for accessing data in a website should be the same as accessing the data in a JSON
+      API. For this reason, SPINE Programming makes it easy to build consistent APIs and web pages with the same
+      permissions required for each user on each request to access the model data, whether that is in web page form or
+      as a JSON API. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.rav7xjen821p"><span class="c5">SPINE PROGRAMMING ACCESS CONTROL POLICIES</span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>This paper adds to the rationale &nbsp;of Zero Trust Enforcement Using Microsegmentation,
+      Identity-Aware Proxies, and Continuous Adaptive Risk Assessment in Multi-Tenant Cloud Environments
+      (</span><span>Kalejaiye, Shonubi, 2025)</span><span class="c6">&nbsp;where SPINE programming supports continuous
+      innovation with a generative AI approach for structured and ethical AI with sovereign data AI outcomes as a
+      digital twin toolset. Specifically, (Kalejaiye, Shonubi, 2025) discussed a concept of microsegmentation and
+      identity-aware proxies where SPINE programming achieves simple data modeling &nbsp;network policy controls in Java
+      class comments with its local watcher (continuous monitoring of code) and code generation services (event driven
+      code indexing and generation of code). </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The primary objective of continuously adaptive risk assessment (CARA) architectures is
+      to contextualize access to data. SPINE Programming simplifies the software development and event-driven creation
+      of groups, policies, and scoped permissions to company data. As (Kalejaiye, Shonubi, 2025) described, SPINE
+      Programming is &quot;introducing real time intelligence to access control&quot; to extend existing organizational
+      policies for new models to trusted groups of users rapidly with a generative AI approach. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.spawn15zht6g"><span class="c5">SPINE PROGRAMMING DIGITAL TWINS</span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">According to FIWARE, &quot;Digital Twin data representation is built based on
+      information gathered from many different sources, including sensors, cameras, information systems, social
+      networks, end users through mobile devices&quot; (FIWARE, 2021). Similar to SPINE Programming, which is an open
+      source solution to software development, FIWARE was created with the ultimate goal of creating an open sustainable
+      ecosystem around public, royalty-free and implementation-driven software platform standards easing the development
+      of smart solutions and supporting organizations in their transition into smart organizations. FIWARE provides
+      Smart Data Models in GitHub for Smart Cities, Smart Agriculture, Smart Aquaculture, Environmental data models and
+      more. Together with SPINE Programming intelligent code indexing and code generation, a repository of useful data
+      models &nbsp;can be indexed in a search engine, and rapidly built into a data-driven website and API to address
+      the needs of a community following the Smart Data Model standards, see the Smart Device API Code Generation with
+      AI/ML hackathon (Tate, 2024). </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>SPINE Programming is currently being used to develop and maintain a Smart Aquaculture digital twin
+      at </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://smaq.computate.org&amp;sa=D&amp;source=editors&amp;ust=1772815895525304&amp;usg=AOvVaw2yqVyoKAJs_NxTiT1zsKl7">smaq.computate.org</a></span><span
+      class="c6">&nbsp;to manage intelligent fisheries, that may be suitable for global support of aquaculture and
+      fisheries outcomes. As such, the use of sovereign AI data and infrastructure training allows small businesses the
+      zero trust tools for potential Federated digital twin solutions for operational decision making optimization. As
+      such, the customization of SPINE Programming fosters interdisciplinary and community based research at an industry
+      pace. Such abilities can provide high schools, academia and communities a tool for rapid compliance to AI policy
+      that is currently in place. Moreover, SPINE Programming follows the principles of ethics and best cybersecurity
+      practices for operations.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">These data driven websites illustrate event driven architecture that caters to real
+      time or near real time capabilities if desired, such digital simulations can forecast and federate community
+      problem solving. Hence, the cost complexity problem solving and lifecycle management could be greatly reduced once
+      the realization of the watcher service is fully comprehended at Human-Computer Interaction, for assisted
+      operational AI from a zero trust compliant cloud native architecture.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">In Digital Twin applications, Carnegie Mellon Digital twin center advocated that
+      digital twins are applicable in the following areas: Additive Manufacturing, biomanufacturing, future of
+      manufacturing workforce, Generative manufacturing, intelligent robotics for manufacturing and micro/nano
+      manufacturing (Manufacturing Futures Institute, 2025). SPINE Programming works to extend the FIWARE definition to
+      necessary workflows and the process of creating high fidelity digital simulations as described by Challenges and
+      opportunities for the application of digital twins in hard-to-abate industries (Hafeez et al, 2024). SPINE
+      Programming excels in digital twin work force training providing zero trust and fine-grained access with
+      operational metrics that prove its robustness and operational cost savings in deployment speed, and event driven
+      features.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.wr8uzxlwbpcc"><span class="c5">GETTING STARTED WITH SPINE PROGRAMMING</span></h1>
+  <h2 class="c0 c10 c9" id="h.eo9v0ge90wmb"><span class="c5"></span></h2>
+  <h2 class="c0 c10" id="h.x4t25k5lgbrq"><span class="c5">Required local microservices</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">There are three required microservices required for SPINE Programming. A local AI agent
+      watcher service, provided by the Java java.nio.file.WatchService, can be configured to watch a programmer&rsquo;s
+      code project directory for created and modified file events. A distributed application cluster manager, like
+      Apache Zookeeper, provides scalable file locking capabilities when generating code without conflicts. An open
+      source search engine, like Apache Solr, is used by the watcher service to store a complete structured index of
+      your local code parts as they are added or modified. The same watcher service that is used to index your codebase,
+      performs introspection on the code using a forked version of the QDox Java code parsing library (Tate, 2022) to
+      determine by rules in the code comments with the expected additional code to generate. The reason for the open
+      source fork of QDOX was created was the new features to order class members and track imports were not useful to
+      the upstream project, and it was suggested to write your own implementation &mdash; the complete details are
+      summarized in this pull request (Tate, 2018). The watcher service, distributed application cluster manager, and
+      open source search engine are the only three required microservices for SPINE Programming. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The best tools to help developers get started with SPINE Programming is to use a
+      container application &nbsp;deployment environment, like Red Hat OpenShift Local or Kubernetes. Containers are
+      preinstalled applications on small, layered virtual operating systems; they speed up the download, configuration,
+      and running of prerequisite SPINE Programming microservices. Two of the required microservices, the distributed
+      application cluster manager, and open source search engine, can be easily deployed as a container, with ports and
+      ingress configured for direct connections from an Integrated Development Environment (IDE). Using a declarative
+      continuous delivery tool, like Red Hat OpenShift GitOps or ArgoCD, developers are able to leverage the same cloud
+      resource definitions to speed up, and simplify the consistent deployment of the containerized microservices even
+      more. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.y66whc5k1hbl"><span class="c5">Indexing source code in a local search engine</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Through the use of GitOps, the dependent microservices for indexing source code are in place, and
+      a job is automatically kicked off to set up the search engine configset and search engine collection. A configset
+      is a data schema for how a search engine is configured. An open source search engine, based on Lucene like Apache
+      Solr, can be configured with many useful data types including ints, longs, floats, doubles, dates, strings, and
+      locations. These fields can either store single values of the given data type, or arrays of values of the given
+      data type. These fields can also apply to wildcard expressions, for example, </span><span
+      class="c31">&quot;*_docvalues_strings&quot;</span><span>, which means that any field name that has a suffix of
+    </span><span class="c31">&quot;_docvalues_strings&quot;</span><span>&nbsp;can be unique, but have the given
+    </span><span>data</span><span>&nbsp;type of multi-valued unique strings. A field matching the expression
+    </span><span class="c31">&quot;*_docvalues_int&quot;</span><span>&nbsp;would be a single value integer value field.
+      A field matching the expression </span><span class="c31">&quot;*_indexed_string&quot;</span><span>&nbsp;would be
+      indexed and queryable, but not stored for retrieval from the search engine, only accessible for queries. A field
+      matching the expression </span><span class="c31">&quot;*_stored_string&quot;</span><span class="c6">&nbsp;would be
+      stored, but not queryable in the search engine, which is useful for extra large strings that don&rsquo;t need to
+      be indexed, but retrieved instead. </span></p>
+  <p class="c0"><span class="c6">More advanced full text search features are available in a search engine as well that
+      you can add to your search engine configset. Full text search features include phonetic spelling of words,
+      autosuggest features using a whitespace tokenizer and N-Gram filter, international language support, contractions,
+      hyphenations, stemming, stop words, dictionaries, and synonyms. These features can provide intelligent suggestions
+      of code you might implement from various sources. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.w0t1gl9p5viq"><span class="c5">SPINE Programming is local sovereign AI</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Sovereign AI, which &quot;refers to models that are developed, culturally aligned, and
+      deployed within a nation&rsquo;s ecosystem of language, institutions, and computing infrastructure,&quot;
+      (S&aacute;ez de Oc&aacute;riz Borde, 2025) SPINE Programming is a public open source software platform that can be
+      downloaded and run on any computer with the Java platform, in any country. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Indexing of source code happens directly in the search engine deployed locally on the
+      developer&#39;s own computer, or team cloud environment, which makes SPINE Programming a form of Sovereign AI.
+      Every developer on a SPINE Programming project will have their source code indexed in a way that never leaves
+      their computer. The agent, or watcher service, that indexes and generates additional code for the developer is
+      also running directly on the developers computer. This watcher service never sends any data to another Agentic AI
+      service outside the control of the developer. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming is created as a software platform that at this time supports code
+      generation in French and English. The entire Computate code base is entirely written in French, and primarily
+      builds English websites as a second language through internationalization files with YAML translations in French
+      and English. It has also been used to generate French and English code at the same time, but this is not always a
+      requirement of every website, but is available for those use cases. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">With SPINE Programming, developers can extend useful data models from open source
+      communities, used around the world across all the continents. An example of this kind of intelligent code
+      generation is the indexing of the FIWARE organization&rsquo;s Smart Data Models in GitHub (FIWARE, 2025). By
+      indexing Smart Data Models, a repository of useful data models from Smart Cities, Smart Agriculture, Smart
+      Aquaculture, and Environmental data models can be rapidly built into a data-driven website and API to address the
+      needs of a community following the Smart Data Model standards. In this way, SPINE Programming addresses the need
+      to avoid stranded investments, &quot;pursuing domain-specific models aligned with public priorities rather than
+      chasing a frontier LLM.&quot; (Singh, 2025)</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.d3pzaa203k4l"><span class="c5">SPINE PROGRAMMING SUPER CLASS GENERATION AND GENERICS
+      INHERITANCE</span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Programming language requirements for SPINE Programming include static typing, class inheritance,
+      generics, promises, and futures, which makes Java a perfect language for SPINE Programming. The software developer
+      can develop a Spine for a Java class, </span><span class="c7 c18">A</span><span>, that extends a non-existent
+      super class </span><span class="c7 c18">AGen</span><span>&nbsp;with a generic class </span><span
+      class="c7 c18">B</span><span>. In Java, generic classes are</span><span>&nbsp;wrapped in Java generic syntax as
+    </span><span class="c7">&lt;</span><span class="c7 c18">B</span><span class="c7">&gt;</span><span>. This
+      non-existent super class&#39;s name starts with </span><span class="c7 c18">A</span><span>&nbsp;and ends with
+    </span><span class="c7 c18">Gen</span><span>&nbsp;as </span><span class="c7 c18">AGen</span><span>. The complete
+      super class includes the generic class as </span><span class="c7 c18">AGen</span><span class="c7">&lt;</span><span
+      class="c7 c18">B</span><span class="c7">&gt;</span><span class="c6">. For example:</span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13 c11" colspan="1" rowspan="1">
+        <p class="c21"><span class="c4 c11">public</span><span class="c7">&nbsp;</span><span
+            class="c4 c11">class</span><span class="c7">&nbsp;</span><span class="c7 c18">A</span><span
+            class="c7">&nbsp;</span><span class="c4 c11">extends</span><span class="c7">&nbsp;</span><span
+            class="c7 c18">AGen</span><span class="c7">&lt;</span><span class="c7 c18">B</span><span class="c7">&gt;
+            {</span><span class="c7 c22">/* ... */</span><span class="c7">}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Whenever the A class is saved to the disk, the local AI agent watcher service provided by the
+      Computate SPINE Programming platform will parse and index every detail about class A, including every class member
+      of class A will be indexed in the search engine, then code generation will begin to write a new class, AGen, that
+      extends class B. This is just the beginning of SPINE Programming. The developer can write code comments in the
+      Java class and Java class members as YAML rules that are recognized by the SPINE Programming platform. The moment
+      the developer saves the Java class, The </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://computate.org&amp;sa=D&amp;source=editors&amp;ust=1772815895551599&amp;usg=AOvVaw0j8U2mjZK5pAkifb_yj6bH">computate.org</a></span><span
+      class="c6">&nbsp;code generation watcher service will recognize that your Java class has changed, automatically
+      index the Java class and Java class members in the search engine, and generate the code the developer has
+      described based on the YAML rules.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">With a corresponding generic super class defined, that becomes the super class of the
+      generated class AGen. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c26 c7 c12 c23">&gt; {}</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Above is a real</span><span>&nbsp;example of a Java Class built with SPINE Programming from the
+      open source </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://computate.org&amp;sa=D&amp;source=editors&amp;ust=1772815895553926&amp;usg=AOvVaw1waylXxzUJaTKn1wt6YVFa">computate.org</a></span><span>&nbsp;website.
+      The </span><span class="c7 c18">CompanyResearch</span><span>&nbsp;Java Class extends an initially non-existent
+      super class </span><span class="c7 c18">CompanyResearchGen</span><span>. The </span><span
+      class="c7 c18">CompanyResearchGen</span><span>&nbsp;super class is defined with </span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt;</span><span
+      class="c6">&nbsp;Java Generics. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>When the SPINE Programming code generation is triggered when this </span><span
+      class="c7 c18">CompanyResearch</span><span>&nbsp;Java Class is saved, a new class is generated in the same Java
+      Package, but a different source code directory (&quot;src/gen/java&quot; rather than &quot;src/main/java&quot;).
+      The new generated Java Class has the following definition based on the way it was described as the super class of
+      the </span><span class="c7 c18">CompanyResearch</span><span>&nbsp;Java Class: </span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13 c11" colspan="1" rowspan="1">
+        <p class="c21"><span class="c4 c11">public</span><span class="c7">&nbsp;</span><span
+            class="c4 c11">abstract</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+            class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span class="c7">&lt;</span><span
+            class="c7 c18">DEV</span><span class="c7">&gt; </span><span class="c4 c11">extends</span><span
+            class="c7">&nbsp;</span><span class="c7 c18">BaseResult</span><span class="c7 c12 c23 c26">&nbsp;{}</span>
+        </p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>An abstract class must have a complete class that inherits it &mdash; which is how the
+    </span><span class="c7 c18">CompanyResearch</span><span>&nbsp;class was defined from the beginning. It extended a
+      non-existent </span><span class="c7 c18">CompanyResearchGen</span><span>&nbsp;super class that was AI generated
+      with the SPINE Programming platform automatically. The newly generated abstract class must be defined with an
+      unknown generic class </span><span class="c7">&lt;</span><span class="c7 c18">DEV</span><span
+      class="c7">&gt;</span><span>, which in the original class </span><span
+      class="c7 c18">CompanyResearch</span><span>&nbsp;is defined as </span><span class="c7">&lt;</span><span
+      class="c7 c18">BaseResult</span><span class="c7">&gt; </span><span>with Java Generics. And the </span><span
+      class="c7 c18">CompanyResearchGen</span><span>&nbsp;class extends the super class </span><span
+      class="c7 c18">BaseResult</span><span>, resulting in nested inheritance. The original class </span><span
+      class="c7 c18">CompanyResearch</span><span>&nbsp;needed to extend </span><span
+      class="c7 c18">BaseResult</span><span>, but it extended a non-existent class </span><span
+      class="c7 c18">CompanyResearchGen</span><span>. The code generation created the </span><span
+      class="c7 c18">CompanyResearchGen</span><span>&nbsp;class to extend </span><span
+      class="c7 c18">BaseResult</span><span class="c6">&nbsp;automatically. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The SPINE Programming code generation also implements many useful helper functions,
+      fields, and constructors required to implement CompanyResearch according to how it was defined in the Java Class
+      Comments as it applies to a BaseResult Java Class. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.q7882c1xjy8l"><span class="c5">SPINE PROGRAMMING CLASS COMMENTS</span></h1>
+  <h2 class="c0 c10 c9" id="h.u3f6k4wjgb5k"><span class="c5"></span></h2>
+  <h2 class="c0 c10" id="h.ylayvwkisidn"><span class="c5">Ordering data models in SPINE Programming</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming is about defining data models as code for customer business solutions
+      and key performance indicators. Software developers can give each business data model a name as a Java Class, and
+      organize that Java Class in any Java package that makes sense for an organization. Each Java Class that represents
+      a data model should be given a numerical order in a SPINE Program. The reasons for ordering data models include
+      ordered database schema definitions, ordered user interface navigation, and ordered OpenAPI Schemas. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">When defining data models in a database schema, database models without any foreign key
+      dependencies should be defined first. Database models with foreign key relations should be defined after their
+      dependencies. The filesystem can sort Java Classes alphabetically, but this usually doesn&#39;t provide a logical
+      order for models. In SPINE Programming, a regular Java Class Comment is added with a numerical order. </span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13 c11" colspan="1" rowspan="1">
+        <p class="c21"><span class="c1">/** </span></p>
+        <p class="c21"><span class="c1">&nbsp;* Order: 0</span></p>
+        <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7 c12"><br></span><span
+            class="c4 c11">public</span><span class="c7 c12">&nbsp;</span><span class="c4 c11">class</span><span
+            class="c7 c12">&nbsp;</span><span class="c7 c18">A</span><span class="c7 c12">&nbsp;</span><span
+            class="c4 c11">extends</span><span class="c7 c12">&nbsp;</span><span class="c7 c18">AGen</span><span
+            class="c7 c12">&lt;</span><span class="c7 c18">B</span><span class="c7 c12">&gt; {}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>The order also applies to where the model is shown in the user interface or page layout of the
+      website. There is typically a navigation section or </span><span class="c4 c11">&lt;nav&gt;</span><span
+      class="c6">&nbsp;element, where each data model is listed in a specific order. In SPINE Programming, the models
+      are sorted in the website navigation the same as the database schema by default. The same sort order also applies
+      to the models as they appear in the OpenAPI specification by default. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Having a defined order of classes helps maintain the order of generated database
+      schemas and OpenAPI specification over time. Without specifying the order of the data models, models are retrieved
+      from the search engine index in any order that the search engine finds most relevant at query time. This means
+      that every time the developer regenerates the database schema, the models can appear in a totally different order.
+      By specifying a specific numerical order for each class, the order that the database models are defined is
+      consistent over time, resulting in less conflicts, unnecessary repeated changes, and a database schema that has
+      the correct order of create table statements and foreign key references. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.3y8m97kl7eva"><span class="c5">Data model language context</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">For each data model Java Class, it&#39;s important to provide some language context for
+      the data. The most important language context to provide first is a short description of the data model defined as
+      a YAML String. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* Description: Defined as YAML String</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c26 c7 c12 c23">&gt; {}</span></p>
+  <p class="c0"><span class="c6">Additional language context can be provided. The Computate SPINE Programming platform
+      at this time supports code generation in French and English. The entire Computate code base is entirely written in
+      French, and primarily builds English websites as a second language through internationalization files with YAML
+      translations in French and English. It has also been used to generate French and English code at the same time,
+      but this is not always a requirement of every website, but is available for those use cases. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* AName: a research project</span></p>
+  <p class="c21"><span class="c1">&nbsp;* PluralName: research</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt; {}</span></p>
+  <p class="c0"><span class="c6">Additional language context can be provided for generating the user interface or
+      webpages for a given data model. When generating a data model for tracking information about company research
+      projects, in the code snippet above, in the English Language you might describe the singular form of this model as
+      &quot;a research project&quot; &mdash; you might refer to the plural form of this model when searching all the
+      models as &quot;research&quot;. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* Icon: &lt;i class=&quot;fa-duotone fa-regular
+      fa-school&quot;&gt;&lt;/i&gt;</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt; {}</span></p>
+  <p class="c0"><span class="c6">As a form of engaging visual communication, you can also define visual cues for
+      identifying a data model in the user interface by defining an icon from an icon library. Above we define a school
+      related icon from the Font Awesome library to the company research data model. When the user sees the school icon,
+      it serves as a visual cue that reminds the user that it&#39;s related to company research. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.y7wfamcxhg6o"><span class="c5">Declaring API methods</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Data models would inherently have APIs for populating and viewing data, so SPINE
+      Programming makes it easy to define APIs to perform common REST (Representational State Transfer) verbs to POST,
+      PATCH, GET, DELETE, and PUT data into a database and search engine, and retrieve model instances as JSON data.
+    </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* ApiUri: /en-us/api/research</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt; {}</span></p>
+  <p class="c0"><span>Continuing with the earlier example of &nbsp;a </span><span
+      class="c7 c18">CompanyResearch</span><span>&nbsp;model, a base API URI can be specified with the </span><span
+      class="c7 c22">ApiUri</span><span class="c6">&nbsp;comment. The base URI can be used for APIs creating new
+      instances of the model, patching multiple instances of the model at the same time, and performing search queries
+      to retrieve multiple instances of the model as JSON. Additional operation scopes can be applied after the API base
+      URI to retrieve model data by ID, delete model data by ID, and import data. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* ApiMethod:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; POST:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; PATCH:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; GET:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; DELETE:</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt; {}</span></p>
+  <p class="c0"><span>With a base API URI defined, a developer specifies the default REST verbs that should be
+      generated, because no APIs are generated by default in SPINE Programming. The most familiar verbs include POST,
+      PATCH, GET, and DELETE. The </span><span class="c7 c22">ApiMethod:</span><span class="c6">&nbsp;section is
+      formatted as YAML, but not as a list. Each of the API verbs are specified as YAML objects that can have modifiers
+      applied to them if necessary as customizations to the default JSON API configuration. By specifying the verbs in
+      this way, the SPINE Programming watcher service will generate the Java APIs to POST, PATCH, GET, and DELETE model
+      instances automatically. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* ApiMethod:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; Search:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; PUTImport:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; PUTMerge:</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt; {}</span></p>
+  <p class="c0"><span class="c6">Some more specialized actions can be added to the model API for searching, importing,
+      and merging data. The search API leverages the many features of the Apache Solr search engine to perform advanced
+      full text search, filters, pivots, facets, statistics, sorts, scoring, and field projections. The PUT import API
+      is useful for migrating data from one deployment of the data-driven website to another. The PUT merge API is used
+      for overwriting data from the same instance of the data-driven website. It&#39;s not required to define every
+      possible API, however APIs like PUT import and merge APIs depend on the POST and PATCH APIs also being defined as
+      part of the import and merge process. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* SearchPageUri: /en-us/search/research</span></p>
+  <p class="c21"><span class="c1">&nbsp;* EditPageUri: /en-us/edit/research/{pageId}</span></p>
+  <p class="c21"><span class="c1">&nbsp;* DisplayPageUri: /en-us/view/research/{pageId}</span></p>
+  <p class="c21"><span class="c1">&nbsp;* DownloadUri: /en-us/download/research/{pageId}</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt; {}</span></p>
+  <p class="c0"><span class="c6">Web pages can also be defined for searching the data model as a search page, viewing or
+      editing an instance of a model by ID, &nbsp;displaying a custom page for each instance of the model by ID,
+      allowing users with access to a model instance to view a custom page for that model instance by ID, and
+      downloading a file related to an instance of a model by ID. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.bjtdnadfouz8"><span class="c5">Declaring access control authorization groups</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">With APIs defined for the model, access control can be defined to secure access to the
+      data model APIs. SPINE Programming models can be configured as public APIs or zero trust APIs with fine-grained
+      access control permissions. Zero trust means no users or service accounts can access or create any data in the
+      system without first being granted privileges to do so. It&#39;s important to set up data APIs with the correct
+      permissions from the beginning. Many applications are built with access control as a future feature, but SPINE
+      Programming makes it very easy to define a very secure application based on zero trust from the beginning. The
+      simplest form of SPINE Programming with zero trust involves specifying authorization groups, and the scopes they
+      are allowed to perform on each model. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* AuthGroup:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; ResearchReader:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; GET:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; Admin:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; POST:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; PATCH:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; GET:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; DELETE:</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt; {}</span></p>
+  <p class="c0"><span>In the YAML described in the Java Class comment above, two authorization groups are defined. The
+    </span><span class="c7 c22">ResearchReader</span><span>&nbsp;is granted permissions to one </span><span
+      class="c7 c22">GET</span><span>&nbsp;scope, which is equivalent to a read-only scope for all instances of the
+    </span><span class="c7 c18">CompanyResearch</span><span>&nbsp;model. The </span><span
+      class="c7 c22">Admin</span><span>&nbsp;group is granted permissions to several scopes including </span><span
+      class="c7 c22">GET</span><span>, </span><span class="c7 c22">POST</span><span>, </span><span
+      class="c7 c22">PATCH</span><span>, </span><span class="c7 c22">DELETE</span><span>, </span><span
+      class="c7 c22">Admin</span><span>&nbsp;scopes, which allows admins to get, create, modify, and delete instances of
+      the </span><span class="c7 c18">CompanyResearch</span><span class="c6">&nbsp;model. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/** </span></p>
+  <p class="c21"><span class="c1">&nbsp;* AuthGroup:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; SuperAdmin:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; POST:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; PATCH:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; GET:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; DELETE:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; Admin:</span></p>
+  <p class="c21"><span class="c1">&nbsp;* &nbsp; &nbsp; SuperAdmin:</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp;**/</span><span class="c7"><br></span><span
+      class="c4 c11">public</span><span class="c7">&nbsp;</span><span class="c4 c11">class</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">CompanyResearch</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">extends</span><span class="c7">&nbsp;</span><span class="c7 c18">CompanyResearchGen</span><span
+      class="c7">&lt;</span><span class="c7 c18">BaseResult</span><span class="c7">&gt; {}</span></p>
+  <p class="c0"><span>More advanced scopes like </span><span class="c7 c22">Admin</span><span>, and </span><span
+      class="c7 c22">SuperAdmin</span><span class="c6">&nbsp;are also available for system admin related tasks. This
+      includes refreshing the search engine, deleting all instances of a model at once, import related operations, or
+      any other actions that a regular user or regular manager shouldn&#39;t see. Some of these advanced scopes are
+      useful in development when models are constantly changing and being reworked. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>The most important SPINE Programming class comments have been described above, but this is not a
+      comprehensive list. Additional information about all the features will become available at </span><span
+      class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://spineprogramming.com&amp;sa=D&amp;source=editors&amp;ust=1772815895590300&amp;usg=AOvVaw0g1zGadFPtiusdfiV7CbLF">spineprogramming.com</a></span><span
+      class="c6">. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.bfqtvkpvcs2l"><span>WRAPPING MODEL DATA VALUES AS SPINE DISCS</span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">As described earlier, a well defined API class defines the class order, language
+      context, API methods, and authorization groups. The next step of defining the model is declaring a series of SPINE
+      Programming discs that represent model variables. Just like SPINE Programming classes are given an order, discs in
+      SPINE Programming have an inherent order in which they are declared in the class. This order of discs becomes
+      important when initializing an instance of a model sequentially, and asynchronously. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c4 c11">protected</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">void</span><span class="c7">&nbsp;</span><span class="c7 c18">_speed</span><span
+      class="c26 c7 c12 c23">(Wrap&lt;BigDecimal&gt; w) {</span></p>
+  <p class="c21"><span class="c7">&nbsp; w.o(</span><span class="c4 c11">new</span><span
+      class="c7">&nbsp;BigDecimal(40));<br>}</span></p>
+  <p class="c0"><span>This example is a SPINE disc Java method </span><span
+      class="c7 c18">_speed</span><span>&nbsp;inside a Java class. Every SPINE disc method has the </span><span
+      class="c4 c11">protected</span><span>&nbsp;keyword, which means it is visible to all classes that extend the
+      method, but not visible to other classes. There is no reason for other classes to access this method because
+      it&#39;s for initializing the model only at runtime. Every SPINE disc method also is </span><span
+      class="c4 c11">void</span><span>. There is never a return value of a SPINE disc. If the default </span><span
+      class="c7 c18">speed</span><span>&nbsp;of the model should have a default value of </span><span
+      class="c7">40</span><span>, then the value will be constructed and wrapped in a method parameter instead. Every
+      SPINE disc method starts with </span><span class="c7 c18">_</span><span>. The </span><span
+      class="c7 c18">_</span><span>&nbsp;represents a disc of the spine, and </span><span
+      class="c7 c18">speed</span><span>&nbsp;is a name given to one of the vertebrae. Just like a human spine has
+      different types of vertebrae (cervical, thoracic, lumbar, sacral, coccyx), programmers declare the type of data
+      they will wrap at each disc in the spine </span><span class="c7">(Wrap&lt;BigDecimal&gt; w)</span><span>. A
+      Generic </span><span class="c7">Wrap</span><span>&nbsp;class is provided to wrap any default values </span><span
+      class="c7">w.o(</span><span class="c4 c11">new</span><span class="c7">&nbsp;BigDecimal(40))</span><span
+      class="c6">, otherwise the default value is null. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.jt6hwssaiklo"><span class="c5">Asynchronous initialization of SPINE discs</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13 c11" colspan="1" rowspan="1">
+        <p class="c21"><span class="c4 c11">protected</span><span class="c7 c12">&nbsp;</span><span
+            class="c4 c11">void</span><span class="c7 c12">&nbsp;</span><span class="c7 c18">_pages</span><span
+            class="c7 c12">(Promise&lt;SearchList&lt;SitePage&gt;&gt; promise) {<br> &nbsp;</span><span
+            class="c4 c11">try</span><span class="c7 c12">&nbsp;{<br> &nbsp; &nbsp;SearchList&lt;SitePage&gt; list =
+          </span><span class="c4 c11">new</span><span class="c7 c12">&nbsp;SearchList&lt;&gt;();<br> &nbsp;
+            &nbsp;list.setC(SitePage.class);<br> &nbsp; &nbsp;list.q(</span><span
+            class="c7 c18">&quot;*:*&quot;</span><span class="c7 c12">);<br> &nbsp; &nbsp;list.setStore(</span><span
+            class="c4 c11">true</span><span class="c7 c12">);<br> &nbsp; &nbsp;promise.complete(list);<br> &nbsp;}
+          </span><span class="c4 c11">catch</span><span class="c7 c12">(Exception ex) {<br> &nbsp;
+            &nbsp;LOG.info(</span><span class="c7 c18">&quot;Failed page search&quot;</span><span class="c7 c12">,
+            ex);<br> &nbsp; &nbsp;promise.fail(ex);<br> &nbsp;}<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Some model values are easy to initialize as values as a simple constructor or constant, others
+      require asynchronous requests to be made. SPINE Programming is asynchronous and reactive by nature. Here is an
+      example of a SPINE disc that is initialized asynchronously with the Java </span><span
+      class="c7">Promise</span><span>&nbsp;class instead of the </span><span class="c7">Wrap</span><span>&nbsp;class. A
+      Promise must be completed or failed, otherwise blocking code result will occur at runtime. It&#39;s important to
+      try and catch all asynchronous code to be sure to fail the promise to prevent blocking code with thrown
+      exceptions. This example initializes a search to Solr for the top site pages, and completes the promise with the
+      uninitialized </span><span class="c7">SearchList</span><span class="c6">. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>SPINE Programming knows how to automatically initialize the </span><span
+      class="c7">SearchList</span><span>, because the </span><span class="c7">SearchList</span><span>&nbsp;Java class
+      was itself indexed in the search engine while setting up the development environment. The generated code that
+      initializes the </span><span class="c7 c18">pages</span><span>&nbsp;Promise will fail if the Promise above fails,
+      or initialize the </span><span class="c7">SearchList</span><span class="c6">&nbsp;asynchronously by making a call
+      to Solr and deserializing the results. &nbsp;</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.inhqpfl9oz2a"><span>Persisting normalized</span><span>&nbsp;model data</span><span
+      class="c5">&nbsp;in a database</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Initialization of an instance of a model is often retrieved from normalized data in a
+      database, and we will discuss the database concept of normalized data and denormalized data. Normalized data in a
+      database refers to a data schema that is well organized into normal form, without any redundant, repetitive data
+      (Hollingsworth, 2017). Model variables that are imported from other data sources, as well as data that was input
+      by a user in a web form, are examples of normalized data that must be persisted in a database. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13 c11" colspan="1" rowspan="1">
+        <p class="c21"><span class="c7 c22">/**<br> &nbsp;* Persist: true<br> &nbsp;**/</span><span
+            class="c7 c12"><br></span><span class="c4 c11">protected</span><span class="c7 c12">&nbsp;</span><span
+            class="c4 c11">void</span><span class="c7 c12">&nbsp;</span><span class="c7 c18">_speed</span><span
+            class="c7 c12">(Wrap&lt;BigDecimal&gt; w) {<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Adding a comment to persist a SPINE disc value will create all the database logic to store a
+    </span><span class="c7 c18">speed</span><span>&nbsp;value of type decimal as normalized database data, automatically
+      in the generated Java backend API. SPINE Programming also makes it easy to generate a database schema
+      automatically, with all the tables and table columns, including the new </span><span
+      class="c7 c18">speed</span><span>&nbsp;field, declared in the right order based on SPINE discs containing the
+    </span><span class="c7 c22">Persist: true</span><span class="c6">&nbsp;comment. SPINE Programming can easily query
+      the search engine containing the index of code, and regenerate the database create schema with all columns in all
+      database model tables where it is defined. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.ll62figa2dt"><span class="c5">Indexing and storing denormalized model data in a search
+      engine</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Denormalized data is about deliberately adding redundancy to date to improve
+      performance (Hardini et al, 2025). SPINE programs can easily enhance normalized model data with calculated data
+      during model instance initialization through synchronous or asynchronous methods. The denormalized data can be
+      calculated based on normalized data from the database, or from another asynchronous call to a service to retrieve
+      the denormalized data. This denormalized data is stored in the search engine as a cache. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13 c11" colspan="1" rowspan="1">
+        <p class="c21"><span class="c7 c22">/**<br> &nbsp;* DocValues: true<br> &nbsp;**/</span><span
+            class="c7"><br></span><span class="c4 c11">protected</span><span class="c7">&nbsp;</span><span
+            class="c4 c11">void</span><span class="c7">&nbsp;</span><span class="c7 c18">_speed</span><span
+            class="c7">(Wrap&lt;BigDecimal&gt; w) {<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Denormalized data does not need to be calculated at runtime, but can be stored in the search
+      engine instead. In SPINE Programming, normalized data is always stored in the database, while denormalized data is
+      calculated, then indexed and stored in a search engine. The search engine acts as a cache for the normalized and
+      denormalized data for each model instance. The search engine can also perform advanced full text search, filters,
+      pivots, facets, statistics, sorts, scoring, and field projections on the denormalized data for fast API results
+      and advanced analytics. The </span><span class="c7 c22">DocValues: true</span><span class="c6">&nbsp;comment in
+      the SPINE disc method above refers an efficient way to index and store data in the search &mdash; the Solr
+      documentation states, &quot;DocValues are a way of recording field values internally that is more efficient for
+      some purposes, such as sorting and faceting, than traditional indexing.&quot; (Apache Solr, 2025)</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c7 c22">/**<br> &nbsp;* Indexed: true<br> &nbsp;* Stored: true<br> &nbsp;**/</span><span
+      class="c7"><br></span><span class="c4 c11">protected</span><span class="c7">&nbsp;</span><span
+      class="c4 c11">void</span><span class="c7">&nbsp;</span><span class="c7 c18">_colors</span><span
+      class="c7">(List&lt;String&gt; w) {<br>}</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">It is also possible to index and store data in the search engine without DocValues.
+      Using DocValues in a list of values will automatically remove duplicate values. If an array of values should allow
+      for duplicate values, then DocValues should not be used. Data in the search engine can also be indexed and stored
+      instead as above. Indexed means that the value can be queried from the search engine as a filter, but not
+      retrieved as a value. Stored means the value can be retrieved by name in a record, but not queried from the search
+      engine as a filter. Data can be indexed and stored at the same time to preserve duplicates, and be queried and
+      retrieved. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13 c11" colspan="1" rowspan="1">
+        <p class="c21"><span class="c7 c22">/**<br> &nbsp;* Persist: true<br> &nbsp;* DocValues: true<br>
+            &nbsp;**/</span><span class="c7"><br></span><span class="c4 c11">protected</span><span
+            class="c7">&nbsp;</span><span class="c4 c11">void</span><span class="c7">&nbsp;</span><span
+            class="c7 c18">_speed</span><span class="c7">(Wrap&lt;BigDecimal&gt; w) {<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>SPINE Programming model data is usually persisted in the database, and stored in the search engine
+      at the same time. The normalized data for this </span><span class="c7">BigDecimal</span><span>&nbsp;value
+    </span><span class="c7 c18">speed</span><span class="c6">&nbsp;is persisted in the database, and indexed and stored
+      in the search engine with DocValues to be queried and retrieved in the model API from the search engine. </span>
+  </p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.o7fblonrp480"><span class="c5">Language context in model data</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/**<br> * DisplayName: average speed (MPH)</span></p>
+  <p class="c21"><span class="c1">&nbsp;* Description: Average speed of the boat. </span></p>
+  <p class="c21"><span class="c7 c22">&nbsp; **/</span><span class="c7"><br></span><span
+      class="c4 c11">protected</span><span class="c7">&nbsp;</span><span class="c4 c11">void</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">_speed</span><span class="c7">(Wrap&lt;BigDecimal&gt; w)
+      {<br>}</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">For each SPINE disc in a data model, it&#39;s important to provide some language
+      context as it would appear in the user interface. The most important language context to provide first is a
+      display name and short description of the model data defined as YAML Strings. The display name and description
+      appear in the user interface next to the input box for each instance of the model. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.cor4i5tdh5kk"><span class="c5">Ordering model data in the user interface</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c21"><span class="c1">/**<br> * HtmColumn: 2</span></p>
+  <p class="c21"><span class="c1">&nbsp;* HtmRow: 3</span></p>
+  <p class="c21"><span class="c1">&nbsp;* HtmCell: 2</span></p>
+  <p class="c21"><span class="c7 c22">&nbsp; **/</span><span class="c7"><br></span><span
+      class="c4 c11">protected</span><span class="c7">&nbsp;</span><span class="c4 c11">void</span><span
+      class="c7">&nbsp;</span><span class="c7 c18">_speed</span><span class="c7">(Wrap&lt;BigDecimal&gt; w)
+      {<br>}</span></p>
+  <p class="c0"><span>Spine discs have an inherent order inside of a Java class that has importance when creating
+      calculated denormalized data where one calculated field depends on an earlier calculated field being initialized
+      earlier. Model data input fields in the user interface can be reordered in a totally separate order if necessary.
+      User interfaces group data together into combined detail sections. A comment like </span><span
+      class="c7 c22">HtmColumn: 2</span><span>&nbsp;will put the speed data on column 2 of a table when listing
+      instances of the model. A comment like </span><span class="c7 c22">HtmRow: 3</span><span>&nbsp; will group
+    </span><span class="c7 c18">speed</span><span>&nbsp;and all other model data defined on row 3 together in one group
+      details section in the user interface. A comment like </span><span class="c7 c22">HtmCell:
+      2</span><span>&nbsp;will put the </span><span class="c7 c18">speed</span><span class="c6">&nbsp;data in between
+      other SPINE discs less than or greater than 2 in the same row. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.90g4hueeud5z"><span class="c5">DECLARING &nbsp;SIGNIFICANT MODEL DATA VARIABLES</span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.2ltaaikf4ftn"><span class="c5">Declaring database model primary keys</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c8 c22">/**<br> * PrimaryKey: true<br> * DocValues: true<br> * Modify: false<br>
+            **/</span><span class="c8 c12"><br></span><span class="c4">protected</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">void</span><span class="c8 c12">&nbsp;</span><span
+            class="c2">_pk</span><span class="c8 c12">(Wrap&lt;Long&gt; w) {}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Every data model should have a primary key field to uniquely identify the model. This could be an
+      auto incrementing database integer as the one above. In SPINE Programming, this has been simplified to the
+      following comments above. The </span><span class="c8 c22">PrimaryKey: true</span><span class="c6">&nbsp;comment on
+      a SPINE disc wrapped with a type Long becomes the following column in a database &nbsp;table:</span></p>
+  <p class="c0"><span class="c4">ALTER</span><span class="c8 c12">&nbsp;</span><span class="c4">TABLE</span><span
+      class="c8 c12">&nbsp;</span><span class="c8">Boat</span><span class="c8 c12">&nbsp;</span><span
+      class="c4">ADD</span><span class="c8 c12">&nbsp;</span><span class="c4">COLUMN</span><span
+      class="c8 c12">&nbsp;</span><span class="c4">IF</span><span class="c8 c12">&nbsp;</span><span
+      class="c4">NOT</span><span class="c8 c12">&nbsp;</span><span class="c4">EXISTS</span><span class="c8 c12">&nbsp;pk
+      bigserial primary </span><span class="c4">key</span><span class="c8 c12">;</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>A </span><span class="c8">bigserial</span><span>&nbsp;type is an autoincrementing big integer, and
+      it becomes the unique primary key of the table. The </span><span class="c8 c22">DocValues:
+      true</span><span>&nbsp;comment indexes and stores the primary key in the search engine. The Java API for the model
+      is built to expect the primary key, but not change it, so it&#39;s best to add the </span><span
+      class="c8 c22">Modify: false</span><span class="c6">&nbsp;comment to prevent the users in the user interface from
+      changing the value of the primary key. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.nmlmws4iot8t"><span class="c5">Declaring corresponding search engine unique keys</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c8 c22">/**<br> * UniqueKey: true<br> **/</span><span
+            class="c8 c12"><br></span><span class="c4">protected</span><span class="c8 c12">&nbsp;</span><span
+            class="c4">void</span><span class="c8 c12">&nbsp;</span><span class="c2">_solrId</span><span
+            class="c8 c12">(Wrap&lt;String&gt; w) {<br></span><span class="c8">&nbsp; </span><span
+            class="c4">if</span><span class="c8">(pk != </span><span class="c4">null</span><span class="c8">)<br> &nbsp;
+            &nbsp;w.o(String.format(</span><span class="c2">&quot;%s_%s&quot;</span><span class="c26 c8 c12 c23">,
+          </span></p>
+        <p class="c21"><span class="c26 c8 c12 c23">&nbsp; &nbsp; &nbsp; &nbsp; getClass().getSimpleName(),</span></p>
+        <p class="c21"><span class="c8">&nbsp; &nbsp; &nbsp; &nbsp; pk.toString()));<br></span><span
+            class="c8 c12">}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span class="c6">A database table should always have a primary key, and search engine records also have
+      unique keys. Database primary keys are per database table, and the same database primary key can exist in multiple
+      tables. Search engine unique keys are inherently different from database primary keys because all search engine
+      models share the same search engine collection. Search engine unique keys are usually a String combination of the
+      name of the model combined with the primary key value. It&#39;s important that every search engine record has a
+      unique key and database primary key. The main reason is to replace the same search engine document every time the
+      corresponding database record changes in the same database transaction. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.4ii51to7ti42"><span class="c5">Declaring model other unique ID fields</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c8 c22">/**<br> * DocValues: true<br> * Persist: true<br> * VarId: true<br>
+            **/</span><span class="c8 c12"><br></span><span class="c4">protected</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">void</span><span class="c8 c12">&nbsp;</span><span
+            class="c2">_name</span><span class="c8 c12">(Wrap&lt;String&gt; w) {}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Many data models have more than one unique key, in addition to an autoincrementing big integer.
+      It&#39;s common to enforce a unique String to each instance of a model. This is an example declaring a unique
+      variable </span><span class="c2">name</span><span>. SPINE Programming will set up the database schema to enforce
+      the uniqueness of the </span><span class="c2">name</span><span class="c6">. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c4">ALTER</span><span class="c8 c12">&nbsp;</span><span class="c4">TABLE</span><span
+            class="c8 c12">&nbsp;</span><span class="c8">Book</span><span class="c8 c12">&nbsp;</span><span
+            class="c4">ADD</span><span class="c8 c12">&nbsp;</span><span class="c4">COLUMN</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">IF</span><span class="c8 c12">&nbsp;</span><span
+            class="c4">NOT</span><span class="c8 c12">&nbsp;</span><span class="c4">EXISTS</span><span
+            class="c8 c12">&nbsp;</span><span class="c8">name</span><span class="c8 c12">&nbsp;</span><span
+            class="c4">text</span><span class="c8 c12">&nbsp;</span><span class="c4">UNIQUE</span><span
+            class="c8 c12">;</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>The </span><span class="c8 c22">VarId: true</span><span>&nbsp;comment has significance to APIs and
+      web pages that access one model instance at a time. A </span><span class="c2">GET</span><span>&nbsp;and
+    </span><span class="c2">DELETE</span><span>&nbsp;API or webpage for every model instance requires one unique ID.
+      Additional unique model variables can be added to other SPINE discs with a comment </span><span
+      class="c8 c22">Unique: true</span><span class="c6">. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.z8nh3uyp971"><span class="c5">Foreign Key relationships in data models</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c4">public</span><span class="c8 c12">&nbsp;</span><span
+            class="c4">class</span><span class="c8 c12">&nbsp;</span><span class="c2">Project</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">extends</span><span class="c8 c12">&nbsp;</span><span
+            class="c2">ProjectGen</span><span class="c8 c12">&lt;</span><span class="c2">BaseModel</span><span
+            class="c8 c12">&gt; {<br> &nbsp;</span><span class="c8 c22">/**<br> &nbsp; * DocValues: true<br> &nbsp; *
+            Persist: true<br> &nbsp; * DisplayName: cluster auth resource<br> &nbsp; * Description: The unique
+            authorization resource for multi-tenancy<br> &nbsp; * Relate: Cluster.clusterResource<br> &nbsp;
+            **/</span><span class="c8 c12"><br> &nbsp;</span><span class="c4">protected</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">void</span><span class="c8 c12">&nbsp;</span><span
+            class="c2">_clusterResource</span><span class="c8 c12">(Wrap&lt;String&gt; w) {<br> &nbsp;
+            &nbsp;w.o(String.format(</span><span class="c2">&quot;%s-%s-%s-%s&quot;</span><span class="c8 c12">,
+            Hub.CLASS_AUTH_RESOURCE, hubId, Cluster.CLASS_AUTH_RESOURCE, clusterName));<br> &nbsp;}<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>A developer can create foreign key relationships between two &nbsp;models. This example is a
+      foreign key relationship in AI Telemetry between the Project and the Cluster model (Tate, 2025a). In Red Hat
+      OpenShift, there are many projects in a cluster. The Project model in this code is related directly to the
+    </span><span class="c8 c22">Cluster.clusterResource</span><span class="c6">&nbsp;SPINE disc of the Cluster model
+      below. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c4">public</span><span class="c8 c12">&nbsp;</span><span
+            class="c4">class</span><span class="c8 c12">&nbsp;</span><span class="c2">Cluster</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">extends</span><span class="c8 c12">&nbsp;</span><span
+            class="c2">ClusterGen</span><span class="c8 c12">&lt;</span><span class="c2">BaseModel</span><span
+            class="c8 c12">&gt; {<br> &nbsp;</span><span class="c8 c22">/**<br> &nbsp; * DocValues: true<br> &nbsp; *
+            Persist: true<br> &nbsp; * DisplayName: cluster auth resource<br> &nbsp; * Description: The unique
+            authorization resource for the cluster for multi-tenancy<br> &nbsp; * VarId: true<br> &nbsp; *
+            AuthorizationResource: CLUSTER<br> &nbsp; * Unique: true<br> &nbsp; **/</span><span class="c8 c12"><br>
+            &nbsp;</span><span class="c4">protected</span><span class="c8 c12">&nbsp;</span><span
+            class="c4">void</span><span class="c8 c12">&nbsp;</span><span class="c2">_clusterResource</span><span
+            class="c8 c12">(Wrap&lt;String&gt; w) {<br> &nbsp; &nbsp;w.o(String.format(</span><span
+            class="c2">&quot;%s-%s-%s-%s&quot;</span><span class="c8 c12">, Hub.CLASS_AUTH_RESOURCE, hubId,
+            Cluster.CLASS_AUTH_RESOURCE, Optional.ofNullable(clusterName).orElse(</span><span
+            class="c2">&quot;&quot;</span><span class="c8 c12">)));<br> &nbsp;}<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Notice that the </span><span class="c2">clusterResource</span><span>&nbsp;of the </span><span
+      class="c2">Cluster</span><span>&nbsp;model is the </span><span class="c8 c22">VarId</span><span>&nbsp;unique ID
+      for this model, and has a </span><span class="c8 c22">Unique: true</span><span>&nbsp;comment to enforce
+      uniqueness. The </span><span class="c2">clusterResource</span><span>&nbsp;of the </span><span
+      class="c2">Project</span><span>&nbsp;model has a </span><span class="c8 c22">Relate:
+      Cluster.clusterResource</span><span>&nbsp;comment, creating a foreign key relationship in the database between the
+    </span><span class="c2">Project</span><span>&nbsp;and the </span><span class="c2">Cluster</span><span class="c6">.
+    </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.njddt23yprna"><span class="c5">Multitenancy access control to model data</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c8 c22">/**<br> * DocValues: true<br> * Persist: true<br> * DisplayName: cluster
+            auth resource<br> * Description: The unique authorization resource for the cluster for multi-tenancy<br> *
+            AuthorizationResource: CLUSTER<br> * Relate: Cluster.clusterResource<br> **/</span><span
+            class="c8 c12"><br></span><span class="c4">protected</span><span class="c8 c12">&nbsp;</span><span
+            class="c4">void</span><span class="c8 c12">&nbsp;</span><span class="c2">_clusterResource</span><span
+            class="c8 c12">(Wrap&lt;String&gt; w) {<br> &nbsp;w.o(String.format(</span><span
+            class="c2">&quot;%s-%s-%s-%s&quot;</span><span class="c8 c12">, Hub.CLASS_AUTH_RESOURCE, hubId,
+            Cluster.CLASS_AUTH_RESOURCE, clusterName));<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Access control to separate tenants, which are unrelated teams from different organizations, can be
+      achieved through SPINE Programming data models with the </span><span
+      class="c8 c22">AuthorizationResource</span><span>&nbsp;comment on a SPINE disc. This example is a unique String
+      field that represents the specific permission in Keycloak that is directly linked to the tenant owning the
+    </span><span class="c2">clusterResource</span><span>. in AI Telemetry platform (Tate, 2025b). To access a model, a
+      user must have this specific permission related to the cluster, or the user will not have access to the resource.
+      A user can be granted permissions directly to the project, or to all projects of a </span><span
+      class="c2">Cluster</span><span>&nbsp;with the the </span><span class="c8 c22">AuthorizationResource:
+      CLUSTER</span><span>&nbsp;comment on this SPINE disc. The Cluster model by default is assigned a resource name
+    </span><span class="c8 c22">CLUSTER</span><span>, but this can be customized. Authorization resources are uppercase
+      letters, to help distinguish it from IDs, which in general are lowercase and hyphenated. The user must have
+      permissions to the exact </span><span class="c2">clusterResource</span><span class="c6">&nbsp;specified in the
+      model data. The setup of these permission checks is all generated by the SPINE Programming watcher service, into
+      the generated Java API for the model. &nbsp;</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.didw0lwsulza"><span class="c5">Other significant model variables</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c8 c22">/**<br> * VarCreated: true<br> * DocValues: true<br> * Persist: true<br> *
+            Modify: false<br> **/</span><span class="c8 c12"><br></span><span class="c4">protected</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">void</span><span class="c8 c12">&nbsp;</span><span
+            class="c2">_created</span><span class="c8 c12">(Wrap&lt;ZonedDateTime&gt; w) {}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>One of the other significant model variables that should be defined in a SPINE Programming model
+      is a </span><span class="c2">created</span><span>&nbsp;timestamp. Generally this is a </span><span
+      class="c8">ZonedDateTime</span><span>&nbsp;type with a </span><span class="c8 c22">VarCreated: true</span><span
+      class="c6">&nbsp;comment. The other comments specify that it&#39;s persisted in the database, and the search
+      engine, and not modified. SPINE Programming automatically handles constructing the created timestamp automatically
+      when a model instance is created. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c8 c22">/**<br> * VarModified: true<br> * DocValues: true<br> * Modify: false<br>
+            **/</span><span class="c8 c12"><br></span><span class="c4">protected</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">void</span><span class="c8 c12">&nbsp;</span><span
+            class="c2">_modified</span><span class="c8 c12">(Wrap&lt;ZonedDateTime&gt; w) {<br>
+            &nbsp;w.o(ZonedDateTime.now(</span></p>
+        <p class="c21"><span class="c8">&nbsp; &nbsp; &nbsp; </span><span class="c8">ZoneId.of</span><span
+            class="c26 c8 c12 c23">(siteRequest_.getConfig()</span></p>
+        <p class="c21"><span class="c8">&nbsp; &nbsp; &nbsp; </span><span
+            class="c8 c12">.getString(ConfigKeys.SITE_ZONE))));<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>The </span><span class="c2">modified</span><span>&nbsp;SPINE disc contains the </span><span
+      class="c8 c22">VarModified: true</span><span>&nbsp;comment. The </span><span class="c8 c22">Modify:
+      false</span><span class="c6">&nbsp;comment prevents users from modifying the timestamp in the user interface. It
+      is indexed and stored in the search engine, but not persisted in the database. This is recommended because
+      denormalized calculated data can be updated over time, without any changes to the database normalized data.
+      Recalculating denormalized data should result in an updated modified timestamp. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c8 c22">/**<br> * VarName: true<br> * DocValues: true<br> * Persist: true<br>
+            **/</span><span class="c8 c12"><br></span><span class="c4">protected</span><span
+            class="c8 c12">&nbsp;</span><span class="c4">void</span><span class="c8 c12">&nbsp;</span><span
+            class="c2">_name</span><span class="c8 c12">(Wrap&lt;String&gt; w) {<br>}</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span>Data driven-websites built with SPINE Programming are built with a search engine, and provide
+      application search and autosuggest features out of the box for every instance of every model in the site. A name
+      variable provided by the </span><span class="c8 c22">VarName: true</span><span>&nbsp;comment provides a name for
+      every search result. A </span><span class="c8 c22">VarDescription: true</span><span>&nbsp;is added to a separate
+      variable to provide a description for every search result. A </span><span class="c8 c22">VarTitle:
+      true</span><span>&nbsp;is added to a separate variable, and usually composed of the </span><span
+      class="c8 c22">VarName</span><span class="c6">&nbsp;variable, to provide a title for the page of every model
+      instance. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>The most important SPINE disc code comments have been described above, but this is not a
+      comprehensive list. There are other useful features like configuring BigDecimal precision and rounding in code
+      comments for example. Additional information about all the features will become available at </span><span
+      class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://spineprogramming.com&amp;sa=D&amp;source=editors&amp;ust=1772815895646074&amp;usg=AOvVaw396QcafYKTHlpuVo8qxn-n">spineprogramming.com</a></span><span
+      class="c6">. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.h1sf1c6zhuu9"><span class="c5">SPINE PROGRAMMING THEORY (SPT) &nbsp;LITERACY RESOURCES</span>
+  </h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>SPINE Programming literacy resources are available for the SPINE Programming projects currently in
+      development and production. This includes literacy resources for Smart Aquaculture platform development, AI
+      Telemetry Observability of cloud environments, and build your own brand sites like </span><span class="c14"><a
+        class="c20"
+        href="https://www.google.com/url?q=http://computate.org&amp;sa=D&amp;source=editors&amp;ust=1772815895647042&amp;usg=AOvVaw2qPT56uScJUqv44b0JYH4b">computate.org</a></span><span>.
+      These resources at </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://spineprogramming.com&amp;sa=D&amp;source=editors&amp;ust=1772815895647205&amp;usg=AOvVaw10G9PEaG4WA9bN3Dngc_Ki">spineprogramming.com</a></span><span
+      class="c6">&nbsp;are useful for cloud application developers writing and deploying their applications to Red Hat
+      OpenShift and Kubernetes, helping developers with workforce outcomes. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Kubernetes literacy consists of cybersecurity outcome and operational cloud native
+      training. SPT includes concepts of zero trust, a Department of War infrastructure requirement and the standard
+      protocol for such implementation. Literacy of Kubernetes is a challenging workforce outcome critical to national
+      interests, because critical infrastructure needs protection and security from global hacking or cyber threats. The
+      DARPA considerations of self healing exist in SPT and especially in multiple tenant circumstances of
+      infrastructure protection. The cybersecurity professional pipeline would benefit and evolve. Specifically, in the
+      case of the Smart Aquaculture platform it could evolve into maritime cybersecurity training as a potential roadmap
+      for such supply chains that might potentially lower operational costs long term. Such workforce development is
+      possible with any SPT industrial application. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.rvqnbedygw6z"><span class="c5">SPINE PROGRAMMING IS DIFFERENT THAN VIBE CODING</span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Vibe Coding, which is &quot;guiding the AI agent through an iterative dialogic process
+      of repeated code generating prompts&quot; (Horvat, 2025), is not the same as SPINE Programming. &nbsp;SPINE
+      Programming is writing data models as code, and writing the needed features of the model into the code comments,
+      so that the code generation service can automatically write the majority of the code for the developer. Compared
+      to vibe coding, which can be non-deterministic, SPINE Programming has defined rules and constraints identified
+      earlier, requires strict language typing and inheritance that will result in errors in the watcher service log, or
+      no code generation actions at all if done incorrectly. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.whcz3q9a7pfb"><span>Deterministic</span><span>&nbsp;</span><span class="c5">in polynomial
+      time</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">A vibe coding LLM is trained to identify coding problems from code sources on the
+      Internet, related to specific code languages (Nascimento et al, 2024), which requires expensive neural network
+      logic and efficient memory. Code problems can be non-deterministic requiring more compute resources that lead to
+      no solution. SPINE Programming is deterministic because it is based on modelling specific business requirements
+      and key valuable performance indicators that an organization wants to track as data and decision making dashboards
+      and APIs. A developer listens to business requirements, and builds the data models into a custom data-driven
+      website platform for the organization. The SPINE Programming watcher service sees when code is created or
+      modified, indexes the codebase, and generates the needed code. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">When you index your codebase in a search engine, you gain the advantage of the fastest
+      possible query to the details of your code. This allows the SPINE Programming watcher service to identify the
+      class imports, related foreign key relations, to bring into the new models to link together the whole platform
+      into a working solution. SPINE Programming also links together Java classes that inherit base classes from other
+      projects. Every SPINE Programming project is indexed into the same search engine collection. This provides one
+      source for all knowledge of all your projects. The reason for a searchable knowledge base of all your code is to
+      fill in the gaps of your codebase automatically, based on what code is already available. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">When indexing an existing SPINE Programming project for the first time, the SPINE
+      Programming platform knows to index each code file in the project, then index each code file a second time, then
+      index each code file a third time. This is because code contains many-to-many relationships. One Java class can
+      import a second Java class, and the second Java class can import the first Java class with circular imports. SPINE
+      Programming figures out these relationships after repeating the indexing of the whole code base 3 times. It&#39;s
+      not required to reindex the whole code base 3 times once the project is set up with SPINE Programming. When new
+      SPINE Programming features are developed, adding a new feature, or fixing a bug, the SPINE Programming updates
+      itself automatically to integrate the new features. If there are N number of Java classes in a SPINE Programming
+      project, there aren&#39;t any algorithms in SPINE Programming that go beyond 3&times;N polynomial computation time
+      to generate the working initialization code and API. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.k3glm7kngly6"><span class="c5">Providing AI code generation safety</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The local sovereign AI code generation design provides an ethical and repeatable
+      solution for individual software developer safety and data sovereignty outcomes for each individual SPINE
+      Programming project. Software developers must navigate AI risk when using AI to generate their code. Software
+      developers frequently download thousands of software packages to allow Agentic AI to install packages and generate
+      their code for them. Developers could easily become affected by recent attacks on the software developer
+      community, including Sha1-Hulud NPM worm version 1 and version 2 (Ramati et al, 2025), and the React2Shell
+      vulnerability (National Vulnerability Database, 2025). </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Developers using Agentic AI to generate code for them need to be constantly vigilant,
+      checking their system for vulnerabilities with tools such as the Incident Response Shai-Hulud Package Check Python
+      script provided by Red Hat (Red Hat Information Security, 2025). Red Hat takes an open approach to vulnerability
+      management and security into their product support lifecycle (Red Hat Product Security Team, 2021), which is why
+      SPINE Programming is specifically set up to run on Red Hat OpenShift. Red Hat also has principals for navigating
+      AI risk to build trusted AI programming projects (Isaksson, Nuland, 2025). This provides the highest level of
+      security available from the enterprise open source software community. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming does not use Agentic AI servers to generate code. No expensive GPUs
+      are required. Instead, all code generation happens directly on the developer&#39;s computer. The Java dependencies
+      required to perform code generation are simple Java system dependencies that have remained unchanged for decades.
+      A local AI agent watcher service, provided by the Java java.nio.file.WatchService, is set up to watch the
+      programmer&rsquo;s code project directories for created and modified file events, which has kept the dependencies
+      required for SPINE Programming very small and maintainable over time for over 13 years. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.88jxhta982ko"><span>CHALLENGES</span><span>&nbsp;ADDRESSED THROUGH SPINE PROGRAMMING</span>
+  </h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Using a Design Science Research approach coupled with Empirical Case studies this paper aims to
+      show the value of SPINE programming as a real world solution. This section highlights the challenges addressed
+      through SPINE Programming. From a literature review it was determined that the combined use of Zero
+      trust</span><span>&nbsp;</span><span>APIs, data-driven websites, and Digital Twins generated with local AI SPINE
+      Programming</span><span class="c6">&nbsp;Theory on a single platform is a unique and unprecedented approach to
+      Kubernetes integration with artificial intelligence. This paper argues that this unique formulation of all of
+      these capabilities is a powerful real world solution that will help enterprises move faster, reduce costs, and
+      modernize in accordance with existing USA AI related policy.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The challenges to reduce cost, move faster and modernize are discussed in terms of
+      noted topics of literary review. Topics discussed are various angles of software engineering, automatic
+      programming, human-computer interaction, HCI, generative AI, zero trust architecture, cloud security, multi-tenant
+      environments, adaptive feedback loops, and open source geospatial tools are included in an enterprise ready, event
+      driven architecture that is production ready for global consumption.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Here, the world is invited to test out, reconstitute, and challenge the validity of all concepts
+      and contribute to the </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://spineprogramming.com&amp;sa=D&amp;source=editors&amp;ust=1772815895664522&amp;usg=AOvVaw3H1iZWlhFP46tHaSEjgjAD">spineprogramming.com</a></span><span
+      class="c6">&nbsp;open source community with its empirical findings. As such this effort is an initial step of
+      design science research intended to increase the speed, trustedness, and &nbsp;validate outcomes of Kubernetes
+      innovation for adoption.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Simply, this form of human-computer interaction allows successful implementation where
+      a developer may write 2% of the code and the AI of SPINE Programming Theory writes 98% of the rest of the code in
+      regulatory and cybersecurity compliance outcomes. Vibe coding does not have this capability.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.1o70t943kl97"><span class="c5">Feedback loops</span></h2>
+  <p class="c0 c9"><span class="c16 c17"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming Theory is the &ldquo;Real McCoy&rdquo; of event driven architecture
+      in reference to Elijah McCoy who placed feedback controls systems theory in modern mechanics (robotics) before
+      sensor use, which was forgotten in 1872 as feedback loops. Ironically, feedback loops are the mainstay of modern
+      Kubernetes paradigms of dynamic control, response and event driven architecture. </span></p>
+  <p class="c0 c9"><span class="c16 c17"></span></p>
+  <p class="c0"><span class="c6">In 1948, mathematician Norbert Wiener published his seminal book, &quot;Cybernetics: Or
+      Control and Communication in the Animal and the Machine,&quot; (Wiener, 2019) discussed &nbsp;the mathematical
+      concept of a feedback loop that was physically built by Elijah McCoy 76 years prior. SPINE Programming Theory has
+      dynamic feedback loops that offer an intelligence for access, trunk based development in a zero trust manner that
+      can be a powerful edge tool for heterogeneous compute. Hence, the future of SPINE discs could lead to concepts of
+      validated patterns for greater degrees of applied, industrialized, or AI factory event driven architecture where
+      the order of feedback loops is validated.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">In addition, SPT may lower operational costs with the use of a highly advanced system
+      of feedback loops that ensure its focus and event driven response to achieve operation key performance indicator
+      outcomes. SPT adoption may lead to a reduction in site reliability engineering tasks because AI can be successful
+      in essential lifecycle needs. With AI generated code on the rise within organizations, it&#39;s difficult for
+      software developers to maintain and understand software. SPINE programming addresses this by simplifying the
+      complex generation of API and access control code based on fine-grained access control rules for each model class.
+    </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Strategically, in terms of modernization, SPT consists of highly interdisciplinary
+      skills across data science, software engineering, HCI, artificial intelligence, etc, that challenges siloed
+      disciplinary thinking unable to grasp the combination of event driven architecture with automation. The SPINE
+      Programming approach to building zero trust applications with real-time telemetry-driven feedback loops that are
+      deployed on Kubernetes is an example of auto-tuning AI cloud applications which create self-regulating and agile
+      AI applications within scalable cloud deployments (Sahoo et al, 2025). This open source commitment to building
+      secure cloud applications can compete against any set of proprietary competitors with modernization consistent at
+      the highest levels of security and cyberinfrastructure considerations of self-healing and Kubernetes multi-tenancy
+      robustness. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.selkntpv7hsl"><span class="c5">Modelling customer needs and business challenges</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The value proposition for SPINE Programming is that its speed of operation and
+      lifecycle management is proven sustainable in an enterprise and event driven environments. SPINE Programming is
+      used for rapidly modelling customer needs through building a digital twin as code. Businesses have key performance
+      indicators that they need help to model and optimize as a digital twin. A model is given a simple name, and a Java
+      Class is created for the model. The software developer writes Java Class comments as YAML to describe the order
+      this model should appear in several places&mdash;from the user interface, the API spec, the database schema. A
+      short description is given to the data model. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The pages and APIs related to the model are also defined as YAML in the code comments.
+      The developer can define pages for viewing and patching all the instances of the model, and edit pages for
+      patching one instance of a model. REST APIs to POST, PATCH, GET, DELETE, and PUT (import) instances of the model
+      as JSON, and specify the access control group scopes. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Developers can learn from the customer about the personas who will interact with the
+      application in development, and define the authorization groups and scopes for creating, viewing, and patching
+      instances of the model. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.h9xee8t000l3"><span class="c5">Declarative order of constraints</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Because data models often have dependencies on other data models, there is an order of
+      constraints that needs to be applied to the models and the model fields that are defined in SPINE Programming
+      projects. Models are given a default search order, but can be reordered as necessary, with an order that makes
+      more sense to the organization. The reasons for ordering data models include ordered database schema definitions,
+      ordered user interface navigation, and ordered Open API Schemas. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">When defining data models in a database schema, database models without any foreign key
+      dependencies should be defined first. Database models with foreign key relations should be defined after their
+      dependencies. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.zcog4r8kxdoe"><span class="c5">Code indexing</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Code indexing is a fundamental challenge in modern software systems due to the
+      exponential growth of repositories, libraries, and code dependencies. Efficient indexing must handle syntactic
+      structure, semantic meaning, and contextual relationships between components. Traditional text-based indexing
+      methods are insufficient for code, as programming languages involve abstract syntax trees, control flow, and data
+      dependencies that require more advanced representations.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">From an academic perspective, code indexing intersects computer science, linguistics,
+      and information retrieval. Research explores graph-based models, embeddings, and machine learning-driven indexing
+      approaches to improve search accuracy. Interdisciplinary cooperation with cognitive science has also shaped how
+      developers interact with code, influencing the design of intelligent search systems that attempt to mirror human
+      reasoning when navigating complex codebases. SPINE Programming automatically indexes all code in a project for
+      introspection and code generation. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.scnzhmtt23up"><span class="c5">Code generation</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Code generation systems aim to automatically produce executable code from high-level
+      requirements, specifications, or natural language input. This process introduces challenges related to
+      correctness, security, maintainability, and alignment with user intent. Generated code must not only compile but
+      also adhere to logical constraints and design patterns, which requires a deep understanding of programming
+      semantics and contextual awareness. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Academically, code generation draws from artificial intelligence, software engineering,
+      and linguistic theory. Machine learning models, particularly neural networks, attempt to capture patterns from
+      vast code corpora. Meanwhile, formal methods research focuses on ensuring correctness through verification.
+      Philosophical discussions regarding automation also arise, examining whether code generation augments human
+      intelligence or risks reducing developers to passive supervisors. Platforms built with SPINE Programming on
+      average are between 96% - 98% AI generated code, &nbsp;which is an increase in software development productivity
+      up to 4900%. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.pmmms343w4ry"><span class="c5">Java API generation</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The automatic generation of Java APIs with SPINE Programming involves designing program
+      interfaces that are both functional and intuitive for developers. Challenges include ensuring backward
+      compatibility, properly modeling object-oriented concepts, and generating methods that are consistent with
+      established design conventions. Poorly generated APIs can hinder software adoption and create long-term
+      maintenance issues across dependent systems. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">From an interdisciplinary viewpoint, Java API generation combines software architecture
+      with human-computer interaction studies. Academics study how interface design affects usability and learning
+      curves for developers. Additionally, insights from psychology influence how developers mentally model APIs,
+      leading to improved API designs that are easier to navigate, understand, and integrate into complex enterprise
+      applications. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.7jlx3pi3gdx8"><span class="c5">Database schema generation</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Database schema generation refers to the automatic creation of structured data models
+      based on application requirements or data examples. The primary challenge lies in accurately mapping unstructured
+      input into normalized schemas without introducing redundancy or inconsistency. An improperly designed schema can
+      significantly reduce performance, scalability, and data integrity over time. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">In academic research, schema generation connects data science, mathematics, and
+      information systems theory. Entity-relationship modeling is supplemented by machine learning techniques that
+      detect hidden patterns in data. Interdisciplinary approaches also borrow from organizational theory, recognizing
+      that databases must reflect real-world processes and institutional constraints, not just abstract technical
+      requirements. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c4">CREATE</span><span class="c8">&nbsp;</span><span class="c4">TABLE</span><span
+            class="c8">&nbsp;</span><span class="c4">IF</span><span class="c8">&nbsp;</span><span
+            class="c4">NOT</span><span class="c8">&nbsp;</span><span class="c4">EXISTS</span><span
+            class="c8">&nbsp;Boat();</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span class="c6">After SPINE Programming data models, all the information about the models and the
+      database tables, database columns, primary keys, and unique keys has been stored in the search engine. This data
+      is easily used to generate a complete database schema automatically, for all the models. These database schemas
+      create tables in the declared order without creating any table columns if the table does not already exist.
+    </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <table class="c24">
+    <tr class="c25">
+      <td class="c13" colspan="1" rowspan="1">
+        <p class="c21"><span class="c4">ALTER</span><span class="c8">&nbsp;</span><span class="c4">TABLE</span><span
+            class="c8">&nbsp;Boat </span><span class="c4">ADD</span><span class="c8">&nbsp;</span><span
+            class="c4">COLUMN</span><span class="c8">&nbsp;</span><span class="c4">IF</span><span
+            class="c8">&nbsp;</span><span class="c4">NOT</span><span class="c8">&nbsp;</span><span
+            class="c4">EXISTS</span><span class="c8">&nbsp;pk bigserial primary </span><span class="c4">key</span><span
+            class="c8">;</span></p>
+      </td>
+    </tr>
+  </table>
+  <p class="c0"><span class="c6">Database table columns are created after the corresponding table is created, if the
+      column does not already exist. Database column uniqueness is automatically applied based on SPINE disc comments
+      explained earlier. A developer or cloud application can use the generated database schema to create all the
+      tables, columns, and indexes in one simple SQL file. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.dqet9bhvuxo4"><span class="c5">Open API generation</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">OpenAPI generation focuses on producing formal specifications that describe RESTful
+      services in a standardized and machine-readable format. The difficulty lies in maintaining synchronization between
+      implementation and documentation, ensuring accurate data models, and clearly expressing endpoint behaviors.
+      Inconsistencies in generated specifications can lead to integration failures across distributed systems.</span>
+  </p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">From a research standpoint, OpenAPI touches software engineering, documentation
+      science, and system modeling. Academic studies examine how specifications affect collaboration efficiency and
+      system interoperability. Interdisciplinary research involving technical communication highlights the importance of
+      clarity and consistency in API descriptions, reinforcing the idea that APIs serve both machines and human readers
+      alike. SPINE Programming automatically generates the entire OpenAPI specification for all defined APIs. </span>
+  </p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.b9eb78nc8zn5"><span>Zero trust</span><span class="c5">&nbsp;fine-grained access
+      control</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Zero trust</span><span class="c6">&nbsp;access control operates on the principle that no system
+      component should be inherently trusted. Implementing fine-grained security policies is challenging due to the
+      complexity of identifying user roles, behavioral patterns, and permissible access levels. Systems must
+      continuously authenticate and authorize entities while maintaining usability and performance.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The zero trust access control features used by SPINE Programming are provided by
+      Keycloak Authorization Services (Keycloak, 2025). SPINE Programming models are configured as public APIs or zero
+      trust APIs with fine-grained access control permissions as described in the &quot;Declaring access control
+      authorization groups&quot; section earlier. It&#39;s important to set up data APIs with the correct permissions
+      from the beginning. SPINE Programming makes it very easy to define a very secure application based on zero trust
+      from the beginning. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.by5nniluhx9g"><span class="c5">Multitenancy and data sovereignty</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The authorization resource multitenancy features described earlier allow administrators
+      of the application to control access to completely separate teams of users to different sets of data. Data models
+      are SPINE Programmed to grant access to any number of different tenants. AI Telemetry is an example of a project
+      that grants multitenancy at the hub level, cluster level, project level, and different organizations as tenants.
+      Which demonstrates the power of digital twins to work in a distributed, global environment, but also enforce data
+      sovereignty across organizations and teams. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Academically, this area connects cybersecurity, behavioral sciences, and legal studies.
+      Research investigates how human behavior contributes to vulnerabilities and how policy frameworks can be
+      translated into enforceable software rules. Ethical considerations also emerge, particularly concerning privacy
+      and surveillance, highlighting the tension between security needs and individual rights. A more intentional
+      interdisciplinary and interagency roadmap of energy efficient compute of edge outcomes could result from SPT
+      adoption. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>SPINE Programming addresses the America&#39;s AI Action Plan with its efficient use of computer
+      resources without the use of expensive proprietary GPUs, for the &quot;</span><span class="c6">creation of the
+      world&rsquo;s largest and highest quality AI-ready scientific datasets, while maintaining respect for individual
+      rights and ensuring civil liberties, privacy, and confidentiality protections&quot; (The White House, 2025). SPT
+      could spur further debate on decentralized data sovereign AI that permits a digital democratic representation
+      similar to Constitutional themes and reference to States rights, human rights, and balance of power designed by
+      the founders of the United States, that exists for occurrences naturally in edge data ingestions and the nature of
+      scientific discovery and debate. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.7409v9in8gkp"><span class="c5">Continuous event-driven architectures</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Continuous event-driven architectures respond in real time to data streams and system
+      changes. While they enhance responsiveness and scalability, they also present challenges in debugging, state
+      management, and fault tolerance. Tracking system behavior becomes difficult when execution is distributed across
+      asynchronous processes. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Interdisciplinary research draws from distributed systems&#39; theory, applied
+      mathematics, and systems engineering. Time-series analysis, statistical modeling, and chaos theory offer insights
+      into system stability. Social science perspectives also examine how organizations adapt workflows to event-driven
+      technologies, illustrating how technical choices reshape human decision-making processes. The Smart Aquaculture
+      and AI Telemetry platforms built with SPT are examples of event-driven architectures. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.dmc1obsbwbqc"><span class="c5">Interdisciplinary perspective, and academic perspective,
+      helping to become more interdisciplinary. </span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">An interdisciplinary approach enriches software engineering by incorporating methods
+      from sociology, psychology, philosophy, and design. Academic research increasingly acknowledges that software is
+      not merely technical infrastructure, but a socio-technical system shaped by human behavior, ethics, and culture.
+      Information or library digital infrastructure is often cited as a socio-technical tool as a necessary construct of
+      data behavior (Schweik et al, 2020). Here, SPINE programming is an industry paced interdisciplinary learning
+      supporting Kubernetes literacy and event driven architecture solutions. Collaborative research fosters tools that
+      are ethically sound, user-friendly, and socially responsible with ethics applied for positive data sovereign AI
+      outcomes. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Strategically, a SPT education model of adoption could include computer science,
+      library science, industrial engineering, black belt support, open science, Kubernetes foundations, open source
+      foundations and any workflow of a needed industrial process with key performance indicators and desire speed and
+      scale of operations for optimized implementation for AI factory or industrial supply chain implementation that
+      could potentially outperform any other system. Such is because by nature a digital twin approach has the ability
+      after system calibration to take scenarios and provide a strategic future predictive analysis or realistic
+      scenarios for futuristic and probabilistic analysis of future maintenance or operational bottlenecks in similar
+      manner to traditional operations research. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Here, human trust of public data sources might increase in the normalization of
+      federated systems for public data consumption and need to be strategized &nbsp;for ingestion or streaming from
+      interdisciplinary research and innovation with experimental high school strategy for high school workforce
+      stimulation. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The digital simulation capacity in SPT is sustainable with open source software. Such
+      prevents vendor lock-in and offers robust workforce experiences of trunk based coding as a necessary open source
+      foundation where Kubernetes becomes a standard literacy tool to optimize interdisciplinary research, collaboration
+      and outreach towards increased &nbsp;federated or public data sharing behavior. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">From an academic perspective, interdisciplinary promotes innovation and resilience.
+      Research institutions encourage cross-disciplinary teams to solve complex problems. This integration creates a
+      broader understanding of technology&rsquo;s impact and helps engineers move beyond technical constraints to
+      consider long-term societal consequences, sustainability, and fairness. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.kjgg6oo1folq"><span class="c5">User interface and observability dashboards</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">User interfaces are difficult to build without years of experience in website design,
+      style, user experience, and backend integration. SPINE Programming can easily build a default user interface
+      scaffold for each model that integrates with the model APIs. These default user interfaces automatically extend
+      the generated user interface code with additional code templates that the developer can override and customize.
+      This allows teams to develop custom business logic on top of a default model scaffold in case the features or look
+      and feel require customization. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.b6xqqbj3bqap"><span class="c5">Data provenance and history of data</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The history of data models can be observed if metrics are reported to a monitoring
+      service like Prometheus. Collecting metrics requires a reliable distributed counter service like Zookeeper.
+      Because SPINE Programming already uses Zookeeper by default, we have developed a service to create any number of
+      dynamic metric counters for historical tracking of model data over time. The AI Telemetry platform is a platform
+      built with SPT providing historical data of cloud environment infrastructure metrics with time series models for
+      predictive analytics over time. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.emmrc7r5nx0d"><span class="c5">IS SPINE PROGRAMMING A COMMUNITY BASED SOLUTION FOR
+      PROGRAMMING? </span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>SPINE Programming Theory has been developed over 20 years since the first release of the Trail
+      Blaze Hunting Consultants &nbsp;</span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://trailblazehunt.com&amp;sa=D&amp;source=editors&amp;ust=1772815895706382&amp;usg=AOvVaw15Cl6-rLLxTfcijYtOxT1D">trailblazehunt.com</a></span><span
+      class="c6">&nbsp;data driven website (Tate, 2015), first built 20 years ago in 2015 with the earliest prototype of
+      the Computate SPINE Programming platform. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">As demonstrated in the Mass Open Cloud, who has a shared OpenShift AI project where
+      multiple developers across continents have been able to fork and develop their own contributions to an open source
+      project like AI Telemetry in individual VSCode development workbenches in the cloud. The AI Telemetry platform is
+      9,819 lines of hand written code, with 289,519 lines of AI generated code through SPINE Programming &mdash; 3.391%
+      hand written, and 96.608% AI generated (Tate, 2025c). </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>The Smart Aquaculture platform</span><span class="c6">, which is a digital twin for fish
+      populations, fishing boats, and fishing docks, is 5,527 lines of hand written code, with 249,859 lines of AI
+      generated code through SPINE Programming &mdash; 2.212% hand written, and 97.788% AI generated (Tate, 2025e).
+      Digital twins are valuable in edge and IoT solutions to simulate the real world, before putting valuable
+      technology out in the environment, where devices and data can be stolen, or destroyed by weather, or disasters. It
+      also provides workforce training before bringing systems and processes online. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Here, SPINE Programming Theory will prove to be an effective means of filling gaps in
+      population workforce training where technology is not the forethought, and enables a pathway of adoption that
+      helps the speed of smart aquaculture or intelligent fisheries communities to strive for globally competitive
+      systems without being hindered by technology complexity. In the case of fish supply chain, new interdisciplinary
+      outcomes may emerge where the immediate need of solutions outweighs siloed academic and non-technology
+      transferring disciplines of engagement and adoption, because such workforce outcomes and sustainable workflows of
+      effective and dynamic decision making that can be derived from event driven compute infrastructures. Here, SPINE
+      Programming Theory offers data driven websites and digital twin outcomes to address and effectively communicate
+      complex outcomes to non-technical audiences. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>The </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://computate.org&amp;sa=D&amp;source=editors&amp;ust=1772815895712540&amp;usg=AOvVaw1yYCyRe3fu9ktFycUQQlZn">computate.org</a></span><span>&nbsp;platform,
+      which is an example of a build-your-own-brand site, is 5,650 lines of hand written code, with 227,600 lines of AI
+      generated code through SPINE Programming &mdash; 2.482% hand written, and 97.517% AI generated (Tate, 2025d). All
+      of these platforms built with SPINE Programming are between 2% - 4% hand written, &nbsp;which is an increase in
+      software development productivity up to 4900%. Creative developers and small businesses with their own ideas can
+      use the extreme productivity of SPINE Programming to bring their ideas from development to production, and
+      maintain sustainable operations. On average, the websites brought online with SPINE Programming at </span><span
+      class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://computate.org&amp;sa=D&amp;source=editors&amp;ust=1772815895714358&amp;usg=AOvVaw1I4PlR8eKljrkPhQ3q_YY6">computate.org</a></span><span
+      class="c6">&nbsp;(Tate, 2025f), go from business concepts, to development, to production in 6 months.
+      &nbsp;</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h1 class="c0 c10" id="h.jw2p5n7qjc7"><span>CONCLUSION</span></h1>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming is on-device, local, sovereign AI code indexing and code generation
+      for software developers. Indexing of source code happens directly in the search engine deployed locally on the
+      developer&#39;s own computer, or team cloud environment, which makes SPINE Programming a form of Sovereign AI.
+      Thus SPINE Programming Theory effectively promotes data driven websites with access control in complex
+      collaborative research environments like the Mass Open Cloud, and also entirely local on a developer&#39;s own
+      computer. The quality control of local research development can be managed with fine-grained access control and
+      organization structure and oversight, common in trunk based outcomes. SPINE Programming Theory may be labeled as
+      an extension of trunk based coding, open source platform development with rapid and custom learning for
+      socio-technical community issues. The local access for contributions may offer workforce opportunities where AI is
+      a vital tool in a secure environment. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE programmers can really focus on business features in their applications, and the
+      difficult part of writing secure code is done automatically. Every piece of generated code can be overwritten, or
+      extended, allowing complete flexibility to use or discard what is generated by SPINE Programming. SPINE
+      Programmers write 2% - 4% of the project&rsquo;s code by hand, and the other 96% - 98% of the code is AI
+      generated, resulting in 33 to 50 times faster software development on average. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming Theory has been used to build many digital twins from many different
+      domains. These digital twins are all built with access control featuring zero trust security from the beginning.
+      No user or service account can create, modify, or read any data in the system without being granted permissions to
+      access and change the data. &nbsp;This creates federated data spaces and multi-tenant environments where digital
+      twin data is secure, and can be shared across groups of users, tenants, and workforce cohorts. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Because scalable APIs built with zero trust are complex, SPINE Programming takes away
+      the complexity by AI generating the APIs for the developer that feature the business requirements for access
+      control groups and scopes, and delegating the work of checking permissions of each user and service account to the
+      identity provider service on every request. This makes every request an identity-aware request enforcing
+      microsegmentation, which is least-privilege access through granular, workload-level control (Kalejaiye, Shonubi,
+      2025). </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">SPINE Programming Theory was developed 20 years ago, and has been used for building
+      data driven websites since the very first website went online in 2015. This paper introduces the ability of SPINE
+      Programming to build data-driven websites to the scientific and academic community. This represents a teachable
+      moment in interdisciplinary outcomes where industry moves faster than academia and where the world of AI forces
+      academics to incorporate ethical and sustainable AI practices from sources not yet in print. Thus, a realization
+      of scholarship of open source as a digital norm must be the new data sovereign AI reality where tools like
+      data-driven websites begin to normalize as pedagogical or andragogical tools as suggested by this work. Thus, the
+      pace of AI continues to rapidly advance, data-driven websites may be the only practical medium that can capture,
+      compare, contrast, and provide a dashboard experience of AI, GPU or edge innovation as it matures in event driven
+      architecture. Inherently in data driven websites are data science, data workflows, potential simulations,
+      permutations of data, and a need for rapid problem solving, pertinent skills of a future workforce. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <h2 class="c0 c10" id="h.pkiffa5pjhoa"><span class="c5">The future of SPINE Programming</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">The future of computing will consist of the need for rapid development, deployment and
+      design of sustainable complex workflows in a distributed or trunk based manner. Here, open source institutions
+      such as GitOps, &nbsp;Continuous Integration (CI) and Continuous Delivery/Deployment (CD) (CI/CD) along with
+      continuous monitoring still remain as vital DevOps considerations. Applications built with SPINE Programming
+      Theory use these development tools for effective operations and workflows to achieve rapid value propositions of
+      targeted key performance indicators. Degrees of the future may be vastly more interdisciplinary due to AI adoption
+      and under a shorter academic period. CI/CD, continuous monitoring and the watcher may be described as examples of
+      feedback loops. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Moreover, SPINE Programming Theory can incorporate virtualized LLM, and AI heterogenous
+      compute use cases, as a present emphasis on open science use of Jupyter notebooks that is &nbsp;a preferred data
+      management tool consistent with Open Source Program Office efforts at many US institutions making its adoption the
+      next practical step. Whoever can train their Kubernetes and general workforce in complex outcomes to address
+      socio-technical issues at scale may achieve a global competitiveness, a Kubernetes zero trust capability
+      workforce, &nbsp;and SPINE Programming Theory may be the perfect tool for such outcomes. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Future SPT opportunities are vast and profound. In addition, future adoption of chat
+      bots and AI personalization are possible in SPT where greater granularity of applied AI may be possible with
+      virtualized LLM outcomes. Conceptually, a network of SPT digital twins could feed computing as federated edge
+      intelligence design. Workforce and university collaboration could utilize open source digital twins to ensure
+      human workforce critical pathways for global competitiveness outcomes as standard open source practice, removing
+      the need for dated text books use and providing data informatics experiences that begin in high school educational
+      themes centered on national interests with faculty open source tooling and support across disciplines. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Combination SPT education could make a trade of aquaculture supply chain operations and
+      infuse it with secure digital twins that federate drones for multiple use cases for next generation workforce
+      outcomes in high school experiences and projects based learning. In the future educational systems may be
+      infrastructure in need of secure, zero trust rapid deployment and low cost implementation to scale next generation
+      workforce outcomes. Specifically, the American society has never been challenged to innovate with reduced energy
+      costs and efficient cooperative or open source community ownership. If global elite wealth is decentralized, then
+      so should next generational combinational SPT high school learning outcomes towards global competitiveness for
+      global citizens. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Areas such Telco, AI-RAN, vehicles fleet intelligence and edge computing are strategic
+      SPT theaters of consideration. Digital twin optimization could result in lower operational costs making technology
+      more affordable and sustainable for small business adoption. The predictive analytical per a set of key
+      performance indicators are the major benefits of the SPT approach. </span></p>
+  <p class="c0 c9"><span class="c16 c17"></span></p>
+  <h2 class="c0 c10" id="h.a6hpum2eolda"><span class="c5">Call to action</span></h2>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">To move society towards more rapid collaborative outcomes, data driven websites and
+      digital twins could be the proper stepping stones. Specifically, institutional advancement may be rooted in the
+      computational speed of national tools of computing and collaboration for socio-technical outcomes. Here, SPINE
+      Programming Theory represents an opportunity for open source, trunk based &nbsp;learning, a critical augmentation
+      pipeline of workforce interests where speed, security, and the ability to have distributed learning as tools
+      advancing complex problem solving outcomes. If there is a need for a group collaboration of problem solving in a
+      secure manner, then SPINE programming offers such a development path. Its self healing ability alone, provides
+      structural oversight and potential ethical guardrails of adoptions where needed. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>The adoption of SPINE Programming Theory could be a strategic tool for small business
+      operationalization and economic industrial zone outcomes championed by the second Trump administration in many of
+      its AI related workforce targets referenced in its policy. </span><span class="c3">Garber (1999) inferred that
+    </span><span class="c11 c36">John F. Kennedy&rsquo;s view of the 1957 Sputnik launch was one of strategic alarm and
+      political opportunity. </span><span>As President Kennedy saw Sputnik in space and then invested in education to
+      spur scientific research; SPINE Programming Theory represents a capacity for rapid, secure, interdisciplinary
+      research, workforce training to assist academia towards industry-paced outcomes towards global competitiveness in
+      an open source manner, applicable to any industry at a lower cost with zero trust capable with a free access entry
+      point on multiple platforms that includes Linux platforms and Microsoft Windows. </span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Moreover, SPINE Programming Theory as evidenced in the AI Telemetry</span><span>&nbsp;platform
+    </span><span>&nbsp;demonstrates fine-grained access, observability in a GPU or heterogeneous environment. In
+      addition, SPINE programming can perform AI tasks without a GPU, greatly lowering costs. A call of action should
+      move complex collaborative SPINE Programming Theory towards formal adoption as a pathway for increased global
+      competitive outcomes for increased industrial or supply chain capacity where a future workforce needs an optimized
+      workforce parameter with faculty compliance, training, policy, and experiences with open source security protocols
+      represented at </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=http://spineprogramming.com&amp;sa=D&amp;source=editors&amp;ust=1772815895739579&amp;usg=AOvVaw1XUXf56rnp86UWO7mA3mxy">spineprogramming.com</a></span><span>.</span>
+  </p>
+  <hr style="page-break-before:always;display:none;">
+  <p class="c0 c9"><span class="c16 c12 c15"></span></p>
+  <h1 class="c0 c10" id="h.tk00tmkwkpmg"><span class="c5">REFERENCES</span></h1>
+  <p class="c0 c9"><span class="c16 c12 c15"></span></p>
+  <p class="c0"><span>Apache Solr (2025). DocValues. Apache Solr Reference Guide. Available at: </span><span
+      class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://solr.apache.org/guide/solr/latest/indexing-guide/docvalues.html&amp;sa=D&amp;source=editors&amp;ust=1772815895740695&amp;usg=AOvVaw2oVcu24U6hWiicz2TaWRnY">https://solr.apache.org/guide/solr/latest/indexing-guide/docvalues.html</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>FIWARE (2021). FIWARE for Digital Twins. FIWARE. Available at: </span><span class="c14"><a
+        class="c20"
+        href="https://www.google.com/url?q=https://www.fiware.org/wp-content/uploads/FF_PositionPaper_FIWARE4DigitalTwins.pdf&amp;sa=D&amp;source=editors&amp;ust=1772815895741231&amp;usg=AOvVaw2B1lX8epOw-WcyS33Hr0Ta">https://www.fiware.org/wp-content/uploads/FF_PositionPaper_FIWARE4DigitalTwins.pdf</a></span><span
+      class="c6">&nbsp;[Accessed 29 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>FIWARE (2025). Smart Data Models. GitHub. Available at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://github.com/smart-data-models&amp;sa=D&amp;source=editors&amp;ust=1772815895741621&amp;usg=AOvVaw0SNahhdga8kSDgLvzPsCka">https://github.com/smart-data-models</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Garber, S. J. (1999). Multiple Means to an End: A Reexamination of President
+      Kennedy&#39;s Decision to Go to the Moon. Quest: The History of Spaceflight Quarterly, 7(2), 5-16.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Hafeez, M. A., Procacci, A., Coussement, A., &amp; Parente, A. (2024). Challenges and
+      opportunities for the application of digital twins in hard-to-abate industries: A review. Resources, Conservation
+      and Recycling, 209, 107796.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Hardini, M., Agarwal, V., Apriani, D., Widjaya, I. A., Setiawaty, E., &amp; Nurasiah,
+      N. (2025). Application of database normalization in increasing data storage efficiency. International Transactions
+      on Artificial Intelligence, 3(2), 201-211.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Hollingsworth, M. (2017). Data normalization, denormalization, and the forces of
+      darkness. vol. V. 0.4,</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Horvat, M. (2025). What is Vibe coding and when should you use it (or not)?. Authorea
+      Preprints.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Isaksson, M., Nuland, C. (2025). Navigating AI risk: Building a trusted foundation with Red Hat.
+      Red Hat. Available at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://www.redhat.com/en/blog/navigating-ai-risk-building-trusted-foundation-red-hat&amp;sa=D&amp;source=editors&amp;ust=1772815895744488&amp;usg=AOvVaw0OD1U2fx-uS4HVNjgisFl0">https://www.redhat.com/en/blog/navigating-ai-risk-building-trusted-foundation-red-hat</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Kalejaiye, A. N., &amp; Shonubi, J. A. (2025). Zero trust enforcement using
+      microsegmentation, identity-aware proxies, and continuous adaptive risk assessment in multi-tenant cloud
+      environments. Int J Comput Appl Technol Res, 14(7), 61-77.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Keycloak (2025). Keycloak Authorization Services Guide. Keycloak. Available at: </span><span
+      class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://www.keycloak.org/docs/latest/authorization_services/index.html&amp;sa=D&amp;source=editors&amp;ust=1772815895745462&amp;usg=AOvVaw3A6S_Yone4fOXO0P7XZduy">https://www.keycloak.org/docs/latest/authorization_services/index.html</a></span><span
+      class="c6">&nbsp;[Accessed 29 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Manufacturing Futures Institute (2025). Digital Twins. Carnegie Mellon University. Available at:
+    </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://engineering.cmu.edu/mfi/research/digital-twins.html&amp;sa=D&amp;source=editors&amp;ust=1772815895745958&amp;usg=AOvVaw0CbjKY26VyOilsHBY-mILh">https://engineering.cmu.edu/mfi/research/digital-twins.html</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Nascimento, N., Guimaraes, E., Chintakunta, S. S., &amp; Boominathan, S. A. (2024).
+      Llm4ds: Evaluating large language models for data science code generation. arXiv preprint arXiv:2411.11908.</span>
+  </p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>National Vulnerability Database (2025). React2Shell vulnerability. National Vulnerability
+      Database. Available at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://nvd.nist.gov/vuln/detail/CVE-2025-55182&amp;sa=D&amp;source=editors&amp;ust=1772815895747067&amp;usg=AOvVaw3rKjD_TRmJ5DisbyIjcLxO">https://nvd.nist.gov/vuln/detail/CVE-2025-55182</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Ramati, H., Bar, M., Benmocha, G., Tikochinski, G. (2025). Sha1-Hulud 2.0 supply chain attack.
+      Wiz, Inc. Available at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack&amp;sa=D&amp;source=editors&amp;ust=1772815895747781&amp;usg=AOvVaw053QL3EozYa0zwdlZKGp78">https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Red Hat Information Security (2025). Incident Response Sha1-Hulud package check. GitHub. Available
+      at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://github.com/Red-Hat-Information-Security/Incident-Response/blob/main/shai-hulud-package-check.py&amp;sa=D&amp;source=editors&amp;ust=1772815895748505&amp;usg=AOvVaw1mh25LlwoZrX9aGajQ-Er9">https://github.com/Red-Hat-Information-Security/Incident-Response/blob/main/shai-hulud-package-check.py</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Red Hat Product Security Team (2021). Red Hat&#39;s open approach to vulnerability management. Red
+      Hat. </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://www.redhat.com/en/blog/red-hats-open-approach-vulnerability-management&amp;sa=D&amp;source=editors&amp;ust=1772815895749138&amp;usg=AOvVaw00ZYdih6hDBi7QcMxVfCld">https://www.redhat.com/en/blog/red-hats-open-approach-vulnerability-management</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">S&aacute;ez de Oc&aacute;riz Borde, H. (2025). Sovereign AI vs AI Polyglots. Available
+      at SSRN 5639470.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Sahoo, I., Devarapalli, S., Tyagi, J., Bidkar, D. M., Srivastava, M., Adepu, P. K., ...
+      &amp; Ingole, B. S. (2025, August). Auto-tuning AI cloud infrastructure via real-time telemetry-driven feedback
+      loops. In 2025 International Conference on Artificial Intelligence and Machine Vision (AIMV) (pp. 1-5).
+      IEEE.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Schweik, C. M., Meyer, C., Chinkondenji, P., Smith, J., &amp; Mchenga, P. (2020). World
+      librarians: A socio-technical system providing library search services to offline schools and libraries in Malawi.
+      World Development Perspectives, 20, 100234.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Singh, S. K., &amp; Sengupta, S. (2025). Sovereign AI: Rethinking Autonomy in the Age
+      of Global Interdependence. arXiv preprint arXiv:2511.15734.</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2015). 2015 version of the Trail Blaze Hunting Consultants website built with SPINE
+      Programming. Trail Blaze Hunting Consultants. Available at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://web.archive.org/web/20060104211922/http://www.trailblazehunting.com/consultants/&amp;sa=D&amp;source=editors&amp;ust=1772815895751397&amp;usg=AOvVaw06EZqKlBvGPYcgDeb_xUt6">https://web.archive.org/web/20060104211922/http://www.trailblazehunting.com/consultants/</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2018). Adding a getMembers and getImports method to the JavaClass. GitHub. Available at:
+    </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://github.com/paul-hammant/qdox/pull/46&amp;sa=D&amp;source=editors&amp;ust=1772815895751870&amp;usg=AOvVaw1zafHw-WdYc_agucCS79H-">https://github.com/paul-hammant/qdox/pull/46</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2022). Computate fork of QDox. GitHub. Available at: </span><span class="c14"><a
+        class="c20"
+        href="https://www.google.com/url?q=https://github.com/computate-org/computate/tree/main/src/main/java/com/thoughtworks/qdox&amp;sa=D&amp;source=editors&amp;ust=1772815895752381&amp;usg=AOvVaw1M9EA8O-SwB-Zf3DXDa8XB">https://github.com/computate-org/computate/tree/main/src/main/java/com/thoughtworks/qdox</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2024). Smart Device API Code Generation with AI/ML hackathon. GitHub. </span><span
+      class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://github.com/smartabyar-smartvillage/smart-device-api-generation-hackathon&amp;sa=D&amp;source=editors&amp;ust=1772815895752887&amp;usg=AOvVaw0S7aiCTAunLwdPgOKNhbGB">https://github.com/smartabyar-smartvillage/smart-device-api-generation-hackathon</a></span><span
+      class="c6">&nbsp;[Accessed 29 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2025a). AI Telemetry platform. AI Telemetry deployed in the Mass Open Cloud. Available
+      at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://aitelemetry.apps.obs.nerc.mghpcc.org/&amp;sa=D&amp;source=editors&amp;ust=1772815895753343&amp;usg=AOvVaw3tAX2JVPGgNE9KAIyHRmPP">https://aitelemetry.apps.obs.nerc.mghpcc.org/</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2025b). Project model from AI Telemetry. GitHub. Available at: </span><span
+      class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://github.com/nerc-images/ai-telemetry/blob/main/src/main/java/org/mghpcc/aitelemetry/model/project/Project.java&amp;sa=D&amp;source=editors&amp;ust=1772815895753928&amp;usg=AOvVaw0fn2cqB3T2rSy8W9D_5Tai">https://github.com/nerc-images/ai-telemetry/blob/main/src/main/java/org/mghpcc/aitelemetry/model/project/Project.java</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2025c). The AI Telemetry scripts for calculating word counts hand written versus AI
+      generated with SPINE Programming. GitHub. Available at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://github.com/nerc-images/ai-telemetry/tree/main/bin&amp;sa=D&amp;source=editors&amp;ust=1772815895754532&amp;usg=AOvVaw1xJLz5KqIB8W7rPRs36oFR">https://github.com/nerc-images/ai-telemetry/tree/main/bin</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2025d). The computate.org scripts for calculating word counts hand written versus AI
+      generated with SPINE Programming. GitHub. Available at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://github.com/computate-org/computate.org/tree/main/bin&amp;sa=D&amp;source=editors&amp;ust=1772815895755119&amp;usg=AOvVaw00XOKfSHUfqpbJR-RgQbrB">https://github.com/computate-org/computate.org/tree/main/bin</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2025e). The Smart Aquaculture scripts for calculating word counts hand written versus AI
+      generated with SPINE Programming. GitHub. Available at: </span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://github.com/computate-org/smart-aquaculture/tree/main/bin&amp;sa=D&amp;source=editors&amp;ust=1772815895755747&amp;usg=AOvVaw2z4DpASOrCGqgOGgvZRoOi">https://github.com/computate-org/smart-aquaculture/tree/main/bin</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>Tate, C. (2025f). Websites built with SPINE Programming. Computate LLC. Available at: </span><span
+      class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://computate.org/en-us/search/website&amp;sa=D&amp;source=editors&amp;ust=1772815895756184&amp;usg=AOvVaw2XdC31DaKSfP0I7MeEJrGA">https://computate.org/en-us/search/website</a></span><span
+      class="c6">&nbsp;[Accessed 31 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span>The White House (2025). America&#39;s AI Action Plan. The White House. Available at:
+      &nbsp;</span><span class="c14"><a class="c20"
+        href="https://www.google.com/url?q=https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf&amp;sa=D&amp;source=editors&amp;ust=1772815895756708&amp;usg=AOvVaw3eRUbthwvIG5XgQAHO3jNN">https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf</a></span><span
+      class="c6">&nbsp;[Accessed 29 Dec 2025].</span></p>
+  <p class="c0 c9"><span class="c6"></span></p>
+  <p class="c0"><span class="c6">Wiener, N. (2019). Cybernetics or Control and Communication in the Animal and the
+      Machine. MIT press.</span></p>
+  <p class="c0 c9"><span class="c16 c12 c15"></span></p>
+  <div>
+    <p class="c33 c9 c35"><span class="c6"></span></p>
+  </div>
+  <hr class="c28">
+  <div>
+    <p class="c0"><a href="#ftnt_ref1" id="ftnt1">[1]</a><span class="c15">&nbsp;Marko Horvat. </span><span
+        class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://www.techrxiv.org/doi/full/10.36227/techrxiv.175459780.03758839&amp;sa=D&amp;source=editors&amp;ust=1772815895757497&amp;usg=AOvVaw3dwt4_YPqr3xkH43CfBA12">What
+          is Vibe coding and when should you use it (or not)?</a></span><span class="c16 c12 c15">. TechRxiv. August 07,
+        2025.</span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref2" id="ftnt2">[2]</a><span class="c15">&nbsp; S&aacute;ez de Oc&aacute;riz Borde,
+        Haitz, </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://ssrn.com/abstract%3D5639470&amp;sa=D&amp;source=editors&amp;ust=1772815895757969&amp;usg=AOvVaw3gGfBC3PhQ7tNU0t4G0Oaa">Sovereign
+          AI vs AI Polyglots</a></span><span class="c12 c15 c16">&nbsp;(October 18, 2025). Available at SSRN:
+        https://ssrn.com/abstract=5639470 or http://dx.doi.org/10.2139/ssrn.5639470 </span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref3" id="ftnt3">[3]</a><span class="c15">&nbsp;FIWARE&#39;s Smart Data Models
+      </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://github.com/smart-data-models&amp;sa=D&amp;source=editors&amp;ust=1772815895758589&amp;usg=AOvVaw39qQfJJOV2ff8hSuKsjF1N">https://github.com/smart-data-models</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref4" id="ftnt4">[4]</a><span class="c15">&nbsp;Shalabh Kumar Singh, Shubhashis
+        Sengupta. Sovereign AI: Rethinking Autonomy in the Age of Global Interdependence. </span><span
+        class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://arxiv.org/abs/2511.15734&amp;sa=D&amp;source=editors&amp;ust=1772815895759112&amp;usg=AOvVaw1EdjT9l9gNzyN0aTRewMDs">arXiv:2511.15734</a></span><span
+        class="c16 c12 c15">&nbsp;[cs.CY]</span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref5" id="ftnt5">[5]</a><span class="c15">&nbsp;Apache Solr Reference Guide
+      </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://solr.apache.org/guide/solr/latest/indexing-guide/docvalues.html&amp;sa=D&amp;source=editors&amp;ust=1772815895759625&amp;usg=AOvVaw3tSWT-aWpRHEdDfkENfbJC">https://solr.apache.org/guide/solr/latest/indexing-guide/docvalues.html</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref6" id="ftnt6">[6]</a><span class="c15">&nbsp;Keycloak Authorization Services Guide
+      </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://www.keycloak.org/docs/latest/authorization_services/index.html&amp;sa=D&amp;source=editors&amp;ust=1772815895760207&amp;usg=AOvVaw2p7SIGw5w5tYRvVdawq3Wz">https://www.keycloak.org/docs/latest/authorization_services/index.html</a></span><span
+        class="c16 c12 c15">&nbsp;[Accessed 29 Dec 2025].</span></p>
+    <p class="c0 c9"><span class="c16 c12 c15"></span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref7" id="ftnt7">[7]</a><span class="c15">&nbsp;2015 version of the Trail Blaze Hunting
+        Consultants website built with SPINE Programming </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://web.archive.org/web/20060104211922/http://www.trailblazehunting.com/consultants/&amp;sa=D&amp;source=editors&amp;ust=1772815895761164&amp;usg=AOvVaw07b4iwaigP6a6ts2wZ94r6">https://web.archive.org/web/20060104211922/http://www.trailblazehunting.com/consultants/</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref8" id="ftnt8">[8]</a><span class="c15">&nbsp;The AI Telemetry scripts for
+        calculating word counts hand written versus AI generated with SPINE Programming </span><span class="c14 c15"><a
+          class="c20"
+          href="https://www.google.com/url?q=https://github.com/nerc-images/ai-telemetry/tree/main/bin&amp;sa=D&amp;source=editors&amp;ust=1772815895761890&amp;usg=AOvVaw1Za0Yp0mbf-BPT9r713uUd">https://github.com/nerc-images/ai-telemetry/tree/main/bin</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref9" id="ftnt9">[9]</a><span class="c15">&nbsp;The Smart Aquaculture scripts for
+        calculating word counts hand written versus AI generated with SPINE Programming </span><span class="c14 c15"><a
+          class="c20"
+          href="https://www.google.com/url?q=https://github.com/computate-org/smart-aquaculture/tree/main/bin&amp;sa=D&amp;source=editors&amp;ust=1772815895762705&amp;usg=AOvVaw37gmaMd9TYi7MwUvcwWWT9">https://github.com/computate-org/smart-aquaculture/tree/main/bin</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref10" id="ftnt10">[10]</a><span class="c15">&nbsp;The computate.org scripts for
+        calculating word counts hand written versus AI generated with SPINE Programming </span><span class="c14 c15"><a
+          class="c20"
+          href="https://www.google.com/url?q=https://github.com/computate-org/computate.org/tree/main/bin&amp;sa=D&amp;source=editors&amp;ust=1772815895763485&amp;usg=AOvVaw32l0nl1e6izp_c0dnkc3m3">https://github.com/computate-org/computate.org/tree/main/bin</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref11" id="ftnt11">[11]</a><span class="c15">&nbsp;FIWARE Foundation e.V. (2021).
+        FIWARE for Digital Twins. FIWARE. Available at: </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://www.fiware.org/wp-content/uploads/FF_PositionPaper_FIWARE4DigitalTwins.pdf&amp;sa=D&amp;source=editors&amp;ust=1772815895764317&amp;usg=AOvVaw0nZRWO29uBjWS6UtUhSinI">https://www.fiware.org/wp-content/uploads/FF_PositionPaper_FIWARE4DigitalTwins.pdf</a></span><span
+        class="c15">&nbsp;[Accessed 29 Dec 2025].</span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref12" id="ftnt12">[12]</a><span class="c15">&nbsp;Christopher Tate (2024). Smart
+        Device API Code Generation with AI/ML hackathon. GitHub. </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://github.com/smartabyar-smartvillage/smart-device-api-generation-hackathon&amp;sa=D&amp;source=editors&amp;ust=1772815895765254&amp;usg=AOvVaw02VZLuI2vjK-eg85H1TNs4">https://github.com/smartabyar-smartvillage/smart-device-api-generation-hackathon</a></span><span
+        class="c15">&nbsp;[Accessed 29 Dec 2025].</span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref13" id="ftnt13">[13]</a><span class="c15">&nbsp;Computate fork of QDox </span><span
+        class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://github.com/computate-org/computate/tree/main/src/main/java/com/thoughtworks/qdox&amp;sa=D&amp;source=editors&amp;ust=1772815895766046&amp;usg=AOvVaw0UYOYBzsT8ZEXZwx0gSeyU">https://github.com/computate-org/computate/tree/main/src/main/java/com/thoughtworks/qdox</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref14" id="ftnt14">[14]</a><span class="c15">&nbsp;QDox pull request adding a
+        getMembers and getImports method to the JavaClass </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://github.com/paul-hammant/qdox/pull/46&amp;sa=D&amp;source=editors&amp;ust=1772815895766667&amp;usg=AOvVaw0uV0Tr_gkuVCLDZgto6PsL">https://github.com/paul-hammant/qdox/pull/46</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref15" id="ftnt15">[15]</a><span class="c15">&nbsp;AI Telemetry platform </span><span
+        class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://aitelemetry.apps.obs.nerc.mghpcc.org/&amp;sa=D&amp;source=editors&amp;ust=1772815895767189&amp;usg=AOvVaw0XxHN-am2hqk_0wZN04jvW">https://aitelemetry.apps.obs.nerc.mghpcc.org/</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref16" id="ftnt16">[16]</a><span class="c15">&nbsp;Project model from AI Telemetry
+      </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://github.com/nerc-images/ai-telemetry/blob/main/src/main/java/org/mghpcc/aitelemetry/model/project/Project.java&amp;sa=D&amp;source=editors&amp;ust=1772815895768031&amp;usg=AOvVaw1jhpIoLiPzpnI5jDaHuI2D">https://github.com/nerc-images/ai-telemetry/blob/main/src/main/java/org/mghpcc/aitelemetry/model/project/Project.java</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref17" id="ftnt17">[17]</a><span class="c15">&nbsp;Websites built with SPINE
+        Programming </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://computate.org/en-us/search/website&amp;sa=D&amp;source=editors&amp;ust=1772815895768537&amp;usg=AOvVaw2_-pIuBfj9a93_lWiy8-xw">https://computate.org/en-us/search/website</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref18" id="ftnt18">[18]</a><span class="c15">&nbsp;</span><span>Adebayo Nurudeen
+        Kalejaiye, Joye Ahmed Shonubi. </span><span class="c14"><a class="c20"
+          href="https://www.google.com/url?q=https://www.researchgate.net/profile/Adebayo-Kalejaiye/publication/394043588_Zero_Trust_Enforcement_Using_Microsegmentation_Identity-Aware_Proxies_and_Continuous_Adaptive_Risk_Assessment_in_Multi-Tenant_Cloud_Environments/links/68ebfb9cf3032e2b4be875cb/Zero-Trust-Enforcement-Using-Microsegmentation-Identity-Aware-Proxies-and-Continuous-Adaptive-Risk-Assessment-in-Multi-Tenant-Cloud-Environments.pdf&amp;sa=D&amp;source=editors&amp;ust=1772815895770660&amp;usg=AOvVaw0KEzUwKRZL3aX_-DV_u8Kg">Zero
+          Trust Enforcement Using Microsegmentation, Identity-Aware Proxies, and Continuous Adaptive Risk Assessment in
+          Multi-Tenant Cloud Environments</a></span><span>, International Journal of Computer Applications Technology
+        and Research, Volume 14&ndash;Issue 07, 61 &ndash; 77, 2025</span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref19" id="ftnt19">[19]</a><span class="c15">&nbsp;</span><span>Adebayo Nurudeen
+        Kalejaiye, Joye Ahmed Shonubi. </span><span class="c14"><a class="c20"
+          href="https://www.google.com/url?q=https://www.researchgate.net/profile/Adebayo-Kalejaiye/publication/394043588_Zero_Trust_Enforcement_Using_Microsegmentation_Identity-Aware_Proxies_and_Continuous_Adaptive_Risk_Assessment_in_Multi-Tenant_Cloud_Environments/links/68ebfb9cf3032e2b4be875cb/Zero-Trust-Enforcement-Using-Microsegmentation-Identity-Aware-Proxies-and-Continuous-Adaptive-Risk-Assessment-in-Multi-Tenant-Cloud-Environments.pdf&amp;sa=D&amp;source=editors&amp;ust=1772815895772373&amp;usg=AOvVaw39LVFcuYmKKRpXWpKf4mIW">Zero
+          Trust Enforcement Using Microsegmentation, Identity-Aware Proxies, and Continuous Adaptive Risk Assessment in
+          Multi-Tenant Cloud Environments</a></span><span>, International Journal of Computer Applications Technology
+        and Research, Volume 14&ndash;Issue 07, 61 &ndash; 77, 2025</span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref20" id="ftnt20">[20]</a><span class="c15">&nbsp;Carnegie Mellon Manufacturing
+        Futures Institute about Digital Twins </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://engineering.cmu.edu/mfi/research/digital-twins.html&amp;sa=D&amp;source=editors&amp;ust=1772815895773371&amp;usg=AOvVaw1LB4gTY4IgSt2oO988tzdT">https://engineering.cmu.edu/mfi/research/digital-twins.html</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref21" id="ftnt21">[21]</a><span class="c15">&nbsp;</span><span>Muhammad Azam Hafeez a
+        b, Alberto Procacci a b, Axel Coussement a b, Alessandro Parente a b c. Challenges and opportunities for the
+        application of digital twins in hard-to-abate industries </span><span class="c14"><a class="c20"
+          href="https://www.google.com/url?q=https://www.sciencedirect.com/science/article/abs/pii/S0921344924003902&amp;sa=D&amp;source=editors&amp;ust=1772815895774405&amp;usg=AOvVaw1NCOItc8RS4zleOvbVYwKE">https://www.sciencedirect.com/science/article/abs/pii/S0921344924003902</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref22" id="ftnt22">[22]</a><span class="c15">&nbsp;LLM4DS: Evaluating Large Language
+        Models for Data Science Code Generation. Nathalia Nascimento, Everton Guimaraes, Sai Sanjna Chintakunta,
+        Santhosh Anitha Boominathan. </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://arxiv.org/abs/2411.11908&amp;sa=D&amp;source=editors&amp;ust=1772815895775149&amp;usg=AOvVaw2up7JCxeTQhyrO3cu-tBz1">arXiv:2411.11908</a></span><span
+        class="c16 c12 c15">&nbsp;[cs.SE]</span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref23" id="ftnt23">[23]</a><span class="c15">&nbsp;React2Shell vulnerability.
+      </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://nvd.nist.gov/vuln/detail/CVE-2025-55182&amp;sa=D&amp;source=editors&amp;ust=1772815895775677&amp;usg=AOvVaw0UoIZmCSRskUIsWJBxnSpS">https://nvd.nist.gov/vuln/detail/CVE-2025-55182</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref24" id="ftnt24">[24]</a><span class="c15">&nbsp;Sha1-Hulud 2.0 supply chain attack.
+      </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack&amp;sa=D&amp;source=editors&amp;ust=1772815895776349&amp;usg=AOvVaw16pJ_Xci6wYXj7GUjcgbSD">https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref25" id="ftnt25">[25]</a><span class="c15">&nbsp;Red Hat Incident Response Sha1-Hulud
+        package check </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://github.com/Red-Hat-Information-Security/Incident-Response/blob/main/shai-hulud-package-check.py&amp;sa=D&amp;source=editors&amp;ust=1772815895777127&amp;usg=AOvVaw2bkCtrg-a_CPhGNK8LFzVo">https://github.com/Red-Hat-Information-Security/Incident-Response/blob/main/shai-hulud-package-check.py</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref26" id="ftnt26">[26]</a><span class="c15">&nbsp;Red Hat&#39;s open approach to
+        vulnerability management </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://www.redhat.com/en/blog/red-hats-open-approach-vulnerability-management&amp;sa=D&amp;source=editors&amp;ust=1772815895777863&amp;usg=AOvVaw1ZdLNFiStPOT1E8gnWvBi2">https://www.redhat.com/en/blog/red-hats-open-approach-vulnerability-management</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref27" id="ftnt27">[27]</a><span class="c15">&nbsp;Martin Isaksson, Christopher Nuland.
+        Navigating AI risk: Building a trusted foundation with Red Hat. </span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://www.redhat.com/en/blog/navigating-ai-risk-building-trusted-foundation-red-hat&amp;sa=D&amp;source=editors&amp;ust=1772815895778705&amp;usg=AOvVaw13qdiRMhgXOmTkJ_8ZA12P">https://www.redhat.com/en/blog/navigating-ai-risk-building-trusted-foundation-red-hat</a></span>
+    </p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref28" id="ftnt28">[28]</a><span class="c15">&nbsp;The White House (2025).
+        America&#39;s AI Action Plan. The White House. Available at: &nbsp;</span><span class="c14 c15"><a class="c20"
+          href="https://www.google.com/url?q=https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf&amp;sa=D&amp;source=editors&amp;ust=1772815895779505&amp;usg=AOvVaw0uv9dXLtlQ0F0w7Vw7qaST">https://www.whitehouse.gov/wp-content/uploads/2025/07/Americas-AI-Action-Plan.pdf</a></span><span
+        class="c15">&nbsp;[Accessed 29 Dec 2025].</span></p>
+  </div>
+  <div>
+    <p class="c0"><a href="#ftnt_ref29" id="ftnt29">[29]</a><span class="c16 c12 c15">&nbsp;Schweik CM, Meyer C,
+        Chinkondenji P, Smith J, Mchenga P. World librarians: A socio-technical system providing library search services
+        to offline schools and libraries in Malawi. World Development Perspectives. 2020 Dec 1;20:100234.</span></p>
+  </div>
+</div>
+
+{% endblock %}
