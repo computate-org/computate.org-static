@@ -1,4 +1,4 @@
-{%- macro inputCreatedUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputCreatedUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
@@ -7,7 +7,7 @@
                       readonly
                       hint="A created timestamp for this record in the database"
                       label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_created datetimepicker setCreated classUseCase inputUseCase{{ result.pageId }}Created "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_created datetimepicker setCreated classUseCase inputUseCase{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="UseCase_{{classApiMethodMethod}}_created"
@@ -26,7 +26,7 @@
 {%- macro htmCreatedUseCasePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputCreatedUseCasePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputModifiedUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputModifiedUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
@@ -35,7 +35,7 @@
                       readonly
                       hint="A modified timestamp for this record in the database"
                       label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_modified datetimepicker setModified classUseCase inputUseCase{{ result.pageId }}Modified "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_modified datetimepicker setModified classUseCase inputUseCase{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="UseCase_{{classApiMethodMethod}}_modified"
@@ -54,7 +54,7 @@
 {%- macro htmModifiedUseCasePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputModifiedUseCasePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputArchivedUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputArchivedUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_archived">
   {%- endif %}
@@ -64,7 +64,7 @@
                       placeholder="archived"
                       label="archived"
                       hint="For archiving this record"
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_archived classUseCase inputUseCase{{ result.pageId }}Archived "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_archived classUseCase inputUseCase{{ result.pageId }}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
                       data-val="{{ result.archived | e }}"
@@ -83,14 +83,14 @@
                       label="archived"
                       hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_archived classUseCase inputUseCase{{ result.pageId }}Archived "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_archived classUseCase inputUseCase{{ result.pageId }}Archived "
                       name="setArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_archived classUseCase inputUseCase{{ result.pageId }}Archived "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_archived classUseCase inputUseCase{{ result.pageId }}Archived "
                       name="setArchived"
     {%- else %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_archived setArchived valueArchived classUseCase inputUseCase{{ result.pageId }}Archived "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_archived setArchived valueArchived classUseCase inputUseCase{{ result.pageId }}Archived "
                       name="setArchived"
     {%- endif %}
   {%- endif %}
@@ -116,7 +116,7 @@
 {%- macro htmArchivedUseCasePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputArchivedUseCasePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputNameUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputNameUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_name">
   {%- endif %}
@@ -128,14 +128,14 @@
                       id="UseCase_{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_name setName classUseCase inputUseCase{{ result.pageId }}Name "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_name setName classUseCase inputUseCase{{ result.pageId }}Name "
                       name="setName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_name setName classUseCase inputUseCase{{ result.pageId }}Name "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_name setName classUseCase inputUseCase{{ result.pageId }}Name "
                       name="setName"
     {%- else %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_name valueName classUseCase inputUseCase{{ result.pageId }}Name "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_name valueName classUseCase inputUseCase{{ result.pageId }}Name "
                       name="name"
     {%- endif %}
   {%- endif %}
@@ -152,7 +152,7 @@
 {%- macro htmNameUseCasePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputNameUseCasePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputAuthorNameUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputAuthorNameUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_authorName">
   {%- endif %}
@@ -164,14 +164,14 @@
                       id="UseCase_{{classApiMethodMethod}}_authorName"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_authorName setAuthorName classUseCase inputUseCase{{ result.pageId }}AuthorName "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_authorName setAuthorName classUseCase inputUseCase{{ result.pageId }}AuthorName "
                       name="setAuthorName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_authorName setAuthorName classUseCase inputUseCase{{ result.pageId }}AuthorName "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_authorName setAuthorName classUseCase inputUseCase{{ result.pageId }}AuthorName "
                       name="setAuthorName"
     {%- else %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_authorName valueAuthorName classUseCase inputUseCase{{ result.pageId }}AuthorName "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_authorName valueAuthorName classUseCase inputUseCase{{ result.pageId }}AuthorName "
                       name="authorName"
     {%- endif %}
   {%- endif %}
@@ -188,7 +188,7 @@
 {%- macro htmAuthorNameUseCasePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputAuthorNameUseCasePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputDescriptionUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputDescriptionUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_description">
   {%- endif %}
@@ -200,14 +200,14 @@
                       id="UseCase_{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_description setDescription classUseCase inputUseCase{{ result.pageId }}Description "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_description setDescription classUseCase inputUseCase{{ result.pageId }}Description "
                       name="setDescription"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_description setDescription classUseCase inputUseCase{{ result.pageId }}Description "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_description setDescription classUseCase inputUseCase{{ result.pageId }}Description "
                       name="setDescription"
     {%- else %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_description valueDescription classUseCase inputUseCase{{ result.pageId }}Description "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_description valueDescription classUseCase inputUseCase{{ result.pageId }}Description "
                       name="description"
     {%- endif %}
   {%- endif %}
@@ -224,7 +224,7 @@
 {%- macro htmDescriptionUseCasePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionUseCasePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputPageIdUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputPageIdUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageId">
   {%- endif %}
@@ -236,14 +236,14 @@
                       id="UseCase_{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_pageId setPageId classUseCase inputUseCase{{ result.pageId }}PageId "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_pageId setPageId classUseCase inputUseCase{{ result.pageId }}PageId "
                       name="setPageId"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_pageId setPageId classUseCase inputUseCase{{ result.pageId }}PageId "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_pageId setPageId classUseCase inputUseCase{{ result.pageId }}PageId "
                       name="setPageId"
     {%- else %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_pageId valuePageId classUseCase inputUseCase{{ result.pageId }}PageId "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_pageId valuePageId classUseCase inputUseCase{{ result.pageId }}PageId "
                       name="pageId"
     {%- endif %}
   {%- endif %}
@@ -260,7 +260,7 @@
 {%- macro htmPageIdUseCasePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputPageIdUseCasePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputDisplayPageUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputDisplayPageUseCasePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_displayPage">
   {%- endif %}
@@ -268,7 +268,7 @@
                   <div class="button-on-left ">
                     <wa-button variant="brand"
                         id="UseCase_{{classApiMethodMethod}}_displayPage"
-                        class="button-on-left {{UseCase_classApiMethodMethod}}_displayPage classUseCase inputUseCase{{ result.pageId }}DisplayPage "
+                        class="button-on-left UseCase_{{classApiMethodMethod}}_displayPage classUseCase inputUseCase{{ result.pageId }}DisplayPage "
                         name="setDisplayPage"
                         href="{{ result.displayPage | e }}"
                         >
@@ -281,14 +281,14 @@
                       id="UseCase_{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_displayPage setDisplayPage classUseCase inputUseCase{{ result.pageId }}DisplayPage "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_displayPage setDisplayPage classUseCase inputUseCase{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_displayPage setDisplayPage classUseCase inputUseCase{{ result.pageId }}DisplayPage "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_displayPage setDisplayPage classUseCase inputUseCase{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
     {%- else %}
-                      class="label-on-left {{UseCase_classApiMethodMethod}}_displayPage valueDisplayPage classUseCase inputUseCase{{ result.pageId }}DisplayPage "
+                      class="label-on-left UseCase_{{classApiMethodMethod}}_displayPage valueDisplayPage classUseCase inputUseCase{{ result.pageId }}DisplayPage "
                       name="displayPage"
     {%- endif %}
   {%- endif %}
@@ -316,38 +316,38 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_patchUseCase() %}
+{%- macro htmForm_patchUseCase(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="patchUseCaseDialog" label="Modify use case">
           <form id="htmForm_patchUseCase" class="round-row primary-smart-border-radius ">
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -359,22 +359,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -393,39 +393,39 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_postUseCase() %}
+{%- macro htmForm_postUseCase(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="postUseCaseDialog" label="Create a use case">
           <form id="htmForm_postUseCase" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -437,22 +437,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -471,7 +471,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_deleteUseCase() %}
+{%- macro htmForm_deleteUseCase(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteUseCaseDialog" label="Delete use case">
           <form id="htmForm_deleteUseCase" class="round-row primary-smart-border-radius ">
           </form>
@@ -488,7 +488,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_putimportUseCase() %}
+{%- macro htmForm_putimportUseCase(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportUseCaseDialog" label="Import use cases">
           <form id="htmForm_putimportUseCase" class="round-row primary-smart-border-radius ">
             <div>
@@ -504,7 +504,7 @@
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmForm_searchpageUseCase() %}
+{%- macro htmForm_searchpageUseCase(idSuffix='') %}
         <div with-header with-footer style="--width: 50vw; " id="searchpageUseCaseDialog" label="Search use cases">
           <div id="htmForm_searchpageUseCase" class="round-row primary-smart-border-radius ">
 
@@ -514,66 +514,66 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmCreatedUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmCreatedUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmCreatedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmCreatedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmCreatedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmCreatedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmModifiedUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmModifiedUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmModifiedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmModifiedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmModifiedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmModifiedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmArchivedUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmArchivedUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmArchivedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmArchivedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmArchivedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmArchivedUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorNameUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -585,22 +585,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageUseCasePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -618,7 +618,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_deletefilterUseCase() %}
+{%- macro htmForm_deletefilterUseCase(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterUseCaseDialog" label="Delete use case">
           <form id="htmForm_deletefilterUseCase" class="round-row primary-smart-border-radius ">
           </form>

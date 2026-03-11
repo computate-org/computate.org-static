@@ -1,4 +1,4 @@
-{%- macro inputCreatedComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputCreatedComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
@@ -7,7 +7,7 @@
                       readonly
                       hint="A created timestamp for this record in the database"
                       label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_created datetimepicker setCreated classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Created "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_created datetimepicker setCreated classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="ComputateDeveloper_{{classApiMethodMethod}}_created"
@@ -26,7 +26,7 @@
 {%- macro htmCreatedComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputCreatedComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputModifiedComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputModifiedComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
@@ -35,7 +35,7 @@
                       readonly
                       hint="A modified timestamp for this record in the database"
                       label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_modified datetimepicker setModified classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Modified "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_modified datetimepicker setModified classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="ComputateDeveloper_{{classApiMethodMethod}}_modified"
@@ -54,7 +54,7 @@
 {%- macro htmModifiedComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputModifiedComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputArchivedComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputArchivedComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_archived">
   {%- endif %}
@@ -64,7 +64,7 @@
                       placeholder="archived"
                       label="archived"
                       hint="For archiving this record"
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_archived classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Archived "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_archived classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
                       data-val="{{ result.archived | e }}"
@@ -83,14 +83,14 @@
                       label="archived"
                       hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_archived classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Archived "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_archived classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Archived "
                       name="setArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_archived classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Archived "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_archived classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Archived "
                       name="setArchived"
     {%- else %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_archived setArchived valueArchived classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Archived "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_archived setArchived valueArchived classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Archived "
                       name="setArchived"
     {%- endif %}
   {%- endif %}
@@ -116,7 +116,7 @@
 {%- macro htmArchivedComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputArchivedComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputNameComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputNameComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_name">
   {%- endif %}
@@ -128,14 +128,14 @@
                       id="ComputateDeveloper_{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_name setName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Name "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_name setName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Name "
                       name="setName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_name setName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Name "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_name setName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Name "
                       name="setName"
     {%- else %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_name valueName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Name "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_name valueName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Name "
                       name="name"
     {%- endif %}
   {%- endif %}
@@ -152,7 +152,7 @@
 {%- macro htmNameComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputNameComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputDescriptionComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputDescriptionComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_description">
   {%- endif %}
@@ -164,14 +164,14 @@
                       id="ComputateDeveloper_{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_description setDescription classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Description "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_description setDescription classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Description "
                       name="setDescription"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_description setDescription classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Description "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_description setDescription classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Description "
                       name="setDescription"
     {%- else %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_description valueDescription classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Description "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_description valueDescription classComputateDeveloper inputComputateDeveloper{{ result.pageId }}Description "
                       name="description"
     {%- endif %}
   {%- endif %}
@@ -188,7 +188,7 @@
 {%- macro htmDescriptionComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputAuthorNameComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputAuthorNameComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_authorName">
   {%- endif %}
@@ -200,14 +200,14 @@
                       id="ComputateDeveloper_{{classApiMethodMethod}}_authorName"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_authorName setAuthorName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorName "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_authorName setAuthorName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorName "
                       name="setAuthorName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_authorName setAuthorName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorName "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_authorName setAuthorName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorName "
                       name="setAuthorName"
     {%- else %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_authorName valueAuthorName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorName "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_authorName valueAuthorName classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorName "
                       name="authorName"
     {%- endif %}
   {%- endif %}
@@ -224,7 +224,7 @@
 {%- macro htmAuthorNameComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputAuthorNameComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputAuthorUrlComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputAuthorUrlComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_authorUrl">
   {%- endif %}
@@ -236,14 +236,14 @@
                       id="ComputateDeveloper_{{classApiMethodMethod}}_authorUrl"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_authorUrl setAuthorUrl classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorUrl "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_authorUrl setAuthorUrl classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorUrl "
                       name="setAuthorUrl"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_authorUrl setAuthorUrl classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorUrl "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_authorUrl setAuthorUrl classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorUrl "
                       name="setAuthorUrl"
     {%- else %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_authorUrl valueAuthorUrl classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorUrl "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_authorUrl valueAuthorUrl classComputateDeveloper inputComputateDeveloper{{ result.pageId }}AuthorUrl "
                       name="authorUrl"
     {%- endif %}
   {%- endif %}
@@ -260,7 +260,7 @@
 {%- macro htmAuthorUrlComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputAuthorUrlComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputPageImageUriComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputPageImageUriComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageImageUri">
   {%- endif %}
@@ -272,14 +272,14 @@
                       id="ComputateDeveloper_{{classApiMethodMethod}}_pageImageUri"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_pageImageUri setPageImageUri classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageImageUri "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_pageImageUri setPageImageUri classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageImageUri "
                       name="setPageImageUri"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_pageImageUri setPageImageUri classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageImageUri "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_pageImageUri setPageImageUri classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageImageUri "
                       name="setPageImageUri"
     {%- else %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_pageImageUri valuePageImageUri classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageImageUri "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_pageImageUri valuePageImageUri classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageImageUri "
                       name="pageImageUri"
     {%- endif %}
   {%- endif %}
@@ -296,7 +296,7 @@
 {%- macro htmPageImageUriComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputPageImageUriComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputPageIdComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputPageIdComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageId">
   {%- endif %}
@@ -308,14 +308,14 @@
                       id="ComputateDeveloper_{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_pageId setPageId classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageId "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_pageId setPageId classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageId "
                       name="setPageId"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_pageId setPageId classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageId "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_pageId setPageId classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageId "
                       name="setPageId"
     {%- else %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_pageId valuePageId classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageId "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_pageId valuePageId classComputateDeveloper inputComputateDeveloper{{ result.pageId }}PageId "
                       name="pageId"
     {%- endif %}
   {%- endif %}
@@ -332,7 +332,7 @@
 {%- macro htmPageIdComputateDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputPageIdComputateDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputDisplayPageComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputDisplayPageComputateDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_displayPage">
   {%- endif %}
@@ -340,7 +340,7 @@
                   <div class="button-on-left ">
                     <wa-button variant="brand"
                         id="ComputateDeveloper_{{classApiMethodMethod}}_displayPage"
-                        class="button-on-left {{ComputateDeveloper_classApiMethodMethod}}_displayPage classComputateDeveloper inputComputateDeveloper{{ result.pageId }}DisplayPage "
+                        class="button-on-left ComputateDeveloper_{{classApiMethodMethod}}_displayPage classComputateDeveloper inputComputateDeveloper{{ result.pageId }}DisplayPage "
                         name="setDisplayPage"
                         href="{{ result.displayPage | e }}"
                         >
@@ -353,14 +353,14 @@
                       id="ComputateDeveloper_{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_displayPage setDisplayPage classComputateDeveloper inputComputateDeveloper{{ result.pageId }}DisplayPage "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_displayPage setDisplayPage classComputateDeveloper inputComputateDeveloper{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_displayPage setDisplayPage classComputateDeveloper inputComputateDeveloper{{ result.pageId }}DisplayPage "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_displayPage setDisplayPage classComputateDeveloper inputComputateDeveloper{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
     {%- else %}
-                      class="label-on-left {{ComputateDeveloper_classApiMethodMethod}}_displayPage valueDisplayPage classComputateDeveloper inputComputateDeveloper{{ result.pageId }}DisplayPage "
+                      class="label-on-left ComputateDeveloper_{{classApiMethodMethod}}_displayPage valueDisplayPage classComputateDeveloper inputComputateDeveloper{{ result.pageId }}DisplayPage "
                       name="displayPage"
     {%- endif %}
   {%- endif %}
@@ -388,7 +388,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_patchComputateDeveloper() %}
+{%- macro htmForm_patchComputateDeveloper(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="patchComputateDeveloperDialog" label="Modify Computate Developer">
           <form id="htmForm_patchComputateDeveloper" class="round-row primary-smart-border-radius ">
 
@@ -398,54 +398,54 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -457,22 +457,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -491,7 +491,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_postComputateDeveloper() %}
+{%- macro htmForm_postComputateDeveloper(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="postComputateDeveloperDialog" label="Create a Computate Developer">
           <form id="htmForm_postComputateDeveloper" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
@@ -502,54 +502,54 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -561,22 +561,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -595,7 +595,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_deleteComputateDeveloper() %}
+{%- macro htmForm_deleteComputateDeveloper(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteComputateDeveloperDialog" label="Delete Computate Developer">
           <form id="htmForm_deleteComputateDeveloper" class="round-row primary-smart-border-radius ">
           </form>
@@ -612,7 +612,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_putimportComputateDeveloper() %}
+{%- macro htmForm_putimportComputateDeveloper(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportComputateDeveloperDialog" label="Import Computate Developers">
           <form id="htmForm_putimportComputateDeveloper" class="round-row primary-smart-border-radius ">
             <div>
@@ -628,7 +628,7 @@
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmForm_searchpageComputateDeveloper() %}
+{%- macro htmForm_searchpageComputateDeveloper(idSuffix='') %}
         <div with-header with-footer style="--width: 50vw; " id="searchpageComputateDeveloperDialog" label="Search Computate Developers">
           <div id="htmForm_searchpageComputateDeveloper" class="round-row primary-smart-border-radius ">
 
@@ -638,34 +638,34 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmCreatedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmCreatedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmCreatedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmCreatedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmCreatedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmCreatedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmModifiedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmModifiedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmModifiedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmModifiedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmModifiedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmModifiedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmArchivedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmArchivedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmArchivedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmArchivedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmArchivedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmArchivedComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -677,54 +677,54 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorNameComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmAuthorUrlComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageImageUriComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -736,22 +736,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageComputateDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -769,7 +769,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_deletefilterComputateDeveloper() %}
+{%- macro htmForm_deletefilterComputateDeveloper(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterComputateDeveloperDialog" label="Delete Computate Developer">
           <form id="htmForm_deletefilterComputateDeveloper" class="round-row primary-smart-border-radius ">
           </form>

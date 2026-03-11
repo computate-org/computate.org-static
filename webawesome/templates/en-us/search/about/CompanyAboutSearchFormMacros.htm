@@ -1,4 +1,4 @@
-{%- macro inputCreatedCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputCreatedCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
@@ -7,7 +7,7 @@
                       readonly
                       hint="A created timestamp for this record in the database"
                       label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_created datetimepicker setCreated classCompanyAbout inputCompanyAbout{{ result.pageId }}Created "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_created datetimepicker setCreated classCompanyAbout inputCompanyAbout{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="CompanyAbout_{{classApiMethodMethod}}_created"
@@ -26,7 +26,7 @@
 {%- macro htmCreatedCompanyAboutPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputCreatedCompanyAboutPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputModifiedCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputModifiedCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
@@ -35,7 +35,7 @@
                       readonly
                       hint="A modified timestamp for this record in the database"
                       label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_modified datetimepicker setModified classCompanyAbout inputCompanyAbout{{ result.pageId }}Modified "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_modified datetimepicker setModified classCompanyAbout inputCompanyAbout{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="CompanyAbout_{{classApiMethodMethod}}_modified"
@@ -54,7 +54,7 @@
 {%- macro htmModifiedCompanyAboutPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputModifiedCompanyAboutPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputArchivedCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputArchivedCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_archived">
   {%- endif %}
@@ -64,7 +64,7 @@
                       placeholder="archived"
                       label="archived"
                       hint="For archiving this record"
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_archived classCompanyAbout inputCompanyAbout{{ result.pageId }}Archived "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_archived classCompanyAbout inputCompanyAbout{{ result.pageId }}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
                       data-val="{{ result.archived | e }}"
@@ -83,14 +83,14 @@
                       label="archived"
                       hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_archived classCompanyAbout inputCompanyAbout{{ result.pageId }}Archived "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_archived classCompanyAbout inputCompanyAbout{{ result.pageId }}Archived "
                       name="setArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_archived classCompanyAbout inputCompanyAbout{{ result.pageId }}Archived "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_archived classCompanyAbout inputCompanyAbout{{ result.pageId }}Archived "
                       name="setArchived"
     {%- else %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_archived setArchived valueArchived classCompanyAbout inputCompanyAbout{{ result.pageId }}Archived "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_archived setArchived valueArchived classCompanyAbout inputCompanyAbout{{ result.pageId }}Archived "
                       name="setArchived"
     {%- endif %}
   {%- endif %}
@@ -116,7 +116,7 @@
 {%- macro htmArchivedCompanyAboutPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputArchivedCompanyAboutPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputNameCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputNameCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_name">
   {%- endif %}
@@ -128,14 +128,14 @@
                       id="CompanyAbout_{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_name setName classCompanyAbout inputCompanyAbout{{ result.pageId }}Name "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_name setName classCompanyAbout inputCompanyAbout{{ result.pageId }}Name "
                       name="setName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_name setName classCompanyAbout inputCompanyAbout{{ result.pageId }}Name "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_name setName classCompanyAbout inputCompanyAbout{{ result.pageId }}Name "
                       name="setName"
     {%- else %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_name valueName classCompanyAbout inputCompanyAbout{{ result.pageId }}Name "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_name valueName classCompanyAbout inputCompanyAbout{{ result.pageId }}Name "
                       name="name"
     {%- endif %}
   {%- endif %}
@@ -152,7 +152,7 @@
 {%- macro htmNameCompanyAboutPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputNameCompanyAboutPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputDescriptionCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputDescriptionCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_description">
   {%- endif %}
@@ -164,14 +164,14 @@
                       id="CompanyAbout_{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_description setDescription classCompanyAbout inputCompanyAbout{{ result.pageId }}Description "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_description setDescription classCompanyAbout inputCompanyAbout{{ result.pageId }}Description "
                       name="setDescription"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_description setDescription classCompanyAbout inputCompanyAbout{{ result.pageId }}Description "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_description setDescription classCompanyAbout inputCompanyAbout{{ result.pageId }}Description "
                       name="setDescription"
     {%- else %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_description valueDescription classCompanyAbout inputCompanyAbout{{ result.pageId }}Description "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_description valueDescription classCompanyAbout inputCompanyAbout{{ result.pageId }}Description "
                       name="description"
     {%- endif %}
   {%- endif %}
@@ -188,7 +188,7 @@
 {%- macro htmDescriptionCompanyAboutPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionCompanyAboutPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputPageIdCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputPageIdCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageId">
   {%- endif %}
@@ -200,14 +200,14 @@
                       id="CompanyAbout_{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_pageId setPageId classCompanyAbout inputCompanyAbout{{ result.pageId }}PageId "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_pageId setPageId classCompanyAbout inputCompanyAbout{{ result.pageId }}PageId "
                       name="setPageId"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_pageId setPageId classCompanyAbout inputCompanyAbout{{ result.pageId }}PageId "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_pageId setPageId classCompanyAbout inputCompanyAbout{{ result.pageId }}PageId "
                       name="setPageId"
     {%- else %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_pageId valuePageId classCompanyAbout inputCompanyAbout{{ result.pageId }}PageId "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_pageId valuePageId classCompanyAbout inputCompanyAbout{{ result.pageId }}PageId "
                       name="pageId"
     {%- endif %}
   {%- endif %}
@@ -224,7 +224,7 @@
 {%- macro htmPageIdCompanyAboutPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputPageIdCompanyAboutPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputDisplayPageCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputDisplayPageCompanyAboutPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_displayPage">
   {%- endif %}
@@ -232,7 +232,7 @@
                   <div class="button-on-left ">
                     <wa-button variant="brand"
                         id="CompanyAbout_{{classApiMethodMethod}}_displayPage"
-                        class="button-on-left {{CompanyAbout_classApiMethodMethod}}_displayPage classCompanyAbout inputCompanyAbout{{ result.pageId }}DisplayPage "
+                        class="button-on-left CompanyAbout_{{classApiMethodMethod}}_displayPage classCompanyAbout inputCompanyAbout{{ result.pageId }}DisplayPage "
                         name="setDisplayPage"
                         href="{{ result.displayPage | e }}"
                         >
@@ -245,14 +245,14 @@
                       id="CompanyAbout_{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_displayPage setDisplayPage classCompanyAbout inputCompanyAbout{{ result.pageId }}DisplayPage "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_displayPage setDisplayPage classCompanyAbout inputCompanyAbout{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_displayPage setDisplayPage classCompanyAbout inputCompanyAbout{{ result.pageId }}DisplayPage "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_displayPage setDisplayPage classCompanyAbout inputCompanyAbout{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
     {%- else %}
-                      class="label-on-left {{CompanyAbout_classApiMethodMethod}}_displayPage valueDisplayPage classCompanyAbout inputCompanyAbout{{ result.pageId }}DisplayPage "
+                      class="label-on-left CompanyAbout_{{classApiMethodMethod}}_displayPage valueDisplayPage classCompanyAbout inputCompanyAbout{{ result.pageId }}DisplayPage "
                       name="displayPage"
     {%- endif %}
   {%- endif %}
@@ -280,28 +280,28 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_patchCompanyAbout() %}
+{%- macro htmForm_patchCompanyAbout(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="patchCompanyAboutDialog" label="Modify about page">
           <form id="htmForm_patchCompanyAbout" class="round-row primary-smart-border-radius ">
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -313,22 +313,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -347,29 +347,29 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_postCompanyAbout() %}
+{%- macro htmForm_postCompanyAbout(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="postCompanyAboutDialog" label="Create an about page">
           <form id="htmForm_postCompanyAbout" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -381,22 +381,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -415,7 +415,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_deleteCompanyAbout() %}
+{%- macro htmForm_deleteCompanyAbout(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteCompanyAboutDialog" label="Delete about page">
           <form id="htmForm_deleteCompanyAbout" class="round-row primary-smart-border-radius ">
           </form>
@@ -432,7 +432,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_putimportCompanyAbout() %}
+{%- macro htmForm_putimportCompanyAbout(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportCompanyAboutDialog" label="Import about">
           <form id="htmForm_putimportCompanyAbout" class="round-row primary-smart-border-radius ">
             <div>
@@ -448,7 +448,7 @@
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmForm_searchpageCompanyAbout() %}
+{%- macro htmForm_searchpageCompanyAbout(idSuffix='') %}
         <div with-header with-footer style="--width: 50vw; " id="searchpageCompanyAboutDialog" label="Search about">
           <div id="htmForm_searchpageCompanyAbout" class="round-row primary-smart-border-radius ">
 
@@ -458,56 +458,56 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmCreatedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmCreatedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmCreatedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmCreatedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmCreatedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmCreatedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmModifiedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmModifiedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmModifiedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmModifiedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmModifiedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmModifiedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmArchivedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmArchivedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmArchivedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmArchivedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmArchivedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmArchivedCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -519,22 +519,22 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDisplayPageCompanyAboutPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -552,7 +552,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_deletefilterCompanyAbout() %}
+{%- macro htmForm_deletefilterCompanyAbout(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterCompanyAboutDialog" label="Delete about page">
           <form id="htmForm_deletefilterCompanyAbout" class="round-row primary-smart-border-radius ">
           </form>

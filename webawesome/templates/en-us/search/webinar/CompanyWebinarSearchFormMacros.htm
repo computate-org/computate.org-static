@@ -1,4 +1,4 @@
-{%- macro inputPkCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputPkCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pk">
   {%- endif %}
@@ -11,14 +11,14 @@
                       id="CompanyWebinar_{{classApiMethodMethod}}_pk"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_pk setPk classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Pk "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_pk setPk classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Pk "
                       name="setPk"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_pk setPk classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Pk "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_pk setPk classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Pk "
                       name="setPk"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_pk valuePk classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Pk "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_pk valuePk classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Pk "
                       name="pk"
     {%- endif %}
   {%- endif %}
@@ -35,7 +35,7 @@
 {%- macro htmPkCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputPkCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputCreatedCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputCreatedCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_created">
   {%- endif %}
@@ -44,7 +44,7 @@
                       readonly
                       hint="A created timestamp for this record in the database"
                       label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_created datetimepicker setCreated classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Created "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_created datetimepicker setCreated classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="CompanyWebinar_{{classApiMethodMethod}}_created"
@@ -63,7 +63,7 @@
 {%- macro htmCreatedCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputCreatedCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputModifiedCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputModifiedCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_modified">
   {%- endif %}
@@ -72,7 +72,7 @@
                       readonly
                       hint="A modified timestamp for this record in the database"
                       label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_modified datetimepicker setModified classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Modified "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_modified datetimepicker setModified classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="CompanyWebinar_{{classApiMethodMethod}}_modified"
@@ -91,7 +91,7 @@
 {%- macro htmModifiedCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputModifiedCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputArchivedCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputArchivedCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_archived">
   {%- endif %}
@@ -101,7 +101,7 @@
                       placeholder="archive"
                       label="archive"
                       hint="For archiving this record"
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_archived classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Archived "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_archived classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
                       data-val="{{ result.archived | e }}"
@@ -120,14 +120,14 @@
                       label="archive"
                       hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_archived classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Archived "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_archived classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Archived "
                       name="setArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_archived classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Archived "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_archived classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Archived "
                       name="setArchived"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_archived setArchived valueArchived classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Archived "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_archived setArchived valueArchived classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Archived "
                       name="setArchived"
     {%- endif %}
   {%- endif %}
@@ -153,7 +153,7 @@
 {%- macro htmArchivedCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputArchivedCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputNameCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputNameCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_name">
   {%- endif %}
@@ -165,14 +165,14 @@
                       id="CompanyWebinar_{{classApiMethodMethod}}_name"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_name setName classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Name "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_name setName classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Name "
                       name="setName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_name setName classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Name "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_name setName classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Name "
                       name="setName"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_name valueName classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Name "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_name valueName classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Name "
                       name="name"
     {%- endif %}
   {%- endif %}
@@ -189,7 +189,7 @@
 {%- macro htmNameCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputNameCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputDescriptionCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputDescriptionCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_description">
   {%- endif %}
@@ -201,14 +201,14 @@
                       id="CompanyWebinar_{{classApiMethodMethod}}_description"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_description setDescription classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Description "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_description setDescription classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Description "
                       name="setDescription"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_description setDescription classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Description "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_description setDescription classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Description "
                       name="setDescription"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_description valueDescription classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Description "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_description valueDescription classCompanyWebinar inputCompanyWebinar{{ result.pageId }}Description "
                       name="description"
     {%- endif %}
   {%- endif %}
@@ -225,7 +225,7 @@
 {%- macro htmDescriptionCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_webinarUrlAmericas">
   {%- endif %}
@@ -237,14 +237,14 @@
                       id="CompanyWebinar_{{classApiMethodMethod}}_webinarUrlAmericas"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlAmericas setWebinarUrlAmericas classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlAmericas "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlAmericas setWebinarUrlAmericas classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlAmericas "
                       name="setWebinarUrlAmericas"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlAmericas setWebinarUrlAmericas classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlAmericas "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlAmericas setWebinarUrlAmericas classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlAmericas "
                       name="setWebinarUrlAmericas"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlAmericas valueWebinarUrlAmericas classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlAmericas "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlAmericas valueWebinarUrlAmericas classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlAmericas "
                       name="webinarUrlAmericas"
     {%- endif %}
   {%- endif %}
@@ -261,7 +261,7 @@
 {%- macro htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputWebinarUrlApacCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputWebinarUrlApacCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_webinarUrlApac">
   {%- endif %}
@@ -273,14 +273,14 @@
                       id="CompanyWebinar_{{classApiMethodMethod}}_webinarUrlApac"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlApac setWebinarUrlApac classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlApac "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlApac setWebinarUrlApac classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlApac "
                       name="setWebinarUrlApac"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlApac setWebinarUrlApac classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlApac "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlApac setWebinarUrlApac classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlApac "
                       name="setWebinarUrlApac"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlApac valueWebinarUrlApac classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlApac "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlApac valueWebinarUrlApac classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlApac "
                       name="webinarUrlApac"
     {%- endif %}
   {%- endif %}
@@ -297,7 +297,7 @@
 {%- macro htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputWebinarUrlApacCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_webinarUrlEmea">
   {%- endif %}
@@ -309,14 +309,14 @@
                       id="CompanyWebinar_{{classApiMethodMethod}}_webinarUrlEmea"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlEmea setWebinarUrlEmea classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlEmea "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlEmea setWebinarUrlEmea classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlEmea "
                       name="setWebinarUrlEmea"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlEmea setWebinarUrlEmea classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlEmea "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlEmea setWebinarUrlEmea classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlEmea "
                       name="setWebinarUrlEmea"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_webinarUrlEmea valueWebinarUrlEmea classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlEmea "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_webinarUrlEmea valueWebinarUrlEmea classCompanyWebinar inputCompanyWebinar{{ result.pageId }}WebinarUrlEmea "
                       name="webinarUrlEmea"
     {%- endif %}
   {%- endif %}
@@ -333,7 +333,7 @@
 {%- macro htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputIcalUrlCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputIcalUrlCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_icalUrl">
   {%- endif %}
@@ -345,14 +345,14 @@
                       id="CompanyWebinar_{{classApiMethodMethod}}_icalUrl"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_icalUrl setIcalUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}IcalUrl "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_icalUrl setIcalUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}IcalUrl "
                       name="setIcalUrl"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_icalUrl setIcalUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}IcalUrl "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_icalUrl setIcalUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}IcalUrl "
                       name="setIcalUrl"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_icalUrl valueIcalUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}IcalUrl "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_icalUrl valueIcalUrl classCompanyWebinar inputCompanyWebinar{{ result.pageId }}IcalUrl "
                       name="icalUrl"
     {%- endif %}
   {%- endif %}
@@ -369,7 +369,7 @@
 {%- macro htmIcalUrlCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputIcalUrlCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputNextWebinarCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputNextWebinarCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_nextWebinar">
   {%- endif %}
@@ -378,7 +378,7 @@
                       readonly
                       hint="The start date time of the next webinar. "
                       label="next webinar {{ formatZonedDateTime(result.nextWebinar, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_nextWebinar datetimepicker setNextWebinar classCompanyWebinar inputCompanyWebinar{{ result.pageId }}NextWebinar "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_nextWebinar datetimepicker setNextWebinar classCompanyWebinar inputCompanyWebinar{{ result.pageId }}NextWebinar "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="CompanyWebinar_{{classApiMethodMethod}}_nextWebinar"
@@ -397,7 +397,7 @@
 {%- macro htmNextWebinarCompanyWebinarPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputNextWebinarCompanyWebinarPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputPageIdCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) %}
+{%- macro inputPageIdCompanyWebinarPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageId">
   {%- endif %}
@@ -409,14 +409,14 @@
                       id="CompanyWebinar_{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_pageId setPageId classCompanyWebinar inputCompanyWebinar{{ result.pageId }}PageId "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_pageId setPageId classCompanyWebinar inputCompanyWebinar{{ result.pageId }}PageId "
                       name="setPageId"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_pageId setPageId classCompanyWebinar inputCompanyWebinar{{ result.pageId }}PageId "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_pageId setPageId classCompanyWebinar inputCompanyWebinar{{ result.pageId }}PageId "
                       name="setPageId"
     {%- else %}
-                      class="label-on-left {{CompanyWebinar_classApiMethodMethod}}_pageId valuePageId classCompanyWebinar inputCompanyWebinar{{ result.pageId }}PageId "
+                      class="label-on-left CompanyWebinar_{{classApiMethodMethod}}_pageId valuePageId classCompanyWebinar inputCompanyWebinar{{ result.pageId }}PageId "
                       name="pageId"
     {%- endif %}
   {%- endif %}
@@ -443,7 +443,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_patchCompanyWebinar() %}
+{%- macro htmForm_patchCompanyWebinar(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="patchCompanyWebinarDialog" label="Modify webinar">
           <form id="htmForm_patchCompanyWebinar" class="round-row primary-smart-border-radius ">
 
@@ -453,74 +453,74 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -532,12 +532,12 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -556,7 +556,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_postCompanyWebinar() %}
+{%- macro htmForm_postCompanyWebinar(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="postCompanyWebinarDialog" label="Create a webinar">
           <form id="htmForm_postCompanyWebinar" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
@@ -567,74 +567,74 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -646,12 +646,12 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "POST" in scopes -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -670,7 +670,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_deleteCompanyWebinar() %}
+{%- macro htmForm_deleteCompanyWebinar(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteCompanyWebinarDialog" label="Delete webinar">
           <form id="htmForm_deleteCompanyWebinar" class="round-row primary-smart-border-radius ">
           </form>
@@ -687,7 +687,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_putimportCompanyWebinar() %}
+{%- macro htmForm_putimportCompanyWebinar(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportCompanyWebinarDialog" label="Import webinars">
           <form id="htmForm_putimportCompanyWebinar" class="round-row primary-smart-border-radius ">
             <div>
@@ -703,7 +703,7 @@
         </wa-dialog>
 {%- endmacro %}
 
-{%- macro htmForm_searchpageCompanyWebinar() %}
+{%- macro htmForm_searchpageCompanyWebinar(idSuffix='') %}
         <div with-header with-footer style="--width: 50vw; " id="searchpageCompanyWebinarDialog" label="Search webinars">
           <div id="htmForm_searchpageCompanyWebinar" class="round-row primary-smart-border-radius ">
 
@@ -713,44 +713,44 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPkCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPkCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPkCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPkCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPkCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPkCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmCreatedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmCreatedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmCreatedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmCreatedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmCreatedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmCreatedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmModifiedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmModifiedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmModifiedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmModifiedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmModifiedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmModifiedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmArchivedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmArchivedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmArchivedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmArchivedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmArchivedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmArchivedCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -762,74 +762,74 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNameCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNameCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmDescriptionCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlAmericasCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlApacCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmWebinarUrlEmeaCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmIcalUrlCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmNextWebinarCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -841,12 +841,12 @@
               </div>
               <div class="grid-with-subgrid-2col ">
                 {% if "PATCH" in scopes -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
-                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false) }}
+                {{ htmPageIdCompanyWebinarPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -864,7 +864,7 @@
           </wa-popup>
 {%- endmacro %}
 
-{%- macro htmForm_deletefilterCompanyWebinar() %}
+{%- macro htmForm_deletefilterCompanyWebinar(idSuffix='') %}
         <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterCompanyWebinarDialog" label="Delete webinar">
           <form id="htmForm_deletefilterCompanyWebinar" class="round-row primary-smart-border-radius ">
           </form>

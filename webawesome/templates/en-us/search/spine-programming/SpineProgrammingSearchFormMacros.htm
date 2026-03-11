@@ -7,7 +7,7 @@
                       readonly
                       hint="A created timestamp for this record in the database"
                       label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_created datetimepicker setCreated classSpineProgramming inputSpineProgramming{{ result.pageId }}Created "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_created datetimepicker setCreated classSpineProgramming inputSpineProgramming{{ result.pageId }}Created "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="SpineProgramming_{{classApiMethodMethod}}_created"
@@ -35,7 +35,7 @@
                       readonly
                       hint="A modified timestamp for this record in the database"
                       label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_modified datetimepicker setModified classSpineProgramming inputSpineProgramming{{ result.pageId }}Modified "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_modified datetimepicker setModified classSpineProgramming inputSpineProgramming{{ result.pageId }}Modified "
                       placeholder="MM/dd/yyyy h:mm a '['VV']'"
                       data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
                       id="SpineProgramming_{{classApiMethodMethod}}_modified"
@@ -64,7 +64,7 @@
                       placeholder="archived"
                       label="archived"
                       hint="For archiving this record"
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_archived classSpineProgramming inputSpineProgramming{{ result.pageId }}Archived "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_archived classSpineProgramming inputSpineProgramming{{ result.pageId }}Archived "
                       name="setArchived"
                       data-pageId={{ result.pageId | tojson }}
                       data-val="{{ result.archived | e }}"
@@ -83,14 +83,14 @@
                       label="archived"
                       hint="For archiving this record"
   {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_archived classSpineProgramming inputSpineProgramming{{ result.pageId }}Archived "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_archived classSpineProgramming inputSpineProgramming{{ result.pageId }}Archived "
                       name="setArchived"
   {%- else %}
     {%- if 'Page' == classApiMethodMethod %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_archived classSpineProgramming inputSpineProgramming{{ result.pageId }}Archived "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_archived classSpineProgramming inputSpineProgramming{{ result.pageId }}Archived "
                       name="setArchived"
     {%- else %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_archived setArchived valueArchived classSpineProgramming inputSpineProgramming{{ result.pageId }}Archived "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_archived setArchived valueArchived classSpineProgramming inputSpineProgramming{{ result.pageId }}Archived "
                       name="setArchived"
     {%- endif %}
   {%- endif %}
@@ -128,14 +128,14 @@
                       id="SpineProgramming_{{classApiMethodMethod}}_authorName"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_authorName setAuthorName classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorName "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_authorName setAuthorName classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorName "
                       name="setAuthorName"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_authorName setAuthorName classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorName "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_authorName setAuthorName classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorName "
                       name="setAuthorName"
     {%- else %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_authorName valueAuthorName classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorName "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_authorName valueAuthorName classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorName "
                       name="authorName"
     {%- endif %}
   {%- endif %}
@@ -164,14 +164,14 @@
                       id="SpineProgramming_{{classApiMethodMethod}}_authorUrl"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_authorUrl setAuthorUrl classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorUrl "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_authorUrl setAuthorUrl classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorUrl "
                       name="setAuthorUrl"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_authorUrl setAuthorUrl classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorUrl "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_authorUrl setAuthorUrl classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorUrl "
                       name="setAuthorUrl"
     {%- else %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_authorUrl valueAuthorUrl classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorUrl "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_authorUrl valueAuthorUrl classSpineProgramming inputSpineProgramming{{ result.pageId }}AuthorUrl "
                       name="authorUrl"
     {%- endif %}
   {%- endif %}
@@ -200,14 +200,14 @@
                       id="SpineProgramming_{{classApiMethodMethod}}_pageImageUri"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_pageImageUri setPageImageUri classSpineProgramming inputSpineProgramming{{ result.pageId }}PageImageUri "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_pageImageUri setPageImageUri classSpineProgramming inputSpineProgramming{{ result.pageId }}PageImageUri "
                       name="setPageImageUri"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_pageImageUri setPageImageUri classSpineProgramming inputSpineProgramming{{ result.pageId }}PageImageUri "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_pageImageUri setPageImageUri classSpineProgramming inputSpineProgramming{{ result.pageId }}PageImageUri "
                       name="setPageImageUri"
     {%- else %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_pageImageUri valuePageImageUri classSpineProgramming inputSpineProgramming{{ result.pageId }}PageImageUri "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_pageImageUri valuePageImageUri classSpineProgramming inputSpineProgramming{{ result.pageId }}PageImageUri "
                       name="pageImageUri"
     {%- endif %}
   {%- endif %}
@@ -236,14 +236,14 @@
                       id="SpineProgramming_{{classApiMethodMethod}}_pageId"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_pageId setPageId classSpineProgramming inputSpineProgramming{{ result.pageId }}PageId "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_pageId setPageId classSpineProgramming inputSpineProgramming{{ result.pageId }}PageId "
                       name="setPageId"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_pageId setPageId classSpineProgramming inputSpineProgramming{{ result.pageId }}PageId "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_pageId setPageId classSpineProgramming inputSpineProgramming{{ result.pageId }}PageId "
                       name="setPageId"
     {%- else %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_pageId valuePageId classSpineProgramming inputSpineProgramming{{ result.pageId }}PageId "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_pageId valuePageId classSpineProgramming inputSpineProgramming{{ result.pageId }}PageId "
                       name="pageId"
     {%- endif %}
   {%- endif %}
@@ -268,7 +268,7 @@
                   <div class="button-on-left ">
                     <wa-button variant="brand"
                         id="SpineProgramming_{{classApiMethodMethod}}_displayPage"
-                        class="button-on-left {{SpineProgramming_classApiMethodMethod}}_displayPage classSpineProgramming inputSpineProgramming{{ result.pageId }}DisplayPage "
+                        class="button-on-left SpineProgramming_{{classApiMethodMethod}}_displayPage classSpineProgramming inputSpineProgramming{{ result.pageId }}DisplayPage "
                         name="setDisplayPage"
                         href="{{ result.displayPage | e }}"
                         >
@@ -281,14 +281,14 @@
                       id="SpineProgramming_{{classApiMethodMethod}}_displayPage"
   {%- if "Page" == classApiMethodMethod %}
                       data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_displayPage setDisplayPage classSpineProgramming inputSpineProgramming{{ result.pageId }}DisplayPage "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_displayPage setDisplayPage classSpineProgramming inputSpineProgramming{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
   {%- else %}
     {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_displayPage setDisplayPage classSpineProgramming inputSpineProgramming{{ result.pageId }}DisplayPage "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_displayPage setDisplayPage classSpineProgramming inputSpineProgramming{{ result.pageId }}DisplayPage "
                       name="setDisplayPage"
     {%- else %}
-                      class="label-on-left {{SpineProgramming_classApiMethodMethod}}_displayPage valueDisplayPage classSpineProgramming inputSpineProgramming{{ result.pageId }}DisplayPage "
+                      class="label-on-left SpineProgramming_{{classApiMethodMethod}}_displayPage valueDisplayPage classSpineProgramming inputSpineProgramming{{ result.pageId }}DisplayPage "
                       name="displayPage"
     {%- endif %}
   {%- endif %}

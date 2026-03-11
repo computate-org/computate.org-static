@@ -76,19 +76,17 @@ wa-card::part(header) {
                   <div><label>State*<input id="billingState" name="state" required autocomplete="billing address-level1" placeholder="State" value=""></label></div>
                   <div><label>ZIP / Postcode*<input id="billingPostcode" name="postcode" required autocomplete="billing postal-code" placeholder="ZIP / Postcode" value=""></label></div>
                   <div><label>Country*<input id="billingCountry" name="country" required autocomplete="billing country" placeholder="Country" value=""></label></div>
+                  <wa-input required value="" name="firstName" id="firstName" placeholder="first name" label="First Name on card"></wa-input>
+                  <wa-input required value="" name="lastName" id="lastName" placeholder="last name" label="Last Name on card"></wa-input>
                 </div>
                 <div class="wa-stack ">
                   <h4>Payment</h4>
-                  <wa-input required value="" name="firstName" id="firstName" placeholder="first name" label="First Name on card"></wa-input>
-                  <wa-input required value="" name="lastName" id="lastName" placeholder="last name" label="Last Name on card"></wa-input>
                   <wa-input required value="" name="cardNumber" id="cardNumber" minlength="13" maxlength="19" pattern="[0-9]*" placeholder="0000000000000000" label="Card Number"></wa-input>
                   <div class="wa-grid " style="--min-column-size: 10ch; ">
                     <wa-input required value="" label="Expiration Month" type="text" name="expMonth" id="expMonth" pattern="\d\d" minlength="2" maxlength="2" placeholder="MM"></wa-input>
                     <wa-input required value="" label="Expiration Year" type="text" name="expYear" id="expYear" pattern="\d\d" minlength="2" maxlength="2" placeholder="YY"></wa-input>
                   </div>
                   <wa-input required value="" label="CVV" name="cardCode" id="cardCode" minlength="3" maxlength="4" pattern="[0-9]+" placeholder="111"></wa-input>
-                </div>
-                <div class="wa-stack ">
                   <h4>Price</h4>
                   <wa-input value="" label="Item price" name="itemPrice" id="itemPrice" readonly disabled></wa-input>
                   <wa-input value="" label="Utah state sales tax rate" name="calculatedTaxRate" id="calculatedTaxRate" readonly disabled></wa-input>
@@ -166,7 +164,15 @@ wa-card::part(header) {
     <script>
 
       function calculatePayment() {
-        const formData = Object.fromEntries(new FormData(document.getElementById('paymentForm')).entries());
+        const paymentForm = document.getElementById('paymentForm');
+        const formData = {
+          address: paymentForm.querySelector('#billingAddress').value
+          , apartment: paymentForm.querySelector('#billingApartment').value
+          , city: paymentForm.querySelector('#billingCity').value
+          , state: paymentForm.querySelector('#billingState').value
+          , postcode: paymentForm.querySelector('#billingPostcode').value
+          , country: paymentForm.querySelector('#billingCountry').value
+        }
         const relativeUri = window.location.pathname + window.location.search;
         fetch(
           relativeUri
@@ -207,7 +213,16 @@ wa-card::part(header) {
         } else {
           // Send payment nonce to backend. 
           const relativeUri = window.location.pathname + window.location.search;
-          const formData = Object.fromEntries(new FormData(document.getElementById('paymentForm')).entries());
+          const formData = {
+            address: paymentForm.querySelector('#billingAddress').value
+            , apartment: paymentForm.querySelector('#billingApartment').value
+            , city: paymentForm.querySelector('#billingCity').value
+            , state: paymentForm.querySelector('#billingState').value
+            , postcode: paymentForm.querySelector('#billingPostcode').value
+            , country: paymentForm.querySelector('#billingCountry').value
+            , firstName: paymentForm.querySelector('#firstName').value
+            , lastName: paymentForm.querySelector('#lastName').value
+          }
           formData['itemPrice'] = document.querySelector('#itemPrice').value;
           formData['calculatedTaxRate'] = document.querySelector('#calculatedTaxRate').value;
           formData['calculatedTaxAmount'] = document.querySelector('#calculatedTaxAmount').value;
