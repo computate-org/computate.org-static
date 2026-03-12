@@ -97,6 +97,7 @@
               </p>
             </div>
           </wa-card>
+{% if "GET" not in scopes -%}
 {% if result.price != "0.00" %}
 
           <wa-callout>
@@ -167,6 +168,7 @@
             </div>
           </wa-callout>
 {% endif %}
+{% endif -%}
         </div>
 {%- endmacro %}
 {%- macro code(code) %}
