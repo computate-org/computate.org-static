@@ -192,7 +192,19 @@ wa-card::part(header) {
               error(response, target);
             }
           })
-          .catch(response => error(response, target));
+          .catch(response => {
+            var errorDiv = document.getElementById('paymentErrors');
+            var callout = document.createElement("wa-callout");
+            callout.setAttribute('variant', 'danger');
+            var icon = document.createElement('i');
+            icon.setAttribute('class', '{{ FONTAWESOME_STYLE }}fa-circle-exclamation ');
+            callout.appendChild(icon);
+            var strong = document.createElement('strong');
+            strong.innerText = "Your user session has timed out, please refresh the page to log back into GitHub and try the payment again. ";
+            callout.appendChild(strong);
+            errorDiv.appendChild(callout);
+            errorDiv.scrollIntoView();
+          });
       }
 
       function paymentResponseHandler(response) {
@@ -265,13 +277,50 @@ wa-card::part(header) {
             }).then(response => {
               if(response.ok) {
                 response.json().then((json) => {
+                  location.reload();
                   success(json, target);
-                })
+                });
               } else {
-                error(response, target);
+                response.json().then((json) => {
+                  var errorDiv = document.getElementById('paymentErrors');
+                  var callout = document.createElement("wa-callout");
+                  callout.setAttribute('variant', 'danger');
+                  var icon = document.createElement('i');
+                  icon.setAttribute('class', '{{ FONTAWESOME_STYLE }}fa-circle-exclamation ');
+                  callout.appendChild(icon);
+                  var strong = document.createElement('strong');
+                  strong.innerText = json.error.message;
+                  callout.appendChild(strong);
+                  errorDiv.appendChild(callout);
+                  errorDiv.scrollIntoView();
+                }).catch(response => {
+                  var errorDiv = document.getElementById('paymentErrors');
+                  var callout = document.createElement("wa-callout");
+                  callout.setAttribute('variant', 'danger');
+                  var icon = document.createElement('i');
+                  icon.setAttribute('class', '{{ FONTAWESOME_STYLE }}fa-circle-exclamation ');
+                  callout.appendChild(icon);
+                  var strong = document.createElement('strong');
+                  strong.innerText = "Your user session has timed out, please refresh the page to log back into GitHub and try the payment again. ";
+                  callout.appendChild(strong);
+                  errorDiv.appendChild(callout);
+                  errorDiv.scrollIntoView();
+                });
               }
             })
-            .catch(response => error(response, target));
+            .catch(response => {
+              var errorDiv = document.getElementById('paymentErrors');
+              var callout = document.createElement("wa-callout");
+              callout.setAttribute('variant', 'danger');
+              var icon = document.createElement('i');
+              icon.setAttribute('class', '{{ FONTAWESOME_STYLE }}fa-circle-exclamation ');
+              callout.appendChild(icon);
+              var strong = document.createElement('strong');
+              strong.innerText = response.error.message;
+              callout.appendChild(strong);
+              errorDiv.appendChild(callout);
+              errorDiv.focus();
+            });
           }
       }
 
