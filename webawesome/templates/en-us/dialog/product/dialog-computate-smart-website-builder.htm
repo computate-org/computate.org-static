@@ -1,18 +1,9 @@
-
-<div class="wa-gap-3xl wa-stack">
-
-  <wa-card>
+{% include "en-us/ArticlePart.htm" %}
+{% set productUseCases -%}
     <div class="wa-stack ">
-      <h2>
-        What is the {{ result.name }}?
-      </h2>
-      <p>
-        Teaching tools and automation for easily building a custom website with the models and data that you care about using the best in open source software. 
-      </p>
-
       <div>
         <div class="wa-flank ">
-          <i class="fa-duotone fa-regular fa-code"></i>
+          <i class="{{ FONTAWESOME_STYLE }} fa-code"></i>
           <h3>
             Modern development tools
           </h3>
@@ -25,7 +16,7 @@
 
       <div>
         <div class="wa-flank ">
-          <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
+          <i class="{{ FONTAWESOME_STYLE }} fa-cloud-arrow-up"></i>
           <h3>
             Cloud-native microservices
           </h3>
@@ -38,7 +29,7 @@
 
       <div>
         <div class="wa-flank ">
-          <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
+          <i class="{{ FONTAWESOME_STYLE }} fa-cloud-arrow-up"></i>
           <h3>
             Automate tasks
           </h3>
@@ -50,7 +41,7 @@
 
       <div>
         <div class="wa-flank ">
-          <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
+          <i class="{{ FONTAWESOME_STYLE }} fa-cloud-arrow-up"></i>
           <h3>
             Learn reactive programming
           </h3>
@@ -62,7 +53,7 @@
 
       <div>
         <div class="wa-flank ">
-          <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
+          <i class="{{ FONTAWESOME_STYLE }} fa-cloud-arrow-up"></i>
           <h3>
             Build interactive dashboards
           </h3>
@@ -74,7 +65,7 @@
 
       <div>
         <div class="wa-flank ">
-          <i class="fa-duotone fa-regular fa-cloud-arrow-up"></i>
+          <i class="{{ FONTAWESOME_STYLE }} fa-cloud-arrow-up"></i>
           <h3>
             Cloud-native microservices
           </h3>
@@ -100,13 +91,9 @@
           </li>
         </ol>
       </div>
-
     </div>
-  </wa-card>
-  <h2>
-    <i class="{{ FONTAWESOME_STYLE }} fa-head-side-gear fa-2xl "></i>
-    Things you'll learn: 
-  </h2>
+{% endset productUseCases -%}
+{% set productThingsYoullLearn -%}
   <ol>
     <li>
       Install Java
@@ -142,11 +129,13 @@
       Create new APIs and data models for your site. 
     </li>
   </ol>
+{% endset productThingsYoullLearn -%}
+{% set productGettingStarted -%}
 
   <wa-card class="pink-purple-background border-radius-x-large">
     <div class="wa-stack ">
       <div class="wa-flank ">
-        <i class="fa-duotone fa-regular fa-conveyor-belt fa-8x "></i>
+        <i class="{{ FONTAWESOME_STYLE }} fa-conveyor-belt fa-8x "></i>
         <h3>
           The prerequisite to using this product is to start with the 
           Computate Smart Cloud Deployer to build your cloud development environment. 
@@ -158,10 +147,10 @@
       </p>
       <div>
         <wa-button pill id="order-button" size="large" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}/en-us/product/computate-smart-cloud-deployer" variant="neutral">
-          <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+          <i class="{{ FONTAWESOME_STYLE }} fa-person-running-fast"></i>
           Get the prerequisite
         </wa-button>
       </div>
     </div>
   </wa-card>
-</div>
+{% endset productGettingStarted -%}
