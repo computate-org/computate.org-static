@@ -1,0 +1,17 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Deploy computate.org on OpenShift Local" />
+    <meta name="result.description" content="Become an open source computate.org site developer with GitOps and OpenShift Local. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-03-13T12:40:08.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/computate.org-on-openshift-local.png" />
+    <meta name="result.pageImageAlt" content="" />
+    <meta name="result.prerequisiteArticleIds" content="computer-requirements-for-computate-org-development, install-openshift-local-on-your-computer" />
+    <meta name="result.importance" content="512" />
+    <meta name="result.productNum" content="3"/>
+    <meta name="result.price" content="0"/>
+    <meta name="result.userPage" content="{{ SITE_BASE_URL }}/en-us/view/article/deploy-computate-org-on-openshift-local"/>
+{% endblock htmMetaPageLayout %}

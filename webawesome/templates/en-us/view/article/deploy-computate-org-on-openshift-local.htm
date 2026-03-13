@@ -2,15 +2,16 @@
 {% block htmMetaPageLayout %}
 {{ super() }}
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
-    <meta name="result.name" content="Deploying Learn that computer on OpenShift Local" />
-    <meta name="result.description" content="How to get started for free with OpenShift Local and deploying the Learn that computer platform with GitOps. " />
+    <meta name="result.name" content="Deploy computate.org on OpenShift Local" />
+    <meta name="result.description" content="How to get started for free with OpenShift Local and deploying the computate.org platform with GitOps. " />
     <meta name="result.authorName" content="Christopher Tate" />
     <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
     <meta name="result.created" content="2025-08-29T12:23:40.556[America/Denver]" />
     <meta name="result.pageImageUri" content="/png/computate.org-on-openshift-local.png" />
     <meta name="result.pageImageAlt" content="" />
-    <meta name="result.prerequisiteArticleIds" content="computer-requirements-for-computate.org-development, install-openshift-local-on-your-computer" />
+    <meta name="result.prerequisiteArticleIds" content="computer-requirements-for-computate-org-development, install-openshift-local-on-your-computer" />
     <meta name="result.importance" content="512" />
+    <meta name="result.labelsString" content="free-course" />
 {% endblock htmMetaPageLayout %}
 {% block htmBodyMiddleArticle %}
 {{ articleImage(result) }}
@@ -24,7 +25,7 @@
             Deploy required microservices to OpenShift Local
           </div>
           <p>
-            Several microservices are required first before deploying the Learn that computer platform. 
+            Several microservices are required first before deploying the computate.org platform. 
             These microservices include: 
           </p>
           <ul>
@@ -181,11 +182,11 @@
 
           <div class="wa-heading-2xl ">
             <i class="{{ FONTAWESOME_STYLE }} fa-folder-plus "></i>
-            Deploy Learn that computer to OpenShift Local with ArgoCD GitOps
+            Deploy computate.org to OpenShift Local with ArgoCD GitOps
           </div>
           <p>
             Once you have successfully synced all of the dependent microservice Applications,
-            You are ready to deploy the rest of the Learn that computer Applications to ArgoCD. 
+            You are ready to deploy the rest of the computate.org Applications to ArgoCD. 
           </p>
           <p>
             Clone the <kbd>{{ SITE_NAME }}</kbd> repository into a new directory <kbd>%USERPROFILE%\\src\\{{ SITE_NAME }}</kbd> in your source directory. 
@@ -202,7 +203,7 @@
           {{ code('oc apply -k openshift-local\\applications\\') }}
           <p>
             Then you need to wait patiently for the new Applications to sync. 
-            Access the ArgoCD application to watch the Learn that computer Applications sync. 
+            Access the ArgoCD application to watch the computate.org Applications sync. 
           </p>
           <div class="wa-stack wa-align-items-center ">
             <wa-button href="https://openshift-gitops-server-openshift-gitops.apps-crc.testing/" target="_blank" variant="brand">
@@ -343,11 +344,11 @@
 
           <div class="wa-heading-2xl ">
             <i class="{{ FONTAWESOME_STYLE }} fa-folder-plus "></i>
-            Deploy Learn that computer to OpenShift Local with ArgoCD GitOps
+            Deploy computate.org to OpenShift Local with ArgoCD GitOps
           </div>
           <p>
             Once you have successfully synced all of the dependent microservice Applications,
-            You are ready to deploy the rest of the Learn that computer Applications to ArgoCD. 
+            You are ready to deploy the rest of the computate.org Applications to ArgoCD. 
           </p>
           <p>
             Clone the <kbd>{{ SITE_NAME }}</kbd> repository into a new directory <kbd>~/.local/src/{{ SITE_NAME }}</kbd> in your source directory. 
@@ -364,7 +365,7 @@
           {{ code('oc apply -k openshift-local/applications/') }}
           <p>
             Then you need to wait patiently for the new Applications to sync. 
-            Access the ArgoCD application to watch the Learn that computer Applications sync and become healthy. 
+            Access the ArgoCD application to watch the computate.org Applications sync and become healthy. 
           </p>
           <div class="wa-stack wa-align-items-center ">
             <wa-button href="https://openshift-gitops-server-openshift-gitops.apps-crc.testing/" target="_blank" variant="brand">
@@ -378,12 +379,12 @@
         <div class="wa-stack ">
           <div class="wa-heading-2xl ">
             <i class="{{ FONTAWESOME_STYLE }} fa-fish "></i>
-            Access your own Learn that computer site
+            Access your own computate.org site
           </div>
           <p>
             Once all of your ArgoCD applications have become healthy and synced, 
-            your Learn that computer platform is running. 
-            View the Routes to the Learn that computer platform that you have deployed at this link. 
+            your computate.org platform is running. 
+            View the Routes to the computate.org platform that you have deployed at this link. 
           </p>
           <div class="wa-stack wa-align-items-center ">
             <wa-button href="https://console-openshift-console.apps-crc.testing/k8s/ns/computateorg/route.openshift.io~v1~Route" target="_blank" variant="brand">
@@ -392,11 +393,11 @@
             </wa-button>
           </div>
           <p>
-            The Route has a location that will take you to your Learn that computer platform. 
+            The Route has a location that will take you to your computate.org platform. 
           </p>
           <div class="wa-stack wa-align-items-center ">
             <wa-button href="https://computateorg.apps-crc.testing/" target="_blank" variant="brand">
-              Access Learn that computer platform
+              Access computate.org platform
               <i slot="end" class="{{ FONTAWESOME_STYLE }} fa-fish fa-xl "></i>
             </wa-button>
           </div>
