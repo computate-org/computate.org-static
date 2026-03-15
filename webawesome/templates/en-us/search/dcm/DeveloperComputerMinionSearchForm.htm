@@ -1,0 +1,26 @@
+{% include en-us/search/dcm/DeveloperComputerMinionSearchFormMacros.htm %}
+{%- if 'DELETE' in scopes %}
+    {{ htmForm_patchDeveloperComputerMinion() }}
+{%- endif %}
+{%- if 'POST' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_postDeveloperComputerMinion() }}
+  {%- else %}
+    {{ htmForm_postDeveloperComputerMinion() }}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deleteDeveloperComputerMinion() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}
+{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {{ htmForm_putimportDeveloperComputerMinion() }}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deletefilterDeveloperComputerMinion() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}

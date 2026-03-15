@@ -1,8 +1,8 @@
 
-async function websocketComputateDeveloper(success) {
+async function websocketDeveloperComputerMinion(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketComputateDeveloper', function (error, message) {
+    window.eventBus.registerHandler('websocketDeveloperComputerMinion', function (error, message) {
       var json = JSON.parse(message['body']);
       var pageId = json['id'];
       var solrIds = json['solrIds'];
@@ -24,11 +24,11 @@ async function websocketComputateDeveloper(success) {
       $header.setAttribute('class', 'w3-container fa- ');
       $header.setAttribute('id', 'header-' + pageId);
       var iTemplate = document.createElement('template');
-      iTemplate.innerHTML = '<i class="fa-kit fa-computate-c-key"></i>';
+      iTemplate.innerHTML = '<i class="fa-duotone fa-regular fa-fish"></i>';
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify Computate Developers in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify Developer Computer Minions in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
       $x.setAttribute('onclick', 'document.querySelector("#card-' + pageId + '");');
@@ -66,7 +66,7 @@ async function websocketComputateDeveloper(success) {
     });
   }
 }
-async function websocketComputateDeveloperInner(apiRequest) {
+async function websocketDeveloperComputerMinionInner(apiRequest) {
   var pageId = apiRequest['id'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
@@ -103,9 +103,9 @@ async function websocketComputateDeveloperInner(apiRequest) {
         var inputLessonNum = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
-        var inputPrerequisiteArticleIds = null;
         var inputPageImageType = null;
         var inputPageImageAlt = null;
+        var inputPrerequisiteArticleIds = null;
         var inputPrerequisiteArticles = null;
         var inputNextArticleIds = null;
         var inputNextArticles = null;
@@ -115,438 +115,438 @@ async function websocketComputateDeveloperInner(apiRequest) {
         var inputRelatedArticles = null;
 
         if(vars.includes('created'))
-          inputCreated = $response.querySelector('.ComputateDeveloper_Page_created');
+          inputCreated = $response.querySelector('.DeveloperComputerMinion_Page_created');
         if(vars.includes('modified'))
-          inputModified = $response.querySelector('.ComputateDeveloper_Page_modified');
+          inputModified = $response.querySelector('.DeveloperComputerMinion_Page_modified');
         if(vars.includes('archived'))
-          inputArchived = $response.querySelector('.ComputateDeveloper_Page_archived');
+          inputArchived = $response.querySelector('.DeveloperComputerMinion_Page_archived');
         if(vars.includes('name'))
-          inputName = $response.querySelector('.ComputateDeveloper_Page_name');
+          inputName = $response.querySelector('.DeveloperComputerMinion_Page_name');
         if(vars.includes('description'))
-          inputDescription = $response.querySelector('.ComputateDeveloper_Page_description');
+          inputDescription = $response.querySelector('.DeveloperComputerMinion_Page_description');
         if(vars.includes('authorName'))
-          inputAuthorName = $response.querySelector('.ComputateDeveloper_Page_authorName');
+          inputAuthorName = $response.querySelector('.DeveloperComputerMinion_Page_authorName');
         if(vars.includes('authorUrl'))
-          inputAuthorUrl = $response.querySelector('.ComputateDeveloper_Page_authorUrl');
+          inputAuthorUrl = $response.querySelector('.DeveloperComputerMinion_Page_authorUrl');
         if(vars.includes('pageImageUri'))
-          inputPageImageUri = $response.querySelector('.ComputateDeveloper_Page_pageImageUri');
+          inputPageImageUri = $response.querySelector('.DeveloperComputerMinion_Page_pageImageUri');
         if(vars.includes('pageId'))
-          inputPageId = $response.querySelector('.ComputateDeveloper_Page_pageId');
+          inputPageId = $response.querySelector('.DeveloperComputerMinion_Page_pageId');
         if(vars.includes('displayPage'))
-          inputDisplayPage = $response.querySelector('.ComputateDeveloper_Page_displayPage');
+          inputDisplayPage = $response.querySelector('.DeveloperComputerMinion_Page_displayPage');
         if(vars.includes('classCanonicalName'))
-          inputClassCanonicalName = $response.querySelector('.ComputateDeveloper_Page_classCanonicalName');
+          inputClassCanonicalName = $response.querySelector('.DeveloperComputerMinion_Page_classCanonicalName');
         if(vars.includes('classSimpleName'))
-          inputClassSimpleName = $response.querySelector('.ComputateDeveloper_Page_classSimpleName');
+          inputClassSimpleName = $response.querySelector('.DeveloperComputerMinion_Page_classSimpleName');
         if(vars.includes('classCanonicalNames'))
-          inputClassCanonicalNames = $response.querySelector('.ComputateDeveloper_Page_classCanonicalNames');
+          inputClassCanonicalNames = $response.querySelector('.DeveloperComputerMinion_Page_classCanonicalNames');
         if(vars.includes('saves'))
-          inputSaves = $response.querySelector('.ComputateDeveloper_Page_saves');
+          inputSaves = $response.querySelector('.DeveloperComputerMinion_Page_saves');
         if(vars.includes('objectTitle'))
-          inputObjectTitle = $response.querySelector('.ComputateDeveloper_Page_objectTitle');
+          inputObjectTitle = $response.querySelector('.DeveloperComputerMinion_Page_objectTitle');
         if(vars.includes('editPage'))
-          inputEditPage = $response.querySelector('.ComputateDeveloper_Page_editPage');
+          inputEditPage = $response.querySelector('.DeveloperComputerMinion_Page_editPage');
         if(vars.includes('userPage'))
-          inputUserPage = $response.querySelector('.ComputateDeveloper_Page_userPage');
+          inputUserPage = $response.querySelector('.DeveloperComputerMinion_Page_userPage');
         if(vars.includes('download'))
-          inputDownload = $response.querySelector('.ComputateDeveloper_Page_download');
+          inputDownload = $response.querySelector('.DeveloperComputerMinion_Page_download');
         if(vars.includes('objectSuggest'))
-          inputObjectSuggest = $response.querySelector('.ComputateDeveloper_Page_objectSuggest');
+          inputObjectSuggest = $response.querySelector('.DeveloperComputerMinion_Page_objectSuggest');
         if(vars.includes('objectText'))
-          inputObjectText = $response.querySelector('.ComputateDeveloper_Page_objectText');
+          inputObjectText = $response.querySelector('.DeveloperComputerMinion_Page_objectText');
         if(vars.includes('solrId'))
-          inputSolrId = $response.querySelector('.ComputateDeveloper_Page_solrId');
+          inputSolrId = $response.querySelector('.DeveloperComputerMinion_Page_solrId');
         if(vars.includes('courseNum'))
-          inputCourseNum = $response.querySelector('.ComputateDeveloper_Page_courseNum');
+          inputCourseNum = $response.querySelector('.DeveloperComputerMinion_Page_courseNum');
         if(vars.includes('lessonNum'))
-          inputLessonNum = $response.querySelector('.ComputateDeveloper_Page_lessonNum');
+          inputLessonNum = $response.querySelector('.DeveloperComputerMinion_Page_lessonNum');
         if(vars.includes('pageImageWidth'))
-          inputPageImageWidth = $response.querySelector('.ComputateDeveloper_Page_pageImageWidth');
+          inputPageImageWidth = $response.querySelector('.DeveloperComputerMinion_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
-          inputPageImageHeight = $response.querySelector('.ComputateDeveloper_Page_pageImageHeight');
-        if(vars.includes('prerequisiteArticleIds'))
-          inputPrerequisiteArticleIds = $response.querySelector('.ComputateDeveloper_Page_prerequisiteArticleIds');
+          inputPageImageHeight = $response.querySelector('.DeveloperComputerMinion_Page_pageImageHeight');
         if(vars.includes('pageImageType'))
-          inputPageImageType = $response.querySelector('.ComputateDeveloper_Page_pageImageType');
+          inputPageImageType = $response.querySelector('.DeveloperComputerMinion_Page_pageImageType');
         if(vars.includes('pageImageAlt'))
-          inputPageImageAlt = $response.querySelector('.ComputateDeveloper_Page_pageImageAlt');
+          inputPageImageAlt = $response.querySelector('.DeveloperComputerMinion_Page_pageImageAlt');
+        if(vars.includes('prerequisiteArticleIds'))
+          inputPrerequisiteArticleIds = $response.querySelector('.DeveloperComputerMinion_Page_prerequisiteArticleIds');
         if(vars.includes('prerequisiteArticles'))
-          inputPrerequisiteArticles = $response.querySelector('.ComputateDeveloper_Page_prerequisiteArticles');
+          inputPrerequisiteArticles = $response.querySelector('.DeveloperComputerMinion_Page_prerequisiteArticles');
         if(vars.includes('nextArticleIds'))
-          inputNextArticleIds = $response.querySelector('.ComputateDeveloper_Page_nextArticleIds');
+          inputNextArticleIds = $response.querySelector('.DeveloperComputerMinion_Page_nextArticleIds');
         if(vars.includes('nextArticles'))
-          inputNextArticles = $response.querySelector('.ComputateDeveloper_Page_nextArticles');
+          inputNextArticles = $response.querySelector('.DeveloperComputerMinion_Page_nextArticles');
         if(vars.includes('labelsString'))
-          inputLabelsString = $response.querySelector('.ComputateDeveloper_Page_labelsString');
+          inputLabelsString = $response.querySelector('.DeveloperComputerMinion_Page_labelsString');
         if(vars.includes('labels'))
-          inputLabels = $response.querySelector('.ComputateDeveloper_Page_labels');
+          inputLabels = $response.querySelector('.DeveloperComputerMinion_Page_labels');
         if(vars.includes('relatedArticleIds'))
-          inputRelatedArticleIds = $response.querySelector('.ComputateDeveloper_Page_relatedArticleIds');
+          inputRelatedArticleIds = $response.querySelector('.DeveloperComputerMinion_Page_relatedArticleIds');
         if(vars.includes('relatedArticles'))
-          inputRelatedArticles = $response.querySelector('.ComputateDeveloper_Page_relatedArticles');
+          inputRelatedArticles = $response.querySelector('.DeveloperComputerMinion_Page_relatedArticles');
 
-        jsWebsocketComputateDeveloper(pageId, vars, $response);
+        jsWebsocketDeveloperComputerMinion(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
-        window.listComputateDeveloper = JSON.parse($response.querySelector('.pageForm .listComputateDeveloper')?.value);
+        window.listDeveloperComputerMinion = JSON.parse($response.querySelector('.pageForm .listDeveloperComputerMinion')?.value);
 
 
         if(inputCreated) {
-          document.querySelectorAll('.ComputateDeveloper_Page_created').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_created').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputCreated.getAttribute('value');
             else
               item.textContent = inputCreated.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_created'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_created'));
         }
 
         if(inputModified) {
-          document.querySelectorAll('.ComputateDeveloper_Page_modified').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_modified').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputModified.getAttribute('value');
             else
               item.textContent = inputModified.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_modified'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_modified'));
         }
 
         if(inputArchived) {
-          document.querySelectorAll('.ComputateDeveloper_Page_archived').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_archived').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputArchived.getAttribute('value');
             else
               item.textContent = inputArchived.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_archived'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_archived'));
         }
 
         if(inputName) {
-          document.querySelectorAll('.ComputateDeveloper_Page_name').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_name').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputName.getAttribute('value');
             else
               item.textContent = inputName.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_name'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_name'));
         }
 
         if(inputDescription) {
-          document.querySelectorAll('.ComputateDeveloper_Page_description').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_description').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputDescription.getAttribute('value');
             else
               item.textContent = inputDescription.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_description'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_description'));
         }
 
         if(inputAuthorName) {
-          document.querySelectorAll('.ComputateDeveloper_Page_authorName').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_authorName').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputAuthorName.getAttribute('value');
             else
               item.textContent = inputAuthorName.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_authorName'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_authorName'));
         }
 
         if(inputAuthorUrl) {
-          document.querySelectorAll('.ComputateDeveloper_Page_authorUrl').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_authorUrl').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputAuthorUrl.getAttribute('value');
             else
               item.textContent = inputAuthorUrl.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_authorUrl'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_authorUrl'));
         }
 
         if(inputPageImageUri) {
-          document.querySelectorAll('.ComputateDeveloper_Page_pageImageUri').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_pageImageUri').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageUri.getAttribute('value');
             else
               item.textContent = inputPageImageUri.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageUri'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_pageImageUri'));
         }
 
         if(inputPageId) {
-          document.querySelectorAll('.ComputateDeveloper_Page_pageId').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_pageId').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageId.getAttribute('value');
             else
               item.textContent = inputPageId.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_pageId'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_pageId'));
         }
 
         if(inputDisplayPage) {
-          document.querySelectorAll('.ComputateDeveloper_Page_displayPage').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_displayPage').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputDisplayPage.getAttribute('value');
             else
               item.textContent = inputDisplayPage.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_displayPage'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_displayPage'));
         }
 
         if(inputClassCanonicalName) {
-          document.querySelectorAll('.ComputateDeveloper_Page_classCanonicalName').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_classCanonicalName').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputClassCanonicalName.getAttribute('value');
             else
               item.textContent = inputClassCanonicalName.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_classCanonicalName'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
-          document.querySelectorAll('.ComputateDeveloper_Page_classSimpleName').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_classSimpleName').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputClassSimpleName.getAttribute('value');
             else
               item.textContent = inputClassSimpleName.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_classSimpleName'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
-          document.querySelectorAll('.ComputateDeveloper_Page_classCanonicalNames').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_classCanonicalNames').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputClassCanonicalNames.getAttribute('value');
             else
               item.textContent = inputClassCanonicalNames.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_classCanonicalNames'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_classCanonicalNames'));
         }
 
         if(inputSaves) {
-          document.querySelectorAll('.ComputateDeveloper_Page_saves').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_saves').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputSaves.getAttribute('value');
             else
               item.textContent = inputSaves.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_saves'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_saves'));
         }
 
         if(inputObjectTitle) {
-          document.querySelectorAll('.ComputateDeveloper_Page_objectTitle').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_objectTitle').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputObjectTitle.getAttribute('value');
             else
               item.textContent = inputObjectTitle.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_objectTitle'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_objectTitle'));
         }
 
         if(inputEditPage) {
-          document.querySelectorAll('.ComputateDeveloper_Page_editPage').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_editPage').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputEditPage.getAttribute('value');
             else
               item.textContent = inputEditPage.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_editPage'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_editPage'));
         }
 
         if(inputUserPage) {
-          document.querySelectorAll('.ComputateDeveloper_Page_userPage').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_userPage').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputUserPage.getAttribute('value');
             else
               item.textContent = inputUserPage.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_userPage'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_userPage'));
         }
 
         if(inputDownload) {
-          document.querySelectorAll('.ComputateDeveloper_Page_download').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_download').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputDownload.getAttribute('value');
             else
               item.textContent = inputDownload.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_download'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_download'));
         }
 
         if(inputObjectSuggest) {
-          document.querySelectorAll('.ComputateDeveloper_Page_objectSuggest').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_objectSuggest').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputObjectSuggest.getAttribute('value');
             else
               item.textContent = inputObjectSuggest.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_objectSuggest'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_objectSuggest'));
         }
 
         if(inputObjectText) {
-          document.querySelectorAll('.ComputateDeveloper_Page_objectText').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_objectText').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputObjectText.getAttribute('value');
             else
               item.textContent = inputObjectText.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_objectText'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_objectText'));
         }
 
         if(inputSolrId) {
-          document.querySelectorAll('.ComputateDeveloper_Page_solrId').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_solrId').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputSolrId.getAttribute('value');
             else
               item.textContent = inputSolrId.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_solrId'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_solrId'));
         }
 
         if(inputCourseNum) {
-          document.querySelectorAll('.ComputateDeveloper_Page_courseNum').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_courseNum').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputCourseNum.getAttribute('value');
             else
               item.textContent = inputCourseNum.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_courseNum'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_courseNum'));
         }
 
         if(inputLessonNum) {
-          document.querySelectorAll('.ComputateDeveloper_Page_lessonNum').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_lessonNum').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputLessonNum.getAttribute('value');
             else
               item.textContent = inputLessonNum.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_lessonNum'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_lessonNum'));
         }
 
         if(inputPageImageWidth) {
-          document.querySelectorAll('.ComputateDeveloper_Page_pageImageWidth').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_pageImageWidth').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageWidth.getAttribute('value');
             else
               item.textContent = inputPageImageWidth.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageWidth'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_pageImageWidth'));
         }
 
         if(inputPageImageHeight) {
-          document.querySelectorAll('.ComputateDeveloper_Page_pageImageHeight').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_pageImageHeight').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageHeight.getAttribute('value');
             else
               item.textContent = inputPageImageHeight.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageHeight'));
-        }
-
-        if(inputPrerequisiteArticleIds) {
-          document.querySelectorAll('.ComputateDeveloper_Page_prerequisiteArticleIds').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPrerequisiteArticleIds.getAttribute('value');
-            else
-              item.textContent = inputPrerequisiteArticleIds.textContent;
-          });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_prerequisiteArticleIds'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_pageImageHeight'));
         }
 
         if(inputPageImageType) {
-          document.querySelectorAll('.ComputateDeveloper_Page_pageImageType').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_pageImageType').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageType.getAttribute('value');
             else
               item.textContent = inputPageImageType.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageType'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_pageImageType'));
         }
 
         if(inputPageImageAlt) {
-          document.querySelectorAll('.ComputateDeveloper_Page_pageImageAlt').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_pageImageAlt').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageAlt.getAttribute('value');
             else
               item.textContent = inputPageImageAlt.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageAlt'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_pageImageAlt'));
+        }
+
+        if(inputPrerequisiteArticleIds) {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_prerequisiteArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticleIds.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_prerequisiteArticleIds'));
         }
 
         if(inputPrerequisiteArticles) {
-          document.querySelectorAll('.ComputateDeveloper_Page_prerequisiteArticles').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_prerequisiteArticles').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPrerequisiteArticles.getAttribute('value');
             else
               item.textContent = inputPrerequisiteArticles.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_prerequisiteArticles'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_prerequisiteArticles'));
         }
 
         if(inputNextArticleIds) {
-          document.querySelectorAll('.ComputateDeveloper_Page_nextArticleIds').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_nextArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputNextArticleIds.getAttribute('value');
             else
               item.textContent = inputNextArticleIds.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_nextArticleIds'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_nextArticleIds'));
         }
 
         if(inputNextArticles) {
-          document.querySelectorAll('.ComputateDeveloper_Page_nextArticles').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_nextArticles').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputNextArticles.getAttribute('value');
             else
               item.textContent = inputNextArticles.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_nextArticles'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_nextArticles'));
         }
 
         if(inputLabelsString) {
-          document.querySelectorAll('.ComputateDeveloper_Page_labelsString').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_labelsString').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputLabelsString.getAttribute('value');
             else
               item.textContent = inputLabelsString.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_labelsString'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_labelsString'));
         }
 
         if(inputLabels) {
-          document.querySelectorAll('.ComputateDeveloper_Page_labels').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_labels').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputLabels.getAttribute('value');
             else
               item.textContent = inputLabels.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_labels'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_labels'));
         }
 
         if(inputRelatedArticleIds) {
-          document.querySelectorAll('.ComputateDeveloper_Page_relatedArticleIds').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_relatedArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputRelatedArticleIds.getAttribute('value');
             else
               item.textContent = inputRelatedArticleIds.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_relatedArticleIds'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_relatedArticleIds'));
         }
 
         if(inputRelatedArticles) {
-          document.querySelectorAll('.ComputateDeveloper_Page_relatedArticles').forEach((item, index) => {
+          document.querySelectorAll('.DeveloperComputerMinion_Page_relatedArticles').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputRelatedArticles.getAttribute('value');
             else
               item.textContent = inputRelatedArticles.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_relatedArticles'));
+          addGlow(document.querySelector('.DeveloperComputerMinion_Page_relatedArticles'));
         }
 
-          pageGraphComputateDeveloper();
+          pageGraphDeveloperComputerMinion();
       });
     });
   }
 }
 
-function pageGraphComputateDeveloper(apiRequest) {
+function pageGraphDeveloperComputerMinion(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -578,7 +578,7 @@ function pageGraphComputateDeveloper(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'Computate Developers';
+          layout['title'] = 'Developer Computer Minions';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -641,7 +641,7 @@ function pageGraphComputateDeveloper(apiRequest) {
               data.push(trace);
             });
           }
-          Plotly.react('htmBodyGraphComputateDeveloperPage', data, layout);
+          Plotly.react('htmBodyGraphDeveloperComputerMinionPage', data, layout);
         }
       }
     }
@@ -649,8 +649,8 @@ function pageGraphComputateDeveloper(apiRequest) {
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqComputateDeveloper_time').innerText = '';
-  searchPage('ComputateDeveloper', function() {
+  document.querySelector('#pageSearchVal-fqDeveloperComputerMinion_time').innerText = '';
+  searchPage('DeveloperComputerMinion', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -662,26 +662,26 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqComputateDeveloper_time').value = x;
-      document.querySelector('#fqComputateDeveloper_time').onchange();
-      searchPage('ComputateDeveloper');
+      document.querySelector('#fqDeveloperComputerMinion_time').value = x;
+      document.querySelector('#fqDeveloperComputerMinion_time').onchange();
+      searchPage('DeveloperComputerMinion');
     }, speedRate);
   });
 }
 
 // Search //
 
-async function searchComputateDeveloper($formFilters, success, error) {
-  var filters = searchComputateDeveloperFilters($formFilters);
+async function searchDeveloperComputerMinion($formFilters, success, error) {
+  var filters = searchDeveloperComputerMinionFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, target2 ) {};
 
-  searchComputateDeveloperVals(filters, target, success, error);
+  searchDeveloperComputerMinionVals(filters, target, success, error);
 }
 
-function searchComputateDeveloperFilters($formFilters) {
+function searchDeveloperComputerMinionFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -791,10 +791,6 @@ function searchComputateDeveloperFilters($formFilters) {
     if(filterPageImageHeight != null && filterPageImageHeight !== '')
       filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
 
-    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
-    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
-      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
-
     var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
@@ -802,6 +798,10 @@ function searchComputateDeveloperFilters($formFilters) {
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
+    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
+      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
 
     var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
     if(filterNextArticleIds != null && filterNextArticleIds !== '')
@@ -822,10 +822,10 @@ function searchComputateDeveloperFilters($formFilters) {
   return filters;
 }
 
-function searchComputateDeveloperVals(filters, target, success, error) {
+function searchDeveloperComputerMinionVals(filters, target, success, error) {
 
   fetch(
-    '/en-us/api/computate-developer?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/en-us/api/dcm?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -840,12 +840,12 @@ function searchComputateDeveloperVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestComputateDeveloperObjectSuggest($formFilters, $list, target) {
+function suggestDeveloperComputerMinionObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     if($list) {
       $list.innerHTML = '';
       data['list'].forEach((o, i) => {
-        var $i = document.querySelector('<i class="fa-kit fa-computate-c-key"></i>');
+        var $i = document.querySelector('<i class="fa-duotone fa-regular fa-fish"></i>');
         var $span = document.createElement('span');
         $span.setAttribute('class', '');
         $span.innerText = o['objectTitle'];
@@ -859,14 +859,14 @@ function suggestComputateDeveloperObjectSuggest($formFilters, $list, target) {
     }
   };
   error = function( jqXhr, target2 ) {};
-  searchComputateDeveloperVals($formFilters, target, success, error);
+  searchDeveloperComputerMinionVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getComputateDeveloper() {
+async function getDeveloperComputerMinion() {
   fetch(
-    '/en-us/api/computate-developer/' + pageId
+    '/en-us/api/dcm/' + pageId
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -883,8 +883,8 @@ async function getComputateDeveloper() {
 
 // PATCH //
 
-async function patchComputateDeveloper($formFilters, $formValues, target, pageId, success, error) {
-  var filters = patchComputateDeveloperFilters($formFilters);
+async function patchDeveloperComputerMinion($formFilters, $formValues, target, pageId, success, error) {
+  var filters = patchDeveloperComputerMinionFilters($formFilters);
 
   var vals = {};
 
@@ -1099,18 +1099,6 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   if(removeLessonNum != null && removeLessonNum !== '')
     vals['removeLessonNum'] = removeLessonNum;
 
-  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
-  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value === 'true';
-  var setPrerequisiteArticleIds = removePrerequisiteArticleIds ? null : $formValues.querySelector('.setPrerequisiteArticleIds')?.value;
-  var addPrerequisiteArticleIds = $formValues.querySelector('.addPrerequisiteArticleIds')?.value;
-  if(removePrerequisiteArticleIds || setPrerequisiteArticleIds != null && setPrerequisiteArticleIds !== '')
-    vals['setPrerequisiteArticleIds'] = setPrerequisiteArticleIds;
-  if(addPrerequisiteArticleIds != null && addPrerequisiteArticleIds !== '')
-    vals['addPrerequisiteArticleIds'] = addPrerequisiteArticleIds;
-  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value;
-  if(removePrerequisiteArticleIds != null && removePrerequisiteArticleIds !== '')
-    vals['removePrerequisiteArticleIds'] = removePrerequisiteArticleIds;
-
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
   var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
@@ -1122,6 +1110,18 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
   if(removePageImageAlt != null && removePageImageAlt !== '')
     vals['removePageImageAlt'] = removePageImageAlt;
+
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value === 'true';
+  var setPrerequisiteArticleIds = removePrerequisiteArticleIds ? null : $formValues.querySelector('.setPrerequisiteArticleIds')?.value;
+  var addPrerequisiteArticleIds = $formValues.querySelector('.addPrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds || setPrerequisiteArticleIds != null && setPrerequisiteArticleIds !== '')
+    vals['setPrerequisiteArticleIds'] = setPrerequisiteArticleIds;
+  if(addPrerequisiteArticleIds != null && addPrerequisiteArticleIds !== '')
+    vals['addPrerequisiteArticleIds'] = addPrerequisiteArticleIds;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds != null && removePrerequisiteArticleIds !== '')
+    vals['removePrerequisiteArticleIds'] = removePrerequisiteArticleIds;
 
   var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
   var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value === 'true';
@@ -1171,10 +1171,10 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   if(removeRelatedArticleIds != null && removeRelatedArticleIds !== '')
     vals['removeRelatedArticleIds'] = removeRelatedArticleIds;
 
-  patchComputateDeveloperVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
+  patchDeveloperComputerMinionVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
 }
 
-function patchComputateDeveloperFilters($formFilters) {
+function patchDeveloperComputerMinionFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -1285,10 +1285,6 @@ function patchComputateDeveloperFilters($formFilters) {
     if(filterPageImageHeight != null && filterPageImageHeight !== '')
       filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
 
-    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
-    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
-      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
-
     var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
@@ -1296,6 +1292,10 @@ function patchComputateDeveloperFilters($formFilters) {
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
+    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
+      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
 
     var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
     if(filterNextArticleIds != null && filterNextArticleIds !== '')
@@ -1316,15 +1316,15 @@ function patchComputateDeveloperFilters($formFilters) {
   return filters;
 }
 
-function patchComputateDeveloperVal(filters, v, val, target, success, error) {
+function patchDeveloperComputerMinionVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchComputateDeveloperVals(filters, vals, target, success, error);
+  patchDeveloperComputerMinionVals(filters, vals, target, success, error);
 }
 
-function patchComputateDeveloperVals(filters, vals, target, success, error) {
+function patchDeveloperComputerMinionVals(filters, vals, target, success, error) {
   fetch(
-    '/en-us/api/computate-developer?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/en-us/api/dcm?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -1343,7 +1343,7 @@ function patchComputateDeveloperVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postComputateDeveloper($formValues, target, success, error) {
+async function postDeveloperComputerMinion($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -1443,13 +1443,13 @@ async function postComputateDeveloper($formValues, target, success, error) {
   if(valueLessonNum != null && valueLessonNum !== '')
     vals['lessonNum'] = valueLessonNum;
 
-  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
-  if(valuePrerequisiteArticleIds != null && valuePrerequisiteArticleIds !== '')
-    vals['prerequisiteArticleIds'] = valuePrerequisiteArticleIds;
-
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
     vals['pageImageAlt'] = valuePageImageAlt;
+
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  if(valuePrerequisiteArticleIds != null && valuePrerequisiteArticleIds !== '')
+    vals['prerequisiteArticleIds'] = valuePrerequisiteArticleIds;
 
   var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
   if(valueNextArticleIds != null && valueNextArticleIds !== '')
@@ -1468,7 +1468,7 @@ async function postComputateDeveloper($formValues, target, success, error) {
     vals['relatedArticleIds'] = valueRelatedArticleIds;
 
   fetch(
-    '/en-us/api/computate-developer'
+    '/en-us/api/dcm'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -1485,9 +1485,9 @@ async function postComputateDeveloper($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postComputateDeveloperVals(vals, target, success, error) {
+function postDeveloperComputerMinionVals(vals, target, success, error) {
   fetch(
-    '/en-us/api/computate-developer'
+    '/en-us/api/dcm'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -1506,7 +1506,7 @@ function postComputateDeveloperVals(vals, target, success, error) {
 
 // DELETE //
 
-async function deleteComputateDeveloper(target, pageId, success, error) {
+async function deleteDeveloperComputerMinion(target, pageId, success, error) {
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
       addGlow(target, jqXhr);
@@ -1538,7 +1538,7 @@ async function deleteComputateDeveloper(target, pageId, success, error) {
   }
 
   fetch(
-    '/en-us/api/computate-developer/' + encodeURIComponent(pageId)
+    '/en-us/api/dcm/' + encodeURIComponent(pageId)
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'DELETE'
@@ -1554,15 +1554,15 @@ async function deleteComputateDeveloper(target, pageId, success, error) {
 
 // PUTImport //
 
-async function putimportComputateDeveloper($formValues, target, pageId, success, error) {
+async function putimportDeveloperComputerMinion($formValues, target, pageId, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportComputateDeveloperVals(JSON.parse(json), target, success, error);
+    putimportDeveloperComputerMinionVals(JSON.parse(json), target, success, error);
 }
 
-function putimportComputateDeveloperVals(json, target, success, error) {
+function putimportDeveloperComputerMinionVals(json, target, success, error) {
   fetch(
-    '/en-us/api/computate-developer-import'
+    '/en-us/api/dcm-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -1581,7 +1581,7 @@ function putimportComputateDeveloperVals(json, target, success, error) {
 
 // DELETEFilter //
 
-async function deletefilterComputateDeveloper(target, success, error) {
+async function deletefilterDeveloperComputerMinion(target, success, error) {
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
       addGlow(target, jqXhr);
@@ -1613,7 +1613,7 @@ async function deletefilterComputateDeveloper(target, success, error) {
   }
 
   fetch(
-    '/en-us/api/computate-developer'
+    '/en-us/api/dcm'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'DELETE'

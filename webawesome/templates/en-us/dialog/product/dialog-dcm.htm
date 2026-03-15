@@ -1,0 +1,66 @@
+{% include "en-us/ArticlePart.htm" %}
+{% set productUseCases -%}
+    <div class="wa-stack wa-gap-xs">
+      <div>
+        <i class="{{ FONTAWESOME_STYLE }} fa-fishing-rod fa-2xl "></i>
+      </div>
+      <div class="wa-heading-s">Understanding fish population and ocean health</div>
+      <p class="wa-caption-m">
+        
+      </p>
+    </div>
+{% endset productUseCases -%}
+{% set productGettingStarted -%}
+  <div class="wa-align-items-center wa-grid">
+    <div>
+      <span class="wa-heading-xl">Learn how to develop the Smart Aquaculture platform on your own computer the cloud-native, open source way</span>
+      <p class="wa-caption-l">
+        See how easy it is to get started with open source software development with the Smart Aquaculture developer platform. 
+      </p>
+    </div>
+    {{ articleImage(result) }}
+  </div>
+{% endset productGettingStarted -%}
+{% set productCallouts -%}
+  <wa-callout>
+    <i slot="icon" class="{{ FONTAWESOME_STYLE }} fa-university fa-2xl"></i>
+    <div class="wa-stack ">
+      <div class="wa-heading-m ">
+        Universities
+      </div>
+      <p>
+        University research inquiries into clubs, training, program collaboration are being considered in 2026. 
+        Please email <a href="mailto:smaq@group.computate.org">smaq@group.computate.org</a> for more information. 
+      </p>
+    </div>
+  </wa-callout>
+{% endset productCallouts -%}
+{% set productThingsYoullLearn -%}
+  <h2>
+    <i class="{{ FONTAWESOME_STYLE }} fa-head-side-gear fa-2xl "></i>
+    Things you'll learn: 
+  </h2>
+  <ol>
+    <li>
+      How to configure VSCode to develop the {{ result.name }}. 
+    </li>
+    <li>
+      How to install an up to date OpenJDK Java Development Kit on your system. 
+    </li>
+    <li>
+      How to fork the {{ SITE_NAME }} GitHub repositories to develop new features and pull requests. 
+    </li>
+    <li>
+      How to build your sovereign AI code generation model of your code base on your own computer. 
+      The Computate AI code generation tools never share your data with anyone. 
+      The entire code model is stored in your own Apache Solr search engine, 
+      and is used to build your own ideas into code up to 50 times faster than you could do by hand, you'll see! 
+    </li>
+    <li>
+      How to start the Computate sovereign AI code generation watcher service to generate code as you save. 
+    </li>
+    <li>
+      Use Jupyter Notebooks that help you update your project with new APIs and data models and integrate them into your site. 
+    </li>
+  </ol>
+{% endset productThingsYoullLearn -%}

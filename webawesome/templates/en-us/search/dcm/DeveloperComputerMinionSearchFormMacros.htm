@@ -1,0 +1,778 @@
+{%- macro inputCreatedDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_created">
+  {%- endif %}
+                  <wa-input
+                      type="datetime-local"
+                      readonly
+                      hint="A created timestamp for this record in the database"
+                      label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_created datetimepicker setCreated classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Created "
+                      placeholder="MM/dd/yyyy h:mm a '['VV']'"
+                      data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_created"
+  {% if 'Page' == classApiMethodMethod -%}
+                      value="{%- if "Page" == classApiMethodMethod and result.created is defined %}{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+  {% endif -%}
+                      data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
+                      >
+                  </wa-input>
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmCreatedDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputCreatedDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputModifiedDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_modified">
+  {%- endif %}
+                  <wa-input
+                      type="datetime-local"
+                      readonly
+                      hint="A modified timestamp for this record in the database"
+                      label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_modified datetimepicker setModified classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Modified "
+                      placeholder="MM/dd/yyyy h:mm a '['VV']'"
+                      data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_modified"
+  {% if 'Page' == classApiMethodMethod -%}
+                      value="{%- if "Page" == classApiMethodMethod and result.modified is defined %}{{ formatZonedDateTime(result.modified, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+  {% endif -%}
+                      data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
+                      >
+                  </wa-input>
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmModifiedDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputModifiedDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputArchivedDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_archived">
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                  <wa-button variant="brand"
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_archived"
+                      placeholder="archived"
+                      label="archived"
+                      hint="For archiving this record"
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_archived classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Archived "
+                      name="setArchived"
+                      data-pageId={{ result.pageId | tojson }}
+                      data-val="{{ result.archived | e }}"
+                      >archived</wa-button>
+  {%- else %}
+  {% if 'Page' == classApiMethodMethod -%}
+                  <wa-checkbox
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_archived"
+                      value="true"
+  {%- else %}
+                  <wa-select
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_archived"
+  {% endif -%}
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="archived"
+                      label="archived"
+                      hint="For archiving this record"
+  {%- if 'Page' == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_archived classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Archived "
+                      name="setArchived"
+  {%- else %}
+    {%- if 'Page' == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_archived classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Archived "
+                      name="setArchived"
+    {%- else %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_archived setArchived valueArchived classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Archived "
+                      name="setArchived"
+    {%- endif %}
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+    {%- if result.archived == true %}
+                      checked
+    {%- endif %}
+                      data-pageId={{ result.pageId | tojson }}
+                      >archived</wa-checkbox>
+  {%- else %}
+                      >
+                    <wa-option value=""></wa-option>
+                    <wa-option value="true">true</wa-option>
+                    <wa-option value="false">false</wa-option>
+                  </wa-select>
+  {%- endif %}
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmArchivedDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputArchivedDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputNameDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_name">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] course name"
+                      label="course name"
+                      hint="The course name. "
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_name"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_name setName classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Name "
+                      name="setName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_name setName classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Name "
+                      name="setName"
+    {%- else %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_name valueName classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Name "
+                      name="name"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.name | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmNameDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputNameDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputDescriptionDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_description">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] course description"
+                      label="course description"
+                      hint="The course description. "
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_description"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_description setDescription classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Description "
+                      name="setDescription"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_description setDescription classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Description "
+                      name="setDescription"
+    {%- else %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_description valueDescription classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}Description "
+                      name="description"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.description | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputDescriptionDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputAuthorNameDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorName">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author name"
+                      label="author name"
+                      hint="The author name"
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_authorName"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_authorName setAuthorName classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_authorName setAuthorName classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+    {%- else %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_authorName valueAuthorName classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}AuthorName "
+                      name="authorName"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorName | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorNameDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorUrl">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author URL"
+                      label="author URL"
+                      hint="The author URL"
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_authorUrl"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_authorUrl setAuthorUrl classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_authorUrl setAuthorUrl classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+    {%- else %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_authorUrl valueAuthorUrl classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}AuthorUrl "
+                      name="authorUrl"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorUrl | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputPageImageUriDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_pageImageUri">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] imageUri"
+                      label="imageUri"
+                      hint="The page image URI"
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_pageImageUri"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_pageImageUri setPageImageUri classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}PageImageUri "
+                      name="setPageImageUri"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_pageImageUri setPageImageUri classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}PageImageUri "
+                      name="setPageImageUri"
+    {%- else %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_pageImageUri valuePageImageUri classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}PageImageUri "
+                      name="pageImageUri"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.pageImageUri | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputPageImageUriDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputPageIdDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_pageId">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] page ID"
+                      label="page ID"
+                      hint="The ID for this page. "
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_pageId"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_pageId setPageId classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}PageId "
+                      name="setPageId"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_pageId setPageId classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}PageId "
+                      name="setPageId"
+    {%- else %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_pageId valuePageId classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}PageId "
+                      name="pageId"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.pageId | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmPageIdDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputPageIdDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputDisplayPageDeveloperComputerMinionPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_displayPage">
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                  <div class="button-on-left ">
+                    <wa-button variant="brand"
+                        id="DeveloperComputerMinion_{{classApiMethodMethod}}_displayPage"
+                        class="button-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_displayPage classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}DisplayPage "
+                        name="setDisplayPage"
+                        href="{{ result.displayPage | e }}"
+                        >
+                    </wa-button>
+                  </div>
+                  <div class="button-description-on-right "></div>
+  {%- else %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      id="DeveloperComputerMinion_{{classApiMethodMethod}}_displayPage"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_displayPage setDisplayPage classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}DisplayPage "
+                      name="setDisplayPage"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_displayPage setDisplayPage classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}DisplayPage "
+                      name="setDisplayPage"
+    {%- else %}
+                      class="label-on-left DeveloperComputerMinion_{{classApiMethodMethod}}_displayPage valueDisplayPage classDeveloperComputerMinion inputDeveloperComputerMinion{{ result.pageId }}DisplayPage "
+                      name="displayPage"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.displayPage | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputDisplayPageDeveloperComputerMinionPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+
+{%- macro htmFormButton_patchDeveloperComputerMinion() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_patchDeveloperComputerMinion" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_patchDeveloperComputerMinion"
+                >Modify Developer Computer Minion</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_patchDeveloperComputerMinion"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_patchDeveloperComputerMinion(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchDeveloperComputerMinionDialog" label="Modify Developer Computer Minion">
+          <form id="htmForm_patchDeveloperComputerMinion" class="round-row primary-smart-border-radius ">
+
+            <wa-details open class="HtmRow" id="course-details">
+              <div slot="summary">
+                <span>course details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </form>
+          {{ htmFormButton_patchDeveloperComputerMinion() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_postDeveloperComputerMinion() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_postDeveloperComputerMinion" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_postDeveloperComputerMinion"
+                >Create a Developer Computer Minion</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_postDeveloperComputerMinion"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_postDeveloperComputerMinion(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="postDeveloperComputerMinionDialog" label="Create a Developer Computer Minion">
+          <form id="htmForm_postDeveloperComputerMinion" class="round-row primary-smart-border-radius ">
+            <div>You can override any default values below: </div>
+
+            <wa-details open class="HtmRow" id="course-details">
+              <div slot="summary">
+                <span>course details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </form>
+          {{ htmFormButton_postDeveloperComputerMinion() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_deleteDeveloperComputerMinion() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deleteDeveloperComputerMinion" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deleteDeveloperComputerMinion"
+                >Delete Developer Computer Minion</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deleteDeveloperComputerMinion"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_deleteDeveloperComputerMinion(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteDeveloperComputerMinionDialog" label="Delete Developer Computer Minion">
+          <form id="htmForm_deleteDeveloperComputerMinion" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deleteDeveloperComputerMinion() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_putimportDeveloperComputerMinion() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_putimportDeveloperComputerMinion" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_putimportDeveloperComputerMinion"
+                >Import Developer Computer Minions</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_putimportDeveloperComputerMinion"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_putimportDeveloperComputerMinion(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportDeveloperComputerMinionDialog" label="Import Developer Computer Minions">
+          <form id="htmForm_putimportDeveloperComputerMinion" class="round-row primary-smart-border-radius ">
+            <div>
+              <wa-textarea
+                  class="PUTImport_searchList "
+                  style="height: 300px; "
+                  placeholder="{ 'searchList': [ { 'pageId': ... , 'saves': [ ... ] }, ... ] }"
+                  >
+              </wa-textarea>
+            </div>
+          </form>
+          {{ htmFormButton_putimportDeveloperComputerMinion() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmForm_searchpageDeveloperComputerMinion(idSuffix='') %}
+        <div with-header with-footer style="--width: 50vw; " id="searchpageDeveloperComputerMinionDialog" label="Search Developer Computer Minions">
+          <div id="htmForm_searchpageDeveloperComputerMinion" class="round-row primary-smart-border-radius ">
+
+            <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
+              <div slot="summary">
+                <span>primary key, ID, created, modified, archive details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmCreatedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmCreatedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmCreatedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmModifiedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmModifiedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmModifiedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmArchivedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmArchivedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmArchivedDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="course-details">
+              <div slot="summary">
+                <span>course details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageDeveloperComputerMinionPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </div>
+        </div>
+{%- endmacro %}
+
+{%- macro htmFormButton_deletefilterDeveloperComputerMinion() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterDeveloperComputerMinion" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deletefilterDeveloperComputerMinion"
+                >Delete Developer Computer Minion</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deletefilterDeveloperComputerMinion"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_deletefilterDeveloperComputerMinion(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterDeveloperComputerMinionDialog" label="Delete Developer Computer Minion">
+          <form id="htmForm_deletefilterDeveloperComputerMinion" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deletefilterDeveloperComputerMinion() }}
+        </wa-dialog>
+{%- endmacro %}

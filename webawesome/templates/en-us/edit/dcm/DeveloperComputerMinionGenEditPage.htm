@@ -1,0 +1,346 @@
+{% extends "en-us/PageLayout.htm" %}
+{%- block htmTitlePageLayout %}
+{%- block htmTitleDeveloperComputerMinionPage %}
+    <title>{{ result.objectTitle }}</title>
+{%- endblock htmTitleDeveloperComputerMinionPage %}
+{%- endblock htmTitlePageLayout %}
+
+{%- block htmStylesPageLayout %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/dcm/DeveloperComputerMinion.css"/>
+{%- block htmStylesDeveloperComputerMinionPage %}
+{%- endblock htmStylesDeveloperComputerMinionPage %}
+{%- endblock htmStylesPageLayout %}
+
+{%- block htmStylePageLayout %}
+      :root {
+        --site-results-number-of-columns: 2;
+      }
+{{ super() }}
+{%- block htmStyleDeveloperComputerMinionPage %}
+{%- endblock htmStyleDeveloperComputerMinionPage %}
+{%- endblock htmStylePageLayout %}
+
+{%- block htmScriptsPageLayout %}
+{{ super() }}
+{%- block htmScriptsDeveloperComputerMinionPage %}
+    <script src="{{staticBaseUrl}}/js/en-us/search/dcm/DeveloperComputerMinion.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/dcm/DeveloperComputerMinionSearchPage.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/dcm/DeveloperComputerMinionEditPage.js"></script>
+{%- endblock htmScriptsDeveloperComputerMinionPage %}
+{%- endblock htmScriptsPageLayout %}
+
+{%- block htmScriptPageLayout %}
+{%- block htmScriptDeveloperComputerMinionPage %}
+    <script>
+
+      function jsWebsocketDeveloperComputerMinion(pageId, vars, $response) {
+{%- block jsWebsocketDeveloperComputerMinionPage %}{%- endblock %}
+      }
+
+      function jsTooltipDeveloperComputerMinion(e, feature) {
+{%- block jsTooltipDeveloperComputerMinionPage %}{%- endblock %}
+      }
+
+      function htmTooltipDeveloperComputerMinion(feature, layer) {
+        return `{%- block htmTooltipDeveloperComputerMinionPage %}
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
+{%- endblock htmTooltipDeveloperComputerMinionPage %}`;
+      }
+
+      function facetChangeDeveloperComputerMinionSuccess(e) {
+        var l = e.querySelector('.pageForm .listDeveloperComputerMinion')?.value;
+        if(l)
+          window.listDeveloperComputerMinion = JSON.parse(l);
+{% block facetChangeDeveloperComputerMinionSuccess %}{%- endblock facetDeveloperComputerMinionSuccess %}
+      }
+      function facetChangeDeveloperComputerMinionError(e) {
+{% block facetChangeDeveloperComputerMinionError %}{%- endblock facetDeveloperComputerMinionError %}
+      }
+
+      function facetSimpleRangeDeveloperComputerMinionSuccess(e) {
+{% block facetSimpleRangeDeveloperComputerMinionSuccess %}      facetChangeDeveloperComputerMinionSuccess(e);{% endblock facetSimpleRangeDeveloperComputerMinionSuccess %}
+      }
+      function facetSimpleRangeDeveloperComputerMinionError(e) {
+{% block facetSimpleRangeDeveloperComputerMinionError %}      facetChangeDeveloperComputerMinionError(e);{% endblock facetSimpleRangeDeveloperComputerMinionError %}
+      }
+      function facetSimpleRangeDeveloperComputerMinion(e) {
+        facetSimpleRange(e, facetSimpleRangeDeveloperComputerMinionSuccess, facetSimpleRangeDeveloperComputerMinionError);
+      }
+
+      function facetRangeTimeZoneDeveloperComputerMinionSuccess(e) {
+{% block facetRangeTimeZoneDeveloperComputerMinionSuccess %}      facetChangeDeveloperComputerMinionSuccess(e);{% endblock facetRangeTimeZoneDeveloperComputerMinionSuccess %}
+      }
+      function facetRangeTimeZoneDeveloperComputerMinionError(e) {
+{% block facetRangeTimeZoneDeveloperComputerMinionError %}      facetChangeDeveloperComputerMinionError(e);{%- endblock facetRangeTimeZoneDeveloperComputerMinionError %}
+      }
+      function facetRangeTimeZoneDeveloperComputerMinion(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneDeveloperComputerMinionSuccess, facetRangeTimeZoneDeveloperComputerMinionError);
+      }
+
+      function facetRangeGapChangeDeveloperComputerMinionSuccess(e) {
+{% block facetRangeGapChangeDeveloperComputerMinionSuccess %}      facetChangeDeveloperComputerMinionSuccess(e);{% endblock facetRangeGapChangeDeveloperComputerMinionSuccess %}
+      }
+      function facetRangeGapChangeDeveloperComputerMinionError(e) {
+{% block facetRangeGapChangeDeveloperComputerMinionError %}      facetChangeDeveloperComputerMinionError(e);{%- endblock facetRangeGapChangeDeveloperComputerMinionError %}
+      }
+      function facetRangeGapChangeDeveloperComputerMinion(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeDeveloperComputerMinionSuccess, facetRangeGapChangeDeveloperComputerMinionError);
+      }
+
+      function facetRangeStartChangeDeveloperComputerMinionSuccess(e) {
+{% block facetRangeStartChangeDeveloperComputerMinionSuccess %}      facetChangeDeveloperComputerMinionSuccess(e);{% endblock facetRangeStartChangeDeveloperComputerMinionSuccess %}
+      }
+      function facetRangeStartChangeDeveloperComputerMinionError(e) {
+{% block facetRangeStartChangeDeveloperComputerMinionError %}      facetChangeDeveloperComputerMinionError(e);{%- endblock facetRangeStartChangeDeveloperComputerMinionError %}
+      }
+      function facetRangeStartChangeDeveloperComputerMinion(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeDeveloperComputerMinionSuccess, facetRangeStartChangeDeveloperComputerMinionError);
+      }
+
+      function facetRangeEndChangeDeveloperComputerMinionSuccess(e) {
+{% block facetRangeEndChangeDeveloperComputerMinionSuccess %}      facetChangeDeveloperComputerMinionSuccess(e);{% endblock facetRangeEndChangeDeveloperComputerMinionSuccess %}
+      }
+      function facetRangeEndChangeDeveloperComputerMinionError(e) {
+{% block facetRangeEndChangeDeveloperComputerMinionError %}      facetChangeDeveloperComputerMinionError(e);{%- endblock facetRangeEndChangeDeveloperComputerMinionError %}
+      }
+      function facetRangeEndChangeDeveloperComputerMinion(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeDeveloperComputerMinionSuccess, facetRangeEndChangeDeveloperComputerMinionError);
+      }
+    </script>
+    <script type="module">
+{% if DEFAULT_MAP_LOCATION is defined %}
+      window.DEFAULT_MAP_LOCATION = { type: 'Point', coordinates: [ {{ DEFAULT_MAP_LOCATION.coordinates[0] }}, {{ DEFAULT_MAP_LOCATION.coordinates[1] }} ]};
+{% endif %}
+{% if DEFAULT_MAP_ZOOM is defined %}
+      window.DEFAULT_MAP_ZOOM = {{ DEFAULT_MAP_ZOOM }};
+{% endif %}
+      window.DEFAULT_ZONE_ID = '{{ defaultZoneId }}';
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
+      ]).then(() => {
+
+        var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
+
+        if(pageId == null) {
+          document.querySelector('#grid-toggle-details')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-list', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-details');
+          });
+          document.querySelector('#grid-toggle-list')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-list');
+          });
+          document.querySelector('#grid-toggle-card')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-list');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-card');
+          });
+        } else {
+          var o = document.querySelector('.pageForm .result')?.value;
+          if(o)
+            window.result = JSON.parse(o);
+        {% if result.pageId is defined %}
+        {% endif %}
+        }
+        var l = document.querySelector('.pageForm .listDeveloperComputerMinion')?.value;
+        if(l)
+          window.listDeveloperComputerMinion = JSON.parse(l);
+        window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
+        window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
+        window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneDeveloperComputerMinion);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneDeveloperComputerMinion);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneDeveloperComputerMinion);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeDeveloperComputerMinion);
+        pageGraphDeveloperComputerMinion();
+        {% for key, value in varsQ.items() %}
+
+        document.querySelector('#qDeveloperComputerMinion_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
+          qChange('DeveloperComputerMinion', event.target, document.querySelector('#qDeveloperComputerMinionDiv_{{ key }}'));
+        });
+        {% endfor %}
+
+        document.querySelector('#qDeveloperComputerMinion_rows')?.addEventListener('change', event => {
+          paramChange('DeveloperComputerMinion', event.target, document.querySelector('#qDeveloperComputerMinionDiv_rows'));
+        });
+
+        document.querySelector('#qDeveloperComputerMinion_start')?.addEventListener('change', event => {
+          paramChange('DeveloperComputerMinion', event.target, document.querySelector('#qDeveloperComputerMinionDiv_start'));
+        });
+
+
+        var submitForm_patchDeveloperComputerMinion = document.querySelector('#htmForm_patchDeveloperComputerMinion')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_patchDeveloperComputerMinion')?.addEventListener('click', event => {
+          event.preventDefault();
+          patchDeveloperComputerMinion(null, document.querySelector('#htmForm_patchDeveloperComputerMinion'), document.querySelector('#htmFormButton_patchDeveloperComputerMinion'), event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_postDeveloperComputerMinion = document.querySelector('#htmForm_postDeveloperComputerMinion')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_postDeveloperComputerMinion')?.addEventListener('click', event => {
+          event.preventDefault();
+          postDeveloperComputerMinion(document.querySelector('#htmForm_postDeveloperComputerMinion')
+          , document.querySelector('#htmFormButton_postDeveloperComputerMinion')
+          , (json, target) => {
+            window.location.href = json.editPage;
+          });
+          return false;
+        });
+
+        var submitForm_deleteDeveloperComputerMinion = document.querySelector('#htmForm_deleteDeveloperComputerMinion')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deleteDeveloperComputerMinion')?.addEventListener('click', event => {
+          event.preventDefault();
+          deleteDeveloperComputerMinion(event.target, event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_putimportDeveloperComputerMinion = document.querySelector('#htmForm_putimportDeveloperComputerMinion')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_putimportDeveloperComputerMinion')?.addEventListener('click', event => {
+          event.preventDefault();
+          putimportDeveloperComputerMinion(document.querySelector('#htmForm_putimportDeveloperComputerMinion'), document.querySelector('#htmFormButton_putimportDeveloperComputerMinion'));
+          return false;
+        });
+
+        var submitForm_searchpageDeveloperComputerMinion = document.querySelector('#htmForm_searchpageDeveloperComputerMinion')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_searchpageDeveloperComputerMinion')?.addEventListener('click', event => {
+          event.preventDefault();
+          searchpageDeveloperComputerMinion();
+          return false;
+        });
+
+        var submitForm_deletefilterDeveloperComputerMinion = document.querySelector('#htmForm_deletefilterDeveloperComputerMinion')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deletefilterDeveloperComputerMinion')?.addEventListener('click', event => {
+          event.preventDefault();
+          deletefilterDeveloperComputerMinion(event.target);
+          return false;
+        });
+{%- block htmScriptInitDeveloperComputerMinionPage %}{%- endblock htmScriptInitDeveloperComputerMinionPage %}
+      });
+    </script>
+{%- endblock htmScriptDeveloperComputerMinionPage %}
+{%- endblock htmScriptPageLayout %}
+
+{%- block websocketPageLayout %}
+{%- block websocketDeveloperComputerMinionPage %}
+{% if resultCount > 0 %}
+        window.eventBus = new EventBus('/eventbus');
+        window.eventBus.enableReconnect(true);
+        websocketDeveloperComputerMinion(websocketDeveloperComputerMinionInner);
+{% endif %}
+{%- endblock websocketDeveloperComputerMinionPage %}
+{%- endblock websocketPageLayout %}
+
+{%- block htmUrlDeveloperComputerMinionPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlDeveloperComputerMinionPage %}
+
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/dcm/DeveloperComputerMinionSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/dcm/DeveloperComputerMinionSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-DeveloperComputerMinion">back to all Developer Computer Minions</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-DeveloperComputerMinion" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-duotone fa-regular fa-fish"></i>
+                  all Developer Computer Minions
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  a Developer Computer Minion
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
+{%- block htmBodyStartPageLayout %}
+    {{ super() }}
+{%- block htmBodyStartDeveloperComputerMinionPage %}
+{% if resultCount > 0 %}
+          <div class="wa-flank ">
+            <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-fish"></i> {{ result.objectTitle | e }}</h1>
+          </div>
+{% endif %}
+{% include en-us/search/dcm/DeveloperComputerMinionSearchForm.htm %}
+{%- endblock htmBodyStartDeveloperComputerMinionPage %}
+{%- endblock htmBodyStartPageLayout %}
+
+{%- block htmBodyMiddlePageLayout %}
+{%- block htmBodyMiddleDeveloperComputerMinionPage %}
+{%- include en-us/search/dcm/DeveloperComputerMinionSidebar.htm %}
+        <div class="pageContent ">
+{% if resultCount == 0 %}
+        <div class="wa-stack ">
+          <wa-tooltip for="return-to-DeveloperComputerMinion">back to all Developer Computer Minions</wa-tooltip></wa-tooltip>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-DeveloperComputerMinion" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-duotone fa-regular fa-fish"></i>
+              all Developer Computer Minions
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no Developer Computer Minion found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-duotone fa-regular fa-fish"></i>
+            </div>
+            <span class="wa-heading-m ">no Developer Computer Minion found</span>
+            <p class="wa-caption-l ">Learn how to use to compile and run fun open source games and useful Linux software on your own Linux computer with self-healing, event-driven automation. </p>
+          </div>
+        </div>
+{% else %}
+{%- include en-us/search/dcm/DeveloperComputerMinionSuggestedSearch.htm %}
+{% endif %}
+{%- block htmFormDeveloperComputerMinionPage %}
+          <form action="/en-us/api/dcm" id="DeveloperComputerMinionForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+{% if result.pageId is defined %}
+            <input name="pageId" class="valuePageId" type="hidden" value="{{ result.pageId }}"/>
+            {% endif %}
+            <input name="focusId" type="hidden"/>
+            <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+            <input name="result" id="result" class="result"  value='{{ toJsonObjectStringInApostrophes(result) }}' type="hidden"/>
+            <input name="listDeveloperComputerMinion" id="listDeveloperComputerMinion" class="listDeveloperComputerMinion"  value='{{ toJsonArrayStringInApostrophes(listDeveloperComputerMinion) }}' type="hidden"/>
+          </form>
+{%- if resultCount >= 1 %}
+          {{ htmForm_searchpageDeveloperComputerMinion() }}
+{% endif -%}
+{%- endblock htmFormDeveloperComputerMinionPage %}
+        </div>
+{%- endblock htmBodyMiddleDeveloperComputerMinionPage %}
+{%- endblock htmBodyMiddlePageLayout %}
+
+{%- block htmBodyEndPageLayout %}
+{%- block htmBodyEndDeveloperComputerMinionPage %}
+{%- include en-us/search/dcm/DeveloperComputerMinionLocation.htm %}
+{%- endblock htmBodyEndDeveloperComputerMinionPage %}
+      {{ super() }}
+{%- endblock htmBodyEndPageLayout %}
