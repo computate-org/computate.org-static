@@ -28,7 +28,7 @@ async function websocketCompanyProduct(success) {
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify products in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify solutions in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
       $x.setAttribute('onclick', 'document.querySelector("#card-' + pageId + '");');
@@ -98,11 +98,11 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
-        var inputProductResource = null;
+        var inputSolutionResource = null;
         var inputEmailTemplate = null;
         var inputStoreUrl = null;
         var inputDownloadUrl = null;
-        var inputProductNum = null;
+        var inputSolutionNum = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
@@ -153,16 +153,16 @@ async function websocketCompanyProductInner(apiRequest) {
           inputObjectText = $response.querySelector('.CompanyProduct_Page_objectText');
         if(vars.includes('solrId'))
           inputSolrId = $response.querySelector('.CompanyProduct_Page_solrId');
-        if(vars.includes('productResource'))
-          inputProductResource = $response.querySelector('.CompanyProduct_Page_productResource');
+        if(vars.includes('solutionResource'))
+          inputSolutionResource = $response.querySelector('.CompanyProduct_Page_solutionResource');
         if(vars.includes('emailTemplate'))
           inputEmailTemplate = $response.querySelector('.CompanyProduct_Page_emailTemplate');
         if(vars.includes('storeUrl'))
           inputStoreUrl = $response.querySelector('.CompanyProduct_Page_storeUrl');
         if(vars.includes('downloadUrl'))
           inputDownloadUrl = $response.querySelector('.CompanyProduct_Page_downloadUrl');
-        if(vars.includes('productNum'))
-          inputProductNum = $response.querySelector('.CompanyProduct_Page_productNum');
+        if(vars.includes('solutionNum'))
+          inputSolutionNum = $response.querySelector('.CompanyProduct_Page_solutionNum');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.CompanyProduct_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
@@ -387,14 +387,14 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('.CompanyProduct_Page_solrId'));
         }
 
-        if(inputProductResource) {
-          document.querySelectorAll('.CompanyProduct_Page_productResource').forEach((item, index) => {
+        if(inputSolutionResource) {
+          document.querySelectorAll('.CompanyProduct_Page_solutionResource').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
-              item.value = inputProductResource.getAttribute('value');
+              item.value = inputSolutionResource.getAttribute('value');
             else
-              item.textContent = inputProductResource.textContent;
+              item.textContent = inputSolutionResource.textContent;
           });
-          addGlow(document.querySelector('.CompanyProduct_Page_productResource'));
+          addGlow(document.querySelector('.CompanyProduct_Page_solutionResource'));
         }
 
         if(inputEmailTemplate) {
@@ -427,14 +427,14 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('.CompanyProduct_Page_downloadUrl'));
         }
 
-        if(inputProductNum) {
-          document.querySelectorAll('.CompanyProduct_Page_productNum').forEach((item, index) => {
+        if(inputSolutionNum) {
+          document.querySelectorAll('.CompanyProduct_Page_solutionNum').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
-              item.value = inputProductNum.getAttribute('value');
+              item.value = inputSolutionNum.getAttribute('value');
             else
-              item.textContent = inputProductNum.textContent;
+              item.textContent = inputSolutionNum.textContent;
           });
-          addGlow(document.querySelector('.CompanyProduct_Page_productNum'));
+          addGlow(document.querySelector('.CompanyProduct_Page_solutionNum'));
         }
 
         if(inputPageImageWidth) {
@@ -565,7 +565,7 @@ function pageGraphCompanyProduct(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'products';
+          layout['title'] = 'solutions';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -758,9 +758,9 @@ function searchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterProductResource = $formFilters.querySelector('.valueProductResource')?.value;
-    if(filterProductResource != null && filterProductResource !== '')
-      filters.push({ name: 'fq', value: 'productResource:' + filterProductResource });
+    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
+    if(filterSolutionResource != null && filterSolutionResource !== '')
+      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
 
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
@@ -774,9 +774,9 @@ function searchCompanyProductFilters($formFilters) {
     if(filterDownloadUrl != null && filterDownloadUrl !== '')
       filters.push({ name: 'fq', value: 'downloadUrl:' + filterDownloadUrl });
 
-    var filterProductNum = $formFilters.querySelector('.valueProductNum')?.value;
-    if(filterProductNum != null && filterProductNum !== '')
-      filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
+    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
+    if(filterSolutionNum != null && filterSolutionNum !== '')
+      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1054,17 +1054,17 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeSolrId != null && removeSolrId !== '')
     vals['removeSolrId'] = removeSolrId;
 
-  var valueProductResource = $formValues.querySelector('.valueProductResource')?.value;
-  var removeProductResource = $formValues.querySelector('.removeProductResource')?.value === 'true';
-  var setProductResource = removeProductResource ? null : $formValues.querySelector('.setProductResource')?.value;
-  var addProductResource = $formValues.querySelector('.addProductResource')?.value;
-  if(removeProductResource || setProductResource != null && setProductResource !== '')
-    vals['setProductResource'] = setProductResource;
-  if(addProductResource != null && addProductResource !== '')
-    vals['addProductResource'] = addProductResource;
-  var removeProductResource = $formValues.querySelector('.removeProductResource')?.value;
-  if(removeProductResource != null && removeProductResource !== '')
-    vals['removeProductResource'] = removeProductResource;
+  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
+  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value === 'true';
+  var setSolutionResource = removeSolutionResource ? null : $formValues.querySelector('.setSolutionResource')?.value;
+  var addSolutionResource = $formValues.querySelector('.addSolutionResource')?.value;
+  if(removeSolutionResource || setSolutionResource != null && setSolutionResource !== '')
+    vals['setSolutionResource'] = setSolutionResource;
+  if(addSolutionResource != null && addSolutionResource !== '')
+    vals['addSolutionResource'] = addSolutionResource;
+  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value;
+  if(removeSolutionResource != null && removeSolutionResource !== '')
+    vals['removeSolutionResource'] = removeSolutionResource;
 
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value === 'true';
@@ -1102,17 +1102,17 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeDownloadUrl != null && removeDownloadUrl !== '')
     vals['removeDownloadUrl'] = removeDownloadUrl;
 
-  var valueProductNum = $formValues.querySelector('.valueProductNum')?.value;
-  var removeProductNum = $formValues.querySelector('.removeProductNum')?.value === 'true';
-  var setProductNum = removeProductNum ? null : $formValues.querySelector('.setProductNum')?.value;
-  var addProductNum = $formValues.querySelector('.addProductNum')?.value;
-  if(removeProductNum || setProductNum != null && setProductNum !== '')
-    vals['setProductNum'] = setProductNum;
-  if(addProductNum != null && addProductNum !== '')
-    vals['addProductNum'] = addProductNum;
-  var removeProductNum = $formValues.querySelector('.removeProductNum')?.value;
-  if(removeProductNum != null && removeProductNum !== '')
-    vals['removeProductNum'] = removeProductNum;
+  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
+  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value === 'true';
+  var setSolutionNum = removeSolutionNum ? null : $formValues.querySelector('.setSolutionNum')?.value;
+  var addSolutionNum = $formValues.querySelector('.addSolutionNum')?.value;
+  if(removeSolutionNum || setSolutionNum != null && setSolutionNum !== '')
+    vals['setSolutionNum'] = setSolutionNum;
+  if(addSolutionNum != null && addSolutionNum !== '')
+    vals['addSolutionNum'] = addSolutionNum;
+  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value;
+  if(removeSolutionNum != null && removeSolutionNum !== '')
+    vals['removeSolutionNum'] = removeSolutionNum;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
@@ -1268,9 +1268,9 @@ function patchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterProductResource = $formFilters.querySelector('.valueProductResource')?.value;
-    if(filterProductResource != null && filterProductResource !== '')
-      filters.push({ name: 'fq', value: 'productResource:' + filterProductResource });
+    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
+    if(filterSolutionResource != null && filterSolutionResource !== '')
+      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
 
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
@@ -1284,9 +1284,9 @@ function patchCompanyProductFilters($formFilters) {
     if(filterDownloadUrl != null && filterDownloadUrl !== '')
       filters.push({ name: 'fq', value: 'downloadUrl:' + filterDownloadUrl });
 
-    var filterProductNum = $formFilters.querySelector('.valueProductNum')?.value;
-    if(filterProductNum != null && filterProductNum !== '')
-      filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
+    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
+    if(filterSolutionNum != null && filterSolutionNum !== '')
+      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1530,17 +1530,17 @@ async function patchpayCompanyProduct($formFilters, $formValues, target, pageId,
   if(removeSolrId != null && removeSolrId !== '')
     vals['removeSolrId'] = removeSolrId;
 
-  var valueProductResource = $formValues.querySelector('.valueProductResource')?.value;
-  var removeProductResource = $formValues.querySelector('.removeProductResource')?.value === 'true';
-  var setProductResource = removeProductResource ? null : $formValues.querySelector('.setProductResource')?.value;
-  var addProductResource = $formValues.querySelector('.addProductResource')?.value;
-  if(removeProductResource || setProductResource != null && setProductResource !== '')
-    vals['setProductResource'] = setProductResource;
-  if(addProductResource != null && addProductResource !== '')
-    vals['addProductResource'] = addProductResource;
-  var removeProductResource = $formValues.querySelector('.removeProductResource')?.value;
-  if(removeProductResource != null && removeProductResource !== '')
-    vals['removeProductResource'] = removeProductResource;
+  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
+  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value === 'true';
+  var setSolutionResource = removeSolutionResource ? null : $formValues.querySelector('.setSolutionResource')?.value;
+  var addSolutionResource = $formValues.querySelector('.addSolutionResource')?.value;
+  if(removeSolutionResource || setSolutionResource != null && setSolutionResource !== '')
+    vals['setSolutionResource'] = setSolutionResource;
+  if(addSolutionResource != null && addSolutionResource !== '')
+    vals['addSolutionResource'] = addSolutionResource;
+  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value;
+  if(removeSolutionResource != null && removeSolutionResource !== '')
+    vals['removeSolutionResource'] = removeSolutionResource;
 
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value === 'true';
@@ -1578,17 +1578,17 @@ async function patchpayCompanyProduct($formFilters, $formValues, target, pageId,
   if(removeDownloadUrl != null && removeDownloadUrl !== '')
     vals['removeDownloadUrl'] = removeDownloadUrl;
 
-  var valueProductNum = $formValues.querySelector('.valueProductNum')?.value;
-  var removeProductNum = $formValues.querySelector('.removeProductNum')?.value === 'true';
-  var setProductNum = removeProductNum ? null : $formValues.querySelector('.setProductNum')?.value;
-  var addProductNum = $formValues.querySelector('.addProductNum')?.value;
-  if(removeProductNum || setProductNum != null && setProductNum !== '')
-    vals['setProductNum'] = setProductNum;
-  if(addProductNum != null && addProductNum !== '')
-    vals['addProductNum'] = addProductNum;
-  var removeProductNum = $formValues.querySelector('.removeProductNum')?.value;
-  if(removeProductNum != null && removeProductNum !== '')
-    vals['removeProductNum'] = removeProductNum;
+  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
+  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value === 'true';
+  var setSolutionNum = removeSolutionNum ? null : $formValues.querySelector('.setSolutionNum')?.value;
+  var addSolutionNum = $formValues.querySelector('.addSolutionNum')?.value;
+  if(removeSolutionNum || setSolutionNum != null && setSolutionNum !== '')
+    vals['setSolutionNum'] = setSolutionNum;
+  if(addSolutionNum != null && addSolutionNum !== '')
+    vals['addSolutionNum'] = addSolutionNum;
+  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value;
+  if(removeSolutionNum != null && removeSolutionNum !== '')
+    vals['removeSolutionNum'] = removeSolutionNum;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
@@ -1744,9 +1744,9 @@ function patchpayCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterProductResource = $formFilters.querySelector('.valueProductResource')?.value;
-    if(filterProductResource != null && filterProductResource !== '')
-      filters.push({ name: 'fq', value: 'productResource:' + filterProductResource });
+    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
+    if(filterSolutionResource != null && filterSolutionResource !== '')
+      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
 
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
@@ -1760,9 +1760,9 @@ function patchpayCompanyProductFilters($formFilters) {
     if(filterDownloadUrl != null && filterDownloadUrl !== '')
       filters.push({ name: 'fq', value: 'downloadUrl:' + filterDownloadUrl });
 
-    var filterProductNum = $formFilters.querySelector('.valueProductNum')?.value;
-    if(filterProductNum != null && filterProductNum !== '')
-      filters.push({ name: 'fq', value: 'productNum:' + filterProductNum });
+    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
+    if(filterSolutionNum != null && filterSolutionNum !== '')
+      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1914,9 +1914,9 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueSolrId != null && valueSolrId !== '')
     vals['solrId'] = valueSolrId;
 
-  var valueProductResource = $formValues.querySelector('.valueProductResource')?.value;
-  if(valueProductResource != null && valueProductResource !== '')
-    vals['productResource'] = valueProductResource;
+  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
+  if(valueSolutionResource != null && valueSolutionResource !== '')
+    vals['solutionResource'] = valueSolutionResource;
 
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   if(valueEmailTemplate != null && valueEmailTemplate !== '')
@@ -1930,9 +1930,9 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueDownloadUrl != null && valueDownloadUrl !== '')
     vals['downloadUrl'] = valueDownloadUrl;
 
-  var valueProductNum = $formValues.querySelector('.valueProductNum')?.value;
-  if(valueProductNum != null && valueProductNum !== '')
-    vals['productNum'] = valueProductNum;
+  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
+  if(valueSolutionNum != null && valueSolutionNum !== '')
+    vals['solutionNum'] = valueSolutionNum;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')

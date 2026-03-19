@@ -49,6 +49,13 @@ wa-card::part(header) {
   </wa-card>
   {% include result.dialogTemplate -%}
   {% else -%}
+  <wa-callout>
+    <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+    Developers who wish to get started with the {{ result.name }} need to be granted access. 
+    Please reach out to {{ MAILING_LIST_EMAIL }} if you would like to collaborate on this solution. 
+  </wa-callout>
+
+  <!--
   <div class="wa-flank:end wa-align-items-start wa-gap-3xl " style="--flank-size: 16rem;">
     <div class="wa-stack ">
       <wa-card appearance="filled">
@@ -139,6 +146,7 @@ wa-card::part(header) {
       {% endif -%}
     </div>
   </div>
+  -->
   {% endif %}
   {% if productGettingStarted is defined -%}
   {{ productGettingStarted | default('') }}

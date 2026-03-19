@@ -7,7 +7,7 @@
 
 {%- block htmStylesPageLayout %}
 {{ super() }}
-    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/product/CompanyProduct.css"/>
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/solution/CompanyProduct.css"/>
 {%- block htmStylesCompanyProductPage %}
 {%- endblock htmStylesCompanyProductPage %}
 {%- endblock htmStylesPageLayout %}
@@ -24,9 +24,9 @@
 {%- block htmScriptsPageLayout %}
 {{ super() }}
 {%- block htmScriptsCompanyProductPage %}
-    <script src="{{staticBaseUrl}}/js/en-us/search/product/CompanyProduct.js"></script>
-    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/product/CompanyProductSearchPage.js"></script>
-    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/product/CompanyProductEditPage.js"></script>
+    <script src="{{staticBaseUrl}}/js/en-us/search/solution/CompanyProduct.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/solution/CompanyProductSearchPage.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/solution/CompanyProductEditPage.js"></script>
 {%- endblock htmScriptsCompanyProductPage %}
 {%- endblock htmScriptsPageLayout %}
 
@@ -258,12 +258,12 @@
 
 {%- if pageSearchButtons is not defined %}
 {%- set pageSearchButtons %}
-{% include en-us/search/product/CompanyProductSearchButtons.htm %}
+{% include en-us/search/solution/CompanyProductSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
 {%- if pageSearchFormButtons is not defined %}
 {%- set pageSearchFormButtons %}
-{% include en-us/search/product/CompanyProductSearchFormButtons.htm %}
+{% include en-us/search/solution/CompanyProductSearchFormButtons.htm %}
 {%- endset pageSearchFormButtons %}
 {%- endif %}
 {%- if pageBreadcrumb is not defined %}
@@ -289,13 +289,13 @@
             <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-conveyor-belt"></i> {{ result.objectTitle | e }}</h1>
           </div>
 {% endif %}
-{% include en-us/search/product/CompanyProductSearchForm.htm %}
+{% include en-us/search/solution/CompanyProductSearchForm.htm %}
 {%- endblock htmBodyStartCompanyProductPage %}
 {%- endblock htmBodyStartPageLayout %}
 
 {%- block htmBodyMiddlePageLayout %}
 {%- block htmBodyMiddleCompanyProductPage %}
-{%- include en-us/search/product/CompanyProductSidebar.htm %}
+{%- include en-us/search/solution/CompanyProductSidebar.htm %}
         <div class="pageContent ">
 {% if resultCount == 0 %}
         <div class="wa-stack ">
@@ -318,10 +318,10 @@
           </div>
         </div>
 {% else %}
-{%- include en-us/search/product/CompanyProductSuggestedSearch.htm %}
+{%- include en-us/search/solution/CompanyProductSuggestedSearch.htm %}
 {% endif %}
 {%- block htmFormCompanyProductPage %}
-          <form action="/en-us/api/product" id="CompanyProductForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+          <form action="/en-us/api/solution" id="CompanyProductForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
 {% if result.pageId is defined %}
             <input name="pageId" class="valuePageId" type="hidden" value="{{ result.pageId }}"/>
             {% endif %}
@@ -340,7 +340,7 @@
 
 {%- block htmBodyEndPageLayout %}
 {%- block htmBodyEndCompanyProductPage %}
-{%- include en-us/search/product/CompanyProductLocation.htm %}
+{%- include en-us/search/solution/CompanyProductLocation.htm %}
 {%- endblock htmBodyEndCompanyProductPage %}
       {{ super() }}
 {%- endblock htmBodyEndPageLayout %}

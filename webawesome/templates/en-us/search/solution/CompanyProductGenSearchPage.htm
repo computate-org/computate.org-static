@@ -2,7 +2,7 @@
 
 {%- block htmTitlePageLayout %}
 {%- block htmTitleCompanyProductPage %}
-    <title>{% if resultCount == 0 %}no product found{% else %}products{% endif %}</title>
+    <title>{% if resultCount == 0 %}no solution found{% else %}solutions{% endif %}</title>
 {%- endblock htmTitleCompanyProductPage %}
 {%- endblock htmTitlePageLayout %}
 
@@ -124,6 +124,7 @@
         , customElements.whenDefined('wa-checkbox')
         , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
+        window.FONTAWESOME_STYLE = document.querySelector('.pageForm .FONTAWESOME_STYLE')?.value;
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
 
@@ -257,14 +258,14 @@
 {%- block htmUrlCompanyProductPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlCompanyProductPage %}
 {%- if pageBreadcrumb is not defined %}
 {%- set pageBreadcrumb %}
-              <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip>
+              <wa-tooltip for="return-to-CompanyProduct">back to all solutions</wa-tooltip>
               <wa-breadcrumb>
                 <wa-breadcrumb-item id="return-to-CompanyProduct" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
                   <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
-                  all products
+                  all solutions
                 </wa-breadcrumb-item>
                 <wa-breadcrumb-item>
-                  search products
+                  search solutions
                 </wa-breadcrumb-item>
               </wa-breadcrumb>
 {%- endset pageBreadcrumb %}
@@ -276,28 +277,29 @@
 {% include en-us/search/solution/CompanyProductSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
-          <wa-tooltip for="return-to-CompanyProduct">back to all products</wa-tooltip></wa-tooltip>
+          <wa-tooltip for="return-to-CompanyProduct">back to all solutions</wa-tooltip></wa-tooltip>
           <wa-breadcrumb>
             <wa-breadcrumb-item id="return-to-CompanyProduct" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
               <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
-              all products
+              all solutions
             </wa-breadcrumb-item>
             <wa-breadcrumb-item>
-              no product found
+              no solution found
             </wa-breadcrumb-item>
           </wa-breadcrumb>
           <div class="wa-stack wa-align-items-center ">
             <div class="wa-heading-3xl ">
               <i class="fa-duotone fa-regular fa-conveyor-belt"></i>
             </div>
-            <span class="wa-heading-m ">no product found</span>
-            <p class="wa-caption-l ">See the computate products that will help you build your own data-driven platforms</p>
+            <span class="wa-heading-m ">no solution found</span>
+            <p class="wa-caption-l ">See the computate solutions that will help you build your own data-driven platforms</p>
           </div>
         </div>
 {% else %}
 {% include en-us/search/solution/CompanyProductSuggestedSearch.htm %}
           <div class="pageContent ">
             <form action="/en-us/api/solution" id="CompanyProductForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="FONTAWESOME_STYLE" class="FONTAWESOME_STYLE" type="hidden" value="{{ FONTAWESOME_STYLE }}"/>
               <input name="focusId" type="hidden"/>
               <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
               <input name="listCompanyProduct" id="listCompanyProduct" class="listCompanyProduct"  value='{{ toJsonArrayStringInApostrophes(listCompanyProduct) }}' type="hidden"/>
@@ -329,28 +331,28 @@
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
                     <wa-dropdown id="htmDropdown-name">
-                      <wa-button variant="brand" slot="trigger" caret>product name</wa-button>
+                      <wa-button variant="brand" slot="trigger" caret>solution name</wa-button>
                       <wa-menu>
                         <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyProduct_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyProduct').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
                           <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                          sort by product name ascending
+                          sort by solution name ascending
                         </wa-menu-item>
                         <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyProduct_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyProduct').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
                           <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                          sort by product name descending
+                          sort by solution name descending
                         </wa-menu-item>
                       </wa-menu>
                     </wa-dropdown>
                     <wa-dropdown id="htmDropdown-description">
-                      <wa-button variant="brand" slot="trigger" caret>product description</wa-button>
+                      <wa-button variant="brand" slot="trigger" caret>solution description</wa-button>
                       <wa-menu>
                         <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyProduct_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyProduct').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
                           <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                          sort by product description ascending
+                          sort by solution description ascending
                         </wa-menu-item>
                         <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyProduct_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyProduct').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
                           <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                          sort by product description descending
+                          sort by solution description descending
                         </wa-menu-item>
                       </wa-menu>
                     </wa-dropdown>
