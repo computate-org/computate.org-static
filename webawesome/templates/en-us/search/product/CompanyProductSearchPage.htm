@@ -59,9 +59,6 @@
     {% endfor %}
     {% for result in listCompanyProduct %}
     <wa-dialog label="{{ result.name | e }}" id="dialog-{{ result.pageId }}" light-dismiss style="--width: 60rem; ">
-      <div>
-        Price {{ result.price }}
-      </div>
       <div class="wa-stack ">
         {% include result.dialogTemplate %}
         {{ productUseCases }}
