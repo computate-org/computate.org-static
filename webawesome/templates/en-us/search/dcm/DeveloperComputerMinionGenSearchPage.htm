@@ -2,7 +2,7 @@
 
 {%- block htmTitlePageLayout %}
 {%- block htmTitleDeveloperComputerMinionPage %}
-    <title>{% if resultCount == 0 %}no Developer Computer Minion found{% else %}Developer Computer Minions{% endif %}</title>
+    <title>{% if resultCount == 0 %}no Developer Computer Management found{% else %}Developer Computer Management{% endif %}</title>
 {%- endblock htmTitleDeveloperComputerMinionPage %}
 {%- endblock htmTitlePageLayout %}
 
@@ -257,14 +257,14 @@
 {%- block htmUrlDeveloperComputerMinionPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlDeveloperComputerMinionPage %}
 {%- if pageBreadcrumb is not defined %}
 {%- set pageBreadcrumb %}
-              <wa-tooltip for="return-to-DeveloperComputerMinion">back to all Developer Computer Minions</wa-tooltip>
+              <wa-tooltip for="return-to-DeveloperComputerMinion">back to all Developer Computer Management</wa-tooltip>
               <wa-breadcrumb>
                 <wa-breadcrumb-item id="return-to-DeveloperComputerMinion" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
                   <i class="fa-duotone fa-regular fa-fish"></i>
-                  all Developer Computer Minions
+                  all Developer Computer Management
                 </wa-breadcrumb-item>
                 <wa-breadcrumb-item>
-                  search Developer Computer Minions
+                  search Developer Computer Management
                 </wa-breadcrumb-item>
               </wa-breadcrumb>
 {%- endset pageBreadcrumb %}
@@ -276,21 +276,21 @@
 {% include en-us/search/dcm/DeveloperComputerMinionSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
-          <wa-tooltip for="return-to-DeveloperComputerMinion">back to all Developer Computer Minions</wa-tooltip></wa-tooltip>
+          <wa-tooltip for="return-to-DeveloperComputerMinion">back to all Developer Computer Management</wa-tooltip></wa-tooltip>
           <wa-breadcrumb>
             <wa-breadcrumb-item id="return-to-DeveloperComputerMinion" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
               <i class="fa-duotone fa-regular fa-fish"></i>
-              all Developer Computer Minions
+              all Developer Computer Management
             </wa-breadcrumb-item>
             <wa-breadcrumb-item>
-              no Developer Computer Minion found
+              no Developer Computer Management found
             </wa-breadcrumb-item>
           </wa-breadcrumb>
           <div class="wa-stack wa-align-items-center ">
             <div class="wa-heading-3xl ">
               <i class="fa-duotone fa-regular fa-fish"></i>
             </div>
-            <span class="wa-heading-m ">no Developer Computer Minion found</span>
+            <span class="wa-heading-m ">no Developer Computer Management found</span>
             <p class="wa-caption-l ">Learn how to use to compile and run fun open source games and useful Linux software on your own Linux computer with self-healing, event-driven automation. </p>
           </div>
         </div>
