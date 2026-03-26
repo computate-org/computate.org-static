@@ -231,17 +231,6 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'solrId', false);
   });
 
-  document.querySelector('#pageSelectSortCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'solutionResource', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_solutionResource')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'solutionResource', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_solutionResource')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'solutionResource', false);
-  });
-
   document.querySelector('#pageSelectSortCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'emailTemplate', event.currentTarget.value);
   });
@@ -273,17 +262,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsCompanyProduct_downloadUrl')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyProduct', 'downloadUrl', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyProduct_solutionNum')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'solutionNum', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_solutionNum')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'solutionNum', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_solutionNum')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'solutionNum', false);
   });
 
   document.querySelector('#pageSelectSortCompanyProduct_pageImageWidth')?.addEventListener('change', (event) => {
@@ -319,6 +297,17 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'pageImageType', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyProduct_labels')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'labels', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_labels')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'labels', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_labels')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'labels', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyProduct_pageImageAlt')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'pageImageAlt', event.currentTarget.value);
   });
@@ -330,6 +319,28 @@ Promise.all([
     facetStatsChange('CompanyProduct', 'pageImageAlt', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'solutionResource', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_solutionResource')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'solutionResource', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_solutionResource')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'solutionResource', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyProduct_solutionNum')?.addEventListener('change', (event) => {
+    sort('CompanyProduct', 'solutionNum', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyProduct_solutionNum')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyProduct', 'solutionNum', true);
+  });
+  document.querySelector('#pageStatsCompanyProduct_solutionNum')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyProduct', 'solutionNum', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyProduct_labelsString')?.addEventListener('change', (event) => {
     sort('CompanyProduct', 'labelsString', event.currentTarget.value);
   });
@@ -339,17 +350,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsCompanyProduct_labelsString')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyProduct', 'labelsString', false);
-  });
-
-  document.querySelector('#pageSelectSortCompanyProduct_labels')?.addEventListener('change', (event) => {
-    sort('CompanyProduct', 'labels', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsCompanyProduct_labels')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('CompanyProduct', 'labels', true);
-  });
-  document.querySelector('#pageStatsCompanyProduct_labels')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('CompanyProduct', 'labels', false);
   });
 
   document.querySelector('#pageSelectSortCompanyProduct_relatedArticleIds')?.addEventListener('change', (event) => {
@@ -553,24 +553,6 @@ Promise.all([
           document.querySelector('#pageFacetRangeEndCompanyProduct_download')?.addEventListener('change', (event) => {
             facetRangeEndChange('CompanyProduct', event.currentTarget);
           });
-          document.querySelector('#fqCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
-            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
-          });
-          document.querySelector('#buttonFacetCompanyProduct_solutionResource')?.addEventListener('click', (event) => {
-            facetFieldChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
-            facetPivotChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
-            facetRangeGapChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
-            facetRangeStartChange('CompanyProduct', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
-            facetRangeEndChange('CompanyProduct', event.currentTarget);
-          });
           document.querySelector('#fqCompanyProduct_emailTemplate')?.addEventListener('change', (event) => {
             fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
           });
@@ -623,6 +605,24 @@ Promise.all([
             facetRangeStartChange('CompanyProduct', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndCompanyProduct_downloadUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
+            fqChange('CompanyProduct', event.currentTarget, facetChangeCompanyProductSuccess, facetChangeCompanyProductError);
+          });
+          document.querySelector('#buttonFacetCompanyProduct_solutionResource')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyProduct', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyProduct_solutionResource')?.addEventListener('change', (event) => {
             facetRangeEndChange('CompanyProduct', event.currentTarget);
           });
           document.querySelector('#fqCompanyProduct_solutionNum')?.addEventListener('change', (event) => {

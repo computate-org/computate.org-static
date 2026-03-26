@@ -124,6 +124,7 @@
         , customElements.whenDefined('wa-checkbox')
         , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
+        window.FONTAWESOME_STYLE = document.querySelector('.pageForm .FONTAWESOME_STYLE')?.value;
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
 
@@ -298,6 +299,7 @@
 {% include en-us/search/article/SitePageSuggestedSearch.htm %}
           <div class="pageContent ">
             <form action="/en-us/api/article" id="SitePageForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="FONTAWESOME_STYLE" class="FONTAWESOME_STYLE" type="hidden" value="{{ FONTAWESOME_STYLE }}"/>
               <input name="focusId" type="hidden"/>
               <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
               <input name="listSitePage" id="listSitePage" class="listSitePage"  value='{{ toJsonArrayStringInApostrophes(listSitePage) }}' type="hidden"/>

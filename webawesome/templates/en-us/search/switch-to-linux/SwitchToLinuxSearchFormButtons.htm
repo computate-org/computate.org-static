@@ -1,0 +1,65 @@
+
+{%- macro htmButton_patchSwitchToLinux() %}<wa-button variant="brand" id="htmButton_patchSwitchToLinux"  data-dialog="open patchSwitchToLinuxDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+
+{%- macro htmButton_postSwitchToLinux() %}<wa-button variant="brand" id="htmButton_postSwitchToLinux"  data-dialog="open postSwitchToLinuxDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+
+{%- macro htmButton_deleteSwitchToLinux() %}<wa-button variant="brand" id="htmButton_deleteSwitchToLinux" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+
+{%- macro htmButton_putimportSwitchToLinux() %}<wa-button variant="brand" id="htmButton_putimportSwitchToLinux"  data-dialog="open putimportSwitchToLinuxDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+
+{%- macro htmButton_deletefilterSwitchToLinux() %}<wa-button variant="brand" id="htmButton_deletefilterSwitchToLinux" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+          <div id="htmSearchForm">
+            <wa-scroller>
+              <wa-button-group>
+{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {% if "PATCH" in scopes %}
+    {% if resultCount >= 1 %}
+                <wa-button variant="brand" id="refreshThisSwitchToLinuxGenPage"
+                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisSwitchToLinuxGenPage')); }, function() { addError(document.querySelector('#refreshThisSwitchToLinuxGenPage')); }); return false; ">
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
+                  refresh
+                </wa-button>
+    {% endif %}
+    {% if resultCount > 0 %}
+                <wa-button variant="brand" id="refreshAllSwitchToLinuxGenPage{{ result.pageId | e }}"
+                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllSwitchToLinuxGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllSwitchToLinuxGenPage{{ result.pageId | e }}')); }); "
+                    >
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
+                  refresh all 
+                </wa-button>
+    {% endif %}
+  {% endif %}
+{% endif %}
+{%- if 'PATCH' in scopes %}
+  {%- if resultCount > 0 %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+    {{ htmButton_patchSwitchToLinux() }}
+    {%- endif %}
+  {%- endif %}
+{%- endif %}
+{%- if 'POST' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmButton_postSwitchToLinux() }}
+  {%- else %}
+    {{ htmButton_postSwitchToLinux() }}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if result is defined %}
+    {{ htmButton_deleteSwitchToLinux() }}
+  {%- endif %}
+{%- endif %}
+{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {{ htmButton_putimportSwitchToLinux() }}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if result is not defined %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+    {{ htmButton_deletefilterSwitchToLinux() }}
+    {%- endif %}
+  {%- endif %}
+{%- endif %}
+
+              </wa-button-group>
+            </wa-scroller>
+          </div>

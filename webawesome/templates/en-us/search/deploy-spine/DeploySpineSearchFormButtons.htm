@@ -1,0 +1,65 @@
+
+{%- macro htmButton_patchDeploySpine() %}<wa-button variant="brand" id="htmButton_patchDeploySpine"  data-dialog="open patchDeploySpineDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-edit "></i>Modify</wa-button>{%- endmacro %}
+
+{%- macro htmButton_postDeploySpine() %}<wa-button variant="brand" id="htmButton_postDeploySpine"  data-dialog="open postDeploySpineDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-plus "></i>Create</wa-button>{%- endmacro %}
+
+{%- macro htmButton_deleteDeploySpine() %}<wa-button variant="brand" id="htmButton_deleteDeploySpine" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+
+{%- macro htmButton_putimportDeploySpine() %}<wa-button variant="brand" id="htmButton_putimportDeploySpine"  data-dialog="open putimportDeploySpineDialog" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-file-import "></i>Import</wa-button>{%- endmacro %}
+
+{%- macro htmButton_deletefilterDeploySpine() %}<wa-button variant="brand" id="htmButton_deletefilterDeploySpine" data-pageId={{ result.pageId | tojson }}><i slot="start" class="{{ FONTAWESOME_STYLE }} fa-trash "></i>Delete</wa-button>{%- endmacro %}
+          <div id="htmSearchForm">
+            <wa-scroller>
+              <wa-button-group>
+{% if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {% if "PATCH" in scopes %}
+    {% if resultCount >= 1 %}
+                <wa-button variant="brand" id="refreshThisDeploySpineGenPage"
+                     onclick="patch{{classSimpleName}}Vals( [ {name: 'fq', value: 'pageId:{{ result.pageId }}' } ], {}, this, function() { addGlow(document.querySelector('#refreshThisDeploySpineGenPage')); }, function() { addError(document.querySelector('#refreshThisDeploySpineGenPage')); }); return false; ">
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-sync-alt "></i>
+                  refresh
+                </wa-button>
+    {% endif %}
+    {% if resultCount > 0 %}
+                <wa-button variant="brand" id="refreshAllDeploySpineGenPage{{ result.pageId | e }}"
+                     onclick="patch{{classSimpleName}}Vals([], {}, this, function() { addGlow(document.querySelector('#refreshAllDeploySpineGenPage{{ result.pageId | e }}')); }, function() { addError(document.querySelector('#refreshAllDeploySpineGenPage{{ result.pageId | e }}')); }); "
+                    >
+                  <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrows-rotate"></i>
+                  refresh all 
+                </wa-button>
+    {% endif %}
+  {% endif %}
+{% endif %}
+{%- if 'PATCH' in scopes %}
+  {%- if resultCount > 0 %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+    {{ htmButton_patchDeploySpine() }}
+    {%- endif %}
+  {%- endif %}
+{%- endif %}
+{%- if 'POST' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmButton_postDeploySpine() }}
+  {%- else %}
+    {{ htmButton_postDeploySpine() }}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if result is defined %}
+    {{ htmButton_deleteDeploySpine() }}
+  {%- endif %}
+{%- endif %}
+{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {{ htmButton_putimportDeploySpine() }}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if result is not defined %}
+    {%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+    {{ htmButton_deletefilterDeploySpine() }}
+    {%- endif %}
+  {%- endif %}
+{%- endif %}
+
+              </wa-button-group>
+            </wa-scroller>
+          </div>

@@ -1,0 +1,393 @@
+{% extends "en-us/PageLayout.htm" %}
+
+{%- block htmTitlePageLayout %}
+{%- block htmTitleLearnSkillsPage %}
+    <title>{% if resultCount == 0 %}no Learn cloud developer skills found{% else %}Learn cloud developer skills{% endif %}</title>
+{%- endblock htmTitleLearnSkillsPage %}
+{%- endblock htmTitlePageLayout %}
+
+{%- block htmStylesPageLayout %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/skills/LearnSkills.css"/>
+{%- block htmStylesLearnSkillsPage %}
+{%- endblock htmStylesLearnSkillsPage %}
+{%- endblock htmStylesPageLayout %}
+
+{%- block htmStylePageLayout %}
+      :root {
+        --site-results-number-of-columns: 2;
+      }
+{{ super() }}
+{%- block htmStyleLearnSkillsPage %}
+{%- endblock htmStyleLearnSkillsPage %}
+{%- endblock htmStylePageLayout %}
+
+{%- block htmScriptsPageLayout %}
+{{ super() }}
+{%- block htmScriptsLearnSkillsPage %}
+    <script src="{{staticBaseUrl}}/js/en-us/search/skills/LearnSkills.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/skills/LearnSkillsSearchPage.js"></script>
+{%- endblock htmScriptsLearnSkillsPage %}
+{%- endblock htmScriptsPageLayout %}
+
+{%- block htmScriptPageLayout %}
+{%- block htmScriptLearnSkillsPage %}
+    <script>
+
+      function jsWebsocketLearnSkills(pageId, vars, $response) {
+{%- block jsWebsocketLearnSkillsPage %}{%- endblock %}
+      }
+
+      function jsTooltipLearnSkills(e, feature) {
+{%- block jsTooltipLearnSkillsPage %}{%- endblock %}
+      }
+
+      function htmTooltipLearnSkills(feature, layer) {
+        return `{%- block htmTooltipLearnSkillsPage %}
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
+{%- endblock htmTooltipLearnSkillsPage %}`;
+      }
+
+      function facetChangeLearnSkillsSuccess(e) {
+        var l = e.querySelector('.pageForm .listLearnSkills')?.value;
+        if(l)
+          window.listLearnSkills = JSON.parse(l);
+{% block facetChangeLearnSkillsSuccess %}{%- endblock facetLearnSkillsSuccess %}
+      }
+      function facetChangeLearnSkillsError(e) {
+{% block facetChangeLearnSkillsError %}{%- endblock facetLearnSkillsError %}
+      }
+
+      function facetSimpleRangeLearnSkillsSuccess(e) {
+{% block facetSimpleRangeLearnSkillsSuccess %}      facetChangeLearnSkillsSuccess(e);{% endblock facetSimpleRangeLearnSkillsSuccess %}
+      }
+      function facetSimpleRangeLearnSkillsError(e) {
+{% block facetSimpleRangeLearnSkillsError %}      facetChangeLearnSkillsError(e);{% endblock facetSimpleRangeLearnSkillsError %}
+      }
+      function facetSimpleRangeLearnSkills(e) {
+        facetSimpleRange(e, facetSimpleRangeLearnSkillsSuccess, facetSimpleRangeLearnSkillsError);
+      }
+
+      function facetRangeTimeZoneLearnSkillsSuccess(e) {
+{% block facetRangeTimeZoneLearnSkillsSuccess %}      facetChangeLearnSkillsSuccess(e);{% endblock facetRangeTimeZoneLearnSkillsSuccess %}
+      }
+      function facetRangeTimeZoneLearnSkillsError(e) {
+{% block facetRangeTimeZoneLearnSkillsError %}      facetChangeLearnSkillsError(e);{%- endblock facetRangeTimeZoneLearnSkillsError %}
+      }
+      function facetRangeTimeZoneLearnSkills(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneLearnSkillsSuccess, facetRangeTimeZoneLearnSkillsError);
+      }
+
+      function facetRangeGapChangeLearnSkillsSuccess(e) {
+{% block facetRangeGapChangeLearnSkillsSuccess %}      facetChangeLearnSkillsSuccess(e);{% endblock facetRangeGapChangeLearnSkillsSuccess %}
+      }
+      function facetRangeGapChangeLearnSkillsError(e) {
+{% block facetRangeGapChangeLearnSkillsError %}      facetChangeLearnSkillsError(e);{%- endblock facetRangeGapChangeLearnSkillsError %}
+      }
+      function facetRangeGapChangeLearnSkills(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeLearnSkillsSuccess, facetRangeGapChangeLearnSkillsError);
+      }
+
+      function facetRangeStartChangeLearnSkillsSuccess(e) {
+{% block facetRangeStartChangeLearnSkillsSuccess %}      facetChangeLearnSkillsSuccess(e);{% endblock facetRangeStartChangeLearnSkillsSuccess %}
+      }
+      function facetRangeStartChangeLearnSkillsError(e) {
+{% block facetRangeStartChangeLearnSkillsError %}      facetChangeLearnSkillsError(e);{%- endblock facetRangeStartChangeLearnSkillsError %}
+      }
+      function facetRangeStartChangeLearnSkills(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeLearnSkillsSuccess, facetRangeStartChangeLearnSkillsError);
+      }
+
+      function facetRangeEndChangeLearnSkillsSuccess(e) {
+{% block facetRangeEndChangeLearnSkillsSuccess %}      facetChangeLearnSkillsSuccess(e);{% endblock facetRangeEndChangeLearnSkillsSuccess %}
+      }
+      function facetRangeEndChangeLearnSkillsError(e) {
+{% block facetRangeEndChangeLearnSkillsError %}      facetChangeLearnSkillsError(e);{%- endblock facetRangeEndChangeLearnSkillsError %}
+      }
+      function facetRangeEndChangeLearnSkills(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeLearnSkillsSuccess, facetRangeEndChangeLearnSkillsError);
+      }
+    </script>
+    <script type="module">
+{% if DEFAULT_MAP_LOCATION is defined %}
+      window.DEFAULT_MAP_LOCATION = { type: 'Point', coordinates: [ {{ DEFAULT_MAP_LOCATION.coordinates[0] }}, {{ DEFAULT_MAP_LOCATION.coordinates[1] }} ]};
+{% endif %}
+{% if DEFAULT_MAP_ZOOM is defined %}
+      window.DEFAULT_MAP_ZOOM = {{ DEFAULT_MAP_ZOOM }};
+{% endif %}
+      window.DEFAULT_ZONE_ID = '{{ defaultZoneId }}';
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
+      ]).then(() => {
+        window.FONTAWESOME_STYLE = document.querySelector('.pageForm .FONTAWESOME_STYLE')?.value;
+
+        var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
+
+        if(pageId == null) {
+          document.querySelector('#grid-toggle-details')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-list', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-details');
+          });
+          document.querySelector('#grid-toggle-list')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-list');
+          });
+          document.querySelector('#grid-toggle-card')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-list');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-card');
+          });
+        } else {
+          var o = document.querySelector('.pageForm .result')?.value;
+          if(o)
+            window.result = JSON.parse(o);
+        {% if result.pageId is defined %}
+        {% endif %}
+        }
+        var l = document.querySelector('.pageForm .listLearnSkills')?.value;
+        if(l)
+          window.listLearnSkills = JSON.parse(l);
+        window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
+        window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
+        window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneLearnSkills);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneLearnSkills);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneLearnSkills);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeLearnSkills);
+        pageGraphLearnSkills();
+        {% for key, value in varsQ.items() %}
+
+        document.querySelector('#qLearnSkills_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
+          qChange('LearnSkills', event.target, document.querySelector('#qLearnSkillsDiv_{{ key }}'));
+        });
+        {% endfor %}
+
+        document.querySelector('#qLearnSkills_rows')?.addEventListener('change', event => {
+          paramChange('LearnSkills', event.target, document.querySelector('#qLearnSkillsDiv_rows'));
+        });
+
+        document.querySelector('#qLearnSkills_start')?.addEventListener('change', event => {
+          paramChange('LearnSkills', event.target, document.querySelector('#qLearnSkillsDiv_start'));
+        });
+
+
+        var submitForm_patchLearnSkills = document.querySelector('#htmForm_patchLearnSkills')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_patchLearnSkills')?.addEventListener('click', event => {
+          event.preventDefault();
+          patchLearnSkills(null, document.querySelector('#htmForm_patchLearnSkills'), document.querySelector('#htmFormButton_patchLearnSkills'), event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_postLearnSkills = document.querySelector('#htmForm_postLearnSkills')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_postLearnSkills')?.addEventListener('click', event => {
+          event.preventDefault();
+          postLearnSkills(document.querySelector('#htmForm_postLearnSkills')
+          , document.querySelector('#htmFormButton_postLearnSkills')
+          , (json, target) => {
+            window.location.href = json.editPage;
+          });
+          return false;
+        });
+
+        var submitForm_deleteLearnSkills = document.querySelector('#htmForm_deleteLearnSkills')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deleteLearnSkills')?.addEventListener('click', event => {
+          event.preventDefault();
+          deleteLearnSkills(event.target, event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_putimportLearnSkills = document.querySelector('#htmForm_putimportLearnSkills')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_putimportLearnSkills')?.addEventListener('click', event => {
+          event.preventDefault();
+          putimportLearnSkills(document.querySelector('#htmForm_putimportLearnSkills'), document.querySelector('#htmFormButton_putimportLearnSkills'));
+          return false;
+        });
+
+        var submitForm_searchpageLearnSkills = document.querySelector('#htmForm_searchpageLearnSkills')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_searchpageLearnSkills')?.addEventListener('click', event => {
+          event.preventDefault();
+          searchpageLearnSkills();
+          return false;
+        });
+
+        var submitForm_deletefilterLearnSkills = document.querySelector('#htmForm_deletefilterLearnSkills')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deletefilterLearnSkills')?.addEventListener('click', event => {
+          event.preventDefault();
+          deletefilterLearnSkills(event.target);
+          return false;
+        });
+{%- block htmScriptInitLearnSkillsPage %}{%- endblock htmScriptInitLearnSkillsPage %}
+      });
+    </script>
+{%- endblock htmScriptLearnSkillsPage %}
+{%- endblock htmScriptPageLayout %}
+
+{%- block websocketPageLayout %}
+{%- block websocketLearnSkillsPage %}
+{% if resultCount > 0 %}
+        window.eventBus = new EventBus('/eventbus');
+        window.eventBus.enableReconnect(true);
+        websocketLearnSkills(websocketLearnSkillsInner);
+{% endif %}
+{%- endblock websocketLearnSkillsPage %}
+{%- endblock websocketPageLayout %}
+
+{%- block htmUrlLearnSkillsPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlLearnSkillsPage %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-LearnSkills">back to all Learn cloud developer skills</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-LearnSkills" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-kit fa-computate-c-key"></i>
+                  all Learn cloud developer skills
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search Learn cloud developer skills
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
+{%- block htmBodyStartPageLayout %}
+{{ super() }}
+{%- block htmBodyStartLearnSkillsPage %}
+{% include en-us/search/skills/LearnSkillsSidebar.htm %}
+{% if resultCount == 0 %}
+        <div class="wa-stack ">
+          <wa-tooltip for="return-to-LearnSkills">back to all Learn cloud developer skills</wa-tooltip></wa-tooltip>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-LearnSkills" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-kit fa-computate-c-key"></i>
+              all Learn cloud developer skills
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no Learn cloud developer skills found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-kit fa-computate-c-key"></i>
+            </div>
+            <span class="wa-heading-m ">no Learn cloud developer skills found</span>
+            <p class="wa-caption-l ">Learn how to manage SPINE apps in OpenShift Local to manage cloud secrets, pods, GitOps, and more. </p>
+          </div>
+        </div>
+{% else %}
+{% include en-us/search/skills/LearnSkillsSuggestedSearch.htm %}
+          <div class="pageContent ">
+            <form action="/en-us/api/learn-skills" id="LearnSkillsForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="FONTAWESOME_STYLE" class="FONTAWESOME_STYLE" type="hidden" value="{{ FONTAWESOME_STYLE }}"/>
+              <input name="focusId" type="hidden"/>
+              <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+              <input name="listLearnSkills" id="listLearnSkills" class="listLearnSkills"  value='{{ toJsonArrayStringInApostrophes(listLearnSkills) }}' type="hidden"/>
+            </form>
+            <div id="site-calendar-box">
+              <div id="site-calendar"><!-- // --></div>
+            </div>
+            <div class="wa-stack wa-gap-m ">
+{% endif %}
+{% include en-us/search/skills/LearnSkillsSearchForm.htm %}
+{%- endblock htmBodyStartLearnSkillsPage %}
+{%- endblock htmBodyStartPageLayout %}
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/skills/LearnSkillsSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/skills/LearnSkillsSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+
+{%- block htmBodyMiddlePageLayout %}
+{%- block htmBodyMiddleLearnSkillsPage %}
+{% if resultCount > 0 %}
+              <div class="wa-stack wa-gap-0 ">
+{% include en-us/search/skills/LearnSkillsPaginationButtons.htm %}
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortLearnSkills_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-LearnSkills').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by course name ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortLearnSkills_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-LearnSkills').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by course name descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortLearnSkills_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-LearnSkills').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by course description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortLearnSkills_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-LearnSkills').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by course description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                  </div>
+                  {% for item in listLearnSkills%}
+                  <div>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-kit fa-computate-c-key"></i>
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span class="white-space-pre-wrap ">{{ item.description | e }}</span>
+                    </a>
+                  </div>
+                  {% endfor %}
+              {% if getColumnName is defined %}
+                <div>
+                </div>
+              {% endif %}
+              {% if getColumnDescription is defined %}
+                <div>
+                </div>
+              {% endif %}
+                </div>
+{% include en-us/search/skills/LearnSkillsPaginationButtons.htm %}
+              </div>
+{% endif %}
+{%- endblock htmBodyMiddleLearnSkillsPage %}
+{%- endblock htmBodyMiddlePageLayout %}
+
+{%- block htmBodyEndPageLayout %}
+{%- block htmBodyEndLearnSkillsPage %}
+{%- include en-us/search/skills/LearnSkillsLocation.htm %}
+            </div>
+          </div>
+{%- endblock htmBodyEndLearnSkillsPage %}
+  {{ super() }}
+{%- endblock htmBodyEndPageLayout %}

@@ -292,27 +292,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH solutionResource
-          document.querySelector('#CompanyProduct_Page_solutionResource')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_solutionResource');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setSolutionResource', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#CompanyProduct_Page_solutionResource')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#CompanyProduct_Page_solutionResource')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_solutionResource');
-            const valid = form.reportValidity();
-          });
-
           // PATCH emailTemplate
           document.querySelector('#CompanyProduct_Page_emailTemplate')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_emailTemplate');
@@ -376,24 +355,24 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH solutionNum
-          document.querySelector('#CompanyProduct_Page_solutionNum')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_solutionNum');
+          // PATCH labels
+          document.querySelector('#CompanyProduct_Page_labels')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_labels');
             const valid = form.checkValidity();
             if(valid) {
               patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setSolutionNum', event.currentTarget.value
+                  , 'setLabels', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
                   , event.currentTarget
-                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#CompanyProduct_Page_solutionNum')?.addEventListener('focus', (event) => {
+          document.querySelector('#CompanyProduct_Page_labels')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#CompanyProduct_Page_solutionNum')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_solutionNum');
+          document.querySelector('#CompanyProduct_Page_labels')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_labels');
             const valid = form.reportValidity();
           });
 
@@ -418,6 +397,48 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH solutionResource
+          document.querySelector('#CompanyProduct_Page_solutionResource')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_solutionResource');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setSolutionResource', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#CompanyProduct_Page_solutionResource')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#CompanyProduct_Page_solutionResource')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_solutionResource');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH solutionNum
+          document.querySelector('#CompanyProduct_Page_solutionNum')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_solutionNum');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setSolutionNum', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#CompanyProduct_Page_solutionNum')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#CompanyProduct_Page_solutionNum')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_solutionNum');
+            const valid = form.reportValidity();
+          });
+
           // PATCH labelsString
           document.querySelector('#CompanyProduct_Page_labelsString')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_labelsString');
@@ -436,27 +457,6 @@ Promise.all([
           });
           document.querySelector('#CompanyProduct_Page_labelsString')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_labelsString');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH labels
-          document.querySelector('#CompanyProduct_Page_labels')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_labels');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchCompanyProductVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLabels', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
-                  , event.currentTarget
-                  , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#CompanyProduct_Page_labels')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#CompanyProduct_Page_labels')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_labels');
             const valid = form.reportValidity();
           });
 

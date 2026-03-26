@@ -124,6 +124,7 @@
         , customElements.whenDefined('wa-checkbox')
         , customElements.whenDefined('wa-dropdown')
       ]).then(() => {
+        window.FONTAWESOME_STYLE = document.querySelector('.pageForm .FONTAWESOME_STYLE')?.value;
 
         var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
 
@@ -278,6 +279,7 @@
 {% include en-us/search/service/CompanyServiceSuggestedSearch.htm %}
           <div class="pageContent ">
             <form action="/en-us/api/service" id="CompanyServiceForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="FONTAWESOME_STYLE" class="FONTAWESOME_STYLE" type="hidden" value="{{ FONTAWESOME_STYLE }}"/>
               <input name="focusId" type="hidden"/>
               <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
               <input name="listCompanyService" id="listCompanyService" class="listCompanyService"  value='{{ toJsonArrayStringInApostrophes(listCompanyService) }}' type="hidden"/>

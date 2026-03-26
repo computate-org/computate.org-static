@@ -1,0 +1,348 @@
+{% extends "en-us/PageLayout.htm" %}
+{%- block htmTitlePageLayout %}
+{%- block htmTitleDeploySpinePage %}
+    <title>{{ result.objectTitle }}</title>
+{%- endblock htmTitleDeploySpinePage %}
+{%- endblock htmTitlePageLayout %}
+
+{%- block htmStylesPageLayout %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/deploy-spine/DeploySpine.css"/>
+{%- block htmStylesDeploySpinePage %}
+{%- endblock htmStylesDeploySpinePage %}
+{%- endblock htmStylesPageLayout %}
+
+{%- block htmStylePageLayout %}
+      :root {
+        --site-results-number-of-columns: 2;
+      }
+{{ super() }}
+{%- block htmStyleDeploySpinePage %}
+{%- endblock htmStyleDeploySpinePage %}
+{%- endblock htmStylePageLayout %}
+
+{%- block htmScriptsPageLayout %}
+{{ super() }}
+{%- block htmScriptsDeploySpinePage %}
+    <script src="{{staticBaseUrl}}/js/en-us/search/deploy-spine/DeploySpine.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/deploy-spine/DeploySpineSearchPage.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/deploy-spine/DeploySpineEditPage.js"></script>
+{%- endblock htmScriptsDeploySpinePage %}
+{%- endblock htmScriptsPageLayout %}
+
+{%- block htmScriptPageLayout %}
+{%- block htmScriptDeploySpinePage %}
+    <script>
+
+      function jsWebsocketDeploySpine(pageId, vars, $response) {
+{%- block jsWebsocketDeploySpinePage %}{%- endblock %}
+      }
+
+      function jsTooltipDeploySpine(e, feature) {
+{%- block jsTooltipDeploySpinePage %}{%- endblock %}
+      }
+
+      function htmTooltipDeploySpine(feature, layer) {
+        return `{%- block htmTooltipDeploySpinePage %}
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
+{%- endblock htmTooltipDeploySpinePage %}`;
+      }
+
+      function facetChangeDeploySpineSuccess(e) {
+        var l = e.querySelector('.pageForm .listDeploySpine')?.value;
+        if(l)
+          window.listDeploySpine = JSON.parse(l);
+{% block facetChangeDeploySpineSuccess %}{%- endblock facetDeploySpineSuccess %}
+      }
+      function facetChangeDeploySpineError(e) {
+{% block facetChangeDeploySpineError %}{%- endblock facetDeploySpineError %}
+      }
+
+      function facetSimpleRangeDeploySpineSuccess(e) {
+{% block facetSimpleRangeDeploySpineSuccess %}      facetChangeDeploySpineSuccess(e);{% endblock facetSimpleRangeDeploySpineSuccess %}
+      }
+      function facetSimpleRangeDeploySpineError(e) {
+{% block facetSimpleRangeDeploySpineError %}      facetChangeDeploySpineError(e);{% endblock facetSimpleRangeDeploySpineError %}
+      }
+      function facetSimpleRangeDeploySpine(e) {
+        facetSimpleRange(e, facetSimpleRangeDeploySpineSuccess, facetSimpleRangeDeploySpineError);
+      }
+
+      function facetRangeTimeZoneDeploySpineSuccess(e) {
+{% block facetRangeTimeZoneDeploySpineSuccess %}      facetChangeDeploySpineSuccess(e);{% endblock facetRangeTimeZoneDeploySpineSuccess %}
+      }
+      function facetRangeTimeZoneDeploySpineError(e) {
+{% block facetRangeTimeZoneDeploySpineError %}      facetChangeDeploySpineError(e);{%- endblock facetRangeTimeZoneDeploySpineError %}
+      }
+      function facetRangeTimeZoneDeploySpine(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneDeploySpineSuccess, facetRangeTimeZoneDeploySpineError);
+      }
+
+      function facetRangeGapChangeDeploySpineSuccess(e) {
+{% block facetRangeGapChangeDeploySpineSuccess %}      facetChangeDeploySpineSuccess(e);{% endblock facetRangeGapChangeDeploySpineSuccess %}
+      }
+      function facetRangeGapChangeDeploySpineError(e) {
+{% block facetRangeGapChangeDeploySpineError %}      facetChangeDeploySpineError(e);{%- endblock facetRangeGapChangeDeploySpineError %}
+      }
+      function facetRangeGapChangeDeploySpine(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeDeploySpineSuccess, facetRangeGapChangeDeploySpineError);
+      }
+
+      function facetRangeStartChangeDeploySpineSuccess(e) {
+{% block facetRangeStartChangeDeploySpineSuccess %}      facetChangeDeploySpineSuccess(e);{% endblock facetRangeStartChangeDeploySpineSuccess %}
+      }
+      function facetRangeStartChangeDeploySpineError(e) {
+{% block facetRangeStartChangeDeploySpineError %}      facetChangeDeploySpineError(e);{%- endblock facetRangeStartChangeDeploySpineError %}
+      }
+      function facetRangeStartChangeDeploySpine(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeDeploySpineSuccess, facetRangeStartChangeDeploySpineError);
+      }
+
+      function facetRangeEndChangeDeploySpineSuccess(e) {
+{% block facetRangeEndChangeDeploySpineSuccess %}      facetChangeDeploySpineSuccess(e);{% endblock facetRangeEndChangeDeploySpineSuccess %}
+      }
+      function facetRangeEndChangeDeploySpineError(e) {
+{% block facetRangeEndChangeDeploySpineError %}      facetChangeDeploySpineError(e);{%- endblock facetRangeEndChangeDeploySpineError %}
+      }
+      function facetRangeEndChangeDeploySpine(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeDeploySpineSuccess, facetRangeEndChangeDeploySpineError);
+      }
+    </script>
+    <script type="module">
+{% if DEFAULT_MAP_LOCATION is defined %}
+      window.DEFAULT_MAP_LOCATION = { type: 'Point', coordinates: [ {{ DEFAULT_MAP_LOCATION.coordinates[0] }}, {{ DEFAULT_MAP_LOCATION.coordinates[1] }} ]};
+{% endif %}
+{% if DEFAULT_MAP_ZOOM is defined %}
+      window.DEFAULT_MAP_ZOOM = {{ DEFAULT_MAP_ZOOM }};
+{% endif %}
+      window.DEFAULT_ZONE_ID = '{{ defaultZoneId }}';
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
+      ]).then(() => {
+        window.FONTAWESOME_STYLE = document.querySelector('.pageForm .FONTAWESOME_STYLE')?.value;
+
+        var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
+
+        if(pageId == null) {
+          document.querySelector('#grid-toggle-details')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-list', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-details');
+          });
+          document.querySelector('#grid-toggle-list')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-list');
+          });
+          document.querySelector('#grid-toggle-card')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-list');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-card');
+          });
+        } else {
+          var o = document.querySelector('.pageForm .result')?.value;
+          if(o)
+            window.result = JSON.parse(o);
+        {% if result.pageId is defined %}
+        {% endif %}
+        }
+        var l = document.querySelector('.pageForm .listDeploySpine')?.value;
+        if(l)
+          window.listDeploySpine = JSON.parse(l);
+        window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
+        window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
+        window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneDeploySpine);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneDeploySpine);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneDeploySpine);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeDeploySpine);
+        pageGraphDeploySpine();
+        {% for key, value in varsQ.items() %}
+
+        document.querySelector('#qDeploySpine_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
+          qChange('DeploySpine', event.target, document.querySelector('#qDeploySpineDiv_{{ key }}'));
+        });
+        {% endfor %}
+
+        document.querySelector('#qDeploySpine_rows')?.addEventListener('change', event => {
+          paramChange('DeploySpine', event.target, document.querySelector('#qDeploySpineDiv_rows'));
+        });
+
+        document.querySelector('#qDeploySpine_start')?.addEventListener('change', event => {
+          paramChange('DeploySpine', event.target, document.querySelector('#qDeploySpineDiv_start'));
+        });
+
+
+        var submitForm_patchDeploySpine = document.querySelector('#htmForm_patchDeploySpine')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_patchDeploySpine')?.addEventListener('click', event => {
+          event.preventDefault();
+          patchDeploySpine(null, document.querySelector('#htmForm_patchDeploySpine'), document.querySelector('#htmFormButton_patchDeploySpine'), event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_postDeploySpine = document.querySelector('#htmForm_postDeploySpine')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_postDeploySpine')?.addEventListener('click', event => {
+          event.preventDefault();
+          postDeploySpine(document.querySelector('#htmForm_postDeploySpine')
+          , document.querySelector('#htmFormButton_postDeploySpine')
+          , (json, target) => {
+            window.location.href = json.editPage;
+          });
+          return false;
+        });
+
+        var submitForm_deleteDeploySpine = document.querySelector('#htmForm_deleteDeploySpine')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deleteDeploySpine')?.addEventListener('click', event => {
+          event.preventDefault();
+          deleteDeploySpine(event.target, event.target.getAttribute('data-pageId'));
+          return false;
+        });
+
+        var submitForm_putimportDeploySpine = document.querySelector('#htmForm_putimportDeploySpine')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_putimportDeploySpine')?.addEventListener('click', event => {
+          event.preventDefault();
+          putimportDeploySpine(document.querySelector('#htmForm_putimportDeploySpine'), document.querySelector('#htmFormButton_putimportDeploySpine'));
+          return false;
+        });
+
+        var submitForm_searchpageDeploySpine = document.querySelector('#htmForm_searchpageDeploySpine')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_searchpageDeploySpine')?.addEventListener('click', event => {
+          event.preventDefault();
+          searchpageDeploySpine();
+          return false;
+        });
+
+        var submitForm_deletefilterDeploySpine = document.querySelector('#htmForm_deletefilterDeploySpine')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deletefilterDeploySpine')?.addEventListener('click', event => {
+          event.preventDefault();
+          deletefilterDeploySpine(event.target);
+          return false;
+        });
+{%- block htmScriptInitDeploySpinePage %}{%- endblock htmScriptInitDeploySpinePage %}
+      });
+    </script>
+{%- endblock htmScriptDeploySpinePage %}
+{%- endblock htmScriptPageLayout %}
+
+{%- block websocketPageLayout %}
+{%- block websocketDeploySpinePage %}
+{% if resultCount > 0 %}
+        window.eventBus = new EventBus('/eventbus');
+        window.eventBus.enableReconnect(true);
+        websocketDeploySpine(websocketDeploySpineInner);
+{% endif %}
+{%- endblock websocketDeploySpinePage %}
+{%- endblock websocketPageLayout %}
+
+{%- block htmUrlDeploySpinePage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlDeploySpinePage %}
+
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/deploy-spine/DeploySpineSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/deploy-spine/DeploySpineSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-DeploySpine">back to all Deploy SPINE apps to OpenShift Local</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-DeploySpine" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-kit fa-openshift"></i>
+                  all Deploy SPINE apps to OpenShift Local
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  a Deploy SPINE apps to OpenShift Local
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
+{%- block htmBodyStartPageLayout %}
+    {{ super() }}
+{%- block htmBodyStartDeploySpinePage %}
+{% if resultCount > 0 %}
+          <div class="wa-flank ">
+            <h1 class="Page_objectTitle"><i class="fa-kit fa-openshift"></i> {{ result.objectTitle | e }}</h1>
+          </div>
+{% endif %}
+{% include en-us/search/deploy-spine/DeploySpineSearchForm.htm %}
+{%- endblock htmBodyStartDeploySpinePage %}
+{%- endblock htmBodyStartPageLayout %}
+
+{%- block htmBodyMiddlePageLayout %}
+{%- block htmBodyMiddleDeploySpinePage %}
+{%- include en-us/search/deploy-spine/DeploySpineSidebar.htm %}
+        <div class="pageContent ">
+{% if resultCount == 0 %}
+        <div class="wa-stack ">
+          <wa-tooltip for="return-to-DeploySpine">back to all Deploy SPINE apps to OpenShift Local</wa-tooltip></wa-tooltip>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-DeploySpine" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-kit fa-openshift"></i>
+              all Deploy SPINE apps to OpenShift Local
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no Deploy SPINE apps to OpenShift Local found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-kit fa-openshift"></i>
+            </div>
+            <span class="wa-heading-m ">no Deploy SPINE apps to OpenShift Local found</span>
+            <p class="wa-caption-l ">Learn how to deploy SPINE apps to OpenShift Local to run community driven open source cloud applications built with SPINE Programming Theory in OpenShift Local on your own computer. </p>
+          </div>
+        </div>
+{% else %}
+{%- include en-us/search/deploy-spine/DeploySpineSuggestedSearch.htm %}
+{% endif %}
+{%- block htmFormDeploySpinePage %}
+          <form action="/en-us/api/deploy-spine" id="DeploySpineForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+            <input name="FONTAWESOME_STYLE" class="FONTAWESOME_STYLE" type="hidden" value="{{ FONTAWESOME_STYLE }}"/>
+{% if result.pageId is defined %}
+            <input name="pageId" class="valuePageId" type="hidden" value="{{ result.pageId }}"/>
+            {% endif %}
+            <input name="focusId" type="hidden"/>
+            <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+            <input name="result" id="result" class="result"  value='{{ toJsonObjectStringInApostrophes(result) }}' type="hidden"/>
+            <input name="listDeploySpine" id="listDeploySpine" class="listDeploySpine"  value='{{ toJsonArrayStringInApostrophes(listDeploySpine) }}' type="hidden"/>
+          </form>
+{%- if resultCount >= 1 %}
+          {{ htmForm_searchpageDeploySpine() }}
+{% endif -%}
+{%- endblock htmFormDeploySpinePage %}
+        </div>
+{%- endblock htmBodyMiddleDeploySpinePage %}
+{%- endblock htmBodyMiddlePageLayout %}
+
+{%- block htmBodyEndPageLayout %}
+{%- block htmBodyEndDeploySpinePage %}
+{%- include en-us/search/deploy-spine/DeploySpineLocation.htm %}
+{%- endblock htmBodyEndDeploySpinePage %}
+      {{ super() }}
+{%- endblock htmBodyEndPageLayout %}

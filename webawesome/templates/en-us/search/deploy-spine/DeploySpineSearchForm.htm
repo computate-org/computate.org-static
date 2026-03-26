@@ -1,0 +1,26 @@
+{% include en-us/search/deploy-spine/DeploySpineSearchFormMacros.htm %}
+{%- if 'DELETE' in scopes %}
+    {{ htmForm_patchDeploySpine() }}
+{%- endif %}
+{%- if 'POST' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_postDeploySpine() }}
+  {%- else %}
+    {{ htmForm_postDeploySpine() }}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deleteDeploySpine() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}
+{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {{ htmForm_putimportDeploySpine() }}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deletefilterDeploySpine() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}

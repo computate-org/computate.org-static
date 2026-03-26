@@ -98,19 +98,19 @@ async function websocketCompanyProductInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
-        var inputSolutionResource = null;
         var inputEmailTemplate = null;
         var inputStoreUrl = null;
         var inputDownloadUrl = null;
-        var inputSolutionNum = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
-        var inputPageImageAlt = null;
-        var inputLabelsString = null;
         var inputLabels = null;
-        var inputRelatedArticleIds = null;
         var inputRelatedArticles = null;
+        var inputPageImageAlt = null;
+        var inputSolutionResource = null;
+        var inputSolutionNum = null;
+        var inputLabelsString = null;
+        var inputRelatedArticleIds = null;
         var inputDialogTemplate = null;
 
         if(vars.includes('created'))
@@ -153,32 +153,32 @@ async function websocketCompanyProductInner(apiRequest) {
           inputObjectText = $response.querySelector('.CompanyProduct_Page_objectText');
         if(vars.includes('solrId'))
           inputSolrId = $response.querySelector('.CompanyProduct_Page_solrId');
-        if(vars.includes('solutionResource'))
-          inputSolutionResource = $response.querySelector('.CompanyProduct_Page_solutionResource');
         if(vars.includes('emailTemplate'))
           inputEmailTemplate = $response.querySelector('.CompanyProduct_Page_emailTemplate');
         if(vars.includes('storeUrl'))
           inputStoreUrl = $response.querySelector('.CompanyProduct_Page_storeUrl');
         if(vars.includes('downloadUrl'))
           inputDownloadUrl = $response.querySelector('.CompanyProduct_Page_downloadUrl');
-        if(vars.includes('solutionNum'))
-          inputSolutionNum = $response.querySelector('.CompanyProduct_Page_solutionNum');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.CompanyProduct_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
           inputPageImageHeight = $response.querySelector('.CompanyProduct_Page_pageImageHeight');
         if(vars.includes('pageImageType'))
           inputPageImageType = $response.querySelector('.CompanyProduct_Page_pageImageType');
-        if(vars.includes('pageImageAlt'))
-          inputPageImageAlt = $response.querySelector('.CompanyProduct_Page_pageImageAlt');
-        if(vars.includes('labelsString'))
-          inputLabelsString = $response.querySelector('.CompanyProduct_Page_labelsString');
         if(vars.includes('labels'))
           inputLabels = $response.querySelector('.CompanyProduct_Page_labels');
-        if(vars.includes('relatedArticleIds'))
-          inputRelatedArticleIds = $response.querySelector('.CompanyProduct_Page_relatedArticleIds');
         if(vars.includes('relatedArticles'))
           inputRelatedArticles = $response.querySelector('.CompanyProduct_Page_relatedArticles');
+        if(vars.includes('pageImageAlt'))
+          inputPageImageAlt = $response.querySelector('.CompanyProduct_Page_pageImageAlt');
+        if(vars.includes('solutionResource'))
+          inputSolutionResource = $response.querySelector('.CompanyProduct_Page_solutionResource');
+        if(vars.includes('solutionNum'))
+          inputSolutionNum = $response.querySelector('.CompanyProduct_Page_solutionNum');
+        if(vars.includes('labelsString'))
+          inputLabelsString = $response.querySelector('.CompanyProduct_Page_labelsString');
+        if(vars.includes('relatedArticleIds'))
+          inputRelatedArticleIds = $response.querySelector('.CompanyProduct_Page_relatedArticleIds');
         if(vars.includes('dialogTemplate'))
           inputDialogTemplate = $response.querySelector('.CompanyProduct_Page_dialogTemplate');
 
@@ -387,16 +387,6 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('.CompanyProduct_Page_solrId'));
         }
 
-        if(inputSolutionResource) {
-          document.querySelectorAll('.CompanyProduct_Page_solutionResource').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputSolutionResource.getAttribute('value');
-            else
-              item.textContent = inputSolutionResource.textContent;
-          });
-          addGlow(document.querySelector('.CompanyProduct_Page_solutionResource'));
-        }
-
         if(inputEmailTemplate) {
           document.querySelectorAll('.CompanyProduct_Page_emailTemplate').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -425,16 +415,6 @@ async function websocketCompanyProductInner(apiRequest) {
               item.textContent = inputDownloadUrl.textContent;
           });
           addGlow(document.querySelector('.CompanyProduct_Page_downloadUrl'));
-        }
-
-        if(inputSolutionNum) {
-          document.querySelectorAll('.CompanyProduct_Page_solutionNum').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputSolutionNum.getAttribute('value');
-            else
-              item.textContent = inputSolutionNum.textContent;
-          });
-          addGlow(document.querySelector('.CompanyProduct_Page_solutionNum'));
         }
 
         if(inputPageImageWidth) {
@@ -467,6 +447,26 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('.CompanyProduct_Page_pageImageType'));
         }
 
+        if(inputLabels) {
+          document.querySelectorAll('.CompanyProduct_Page_labels').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabels.getAttribute('value');
+            else
+              item.textContent = inputLabels.textContent;
+          });
+          addGlow(document.querySelector('.CompanyProduct_Page_labels'));
+        }
+
+        if(inputRelatedArticles) {
+          document.querySelectorAll('.CompanyProduct_Page_relatedArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticles.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticles.textContent;
+          });
+          addGlow(document.querySelector('.CompanyProduct_Page_relatedArticles'));
+        }
+
         if(inputPageImageAlt) {
           document.querySelectorAll('.CompanyProduct_Page_pageImageAlt').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -475,6 +475,26 @@ async function websocketCompanyProductInner(apiRequest) {
               item.textContent = inputPageImageAlt.textContent;
           });
           addGlow(document.querySelector('.CompanyProduct_Page_pageImageAlt'));
+        }
+
+        if(inputSolutionResource) {
+          document.querySelectorAll('.CompanyProduct_Page_solutionResource').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolutionResource.getAttribute('value');
+            else
+              item.textContent = inputSolutionResource.textContent;
+          });
+          addGlow(document.querySelector('.CompanyProduct_Page_solutionResource'));
+        }
+
+        if(inputSolutionNum) {
+          document.querySelectorAll('.CompanyProduct_Page_solutionNum').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSolutionNum.getAttribute('value');
+            else
+              item.textContent = inputSolutionNum.textContent;
+          });
+          addGlow(document.querySelector('.CompanyProduct_Page_solutionNum'));
         }
 
         if(inputLabelsString) {
@@ -487,16 +507,6 @@ async function websocketCompanyProductInner(apiRequest) {
           addGlow(document.querySelector('.CompanyProduct_Page_labelsString'));
         }
 
-        if(inputLabels) {
-          document.querySelectorAll('.CompanyProduct_Page_labels').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputLabels.getAttribute('value');
-            else
-              item.textContent = inputLabels.textContent;
-          });
-          addGlow(document.querySelector('.CompanyProduct_Page_labels'));
-        }
-
         if(inputRelatedArticleIds) {
           document.querySelectorAll('.CompanyProduct_Page_relatedArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -505,16 +515,6 @@ async function websocketCompanyProductInner(apiRequest) {
               item.textContent = inputRelatedArticleIds.textContent;
           });
           addGlow(document.querySelector('.CompanyProduct_Page_relatedArticleIds'));
-        }
-
-        if(inputRelatedArticles) {
-          document.querySelectorAll('.CompanyProduct_Page_relatedArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputRelatedArticles.getAttribute('value');
-            else
-              item.textContent = inputRelatedArticles.textContent;
-          });
-          addGlow(document.querySelector('.CompanyProduct_Page_relatedArticles'));
         }
 
         if(inputDialogTemplate) {
@@ -758,10 +758,6 @@ function searchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
-    if(filterSolutionResource != null && filterSolutionResource !== '')
-      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
-
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -773,10 +769,6 @@ function searchCompanyProductFilters($formFilters) {
     var filterDownloadUrl = $formFilters.querySelector('.valueDownloadUrl')?.value;
     if(filterDownloadUrl != null && filterDownloadUrl !== '')
       filters.push({ name: 'fq', value: 'downloadUrl:' + filterDownloadUrl });
-
-    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
-    if(filterSolutionNum != null && filterSolutionNum !== '')
-      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -790,17 +782,25 @@ function searchCompanyProductFilters($formFilters) {
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
 
+    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
+    if(filterSolutionResource != null && filterSolutionResource !== '')
+      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
+
+    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
+    if(filterSolutionNum != null && filterSolutionNum !== '')
+      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
+
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1054,18 +1054,6 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeSolrId != null && removeSolrId !== '')
     vals['removeSolrId'] = removeSolrId;
 
-  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
-  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value === 'true';
-  var setSolutionResource = removeSolutionResource ? null : $formValues.querySelector('.setSolutionResource')?.value;
-  var addSolutionResource = $formValues.querySelector('.addSolutionResource')?.value;
-  if(removeSolutionResource || setSolutionResource != null && setSolutionResource !== '')
-    vals['setSolutionResource'] = setSolutionResource;
-  if(addSolutionResource != null && addSolutionResource !== '')
-    vals['addSolutionResource'] = addSolutionResource;
-  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value;
-  if(removeSolutionResource != null && removeSolutionResource !== '')
-    vals['removeSolutionResource'] = removeSolutionResource;
-
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value === 'true';
   var setEmailTemplate = removeEmailTemplate ? null : $formValues.querySelector('.setEmailTemplate')?.value;
@@ -1102,17 +1090,17 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removeDownloadUrl != null && removeDownloadUrl !== '')
     vals['removeDownloadUrl'] = removeDownloadUrl;
 
-  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
-  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value === 'true';
-  var setSolutionNum = removeSolutionNum ? null : $formValues.querySelector('.setSolutionNum')?.value;
-  var addSolutionNum = $formValues.querySelector('.addSolutionNum')?.value;
-  if(removeSolutionNum || setSolutionNum != null && setSolutionNum !== '')
-    vals['setSolutionNum'] = setSolutionNum;
-  if(addSolutionNum != null && addSolutionNum !== '')
-    vals['addSolutionNum'] = addSolutionNum;
-  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value;
-  if(removeSolutionNum != null && removeSolutionNum !== '')
-    vals['removeSolutionNum'] = removeSolutionNum;
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
+  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
+  var addLabels = $formValues.querySelector('.addLabels')?.value;
+  if(removeLabels || setLabels != null && setLabels !== '')
+    vals['setLabels'] = JSON.parse(setLabels);
+  if(addLabels != null && addLabels !== '')
+    vals['addLabels'] = addLabels;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
+  if(removeLabels != null && removeLabels !== '')
+    vals['removeLabels'] = removeLabels;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
@@ -1126,6 +1114,30 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   if(removePageImageAlt != null && removePageImageAlt !== '')
     vals['removePageImageAlt'] = removePageImageAlt;
 
+  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
+  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value === 'true';
+  var setSolutionResource = removeSolutionResource ? null : $formValues.querySelector('.setSolutionResource')?.value;
+  var addSolutionResource = $formValues.querySelector('.addSolutionResource')?.value;
+  if(removeSolutionResource || setSolutionResource != null && setSolutionResource !== '')
+    vals['setSolutionResource'] = setSolutionResource;
+  if(addSolutionResource != null && addSolutionResource !== '')
+    vals['addSolutionResource'] = addSolutionResource;
+  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value;
+  if(removeSolutionResource != null && removeSolutionResource !== '')
+    vals['removeSolutionResource'] = removeSolutionResource;
+
+  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
+  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value === 'true';
+  var setSolutionNum = removeSolutionNum ? null : $formValues.querySelector('.setSolutionNum')?.value;
+  var addSolutionNum = $formValues.querySelector('.addSolutionNum')?.value;
+  if(removeSolutionNum || setSolutionNum != null && setSolutionNum !== '')
+    vals['setSolutionNum'] = setSolutionNum;
+  if(addSolutionNum != null && addSolutionNum !== '')
+    vals['addSolutionNum'] = addSolutionNum;
+  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value;
+  if(removeSolutionNum != null && removeSolutionNum !== '')
+    vals['removeSolutionNum'] = removeSolutionNum;
+
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
   var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
@@ -1137,18 +1149,6 @@ async function patchCompanyProduct($formFilters, $formValues, target, pageId, su
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value;
   if(removeLabelsString != null && removeLabelsString !== '')
     vals['removeLabelsString'] = removeLabelsString;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
-  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
-  var addLabels = $formValues.querySelector('.addLabels')?.value;
-  if(removeLabels || setLabels != null && setLabels !== '')
-    vals['setLabels'] = JSON.parse(setLabels);
-  if(addLabels != null && addLabels !== '')
-    vals['addLabels'] = addLabels;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
-  if(removeLabels != null && removeLabels !== '')
-    vals['removeLabels'] = removeLabels;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
@@ -1268,10 +1268,6 @@ function patchCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
-    if(filterSolutionResource != null && filterSolutionResource !== '')
-      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
-
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -1283,10 +1279,6 @@ function patchCompanyProductFilters($formFilters) {
     var filterDownloadUrl = $formFilters.querySelector('.valueDownloadUrl')?.value;
     if(filterDownloadUrl != null && filterDownloadUrl !== '')
       filters.push({ name: 'fq', value: 'downloadUrl:' + filterDownloadUrl });
-
-    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
-    if(filterSolutionNum != null && filterSolutionNum !== '')
-      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1300,17 +1292,25 @@ function patchCompanyProductFilters($formFilters) {
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
 
+    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
+    if(filterSolutionResource != null && filterSolutionResource !== '')
+      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
+
+    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
+    if(filterSolutionNum != null && filterSolutionNum !== '')
+      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
+
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1530,18 +1530,6 @@ async function patchpayCompanyProduct($formFilters, $formValues, target, pageId,
   if(removeSolrId != null && removeSolrId !== '')
     vals['removeSolrId'] = removeSolrId;
 
-  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
-  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value === 'true';
-  var setSolutionResource = removeSolutionResource ? null : $formValues.querySelector('.setSolutionResource')?.value;
-  var addSolutionResource = $formValues.querySelector('.addSolutionResource')?.value;
-  if(removeSolutionResource || setSolutionResource != null && setSolutionResource !== '')
-    vals['setSolutionResource'] = setSolutionResource;
-  if(addSolutionResource != null && addSolutionResource !== '')
-    vals['addSolutionResource'] = addSolutionResource;
-  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value;
-  if(removeSolutionResource != null && removeSolutionResource !== '')
-    vals['removeSolutionResource'] = removeSolutionResource;
-
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   var removeEmailTemplate = $formValues.querySelector('.removeEmailTemplate')?.value === 'true';
   var setEmailTemplate = removeEmailTemplate ? null : $formValues.querySelector('.setEmailTemplate')?.value;
@@ -1578,17 +1566,17 @@ async function patchpayCompanyProduct($formFilters, $formValues, target, pageId,
   if(removeDownloadUrl != null && removeDownloadUrl !== '')
     vals['removeDownloadUrl'] = removeDownloadUrl;
 
-  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
-  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value === 'true';
-  var setSolutionNum = removeSolutionNum ? null : $formValues.querySelector('.setSolutionNum')?.value;
-  var addSolutionNum = $formValues.querySelector('.addSolutionNum')?.value;
-  if(removeSolutionNum || setSolutionNum != null && setSolutionNum !== '')
-    vals['setSolutionNum'] = setSolutionNum;
-  if(addSolutionNum != null && addSolutionNum !== '')
-    vals['addSolutionNum'] = addSolutionNum;
-  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value;
-  if(removeSolutionNum != null && removeSolutionNum !== '')
-    vals['removeSolutionNum'] = removeSolutionNum;
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
+  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
+  var addLabels = $formValues.querySelector('.addLabels')?.value;
+  if(removeLabels || setLabels != null && setLabels !== '')
+    vals['setLabels'] = JSON.parse(setLabels);
+  if(addLabels != null && addLabels !== '')
+    vals['addLabels'] = addLabels;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
+  if(removeLabels != null && removeLabels !== '')
+    vals['removeLabels'] = removeLabels;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
@@ -1602,6 +1590,30 @@ async function patchpayCompanyProduct($formFilters, $formValues, target, pageId,
   if(removePageImageAlt != null && removePageImageAlt !== '')
     vals['removePageImageAlt'] = removePageImageAlt;
 
+  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
+  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value === 'true';
+  var setSolutionResource = removeSolutionResource ? null : $formValues.querySelector('.setSolutionResource')?.value;
+  var addSolutionResource = $formValues.querySelector('.addSolutionResource')?.value;
+  if(removeSolutionResource || setSolutionResource != null && setSolutionResource !== '')
+    vals['setSolutionResource'] = setSolutionResource;
+  if(addSolutionResource != null && addSolutionResource !== '')
+    vals['addSolutionResource'] = addSolutionResource;
+  var removeSolutionResource = $formValues.querySelector('.removeSolutionResource')?.value;
+  if(removeSolutionResource != null && removeSolutionResource !== '')
+    vals['removeSolutionResource'] = removeSolutionResource;
+
+  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
+  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value === 'true';
+  var setSolutionNum = removeSolutionNum ? null : $formValues.querySelector('.setSolutionNum')?.value;
+  var addSolutionNum = $formValues.querySelector('.addSolutionNum')?.value;
+  if(removeSolutionNum || setSolutionNum != null && setSolutionNum !== '')
+    vals['setSolutionNum'] = setSolutionNum;
+  if(addSolutionNum != null && addSolutionNum !== '')
+    vals['addSolutionNum'] = addSolutionNum;
+  var removeSolutionNum = $formValues.querySelector('.removeSolutionNum')?.value;
+  if(removeSolutionNum != null && removeSolutionNum !== '')
+    vals['removeSolutionNum'] = removeSolutionNum;
+
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
   var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
@@ -1613,18 +1625,6 @@ async function patchpayCompanyProduct($formFilters, $formValues, target, pageId,
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value;
   if(removeLabelsString != null && removeLabelsString !== '')
     vals['removeLabelsString'] = removeLabelsString;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
-  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
-  var addLabels = $formValues.querySelector('.addLabels')?.value;
-  if(removeLabels || setLabels != null && setLabels !== '')
-    vals['setLabels'] = JSON.parse(setLabels);
-  if(addLabels != null && addLabels !== '')
-    vals['addLabels'] = addLabels;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
-  if(removeLabels != null && removeLabels !== '')
-    vals['removeLabels'] = removeLabels;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
@@ -1744,10 +1744,6 @@ function patchpayCompanyProductFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
-    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
-    if(filterSolutionResource != null && filterSolutionResource !== '')
-      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
-
     var filterEmailTemplate = $formFilters.querySelector('.valueEmailTemplate')?.value;
     if(filterEmailTemplate != null && filterEmailTemplate !== '')
       filters.push({ name: 'fq', value: 'emailTemplate:' + filterEmailTemplate });
@@ -1759,10 +1755,6 @@ function patchpayCompanyProductFilters($formFilters) {
     var filterDownloadUrl = $formFilters.querySelector('.valueDownloadUrl')?.value;
     if(filterDownloadUrl != null && filterDownloadUrl !== '')
       filters.push({ name: 'fq', value: 'downloadUrl:' + filterDownloadUrl });
-
-    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
-    if(filterSolutionNum != null && filterSolutionNum !== '')
-      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1776,17 +1768,25 @@ function patchpayCompanyProductFilters($formFilters) {
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
 
+    var filterSolutionResource = $formFilters.querySelector('.valueSolutionResource')?.value;
+    if(filterSolutionResource != null && filterSolutionResource !== '')
+      filters.push({ name: 'fq', value: 'solutionResource:' + filterSolutionResource });
+
+    var filterSolutionNum = $formFilters.querySelector('.valueSolutionNum')?.value;
+    if(filterSolutionNum != null && filterSolutionNum !== '')
+      filters.push({ name: 'fq', value: 'solutionNum:' + filterSolutionNum });
+
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1914,10 +1914,6 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueSolrId != null && valueSolrId !== '')
     vals['solrId'] = valueSolrId;
 
-  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
-  if(valueSolutionResource != null && valueSolutionResource !== '')
-    vals['solutionResource'] = valueSolutionResource;
-
   var valueEmailTemplate = $formValues.querySelector('.valueEmailTemplate')?.value;
   if(valueEmailTemplate != null && valueEmailTemplate !== '')
     vals['emailTemplate'] = valueEmailTemplate;
@@ -1930,21 +1926,25 @@ async function postCompanyProduct($formValues, target, success, error) {
   if(valueDownloadUrl != null && valueDownloadUrl !== '')
     vals['downloadUrl'] = valueDownloadUrl;
 
-  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
-  if(valueSolutionNum != null && valueSolutionNum !== '')
-    vals['solutionNum'] = valueSolutionNum;
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  if(valueLabels != null && valueLabels !== '')
+    vals['labels'] = JSON.parse(valueLabels);
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
     vals['pageImageAlt'] = valuePageImageAlt;
 
+  var valueSolutionResource = $formValues.querySelector('.valueSolutionResource')?.value;
+  if(valueSolutionResource != null && valueSolutionResource !== '')
+    vals['solutionResource'] = valueSolutionResource;
+
+  var valueSolutionNum = $formValues.querySelector('.valueSolutionNum')?.value;
+  if(valueSolutionNum != null && valueSolutionNum !== '')
+    vals['solutionNum'] = valueSolutionNum;
+
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   if(valueLabelsString != null && valueLabelsString !== '')
     vals['labelsString'] = valueLabelsString;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  if(valueLabels != null && valueLabels !== '')
-    vals['labels'] = JSON.parse(valueLabels);
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   if(valueRelatedArticleIds != null && valueRelatedArticleIds !== '')

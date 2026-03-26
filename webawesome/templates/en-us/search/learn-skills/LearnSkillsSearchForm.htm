@@ -1,0 +1,26 @@
+{% include en-us/search/learn-skills/LearnSkillsSearchFormMacros.htm %}
+{%- if 'DELETE' in scopes %}
+    {{ htmForm_patchLearnSkills() }}
+{%- endif %}
+{%- if 'POST' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_postLearnSkills() }}
+  {%- else %}
+    {{ htmForm_postLearnSkills() }}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deleteLearnSkills() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}
+{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {{ htmForm_putimportLearnSkills() }}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deletefilterLearnSkills() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}

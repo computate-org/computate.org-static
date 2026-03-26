@@ -105,8 +105,8 @@ async function websocketCompanyWebinarInner(apiRequest) {
         var inputObjectText = null;
         var inputSolrId = null;
         var inputJoinUri = null;
-        var inputNextWebinarsBegin = null;
         var inputJoinUrl = null;
+        var inputNextWebinarsBegin = null;
 
         if(vars.includes('pk'))
           inputPk = $response.querySelector('.CompanyWebinar_Page_pk');
@@ -162,10 +162,10 @@ async function websocketCompanyWebinarInner(apiRequest) {
           inputSolrId = $response.querySelector('.CompanyWebinar_Page_solrId');
         if(vars.includes('joinUri'))
           inputJoinUri = $response.querySelector('.CompanyWebinar_Page_joinUri');
-        if(vars.includes('nextWebinarsBegin'))
-          inputNextWebinarsBegin = $response.querySelector('.CompanyWebinar_Page_nextWebinarsBegin');
         if(vars.includes('joinUrl'))
           inputJoinUrl = $response.querySelector('.CompanyWebinar_Page_joinUrl');
+        if(vars.includes('nextWebinarsBegin'))
+          inputNextWebinarsBegin = $response.querySelector('.CompanyWebinar_Page_nextWebinarsBegin');
 
         jsWebsocketCompanyWebinar(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -442,16 +442,6 @@ async function websocketCompanyWebinarInner(apiRequest) {
           addGlow(document.querySelector('.CompanyWebinar_Page_joinUri'));
         }
 
-        if(inputNextWebinarsBegin) {
-          document.querySelectorAll('.CompanyWebinar_Page_nextWebinarsBegin').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputNextWebinarsBegin.getAttribute('value');
-            else
-              item.textContent = inputNextWebinarsBegin.textContent;
-          });
-          addGlow(document.querySelector('.CompanyWebinar_Page_nextWebinarsBegin'));
-        }
-
         if(inputJoinUrl) {
           document.querySelectorAll('.CompanyWebinar_Page_joinUrl').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -460,6 +450,16 @@ async function websocketCompanyWebinarInner(apiRequest) {
               item.textContent = inputJoinUrl.textContent;
           });
           addGlow(document.querySelector('.CompanyWebinar_Page_joinUrl'));
+        }
+
+        if(inputNextWebinarsBegin) {
+          document.querySelectorAll('.CompanyWebinar_Page_nextWebinarsBegin').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextWebinarsBegin.getAttribute('value');
+            else
+              item.textContent = inputNextWebinarsBegin.textContent;
+          });
+          addGlow(document.querySelector('.CompanyWebinar_Page_nextWebinarsBegin'));
         }
 
           pageGraphCompanyWebinar();
@@ -721,13 +721,13 @@ function searchCompanyWebinarFilters($formFilters) {
     if(filterJoinUri != null && filterJoinUri !== '')
       filters.push({ name: 'fq', value: 'joinUri:' + filterJoinUri });
 
-    var filterNextWebinarsBegin = $formFilters.querySelector('.valueNextWebinarsBegin')?.value;
-    if(filterNextWebinarsBegin != null && filterNextWebinarsBegin !== '')
-      filters.push({ name: 'fq', value: 'nextWebinarsBegin:' + filterNextWebinarsBegin });
-
     var filterJoinUrl = $formFilters.querySelector('.valueJoinUrl')?.value;
     if(filterJoinUrl != null && filterJoinUrl !== '')
       filters.push({ name: 'fq', value: 'joinUrl:' + filterJoinUrl });
+
+    var filterNextWebinarsBegin = $formFilters.querySelector('.valueNextWebinarsBegin')?.value;
+    if(filterNextWebinarsBegin != null && filterNextWebinarsBegin !== '')
+      filters.push({ name: 'fq', value: 'nextWebinarsBegin:' + filterNextWebinarsBegin });
   }
   return filters;
 }
@@ -1179,13 +1179,13 @@ function patchCompanyWebinarFilters($formFilters) {
     if(filterJoinUri != null && filterJoinUri !== '')
       filters.push({ name: 'fq', value: 'joinUri:' + filterJoinUri });
 
-    var filterNextWebinarsBegin = $formFilters.querySelector('.valueNextWebinarsBegin')?.value;
-    if(filterNextWebinarsBegin != null && filterNextWebinarsBegin !== '')
-      filters.push({ name: 'fq', value: 'nextWebinarsBegin:' + filterNextWebinarsBegin });
-
     var filterJoinUrl = $formFilters.querySelector('.valueJoinUrl')?.value;
     if(filterJoinUrl != null && filterJoinUrl !== '')
       filters.push({ name: 'fq', value: 'joinUrl:' + filterJoinUrl });
+
+    var filterNextWebinarsBegin = $formFilters.querySelector('.valueNextWebinarsBegin')?.value;
+    if(filterNextWebinarsBegin != null && filterNextWebinarsBegin !== '')
+      filters.push({ name: 'fq', value: 'nextWebinarsBegin:' + filterNextWebinarsBegin });
   }
   return filters;
 }

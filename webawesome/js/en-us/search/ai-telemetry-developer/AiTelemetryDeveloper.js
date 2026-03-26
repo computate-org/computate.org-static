@@ -99,8 +99,6 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
-        var inputNextArticles = null;
-        var inputRelatedArticles = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
         var inputPageImageWidth = null;
@@ -110,9 +108,11 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
         var inputPrerequisiteArticleIds = null;
         var inputPrerequisiteArticles = null;
         var inputNextArticleIds = null;
+        var inputNextArticles = null;
         var inputLabelsString = null;
         var inputLabels = null;
         var inputRelatedArticleIds = null;
+        var inputRelatedArticles = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.AiTelemetryDeveloper_Page_created');
@@ -156,10 +156,6 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
           inputObjectText = $response.querySelector('.AiTelemetryDeveloper_Page_objectText');
         if(vars.includes('solrId'))
           inputSolrId = $response.querySelector('.AiTelemetryDeveloper_Page_solrId');
-        if(vars.includes('nextArticles'))
-          inputNextArticles = $response.querySelector('.AiTelemetryDeveloper_Page_nextArticles');
-        if(vars.includes('relatedArticles'))
-          inputRelatedArticles = $response.querySelector('.AiTelemetryDeveloper_Page_relatedArticles');
         if(vars.includes('courseNum'))
           inputCourseNum = $response.querySelector('.AiTelemetryDeveloper_Page_courseNum');
         if(vars.includes('lessonNum'))
@@ -178,12 +174,16 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
           inputPrerequisiteArticles = $response.querySelector('.AiTelemetryDeveloper_Page_prerequisiteArticles');
         if(vars.includes('nextArticleIds'))
           inputNextArticleIds = $response.querySelector('.AiTelemetryDeveloper_Page_nextArticleIds');
+        if(vars.includes('nextArticles'))
+          inputNextArticles = $response.querySelector('.AiTelemetryDeveloper_Page_nextArticles');
         if(vars.includes('labelsString'))
           inputLabelsString = $response.querySelector('.AiTelemetryDeveloper_Page_labelsString');
         if(vars.includes('labels'))
           inputLabels = $response.querySelector('.AiTelemetryDeveloper_Page_labels');
         if(vars.includes('relatedArticleIds'))
           inputRelatedArticleIds = $response.querySelector('.AiTelemetryDeveloper_Page_relatedArticleIds');
+        if(vars.includes('relatedArticles'))
+          inputRelatedArticles = $response.querySelector('.AiTelemetryDeveloper_Page_relatedArticles');
 
         jsWebsocketAiTelemetryDeveloper(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -400,26 +400,6 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.AiTelemetryDeveloper_Page_solrId'));
         }
 
-        if(inputNextArticles) {
-          document.querySelectorAll('.AiTelemetryDeveloper_Page_nextArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputNextArticles.getAttribute('value');
-            else
-              item.textContent = inputNextArticles.textContent;
-          });
-          addGlow(document.querySelector('.AiTelemetryDeveloper_Page_nextArticles'));
-        }
-
-        if(inputRelatedArticles) {
-          document.querySelectorAll('.AiTelemetryDeveloper_Page_relatedArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputRelatedArticles.getAttribute('value');
-            else
-              item.textContent = inputRelatedArticles.textContent;
-          });
-          addGlow(document.querySelector('.AiTelemetryDeveloper_Page_relatedArticles'));
-        }
-
         if(inputCourseNum) {
           document.querySelectorAll('.AiTelemetryDeveloper_Page_courseNum').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -510,6 +490,16 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.AiTelemetryDeveloper_Page_nextArticleIds'));
         }
 
+        if(inputNextArticles) {
+          document.querySelectorAll('.AiTelemetryDeveloper_Page_nextArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticles.getAttribute('value');
+            else
+              item.textContent = inputNextArticles.textContent;
+          });
+          addGlow(document.querySelector('.AiTelemetryDeveloper_Page_nextArticles'));
+        }
+
         if(inputLabelsString) {
           document.querySelectorAll('.AiTelemetryDeveloper_Page_labelsString').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -538,6 +528,16 @@ async function websocketAiTelemetryDeveloperInner(apiRequest) {
               item.textContent = inputRelatedArticleIds.textContent;
           });
           addGlow(document.querySelector('.AiTelemetryDeveloper_Page_relatedArticleIds'));
+        }
+
+        if(inputRelatedArticles) {
+          document.querySelectorAll('.AiTelemetryDeveloper_Page_relatedArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticles.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticles.textContent;
+          });
+          addGlow(document.querySelector('.AiTelemetryDeveloper_Page_relatedArticles'));
         }
 
           pageGraphAiTelemetryDeveloper();

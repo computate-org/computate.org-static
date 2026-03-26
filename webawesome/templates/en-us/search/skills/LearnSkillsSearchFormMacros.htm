@@ -1,0 +1,641 @@
+{%- macro inputCreatedLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_created">
+  {%- endif %}
+                  <wa-input
+                      type="datetime-local"
+                      readonly
+                      hint="A created timestamp for this record in the database"
+                      label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_created datetimepicker setCreated classLearnSkills inputLearnSkills{{ result.pageId }}Created "
+                      placeholder="MM/dd/yyyy h:mm a '['VV']'"
+                      data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
+                      id="LearnSkills_{{classApiMethodMethod}}_created"
+  {% if 'Page' == classApiMethodMethod -%}
+                      value="{%- if "Page" == classApiMethodMethod and result.created is defined %}{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+  {% endif -%}
+                      data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
+                      >
+                  </wa-input>
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmCreatedLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputCreatedLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputModifiedLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_modified">
+  {%- endif %}
+                  <wa-input
+                      type="datetime-local"
+                      readonly
+                      hint="A modified timestamp for this record in the database"
+                      label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_modified datetimepicker setModified classLearnSkills inputLearnSkills{{ result.pageId }}Modified "
+                      placeholder="MM/dd/yyyy h:mm a '['VV']'"
+                      data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
+                      id="LearnSkills_{{classApiMethodMethod}}_modified"
+  {% if 'Page' == classApiMethodMethod -%}
+                      value="{%- if "Page" == classApiMethodMethod and result.modified is defined %}{{ formatZonedDateTime(result.modified, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+  {% endif -%}
+                      data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
+                      >
+                  </wa-input>
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmModifiedLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputModifiedLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputArchivedLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_archived">
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                  <wa-button variant="brand"
+                      id="LearnSkills_{{classApiMethodMethod}}_archived"
+                      placeholder="archived"
+                      label="archived"
+                      hint="For archiving this record"
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_archived classLearnSkills inputLearnSkills{{ result.pageId }}Archived "
+                      name="setArchived"
+                      data-pageId={{ result.pageId | tojson }}
+                      data-val="{{ result.archived | e }}"
+                      >archived</wa-button>
+  {%- else %}
+  {% if 'Page' == classApiMethodMethod -%}
+                  <wa-checkbox
+                      id="LearnSkills_{{classApiMethodMethod}}_archived"
+                      value="true"
+  {%- else %}
+                  <wa-select
+                      id="LearnSkills_{{classApiMethodMethod}}_archived"
+  {% endif -%}
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="archived"
+                      label="archived"
+                      hint="For archiving this record"
+  {%- if 'Page' == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_archived classLearnSkills inputLearnSkills{{ result.pageId }}Archived "
+                      name="setArchived"
+  {%- else %}
+    {%- if 'Page' == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_archived classLearnSkills inputLearnSkills{{ result.pageId }}Archived "
+                      name="setArchived"
+    {%- else %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_archived setArchived valueArchived classLearnSkills inputLearnSkills{{ result.pageId }}Archived "
+                      name="setArchived"
+    {%- endif %}
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+    {%- if result.archived == true %}
+                      checked
+    {%- endif %}
+                      data-pageId={{ result.pageId | tojson }}
+                      >archived</wa-checkbox>
+  {%- else %}
+                      >
+                    <wa-option value=""></wa-option>
+                    <wa-option value="true">true</wa-option>
+                    <wa-option value="false">false</wa-option>
+                  </wa-select>
+  {%- endif %}
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmArchivedLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputArchivedLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputNameLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_name">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] course name"
+                      label="course name"
+                      hint="The course name. "
+                      required
+                      id="LearnSkills_{{classApiMethodMethod}}_name"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_name setName classLearnSkills inputLearnSkills{{ result.pageId }}Name "
+                      name="setName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_name setName classLearnSkills inputLearnSkills{{ result.pageId }}Name "
+                      name="setName"
+    {%- else %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_name valueName classLearnSkills inputLearnSkills{{ result.pageId }}Name "
+                      name="name"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.name | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmNameLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputNameLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputDescriptionLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_description">
+  {%- endif %}
+                  <wa-textarea resize="auto"
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] course description"
+                      label="course description"
+                      hint="The course description. "
+                      id="LearnSkills_{{classApiMethodMethod}}_description"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_description setDescription classLearnSkills inputLearnSkills{{ result.pageId }}Description "
+                      name="setDescription"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_description setDescription classLearnSkills inputLearnSkills{{ result.pageId }}Description "
+                      name="setDescription"
+    {%- else %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_description valueDescription classLearnSkills inputLearnSkills{{ result.pageId }}Description "
+                      name="description"
+    {%- endif %}
+  {%- endif %}
+{% if "Page" == classApiMethodMethod -%}
+                      value="{{result.description | e }}"
+{% endif -%}
+                      >
+</wa-textarea>
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmDescriptionLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputDescriptionLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputPageImageUriLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_pageImageUri">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] imageUri"
+                      label="imageUri"
+                      hint="The page image URI"
+                      id="LearnSkills_{{classApiMethodMethod}}_pageImageUri"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_pageImageUri setPageImageUri classLearnSkills inputLearnSkills{{ result.pageId }}PageImageUri "
+                      name="setPageImageUri"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_pageImageUri setPageImageUri classLearnSkills inputLearnSkills{{ result.pageId }}PageImageUri "
+                      name="setPageImageUri"
+    {%- else %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_pageImageUri valuePageImageUri classLearnSkills inputLearnSkills{{ result.pageId }}PageImageUri "
+                      name="pageImageUri"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.pageImageUri | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmPageImageUriLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputPageImageUriLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputPageIdLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_pageId">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] Page ID"
+                      label="Page ID"
+                      hint="The ID for this page. "
+                      id="LearnSkills_{{classApiMethodMethod}}_pageId"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_pageId setPageId classLearnSkills inputLearnSkills{{ result.pageId }}PageId "
+                      name="setPageId"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_pageId setPageId classLearnSkills inputLearnSkills{{ result.pageId }}PageId "
+                      name="setPageId"
+    {%- else %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_pageId valuePageId classLearnSkills inputLearnSkills{{ result.pageId }}PageId "
+                      name="pageId"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.pageId | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmPageIdLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputPageIdLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputDisplayPageLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_displayPage">
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                  <div class="button-on-left ">
+                    <wa-button variant="brand"
+                        id="LearnSkills_{{classApiMethodMethod}}_displayPage"
+                        placeholder="[String] course page"
+                        label="course page"
+                        hint="Visit this course's landing page. "
+                        class="button-on-left LearnSkills_{{classApiMethodMethod}}_displayPage classLearnSkills inputLearnSkills{{ result.pageId }}DisplayPage "
+                        name="setDisplayPage"
+                        href="{{ result.displayPage | e }}"
+                        >
+                      course page
+                    </wa-button>
+                  </div>
+                  <div class="button-description-on-right ">Visit this course's landing page. </div>
+  {%- else %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] course page"
+                      label="course page"
+                      hint="Visit this course's landing page. "
+                      id="LearnSkills_{{classApiMethodMethod}}_displayPage"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_displayPage setDisplayPage classLearnSkills inputLearnSkills{{ result.pageId }}DisplayPage "
+                      name="setDisplayPage"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_displayPage setDisplayPage classLearnSkills inputLearnSkills{{ result.pageId }}DisplayPage "
+                      name="setDisplayPage"
+    {%- else %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_displayPage valueDisplayPage classLearnSkills inputLearnSkills{{ result.pageId }}DisplayPage "
+                      name="displayPage"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.displayPage | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmDisplayPageLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputDisplayPageLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+
+{%- macro htmFormButton_patchLearnSkills() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_patchLearnSkills" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_patchLearnSkills"
+                >Modify Learn cloud developer skills</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_patchLearnSkills"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_patchLearnSkills(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchLearnSkillsDialog" label="Modify Learn cloud developer skills">
+          <form id="htmForm_patchLearnSkills" class="round-row primary-smart-border-radius ">
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </form>
+          {{ htmFormButton_patchLearnSkills() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_postLearnSkills() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_postLearnSkills" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_postLearnSkills"
+                >Create a Learn cloud developer skills</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_postLearnSkills"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_postLearnSkills(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="postLearnSkillsDialog" label="Create a Learn cloud developer skills">
+          <form id="htmForm_postLearnSkills" class="round-row primary-smart-border-radius ">
+            <div>You can override any default values below: </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </form>
+          {{ htmFormButton_postLearnSkills() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_deleteLearnSkills() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deleteLearnSkills" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deleteLearnSkills"
+                >Delete Learn cloud developer skills</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deleteLearnSkills"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_deleteLearnSkills(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteLearnSkillsDialog" label="Delete Learn cloud developer skills">
+          <form id="htmForm_deleteLearnSkills" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deleteLearnSkills() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_putimportLearnSkills() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_putimportLearnSkills" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_putimportLearnSkills"
+                >Import Learn cloud developer skills</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_putimportLearnSkills"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_putimportLearnSkills(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportLearnSkillsDialog" label="Import Learn cloud developer skills">
+          <form id="htmForm_putimportLearnSkills" class="round-row primary-smart-border-radius ">
+            <div>
+              <wa-textarea
+                  class="PUTImport_searchList "
+                  style="height: 300px; "
+                  placeholder="{ 'searchList': [ { 'pageId': ... , 'saves': [ ... ] }, ... ] }"
+                  >
+              </wa-textarea>
+            </div>
+          </form>
+          {{ htmFormButton_putimportLearnSkills() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmForm_searchpageLearnSkills(idSuffix='') %}
+        <div with-header with-footer style="--width: 50vw; " id="searchpageLearnSkillsDialog" label="Search Learn cloud developer skills">
+          <div id="htmForm_searchpageLearnSkills" class="round-row primary-smart-border-radius ">
+
+            <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
+              <div slot="summary">
+                <span>primary key, ID, created, modified, archive details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmCreatedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmCreatedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmCreatedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmModifiedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmModifiedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmModifiedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmArchivedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmArchivedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmArchivedLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </div>
+        </div>
+{%- endmacro %}
+
+{%- macro htmFormButton_deletefilterLearnSkills() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterLearnSkills" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deletefilterLearnSkills"
+                >Delete Learn cloud developer skills</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deletefilterLearnSkills"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_deletefilterLearnSkills(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterLearnSkillsDialog" label="Delete Learn cloud developer skills">
+          <form id="htmForm_deletefilterLearnSkills" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deletefilterLearnSkills() }}
+        </wa-dialog>
+{%- endmacro %}
