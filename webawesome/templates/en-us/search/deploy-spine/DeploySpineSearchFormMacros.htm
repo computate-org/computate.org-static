@@ -189,6 +189,78 @@
 {%- macro htmDescriptionDeploySpinePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionDeploySpinePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
+{%- macro inputAuthorNameDeploySpinePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorName">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author name"
+                      label="author name"
+                      hint="The author name"
+                      id="DeploySpine_{{classApiMethodMethod}}_authorName"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeploySpine_{{classApiMethodMethod}}_authorName setAuthorName classDeploySpine inputDeploySpine{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeploySpine_{{classApiMethodMethod}}_authorName setAuthorName classDeploySpine inputDeploySpine{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+    {%- else %}
+                      class="label-on-left DeploySpine_{{classApiMethodMethod}}_authorName valueAuthorName classDeploySpine inputDeploySpine{{ result.pageId }}AuthorName "
+                      name="authorName"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorName | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorNameDeploySpinePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorNameDeploySpinePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputAuthorUrlDeploySpinePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorUrl">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author URL"
+                      label="author URL"
+                      hint="The author URL"
+                      id="DeploySpine_{{classApiMethodMethod}}_authorUrl"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left DeploySpine_{{classApiMethodMethod}}_authorUrl setAuthorUrl classDeploySpine inputDeploySpine{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left DeploySpine_{{classApiMethodMethod}}_authorUrl setAuthorUrl classDeploySpine inputDeploySpine{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+    {%- else %}
+                      class="label-on-left DeploySpine_{{classApiMethodMethod}}_authorUrl valueAuthorUrl classDeploySpine inputDeploySpine{{ result.pageId }}AuthorUrl "
+                      name="authorUrl"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorUrl | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorUrlDeploySpinePage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorUrlDeploySpinePage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
 {%- macro inputPageImageUriDeploySpinePage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageImageUri">
@@ -325,7 +397,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_patchDeploySpine(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchDeploySpineDialog" label="Modify Deploy SPINE apps to OpenShift Local">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="patchDeploySpineDialog" label="Modify Deploy SPINE apps to OpenShift Local">
           <form id="htmForm_patchDeploySpine" class="round-row primary-smart-border-radius ">
 
               <div class="grid-with-subgrid-2col ">
@@ -346,6 +418,26 @@
                 {{ htmDescriptionDeploySpinePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmDescriptionDeploySpinePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -404,7 +496,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_postDeploySpine(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="postDeploySpineDialog" label="Create a Deploy SPINE apps to OpenShift Local">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="postDeploySpineDialog" label="Create a Deploy SPINE apps to OpenShift Local">
           <form id="htmForm_postDeploySpine" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
 
@@ -426,6 +518,26 @@
                 {{ htmDescriptionDeploySpinePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmDescriptionDeploySpinePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -484,7 +596,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deleteDeploySpine(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteDeploySpineDialog" label="Delete Deploy SPINE apps to OpenShift Local">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deleteDeploySpineDialog" label="Delete Deploy SPINE apps to OpenShift Local">
           <form id="htmForm_deleteDeploySpine" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteDeploySpine() }}
@@ -501,7 +613,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_putimportDeploySpine(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportDeploySpineDialog" label="Import Deploy apps to OpenShift Local">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="putimportDeploySpineDialog" label="Import Deploy apps to OpenShift Local">
           <form id="htmForm_putimportDeploySpine" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -517,7 +629,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_searchpageDeploySpine(idSuffix='') %}
-        <div with-header with-footer style="--width: 50vw; " id="searchpageDeploySpineDialog" label="Search Deploy apps to OpenShift Local">
+        <div with-header with-footer style="--width: min(64rem, 100vw); " id="searchpageDeploySpineDialog" label="Search Deploy apps to OpenShift Local">
           <div id="htmForm_searchpageDeploySpine" class="round-row primary-smart-border-radius ">
 
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -578,6 +690,26 @@
                 {{ htmDescriptionDeploySpinePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameDeploySpinePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlDeploySpinePage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
@@ -633,7 +765,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterDeploySpine(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterDeploySpineDialog" label="Delete Deploy SPINE apps to OpenShift Local">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deletefilterDeploySpineDialog" label="Delete Deploy SPINE apps to OpenShift Local">
           <form id="htmForm_deletefilterDeploySpine" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterDeploySpine() }}

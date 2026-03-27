@@ -1,0 +1,220 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="SPINE Programming Theory glossary of technical terms"/>
+    <meta name="result.description" content="Review the technical terms used in SPINE Programming Theory. " />
+    <meta name="result.authorName" content="SokanRed"/>
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-09-12T11:30:01.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/glossary.png" />
+    <meta name="result.pageImageAlt" content="" />
+    <meta name="result.courseNum" content="0"/>
+    <meta name="result.nextArticleIds" content="programming-languages-relevant-to-spine-programming" />
+{% endblock htmMetaPageLayout %}
+{% block htmStylePageLayout %}
+{% endblock htmStylePageLayout %}
+{% block htmBodyMiddleArticle %}
+
+        <ul>
+          <li>
+            <h4>ArgoCD</h4>
+            ArgoCD is a Kubernetes-native continuous delivery tool that automates deploying applications from Git repositories. 
+            It continuously monitors Git for changes and ensures the cluster configuration matches what is declared. 
+            ArgoCD provides versioning, rollback features, and visual dashboards for deployment status.
+          </li>
+          <li>
+            <h4>ArgoCD GitOps</h4>
+            ArgoCD GitOps refers to using ArgoCD to implement the GitOps methodology, 
+            where Git becomes the single source of truth for infrastructure and application configurations. 
+            Any change is made through Git commits, and ArgoCD automatically applies these changes to Kubernetes. 
+            This ensures consistent, auditable, and automated deployments.
+          </li>
+          <li>
+            <h4>Apache</h4>
+            Apache is a widely used open-source web server software that delivers web pages to users’ browsers. 
+            It supports modules that extend its capabilities, such as security, URL rewriting, and caching. 
+            Apache is known for its flexibility, stability, and compatibility with many operating systems.
+          </li>
+          <li>
+            <h4>Apache Solr</h4>
+            Apache Solr is an open-source search and indexing engine built on Apache Lucene. It provides fast, scalable full-text search, faceting, and real-time indexing. 
+            Solr is used in applications that require advanced search capabilities and large data handling.
+          </li>
+          <li>
+            <h4>Apache Zookeeper</h4>
+            Apache Zookeeper is a centralized service for maintaining configuration data, naming, synchronization, and coordination in distributed systems. 
+            It ensures consistency and helps multiple services work together reliably. Zookeeper is commonly used by large-scale systems needing reliable coordination.
+          </li>
+          <li>
+            <h4>Cluster</h4>
+            A cluster is a group of computers (called nodes) that work together as a single system.
+            In Kubernetes or OpenShift:
+                • The cluster includes a control plane (master) and worker nodes.
+                • The control plane manages everything.
+                • The worker nodes run the applications (containers, pods, etc.).
+             In simple words:
+            A cluster = a team of computers working together to run and manage applications.
+          </li>
+          <li>
+            <h4>Concept</h4>
+            When you install OpenShift Local (crc) on your computer:
+                • It creates and runs a virtual machine (VM) inside your computer.
+                • That VM contains a mini OpenShift cluster — basically, a small, single-node version of OpenShift.
+                • You can then use this local OpenShift environment to develop, test, and deploy applications, just like in a real OpenShift cloud setup.
+            How it works
+            Your Computer (Host)
+            │
+            ├── Virtual Machine (created by crc)
+            │     ├── Red Hat Enterprise Linux CoreOS (the OS inside VM)
+            │     └── OpenShift Cluster (running inside the VM)
+            │           ├── Kubernetes (container orchestration)
+            │           ├── OpenShift API and Console
+            │           └── Your applications (pods, services, etc.)
+            │
+            └── crc Command-Line Tool
+                  ├── Starts/stops the VM
+                  ├── Connects you to the cluster
+                  └── Manages OpenShift Local settings
+          </li>
+          <li>
+            <h4>Control node</h4>
+          </li>
+          <li>
+            <h4>Compile</h4>
+            To compile means to translate human-readable source code into machine-readable executable code. 
+            This process is performed by a compiler, which checks the code for errors and converts it into a program the computer can run. 
+            Compiling often improves performance and ensures the code works consistently across systems.
+          </li>
+          <li>
+            <h4>crc</h4>
+            crc stands for CodeReady Containers, which was the old name for OpenShift Local.
+            It provides a command-line tool (crc) used to start, stop, and manage the local OpenShift cluster 
+            (the small OpenShift environment running on your machine).
+          </li>
+          <li>
+            <h4>Data-driven</h4>
+            Data-driven describes decisions, processes, or systems that rely on actual data rather than intuition or fixed rules. 
+            It involves collecting, analyzing, and interpreting data to guide actions and improve outcomes. 
+            Data-driven approaches are widely used in business, science, and technology for accuracy and efficiency.
+          </li>
+          <li>
+            <h4>GitHub</h4>
+            GitHub is an online platform for hosting and managing code repositories using the Git version control system. 
+            It allows developers to collaborate, track changes, review code, and contribute to projects from anywhere. 
+            GitHub also supports issues, documentation, automation tools, and open-source community interaction.
+          </li>
+          <li>
+            <h4>GitOps</h4>
+            GitOps is a methodology where Git is the single source of truth for infrastructure and application configurations. 
+            All changes are made through Git commits and automatically applied by automated tools. 
+            This improves transparency, version control, and deployment automation.
+          </li>
+          <li>
+            <h4>HashiCorp Vault</h4>
+            HashiCorp Vault is a tool for securely storing, managing, and controlling access to sensitive data such as passwords, tokens, and certificates. 
+            It provides encryption, dynamic secrets, and detailed access control. Vault helps protect secrets in complex, distributed environments.
+          </li>
+          <li>
+            <h4>Image</h4>
+            In computing, an image is a single file that contains a complete snapshot of a system, disk, or software environment. 
+            It can be used to deploy systems quickly by restoring everything exactly as captured. 
+            Images ensure consistency across installations and backup processes.
+          </li>
+          <li>
+            <h4>IP addresses</h4>
+            An IP address is a unique numerical identifier assigned to each device connected to a network using the Internet Protocol. 
+            It allows devices to locate and communicate with each other across networks.
+            Public and private IP addresses help organize traffic both on the internet and on local networks.
+          </li>
+          <li>
+            <h4>ISO file</h4>
+            An ISO file is a single digital archive that contains an exact copy of an entire CD, DVD, or other optical disc. 
+            It preserves the full file system and structure, making it ideal for distributing operating systems, software packages, or backups. 
+            ISO files can be mounted or burned to recreate the original disc.
+          </li>
+          <li>
+            <h4>Keycloak</h4>
+            Keycloak is an open-source identity and access management solution. It provides authentication, authorization, single sign-on (SSO), and user federation. 
+            Keycloak integrates easily with modern applications and supports standard protocols like OAuth2 and OpenID Connect.
+          </li>
+          <li>
+            <h4>Kubernetes</h4>
+            Kubernetes (often called K8s) is an open-source system that helps you manage containers (like Docker containers).
+            It automatically handles things like:
+                • Starting and stopping containers,
+                • Balancing traffic,
+                • Scaling up or down based on demand, and
+                • Keeping your applications running smoothly even if something fails.
+             In short: Kubernetes is the "manager" for containerized applications.
+            It makes sure your apps run the way you want — automatically and reliably.
+          </li>
+          <li>
+            <h4>Microservices</h4>
+            Microservices is an architectural style where an application is built as a collection of small, independent services. 
+            Each service performs a specific function and communicates with others over APIs. This approach improves scalability, flexibility, and fault isolation.
+          </li>
+          <li>
+            <h4>Networking</h4>
+            Networking refers to the practice of connecting computers and devices so they can share data and resources. 
+            It includes hardware, software, and protocols that allow communication over local or global networks. 
+            Effective networking enables email, web browsing, file sharing, and many modern digital services.
+          </li>
+          <li>
+            <h4>OpenShift</h4>
+            OpenShift is a cloud platform created by Red Hat.
+            It helps developers build, deploy, and manage applications easily in containers (like Docker) using Kubernetes.
+            In short, OpenShift is a container orchestration platform that automates the setup and running of applications in the cloud or on-premises.
+          </li>
+          <li>
+            <h4>OpenShift Local</h4>
+            OpenShift Local (formerly called CodeReady Containers or CRC) is a lightweight version of OpenShift that runs on your own computer (laptop or desktop).
+            It lets developers try OpenShift or develop apps locally without needing a large cloud environment.
+          </li>
+          <li>
+            <h4>Operating system (OS)</h4>
+            An operating system is the core software that manages a computer’s hardware and provides essential services for running applications. 
+            It allocates resources like memory and processing power, handles files and security, and enables user interaction through interfaces. 
+            Essentially, it acts as a bridge between the hardware and the programs you use.
+          </li>
+          <li>
+            <h4>Postgres (PostgreSQL)</h4>
+            Postgres, or PostgreSQL, is a powerful open-source relational database management system known for reliability, robustness, and advanced features. 
+            It supports complex queries, extensibility, and strict data integrity. 
+            Postgres is widely used for applications that require strong performance, scalability, and compliance with SQL standards.
+          </li>
+          <li>
+            <h4>Proprietary software services</h4>
+            Proprietary software services are applications or platforms owned and controlled by a company, which restricts access to the source code. 
+            Users are granted limited rights—usually through paid licenses—to use the software but cannot modify or redistribute it. 
+            These services often include support, updates, and features that are managed exclusively by the vendor.
+          </li>
+          <li>
+            <h4>Routers</h4>
+            A router is a device that directs data packets between different networks. 
+            It determines the best path for data to travel, ensuring efficient and reliable communication. 
+            Routers also often provide security features such as firewalls and network address translation (NAT).
+          </li>
+          <li>
+            <h4>Swap space</h4>
+            Swap space is a reserved area on a storage device that the operating system uses as extra virtual memory when physical RAM is full. 
+            It allows the system to move inactive data from RAM to disk, preventing crashes or slowdowns. 
+            While helpful, swap space is much slower than RAM, so excessive swapping can reduce performance.
+          </li>
+          <li>
+            <h4>Ubuntu</h4>
+            Ubuntu is a popular open-source Linux-based operating system designed for ease of use and stability. 
+            It includes a wide range of software and receives regular security and feature updates. 
+            Ubuntu is widely used for desktops, servers, cloud computing, and development environments.
+          </li>
+          <li>
+            <h4>Virtual Machine</h4>
+            A Virtual Machine is a software-based computer that runs inside another computer.
+            It acts like a real computer with its own CPU, memory, storage, and operating system, but it shares the hardware of the main (host) computer.
+            You can run many virtual machines on one physical computer.
+          </li>
+          <li>
+            <h4>Worker node</h4>
+          </li>
+        </ul>
+{% endblock %}

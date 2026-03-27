@@ -66,6 +66,28 @@ Promise.all([
     facetStatsChange('LearnSkills', 'description', false);
   });
 
+  document.querySelector('#pageSelectSortLearnSkills_authorName')?.addEventListener('change', (event) => {
+    sort('LearnSkills', 'authorName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsLearnSkills_authorName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('LearnSkills', 'authorName', true);
+  });
+  document.querySelector('#pageStatsLearnSkills_authorName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('LearnSkills', 'authorName', false);
+  });
+
+  document.querySelector('#pageSelectSortLearnSkills_authorUrl')?.addEventListener('change', (event) => {
+    sort('LearnSkills', 'authorUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsLearnSkills_authorUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('LearnSkills', 'authorUrl', true);
+  });
+  document.querySelector('#pageStatsLearnSkills_authorUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('LearnSkills', 'authorUrl', false);
+  });
+
   document.querySelector('#pageSelectSortLearnSkills_pageImageUri')?.addEventListener('change', (event) => {
     sort('LearnSkills', 'pageImageUri', event.currentTarget.value);
   });
@@ -275,6 +297,50 @@ Promise.all([
     facetStatsChange('LearnSkills', 'pageImageAlt', false);
   });
 
+  document.querySelector('#pageSelectSortLearnSkills_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+    sort('LearnSkills', 'prerequisiteArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsLearnSkills_prerequisiteArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('LearnSkills', 'prerequisiteArticleIds', true);
+  });
+  document.querySelector('#pageStatsLearnSkills_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('LearnSkills', 'prerequisiteArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortLearnSkills_nextArticleIds')?.addEventListener('change', (event) => {
+    sort('LearnSkills', 'nextArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsLearnSkills_nextArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('LearnSkills', 'nextArticleIds', true);
+  });
+  document.querySelector('#pageStatsLearnSkills_nextArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('LearnSkills', 'nextArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortLearnSkills_labelsString')?.addEventListener('change', (event) => {
+    sort('LearnSkills', 'labelsString', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsLearnSkills_labelsString')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('LearnSkills', 'labelsString', true);
+  });
+  document.querySelector('#pageStatsLearnSkills_labelsString')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('LearnSkills', 'labelsString', false);
+  });
+
+  document.querySelector('#pageSelectSortLearnSkills_labels')?.addEventListener('change', (event) => {
+    sort('LearnSkills', 'labels', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsLearnSkills_labels')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('LearnSkills', 'labels', true);
+  });
+  document.querySelector('#pageStatsLearnSkills_labels')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('LearnSkills', 'labels', false);
+  });
+
   document.querySelector('#pageSelectSortLearnSkills_relatedArticleIds')?.addEventListener('change', (event) => {
     sort('LearnSkills', 'relatedArticleIds', event.currentTarget.value);
   });
@@ -337,6 +403,42 @@ Promise.all([
             facetRangeStartChange('LearnSkills', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndLearnSkills_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#fqLearnSkills_authorName')?.addEventListener('change', (event) => {
+            fqChange('LearnSkills', event.currentTarget, facetChangeLearnSkillsSuccess, facetChangeLearnSkillsError);
+          });
+          document.querySelector('#buttonFacetLearnSkills_authorName')?.addEventListener('click', (event) => {
+            facetFieldChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotLearnSkills_authorName')?.addEventListener('change', (event) => {
+            facetPivotChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapLearnSkills_authorName')?.addEventListener('change', (event) => {
+            facetRangeGapChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartLearnSkills_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndLearnSkills_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#fqLearnSkills_authorUrl')?.addEventListener('change', (event) => {
+            fqChange('LearnSkills', event.currentTarget, facetChangeLearnSkillsSuccess, facetChangeLearnSkillsError);
+          });
+          document.querySelector('#buttonFacetLearnSkills_authorUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotLearnSkills_authorUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapLearnSkills_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartLearnSkills_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndLearnSkills_authorUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('LearnSkills', event.currentTarget);
           });
           document.querySelector('#fqLearnSkills_pageImageUri')?.addEventListener('change', (event) => {

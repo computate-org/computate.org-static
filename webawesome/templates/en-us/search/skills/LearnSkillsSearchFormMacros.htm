@@ -189,6 +189,78 @@
 {%- macro htmDescriptionLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
+{%- macro inputAuthorNameLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorName">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author name"
+                      label="author name"
+                      hint="The author name"
+                      id="LearnSkills_{{classApiMethodMethod}}_authorName"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_authorName setAuthorName classLearnSkills inputLearnSkills{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_authorName setAuthorName classLearnSkills inputLearnSkills{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+    {%- else %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_authorName valueAuthorName classLearnSkills inputLearnSkills{{ result.pageId }}AuthorName "
+                      name="authorName"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorName | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorNameLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorNameLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputAuthorUrlLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorUrl">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author URL"
+                      label="author URL"
+                      hint="The author URL"
+                      id="LearnSkills_{{classApiMethodMethod}}_authorUrl"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_authorUrl setAuthorUrl classLearnSkills inputLearnSkills{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_authorUrl setAuthorUrl classLearnSkills inputLearnSkills{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+    {%- else %}
+                      class="label-on-left LearnSkills_{{classApiMethodMethod}}_authorUrl valueAuthorUrl classLearnSkills inputLearnSkills{{ result.pageId }}AuthorUrl "
+                      name="authorUrl"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorUrl | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorUrlLearnSkillsPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorUrlLearnSkillsPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
 {%- macro inputPageImageUriLearnSkillsPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageImageUri">
@@ -325,7 +397,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_patchLearnSkills(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchLearnSkillsDialog" label="Modify Learn cloud developer skills">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="patchLearnSkillsDialog" label="Modify Learn cloud developer skills">
           <form id="htmForm_patchLearnSkills" class="round-row primary-smart-border-radius ">
 
               <div class="grid-with-subgrid-2col ">
@@ -346,6 +418,26 @@
                 {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -404,7 +496,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_postLearnSkills(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="postLearnSkillsDialog" label="Create a Learn cloud developer skills">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="postLearnSkillsDialog" label="Create a Learn cloud developer skills">
           <form id="htmForm_postLearnSkills" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
 
@@ -426,6 +518,26 @@
                 {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -484,7 +596,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deleteLearnSkills(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteLearnSkillsDialog" label="Delete Learn cloud developer skills">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deleteLearnSkillsDialog" label="Delete Learn cloud developer skills">
           <form id="htmForm_deleteLearnSkills" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteLearnSkills() }}
@@ -501,7 +613,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_putimportLearnSkills(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportLearnSkillsDialog" label="Import Learn cloud developer skills">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="putimportLearnSkillsDialog" label="Import Learn cloud developer skills">
           <form id="htmForm_putimportLearnSkills" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -517,7 +629,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_searchpageLearnSkills(idSuffix='') %}
-        <div with-header with-footer style="--width: 50vw; " id="searchpageLearnSkillsDialog" label="Search Learn cloud developer skills">
+        <div with-header with-footer style="--width: min(64rem, 100vw); " id="searchpageLearnSkillsDialog" label="Search Learn cloud developer skills">
           <div id="htmForm_searchpageLearnSkills" class="round-row primary-smart-border-radius ">
 
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -578,6 +690,26 @@
                 {{ htmDescriptionLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlLearnSkillsPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
@@ -633,7 +765,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterLearnSkills(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterLearnSkillsDialog" label="Delete Learn cloud developer skills">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deletefilterLearnSkillsDialog" label="Delete Learn cloud developer skills">
           <form id="htmForm_deletefilterLearnSkills" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterLearnSkills() }}

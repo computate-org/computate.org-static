@@ -1,0 +1,126 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Programming languages relevant to SPINE Programming Theory" />
+    <meta name="result.description" content="Here are the programming languages you will use as you develop with SPINE Programming Theory. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-08-22T12:01:59.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/top-languages.png" />
+    <meta name="result.pageImageAlt" content="" />
+    <meta name="result.prerequisiteArticleIds" content="spine-programming-glossary" />
+    <meta name="result.nextArticleIds" content="become-an-open-source-software-developer" />
+    <meta name="result.courseNum" content="1"/>
+{% endblock htmMetaPageLayout %}
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+    <div class="wa-stack">
+      <h2>
+        Programming languages relevant to smart aquaculture
+      </h2>
+      <ul class="wa-stack ">
+        <li>
+          HTML
+          <ul>
+            <li>
+              <a href="https://www.w3schools.com/html/">https://www.w3schools.com/html/</a>: 
+              Official documentation for HTML. 
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference</a>
+            </li>
+            <li>
+              <a href="https://webawesome.com/">https://webawesome.com/</a>: 
+              Web Awesome web components
+            </li>
+          </ul>
+        </li>
+        <li>
+          CSS
+        </li>
+        <li>
+          JavaScript
+        </li>
+        <li>
+          YAML
+          <ul>
+            <li>
+              <a href="https://yaml.org/">https://yaml.org/</a>: 
+              Official documentation for YAML. 
+            </li>
+            <li>
+              <a href="https://spacelift.io/blog/yaml">https://spacelift.io/blog/yaml</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Jinja
+          <ul>
+            <li>
+              <a href="https://jinja.palletsprojects.com/en/stable/">https://jinja.palletsprojects.com/en/stable/</a>: 
+              Official documentation for Jinja. 
+            </li>
+            <li>
+              <a href="https://ttl255.com/jinja2-tutorial-part-1-introduction-and-variable-substitution/">https://ttl255.com/jinja2-tutorial-part-1-introduction-and-variable-substitution/</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Ansible
+          <ul>
+            <li>
+              <a href="https://docs.ansible.com/">https://docs.ansible.com/</a>: 
+              Official documentation for Ansible. 
+            </li>
+            <li>
+              <a href="https://spacelift.io/blog/ansible">https://spacelift.io/blog/ansible</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Java
+        </li>
+      </ul>
+
+      <h2>
+        Linux applications
+      </h2>
+      <ul>
+        <li>
+          vi and vim
+        </li>
+      </ul>
+
+      <h2>
+        Secrets management
+      </h2>
+      <ul>
+        <li>
+          <a href="https://github.com/computate-org/computate_gorilla">Password Gorilla password manager</a>: 
+          for managing your personal passwords offline on your Linux computer. 
+        </li>
+        <li>
+          <a href="https://play.google.com/store/apps/details?id=com.jefftharris.passwdsafe&hl=en_US&pli=1">PasswdSafe Android password manager</a>: 
+          for managing your personal passwords offline on your Android phone. 
+        </li>
+        <li>
+          <a href="https://bitwarden.com/">Bitwarden</a>: 
+          for managing your personal secrets in the cloud and on your computers. 
+        </li>
+        <li>
+          <a href="https://developer.hashicorp.com/vault/docs/deploy/kubernetes/vso">Vault</a>: 
+          for in-cluster secrets
+        </li>
+      </ul>
+
+      <h2>
+        Compliance
+      </h2>
+      <ul>
+        <li>
+          ADA compliance
+        </li>
+      </ul>
+    </div>
+{% endblock %}

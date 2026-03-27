@@ -83,6 +83,8 @@ async function websocketDeploySpineInner(apiRequest) {
         var inputArchived = null;
         var inputName = null;
         var inputDescription = null;
+        var inputAuthorName = null;
+        var inputAuthorUrl = null;
         var inputPageImageUri = null;
         var inputPageId = null;
         var inputDisplayPage = null;
@@ -102,6 +104,12 @@ async function websocketDeploySpineInner(apiRequest) {
         var inputPageImageHeight = null;
         var inputPageImageType = null;
         var inputPageImageAlt = null;
+        var inputPrerequisiteArticleIds = null;
+        var inputPrerequisiteArticles = null;
+        var inputNextArticleIds = null;
+        var inputNextArticles = null;
+        var inputLabelsString = null;
+        var inputLabels = null;
         var inputRelatedArticleIds = null;
 
         if(vars.includes('created'))
@@ -114,6 +122,10 @@ async function websocketDeploySpineInner(apiRequest) {
           inputName = $response.querySelector('.DeploySpine_Page_name');
         if(vars.includes('description'))
           inputDescription = $response.querySelector('.DeploySpine_Page_description');
+        if(vars.includes('authorName'))
+          inputAuthorName = $response.querySelector('.DeploySpine_Page_authorName');
+        if(vars.includes('authorUrl'))
+          inputAuthorUrl = $response.querySelector('.DeploySpine_Page_authorUrl');
         if(vars.includes('pageImageUri'))
           inputPageImageUri = $response.querySelector('.DeploySpine_Page_pageImageUri');
         if(vars.includes('pageId'))
@@ -152,6 +164,18 @@ async function websocketDeploySpineInner(apiRequest) {
           inputPageImageType = $response.querySelector('.DeploySpine_Page_pageImageType');
         if(vars.includes('pageImageAlt'))
           inputPageImageAlt = $response.querySelector('.DeploySpine_Page_pageImageAlt');
+        if(vars.includes('prerequisiteArticleIds'))
+          inputPrerequisiteArticleIds = $response.querySelector('.DeploySpine_Page_prerequisiteArticleIds');
+        if(vars.includes('prerequisiteArticles'))
+          inputPrerequisiteArticles = $response.querySelector('.DeploySpine_Page_prerequisiteArticles');
+        if(vars.includes('nextArticleIds'))
+          inputNextArticleIds = $response.querySelector('.DeploySpine_Page_nextArticleIds');
+        if(vars.includes('nextArticles'))
+          inputNextArticles = $response.querySelector('.DeploySpine_Page_nextArticles');
+        if(vars.includes('labelsString'))
+          inputLabelsString = $response.querySelector('.DeploySpine_Page_labelsString');
+        if(vars.includes('labels'))
+          inputLabels = $response.querySelector('.DeploySpine_Page_labels');
         if(vars.includes('relatedArticleIds'))
           inputRelatedArticleIds = $response.querySelector('.DeploySpine_Page_relatedArticleIds');
 
@@ -208,6 +232,26 @@ async function websocketDeploySpineInner(apiRequest) {
               item.textContent = inputDescription.textContent;
           });
           addGlow(document.querySelector('.DeploySpine_Page_description'));
+        }
+
+        if(inputAuthorName) {
+          document.querySelectorAll('.DeploySpine_Page_authorName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAuthorName.getAttribute('value');
+            else
+              item.textContent = inputAuthorName.textContent;
+          });
+          addGlow(document.querySelector('.DeploySpine_Page_authorName'));
+        }
+
+        if(inputAuthorUrl) {
+          document.querySelectorAll('.DeploySpine_Page_authorUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAuthorUrl.getAttribute('value');
+            else
+              item.textContent = inputAuthorUrl.textContent;
+          });
+          addGlow(document.querySelector('.DeploySpine_Page_authorUrl'));
         }
 
         if(inputPageImageUri) {
@@ -400,6 +444,66 @@ async function websocketDeploySpineInner(apiRequest) {
           addGlow(document.querySelector('.DeploySpine_Page_pageImageAlt'));
         }
 
+        if(inputPrerequisiteArticleIds) {
+          document.querySelectorAll('.DeploySpine_Page_prerequisiteArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticleIds.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.DeploySpine_Page_prerequisiteArticleIds'));
+        }
+
+        if(inputPrerequisiteArticles) {
+          document.querySelectorAll('.DeploySpine_Page_prerequisiteArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticles.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticles.textContent;
+          });
+          addGlow(document.querySelector('.DeploySpine_Page_prerequisiteArticles'));
+        }
+
+        if(inputNextArticleIds) {
+          document.querySelectorAll('.DeploySpine_Page_nextArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticleIds.getAttribute('value');
+            else
+              item.textContent = inputNextArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.DeploySpine_Page_nextArticleIds'));
+        }
+
+        if(inputNextArticles) {
+          document.querySelectorAll('.DeploySpine_Page_nextArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticles.getAttribute('value');
+            else
+              item.textContent = inputNextArticles.textContent;
+          });
+          addGlow(document.querySelector('.DeploySpine_Page_nextArticles'));
+        }
+
+        if(inputLabelsString) {
+          document.querySelectorAll('.DeploySpine_Page_labelsString').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabelsString.getAttribute('value');
+            else
+              item.textContent = inputLabelsString.textContent;
+          });
+          addGlow(document.querySelector('.DeploySpine_Page_labelsString'));
+        }
+
+        if(inputLabels) {
+          document.querySelectorAll('.DeploySpine_Page_labels').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabels.getAttribute('value');
+            else
+              item.textContent = inputLabels.textContent;
+          });
+          addGlow(document.querySelector('.DeploySpine_Page_labels'));
+        }
+
         if(inputRelatedArticleIds) {
           document.querySelectorAll('.DeploySpine_Page_relatedArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -581,6 +685,14 @@ function searchDeploySpineFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
+    var filterAuthorName = $formFilters.querySelector('.valueAuthorName')?.value;
+    if(filterAuthorName != null && filterAuthorName !== '')
+      filters.push({ name: 'fq', value: 'authorName:' + filterAuthorName });
+
+    var filterAuthorUrl = $formFilters.querySelector('.valueAuthorUrl')?.value;
+    if(filterAuthorUrl != null && filterAuthorUrl !== '')
+      filters.push({ name: 'fq', value: 'authorUrl:' + filterAuthorUrl });
+
     var filterPageImageUri = $formFilters.querySelector('.valuePageImageUri')?.value;
     if(filterPageImageUri != null && filterPageImageUri !== '')
       filters.push({ name: 'fq', value: 'pageImageUri:' + filterPageImageUri });
@@ -656,6 +768,22 @@ function searchDeploySpineFilters($formFilters) {
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
+    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
+      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
+
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
+    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
+    if(filterLabelsString != null && filterLabelsString !== '')
+      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -797,6 +925,30 @@ async function patchDeploySpine($formFilters, $formValues, target, pageId, succe
   if(removeDescription != null && removeDescription !== '')
     vals['removeDescription'] = removeDescription;
 
+  var valueAuthorName = $formValues.querySelector('.valueAuthorName')?.value;
+  var removeAuthorName = $formValues.querySelector('.removeAuthorName')?.value === 'true';
+  var setAuthorName = removeAuthorName ? null : $formValues.querySelector('.setAuthorName')?.value;
+  var addAuthorName = $formValues.querySelector('.addAuthorName')?.value;
+  if(removeAuthorName || setAuthorName != null && setAuthorName !== '')
+    vals['setAuthorName'] = setAuthorName;
+  if(addAuthorName != null && addAuthorName !== '')
+    vals['addAuthorName'] = addAuthorName;
+  var removeAuthorName = $formValues.querySelector('.removeAuthorName')?.value;
+  if(removeAuthorName != null && removeAuthorName !== '')
+    vals['removeAuthorName'] = removeAuthorName;
+
+  var valueAuthorUrl = $formValues.querySelector('.valueAuthorUrl')?.value;
+  var removeAuthorUrl = $formValues.querySelector('.removeAuthorUrl')?.value === 'true';
+  var setAuthorUrl = removeAuthorUrl ? null : $formValues.querySelector('.setAuthorUrl')?.value;
+  var addAuthorUrl = $formValues.querySelector('.addAuthorUrl')?.value;
+  if(removeAuthorUrl || setAuthorUrl != null && setAuthorUrl !== '')
+    vals['setAuthorUrl'] = setAuthorUrl;
+  if(addAuthorUrl != null && addAuthorUrl !== '')
+    vals['addAuthorUrl'] = addAuthorUrl;
+  var removeAuthorUrl = $formValues.querySelector('.removeAuthorUrl')?.value;
+  if(removeAuthorUrl != null && removeAuthorUrl !== '')
+    vals['removeAuthorUrl'] = removeAuthorUrl;
+
   var valuePageImageUri = $formValues.querySelector('.valuePageImageUri')?.value;
   var removePageImageUri = $formValues.querySelector('.removePageImageUri')?.value === 'true';
   var setPageImageUri = removePageImageUri ? null : $formValues.querySelector('.setPageImageUri')?.value;
@@ -917,6 +1069,54 @@ async function patchDeploySpine($formFilters, $formValues, target, pageId, succe
   if(removePageImageAlt != null && removePageImageAlt !== '')
     vals['removePageImageAlt'] = removePageImageAlt;
 
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value === 'true';
+  var setPrerequisiteArticleIds = removePrerequisiteArticleIds ? null : $formValues.querySelector('.setPrerequisiteArticleIds')?.value;
+  var addPrerequisiteArticleIds = $formValues.querySelector('.addPrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds || setPrerequisiteArticleIds != null && setPrerequisiteArticleIds !== '')
+    vals['setPrerequisiteArticleIds'] = setPrerequisiteArticleIds;
+  if(addPrerequisiteArticleIds != null && addPrerequisiteArticleIds !== '')
+    vals['addPrerequisiteArticleIds'] = addPrerequisiteArticleIds;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds != null && removePrerequisiteArticleIds !== '')
+    vals['removePrerequisiteArticleIds'] = removePrerequisiteArticleIds;
+
+  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
+  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value === 'true';
+  var setNextArticleIds = removeNextArticleIds ? null : $formValues.querySelector('.setNextArticleIds')?.value;
+  var addNextArticleIds = $formValues.querySelector('.addNextArticleIds')?.value;
+  if(removeNextArticleIds || setNextArticleIds != null && setNextArticleIds !== '')
+    vals['setNextArticleIds'] = setNextArticleIds;
+  if(addNextArticleIds != null && addNextArticleIds !== '')
+    vals['addNextArticleIds'] = addNextArticleIds;
+  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value;
+  if(removeNextArticleIds != null && removeNextArticleIds !== '')
+    vals['removeNextArticleIds'] = removeNextArticleIds;
+
+  var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
+  var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
+  var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
+  var addLabelsString = $formValues.querySelector('.addLabelsString')?.value;
+  if(removeLabelsString || setLabelsString != null && setLabelsString !== '')
+    vals['setLabelsString'] = setLabelsString;
+  if(addLabelsString != null && addLabelsString !== '')
+    vals['addLabelsString'] = addLabelsString;
+  var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value;
+  if(removeLabelsString != null && removeLabelsString !== '')
+    vals['removeLabelsString'] = removeLabelsString;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
+  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
+  var addLabels = $formValues.querySelector('.addLabels')?.value;
+  if(removeLabels || setLabels != null && setLabels !== '')
+    vals['setLabels'] = JSON.parse(setLabels);
+  if(addLabels != null && addLabels !== '')
+    vals['addLabels'] = addLabels;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
+  if(removeLabels != null && removeLabels !== '')
+    vals['removeLabels'] = removeLabels;
+
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
   var setRelatedArticleIds = removeRelatedArticleIds ? null : $formValues.querySelector('.setRelatedArticleIds')?.value;
@@ -962,6 +1162,14 @@ function patchDeploySpineFilters($formFilters) {
     var filterDescription = $formFilters.querySelector('.valueDescription')?.value;
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
+
+    var filterAuthorName = $formFilters.querySelector('.valueAuthorName')?.value;
+    if(filterAuthorName != null && filterAuthorName !== '')
+      filters.push({ name: 'fq', value: 'authorName:' + filterAuthorName });
+
+    var filterAuthorUrl = $formFilters.querySelector('.valueAuthorUrl')?.value;
+    if(filterAuthorUrl != null && filterAuthorUrl !== '')
+      filters.push({ name: 'fq', value: 'authorUrl:' + filterAuthorUrl });
 
     var filterPageImageUri = $formFilters.querySelector('.valuePageImageUri')?.value;
     if(filterPageImageUri != null && filterPageImageUri !== '')
@@ -1038,6 +1246,22 @@ function patchDeploySpineFilters($formFilters) {
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
       filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
+    if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
+      filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
+
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
+    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
+    if(filterLabelsString != null && filterLabelsString !== '')
+      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1125,6 +1349,14 @@ async function postDeploySpine($formValues, target, success, error) {
   if(valueDescription != null && valueDescription !== '')
     vals['description'] = valueDescription;
 
+  var valueAuthorName = $formValues.querySelector('.valueAuthorName')?.value;
+  if(valueAuthorName != null && valueAuthorName !== '')
+    vals['authorName'] = valueAuthorName;
+
+  var valueAuthorUrl = $formValues.querySelector('.valueAuthorUrl')?.value;
+  if(valueAuthorUrl != null && valueAuthorUrl !== '')
+    vals['authorUrl'] = valueAuthorUrl;
+
   var valuePageImageUri = $formValues.querySelector('.valuePageImageUri')?.value;
   if(valuePageImageUri != null && valuePageImageUri !== '')
     vals['pageImageUri'] = valuePageImageUri;
@@ -1164,6 +1396,22 @@ async function postDeploySpine($formValues, target, success, error) {
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
     vals['pageImageAlt'] = valuePageImageAlt;
+
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  if(valuePrerequisiteArticleIds != null && valuePrerequisiteArticleIds !== '')
+    vals['prerequisiteArticleIds'] = valuePrerequisiteArticleIds;
+
+  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
+  if(valueNextArticleIds != null && valueNextArticleIds !== '')
+    vals['nextArticleIds'] = valueNextArticleIds;
+
+  var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
+  if(valueLabelsString != null && valueLabelsString !== '')
+    vals['labelsString'] = valueLabelsString;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  if(valueLabels != null && valueLabels !== '')
+    vals['labels'] = JSON.parse(valueLabels);
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   if(valueRelatedArticleIds != null && valueRelatedArticleIds !== '')

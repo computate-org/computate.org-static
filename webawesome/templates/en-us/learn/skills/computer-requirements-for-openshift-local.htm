@@ -1,0 +1,132 @@
+{% extends "en-us/Article.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Computer requirements for deploying OpenShift Local applications" />
+    <meta name="result.description" content="Here are the system requirements for deploying OpenShift Local applications. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2025-08-22T12:01:59.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/smart-aquaculture-resources.png" />
+    <meta name="result.pageImageAlt" content="Screenshot of Red Hat Enterprise Linux System Monitor of a computer running OpenShift Local" />
+    <meta name="result.courseNum" content="20"/>
+    <meta name="result.prerequisiteArticleIds" content="containers-and-openshift-technical-overview,become-a-red-hat-developer" />
+    <meta name="result.nextArticleIds" content="install-openshift-local-on-your-computer" />
+{% endblock htmMetaPageLayout %}
+{% block htmBodyMiddleArticle %}
+{{ articleImage(result) }}
+
+    <div class="wa-stack">
+
+      <wa-card class="red-pink-background ">
+        <div class="wa-stack ">
+
+          <div class="wa-crown">
+            <h1>
+              <i class="{{ FONTAWESOME_STYLE }} fa-video fa-2x "></i>
+              Recommended operating systems
+            </h1>
+          </div>
+
+          <div class="wa-grid">
+            <wa-card with-image style="height: 100%">
+              <div slot="media" class="wa-frame:landscape ">
+                <i class="fa-brands fa-windows " style="font-size: 9rem; color: #74C0FC;"></i>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-caption-l">Microsoft Windows 11 Pro</span>
+              </div>
+            </wa-card>
+            <wa-card with-image style="height: 100%">
+              <div slot="media" class="wa-frame:landscape ">
+                <i class="fa-brands fa-redhat fa-red" style="font-size: 9rem; color: red; "></i>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-caption-l">Red Hat Enterprise Linux 9</span>
+              </div>
+            </wa-card>
+            <wa-card with-image style="height: 100%">
+              <div slot="media" class="wa-frame:landscape ">
+                <i class="fa-brands fa-centos " style="font-size: 9rem; "></i>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-caption-l">CentOS Stream 9</span>
+              </div>
+            </wa-card>
+            <wa-card with-image style="height: 100%">
+              <div slot="media" class="wa-frame:landscape ">
+                <i class="fa-brands fa-fedora " style="font-size: 9rem; "></i>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-caption-l">Fedora 34+</span>
+              </div>
+            </wa-card>
+          </div>
+
+          <p>
+            Other Linux distros may also be supported
+          </p>
+
+          <p>
+            The {{ result.name }} is an open source project builder that runs on a Microsoft Windows 11 Professional computer, or Linux x86_64 computer. 
+            Supported operating systems and Linux distributions include: 
+          </p>
+
+          <wa-callout variant="brand">
+            <i class="{{ FONTAWESOME_STYLE }} fa-circle-info fa-xl"></i>
+            <strong>MacOS operating system unsupported</strong><br />
+            Unfortunately, MacOS is not supported with OpenShift Local since MacOS became ARM64 architecture. 
+          </wa-callout>
+
+        </div>
+
+      </wa-card>
+
+      <wa-card class="red-pink-background ">
+        <div class="wa-stack ">
+
+          <div class="wa-stack ">
+            <h1>
+              <i class="{{ FONTAWESOME_STYLE }} fa-memory fa-2xl"></i>
+              System requirements
+            </h1>
+            <p>
+              Here are the bare minimum system requirements for deploying the {{ SITE_NAME }} platform on your own computer. 
+              If you have more resources than this, then your system will perform even better. 
+            </p>
+          </div>
+
+          <div class="wa-grid">
+            <wa-card with-image style="height: 100%">
+              <div slot="media" class="wa-frame:landscape ">
+                <i class="{{ FONTAWESOME_STYLE }} fa-laptop" style="font-size: 9rem; "></i>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-heading-l">System architecture</span>
+                <span class="wa-caption-m">x86_64 — computers that run Microsoft Windows are all compatible</span>
+              </div>
+            </wa-card>
+            <wa-card with-image style="height: 100%">
+              <div slot="media" class="wa-frame:landscape ">
+                <i class="{{ FONTAWESOME_STYLE }} fa-memory" style="font-size: 9rem; "></i>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-heading-l">Memory requirements</span>
+                <span class="wa-caption-m">32 Gi RAM — this is the minimum amount of recommended memory. </span>
+              </div>
+            </wa-card>
+            <wa-card with-image style="height: 100%">
+              <div slot="media" class="wa-frame:landscape ">
+                <i class="{{ FONTAWESOME_STYLE }} fa-microchip" style="font-size: 9rem; "></i>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-heading-l">CPU requirements</span>
+                <span class="wa-caption-m">8 logical processors — if you have more processors than this, then you will be able to do more multitasking on your computer at the same time. </span>
+              </div>
+            </wa-card>
+          </div>
+        </div>
+
+      </wa-card>
+    </div>
+{% endblock %}

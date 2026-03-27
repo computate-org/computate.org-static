@@ -9,14 +9,34 @@
     <meta name="result.created" content="2025-08-29T16:30:01.556[America/Denver]" />
     <meta name="result.pageImageUri" content="/png/openshift-local-console.png" />
     <meta name="result.pageImageAlt" content="Screenshot of the OpenShift Local Console" />
-    <meta name="result.prerequisiteArticleIds" content="become-a-red-hat-developer, computer-requirements-for-computate-org-development" />
-    <meta name="result.nextArticleIds" content="deploy-computate-org-on-openshift-local" />
+    <meta name="result.prerequisiteArticleIds" content="computer-requirements-for-openshift-local" />
     <meta name="result.labelsString" content="free-course" />
+    <meta name="result.courseNum" content="21"/>
 {% endblock htmMetaPageLayout %}
 {% block htmBodyMiddleArticle %}
 {{ articleImage(result) }}
 
     <div class="wa-stack">
+
+      <wa-callout variant="brand" class="wa-stack ">
+        <wa-flank>
+          <i class="{{ FONTAWESOME_STYLE }} fa-circle-info fa-xl"></i>
+          <strong>Skills required</strong>
+        </wa-flank>
+        <div class="wa-stack ">
+          <p>
+            Here are a list of suggested skills you should have before starting this course. 
+          </p>
+          <ul>
+            <li>
+              Understanding why open source software
+            </li>
+            <li>
+              Command line tools
+            </li>
+          </ul>
+        </div>
+      </wa-callout>
 
       <wa-card>
         <div class="wa-stack ">

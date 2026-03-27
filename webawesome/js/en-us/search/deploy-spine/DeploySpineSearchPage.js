@@ -66,6 +66,28 @@ Promise.all([
     facetStatsChange('DeploySpine', 'description', false);
   });
 
+  document.querySelector('#pageSelectSortDeploySpine_authorName')?.addEventListener('change', (event) => {
+    sort('DeploySpine', 'authorName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeploySpine_authorName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeploySpine', 'authorName', true);
+  });
+  document.querySelector('#pageStatsDeploySpine_authorName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeploySpine', 'authorName', false);
+  });
+
+  document.querySelector('#pageSelectSortDeploySpine_authorUrl')?.addEventListener('change', (event) => {
+    sort('DeploySpine', 'authorUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeploySpine_authorUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeploySpine', 'authorUrl', true);
+  });
+  document.querySelector('#pageStatsDeploySpine_authorUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeploySpine', 'authorUrl', false);
+  });
+
   document.querySelector('#pageSelectSortDeploySpine_pageImageUri')?.addEventListener('change', (event) => {
     sort('DeploySpine', 'pageImageUri', event.currentTarget.value);
   });
@@ -275,6 +297,50 @@ Promise.all([
     facetStatsChange('DeploySpine', 'pageImageAlt', false);
   });
 
+  document.querySelector('#pageSelectSortDeploySpine_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+    sort('DeploySpine', 'prerequisiteArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeploySpine_prerequisiteArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeploySpine', 'prerequisiteArticleIds', true);
+  });
+  document.querySelector('#pageStatsDeploySpine_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeploySpine', 'prerequisiteArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortDeploySpine_nextArticleIds')?.addEventListener('change', (event) => {
+    sort('DeploySpine', 'nextArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeploySpine_nextArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeploySpine', 'nextArticleIds', true);
+  });
+  document.querySelector('#pageStatsDeploySpine_nextArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeploySpine', 'nextArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortDeploySpine_labelsString')?.addEventListener('change', (event) => {
+    sort('DeploySpine', 'labelsString', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeploySpine_labelsString')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeploySpine', 'labelsString', true);
+  });
+  document.querySelector('#pageStatsDeploySpine_labelsString')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeploySpine', 'labelsString', false);
+  });
+
+  document.querySelector('#pageSelectSortDeploySpine_labels')?.addEventListener('change', (event) => {
+    sort('DeploySpine', 'labels', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeploySpine_labels')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeploySpine', 'labels', true);
+  });
+  document.querySelector('#pageStatsDeploySpine_labels')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeploySpine', 'labels', false);
+  });
+
   document.querySelector('#pageSelectSortDeploySpine_relatedArticleIds')?.addEventListener('change', (event) => {
     sort('DeploySpine', 'relatedArticleIds', event.currentTarget.value);
   });
@@ -337,6 +403,42 @@ Promise.all([
             facetRangeStartChange('DeploySpine', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndDeploySpine_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#fqDeploySpine_authorName')?.addEventListener('change', (event) => {
+            fqChange('DeploySpine', event.currentTarget, facetChangeDeploySpineSuccess, facetChangeDeploySpineError);
+          });
+          document.querySelector('#buttonFacetDeploySpine_authorName')?.addEventListener('click', (event) => {
+            facetFieldChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotDeploySpine_authorName')?.addEventListener('change', (event) => {
+            facetPivotChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapDeploySpine_authorName')?.addEventListener('change', (event) => {
+            facetRangeGapChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartDeploySpine_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndDeploySpine_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#fqDeploySpine_authorUrl')?.addEventListener('change', (event) => {
+            fqChange('DeploySpine', event.currentTarget, facetChangeDeploySpineSuccess, facetChangeDeploySpineError);
+          });
+          document.querySelector('#buttonFacetDeploySpine_authorUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotDeploySpine_authorUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapDeploySpine_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartDeploySpine_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndDeploySpine_authorUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('DeploySpine', event.currentTarget);
           });
           document.querySelector('#fqDeploySpine_pageImageUri')?.addEventListener('change', (event) => {

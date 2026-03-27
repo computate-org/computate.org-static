@@ -169,6 +169,45 @@
           />
     </div>
 {%- endmacro %}
+{%- macro articleOpenShiftLocalPrerequisites(result) -%}
+<div class="wa-stack">
+      <h3 class="wa-heading-xl">Prerequisite Article</h3>
+      <wa-carousel navigation="" pagination="" slides-per-page="2" slides-per-move="2" style="--aspect-ratio: initial" role="region" aria-label="Carousel" slides="0" currentslide="0">
+        
+        <wa-carousel-item role="group" class="--in-view" aria-label="Slide 1" aria-hidden="false">
+          <a href="{{ SITE_BASE_URL }}/en-us/view/article/computer-requirements-for-smart-aquaculture-development" class="wa-link-plain">
+            <wa-card with-image="" appearance="outlined" orientation="vertical" with-media="">
+              <div class="wa-frame:landscape" slot="media" style="aspect-ratio: 1116 / 837; ">
+                <wa-frame>
+                  <img src="https://computate.neocities.org/smart-aquaculture-static/webawesome/png/smart-aquaculture-resources.png" alt="Computer requirements for Smart Aquaculture development">
+                </wa-frame>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-heading-m">Computer requirements for Smart Aquaculture development</span>
+              </div>
+            </wa-card>
+          </a>
+        </wa-carousel-item>
+        
+        <wa-carousel-item role="group" style="scroll-snap-align: none;" aria-label="Slide 2" class="--in-view" aria-hidden="false">
+          <a href="{{ SITE_BASE_URL }}/en-us/view/article/install-openshift-local-on-your-computer" class="wa-link-plain">
+            <wa-card with-image="" appearance="outlined" orientation="vertical" with-media="">
+              <div class="wa-frame:landscape" slot="media" style="aspect-ratio: 991 / 725; ">
+                <wa-frame>
+                  <img src="https://computate.neocities.org/smart-aquaculture-static/webawesome/png/openshift-local-console.png" alt="Install OpenShift Local on your own computer">
+                </wa-frame>
+              </div>
+              <div class="wa-stack wa-gap-xs">
+                <span class="wa-heading-m">Install OpenShift Local on your own computer</span>
+              </div>
+            </wa-card>
+          </a>
+        </wa-carousel-item>
+        
+      </wa-carousel>
+    </div>
+{%- endmacro %}
+
 {%- macro articleShare(result) -%}
     <div class="wa-stack wa-gap-2xl">
       <h3 class="wa-heading-xl">Don't forget to share this page!</h3>
