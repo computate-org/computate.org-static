@@ -103,16 +103,16 @@ async function websocketComputateDeveloperInner(apiRequest) {
         var inputLessonNum = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
-        var inputNextArticles = null;
-        var inputLabelsString = null;
-        var inputLabels = null;
-        var inputRelatedArticles = null;
         var inputPageImageType = null;
         var inputPageImageAlt = null;
         var inputPrerequisiteArticleIds = null;
         var inputPrerequisiteArticles = null;
         var inputNextArticleIds = null;
+        var inputNextArticles = null;
+        var inputLabelsString = null;
+        var inputLabels = null;
         var inputRelatedArticleIds = null;
+        var inputRelatedArticles = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.ComputateDeveloper_Page_created');
@@ -164,14 +164,6 @@ async function websocketComputateDeveloperInner(apiRequest) {
           inputPageImageWidth = $response.querySelector('.ComputateDeveloper_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
           inputPageImageHeight = $response.querySelector('.ComputateDeveloper_Page_pageImageHeight');
-        if(vars.includes('nextArticles'))
-          inputNextArticles = $response.querySelector('.ComputateDeveloper_Page_nextArticles');
-        if(vars.includes('labelsString'))
-          inputLabelsString = $response.querySelector('.ComputateDeveloper_Page_labelsString');
-        if(vars.includes('labels'))
-          inputLabels = $response.querySelector('.ComputateDeveloper_Page_labels');
-        if(vars.includes('relatedArticles'))
-          inputRelatedArticles = $response.querySelector('.ComputateDeveloper_Page_relatedArticles');
         if(vars.includes('pageImageType'))
           inputPageImageType = $response.querySelector('.ComputateDeveloper_Page_pageImageType');
         if(vars.includes('pageImageAlt'))
@@ -182,8 +174,16 @@ async function websocketComputateDeveloperInner(apiRequest) {
           inputPrerequisiteArticles = $response.querySelector('.ComputateDeveloper_Page_prerequisiteArticles');
         if(vars.includes('nextArticleIds'))
           inputNextArticleIds = $response.querySelector('.ComputateDeveloper_Page_nextArticleIds');
+        if(vars.includes('nextArticles'))
+          inputNextArticles = $response.querySelector('.ComputateDeveloper_Page_nextArticles');
+        if(vars.includes('labelsString'))
+          inputLabelsString = $response.querySelector('.ComputateDeveloper_Page_labelsString');
+        if(vars.includes('labels'))
+          inputLabels = $response.querySelector('.ComputateDeveloper_Page_labels');
         if(vars.includes('relatedArticleIds'))
           inputRelatedArticleIds = $response.querySelector('.ComputateDeveloper_Page_relatedArticleIds');
+        if(vars.includes('relatedArticles'))
+          inputRelatedArticles = $response.querySelector('.ComputateDeveloper_Page_relatedArticles');
 
         jsWebsocketComputateDeveloper(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -440,46 +440,6 @@ async function websocketComputateDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageHeight'));
         }
 
-        if(inputNextArticles) {
-          document.querySelectorAll('.ComputateDeveloper_Page_nextArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputNextArticles.getAttribute('value');
-            else
-              item.textContent = inputNextArticles.textContent;
-          });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_nextArticles'));
-        }
-
-        if(inputLabelsString) {
-          document.querySelectorAll('.ComputateDeveloper_Page_labelsString').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputLabelsString.getAttribute('value');
-            else
-              item.textContent = inputLabelsString.textContent;
-          });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_labelsString'));
-        }
-
-        if(inputLabels) {
-          document.querySelectorAll('.ComputateDeveloper_Page_labels').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputLabels.getAttribute('value');
-            else
-              item.textContent = inputLabels.textContent;
-          });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_labels'));
-        }
-
-        if(inputRelatedArticles) {
-          document.querySelectorAll('.ComputateDeveloper_Page_relatedArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputRelatedArticles.getAttribute('value');
-            else
-              item.textContent = inputRelatedArticles.textContent;
-          });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_relatedArticles'));
-        }
-
         if(inputPageImageType) {
           document.querySelectorAll('.ComputateDeveloper_Page_pageImageType').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -530,6 +490,36 @@ async function websocketComputateDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.ComputateDeveloper_Page_nextArticleIds'));
         }
 
+        if(inputNextArticles) {
+          document.querySelectorAll('.ComputateDeveloper_Page_nextArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticles.getAttribute('value');
+            else
+              item.textContent = inputNextArticles.textContent;
+          });
+          addGlow(document.querySelector('.ComputateDeveloper_Page_nextArticles'));
+        }
+
+        if(inputLabelsString) {
+          document.querySelectorAll('.ComputateDeveloper_Page_labelsString').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabelsString.getAttribute('value');
+            else
+              item.textContent = inputLabelsString.textContent;
+          });
+          addGlow(document.querySelector('.ComputateDeveloper_Page_labelsString'));
+        }
+
+        if(inputLabels) {
+          document.querySelectorAll('.ComputateDeveloper_Page_labels').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabels.getAttribute('value');
+            else
+              item.textContent = inputLabels.textContent;
+          });
+          addGlow(document.querySelector('.ComputateDeveloper_Page_labels'));
+        }
+
         if(inputRelatedArticleIds) {
           document.querySelectorAll('.ComputateDeveloper_Page_relatedArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -538,6 +528,16 @@ async function websocketComputateDeveloperInner(apiRequest) {
               item.textContent = inputRelatedArticleIds.textContent;
           });
           addGlow(document.querySelector('.ComputateDeveloper_Page_relatedArticleIds'));
+        }
+
+        if(inputRelatedArticles) {
+          document.querySelectorAll('.ComputateDeveloper_Page_relatedArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticles.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticles.textContent;
+          });
+          addGlow(document.querySelector('.ComputateDeveloper_Page_relatedArticles'));
         }
 
           pageGraphComputateDeveloper();
@@ -791,14 +791,6 @@ function searchComputateDeveloperFilters($formFilters) {
     if(filterPageImageHeight != null && filterPageImageHeight !== '')
       filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
 
-    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
-    if(filterLabelsString != null && filterLabelsString !== '')
-      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
-
     var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
@@ -814,6 +806,14 @@ function searchComputateDeveloperFilters($formFilters) {
     var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
     if(filterNextArticleIds != null && filterNextArticleIds !== '')
       filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
+    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
+    if(filterLabelsString != null && filterLabelsString !== '')
+      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1099,30 +1099,6 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   if(removeLessonNum != null && removeLessonNum !== '')
     vals['removeLessonNum'] = removeLessonNum;
 
-  var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
-  var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
-  var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
-  var addLabelsString = $formValues.querySelector('.addLabelsString')?.value;
-  if(removeLabelsString || setLabelsString != null && setLabelsString !== '')
-    vals['setLabelsString'] = setLabelsString;
-  if(addLabelsString != null && addLabelsString !== '')
-    vals['addLabelsString'] = addLabelsString;
-  var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value;
-  if(removeLabelsString != null && removeLabelsString !== '')
-    vals['removeLabelsString'] = removeLabelsString;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
-  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
-  var addLabels = $formValues.querySelector('.addLabels')?.value;
-  if(removeLabels || setLabels != null && setLabels !== '')
-    vals['setLabels'] = JSON.parse(setLabels);
-  if(addLabels != null && addLabels !== '')
-    vals['addLabels'] = addLabels;
-  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
-  if(removeLabels != null && removeLabels !== '')
-    vals['removeLabels'] = removeLabels;
-
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
   var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
@@ -1158,6 +1134,30 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value;
   if(removeNextArticleIds != null && removeNextArticleIds !== '')
     vals['removeNextArticleIds'] = removeNextArticleIds;
+
+  var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
+  var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
+  var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
+  var addLabelsString = $formValues.querySelector('.addLabelsString')?.value;
+  if(removeLabelsString || setLabelsString != null && setLabelsString !== '')
+    vals['setLabelsString'] = setLabelsString;
+  if(addLabelsString != null && addLabelsString !== '')
+    vals['addLabelsString'] = addLabelsString;
+  var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value;
+  if(removeLabelsString != null && removeLabelsString !== '')
+    vals['removeLabelsString'] = removeLabelsString;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
+  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
+  var addLabels = $formValues.querySelector('.addLabels')?.value;
+  if(removeLabels || setLabels != null && setLabels !== '')
+    vals['setLabels'] = JSON.parse(setLabels);
+  if(addLabels != null && addLabels !== '')
+    vals['addLabels'] = addLabels;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
+  if(removeLabels != null && removeLabels !== '')
+    vals['removeLabels'] = removeLabels;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
@@ -1285,14 +1285,6 @@ function patchComputateDeveloperFilters($formFilters) {
     if(filterPageImageHeight != null && filterPageImageHeight !== '')
       filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
 
-    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
-    if(filterLabelsString != null && filterLabelsString !== '')
-      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
-
     var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
@@ -1308,6 +1300,14 @@ function patchComputateDeveloperFilters($formFilters) {
     var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
     if(filterNextArticleIds != null && filterNextArticleIds !== '')
       filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
+    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
+    if(filterLabelsString != null && filterLabelsString !== '')
+      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1443,14 +1443,6 @@ async function postComputateDeveloper($formValues, target, success, error) {
   if(valueLessonNum != null && valueLessonNum !== '')
     vals['lessonNum'] = valueLessonNum;
 
-  var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
-  if(valueLabelsString != null && valueLabelsString !== '')
-    vals['labelsString'] = valueLabelsString;
-
-  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
-  if(valueLabels != null && valueLabels !== '')
-    vals['labels'] = JSON.parse(valueLabels);
-
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
     vals['pageImageAlt'] = valuePageImageAlt;
@@ -1462,6 +1454,14 @@ async function postComputateDeveloper($formValues, target, success, error) {
   var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
   if(valueNextArticleIds != null && valueNextArticleIds !== '')
     vals['nextArticleIds'] = valueNextArticleIds;
+
+  var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
+  if(valueLabelsString != null && valueLabelsString !== '')
+    vals['labelsString'] = valueLabelsString;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  if(valueLabels != null && valueLabels !== '')
+    vals['labels'] = JSON.parse(valueLabels);
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   if(valueRelatedArticleIds != null && valueRelatedArticleIds !== '')

@@ -187,6 +187,7 @@
               <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}/svg/logo-{{ userSiteTheme | default(SITE_THEME) }}.svg"/>
             </a>
           </div>
+          OTHER_LANGUAGES: ["frFR"]
           <wa-tooltip for="site-language-enUS">View the {{ SITE_DISPLAY_NAME | e }} site in the English language</wa-tooltip>
           <wa-tooltip for="site-language-frFR">Voir le site {{ SITE_DISPLAY_NAME | e }} dans la langue français</wa-tooltip>
           <div class="display-flex-center wa-cluster wa-gap-0 ">
@@ -291,24 +292,28 @@
             <div>
               <wa-details summary="menu" open="true">
                 <div class="wa-stack ">
-                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SwitchToLinux" href="{{ SITE_BASE_URL }}">
-                    <i slot="start" class="fa-brands fa-linux"></i>
-                    Switch to Linux
-                  </wa-button>
-                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-DeploySpine" href="{{ SITE_BASE_URL }}">
-                    <i slot="start" class="fa-kit fa-openshift"></i>
-                    Deploy SPINE apps to OpenShift Local
-                  </wa-button>
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-LearnSkills" href="{{ SITE_BASE_URL }}">
                     <i slot="start" class="fa-kit fa-computate-c-key"></i>
                     Learn cloud developer skills
+                  </wa-button>
+                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-DeploySpine" href="{{ SITE_BASE_URL }}">
+                    <i slot="start" class="fa-kit fa-openshift"></i>
+                    Deploy apps to OpenShift Local
+                  </wa-button>
+                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SwitchToLinux" href="{{ SITE_BASE_URL }}">
+                    <i slot="start" class="fa-brands fa-linux"></i>
+                    Switch to Linux
                   </wa-button>
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SpineProgramming" href="{{ SITE_BASE_URL }}">
                     <i slot="start" class="fa-kit fa-spine"></i>
                     SPINE Programming Theory
                   </wa-button>
+                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}">
+                    <i slot="start" class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                    solutions
+                  </wa-button>
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-DeveloperComputerMinion" href="{{ SITE_BASE_URL }}">
-                    <i slot="start" class="fa-duotone fa-regular fa-fish"></i>
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-computer"></i>
                     Developer Computer Management
                   </wa-button>
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SmartAquacultureDeveloper" href="{{ SITE_BASE_URL }}">
@@ -322,10 +327,6 @@
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-ComputateDeveloper" href="{{ SITE_BASE_URL }}">
                     <i slot="start" class="fa-kit fa-computate-c-key"></i>
                     Computate Developers
-                  </wa-button>
-                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}">
-                    <i slot="start" class="fa-duotone fa-regular fa-conveyor-belt"></i>
-                    solutions
                   </wa-button>
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyAbout" href="{{ SITE_BASE_URL }}">
                     <i slot="start" class="fa-duotone fa-regular fa-address-card"></i>

@@ -2,7 +2,7 @@
 
 {%- block htmTitlePageLayout %}
 {%- block htmTitleDeploySpinePage %}
-    <title>{% if resultCount == 0 %}no Deploy SPINE apps to OpenShift Local found{% else %}Deploy SPINE apps to OpenShift Local{% endif %}</title>
+    <title>{% if resultCount == 0 %}no Deploy SPINE apps to OpenShift Local found{% else %}Deploy apps to OpenShift Local{% endif %}</title>
 {%- endblock htmTitleDeploySpinePage %}
 {%- endblock htmTitlePageLayout %}
 
@@ -258,14 +258,14 @@
 {%- block htmUrlDeploySpinePage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlDeploySpinePage %}
 {%- if pageBreadcrumb is not defined %}
 {%- set pageBreadcrumb %}
-              <wa-tooltip for="return-to-DeploySpine">back to all Deploy SPINE apps to OpenShift Local</wa-tooltip>
+              <wa-tooltip for="return-to-DeploySpine">back to all Deploy apps to OpenShift Local</wa-tooltip>
               <wa-breadcrumb>
                 <wa-breadcrumb-item id="return-to-DeploySpine" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
                   <i class="fa-kit fa-openshift"></i>
-                  all Deploy SPINE apps to OpenShift Local
+                  all Deploy apps to OpenShift Local
                 </wa-breadcrumb-item>
                 <wa-breadcrumb-item>
-                  search Deploy SPINE apps to OpenShift Local
+                  search Deploy apps to OpenShift Local
                 </wa-breadcrumb-item>
               </wa-breadcrumb>
 {%- endset pageBreadcrumb %}
@@ -277,11 +277,11 @@
 {% include en-us/search/deploy-spine/DeploySpineSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
-          <wa-tooltip for="return-to-DeploySpine">back to all Deploy SPINE apps to OpenShift Local</wa-tooltip></wa-tooltip>
+          <wa-tooltip for="return-to-DeploySpine">back to all Deploy apps to OpenShift Local</wa-tooltip></wa-tooltip>
           <wa-breadcrumb>
             <wa-breadcrumb-item id="return-to-DeploySpine" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
               <i class="fa-kit fa-openshift"></i>
-              all Deploy SPINE apps to OpenShift Local
+              all Deploy apps to OpenShift Local
             </wa-breadcrumb-item>
             <wa-breadcrumb-item>
               no Deploy SPINE apps to OpenShift Local found

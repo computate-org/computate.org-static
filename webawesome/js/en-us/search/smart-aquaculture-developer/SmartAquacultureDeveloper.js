@@ -99,20 +99,20 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
         var inputObjectSuggest = null;
         var inputObjectText = null;
         var inputSolrId = null;
-        var inputCourseNum = null;
-        var inputLessonNum = null;
-        var inputPageImageWidth = null;
-        var inputPageImageHeight = null;
-        var inputPageImageType = null;
-        var inputPageImageAlt = null;
-        var inputPrerequisiteArticleIds = null;
-        var inputPrerequisiteArticles = null;
         var inputNextArticleIds = null;
         var inputNextArticles = null;
         var inputLabelsString = null;
-        var inputLabels = null;
-        var inputRelatedArticleIds = null;
         var inputRelatedArticles = null;
+        var inputPageImageHeight = null;
+        var inputPageImageAlt = null;
+        var inputPrerequisiteArticles = null;
+        var inputLabels = null;
+        var inputCourseNum = null;
+        var inputLessonNum = null;
+        var inputPageImageWidth = null;
+        var inputPageImageType = null;
+        var inputPrerequisiteArticleIds = null;
+        var inputRelatedArticleIds = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.SmartAquacultureDeveloper_Page_created');
@@ -156,34 +156,34 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
           inputObjectText = $response.querySelector('.SmartAquacultureDeveloper_Page_objectText');
         if(vars.includes('solrId'))
           inputSolrId = $response.querySelector('.SmartAquacultureDeveloper_Page_solrId');
-        if(vars.includes('courseNum'))
-          inputCourseNum = $response.querySelector('.SmartAquacultureDeveloper_Page_courseNum');
-        if(vars.includes('lessonNum'))
-          inputLessonNum = $response.querySelector('.SmartAquacultureDeveloper_Page_lessonNum');
-        if(vars.includes('pageImageWidth'))
-          inputPageImageWidth = $response.querySelector('.SmartAquacultureDeveloper_Page_pageImageWidth');
-        if(vars.includes('pageImageHeight'))
-          inputPageImageHeight = $response.querySelector('.SmartAquacultureDeveloper_Page_pageImageHeight');
-        if(vars.includes('pageImageType'))
-          inputPageImageType = $response.querySelector('.SmartAquacultureDeveloper_Page_pageImageType');
-        if(vars.includes('pageImageAlt'))
-          inputPageImageAlt = $response.querySelector('.SmartAquacultureDeveloper_Page_pageImageAlt');
-        if(vars.includes('prerequisiteArticleIds'))
-          inputPrerequisiteArticleIds = $response.querySelector('.SmartAquacultureDeveloper_Page_prerequisiteArticleIds');
-        if(vars.includes('prerequisiteArticles'))
-          inputPrerequisiteArticles = $response.querySelector('.SmartAquacultureDeveloper_Page_prerequisiteArticles');
         if(vars.includes('nextArticleIds'))
           inputNextArticleIds = $response.querySelector('.SmartAquacultureDeveloper_Page_nextArticleIds');
         if(vars.includes('nextArticles'))
           inputNextArticles = $response.querySelector('.SmartAquacultureDeveloper_Page_nextArticles');
         if(vars.includes('labelsString'))
           inputLabelsString = $response.querySelector('.SmartAquacultureDeveloper_Page_labelsString');
-        if(vars.includes('labels'))
-          inputLabels = $response.querySelector('.SmartAquacultureDeveloper_Page_labels');
-        if(vars.includes('relatedArticleIds'))
-          inputRelatedArticleIds = $response.querySelector('.SmartAquacultureDeveloper_Page_relatedArticleIds');
         if(vars.includes('relatedArticles'))
           inputRelatedArticles = $response.querySelector('.SmartAquacultureDeveloper_Page_relatedArticles');
+        if(vars.includes('pageImageHeight'))
+          inputPageImageHeight = $response.querySelector('.SmartAquacultureDeveloper_Page_pageImageHeight');
+        if(vars.includes('pageImageAlt'))
+          inputPageImageAlt = $response.querySelector('.SmartAquacultureDeveloper_Page_pageImageAlt');
+        if(vars.includes('prerequisiteArticles'))
+          inputPrerequisiteArticles = $response.querySelector('.SmartAquacultureDeveloper_Page_prerequisiteArticles');
+        if(vars.includes('labels'))
+          inputLabels = $response.querySelector('.SmartAquacultureDeveloper_Page_labels');
+        if(vars.includes('courseNum'))
+          inputCourseNum = $response.querySelector('.SmartAquacultureDeveloper_Page_courseNum');
+        if(vars.includes('lessonNum'))
+          inputLessonNum = $response.querySelector('.SmartAquacultureDeveloper_Page_lessonNum');
+        if(vars.includes('pageImageWidth'))
+          inputPageImageWidth = $response.querySelector('.SmartAquacultureDeveloper_Page_pageImageWidth');
+        if(vars.includes('pageImageType'))
+          inputPageImageType = $response.querySelector('.SmartAquacultureDeveloper_Page_pageImageType');
+        if(vars.includes('prerequisiteArticleIds'))
+          inputPrerequisiteArticleIds = $response.querySelector('.SmartAquacultureDeveloper_Page_prerequisiteArticleIds');
+        if(vars.includes('relatedArticleIds'))
+          inputRelatedArticleIds = $response.querySelector('.SmartAquacultureDeveloper_Page_relatedArticleIds');
 
         jsWebsocketSmartAquacultureDeveloper(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -400,86 +400,6 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_solrId'));
         }
 
-        if(inputCourseNum) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_courseNum').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputCourseNum.getAttribute('value');
-            else
-              item.textContent = inputCourseNum.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_courseNum'));
-        }
-
-        if(inputLessonNum) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_lessonNum').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputLessonNum.getAttribute('value');
-            else
-              item.textContent = inputLessonNum.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_lessonNum'));
-        }
-
-        if(inputPageImageWidth) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_pageImageWidth').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPageImageWidth.getAttribute('value');
-            else
-              item.textContent = inputPageImageWidth.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_pageImageWidth'));
-        }
-
-        if(inputPageImageHeight) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_pageImageHeight').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPageImageHeight.getAttribute('value');
-            else
-              item.textContent = inputPageImageHeight.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_pageImageHeight'));
-        }
-
-        if(inputPageImageType) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_pageImageType').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPageImageType.getAttribute('value');
-            else
-              item.textContent = inputPageImageType.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_pageImageType'));
-        }
-
-        if(inputPageImageAlt) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_pageImageAlt').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPageImageAlt.getAttribute('value');
-            else
-              item.textContent = inputPageImageAlt.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_pageImageAlt'));
-        }
-
-        if(inputPrerequisiteArticleIds) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_prerequisiteArticleIds').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPrerequisiteArticleIds.getAttribute('value');
-            else
-              item.textContent = inputPrerequisiteArticleIds.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_prerequisiteArticleIds'));
-        }
-
-        if(inputPrerequisiteArticles) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_prerequisiteArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPrerequisiteArticles.getAttribute('value');
-            else
-              item.textContent = inputPrerequisiteArticles.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_prerequisiteArticles'));
-        }
-
         if(inputNextArticleIds) {
           document.querySelectorAll('.SmartAquacultureDeveloper_Page_nextArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -510,6 +430,46 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_labelsString'));
         }
 
+        if(inputRelatedArticles) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_relatedArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticles.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticles.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_relatedArticles'));
+        }
+
+        if(inputPageImageHeight) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_pageImageHeight').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageHeight.getAttribute('value');
+            else
+              item.textContent = inputPageImageHeight.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_pageImageHeight'));
+        }
+
+        if(inputPageImageAlt) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_pageImageAlt').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageAlt.getAttribute('value');
+            else
+              item.textContent = inputPageImageAlt.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_pageImageAlt'));
+        }
+
+        if(inputPrerequisiteArticles) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_prerequisiteArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticles.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticles.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_prerequisiteArticles'));
+        }
+
         if(inputLabels) {
           document.querySelectorAll('.SmartAquacultureDeveloper_Page_labels').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -520,6 +480,56 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_labels'));
         }
 
+        if(inputCourseNum) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_courseNum').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCourseNum.getAttribute('value');
+            else
+              item.textContent = inputCourseNum.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_courseNum'));
+        }
+
+        if(inputLessonNum) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_lessonNum').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLessonNum.getAttribute('value');
+            else
+              item.textContent = inputLessonNum.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_lessonNum'));
+        }
+
+        if(inputPageImageWidth) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_pageImageWidth').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageWidth.getAttribute('value');
+            else
+              item.textContent = inputPageImageWidth.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_pageImageWidth'));
+        }
+
+        if(inputPageImageType) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_pageImageType').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageType.getAttribute('value');
+            else
+              item.textContent = inputPageImageType.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_pageImageType'));
+        }
+
+        if(inputPrerequisiteArticleIds) {
+          document.querySelectorAll('.SmartAquacultureDeveloper_Page_prerequisiteArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticleIds.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_prerequisiteArticleIds'));
+        }
+
         if(inputRelatedArticleIds) {
           document.querySelectorAll('.SmartAquacultureDeveloper_Page_relatedArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -528,16 +538,6 @@ async function websocketSmartAquacultureDeveloperInner(apiRequest) {
               item.textContent = inputRelatedArticleIds.textContent;
           });
           addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_relatedArticleIds'));
-        }
-
-        if(inputRelatedArticles) {
-          document.querySelectorAll('.SmartAquacultureDeveloper_Page_relatedArticles').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputRelatedArticles.getAttribute('value');
-            else
-              item.textContent = inputRelatedArticles.textContent;
-          });
-          addGlow(document.querySelector('.SmartAquacultureDeveloper_Page_relatedArticles'));
         }
 
           pageGraphSmartAquacultureDeveloper();
@@ -775,6 +775,26 @@ function searchSmartAquacultureDeveloperFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
+    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
+    if(filterLabelsString != null && filterLabelsString !== '')
+      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
+    if(filterPageImageHeight != null && filterPageImageHeight !== '')
+      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
+
+    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
+    if(filterPageImageAlt != null && filterPageImageAlt !== '')
+      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
@@ -787,33 +807,13 @@ function searchSmartAquacultureDeveloperFilters($formFilters) {
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
 
-    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
-    if(filterPageImageHeight != null && filterPageImageHeight !== '')
-      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
-
     var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
-    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
-    if(filterPageImageAlt != null && filterPageImageAlt !== '')
-      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
-
     var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
     if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
       filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
-
-    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
-    if(filterNextArticleIds != null && filterNextArticleIds !== '')
-      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
-
-    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
-    if(filterLabelsString != null && filterLabelsString !== '')
-      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1075,54 +1075,6 @@ async function patchSmartAquacultureDeveloper($formFilters, $formValues, target,
   if(removeSolrId != null && removeSolrId !== '')
     vals['removeSolrId'] = removeSolrId;
 
-  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
-  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
-  var setCourseNum = removeCourseNum ? null : $formValues.querySelector('.setCourseNum')?.value;
-  var addCourseNum = $formValues.querySelector('.addCourseNum')?.value;
-  if(removeCourseNum || setCourseNum != null && setCourseNum !== '')
-    vals['setCourseNum'] = setCourseNum;
-  if(addCourseNum != null && addCourseNum !== '')
-    vals['addCourseNum'] = addCourseNum;
-  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value;
-  if(removeCourseNum != null && removeCourseNum !== '')
-    vals['removeCourseNum'] = removeCourseNum;
-
-  var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
-  var removeLessonNum = $formValues.querySelector('.removeLessonNum')?.value === 'true';
-  var setLessonNum = removeLessonNum ? null : $formValues.querySelector('.setLessonNum')?.value;
-  var addLessonNum = $formValues.querySelector('.addLessonNum')?.value;
-  if(removeLessonNum || setLessonNum != null && setLessonNum !== '')
-    vals['setLessonNum'] = setLessonNum;
-  if(addLessonNum != null && addLessonNum !== '')
-    vals['addLessonNum'] = addLessonNum;
-  var removeLessonNum = $formValues.querySelector('.removeLessonNum')?.value;
-  if(removeLessonNum != null && removeLessonNum !== '')
-    vals['removeLessonNum'] = removeLessonNum;
-
-  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
-  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
-  var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
-  var addPageImageAlt = $formValues.querySelector('.addPageImageAlt')?.value;
-  if(removePageImageAlt || setPageImageAlt != null && setPageImageAlt !== '')
-    vals['setPageImageAlt'] = setPageImageAlt;
-  if(addPageImageAlt != null && addPageImageAlt !== '')
-    vals['addPageImageAlt'] = addPageImageAlt;
-  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
-  if(removePageImageAlt != null && removePageImageAlt !== '')
-    vals['removePageImageAlt'] = removePageImageAlt;
-
-  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
-  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value === 'true';
-  var setPrerequisiteArticleIds = removePrerequisiteArticleIds ? null : $formValues.querySelector('.setPrerequisiteArticleIds')?.value;
-  var addPrerequisiteArticleIds = $formValues.querySelector('.addPrerequisiteArticleIds')?.value;
-  if(removePrerequisiteArticleIds || setPrerequisiteArticleIds != null && setPrerequisiteArticleIds !== '')
-    vals['setPrerequisiteArticleIds'] = setPrerequisiteArticleIds;
-  if(addPrerequisiteArticleIds != null && addPrerequisiteArticleIds !== '')
-    vals['addPrerequisiteArticleIds'] = addPrerequisiteArticleIds;
-  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value;
-  if(removePrerequisiteArticleIds != null && removePrerequisiteArticleIds !== '')
-    vals['removePrerequisiteArticleIds'] = removePrerequisiteArticleIds;
-
   var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
   var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value === 'true';
   var setNextArticleIds = removeNextArticleIds ? null : $formValues.querySelector('.setNextArticleIds')?.value;
@@ -1147,6 +1099,18 @@ async function patchSmartAquacultureDeveloper($formFilters, $formValues, target,
   if(removeLabelsString != null && removeLabelsString !== '')
     vals['removeLabelsString'] = removeLabelsString;
 
+  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
+  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
+  var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
+  var addPageImageAlt = $formValues.querySelector('.addPageImageAlt')?.value;
+  if(removePageImageAlt || setPageImageAlt != null && setPageImageAlt !== '')
+    vals['setPageImageAlt'] = setPageImageAlt;
+  if(addPageImageAlt != null && addPageImageAlt !== '')
+    vals['addPageImageAlt'] = addPageImageAlt;
+  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
+  if(removePageImageAlt != null && removePageImageAlt !== '')
+    vals['removePageImageAlt'] = removePageImageAlt;
+
   var valueLabels = $formValues.querySelector('.valueLabels')?.value;
   var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
   var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
@@ -1158,6 +1122,42 @@ async function patchSmartAquacultureDeveloper($formFilters, $formValues, target,
   var removeLabels = $formValues.querySelector('.removeLabels')?.value;
   if(removeLabels != null && removeLabels !== '')
     vals['removeLabels'] = removeLabels;
+
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
+  var setCourseNum = removeCourseNum ? null : $formValues.querySelector('.setCourseNum')?.value;
+  var addCourseNum = $formValues.querySelector('.addCourseNum')?.value;
+  if(removeCourseNum || setCourseNum != null && setCourseNum !== '')
+    vals['setCourseNum'] = setCourseNum;
+  if(addCourseNum != null && addCourseNum !== '')
+    vals['addCourseNum'] = addCourseNum;
+  var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value;
+  if(removeCourseNum != null && removeCourseNum !== '')
+    vals['removeCourseNum'] = removeCourseNum;
+
+  var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
+  var removeLessonNum = $formValues.querySelector('.removeLessonNum')?.value === 'true';
+  var setLessonNum = removeLessonNum ? null : $formValues.querySelector('.setLessonNum')?.value;
+  var addLessonNum = $formValues.querySelector('.addLessonNum')?.value;
+  if(removeLessonNum || setLessonNum != null && setLessonNum !== '')
+    vals['setLessonNum'] = setLessonNum;
+  if(addLessonNum != null && addLessonNum !== '')
+    vals['addLessonNum'] = addLessonNum;
+  var removeLessonNum = $formValues.querySelector('.removeLessonNum')?.value;
+  if(removeLessonNum != null && removeLessonNum !== '')
+    vals['removeLessonNum'] = removeLessonNum;
+
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value === 'true';
+  var setPrerequisiteArticleIds = removePrerequisiteArticleIds ? null : $formValues.querySelector('.setPrerequisiteArticleIds')?.value;
+  var addPrerequisiteArticleIds = $formValues.querySelector('.addPrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds || setPrerequisiteArticleIds != null && setPrerequisiteArticleIds !== '')
+    vals['setPrerequisiteArticleIds'] = setPrerequisiteArticleIds;
+  if(addPrerequisiteArticleIds != null && addPrerequisiteArticleIds !== '')
+    vals['addPrerequisiteArticleIds'] = addPrerequisiteArticleIds;
+  var removePrerequisiteArticleIds = $formValues.querySelector('.removePrerequisiteArticleIds')?.value;
+  if(removePrerequisiteArticleIds != null && removePrerequisiteArticleIds !== '')
+    vals['removePrerequisiteArticleIds'] = removePrerequisiteArticleIds;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
@@ -1269,6 +1269,26 @@ function patchSmartAquacultureDeveloperFilters($formFilters) {
     if(filterSolrId != null && filterSolrId !== '')
       filters.push({ name: 'fq', value: 'solrId:' + filterSolrId });
 
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
+
+    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
+    if(filterLabelsString != null && filterLabelsString !== '')
+      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
+    if(filterPageImageHeight != null && filterPageImageHeight !== '')
+      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
+
+    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
+    if(filterPageImageAlt != null && filterPageImageAlt !== '')
+      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
@@ -1281,33 +1301,13 @@ function patchSmartAquacultureDeveloperFilters($formFilters) {
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
 
-    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
-    if(filterPageImageHeight != null && filterPageImageHeight !== '')
-      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
-
     var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
     if(filterPageImageType != null && filterPageImageType !== '')
       filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
-    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
-    if(filterPageImageAlt != null && filterPageImageAlt !== '')
-      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
-
     var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
     if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
       filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
-
-    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
-    if(filterNextArticleIds != null && filterNextArticleIds !== '')
-      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
-
-    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
-    if(filterLabelsString != null && filterLabelsString !== '')
-      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
-
-    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
-    if(filterLabels != null && filterLabels !== '')
-      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1435,22 +1435,6 @@ async function postSmartAquacultureDeveloper($formValues, target, success, error
   if(valueSolrId != null && valueSolrId !== '')
     vals['solrId'] = valueSolrId;
 
-  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
-  if(valueCourseNum != null && valueCourseNum !== '')
-    vals['courseNum'] = valueCourseNum;
-
-  var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
-  if(valueLessonNum != null && valueLessonNum !== '')
-    vals['lessonNum'] = valueLessonNum;
-
-  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
-  if(valuePageImageAlt != null && valuePageImageAlt !== '')
-    vals['pageImageAlt'] = valuePageImageAlt;
-
-  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
-  if(valuePrerequisiteArticleIds != null && valuePrerequisiteArticleIds !== '')
-    vals['prerequisiteArticleIds'] = valuePrerequisiteArticleIds;
-
   var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
   if(valueNextArticleIds != null && valueNextArticleIds !== '')
     vals['nextArticleIds'] = valueNextArticleIds;
@@ -1459,9 +1443,25 @@ async function postSmartAquacultureDeveloper($formValues, target, success, error
   if(valueLabelsString != null && valueLabelsString !== '')
     vals['labelsString'] = valueLabelsString;
 
+  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
+  if(valuePageImageAlt != null && valuePageImageAlt !== '')
+    vals['pageImageAlt'] = valuePageImageAlt;
+
   var valueLabels = $formValues.querySelector('.valueLabels')?.value;
   if(valueLabels != null && valueLabels !== '')
     vals['labels'] = JSON.parse(valueLabels);
+
+  var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
+  if(valueCourseNum != null && valueCourseNum !== '')
+    vals['courseNum'] = valueCourseNum;
+
+  var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
+  if(valueLessonNum != null && valueLessonNum !== '')
+    vals['lessonNum'] = valueLessonNum;
+
+  var valuePrerequisiteArticleIds = $formValues.querySelector('.valuePrerequisiteArticleIds')?.value;
+  if(valuePrerequisiteArticleIds != null && valuePrerequisiteArticleIds !== '')
+    vals['prerequisiteArticleIds'] = valuePrerequisiteArticleIds;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   if(valueRelatedArticleIds != null && valueRelatedArticleIds !== '')

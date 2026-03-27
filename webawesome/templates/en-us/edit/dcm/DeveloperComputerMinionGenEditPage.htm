@@ -272,7 +272,7 @@
               <wa-tooltip for="return-to-DeveloperComputerMinion">back to all Developer Computer Management</wa-tooltip>
               <wa-breadcrumb>
                 <wa-breadcrumb-item id="return-to-DeveloperComputerMinion" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-                  <i class="fa-duotone fa-regular fa-fish"></i>
+                  <i class="{{ FONTAWESOME_STYLE }} fa-computer"></i>
                   all Developer Computer Management
                 </wa-breadcrumb-item>
                 <wa-breadcrumb-item>
@@ -287,7 +287,7 @@
 {%- block htmBodyStartDeveloperComputerMinionPage %}
 {% if resultCount > 0 %}
           <div class="wa-flank ">
-            <h1 class="Page_objectTitle"><i class="fa-duotone fa-regular fa-fish"></i> {{ result.objectTitle | e }}</h1>
+            <h1 class="Page_objectTitle"><i class="{{ FONTAWESOME_STYLE }} fa-computer"></i> {{ result.objectTitle | e }}</h1>
           </div>
 {% endif %}
 {% include en-us/search/dcm/DeveloperComputerMinionSearchForm.htm %}
@@ -303,7 +303,7 @@
           <wa-tooltip for="return-to-DeveloperComputerMinion">back to all Developer Computer Management</wa-tooltip></wa-tooltip>
           <wa-breadcrumb>
             <wa-breadcrumb-item id="return-to-DeveloperComputerMinion" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="fa-duotone fa-regular fa-fish"></i>
+              <i class="{{ FONTAWESOME_STYLE }} fa-computer"></i>
               all Developer Computer Management
             </wa-breadcrumb-item>
             <wa-breadcrumb-item>
@@ -312,7 +312,7 @@
           </wa-breadcrumb>
           <div class="wa-stack wa-align-items-center ">
             <div class="wa-heading-3xl ">
-              <i class="fa-duotone fa-regular fa-fish"></i>
+              <i class="{{ FONTAWESOME_STYLE }} fa-computer"></i>
             </div>
             <span class="wa-heading-m ">no Developer Computer Management found</span>
             <p class="wa-caption-l ">Learn how to use to compile and run fun open source games and useful Linux software on your own Linux computer with self-healing, event-driven automation. </p>

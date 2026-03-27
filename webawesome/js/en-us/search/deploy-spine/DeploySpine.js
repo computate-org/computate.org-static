@@ -28,7 +28,7 @@ async function websocketDeploySpine(success) {
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify Deploy SPINE apps to OpenShift Local in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify Deploy apps to OpenShift Local in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
       $x.setAttribute('onclick', 'document.querySelector("#card-' + pageId + '");');
@@ -448,7 +448,7 @@ function pageGraphDeploySpine(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'Deploy SPINE apps to OpenShift Local';
+          layout['title'] = 'Deploy apps to OpenShift Local';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }

@@ -253,28 +253,6 @@ Promise.all([
     facetStatsChange('DeveloperComputerMinion', 'courseNum', false);
   });
 
-  document.querySelector('#pageSelectSortDeveloperComputerMinion_lessonNum')?.addEventListener('change', (event) => {
-    sort('DeveloperComputerMinion', 'lessonNum', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsDeveloperComputerMinion_lessonNum')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('DeveloperComputerMinion', 'lessonNum', true);
-  });
-  document.querySelector('#pageStatsDeveloperComputerMinion_lessonNum')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('DeveloperComputerMinion', 'lessonNum', false);
-  });
-
-  document.querySelector('#pageSelectSortDeveloperComputerMinion_pageImageWidth')?.addEventListener('change', (event) => {
-    sort('DeveloperComputerMinion', 'pageImageWidth', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsDeveloperComputerMinion_pageImageWidth')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('DeveloperComputerMinion', 'pageImageWidth', true);
-  });
-  document.querySelector('#pageStatsDeveloperComputerMinion_pageImageWidth')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('DeveloperComputerMinion', 'pageImageWidth', false);
-  });
-
   document.querySelector('#pageSelectSortDeveloperComputerMinion_pageImageHeight')?.addEventListener('change', (event) => {
     sort('DeveloperComputerMinion', 'pageImageHeight', event.currentTarget.value);
   });
@@ -295,17 +273,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsDeveloperComputerMinion_pageImageType')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('DeveloperComputerMinion', 'pageImageType', false);
-  });
-
-  document.querySelector('#pageSelectSortDeveloperComputerMinion_pageImageAlt')?.addEventListener('change', (event) => {
-    sort('DeveloperComputerMinion', 'pageImageAlt', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsDeveloperComputerMinion_pageImageAlt')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('DeveloperComputerMinion', 'pageImageAlt', true);
-  });
-  document.querySelector('#pageStatsDeveloperComputerMinion_pageImageAlt')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('DeveloperComputerMinion', 'pageImageAlt', false);
   });
 
   document.querySelector('#pageSelectSortDeveloperComputerMinion_prerequisiteArticleIds')?.addEventListener('change', (event) => {
@@ -330,17 +297,6 @@ Promise.all([
     facetStatsChange('DeveloperComputerMinion', 'nextArticleIds', false);
   });
 
-  document.querySelector('#pageSelectSortDeveloperComputerMinion_labelsString')?.addEventListener('change', (event) => {
-    sort('DeveloperComputerMinion', 'labelsString', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsDeveloperComputerMinion_labelsString')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('DeveloperComputerMinion', 'labelsString', true);
-  });
-  document.querySelector('#pageStatsDeveloperComputerMinion_labelsString')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('DeveloperComputerMinion', 'labelsString', false);
-  });
-
   document.querySelector('#pageSelectSortDeveloperComputerMinion_labels')?.addEventListener('change', (event) => {
     sort('DeveloperComputerMinion', 'labels', event.currentTarget.value);
   });
@@ -361,6 +317,50 @@ Promise.all([
   });
   document.querySelector('#pageStatsDeveloperComputerMinion_relatedArticleIds')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('DeveloperComputerMinion', 'relatedArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortDeveloperComputerMinion_lessonNum')?.addEventListener('change', (event) => {
+    sort('DeveloperComputerMinion', 'lessonNum', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeveloperComputerMinion_lessonNum')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeveloperComputerMinion', 'lessonNum', true);
+  });
+  document.querySelector('#pageStatsDeveloperComputerMinion_lessonNum')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeveloperComputerMinion', 'lessonNum', false);
+  });
+
+  document.querySelector('#pageSelectSortDeveloperComputerMinion_pageImageWidth')?.addEventListener('change', (event) => {
+    sort('DeveloperComputerMinion', 'pageImageWidth', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeveloperComputerMinion_pageImageWidth')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeveloperComputerMinion', 'pageImageWidth', true);
+  });
+  document.querySelector('#pageStatsDeveloperComputerMinion_pageImageWidth')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeveloperComputerMinion', 'pageImageWidth', false);
+  });
+
+  document.querySelector('#pageSelectSortDeveloperComputerMinion_pageImageAlt')?.addEventListener('change', (event) => {
+    sort('DeveloperComputerMinion', 'pageImageAlt', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeveloperComputerMinion_pageImageAlt')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeveloperComputerMinion', 'pageImageAlt', true);
+  });
+  document.querySelector('#pageStatsDeveloperComputerMinion_pageImageAlt')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeveloperComputerMinion', 'pageImageAlt', false);
+  });
+
+  document.querySelector('#pageSelectSortDeveloperComputerMinion_labelsString')?.addEventListener('change', (event) => {
+    sort('DeveloperComputerMinion', 'labelsString', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeveloperComputerMinion_labelsString')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeveloperComputerMinion', 'labelsString', true);
+  });
+  document.querySelector('#pageStatsDeveloperComputerMinion_labelsString')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeveloperComputerMinion', 'labelsString', false);
   });
           document.querySelector('#fqDeveloperComputerMinion_created')?.addEventListener('change', (event) => {
             fqChange('DeveloperComputerMinion', event.currentTarget, facetChangeDeveloperComputerMinionSuccess, facetChangeDeveloperComputerMinionError);

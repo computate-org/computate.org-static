@@ -187,16 +187,6 @@
               <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}/svg/logo-{{ userSiteTheme | default(SITE_THEME) }}.svg"/>
             </a>
           </div>
-          <wa-tooltip for="site-language-enUS">View the {{ SITE_DISPLAY_NAME | e }} site in the English language</wa-tooltip>
-          <wa-tooltip for="site-language-frFR">Voir le site {{ SITE_DISPLAY_NAME | e }} dans la langue français</wa-tooltip>
-          <div class="display-flex-center wa-cluster wa-gap-0 ">
-            <a id="site-language-enUS" href="{{ enUSUrlPage | default('') }}">
-              <img src="{{ STATIC_BASE_URL }}/svg/flag-US.svg" class="wa-border-radius-square "/>
-            </a>
-            <a id="site-language-frFR" href="{{ frFRUrlPage | default('') }}">
-              <img src="{{ STATIC_BASE_URL }}/svg/flag-FR.svg" class="wa-border-radius-square "/>
-            </a>
-          </div>
           <div class="wa-grid " style="--min-column-size: 15ch; ">
             <wa-button size="small" variant="brand" href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" variant="brand" target="_blank">
               Youtube
@@ -291,17 +281,17 @@
             <div>
               <wa-details summary="Free learning" open="true">
                 <div class="wa-stack ">
-                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SwitchToLinux" href="{{ SITE_BASE_URL }}/en-us/search/switch-to-linux">
-                    <i slot="start" class="fa-brands fa-linux"></i>
-                    Switch to Linux
-                  </wa-button>
-                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-DeploySpine" href="{{ SITE_BASE_URL }}/en-us/search/deploy-spine">
-                    <i slot="start" class="fa-kit fa-openshift"></i>
-                    Deploy SPINE apps to OpenShift Local
-                  </wa-button>
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-LearnSkills" href="{{ SITE_BASE_URL }}/en-us/search/skills">
                     <i slot="start" class="fa-kit fa-computate-c-key"></i>
                     Learn cloud developer skills
+                  </wa-button>
+                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-DeploySpine" href="{{ SITE_BASE_URL }}/en-us/search/deploy-spine">
+                    <i slot="start" class="fa-kit fa-openshift"></i>
+                    Deploy apps to OpenShift Local
+                  </wa-button>
+                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SwitchToLinux" href="{{ SITE_BASE_URL }}/en-us/search/switch-to-linux">
+                    <i slot="start" class="fa-brands fa-linux"></i>
+                    Switch to Linux
                   </wa-button>
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SpineProgramming" href="{{ SITE_BASE_URL }}/en-us/search/spine-programming">
                     <i slot="start" class="fa-kit fa-spine"></i>
@@ -309,10 +299,18 @@
                   </wa-button>
                 </div>
               </wa-details>
+              <wa-details summary="Develop a data-driven website" open="true">
+                <div class="wa-stack ">
+                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}/en-us/search/solution">
+                    <i slot="start" class="fa-duotone fa-regular fa-conveyor-belt"></i>
+                    solutions
+                  </wa-button>
+                </div>
+              </wa-details>
               <wa-details summary="Develop SPINE community websites" open="true">
                 <div class="wa-stack ">
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-DeveloperComputerMinion" href="{{ SITE_BASE_URL }}/en-us/search/dcm">
-                    <i slot="start" class="fa-duotone fa-regular fa-fish"></i>
+                    <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-computer"></i>
                     Developer Computer Management
                   </wa-button>
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SmartAquacultureDeveloper" href="{{ SITE_BASE_URL }}/en-us/search/smart-aquaculture-developer">
@@ -326,14 +324,6 @@
                   <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-ComputateDeveloper" href="{{ SITE_BASE_URL }}/en-us/search/computate-developer">
                     <i slot="start" class="fa-kit fa-computate-c-key"></i>
                     Computate Developers
-                  </wa-button>
-                </div>
-              </wa-details>
-              <wa-details summary="Build your own data-driven website" open="true">
-                <div class="wa-stack ">
-                  <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-CompanyProduct" href="{{ SITE_BASE_URL }}/en-us/search/solution">
-                    <i slot="start" class="fa-duotone fa-regular fa-conveyor-belt"></i>
-                    solutions
                   </wa-button>
                 </div>
               </wa-details>

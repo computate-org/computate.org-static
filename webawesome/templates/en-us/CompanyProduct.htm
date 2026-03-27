@@ -38,13 +38,22 @@ wa-card::part(header) {
   </p>
   <wa-card>
     <div class="wa-stack ">
-      <div>Download your copy of the {{ result.name }}. </div>
+      <div>You should now have been granted access to {{ result.name }} on GitHub, you should check your email to confirm your access. </div>
       <div>
         <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ result.downloadUrl }}" target="_blank" variant="neutral">
-          <i class="fa-duotone fa-regular fa-person-running-fast"></i>
-          Download
+          <i class="fa-brands fa-github"></i>
+          {{ result.name }} GitHub repo
         </wa-button>
       </div>
+      {% if result.pageId != 'computate-smart-website-builder' && result.pageId != 'computate-smart-cloud-deployer' %}
+      <div>You can get started with the {{ result.name }} here: </div>
+      <div>
+        <wa-button id="order-button" class="gradient-button pink-purple-background" href="{{ SITE_BASE_URL }}/en-us/search/{{ result.pageId }}" target="_blank" variant="neutral">
+          <i class="fa-duotone fa-regular fa-person-running-fast"></i>
+          Get started
+        </wa-button>
+      </div>
+      {% endif %}
     </div>
   </wa-card>
   {% include result.dialogTemplate -%}
@@ -52,10 +61,9 @@ wa-card::part(header) {
   <wa-callout>
     <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
     Developers who wish to get started with the {{ result.name }} need to be granted access. 
-    Please reach out to {{ MAILING_LIST_EMAIL }} if you would like to collaborate on this solution. 
+    Please reach out to {{ result.pageId }}@group.computate.org if you would like to collaborate on this solution. 
   </wa-callout>
 
-  <!--
   <div class="wa-flank:end wa-align-items-start wa-gap-3xl " style="--flank-size: 16rem;">
     <div class="wa-stack ">
       <wa-card appearance="filled">
@@ -146,7 +154,6 @@ wa-card::part(header) {
       {% endif -%}
     </div>
   </div>
-  -->
   {% endif %}
   {% if productGettingStarted is defined -%}
   {{ productGettingStarted | default('') }}

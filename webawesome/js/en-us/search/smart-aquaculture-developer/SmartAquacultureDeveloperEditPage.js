@@ -313,90 +313,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH courseNum
-          document.querySelector('#SmartAquacultureDeveloper_Page_courseNum')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_courseNum');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setCourseNum', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_courseNum')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_courseNum')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_courseNum');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH lessonNum
-          document.querySelector('#SmartAquacultureDeveloper_Page_lessonNum')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_lessonNum');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLessonNum', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_lessonNum')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_lessonNum')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_lessonNum');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH pageImageAlt
-          document.querySelector('#SmartAquacultureDeveloper_Page_pageImageAlt')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_pageImageAlt');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setPageImageAlt', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_pageImageAlt')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_pageImageAlt')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_pageImageAlt');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH prerequisiteArticleIds
-          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setPrerequisiteArticleIds', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
-            const valid = form.reportValidity();
-          });
-
           // PATCH nextArticleIds
           document.querySelector('#SmartAquacultureDeveloper_Page_nextArticleIds')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_nextArticleIds');
@@ -439,6 +355,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH pageImageAlt
+          document.querySelector('#SmartAquacultureDeveloper_Page_pageImageAlt')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageImageAlt');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPageImageAlt', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_pageImageAlt')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_pageImageAlt')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageImageAlt');
+            const valid = form.reportValidity();
+          });
+
           // PATCH labels
           document.querySelector('#SmartAquacultureDeveloper_Page_labels')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_labels');
@@ -457,6 +394,69 @@ Promise.all([
           });
           document.querySelector('#SmartAquacultureDeveloper_Page_labels')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_labels');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH courseNum
+          document.querySelector('#SmartAquacultureDeveloper_Page_courseNum')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_courseNum');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setCourseNum', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_courseNum')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_courseNum')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_courseNum');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH lessonNum
+          document.querySelector('#SmartAquacultureDeveloper_Page_lessonNum')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_lessonNum');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setLessonNum', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_lessonNum')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_lessonNum')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_lessonNum');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH prerequisiteArticleIds
+          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPrerequisiteArticleIds', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
             const valid = form.reportValidity();
           });
 
