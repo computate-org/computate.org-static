@@ -1,1 +1,29 @@
 {% extends "en-us/search/deploy-spine/DeploySpineGenSearchPage.htm" %}
+{%- block htmBodyMiddleDeploySpinePage %}
+<div class="wa-stack wa-align-items-center" style="max-width: 105ch; margin: 0 auto;">
+  <div class="wa-grid" style="--min-column-size: 40ch;">
+    {% for result in listDeploySpine %}
+    <a class="wa-link-plain " href="{{ result.displayPage }}" id="dialog-card-link-{{ result.pageId }}">
+      <wa-card with-image style="height: 100%" class="hover-card">
+        <div class="wa-frame:landscape wa-border-radius-l "{% if result.pageImageWidth %} style="aspect-ratio: {{ result.pageImageWidth }} / {{ result.pageImageHeight }}; "{% endif %}>
+          <img
+              slot="media"
+              src="{{ STATIC_BASE_URL }}{{ result.pageImageUri }}"
+              {% if result.pageImageAlt is defined %}
+              alt="{{ result.pageImageAlt | e }}"
+              {% endif %}
+              />
+        </div>
+        <div class="margin-block-start ">
+          <h3>{{ result.name | e }}</h3>
+          <p class="wa-caption-l">
+            {{ result.description | e }}
+          </p>
+          <wa-button variant="brand" id="dialog-button-{{ result.pageId }}">Learn more</wa-button>
+        </div>
+      </wa-card>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{%- endblock htmBodyMiddleDeploySpinePage %}

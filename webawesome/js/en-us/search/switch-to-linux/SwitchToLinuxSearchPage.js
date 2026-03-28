@@ -66,6 +66,28 @@ Promise.all([
     facetStatsChange('SwitchToLinux', 'description', false);
   });
 
+  document.querySelector('#pageSelectSortSwitchToLinux_authorName')?.addEventListener('change', (event) => {
+    sort('SwitchToLinux', 'authorName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSwitchToLinux_authorName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SwitchToLinux', 'authorName', true);
+  });
+  document.querySelector('#pageStatsSwitchToLinux_authorName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SwitchToLinux', 'authorName', false);
+  });
+
+  document.querySelector('#pageSelectSortSwitchToLinux_authorUrl')?.addEventListener('change', (event) => {
+    sort('SwitchToLinux', 'authorUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSwitchToLinux_authorUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SwitchToLinux', 'authorUrl', true);
+  });
+  document.querySelector('#pageStatsSwitchToLinux_authorUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SwitchToLinux', 'authorUrl', false);
+  });
+
   document.querySelector('#pageSelectSortSwitchToLinux_pageImageUri')?.addEventListener('change', (event) => {
     sort('SwitchToLinux', 'pageImageUri', event.currentTarget.value);
   });
@@ -275,6 +297,50 @@ Promise.all([
     facetStatsChange('SwitchToLinux', 'pageImageAlt', false);
   });
 
+  document.querySelector('#pageSelectSortSwitchToLinux_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+    sort('SwitchToLinux', 'prerequisiteArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSwitchToLinux_prerequisiteArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SwitchToLinux', 'prerequisiteArticleIds', true);
+  });
+  document.querySelector('#pageStatsSwitchToLinux_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SwitchToLinux', 'prerequisiteArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortSwitchToLinux_nextArticleIds')?.addEventListener('change', (event) => {
+    sort('SwitchToLinux', 'nextArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSwitchToLinux_nextArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SwitchToLinux', 'nextArticleIds', true);
+  });
+  document.querySelector('#pageStatsSwitchToLinux_nextArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SwitchToLinux', 'nextArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortSwitchToLinux_labelsString')?.addEventListener('change', (event) => {
+    sort('SwitchToLinux', 'labelsString', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSwitchToLinux_labelsString')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SwitchToLinux', 'labelsString', true);
+  });
+  document.querySelector('#pageStatsSwitchToLinux_labelsString')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SwitchToLinux', 'labelsString', false);
+  });
+
+  document.querySelector('#pageSelectSortSwitchToLinux_labels')?.addEventListener('change', (event) => {
+    sort('SwitchToLinux', 'labels', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSwitchToLinux_labels')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SwitchToLinux', 'labels', true);
+  });
+  document.querySelector('#pageStatsSwitchToLinux_labels')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SwitchToLinux', 'labels', false);
+  });
+
   document.querySelector('#pageSelectSortSwitchToLinux_relatedArticleIds')?.addEventListener('change', (event) => {
     sort('SwitchToLinux', 'relatedArticleIds', event.currentTarget.value);
   });
@@ -337,6 +403,42 @@ Promise.all([
             facetRangeStartChange('SwitchToLinux', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndSwitchToLinux_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#fqSwitchToLinux_authorName')?.addEventListener('change', (event) => {
+            fqChange('SwitchToLinux', event.currentTarget, facetChangeSwitchToLinuxSuccess, facetChangeSwitchToLinuxError);
+          });
+          document.querySelector('#buttonFacetSwitchToLinux_authorName')?.addEventListener('click', (event) => {
+            facetFieldChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSwitchToLinux_authorName')?.addEventListener('change', (event) => {
+            facetPivotChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSwitchToLinux_authorName')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSwitchToLinux_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSwitchToLinux_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#fqSwitchToLinux_authorUrl')?.addEventListener('change', (event) => {
+            fqChange('SwitchToLinux', event.currentTarget, facetChangeSwitchToLinuxSuccess, facetChangeSwitchToLinuxError);
+          });
+          document.querySelector('#buttonFacetSwitchToLinux_authorUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSwitchToLinux_authorUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSwitchToLinux_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSwitchToLinux_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSwitchToLinux_authorUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('SwitchToLinux', event.currentTarget);
           });
           document.querySelector('#fqSwitchToLinux_pageImageUri')?.addEventListener('change', (event) => {

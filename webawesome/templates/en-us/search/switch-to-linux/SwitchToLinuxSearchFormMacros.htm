@@ -189,6 +189,78 @@
 {%- macro htmDescriptionSwitchToLinuxPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionSwitchToLinuxPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
+{%- macro inputAuthorNameSwitchToLinuxPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorName">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author name"
+                      label="author name"
+                      hint="The author name"
+                      id="SwitchToLinux_{{classApiMethodMethod}}_authorName"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SwitchToLinux_{{classApiMethodMethod}}_authorName setAuthorName classSwitchToLinux inputSwitchToLinux{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SwitchToLinux_{{classApiMethodMethod}}_authorName setAuthorName classSwitchToLinux inputSwitchToLinux{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+    {%- else %}
+                      class="label-on-left SwitchToLinux_{{classApiMethodMethod}}_authorName valueAuthorName classSwitchToLinux inputSwitchToLinux{{ result.pageId }}AuthorName "
+                      name="authorName"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorName | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorNameSwitchToLinuxPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorNameSwitchToLinuxPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputAuthorUrlSwitchToLinuxPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorUrl">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author URL"
+                      label="author URL"
+                      hint="The author URL"
+                      id="SwitchToLinux_{{classApiMethodMethod}}_authorUrl"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SwitchToLinux_{{classApiMethodMethod}}_authorUrl setAuthorUrl classSwitchToLinux inputSwitchToLinux{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SwitchToLinux_{{classApiMethodMethod}}_authorUrl setAuthorUrl classSwitchToLinux inputSwitchToLinux{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+    {%- else %}
+                      class="label-on-left SwitchToLinux_{{classApiMethodMethod}}_authorUrl valueAuthorUrl classSwitchToLinux inputSwitchToLinux{{ result.pageId }}AuthorUrl "
+                      name="authorUrl"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorUrl | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorUrlSwitchToLinuxPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
 {%- macro inputPageImageUriSwitchToLinuxPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_pageImageUri">
@@ -325,7 +397,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_patchSwitchToLinux(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchSwitchToLinuxDialog" label="Modify Switch to Linux">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="patchSwitchToLinuxDialog" label="Modify Switch to Linux">
           <form id="htmForm_patchSwitchToLinux" class="round-row primary-smart-border-radius ">
 
               <div class="grid-with-subgrid-2col ">
@@ -346,6 +418,26 @@
                 {{ htmDescriptionSwitchToLinuxPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmDescriptionSwitchToLinuxPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -404,7 +496,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_postSwitchToLinux(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="postSwitchToLinuxDialog" label="Create a Switch to Linux">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="postSwitchToLinuxDialog" label="Create a Switch to Linux">
           <form id="htmForm_postSwitchToLinux" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
 
@@ -426,6 +518,26 @@
                 {{ htmDescriptionSwitchToLinuxPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmDescriptionSwitchToLinuxPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -484,7 +596,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deleteSwitchToLinux(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteSwitchToLinuxDialog" label="Delete Switch to Linux">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deleteSwitchToLinuxDialog" label="Delete Switch to Linux">
           <form id="htmForm_deleteSwitchToLinux" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteSwitchToLinux() }}
@@ -501,7 +613,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_putimportSwitchToLinux(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportSwitchToLinuxDialog" label="Import Switch to Linux">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="putimportSwitchToLinuxDialog" label="Import Switch to Linux">
           <form id="htmForm_putimportSwitchToLinux" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -517,7 +629,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_searchpageSwitchToLinux(idSuffix='') %}
-        <div with-header with-footer style="--width: 50vw; " id="searchpageSwitchToLinuxDialog" label="Search Switch to Linux">
+        <div with-header with-footer style="--width: min(64rem, 100vw); " id="searchpageSwitchToLinuxDialog" label="Search Switch to Linux">
           <div id="htmForm_searchpageSwitchToLinux" class="round-row primary-smart-border-radius ">
 
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -578,6 +690,26 @@
                 {{ htmDescriptionSwitchToLinuxPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
                 {%- endif %}
                 {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSwitchToLinuxPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlSwitchToLinuxPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix) }}
+                {%- endif %}
+                {%- endif %}
               </div>
 
               <div class="grid-with-subgrid-2col ">
@@ -633,7 +765,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterSwitchToLinux(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterSwitchToLinuxDialog" label="Delete Switch to Linux">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deletefilterSwitchToLinuxDialog" label="Delete Switch to Linux">
           <form id="htmForm_deletefilterSwitchToLinux" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterSwitchToLinux() }}
