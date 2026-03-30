@@ -1,0 +1,778 @@
+{%- macro inputCreatedSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_created">
+  {%- endif %}
+                  <wa-input
+                      type="datetime-local"
+                      readonly
+                      hint="A created timestamp for this record in the database"
+                      label="created {{ formatZonedDateTime(result.created, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_created datetimepicker setCreated classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Created "
+                      placeholder="MM/dd/yyyy h:mm a '['VV']'"
+                      data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_created"
+  {% if 'Page' == classApiMethodMethod -%}
+                      value="{%- if "Page" == classApiMethodMethod and result.created is defined %}{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+  {% endif -%}
+                      data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
+                      >
+                  </wa-input>
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmCreatedSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputCreatedSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputModifiedSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_modified">
+  {%- endif %}
+                  <wa-input
+                      type="datetime-local"
+                      readonly
+                      hint="A modified timestamp for this record in the database"
+                      label="modified {{ formatZonedDateTime(result.modified, "'['VV']'", defaultLocaleId, defaultZoneId) | e }}"
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_modified datetimepicker setModified classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Modified "
+                      placeholder="MM/dd/yyyy h:mm a '['VV']'"
+                      data-timeformat="MM/dd/yyyy h:mm a '['VV']'"
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_modified"
+  {% if 'Page' == classApiMethodMethod -%}
+                      value="{%- if "Page" == classApiMethodMethod and result.modified is defined %}{{ formatZonedDateTime(result.modified, "yyyy-MM-dd'T'HH:mm", defaultLocaleId, defaultZoneId) | e }}{%- endif %}"
+  {% endif -%}
+                      data-pageId={{ result.pageId | tojson }}
+                      data-zone="{{ defaultZoneId }}"
+                      >
+                  </wa-input>
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmModifiedSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputModifiedSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputArchivedSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_archived">
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                  <wa-button variant="brand"
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_archived"
+                      placeholder="archived"
+                      label="archived"
+                      hint="For archiving this record"
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_archived classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Archived "
+                      name="setArchived"
+                      data-pageId={{ result.pageId | tojson }}
+                      data-val="{{ result.archived | e }}"
+                      >archived</wa-button>
+  {%- else %}
+  {% if 'Page' == classApiMethodMethod -%}
+                  <wa-checkbox
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_archived"
+                      value="true"
+  {%- else %}
+                  <wa-select
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_archived"
+  {% endif -%}
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="archived"
+                      label="archived"
+                      hint="For archiving this record"
+  {%- if 'Page' == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_archived classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Archived "
+                      name="setArchived"
+  {%- else %}
+    {%- if 'Page' == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_archived classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Archived "
+                      name="setArchived"
+    {%- else %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_archived setArchived valueArchived classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Archived "
+                      name="setArchived"
+    {%- endif %}
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+    {%- if result.archived == true %}
+                      checked
+    {%- endif %}
+                      data-pageId={{ result.pageId | tojson }}
+                      >archived</wa-checkbox>
+  {%- else %}
+                      >
+                    <wa-option value=""></wa-option>
+                    <wa-option value="true">true</wa-option>
+                    <wa-option value="false">false</wa-option>
+                  </wa-select>
+  {%- endif %}
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmArchivedSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputArchivedSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputNameSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_name">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] course name"
+                      label="course name"
+                      hint="The course name. "
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_name"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_name setName classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Name "
+                      name="setName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_name setName classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Name "
+                      name="setName"
+    {%- else %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_name valueName classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Name "
+                      name="name"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.name | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmNameSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputNameSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_description">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] course description"
+                      label="course description"
+                      hint="The course description. "
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_description"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_description setDescription classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Description "
+                      name="setDescription"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_description setDescription classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Description "
+                      name="setDescription"
+    {%- else %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_description valueDescription classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}Description "
+                      name="description"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.description | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorName">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author name"
+                      label="author name"
+                      hint="The author name"
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_authorName"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_authorName setAuthorName classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_authorName setAuthorName classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+    {%- else %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_authorName valueAuthorName classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}AuthorName "
+                      name="authorName"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorName | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorUrl">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author URL"
+                      label="author URL"
+                      hint="The author URL"
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_authorUrl"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_authorUrl setAuthorUrl classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_authorUrl setAuthorUrl classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}AuthorUrl "
+                      name="setAuthorUrl"
+    {%- else %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_authorUrl valueAuthorUrl classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}AuthorUrl "
+                      name="authorUrl"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorUrl | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_pageImageUri">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] imageUri"
+                      label="imageUri"
+                      hint="The page image URI"
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_pageImageUri"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_pageImageUri setPageImageUri classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}PageImageUri "
+                      name="setPageImageUri"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_pageImageUri setPageImageUri classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}PageImageUri "
+                      name="setPageImageUri"
+    {%- else %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_pageImageUri valuePageImageUri classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}PageImageUri "
+                      name="pageImageUri"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.pageImageUri | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputPageIdSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_pageId">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] page ID"
+                      label="page ID"
+                      hint="The ID for this page. "
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_pageId"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_pageId setPageId classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}PageId "
+                      name="setPageId"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_pageId setPageId classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}PageId "
+                      name="setPageId"
+    {%- else %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_pageId valuePageId classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}PageId "
+                      name="pageId"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.pageId | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputPageIdSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_displayPage">
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                  <div class="button-on-left ">
+                    <wa-button variant="brand"
+                        id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_displayPage"
+                        class="button-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_displayPage classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}DisplayPage "
+                        name="setDisplayPage"
+                        href="{{ result.displayPage | e }}"
+                        >
+                    </wa-button>
+                  </div>
+                  <div class="button-description-on-right "></div>
+  {%- else %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      id="SmartAgricultureDeveloper_{{classApiMethodMethod}}_displayPage"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_displayPage setDisplayPage classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}DisplayPage "
+                      name="setDisplayPage"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_displayPage setDisplayPage classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}DisplayPage "
+                      name="setDisplayPage"
+    {%- else %}
+                      class="label-on-left SmartAgricultureDeveloper_{{classApiMethodMethod}}_displayPage valueDisplayPage classSmartAgricultureDeveloper inputSmartAgricultureDeveloper{{ result.pageId }}DisplayPage "
+                      name="displayPage"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.displayPage | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- endif %}
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+
+{%- macro htmFormButton_patchSmartAgricultureDeveloper() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_patchSmartAgricultureDeveloper" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_patchSmartAgricultureDeveloper"
+                >Modify Smart Agriculture Developer</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_patchSmartAgricultureDeveloper"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_patchSmartAgricultureDeveloper(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="patchSmartAgricultureDeveloperDialog" label="Modify Smart Agriculture Developer">
+          <form id="htmForm_patchSmartAgricultureDeveloper" class="round-row primary-smart-border-radius ">
+
+            <wa-details open class="HtmRow" id="course-details">
+              <div slot="summary">
+                <span>course details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </form>
+          {{ htmFormButton_patchSmartAgricultureDeveloper() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_postSmartAgricultureDeveloper() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_postSmartAgricultureDeveloper" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_postSmartAgricultureDeveloper"
+                >Create a Smart Agriculture Developer</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_postSmartAgricultureDeveloper"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_postSmartAgricultureDeveloper(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="postSmartAgricultureDeveloperDialog" label="Create a Smart Agriculture Developer">
+          <form id="htmForm_postSmartAgricultureDeveloper" class="round-row primary-smart-border-radius ">
+            <div>You can override any default values below: </div>
+
+            <wa-details open class="HtmRow" id="course-details">
+              <div slot="summary">
+                <span>course details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "POST" in scopes -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </form>
+          {{ htmFormButton_postSmartAgricultureDeveloper() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_deleteSmartAgricultureDeveloper() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deleteSmartAgricultureDeveloper" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deleteSmartAgricultureDeveloper"
+                >Delete Smart Agriculture Developer</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deleteSmartAgricultureDeveloper"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_deleteSmartAgricultureDeveloper(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deleteSmartAgricultureDeveloperDialog" label="Delete Smart Agriculture Developer">
+          <form id="htmForm_deleteSmartAgricultureDeveloper" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deleteSmartAgricultureDeveloper() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmFormButton_putimportSmartAgricultureDeveloper() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_putimportSmartAgricultureDeveloper" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_putimportSmartAgricultureDeveloper"
+                >Import Smart Agriculture Developers</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_putimportSmartAgricultureDeveloper"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_putimportSmartAgricultureDeveloper(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="putimportSmartAgricultureDeveloperDialog" label="Import Smart Agriculture Developers">
+          <form id="htmForm_putimportSmartAgricultureDeveloper" class="round-row primary-smart-border-radius ">
+            <div>
+              <wa-textarea
+                  class="PUTImport_searchList "
+                  style="height: 300px; "
+                  placeholder="{ 'searchList': [ { 'pageId': ... , 'saves': [ ... ] }, ... ] }"
+                  >
+              </wa-textarea>
+            </div>
+          </form>
+          {{ htmFormButton_putimportSmartAgricultureDeveloper() }}
+        </wa-dialog>
+{%- endmacro %}
+
+{%- macro htmForm_searchpageSmartAgricultureDeveloper(idSuffix='') %}
+        <div with-header with-footer style="--width: min(64rem, 100vw); " id="searchpageSmartAgricultureDeveloperDialog" label="Search Smart Agriculture Developers">
+          <div id="htmForm_searchpageSmartAgricultureDeveloper" class="round-row primary-smart-border-radius ">
+
+            <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
+              <div slot="summary">
+                <span>primary key, ID, created, modified, archive details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmCreatedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmCreatedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmCreatedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmModifiedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmModifiedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmModifiedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmArchivedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmArchivedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmArchivedSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="course-details">
+              <div slot="summary">
+                <span>course details</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmNameSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDescriptionSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorUrlSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageImageUriSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+
+            <wa-details open class="HtmRow" id="useful-urls">
+              <div slot="summary">
+                <span>Useful URLs</span>
+              </div>
+              <div class="grid-with-subgrid-2col ">
+                {% if "PATCH" in scopes -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmPageIdSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmDisplayPageSmartAgricultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+              </div>
+            </wa-details>
+          </div>
+        </div>
+{%- endmacro %}
+
+{%- macro htmFormButton_deletefilterSmartAgricultureDeveloper() %}
+          <wa-popup  auto-size="both" placement="top" id="alertButton_deletefilterSmartAgricultureDeveloper" duration="5000" closable class="wa-header-l ">
+            <wa-button slot="anchor" variant="brand" slot="footer" type="submit"
+                 id="htmFormButton_deletefilterSmartAgricultureDeveloper"
+                >Delete Smart Agriculture Developer</wa-button>
+            <wa-badge class="alertPopup" id="alertPopupButton_deletefilterSmartAgricultureDeveloper"></wa-badge>
+          </wa-popup>
+{%- endmacro %}
+
+{%- macro htmForm_deletefilterSmartAgricultureDeveloper(idSuffix='') %}
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deletefilterSmartAgricultureDeveloperDialog" label="Delete Smart Agriculture Developer">
+          <form id="htmForm_deletefilterSmartAgricultureDeveloper" class="round-row primary-smart-border-radius ">
+          </form>
+          {{ htmFormButton_deletefilterSmartAgricultureDeveloper() }}
+        </wa-dialog>
+{%- endmacro %}

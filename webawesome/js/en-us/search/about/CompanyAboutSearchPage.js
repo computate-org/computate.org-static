@@ -66,6 +66,39 @@ Promise.all([
     facetStatsChange('CompanyAbout', 'description', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyAbout_authorName')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'authorName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_authorName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'authorName', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_authorName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'authorName', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_authorUrl')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'authorUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_authorUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'authorUrl', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_authorUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'authorUrl', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_pageImageUri')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'pageImageUri', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_pageImageUri')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageUri', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_pageImageUri')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageUri', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyAbout_pageId')?.addEventListener('change', (event) => {
     sort('CompanyAbout', 'pageId', event.currentTarget.value);
   });
@@ -208,6 +241,116 @@ Promise.all([
   document.querySelector('#pageStatsCompanyAbout_solrId')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('CompanyAbout', 'solrId', false);
   });
+
+  document.querySelector('#pageSelectSortCompanyAbout_courseNum')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'courseNum', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_courseNum')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'courseNum', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_courseNum')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'courseNum', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_pageImageWidth')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'pageImageWidth', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_pageImageWidth')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageWidth', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_pageImageWidth')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageWidth', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_pageImageHeight')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'pageImageHeight', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_pageImageHeight')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageHeight', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_pageImageHeight')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageHeight', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_pageImageType')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'pageImageType', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_pageImageType')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageType', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_pageImageType')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageType', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_pageImageAlt')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'pageImageAlt', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_pageImageAlt')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageAlt', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_pageImageAlt')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'pageImageAlt', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'prerequisiteArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_prerequisiteArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'prerequisiteArticleIds', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'prerequisiteArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_nextArticleIds')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'nextArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_nextArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'nextArticleIds', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_nextArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'nextArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_labelsString')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'labelsString', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_labelsString')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'labelsString', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_labelsString')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'labelsString', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_labels')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'labels', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_labels')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'labels', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_labels')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'labels', false);
+  });
+
+  document.querySelector('#pageSelectSortCompanyAbout_relatedArticleIds')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'relatedArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_relatedArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'relatedArticleIds', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_relatedArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'relatedArticleIds', false);
+  });
           document.querySelector('#fqCompanyAbout_created')?.addEventListener('change', (event) => {
             fqChange('CompanyAbout', event.currentTarget, facetChangeCompanyAboutSuccess, facetChangeCompanyAboutError);
           });
@@ -260,6 +403,60 @@ Promise.all([
             facetRangeStartChange('CompanyAbout', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndCompanyAbout_description')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyAbout_authorName')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget, facetChangeCompanyAboutSuccess, facetChangeCompanyAboutError);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_authorName')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_authorName')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyAbout_authorName')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyAbout_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyAbout_authorName')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyAbout_authorUrl')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget, facetChangeCompanyAboutSuccess, facetChangeCompanyAboutError);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_authorUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_authorUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyAbout_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyAbout_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyAbout_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyAbout_pageImageUri')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget, facetChangeCompanyAboutSuccess, facetChangeCompanyAboutError);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_pageImageUri')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_pageImageUri')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyAbout_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyAbout_pageImageUri')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyAbout_pageImageUri')?.addEventListener('change', (event) => {
             facetRangeEndChange('CompanyAbout', event.currentTarget);
           });
           document.querySelector('#fqCompanyAbout_pageId')?.addEventListener('change', (event) => {
@@ -350,6 +547,24 @@ Promise.all([
             facetRangeStartChange('CompanyAbout', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndCompanyAbout_download')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyAbout_courseNum')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget, facetChangeCompanyAboutSuccess, facetChangeCompanyAboutError);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_courseNum')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_courseNum')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyAbout_courseNum')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyAbout_courseNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyAbout_courseNum')?.addEventListener('change', (event) => {
             facetRangeEndChange('CompanyAbout', event.currentTarget);
           });
 });

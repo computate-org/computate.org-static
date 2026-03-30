@@ -1,8 +1,8 @@
 
-async function websocketCompanyAbout(success) {
+async function websocketSmartAgricultureDeveloper(success) {
   window.eventBus.onopen = function () {
 
-    window.eventBus.registerHandler('websocketCompanyAbout', function (error, message) {
+    window.eventBus.registerHandler('websocketSmartAgricultureDeveloper', function (error, message) {
       var json = JSON.parse(message['body']);
       var pageId = json['id'];
       var solrIds = json['solrIds'];
@@ -24,11 +24,11 @@ async function websocketCompanyAbout(success) {
       $header.setAttribute('class', 'w3-container fa- ');
       $header.setAttribute('id', 'header-' + pageId);
       var iTemplate = document.createElement('template');
-      iTemplate.innerHTML = '<i class="fa-duotone fa-regular fa-address-card"></i>';
+      iTemplate.innerHTML = '<i class="' + window.FONTAWESOME_STYLE + ' fa-building-wheat"></i>';
       var $i = iTemplate.content;
       var $headerSpan = document.createElement('span');
       $headerSpan.setAttribute('class', '');
-      $headerSpan.innerText = 'modify about in ' + json.timeRemaining;
+      $headerSpan.innerText = 'modify Smart Agriculture Developers in ' + json.timeRemaining;
       var $x = document.createElement('span');
       $x.setAttribute('class', 'w3-button w3-display-topright ');
       $x.setAttribute('onclick', 'document.querySelector("#card-' + pageId + '");');
@@ -66,7 +66,7 @@ async function websocketCompanyAbout(success) {
     });
   }
 }
-async function websocketCompanyAboutInner(apiRequest) {
+async function websocketSmartAgricultureDeveloperInner(apiRequest) {
   var pageId = apiRequest['id'];
   var classes = apiRequest['classes'];
   var vars = apiRequest['vars'];
@@ -100,6 +100,7 @@ async function websocketCompanyAboutInner(apiRequest) {
         var inputObjectText = null;
         var inputSolrId = null;
         var inputCourseNum = null;
+        var inputLessonNum = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
@@ -111,416 +112,441 @@ async function websocketCompanyAboutInner(apiRequest) {
         var inputLabelsString = null;
         var inputLabels = null;
         var inputRelatedArticleIds = null;
+        var inputRelatedArticles = null;
 
         if(vars.includes('created'))
-          inputCreated = $response.querySelector('.CompanyAbout_Page_created');
+          inputCreated = $response.querySelector('.SmartAgricultureDeveloper_Page_created');
         if(vars.includes('modified'))
-          inputModified = $response.querySelector('.CompanyAbout_Page_modified');
+          inputModified = $response.querySelector('.SmartAgricultureDeveloper_Page_modified');
         if(vars.includes('archived'))
-          inputArchived = $response.querySelector('.CompanyAbout_Page_archived');
+          inputArchived = $response.querySelector('.SmartAgricultureDeveloper_Page_archived');
         if(vars.includes('name'))
-          inputName = $response.querySelector('.CompanyAbout_Page_name');
+          inputName = $response.querySelector('.SmartAgricultureDeveloper_Page_name');
         if(vars.includes('description'))
-          inputDescription = $response.querySelector('.CompanyAbout_Page_description');
+          inputDescription = $response.querySelector('.SmartAgricultureDeveloper_Page_description');
         if(vars.includes('authorName'))
-          inputAuthorName = $response.querySelector('.CompanyAbout_Page_authorName');
+          inputAuthorName = $response.querySelector('.SmartAgricultureDeveloper_Page_authorName');
         if(vars.includes('authorUrl'))
-          inputAuthorUrl = $response.querySelector('.CompanyAbout_Page_authorUrl');
+          inputAuthorUrl = $response.querySelector('.SmartAgricultureDeveloper_Page_authorUrl');
         if(vars.includes('pageImageUri'))
-          inputPageImageUri = $response.querySelector('.CompanyAbout_Page_pageImageUri');
+          inputPageImageUri = $response.querySelector('.SmartAgricultureDeveloper_Page_pageImageUri');
         if(vars.includes('pageId'))
-          inputPageId = $response.querySelector('.CompanyAbout_Page_pageId');
+          inputPageId = $response.querySelector('.SmartAgricultureDeveloper_Page_pageId');
         if(vars.includes('displayPage'))
-          inputDisplayPage = $response.querySelector('.CompanyAbout_Page_displayPage');
+          inputDisplayPage = $response.querySelector('.SmartAgricultureDeveloper_Page_displayPage');
         if(vars.includes('classCanonicalName'))
-          inputClassCanonicalName = $response.querySelector('.CompanyAbout_Page_classCanonicalName');
+          inputClassCanonicalName = $response.querySelector('.SmartAgricultureDeveloper_Page_classCanonicalName');
         if(vars.includes('classSimpleName'))
-          inputClassSimpleName = $response.querySelector('.CompanyAbout_Page_classSimpleName');
+          inputClassSimpleName = $response.querySelector('.SmartAgricultureDeveloper_Page_classSimpleName');
         if(vars.includes('classCanonicalNames'))
-          inputClassCanonicalNames = $response.querySelector('.CompanyAbout_Page_classCanonicalNames');
+          inputClassCanonicalNames = $response.querySelector('.SmartAgricultureDeveloper_Page_classCanonicalNames');
         if(vars.includes('saves'))
-          inputSaves = $response.querySelector('.CompanyAbout_Page_saves');
+          inputSaves = $response.querySelector('.SmartAgricultureDeveloper_Page_saves');
         if(vars.includes('objectTitle'))
-          inputObjectTitle = $response.querySelector('.CompanyAbout_Page_objectTitle');
+          inputObjectTitle = $response.querySelector('.SmartAgricultureDeveloper_Page_objectTitle');
         if(vars.includes('editPage'))
-          inputEditPage = $response.querySelector('.CompanyAbout_Page_editPage');
+          inputEditPage = $response.querySelector('.SmartAgricultureDeveloper_Page_editPage');
         if(vars.includes('userPage'))
-          inputUserPage = $response.querySelector('.CompanyAbout_Page_userPage');
+          inputUserPage = $response.querySelector('.SmartAgricultureDeveloper_Page_userPage');
         if(vars.includes('download'))
-          inputDownload = $response.querySelector('.CompanyAbout_Page_download');
+          inputDownload = $response.querySelector('.SmartAgricultureDeveloper_Page_download');
         if(vars.includes('objectSuggest'))
-          inputObjectSuggest = $response.querySelector('.CompanyAbout_Page_objectSuggest');
+          inputObjectSuggest = $response.querySelector('.SmartAgricultureDeveloper_Page_objectSuggest');
         if(vars.includes('objectText'))
-          inputObjectText = $response.querySelector('.CompanyAbout_Page_objectText');
+          inputObjectText = $response.querySelector('.SmartAgricultureDeveloper_Page_objectText');
         if(vars.includes('solrId'))
-          inputSolrId = $response.querySelector('.CompanyAbout_Page_solrId');
+          inputSolrId = $response.querySelector('.SmartAgricultureDeveloper_Page_solrId');
         if(vars.includes('courseNum'))
-          inputCourseNum = $response.querySelector('.CompanyAbout_Page_courseNum');
+          inputCourseNum = $response.querySelector('.SmartAgricultureDeveloper_Page_courseNum');
+        if(vars.includes('lessonNum'))
+          inputLessonNum = $response.querySelector('.SmartAgricultureDeveloper_Page_lessonNum');
         if(vars.includes('pageImageWidth'))
-          inputPageImageWidth = $response.querySelector('.CompanyAbout_Page_pageImageWidth');
+          inputPageImageWidth = $response.querySelector('.SmartAgricultureDeveloper_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
-          inputPageImageHeight = $response.querySelector('.CompanyAbout_Page_pageImageHeight');
+          inputPageImageHeight = $response.querySelector('.SmartAgricultureDeveloper_Page_pageImageHeight');
         if(vars.includes('pageImageType'))
-          inputPageImageType = $response.querySelector('.CompanyAbout_Page_pageImageType');
+          inputPageImageType = $response.querySelector('.SmartAgricultureDeveloper_Page_pageImageType');
         if(vars.includes('pageImageAlt'))
-          inputPageImageAlt = $response.querySelector('.CompanyAbout_Page_pageImageAlt');
+          inputPageImageAlt = $response.querySelector('.SmartAgricultureDeveloper_Page_pageImageAlt');
         if(vars.includes('prerequisiteArticleIds'))
-          inputPrerequisiteArticleIds = $response.querySelector('.CompanyAbout_Page_prerequisiteArticleIds');
+          inputPrerequisiteArticleIds = $response.querySelector('.SmartAgricultureDeveloper_Page_prerequisiteArticleIds');
         if(vars.includes('prerequisiteArticles'))
-          inputPrerequisiteArticles = $response.querySelector('.CompanyAbout_Page_prerequisiteArticles');
+          inputPrerequisiteArticles = $response.querySelector('.SmartAgricultureDeveloper_Page_prerequisiteArticles');
         if(vars.includes('nextArticleIds'))
-          inputNextArticleIds = $response.querySelector('.CompanyAbout_Page_nextArticleIds');
+          inputNextArticleIds = $response.querySelector('.SmartAgricultureDeveloper_Page_nextArticleIds');
         if(vars.includes('nextArticles'))
-          inputNextArticles = $response.querySelector('.CompanyAbout_Page_nextArticles');
+          inputNextArticles = $response.querySelector('.SmartAgricultureDeveloper_Page_nextArticles');
         if(vars.includes('labelsString'))
-          inputLabelsString = $response.querySelector('.CompanyAbout_Page_labelsString');
+          inputLabelsString = $response.querySelector('.SmartAgricultureDeveloper_Page_labelsString');
         if(vars.includes('labels'))
-          inputLabels = $response.querySelector('.CompanyAbout_Page_labels');
+          inputLabels = $response.querySelector('.SmartAgricultureDeveloper_Page_labels');
         if(vars.includes('relatedArticleIds'))
-          inputRelatedArticleIds = $response.querySelector('.CompanyAbout_Page_relatedArticleIds');
+          inputRelatedArticleIds = $response.querySelector('.SmartAgricultureDeveloper_Page_relatedArticleIds');
+        if(vars.includes('relatedArticles'))
+          inputRelatedArticles = $response.querySelector('.SmartAgricultureDeveloper_Page_relatedArticles');
 
-        jsWebsocketCompanyAbout(pageId, vars, $response);
+        jsWebsocketSmartAgricultureDeveloper(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
-        window.listCompanyAbout = JSON.parse($response.querySelector('.pageForm .listCompanyAbout')?.value);
+        window.listSmartAgricultureDeveloper = JSON.parse($response.querySelector('.pageForm .listSmartAgricultureDeveloper')?.value);
 
 
         if(inputCreated) {
-          document.querySelectorAll('.CompanyAbout_Page_created').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_created').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputCreated.getAttribute('value');
             else
               item.textContent = inputCreated.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_created'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_created'));
         }
 
         if(inputModified) {
-          document.querySelectorAll('.CompanyAbout_Page_modified').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_modified').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputModified.getAttribute('value');
             else
               item.textContent = inputModified.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_modified'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_modified'));
         }
 
         if(inputArchived) {
-          document.querySelectorAll('.CompanyAbout_Page_archived').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_archived').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputArchived.getAttribute('value');
             else
               item.textContent = inputArchived.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_archived'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_archived'));
         }
 
         if(inputName) {
-          document.querySelectorAll('.CompanyAbout_Page_name').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_name').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputName.getAttribute('value');
             else
               item.textContent = inputName.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_name'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_name'));
         }
 
         if(inputDescription) {
-          document.querySelectorAll('.CompanyAbout_Page_description').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_description').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputDescription.getAttribute('value');
             else
               item.textContent = inputDescription.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_description'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_description'));
         }
 
         if(inputAuthorName) {
-          document.querySelectorAll('.CompanyAbout_Page_authorName').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_authorName').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputAuthorName.getAttribute('value');
             else
               item.textContent = inputAuthorName.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_authorName'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_authorName'));
         }
 
         if(inputAuthorUrl) {
-          document.querySelectorAll('.CompanyAbout_Page_authorUrl').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_authorUrl').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputAuthorUrl.getAttribute('value');
             else
               item.textContent = inputAuthorUrl.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_authorUrl'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_authorUrl'));
         }
 
         if(inputPageImageUri) {
-          document.querySelectorAll('.CompanyAbout_Page_pageImageUri').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_pageImageUri').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageUri.getAttribute('value');
             else
               item.textContent = inputPageImageUri.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_pageImageUri'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_pageImageUri'));
         }
 
         if(inputPageId) {
-          document.querySelectorAll('.CompanyAbout_Page_pageId').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_pageId').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageId.getAttribute('value');
             else
               item.textContent = inputPageId.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_pageId'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_pageId'));
         }
 
         if(inputDisplayPage) {
-          document.querySelectorAll('.CompanyAbout_Page_displayPage').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_displayPage').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputDisplayPage.getAttribute('value');
             else
               item.textContent = inputDisplayPage.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_displayPage'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_displayPage'));
         }
 
         if(inputClassCanonicalName) {
-          document.querySelectorAll('.CompanyAbout_Page_classCanonicalName').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_classCanonicalName').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputClassCanonicalName.getAttribute('value');
             else
               item.textContent = inputClassCanonicalName.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_classCanonicalName'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_classCanonicalName'));
         }
 
         if(inputClassSimpleName) {
-          document.querySelectorAll('.CompanyAbout_Page_classSimpleName').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_classSimpleName').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputClassSimpleName.getAttribute('value');
             else
               item.textContent = inputClassSimpleName.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_classSimpleName'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_classSimpleName'));
         }
 
         if(inputClassCanonicalNames) {
-          document.querySelectorAll('.CompanyAbout_Page_classCanonicalNames').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_classCanonicalNames').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputClassCanonicalNames.getAttribute('value');
             else
               item.textContent = inputClassCanonicalNames.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_classCanonicalNames'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_classCanonicalNames'));
         }
 
         if(inputSaves) {
-          document.querySelectorAll('.CompanyAbout_Page_saves').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_saves').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputSaves.getAttribute('value');
             else
               item.textContent = inputSaves.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_saves'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_saves'));
         }
 
         if(inputObjectTitle) {
-          document.querySelectorAll('.CompanyAbout_Page_objectTitle').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_objectTitle').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputObjectTitle.getAttribute('value');
             else
               item.textContent = inputObjectTitle.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_objectTitle'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_objectTitle'));
         }
 
         if(inputEditPage) {
-          document.querySelectorAll('.CompanyAbout_Page_editPage').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_editPage').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputEditPage.getAttribute('value');
             else
               item.textContent = inputEditPage.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_editPage'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_editPage'));
         }
 
         if(inputUserPage) {
-          document.querySelectorAll('.CompanyAbout_Page_userPage').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_userPage').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputUserPage.getAttribute('value');
             else
               item.textContent = inputUserPage.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_userPage'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_userPage'));
         }
 
         if(inputDownload) {
-          document.querySelectorAll('.CompanyAbout_Page_download').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_download').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputDownload.getAttribute('value');
             else
               item.textContent = inputDownload.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_download'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_download'));
         }
 
         if(inputObjectSuggest) {
-          document.querySelectorAll('.CompanyAbout_Page_objectSuggest').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_objectSuggest').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputObjectSuggest.getAttribute('value');
             else
               item.textContent = inputObjectSuggest.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_objectSuggest'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_objectSuggest'));
         }
 
         if(inputObjectText) {
-          document.querySelectorAll('.CompanyAbout_Page_objectText').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_objectText').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputObjectText.getAttribute('value');
             else
               item.textContent = inputObjectText.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_objectText'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_objectText'));
         }
 
         if(inputSolrId) {
-          document.querySelectorAll('.CompanyAbout_Page_solrId').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_solrId').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputSolrId.getAttribute('value');
             else
               item.textContent = inputSolrId.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_solrId'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_solrId'));
         }
 
         if(inputCourseNum) {
-          document.querySelectorAll('.CompanyAbout_Page_courseNum').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_courseNum').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputCourseNum.getAttribute('value');
             else
               item.textContent = inputCourseNum.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_courseNum'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_courseNum'));
+        }
+
+        if(inputLessonNum) {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_lessonNum').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLessonNum.getAttribute('value');
+            else
+              item.textContent = inputLessonNum.textContent;
+          });
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_lessonNum'));
         }
 
         if(inputPageImageWidth) {
-          document.querySelectorAll('.CompanyAbout_Page_pageImageWidth').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_pageImageWidth').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageWidth.getAttribute('value');
             else
               item.textContent = inputPageImageWidth.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_pageImageWidth'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_pageImageWidth'));
         }
 
         if(inputPageImageHeight) {
-          document.querySelectorAll('.CompanyAbout_Page_pageImageHeight').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_pageImageHeight').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageHeight.getAttribute('value');
             else
               item.textContent = inputPageImageHeight.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_pageImageHeight'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_pageImageHeight'));
         }
 
         if(inputPageImageType) {
-          document.querySelectorAll('.CompanyAbout_Page_pageImageType').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_pageImageType').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageType.getAttribute('value');
             else
               item.textContent = inputPageImageType.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_pageImageType'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_pageImageType'));
         }
 
         if(inputPageImageAlt) {
-          document.querySelectorAll('.CompanyAbout_Page_pageImageAlt').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_pageImageAlt').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPageImageAlt.getAttribute('value');
             else
               item.textContent = inputPageImageAlt.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_pageImageAlt'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_pageImageAlt'));
         }
 
         if(inputPrerequisiteArticleIds) {
-          document.querySelectorAll('.CompanyAbout_Page_prerequisiteArticleIds').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_prerequisiteArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPrerequisiteArticleIds.getAttribute('value');
             else
               item.textContent = inputPrerequisiteArticleIds.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_prerequisiteArticleIds'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_prerequisiteArticleIds'));
         }
 
         if(inputPrerequisiteArticles) {
-          document.querySelectorAll('.CompanyAbout_Page_prerequisiteArticles').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_prerequisiteArticles').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputPrerequisiteArticles.getAttribute('value');
             else
               item.textContent = inputPrerequisiteArticles.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_prerequisiteArticles'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_prerequisiteArticles'));
         }
 
         if(inputNextArticleIds) {
-          document.querySelectorAll('.CompanyAbout_Page_nextArticleIds').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_nextArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputNextArticleIds.getAttribute('value');
             else
               item.textContent = inputNextArticleIds.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_nextArticleIds'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_nextArticleIds'));
         }
 
         if(inputNextArticles) {
-          document.querySelectorAll('.CompanyAbout_Page_nextArticles').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_nextArticles').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputNextArticles.getAttribute('value');
             else
               item.textContent = inputNextArticles.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_nextArticles'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_nextArticles'));
         }
 
         if(inputLabelsString) {
-          document.querySelectorAll('.CompanyAbout_Page_labelsString').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_labelsString').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputLabelsString.getAttribute('value');
             else
               item.textContent = inputLabelsString.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_labelsString'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_labelsString'));
         }
 
         if(inputLabels) {
-          document.querySelectorAll('.CompanyAbout_Page_labels').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_labels').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputLabels.getAttribute('value');
             else
               item.textContent = inputLabels.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_labels'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_labels'));
         }
 
         if(inputRelatedArticleIds) {
-          document.querySelectorAll('.CompanyAbout_Page_relatedArticleIds').forEach((item, index) => {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_relatedArticleIds').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
               item.value = inputRelatedArticleIds.getAttribute('value');
             else
               item.textContent = inputRelatedArticleIds.textContent;
           });
-          addGlow(document.querySelector('.CompanyAbout_Page_relatedArticleIds'));
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_relatedArticleIds'));
         }
 
-          pageGraphCompanyAbout();
+        if(inputRelatedArticles) {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_relatedArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticles.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticles.textContent;
+          });
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_relatedArticles'));
+        }
+
+          pageGraphSmartAgricultureDeveloper();
       });
     });
   }
 }
 
-function pageGraphCompanyAbout(apiRequest) {
+function pageGraphSmartAgricultureDeveloper(apiRequest) {
   var r = document.querySelector('.pageForm .pageResponse')?.value;
   if(r) {
     var json = JSON.parse(r);
@@ -552,7 +578,7 @@ function pageGraphCompanyAbout(apiRequest) {
         var data = [];
         var layout = {};
         if(range) {
-          layout['title'] = 'about';
+          layout['title'] = 'Smart Agriculture Developers';
           layout['xaxis'] = {
             title: rangeVarFq.displayName
           }
@@ -615,7 +641,7 @@ function pageGraphCompanyAbout(apiRequest) {
               data.push(trace);
             });
           }
-          Plotly.react('htmBodyGraphCompanyAboutPage', data, layout);
+          Plotly.react('htmBodyGraphSmartAgricultureDeveloperPage', data, layout);
         }
       }
     }
@@ -623,8 +649,8 @@ function pageGraphCompanyAbout(apiRequest) {
 }
 
 function animateStats() {
-  document.querySelector('#pageSearchVal-fqCompanyAbout_time').innerText = '';
-  searchPage('CompanyAbout', function() {
+  document.querySelector('#pageSearchVal-fqSmartAgricultureDeveloper_time').innerText = '';
+  searchPage('SmartAgricultureDeveloper', function() {
     let speedRate = parseFloat(document.querySelector('#animateStatsSpeed')?.value) * 1000;
     let xStep = parseFloat(document.querySelector('#animateStatsStep')?.value);
     let xMin = parseFloat(document.querySelector('#animateStatsMin')?.value);
@@ -636,26 +662,26 @@ function animateStats() {
       if (x > xMax || x < 0) {
         clearInterval(animateInterval);
       }
-      document.querySelector('#fqCompanyAbout_time').value = x;
-      document.querySelector('#fqCompanyAbout_time').onchange();
-      searchPage('CompanyAbout');
+      document.querySelector('#fqSmartAgricultureDeveloper_time').value = x;
+      document.querySelector('#fqSmartAgricultureDeveloper_time').onchange();
+      searchPage('SmartAgricultureDeveloper');
     }, speedRate);
   });
 }
 
 // Search //
 
-async function searchCompanyAbout($formFilters, success, error) {
-  var filters = searchCompanyAboutFilters($formFilters);
+async function searchSmartAgricultureDeveloper($formFilters, success, error) {
+  var filters = searchSmartAgricultureDeveloperFilters($formFilters);
   if(success == null)
     success = function( data, textStatus, jQxhr ) {};
   if(error == null)
     error = function( jqXhr, target2 ) {};
 
-  searchCompanyAboutVals(filters, target, success, error);
+  searchSmartAgricultureDeveloperVals(filters, target, success, error);
 }
 
-function searchCompanyAboutFilters($formFilters) {
+function searchSmartAgricultureDeveloperFilters($formFilters) {
   var filters = [];
   if($formFilters) {
 
@@ -753,6 +779,10 @@ function searchCompanyAboutFilters($formFilters) {
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
 
+    var filterLessonNum = $formFilters.querySelector('.valueLessonNum')?.value;
+    if(filterLessonNum != null && filterLessonNum !== '')
+      filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
@@ -792,10 +822,10 @@ function searchCompanyAboutFilters($formFilters) {
   return filters;
 }
 
-function searchCompanyAboutVals(filters, target, success, error) {
+function searchSmartAgricultureDeveloperVals(filters, target, success, error) {
 
   fetch(
-    '/en-us/api/about?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/en-us/api/smart-agriculture-developer?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -810,12 +840,12 @@ function searchCompanyAboutVals(filters, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function suggestCompanyAboutObjectSuggest($formFilters, $list, target) {
+function suggestSmartAgricultureDeveloperObjectSuggest($formFilters, $list, target) {
   success = function( data, textStatus, jQxhr ) {
     if($list) {
       $list.innerHTML = '';
       data['list'].forEach((o, i) => {
-        var $i = document.querySelector('<i class="fa-duotone fa-regular fa-address-card"></i>');
+        var $i = document.querySelector('<i class="{{ FONTAWESOME_STYLE }} fa-building-wheat"></i>');
         var $span = document.createElement('span');
         $span.setAttribute('class', '');
         $span.innerText = o['objectTitle'];
@@ -829,14 +859,14 @@ function suggestCompanyAboutObjectSuggest($formFilters, $list, target) {
     }
   };
   error = function( jqXhr, target2 ) {};
-  searchCompanyAboutVals($formFilters, target, success, error);
+  searchSmartAgricultureDeveloperVals($formFilters, target, success, error);
 }
 
 // GET //
 
-async function getCompanyAbout() {
+async function getSmartAgricultureDeveloper() {
   fetch(
-    '/en-us/api/about/' + pageId
+    '/en-us/api/smart-agriculture-developer/' + pageId
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
     }).then(response => {
@@ -853,8 +883,8 @@ async function getCompanyAbout() {
 
 // PATCH //
 
-async function patchCompanyAbout($formFilters, $formValues, target, pageId, success, error) {
-  var filters = patchCompanyAboutFilters($formFilters);
+async function patchSmartAgricultureDeveloper($formFilters, $formValues, target, pageId, success, error) {
+  var filters = patchSmartAgricultureDeveloperFilters($formFilters);
 
   var vals = {};
 
@@ -1057,6 +1087,18 @@ async function patchCompanyAbout($formFilters, $formValues, target, pageId, succ
   if(removeCourseNum != null && removeCourseNum !== '')
     vals['removeCourseNum'] = removeCourseNum;
 
+  var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
+  var removeLessonNum = $formValues.querySelector('.removeLessonNum')?.value === 'true';
+  var setLessonNum = removeLessonNum ? null : $formValues.querySelector('.setLessonNum')?.value;
+  var addLessonNum = $formValues.querySelector('.addLessonNum')?.value;
+  if(removeLessonNum || setLessonNum != null && setLessonNum !== '')
+    vals['setLessonNum'] = setLessonNum;
+  if(addLessonNum != null && addLessonNum !== '')
+    vals['addLessonNum'] = addLessonNum;
+  var removeLessonNum = $formValues.querySelector('.removeLessonNum')?.value;
+  if(removeLessonNum != null && removeLessonNum !== '')
+    vals['removeLessonNum'] = removeLessonNum;
+
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
   var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
@@ -1129,10 +1171,10 @@ async function patchCompanyAbout($formFilters, $formValues, target, pageId, succ
   if(removeRelatedArticleIds != null && removeRelatedArticleIds !== '')
     vals['removeRelatedArticleIds'] = removeRelatedArticleIds;
 
-  patchCompanyAboutVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
+  patchSmartAgricultureDeveloperVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
 }
 
-function patchCompanyAboutFilters($formFilters) {
+function patchSmartAgricultureDeveloperFilters($formFilters) {
   var filters = [];
   if($formFilters) {
     filters.push({ name: 'softCommit', value: 'true' });
@@ -1231,6 +1273,10 @@ function patchCompanyAboutFilters($formFilters) {
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
 
+    var filterLessonNum = $formFilters.querySelector('.valueLessonNum')?.value;
+    if(filterLessonNum != null && filterLessonNum !== '')
+      filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
@@ -1270,15 +1316,15 @@ function patchCompanyAboutFilters($formFilters) {
   return filters;
 }
 
-function patchCompanyAboutVal(filters, v, val, target, success, error) {
+function patchSmartAgricultureDeveloperVal(filters, v, val, target, success, error) {
   var vals = {};
   vals[v] = val;
-  patchCompanyAboutVals(filters, vals, target, success, error);
+  patchSmartAgricultureDeveloperVals(filters, vals, target, success, error);
 }
 
-function patchCompanyAboutVals(filters, vals, target, success, error) {
+function patchSmartAgricultureDeveloperVals(filters, vals, target, success, error) {
   fetch(
-    '/en-us/api/about?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
+    '/en-us/api/smart-agriculture-developer?' + filters.map(function(m) { return m.name + '=' + encodeURIComponent(m.value) }).join('&')
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PATCH'
@@ -1297,7 +1343,7 @@ function patchCompanyAboutVals(filters, vals, target, success, error) {
 
 // POST //
 
-async function postCompanyAbout($formValues, target, success, error) {
+async function postSmartAgricultureDeveloper($formValues, target, success, error) {
   var vals = {};
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
@@ -1393,6 +1439,10 @@ async function postCompanyAbout($formValues, target, success, error) {
   if(valueCourseNum != null && valueCourseNum !== '')
     vals['courseNum'] = valueCourseNum;
 
+  var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
+  if(valueLessonNum != null && valueLessonNum !== '')
+    vals['lessonNum'] = valueLessonNum;
+
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
     vals['pageImageAlt'] = valuePageImageAlt;
@@ -1418,7 +1468,7 @@ async function postCompanyAbout($formValues, target, success, error) {
     vals['relatedArticleIds'] = valueRelatedArticleIds;
 
   fetch(
-    '/en-us/api/about'
+    '/en-us/api/smart-agriculture-developer'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -1435,9 +1485,9 @@ async function postCompanyAbout($formValues, target, success, error) {
     .catch(response => error(response, target));
 }
 
-function postCompanyAboutVals(vals, target, success, error) {
+function postSmartAgricultureDeveloperVals(vals, target, success, error) {
   fetch(
-    '/en-us/api/about'
+    '/en-us/api/smart-agriculture-developer'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'POST'
@@ -1456,7 +1506,7 @@ function postCompanyAboutVals(vals, target, success, error) {
 
 // DELETE //
 
-async function deleteCompanyAbout(target, pageId, success, error) {
+async function deleteSmartAgricultureDeveloper(target, pageId, success, error) {
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
       addGlow(target, jqXhr);
@@ -1488,7 +1538,7 @@ async function deleteCompanyAbout(target, pageId, success, error) {
   }
 
   fetch(
-    '/en-us/api/about/' + encodeURIComponent(pageId)
+    '/en-us/api/smart-agriculture-developer/' + encodeURIComponent(pageId)
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'DELETE'
@@ -1504,15 +1554,15 @@ async function deleteCompanyAbout(target, pageId, success, error) {
 
 // PUTImport //
 
-async function putimportCompanyAbout($formValues, target, pageId, success, error) {
+async function putimportSmartAgricultureDeveloper($formValues, target, pageId, success, error) {
   var json = $formValues.querySelector('.PUTImport_searchList')?.value;
   if(json != null && json !== '')
-    putimportCompanyAboutVals(JSON.parse(json), target, success, error);
+    putimportSmartAgricultureDeveloperVals(JSON.parse(json), target, success, error);
 }
 
-function putimportCompanyAboutVals(json, target, success, error) {
+function putimportSmartAgricultureDeveloperVals(json, target, success, error) {
   fetch(
-    '/en-us/api/about-import'
+    '/en-us/api/smart-agriculture-developer-import'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'PUT'
@@ -1531,7 +1581,7 @@ function putimportCompanyAboutVals(json, target, success, error) {
 
 // DELETEFilter //
 
-async function deletefilterCompanyAbout(target, success, error) {
+async function deletefilterSmartAgricultureDeveloper(target, success, error) {
   if(success == null) {
     success = function( data, textStatus, jQxhr ) {
       addGlow(target, jqXhr);
@@ -1563,7 +1613,7 @@ async function deletefilterCompanyAbout(target, success, error) {
   }
 
   fetch(
-    '/en-us/api/about'
+    '/en-us/api/smart-agriculture-developer'
     , {
       headers: {'Content-Type':'application/json; charset=utf-8'}
       , method: 'DELETE'

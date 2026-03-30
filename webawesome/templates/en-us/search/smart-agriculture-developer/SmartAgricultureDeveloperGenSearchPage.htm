@@ -1,16 +1,16 @@
 {% extends "en-us/PageLayout.htm" %}
 
 {%- block htmTitlePageLayout %}
-{%- block htmTitleCompanyAboutPage %}
-    <title>{% if resultCount == 0 %}no about page found{% else %}about{% endif %}</title>
-{%- endblock htmTitleCompanyAboutPage %}
+{%- block htmTitleSmartAgricultureDeveloperPage %}
+    <title>{% if resultCount == 0 %}no Smart Agriculture Developer found{% else %}Smart Agriculture Developers{% endif %}</title>
+{%- endblock htmTitleSmartAgricultureDeveloperPage %}
 {%- endblock htmTitlePageLayout %}
 
 {%- block htmStylesPageLayout %}
 {{ super() }}
-    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/about/CompanyAbout.css"/>
-{%- block htmStylesCompanyAboutPage %}
-{%- endblock htmStylesCompanyAboutPage %}
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/smart-agriculture-developer/SmartAgricultureDeveloper.css"/>
+{%- block htmStylesSmartAgricultureDeveloperPage %}
+{%- endblock htmStylesSmartAgricultureDeveloperPage %}
 {%- endblock htmStylesPageLayout %}
 
 {%- block htmStylePageLayout %}
@@ -18,94 +18,94 @@
         --site-results-number-of-columns: 2;
       }
 {{ super() }}
-{%- block htmStyleCompanyAboutPage %}
-{%- endblock htmStyleCompanyAboutPage %}
+{%- block htmStyleSmartAgricultureDeveloperPage %}
+{%- endblock htmStyleSmartAgricultureDeveloperPage %}
 {%- endblock htmStylePageLayout %}
 
 {%- block htmScriptsPageLayout %}
 {{ super() }}
-{%- block htmScriptsCompanyAboutPage %}
-    <script src="{{staticBaseUrl}}/js/en-us/search/about/CompanyAbout.js"></script>
-    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/about/CompanyAboutSearchPage.js"></script>
-{%- endblock htmScriptsCompanyAboutPage %}
+{%- block htmScriptsSmartAgricultureDeveloperPage %}
+    <script src="{{staticBaseUrl}}/js/en-us/search/smart-agriculture-developer/SmartAgricultureDeveloper.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperSearchPage.js"></script>
+{%- endblock htmScriptsSmartAgricultureDeveloperPage %}
 {%- endblock htmScriptsPageLayout %}
 
 {%- block htmScriptPageLayout %}
-{%- block htmScriptCompanyAboutPage %}
+{%- block htmScriptSmartAgricultureDeveloperPage %}
     <script>
 
-      function jsWebsocketCompanyAbout(pageId, vars, $response) {
-{%- block jsWebsocketCompanyAboutPage %}{%- endblock %}
+      function jsWebsocketSmartAgricultureDeveloper(pageId, vars, $response) {
+{%- block jsWebsocketSmartAgricultureDeveloperPage %}{%- endblock %}
       }
 
-      function jsTooltipCompanyAbout(e, feature) {
-{%- block jsTooltipCompanyAboutPage %}{%- endblock %}
+      function jsTooltipSmartAgricultureDeveloper(e, feature) {
+{%- block jsTooltipSmartAgricultureDeveloperPage %}{%- endblock %}
       }
 
-      function htmTooltipCompanyAbout(feature, layer) {
-        return `{%- block htmTooltipCompanyAboutPage %}
+      function htmTooltipSmartAgricultureDeveloper(feature, layer) {
+        return `{%- block htmTooltipSmartAgricultureDeveloperPage %}
 <h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
-{%- endblock htmTooltipCompanyAboutPage %}`;
+{%- endblock htmTooltipSmartAgricultureDeveloperPage %}`;
       }
 
-      function facetChangeCompanyAboutSuccess(e) {
-        var l = e.querySelector('.pageForm .listCompanyAbout')?.value;
+      function facetChangeSmartAgricultureDeveloperSuccess(e) {
+        var l = e.querySelector('.pageForm .listSmartAgricultureDeveloper')?.value;
         if(l)
-          window.listCompanyAbout = JSON.parse(l);
-{% block facetChangeCompanyAboutSuccess %}{%- endblock facetCompanyAboutSuccess %}
+          window.listSmartAgricultureDeveloper = JSON.parse(l);
+{% block facetChangeSmartAgricultureDeveloperSuccess %}{%- endblock facetSmartAgricultureDeveloperSuccess %}
       }
-      function facetChangeCompanyAboutError(e) {
-{% block facetChangeCompanyAboutError %}{%- endblock facetCompanyAboutError %}
-      }
-
-      function facetSimpleRangeCompanyAboutSuccess(e) {
-{% block facetSimpleRangeCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetSimpleRangeCompanyAboutSuccess %}
-      }
-      function facetSimpleRangeCompanyAboutError(e) {
-{% block facetSimpleRangeCompanyAboutError %}      facetChangeCompanyAboutError(e);{% endblock facetSimpleRangeCompanyAboutError %}
-      }
-      function facetSimpleRangeCompanyAbout(e) {
-        facetSimpleRange(e, facetSimpleRangeCompanyAboutSuccess, facetSimpleRangeCompanyAboutError);
+      function facetChangeSmartAgricultureDeveloperError(e) {
+{% block facetChangeSmartAgricultureDeveloperError %}{%- endblock facetSmartAgricultureDeveloperError %}
       }
 
-      function facetRangeTimeZoneCompanyAboutSuccess(e) {
-{% block facetRangeTimeZoneCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetRangeTimeZoneCompanyAboutSuccess %}
+      function facetSimpleRangeSmartAgricultureDeveloperSuccess(e) {
+{% block facetSimpleRangeSmartAgricultureDeveloperSuccess %}      facetChangeSmartAgricultureDeveloperSuccess(e);{% endblock facetSimpleRangeSmartAgricultureDeveloperSuccess %}
       }
-      function facetRangeTimeZoneCompanyAboutError(e) {
-{% block facetRangeTimeZoneCompanyAboutError %}      facetChangeCompanyAboutError(e);{%- endblock facetRangeTimeZoneCompanyAboutError %}
+      function facetSimpleRangeSmartAgricultureDeveloperError(e) {
+{% block facetSimpleRangeSmartAgricultureDeveloperError %}      facetChangeSmartAgricultureDeveloperError(e);{% endblock facetSimpleRangeSmartAgricultureDeveloperError %}
       }
-      function facetRangeTimeZoneCompanyAbout(e) {
-        facetRangeTimeZone(e, facetRangeTimeZoneCompanyAboutSuccess, facetRangeTimeZoneCompanyAboutError);
-      }
-
-      function facetRangeGapChangeCompanyAboutSuccess(e) {
-{% block facetRangeGapChangeCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetRangeGapChangeCompanyAboutSuccess %}
-      }
-      function facetRangeGapChangeCompanyAboutError(e) {
-{% block facetRangeGapChangeCompanyAboutError %}      facetChangeCompanyAboutError(e);{%- endblock facetRangeGapChangeCompanyAboutError %}
-      }
-      function facetRangeGapChangeCompanyAbout(classSimpleName, event) {
-        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeCompanyAboutSuccess, facetRangeGapChangeCompanyAboutError);
+      function facetSimpleRangeSmartAgricultureDeveloper(e) {
+        facetSimpleRange(e, facetSimpleRangeSmartAgricultureDeveloperSuccess, facetSimpleRangeSmartAgricultureDeveloperError);
       }
 
-      function facetRangeStartChangeCompanyAboutSuccess(e) {
-{% block facetRangeStartChangeCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetRangeStartChangeCompanyAboutSuccess %}
+      function facetRangeTimeZoneSmartAgricultureDeveloperSuccess(e) {
+{% block facetRangeTimeZoneSmartAgricultureDeveloperSuccess %}      facetChangeSmartAgricultureDeveloperSuccess(e);{% endblock facetRangeTimeZoneSmartAgricultureDeveloperSuccess %}
       }
-      function facetRangeStartChangeCompanyAboutError(e) {
-{% block facetRangeStartChangeCompanyAboutError %}      facetChangeCompanyAboutError(e);{%- endblock facetRangeStartChangeCompanyAboutError %}
+      function facetRangeTimeZoneSmartAgricultureDeveloperError(e) {
+{% block facetRangeTimeZoneSmartAgricultureDeveloperError %}      facetChangeSmartAgricultureDeveloperError(e);{%- endblock facetRangeTimeZoneSmartAgricultureDeveloperError %}
       }
-      function facetRangeStartChangeCompanyAbout(classSimpleName, event) {
-        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeCompanyAboutSuccess, facetRangeStartChangeCompanyAboutError);
+      function facetRangeTimeZoneSmartAgricultureDeveloper(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneSmartAgricultureDeveloperSuccess, facetRangeTimeZoneSmartAgricultureDeveloperError);
       }
 
-      function facetRangeEndChangeCompanyAboutSuccess(e) {
-{% block facetRangeEndChangeCompanyAboutSuccess %}      facetChangeCompanyAboutSuccess(e);{% endblock facetRangeEndChangeCompanyAboutSuccess %}
+      function facetRangeGapChangeSmartAgricultureDeveloperSuccess(e) {
+{% block facetRangeGapChangeSmartAgricultureDeveloperSuccess %}      facetChangeSmartAgricultureDeveloperSuccess(e);{% endblock facetRangeGapChangeSmartAgricultureDeveloperSuccess %}
       }
-      function facetRangeEndChangeCompanyAboutError(e) {
-{% block facetRangeEndChangeCompanyAboutError %}      facetChangeCompanyAboutError(e);{%- endblock facetRangeEndChangeCompanyAboutError %}
+      function facetRangeGapChangeSmartAgricultureDeveloperError(e) {
+{% block facetRangeGapChangeSmartAgricultureDeveloperError %}      facetChangeSmartAgricultureDeveloperError(e);{%- endblock facetRangeGapChangeSmartAgricultureDeveloperError %}
       }
-      function facetRangeEndChangeCompanyAbout(classSimpleName, event) {
-        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeCompanyAboutSuccess, facetRangeEndChangeCompanyAboutError);
+      function facetRangeGapChangeSmartAgricultureDeveloper(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeSmartAgricultureDeveloperSuccess, facetRangeGapChangeSmartAgricultureDeveloperError);
+      }
+
+      function facetRangeStartChangeSmartAgricultureDeveloperSuccess(e) {
+{% block facetRangeStartChangeSmartAgricultureDeveloperSuccess %}      facetChangeSmartAgricultureDeveloperSuccess(e);{% endblock facetRangeStartChangeSmartAgricultureDeveloperSuccess %}
+      }
+      function facetRangeStartChangeSmartAgricultureDeveloperError(e) {
+{% block facetRangeStartChangeSmartAgricultureDeveloperError %}      facetChangeSmartAgricultureDeveloperError(e);{%- endblock facetRangeStartChangeSmartAgricultureDeveloperError %}
+      }
+      function facetRangeStartChangeSmartAgricultureDeveloper(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeSmartAgricultureDeveloperSuccess, facetRangeStartChangeSmartAgricultureDeveloperError);
+      }
+
+      function facetRangeEndChangeSmartAgricultureDeveloperSuccess(e) {
+{% block facetRangeEndChangeSmartAgricultureDeveloperSuccess %}      facetChangeSmartAgricultureDeveloperSuccess(e);{% endblock facetRangeEndChangeSmartAgricultureDeveloperSuccess %}
+      }
+      function facetRangeEndChangeSmartAgricultureDeveloperError(e) {
+{% block facetRangeEndChangeSmartAgricultureDeveloperError %}      facetChangeSmartAgricultureDeveloperError(e);{%- endblock facetRangeEndChangeSmartAgricultureDeveloperError %}
+      }
+      function facetRangeEndChangeSmartAgricultureDeveloper(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeSmartAgricultureDeveloperSuccess, facetRangeEndChangeSmartAgricultureDeveloperError);
       }
     </script>
     <script type="module">
@@ -148,43 +148,43 @@
         {% if result.pageId is defined %}
         {% endif %}
         }
-        var l = document.querySelector('.pageForm .listCompanyAbout')?.value;
+        var l = document.querySelector('.pageForm .listSmartAgricultureDeveloper')?.value;
         if(l)
-          window.listCompanyAbout = JSON.parse(l);
+          window.listSmartAgricultureDeveloper = JSON.parse(l);
         window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
         window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
         window.defaultRangeVar = '{{ defaultRangeVar }}';
         document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
-        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyAbout);
-        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneCompanyAbout);
-        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneCompanyAbout);
-        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeCompanyAbout);
-        pageGraphCompanyAbout();
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSmartAgricultureDeveloper);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSmartAgricultureDeveloper);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneSmartAgricultureDeveloper);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeSmartAgricultureDeveloper);
+        pageGraphSmartAgricultureDeveloper();
         {% for key, value in varsQ.items() %}
 
-        document.querySelector('#qCompanyAbout_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
-          qChange('CompanyAbout', event.target, document.querySelector('#qCompanyAboutDiv_{{ key }}'));
+        document.querySelector('#qSmartAgricultureDeveloper_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
+          qChange('SmartAgricultureDeveloper', event.target, document.querySelector('#qSmartAgricultureDeveloperDiv_{{ key }}'));
         });
         {% endfor %}
 
-        document.querySelector('#qCompanyAbout_rows')?.addEventListener('change', event => {
-          paramChange('CompanyAbout', event.target, document.querySelector('#qCompanyAboutDiv_rows'));
+        document.querySelector('#qSmartAgricultureDeveloper_rows')?.addEventListener('change', event => {
+          paramChange('SmartAgricultureDeveloper', event.target, document.querySelector('#qSmartAgricultureDeveloperDiv_rows'));
         });
 
-        document.querySelector('#qCompanyAbout_start')?.addEventListener('change', event => {
-          paramChange('CompanyAbout', event.target, document.querySelector('#qCompanyAboutDiv_start'));
+        document.querySelector('#qSmartAgricultureDeveloper_start')?.addEventListener('change', event => {
+          paramChange('SmartAgricultureDeveloper', event.target, document.querySelector('#qSmartAgricultureDeveloperDiv_start'));
         });
 
 
-        var submitForm_patchCompanyAbout = document.querySelector('#htmForm_patchCompanyAbout')?.addEventListener('submit', event => {
+        var submitForm_patchSmartAgricultureDeveloper = document.querySelector('#htmForm_patchSmartAgricultureDeveloper')?.addEventListener('submit', event => {
           event.preventDefault();
           return false;
         });
-        document.querySelector('#htmFormButton_patchCompanyAbout')?.addEventListener('click', event => {
+        document.querySelector('#htmFormButton_patchSmartAgricultureDeveloper')?.addEventListener('click', event => {
           event.preventDefault();
           event.target.setAttribute('loading', true);
-          patchCompanyAbout(null, document.querySelector('#htmForm_patchCompanyAbout')
-              , document.querySelector('#htmFormButton_patchCompanyAbout')
+          patchSmartAgricultureDeveloper(null, document.querySelector('#htmForm_patchSmartAgricultureDeveloper')
+              , document.querySelector('#htmFormButton_patchSmartAgricultureDeveloper')
               , event.target.getAttribute('data-pageId')
               , (json, target) => {
             
@@ -212,15 +212,15 @@
           return false;
         });
 
-        var submitForm_postCompanyAbout = document.querySelector('#htmForm_postCompanyAbout')?.addEventListener('submit', event => {
+        var submitForm_postSmartAgricultureDeveloper = document.querySelector('#htmForm_postSmartAgricultureDeveloper')?.addEventListener('submit', event => {
           event.preventDefault();
           return false;
         });
-        document.querySelector('#htmFormButton_postCompanyAbout')?.addEventListener('click', event => {
+        document.querySelector('#htmFormButton_postSmartAgricultureDeveloper')?.addEventListener('click', event => {
           event.preventDefault();
           event.target.setAttribute('loading', true);
-          postCompanyAbout(document.querySelector('#htmForm_postCompanyAbout')
-              , document.querySelector('#htmFormButton_postCompanyAbout')
+          postSmartAgricultureDeveloper(document.querySelector('#htmForm_postSmartAgricultureDeveloper')
+              , document.querySelector('#htmFormButton_postSmartAgricultureDeveloper')
               , (json, target) => {
             window.location.href = json.editPage;
           }, (response, target) => {
@@ -247,14 +247,14 @@
           return false;
         });
 
-        var submitForm_deleteCompanyAbout = document.querySelector('#htmForm_deleteCompanyAbout')?.addEventListener('submit', event => {
+        var submitForm_deleteSmartAgricultureDeveloper = document.querySelector('#htmForm_deleteSmartAgricultureDeveloper')?.addEventListener('submit', event => {
           event.preventDefault();
           return false;
         });
-        document.querySelector('#htmFormButton_deleteCompanyAbout')?.addEventListener('click', event => {
+        document.querySelector('#htmFormButton_deleteSmartAgricultureDeveloper')?.addEventListener('click', event => {
           event.preventDefault();
           event.target.setAttribute('loading', true);
-          deleteCompanyAbout(event.target, event.target.getAttribute('data-pageId')
+          deleteSmartAgricultureDeveloper(event.target, event.target.getAttribute('data-pageId')
               , (json, target) => {
             
           }, (response, target) => {
@@ -281,15 +281,15 @@
           return false;
         });
 
-        var submitForm_putimportCompanyAbout = document.querySelector('#htmForm_putimportCompanyAbout')?.addEventListener('submit', event => {
+        var submitForm_putimportSmartAgricultureDeveloper = document.querySelector('#htmForm_putimportSmartAgricultureDeveloper')?.addEventListener('submit', event => {
           event.preventDefault();
           return false;
         });
-        document.querySelector('#htmFormButton_putimportCompanyAbout')?.addEventListener('click', event => {
+        document.querySelector('#htmFormButton_putimportSmartAgricultureDeveloper')?.addEventListener('click', event => {
           event.preventDefault();
           event.target.setAttribute('loading', true);
-          putimportCompanyAbout(document.querySelector('#htmForm_putimportCompanyAbout')
-              , document.querySelector('#htmFormButton_putimportCompanyAbout')
+          putimportSmartAgricultureDeveloper(document.querySelector('#htmForm_putimportSmartAgricultureDeveloper')
+              , document.querySelector('#htmFormButton_putimportSmartAgricultureDeveloper')
               , event.target.getAttribute('data-pageId')
               , (json, target) => {
             
@@ -317,25 +317,25 @@
           return false;
         });
 
-        var submitForm_searchpageCompanyAbout = document.querySelector('#htmForm_searchpageCompanyAbout')?.addEventListener('submit', event => {
+        var submitForm_searchpageSmartAgricultureDeveloper = document.querySelector('#htmForm_searchpageSmartAgricultureDeveloper')?.addEventListener('submit', event => {
           event.preventDefault();
           return false;
         });
-        document.querySelector('#htmFormButton_searchpageCompanyAbout')?.addEventListener('click', event => {
+        document.querySelector('#htmFormButton_searchpageSmartAgricultureDeveloper')?.addEventListener('click', event => {
           event.preventDefault();
           event.target.setAttribute('loading', true);
-          searchpageCompanyAbout();
+          searchpageSmartAgricultureDeveloper();
           return false;
         });
 
-        var submitForm_deletefilterCompanyAbout = document.querySelector('#htmForm_deletefilterCompanyAbout')?.addEventListener('submit', event => {
+        var submitForm_deletefilterSmartAgricultureDeveloper = document.querySelector('#htmForm_deletefilterSmartAgricultureDeveloper')?.addEventListener('submit', event => {
           event.preventDefault();
           return false;
         });
-        document.querySelector('#htmFormButton_deletefilterCompanyAbout')?.addEventListener('click', event => {
+        document.querySelector('#htmFormButton_deletefilterSmartAgricultureDeveloper')?.addEventListener('click', event => {
           event.preventDefault();
           event.target.setAttribute('loading', true);
-          deletefilterCompanyAbout(event.target
+          deletefilterSmartAgricultureDeveloper(event.target
               , (json, target) => {
             
           }, (response, target) => {
@@ -361,33 +361,33 @@
           });
           return false;
         });
-{%- block htmScriptInitCompanyAboutPage %}{%- endblock htmScriptInitCompanyAboutPage %}
+{%- block htmScriptInitSmartAgricultureDeveloperPage %}{%- endblock htmScriptInitSmartAgricultureDeveloperPage %}
       });
     </script>
-{%- endblock htmScriptCompanyAboutPage %}
+{%- endblock htmScriptSmartAgricultureDeveloperPage %}
 {%- endblock htmScriptPageLayout %}
 
 {%- block websocketPageLayout %}
-{%- block websocketCompanyAboutPage %}
+{%- block websocketSmartAgricultureDeveloperPage %}
 {% if resultCount > 0 %}
         window.eventBus = new EventBus('/eventbus');
         window.eventBus.enableReconnect(true);
-        websocketCompanyAbout(websocketCompanyAboutInner);
+        websocketSmartAgricultureDeveloper(websocketSmartAgricultureDeveloperInner);
 {% endif %}
-{%- endblock websocketCompanyAboutPage %}
+{%- endblock websocketSmartAgricultureDeveloperPage %}
 {%- endblock websocketPageLayout %}
 
-{%- block htmUrlCompanyAboutPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlCompanyAboutPage %}
+{%- block htmUrlSmartAgricultureDeveloperPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlSmartAgricultureDeveloperPage %}
 {%- if pageBreadcrumb is not defined %}
 {%- set pageBreadcrumb %}
-              <wa-tooltip for="return-to-CompanyAbout">back to all about</wa-tooltip>
+              <wa-tooltip for="return-to-SmartAgricultureDeveloper">back to all Smart Agriculture Developers</wa-tooltip>
               <wa-breadcrumb>
-                <wa-breadcrumb-item id="return-to-CompanyAbout" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-                  <i class="fa-duotone fa-regular fa-address-card"></i>
-                  all about
+                <wa-breadcrumb-item id="return-to-SmartAgricultureDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="{{ FONTAWESOME_STYLE }} fa-building-wheat"></i>
+                  all Smart Agriculture Developers
                 </wa-breadcrumb-item>
                 <wa-breadcrumb-item>
-                  search about
+                  search Smart Agriculture Developers
                 </wa-breadcrumb-item>
               </wa-breadcrumb>
 {%- endset pageBreadcrumb %}
@@ -395,94 +395,94 @@
 
 {%- block htmBodyStartPageLayout %}
 {{ super() }}
-{%- block htmBodyStartCompanyAboutPage %}
-{% include en-us/search/about/CompanyAboutSidebar.htm %}
+{%- block htmBodyStartSmartAgricultureDeveloperPage %}
+{% include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperSidebar.htm %}
 {% if resultCount == 0 %}
         <div class="wa-stack ">
-          <wa-tooltip for="return-to-CompanyAbout">back to all about</wa-tooltip></wa-tooltip>
+          <wa-tooltip for="return-to-SmartAgricultureDeveloper">back to all Smart Agriculture Developers</wa-tooltip></wa-tooltip>
           <wa-breadcrumb>
-            <wa-breadcrumb-item id="return-to-CompanyAbout" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="fa-duotone fa-regular fa-address-card"></i>
-              all about
+            <wa-breadcrumb-item id="return-to-SmartAgricultureDeveloper" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="{{ FONTAWESOME_STYLE }} fa-building-wheat"></i>
+              all Smart Agriculture Developers
             </wa-breadcrumb-item>
             <wa-breadcrumb-item>
-              no about page found
+              no Smart Agriculture Developer found
             </wa-breadcrumb-item>
           </wa-breadcrumb>
           <div class="wa-stack wa-align-items-center ">
             <div class="wa-heading-3xl ">
-              <i class="fa-duotone fa-regular fa-address-card"></i>
+              <i class="{{ FONTAWESOME_STYLE }} fa-building-wheat"></i>
             </div>
-            <span class="wa-heading-m ">no about page found</span>
-            <p class="wa-caption-l ">Learn about our team, company, culture, and values. </p>
+            <span class="wa-heading-m ">no Smart Agriculture Developer found</span>
+            <p class="wa-caption-l ">Learn how to become a Smart Agriculture platform developer — Understanding farms, crops, and weather. </p>
           </div>
         </div>
 {% else %}
-{% include en-us/search/about/CompanyAboutSuggestedSearch.htm %}
+{% include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperSuggestedSearch.htm %}
           <div class="pageContent ">
-            <form action="/en-us/api/about" id="CompanyAboutForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+            <form action="/en-us/api/smart-agriculture-developer" id="SmartAgricultureDeveloperForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
               <input name="FONTAWESOME_STYLE" class="FONTAWESOME_STYLE" type="hidden" value="{{ FONTAWESOME_STYLE }}"/>
               <input name="focusId" type="hidden"/>
               <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
-              <input name="listCompanyAbout" id="listCompanyAbout" class="listCompanyAbout"  value='{{ toJsonArrayStringInApostrophes(listCompanyAbout) }}' type="hidden"/>
+              <input name="listSmartAgricultureDeveloper" id="listSmartAgricultureDeveloper" class="listSmartAgricultureDeveloper"  value='{{ toJsonArrayStringInApostrophes(listSmartAgricultureDeveloper) }}' type="hidden"/>
             </form>
             <div id="site-calendar-box">
               <div id="site-calendar"><!-- // --></div>
             </div>
             <div class="wa-stack wa-gap-m ">
 {% endif %}
-{% include en-us/search/about/CompanyAboutSearchForm.htm %}
-{%- endblock htmBodyStartCompanyAboutPage %}
+{% include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperSearchForm.htm %}
+{%- endblock htmBodyStartSmartAgricultureDeveloperPage %}
 {%- endblock htmBodyStartPageLayout %}
 {%- if pageSearchButtons is not defined %}
 {%- set pageSearchButtons %}
-{% include en-us/search/about/CompanyAboutSearchButtons.htm %}
+{% include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperSearchButtons.htm %}
 {%- endset pageSearchButtons %}
 {%- endif %}
 {%- if pageSearchFormButtons is not defined %}
 {%- set pageSearchFormButtons %}
-{% include en-us/search/about/CompanyAboutSearchFormButtons.htm %}
+{% include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperSearchFormButtons.htm %}
 {%- endset pageSearchFormButtons %}
 {%- endif %}
 
 {%- block htmBodyMiddlePageLayout %}
-{%- block htmBodyMiddleCompanyAboutPage %}
+{%- block htmBodyMiddleSmartAgricultureDeveloperPage %}
 {% if resultCount > 0 %}
               <div class="wa-stack wa-gap-0 ">
-{% include en-us/search/about/CompanyAboutPaginationButtons.htm %}
+{% include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperPaginationButtons.htm %}
                 <div class="card-like-thing background-color-surface-border" id="site-results-grid">
                   <div>
                     <wa-dropdown id="htmDropdown-name">
-                      <wa-button variant="brand" slot="trigger" caret>about name</wa-button>
+                      <wa-button variant="brand" slot="trigger" caret>course name</wa-button>
                       <wa-menu>
-                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAgricultureDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAgricultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
                           <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                          sort by about name ascending
+                          sort by course name ascending
                         </wa-menu-item>
-                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAgricultureDeveloper_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAgricultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
                           <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                          sort by about name descending
+                          sort by course name descending
                         </wa-menu-item>
                       </wa-menu>
                     </wa-dropdown>
                     <wa-dropdown id="htmDropdown-description">
-                      <wa-button variant="brand" slot="trigger" caret>about description</wa-button>
+                      <wa-button variant="brand" slot="trigger" caret>course description</wa-button>
                       <wa-menu>
-                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAgricultureDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAgricultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
                           <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
-                          sort by about description ascending
+                          sort by course description ascending
                         </wa-menu-item>
-                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortCompanyAbout_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-CompanyAbout').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSmartAgricultureDeveloper_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SmartAgricultureDeveloper').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
                           <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
-                          sort by about description descending
+                          sort by course description descending
                         </wa-menu-item>
                       </wa-menu>
                     </wa-dropdown>
                   </div>
-                  {% for item in listCompanyAbout%}
+                  {% for item in listSmartAgricultureDeveloper%}
                   <div>
                     <a href="{{ item.displayPage }}">
-                      <i class="fa-duotone fa-regular fa-address-card"></i>
+                      <i class="{{ FONTAWESOME_STYLE }} fa-building-wheat"></i>
                       <span>{{ item.name | e }}</span>
                     </a>
                     <a href="{{ item.displayPage }}">
@@ -499,17 +499,17 @@
                 </div>
               {% endif %}
                 </div>
-{% include en-us/search/about/CompanyAboutPaginationButtons.htm %}
+{% include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperPaginationButtons.htm %}
               </div>
 {% endif %}
-{%- endblock htmBodyMiddleCompanyAboutPage %}
+{%- endblock htmBodyMiddleSmartAgricultureDeveloperPage %}
 {%- endblock htmBodyMiddlePageLayout %}
 
 {%- block htmBodyEndPageLayout %}
-{%- block htmBodyEndCompanyAboutPage %}
-{%- include en-us/search/about/CompanyAboutLocation.htm %}
+{%- block htmBodyEndSmartAgricultureDeveloperPage %}
+{%- include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperLocation.htm %}
             </div>
           </div>
-{%- endblock htmBodyEndCompanyAboutPage %}
+{%- endblock htmBodyEndSmartAgricultureDeveloperPage %}
   {{ super() }}
 {%- endblock htmBodyEndPageLayout %}

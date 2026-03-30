@@ -1,0 +1,54 @@
+{% extends "en-us/Article.htm" -%}
+    {% block htmMetaPageLayout -%}
+    {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="computate.org Privacy Policy"/>
+    <meta name="result.description" content="What data does computate.org collect about users. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-03-28T10:56:03.556[America/Denver]" />
+    <meta name="result.courseNum" content="0"/>
+    {% endblock htmMetaPageLayout -%}
+          {% block htmBodyMiddleArticle -%}
+          <div class="content-padding-inline ">
+            <h2>
+              What is computate.org? 
+            </h2>
+            <p>
+              An open source software company providing advanced tools 
+              for building data-driven websites with OpenAPIs and fine-grained authorization standards, 
+              for the last 20 years. 
+              The on-device, local AI code indexing and generation of SPINE Programming Theory 
+              accelerates software development while ensuring that users maintain full control over their data in their own environment. 
+              SPT allows developers to focus on business logic, 
+              while the artificial intelligence of Computate software automatically
+              watches code for changes, parses the code and code comments, 
+              indexes the code in a search engine, 
+              then generates the code you need based on the comments in the code. 
+              Computate can teach software developers how to build these solutions from the beginning, 
+              all the way to the cloud or the edge using modern web components.
+            </p>
+            <h2>
+              What data does computate.org collect about me?
+            </h2>
+            <p>
+              A new visitor to computate.org is not tracked in any way, because we have no analytics in the website. 
+              We take your privacy seriously and are committed to protecting your personal information. 
+            </p>
+            <div class="wa-flank">
+              <img src="{{ STATIC_BASE_URL }}/png/user-profile-info.png"/>
+              <p>
+                A user who logs into computate.org to access the private documentation and software repositories of computate.org 
+                authenticates through GitHub, and we only receive the information that GitHub provides to us, 
+                which is your GitHub username, email address, first name, and last name. 
+                No other information is collected from GitHub, 
+                and we do not track your activity on GitHub in any way. 
+                We do not track your activity on computate.org after you log in either. 
+              </p>
+            </div>
+            <p>
+              Users who would like to learn more about what is going on at computate.org can subscribe to our mailing lists at 
+              <a target="_blank" href="https://computate.topicbox.com/latest">https://computate.topicbox.com/latest</a>. 
+            </p>
+          </div>
+          {% endblock -%}

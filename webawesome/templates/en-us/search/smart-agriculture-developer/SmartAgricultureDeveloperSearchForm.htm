@@ -1,0 +1,26 @@
+{% include en-us/search/smart-agriculture-developer/SmartAgricultureDeveloperSearchFormMacros.htm %}
+{%- if 'DELETE' in scopes %}
+    {{ htmForm_patchSmartAgricultureDeveloper() }}
+{%- endif %}
+{%- if 'POST' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_postSmartAgricultureDeveloper() }}
+  {%- else %}
+    {{ htmForm_postSmartAgricultureDeveloper() }}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deleteSmartAgricultureDeveloper() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}
+{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {{ htmForm_putimportSmartAgricultureDeveloper() }}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deletefilterSmartAgricultureDeveloper() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}
