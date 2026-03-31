@@ -385,7 +385,7 @@
         </main>
         {% endblock htmBodyMiddlePageLayout -%}
         {% block htmBodyEndPageLayout -%}
-        <footer class="no-gradient wa-cluster wa-align-items-center " slot="main-footer">
+        <footer class="no-gradient wa-cluster wa-align-items-center wa-stack " slot="main-footer">
           {% if GITHUB_ORG is defined -%}
           <wa-button size="small" variant="brand" href="https://github.com/{{ GITHUB_ORG }}/{{ SITE_NAME }}" target="_blank" appearance="filled outlined" class="tile">
             <div class="wa-cluster" style="gap: 1ch;">
@@ -411,6 +411,85 @@
           </wa-button>
           {%- endif %}{{''}}
         </footer>
+        <div class="padding-block-3xl ">
+          <div class="wa-stack wa-gap-2xl">
+            <div class="wa-grid wa-gap-3xl" style="--min-column-size: 50ch;">
+              <div class="wa-split:column wa-align-items-start">
+                <div class="wa-stack wa-gap-s">
+                  <div class="wa-cluster wa-gap-s">
+                    <i class="fa-kit fa-computate-c-key"></i>
+                    <h2 class="wa-heading-m">
+                      Crack the code on writing code
+                    </h2>
+                  </div>
+                  <div class="wa-body-s ">
+                    <p>
+                      Computate.org is an open source software company providing advanced tools for building data-driven websites 
+                      with OpenAPIs and fine-grained authorization standards, for the last 20 years. 
+                    </p>
+                  </div>
+                </div>
+                <div class="wa-cluster wa-gap-0">
+                  <a href="https://github.com/computate-org/computate.org" target="_blank"
+                    >
+                    <wa-icon family="brands" name="github" label="GitHub" role="img" aria-label="GitHub" library="default"
+                      rotate="0" style="--rotate-angle: 0deg;"></wa-icon>
+                  </a>
+                  <a href="https://www.linkedin.com/company/computate/" target="_blank">
+                    <wa-icon family="brands" name="linkedin" label="LinkedIn" role="img" aria-label="LinkedIn" library="default"
+                      rotate="0" style="--rotate-angle: 0deg;"></wa-icon>
+                  </a>
+                  <a href="https://www.youtube.com/channel/UC3ryOB2snhO7fItkx6dGx2Q/" target="_blank">
+                    <wa-icon family="brands" name="youtube" label="Youtube" role="img" aria-label="Youtube" library="default"
+                      rotate="0" style="--rotate-angle: 0deg;"></wa-icon>
+                  </a>
+                  <a href="mailto:computate@group.computate.org" target="_blank">
+                    <wa-icon family="brands" name="threads" label="Threads" role="img" aria-label="Threads" library="default"
+                      rotate="0" style="--rotate-angle: 0deg;"></wa-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="wa-grid wa-gap-2xl wa-align-items-start footer-links" style="--min-column-size: 10ch;">
+                <div class="wa-stack wa-gap-xs">
+                  <h3 class="wa-heading-s footer-links-heading">Project</h3>
+                  <div class="wa-stack wa-body-s">
+                    <a class="appearance-plain" href="https://github.com/computate-org/computate.org" target="_blank">
+                      Java backend
+                    </a>
+                    <a class="appearance-plain" href="https://github.com/computate-org/computate.org-static" target="_blank">
+                      Frontend content
+                    </a>
+                  </div>
+                </div>
+                <div class="wa-stack wa-gap-xs">
+                  <h3 class="wa-heading-s">Special Thanks</h3>
+                  <div class="wa-stack wa-body-s">
+                    <a class="appearance-plain" href="https://fontawesome.com/" target="_blank">
+                      Font Awesome
+                    </a>
+                    <a class="appearance-plain" href="https://webawesome.com/" target="_blank">
+                      Web Awesome
+                    </a>
+                    <a class="appearance-plain" href="https://github.com/paul-hammant/qdox" target="_blank">
+                      paul-hammant/qdox
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wa-split wa-gap-3xl">
+              <div class="wa-cluster wa-caption-s">
+                <a class="appearance-plain" href="/en-us/learn/about/privacy-policy">
+                  Privacy Policy
+                </a>
+                <a class="appearance-plain" href="/en-us/learn/about/terms-of-service">
+                  Terms of Service
+                </a>
+              </div>
+              <p class="wa-caption-s">© Computate Limited Liability Company in Utah, USA.</p>
+            </div>
+          </div>
+        </div>
       </main>
     {%- if WEB_COMPONENTS_PREFIX == 'wa-' %}{{''}}
     </wa-page>

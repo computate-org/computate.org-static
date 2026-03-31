@@ -1,0 +1,39 @@
+{% extends "en-us/Article.htm" -%}
+    {% block htmMetaPageLayout -%}
+    {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Terms of Service"/>
+    <meta name="result.description" content="Information about the terms of service for computate.org. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-03-30T22:17:48.556[America/Denver]" />
+    <meta name="result.courseNum" content="0"/>
+    {% endblock htmMetaPageLayout -%}
+          {% block htmBodyMiddleArticle -%}
+          <div class="content-padding-inline ">
+            <h2>
+              What are the terms for creating an account on computate.org?
+            </h2>
+            <ol>
+              <li>
+                You must be 13 years or older to use GitHub and create an account at computate.org.
+              </li>
+              <li>
+                You must be a human. Accounts registered by "bots" or other automated methods are not permitted.
+              </li>
+              <li>
+                You must log in to computate.org with a GitHub account in order to complete the registration process. 
+                This is because all of the public and private GitHub repositories for computate.org are hosted on GitHub. 
+              </li>
+              <li>
+                Your login may only be used by one person. 
+              </li>
+              <li>
+                You are responsible for all activity that occurs under your account. 
+              </li>
+              <li>
+                You may not use the Service for any illegal or unauthorized purpose. 
+              </li>
+            </ol>
+          </div>
+          {% endblock -%}
