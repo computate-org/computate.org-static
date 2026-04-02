@@ -188,42 +188,6 @@
 {%- macro htmDescriptionSmartAquacultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputDescriptionSmartAquacultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
-{%- macro inputAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
-  {%- if 'Page' == classApiMethodMethod %}
-                <form class="subgrid-2col " id="PageForm_authorName">
-  {%- endif %}
-                  <wa-input
-                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
-                      placeholder="[String] author name"
-                      label="author name"
-                      hint="The author name"
-                      id="SmartAquacultureDeveloper_{{classApiMethodMethod}}_authorName"
-  {%- if "Page" == classApiMethodMethod %}
-                      data-pageId={{ result.pageId | tojson }}
-                      class="label-on-left SmartAquacultureDeveloper_{{classApiMethodMethod}}_authorName setAuthorName classSmartAquacultureDeveloper inputSmartAquacultureDeveloper{{ result.pageId }}AuthorName "
-                      name="setAuthorName"
-  {%- else %}
-    {%- if "PATCH" == classApiMethodMethod %}
-                      class="label-on-left SmartAquacultureDeveloper_{{classApiMethodMethod}}_authorName setAuthorName classSmartAquacultureDeveloper inputSmartAquacultureDeveloper{{ result.pageId }}AuthorName "
-                      name="setAuthorName"
-    {%- else %}
-                      class="label-on-left SmartAquacultureDeveloper_{{classApiMethodMethod}}_authorName valueAuthorName classSmartAquacultureDeveloper inputSmartAquacultureDeveloper{{ result.pageId }}AuthorName "
-                      name="authorName"
-    {%- endif %}
-  {%- endif %}
-  {% if "Page" == classApiMethodMethod -%}
-                      value="{{result.authorName | e }}"
-  {% endif -%}
-                      ></wa-input>
-
-  {%- if 'Page' == classApiMethodMethod %}
-                </form>
-  {%- endif %}
-{%- endmacro %}
-
-{%- macro htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
-                            {{ inputAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
-{%- endmacro %}
 {%- macro inputAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
                 <form class="subgrid-2col " id="PageForm_authorUrl">
@@ -259,6 +223,42 @@
 
 {%- macro htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
                             {{ inputAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
+{%- endmacro %}
+{%- macro inputAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
+  {%- if 'Page' == classApiMethodMethod %}
+                <form class="subgrid-2col " id="PageForm_authorName">
+  {%- endif %}
+                  <wa-input
+                      {% if authForWriteBool == true %}clearable{% else %}readonly{% endif %}
+                      placeholder="[String] author name"
+                      label="author name"
+                      hint="The author name"
+                      id="SmartAquacultureDeveloper_{{classApiMethodMethod}}_authorName"
+  {%- if "Page" == classApiMethodMethod %}
+                      data-pageId={{ result.pageId | tojson }}
+                      class="label-on-left SmartAquacultureDeveloper_{{classApiMethodMethod}}_authorName setAuthorName classSmartAquacultureDeveloper inputSmartAquacultureDeveloper{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+  {%- else %}
+    {%- if "PATCH" == classApiMethodMethod %}
+                      class="label-on-left SmartAquacultureDeveloper_{{classApiMethodMethod}}_authorName setAuthorName classSmartAquacultureDeveloper inputSmartAquacultureDeveloper{{ result.pageId }}AuthorName "
+                      name="setAuthorName"
+    {%- else %}
+                      class="label-on-left SmartAquacultureDeveloper_{{classApiMethodMethod}}_authorName valueAuthorName classSmartAquacultureDeveloper inputSmartAquacultureDeveloper{{ result.pageId }}AuthorName "
+                      name="authorName"
+    {%- endif %}
+  {%- endif %}
+  {% if "Page" == classApiMethodMethod -%}
+                      value="{{result.authorName | e }}"
+  {% endif -%}
+                      ></wa-input>
+
+  {%- if 'Page' == classApiMethodMethod %}
+                </form>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod, authForWriteBool=false, authForReadBool=false) %}
+                            {{ inputAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod=classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead) }}
 {%- endmacro %}
 {%- macro inputPageImageUriSmartAquacultureDeveloperPage(classApiMethodMethod, authForWrite=authForWrite, authForRead=authForRead, idPrefix='', idSuffix='') %}
   {%- if 'Page' == classApiMethodMethod %}
@@ -389,7 +389,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_patchSmartAquacultureDeveloper(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchSmartAquacultureDeveloperDialog" label="Modify Smart Aquaculture Developer">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="patchSmartAquacultureDeveloperDialog" label="Modify Smart Aquaculture Developer">
           <form id="htmForm_patchSmartAquacultureDeveloper" class="round-row primary-smart-border-radius ">
 
             <wa-details open class="HtmRow" id="course-details">
@@ -418,22 +418,22 @@
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
-                {% else -%}
-                {% if "GET" in scopes -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
-                {% else -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
-                {%- endif %}
-                {%- endif %}
-
-                {% if "PATCH" in scopes -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='PATCH', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -492,7 +492,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_postSmartAquacultureDeveloper(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="postSmartAquacultureDeveloperDialog" label="Create a Smart Aquaculture Developer">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="postSmartAquacultureDeveloperDialog" label="Create a Smart Aquaculture Developer">
           <form id="htmForm_postSmartAquacultureDeveloper" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
 
@@ -522,22 +522,22 @@
                 {%- endif %}
 
                 {% if "POST" in scopes -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
-                {% else -%}
-                {% if "GET" in scopes -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
-                {% else -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
-                {%- endif %}
-                {%- endif %}
-
-                {% if "POST" in scopes -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "POST" in scopes -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='POST', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -596,7 +596,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deleteSmartAquacultureDeveloper(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteSmartAquacultureDeveloperDialog" label="Delete Smart Aquaculture Developer">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deleteSmartAquacultureDeveloperDialog" label="Delete Smart Aquaculture Developer">
           <form id="htmForm_deleteSmartAquacultureDeveloper" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteSmartAquacultureDeveloper() }}
@@ -613,7 +613,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_putimportSmartAquacultureDeveloper(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportSmartAquacultureDeveloperDialog" label="Import Smart Aquaculture Developers">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="putimportSmartAquacultureDeveloperDialog" label="Import Smart Aquaculture Developers">
           <form id="htmForm_putimportSmartAquacultureDeveloper" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -629,7 +629,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_searchpageSmartAquacultureDeveloper(idSuffix='') %}
-        <div with-header with-footer style="--width: 50vw; " id="searchpageSmartAquacultureDeveloperDialog" label="Search Smart Aquaculture Developers">
+        <div with-header with-footer style="--width: min(64rem, 100vw); " id="searchpageSmartAquacultureDeveloperDialog" label="Search Smart Aquaculture Developers">
           <div id="htmForm_searchpageSmartAquacultureDeveloper" class="round-row primary-smart-border-radius ">
 
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -697,22 +697,22 @@
                 {%- endif %}
 
                 {% if "PATCH" in scopes -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
-                {% else -%}
-                {% if "GET" in scopes -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
-                {% else -%}
-                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
-                {%- endif %}
-                {%- endif %}
-
-                {% if "PATCH" in scopes -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {% if "GET" in scopes -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
                 {% else -%}
                 {{ htmAuthorUrlSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
+                {%- endif %}
+                {%- endif %}
+
+                {% if "PATCH" in scopes -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=true, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {% if "GET" in scopes -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=true, idSuffix=idSuffix) }}
+                {% else -%}
+                {{ htmAuthorNameSmartAquacultureDeveloperPage(classApiMethodMethod='Page', authForWriteBool=false, authForReadBool=false, idSuffix=idSuffix }}
                 {%- endif %}
                 {%- endif %}
               </div>
@@ -770,7 +770,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterSmartAquacultureDeveloper(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterSmartAquacultureDeveloperDialog" label="Delete Smart Aquaculture Developer">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deletefilterSmartAquacultureDeveloperDialog" label="Delete Smart Aquaculture Developer">
           <form id="htmForm_deletefilterSmartAquacultureDeveloper" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterSmartAquacultureDeveloper() }}

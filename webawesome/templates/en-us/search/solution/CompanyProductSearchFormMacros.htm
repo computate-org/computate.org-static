@@ -355,7 +355,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_patchCompanyProduct(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchCompanyProductDialog" label="Modify solution">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="patchCompanyProductDialog" label="Modify solution">
           <form id="htmForm_patchCompanyProduct" class="round-row primary-smart-border-radius ">
 
             <wa-details open class="HtmRow" id="solution-details">
@@ -448,7 +448,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_postCompanyProduct(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="postCompanyProductDialog" label="Create a solution">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="postCompanyProductDialog" label="Create a solution">
           <form id="htmForm_postCompanyProduct" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
 
@@ -542,7 +542,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deleteCompanyProduct(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteCompanyProductDialog" label="Delete solution">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deleteCompanyProductDialog" label="Delete solution">
           <form id="htmForm_deleteCompanyProduct" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteCompanyProduct() }}
@@ -559,7 +559,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_putimportCompanyProduct(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportCompanyProductDialog" label="Import solutions">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="putimportCompanyProductDialog" label="Import solutions">
           <form id="htmForm_putimportCompanyProduct" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -575,7 +575,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyProduct(idSuffix='') %}
-        <div with-header with-footer style="--width: 50vw; " id="searchpageCompanyProductDialog" label="Search solutions">
+        <div with-header with-footer style="--width: min(64rem, 100vw); " id="searchpageCompanyProductDialog" label="Search solutions">
           <div id="htmForm_searchpageCompanyProduct" class="round-row primary-smart-border-radius ">
 
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -706,7 +706,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterCompanyProduct(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterCompanyProductDialog" label="Delete solution">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deletefilterCompanyProductDialog" label="Delete solution">
           <form id="htmForm_deletefilterCompanyProduct" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterCompanyProduct() }}

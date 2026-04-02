@@ -313,27 +313,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH courseNum
-          document.querySelector('#AiTelemetryDeveloper_Page_courseNum')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_courseNum');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setCourseNum', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#AiTelemetryDeveloper_Page_courseNum')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#AiTelemetryDeveloper_Page_courseNum')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_courseNum');
-            const valid = form.reportValidity();
-          });
-
           // PATCH lessonNum
           document.querySelector('#AiTelemetryDeveloper_Page_lessonNum')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_lessonNum');
@@ -355,24 +334,24 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH pageImageAlt
-          document.querySelector('#AiTelemetryDeveloper_Page_pageImageAlt')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_pageImageAlt');
+          // PATCH pageVideoUrl
+          document.querySelector('#AiTelemetryDeveloper_Page_pageVideoUrl')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageVideoUrl');
             const valid = form.checkValidity();
             if(valid) {
               patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setPageImageAlt', event.currentTarget.value
+                  , 'setPageVideoUrl', event.currentTarget.value
                   , event.currentTarget
                 , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#AiTelemetryDeveloper_Page_pageImageAlt')?.addEventListener('focus', (event) => {
+          document.querySelector('#AiTelemetryDeveloper_Page_pageVideoUrl')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#AiTelemetryDeveloper_Page_pageImageAlt')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_pageImageAlt');
+          document.querySelector('#AiTelemetryDeveloper_Page_pageVideoUrl')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageVideoUrl');
             const valid = form.reportValidity();
           });
 
@@ -418,27 +397,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH labelsString
-          document.querySelector('#AiTelemetryDeveloper_Page_labelsString')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_labelsString');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLabelsString', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#AiTelemetryDeveloper_Page_labelsString')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#AiTelemetryDeveloper_Page_labelsString')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_labelsString');
-            const valid = form.reportValidity();
-          });
-
           // PATCH labels
           document.querySelector('#AiTelemetryDeveloper_Page_labels')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_labels');
@@ -457,6 +415,69 @@ Promise.all([
           });
           document.querySelector('#AiTelemetryDeveloper_Page_labels')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_labels');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH courseNum
+          document.querySelector('#AiTelemetryDeveloper_Page_courseNum')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_courseNum');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setCourseNum', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#AiTelemetryDeveloper_Page_courseNum')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#AiTelemetryDeveloper_Page_courseNum')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_courseNum');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH pageImageAlt
+          document.querySelector('#AiTelemetryDeveloper_Page_pageImageAlt')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageImageAlt');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPageImageAlt', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#AiTelemetryDeveloper_Page_pageImageAlt')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#AiTelemetryDeveloper_Page_pageImageAlt')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageImageAlt');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH labelsString
+          document.querySelector('#AiTelemetryDeveloper_Page_labelsString')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_labelsString');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchAiTelemetryDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setLabelsString', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#AiTelemetryDeveloper_Page_labelsString')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#AiTelemetryDeveloper_Page_labelsString')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_labelsString');
             const valid = form.reportValidity();
           });
 

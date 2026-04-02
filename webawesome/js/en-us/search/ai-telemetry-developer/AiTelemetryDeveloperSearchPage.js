@@ -242,17 +242,6 @@ Promise.all([
     facetStatsChange('AiTelemetryDeveloper', 'solrId', false);
   });
 
-  document.querySelector('#pageSelectSortAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-    sort('AiTelemetryDeveloper', 'courseNum', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsAiTelemetryDeveloper_courseNum')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('AiTelemetryDeveloper', 'courseNum', true);
-  });
-  document.querySelector('#pageStatsAiTelemetryDeveloper_courseNum')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('AiTelemetryDeveloper', 'courseNum', false);
-  });
-
   document.querySelector('#pageSelectSortAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
     sort('AiTelemetryDeveloper', 'lessonNum', event.currentTarget.value);
   });
@@ -262,6 +251,17 @@ Promise.all([
   });
   document.querySelector('#pageStatsAiTelemetryDeveloper_lessonNum')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('AiTelemetryDeveloper', 'lessonNum', false);
+  });
+
+  document.querySelector('#pageSelectSortAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('AiTelemetryDeveloper', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'pageVideoUrl', false);
   });
 
   document.querySelector('#pageSelectSortAiTelemetryDeveloper_pageImageWidth')?.addEventListener('change', (event) => {
@@ -275,17 +275,6 @@ Promise.all([
     facetStatsChange('AiTelemetryDeveloper', 'pageImageWidth', false);
   });
 
-  document.querySelector('#pageSelectSortAiTelemetryDeveloper_pageImageHeight')?.addEventListener('change', (event) => {
-    sort('AiTelemetryDeveloper', 'pageImageHeight', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageHeight')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('AiTelemetryDeveloper', 'pageImageHeight', true);
-  });
-  document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageHeight')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('AiTelemetryDeveloper', 'pageImageHeight', false);
-  });
-
   document.querySelector('#pageSelectSortAiTelemetryDeveloper_pageImageType')?.addEventListener('change', (event) => {
     sort('AiTelemetryDeveloper', 'pageImageType', event.currentTarget.value);
   });
@@ -295,17 +284,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageType')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('AiTelemetryDeveloper', 'pageImageType', false);
-  });
-
-  document.querySelector('#pageSelectSortAiTelemetryDeveloper_pageImageAlt')?.addEventListener('change', (event) => {
-    sort('AiTelemetryDeveloper', 'pageImageAlt', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageAlt')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('AiTelemetryDeveloper', 'pageImageAlt', true);
-  });
-  document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageAlt')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('AiTelemetryDeveloper', 'pageImageAlt', false);
   });
 
   document.querySelector('#pageSelectSortAiTelemetryDeveloper_prerequisiteArticleIds')?.addEventListener('change', (event) => {
@@ -330,17 +308,6 @@ Promise.all([
     facetStatsChange('AiTelemetryDeveloper', 'nextArticleIds', false);
   });
 
-  document.querySelector('#pageSelectSortAiTelemetryDeveloper_labelsString')?.addEventListener('change', (event) => {
-    sort('AiTelemetryDeveloper', 'labelsString', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsAiTelemetryDeveloper_labelsString')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('AiTelemetryDeveloper', 'labelsString', true);
-  });
-  document.querySelector('#pageStatsAiTelemetryDeveloper_labelsString')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('AiTelemetryDeveloper', 'labelsString', false);
-  });
-
   document.querySelector('#pageSelectSortAiTelemetryDeveloper_labels')?.addEventListener('change', (event) => {
     sort('AiTelemetryDeveloper', 'labels', event.currentTarget.value);
   });
@@ -350,6 +317,50 @@ Promise.all([
   });
   document.querySelector('#pageStatsAiTelemetryDeveloper_labels')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('AiTelemetryDeveloper', 'labels', false);
+  });
+
+  document.querySelector('#pageSelectSortAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+    sort('AiTelemetryDeveloper', 'courseNum', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsAiTelemetryDeveloper_courseNum')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'courseNum', true);
+  });
+  document.querySelector('#pageStatsAiTelemetryDeveloper_courseNum')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'courseNum', false);
+  });
+
+  document.querySelector('#pageSelectSortAiTelemetryDeveloper_pageImageHeight')?.addEventListener('change', (event) => {
+    sort('AiTelemetryDeveloper', 'pageImageHeight', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageHeight')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'pageImageHeight', true);
+  });
+  document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageHeight')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'pageImageHeight', false);
+  });
+
+  document.querySelector('#pageSelectSortAiTelemetryDeveloper_pageImageAlt')?.addEventListener('change', (event) => {
+    sort('AiTelemetryDeveloper', 'pageImageAlt', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageAlt')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'pageImageAlt', true);
+  });
+  document.querySelector('#pageStatsAiTelemetryDeveloper_pageImageAlt')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'pageImageAlt', false);
+  });
+
+  document.querySelector('#pageSelectSortAiTelemetryDeveloper_labelsString')?.addEventListener('change', (event) => {
+    sort('AiTelemetryDeveloper', 'labelsString', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsAiTelemetryDeveloper_labelsString')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'labelsString', true);
+  });
+  document.querySelector('#pageStatsAiTelemetryDeveloper_labelsString')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('AiTelemetryDeveloper', 'labelsString', false);
   });
 
   document.querySelector('#pageSelectSortAiTelemetryDeveloper_relatedArticleIds')?.addEventListener('change', (event) => {
@@ -560,24 +571,6 @@ Promise.all([
           document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_download')?.addEventListener('change', (event) => {
             facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
           });
-          document.querySelector('#fqAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
-          });
-          document.querySelector('#buttonFacetAiTelemetryDeveloper_courseNum')?.addEventListener('click', (event) => {
-            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
-            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
-          });
           document.querySelector('#fqAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
             fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
           });
@@ -594,6 +587,42 @@ Promise.all([
             facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            fqChange('AiTelemetryDeveloper', event.currentTarget, facetChangeAiTelemetryDeveloperSuccess, facetChangeAiTelemetryDeveloperError);
+          });
+          document.querySelector('#buttonFacetAiTelemetryDeveloper_courseNum')?.addEventListener('click', (event) => {
+            facetFieldChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetPivotChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeGapChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
+            facetRangeStartChange('AiTelemetryDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndAiTelemetryDeveloper_courseNum')?.addEventListener('change', (event) => {
             facetRangeEndChange('AiTelemetryDeveloper', event.currentTarget);
           });
 });

@@ -264,6 +264,17 @@ Promise.all([
     facetStatsChange('ComputateDeveloper', 'lessonNum', false);
   });
 
+  document.querySelector('#pageSelectSortComputateDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortComputateDeveloper_pageImageWidth')?.addEventListener('change', (event) => {
     sort('ComputateDeveloper', 'pageImageWidth', event.currentTarget.value);
   });
@@ -273,28 +284,6 @@ Promise.all([
   });
   document.querySelector('#pageStatsComputateDeveloper_pageImageWidth')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('ComputateDeveloper', 'pageImageWidth', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_pageImageHeight')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'pageImageHeight', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_pageImageHeight')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'pageImageHeight', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_pageImageHeight')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'pageImageHeight', false);
-  });
-
-  document.querySelector('#pageSelectSortComputateDeveloper_pageImageType')?.addEventListener('change', (event) => {
-    sort('ComputateDeveloper', 'pageImageType', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsComputateDeveloper_pageImageType')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('ComputateDeveloper', 'pageImageType', true);
-  });
-  document.querySelector('#pageStatsComputateDeveloper_pageImageType')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('ComputateDeveloper', 'pageImageType', false);
   });
 
   document.querySelector('#pageSelectSortComputateDeveloper_pageImageAlt')?.addEventListener('change', (event) => {
@@ -317,6 +306,28 @@ Promise.all([
   });
   document.querySelector('#pageStatsComputateDeveloper_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('ComputateDeveloper', 'prerequisiteArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_pageImageHeight')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'pageImageHeight', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_pageImageHeight')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageImageHeight', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_pageImageHeight')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageImageHeight', false);
+  });
+
+  document.querySelector('#pageSelectSortComputateDeveloper_pageImageType')?.addEventListener('change', (event) => {
+    sort('ComputateDeveloper', 'pageImageType', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsComputateDeveloper_pageImageType')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageImageType', true);
+  });
+  document.querySelector('#pageStatsComputateDeveloper_pageImageType')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('ComputateDeveloper', 'pageImageType', false);
   });
 
   document.querySelector('#pageSelectSortComputateDeveloper_nextArticleIds')?.addEventListener('change', (event) => {
@@ -594,6 +605,24 @@ Promise.all([
             facetRangeStartChange('ComputateDeveloper', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndComputateDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqComputateDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('ComputateDeveloper', event.currentTarget, facetChangeComputateDeveloperSuccess, facetChangeComputateDeveloperError);
+          });
+          document.querySelector('#buttonFacetComputateDeveloper_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotComputateDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapComputateDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartComputateDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('ComputateDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndComputateDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('ComputateDeveloper', event.currentTarget);
           });
 });

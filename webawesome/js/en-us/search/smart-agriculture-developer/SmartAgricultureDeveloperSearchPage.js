@@ -264,6 +264,17 @@ Promise.all([
     facetStatsChange('SmartAgricultureDeveloper', 'lessonNum', false);
   });
 
+  document.querySelector('#pageSelectSortSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('SmartAgricultureDeveloper', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAgricultureDeveloper', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAgricultureDeveloper', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortSmartAgricultureDeveloper_pageImageWidth')?.addEventListener('change', (event) => {
     sort('SmartAgricultureDeveloper', 'pageImageWidth', event.currentTarget.value);
   });
@@ -594,6 +605,24 @@ Promise.all([
             facetRangeStartChange('SmartAgricultureDeveloper', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndSmartAgricultureDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAgricultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('SmartAgricultureDeveloper', event.currentTarget, facetChangeSmartAgricultureDeveloperSuccess, facetChangeSmartAgricultureDeveloperError);
+          });
+          document.querySelector('#buttonFacetSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('SmartAgricultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('SmartAgricultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SmartAgricultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAgricultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAgricultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('SmartAgricultureDeveloper', event.currentTarget);
           });
 });

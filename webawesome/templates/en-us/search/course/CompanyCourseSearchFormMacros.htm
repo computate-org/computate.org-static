@@ -363,7 +363,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_patchCompanyCourse(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="patchCompanyCourseDialog" label="Modify course">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="patchCompanyCourseDialog" label="Modify course">
           <form id="htmForm_patchCompanyCourse" class="round-row primary-smart-border-radius ">
 
               <div class="grid-with-subgrid-2col ">
@@ -452,7 +452,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_postCompanyCourse(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="postCompanyCourseDialog" label="Create a course">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="postCompanyCourseDialog" label="Create a course">
           <form id="htmForm_postCompanyCourse" class="round-row primary-smart-border-radius ">
             <div>You can override any default values below: </div>
 
@@ -542,7 +542,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deleteCompanyCourse(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deleteCompanyCourseDialog" label="Delete course">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deleteCompanyCourseDialog" label="Delete course">
           <form id="htmForm_deleteCompanyCourse" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deleteCompanyCourse() }}
@@ -559,7 +559,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_putimportCompanyCourse(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="putimportCompanyCourseDialog" label="Import courses">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="putimportCompanyCourseDialog" label="Import courses">
           <form id="htmForm_putimportCompanyCourse" class="round-row primary-smart-border-radius ">
             <div>
               <wa-textarea
@@ -575,7 +575,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_searchpageCompanyCourse(idSuffix='') %}
-        <div with-header with-footer style="--width: 50vw; " id="searchpageCompanyCourseDialog" label="Search courses">
+        <div with-header with-footer style="--width: min(64rem, 100vw); " id="searchpageCompanyCourseDialog" label="Search courses">
           <div id="htmForm_searchpageCompanyCourse" class="round-row primary-smart-border-radius ">
 
             <wa-details class="HtmRow" id="primary-key-id-created-modified-archive-details">
@@ -701,7 +701,7 @@
 {%- endmacro %}
 
 {%- macro htmForm_deletefilterCompanyCourse(idSuffix='') %}
-        <wa-dialog with-header with-footer style="--width: 50vw; " id="deletefilterCompanyCourseDialog" label="Delete course">
+        <wa-dialog with-header with-footer style="--width: min(64rem, 100vw); " id="deletefilterCompanyCourseDialog" label="Delete course">
           <form id="htmForm_deletefilterCompanyCourse" class="round-row primary-smart-border-radius ">
           </form>
           {{ htmFormButton_deletefilterCompanyCourse() }}

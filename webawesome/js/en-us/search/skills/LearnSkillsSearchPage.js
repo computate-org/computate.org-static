@@ -253,6 +253,17 @@ Promise.all([
     facetStatsChange('LearnSkills', 'courseNum', false);
   });
 
+  document.querySelector('#pageSelectSortLearnSkills_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('LearnSkills', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsLearnSkills_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('LearnSkills', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsLearnSkills_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('LearnSkills', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortLearnSkills_pageImageWidth')?.addEventListener('change', (event) => {
     sort('LearnSkills', 'pageImageWidth', event.currentTarget.value);
   });
@@ -565,6 +576,24 @@ Promise.all([
             facetRangeStartChange('LearnSkills', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndLearnSkills_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#fqLearnSkills_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('LearnSkills', event.currentTarget, facetChangeLearnSkillsSuccess, facetChangeLearnSkillsError);
+          });
+          document.querySelector('#buttonFacetLearnSkills_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotLearnSkills_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapLearnSkills_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartLearnSkills_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('LearnSkills', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndLearnSkills_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('LearnSkills', event.currentTarget);
           });
 });

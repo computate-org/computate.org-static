@@ -104,18 +104,19 @@ async function websocketSitePageInner(apiRequest) {
         var inputDescription = null;
         var inputH1 = null;
         var inputH2 = null;
+        var inputPageVideoUrl = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
         var inputPageImageAlt = null;
         var inputPrerequisiteArticleIds = null;
         var inputPrerequisiteArticles = null;
-        var inputNextArticleIds = null;
         var inputNextArticles = null;
         var inputLabelsString = null;
         var inputLabels = null;
-        var inputRelatedArticleIds = null;
         var inputRelatedArticles = null;
+        var inputNextArticleIds = null;
+        var inputRelatedArticleIds = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.SitePage_Page_created');
@@ -169,6 +170,8 @@ async function websocketSitePageInner(apiRequest) {
           inputH1 = $response.querySelector('.SitePage_Page_h1');
         if(vars.includes('h2'))
           inputH2 = $response.querySelector('.SitePage_Page_h2');
+        if(vars.includes('pageVideoUrl'))
+          inputPageVideoUrl = $response.querySelector('.SitePage_Page_pageVideoUrl');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.SitePage_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
@@ -181,18 +184,18 @@ async function websocketSitePageInner(apiRequest) {
           inputPrerequisiteArticleIds = $response.querySelector('.SitePage_Page_prerequisiteArticleIds');
         if(vars.includes('prerequisiteArticles'))
           inputPrerequisiteArticles = $response.querySelector('.SitePage_Page_prerequisiteArticles');
-        if(vars.includes('nextArticleIds'))
-          inputNextArticleIds = $response.querySelector('.SitePage_Page_nextArticleIds');
         if(vars.includes('nextArticles'))
           inputNextArticles = $response.querySelector('.SitePage_Page_nextArticles');
         if(vars.includes('labelsString'))
           inputLabelsString = $response.querySelector('.SitePage_Page_labelsString');
         if(vars.includes('labels'))
           inputLabels = $response.querySelector('.SitePage_Page_labels');
-        if(vars.includes('relatedArticleIds'))
-          inputRelatedArticleIds = $response.querySelector('.SitePage_Page_relatedArticleIds');
         if(vars.includes('relatedArticles'))
           inputRelatedArticles = $response.querySelector('.SitePage_Page_relatedArticles');
+        if(vars.includes('nextArticleIds'))
+          inputNextArticleIds = $response.querySelector('.SitePage_Page_nextArticleIds');
+        if(vars.includes('relatedArticleIds'))
+          inputRelatedArticleIds = $response.querySelector('.SitePage_Page_relatedArticleIds');
 
         jsWebsocketSitePage(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -459,6 +462,16 @@ async function websocketSitePageInner(apiRequest) {
           addGlow(document.querySelector('.SitePage_Page_h2'));
         }
 
+        if(inputPageVideoUrl) {
+          document.querySelectorAll('.SitePage_Page_pageVideoUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageVideoUrl.getAttribute('value');
+            else
+              item.textContent = inputPageVideoUrl.textContent;
+          });
+          addGlow(document.querySelector('.SitePage_Page_pageVideoUrl'));
+        }
+
         if(inputPageImageWidth) {
           document.querySelectorAll('.SitePage_Page_pageImageWidth').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -519,16 +532,6 @@ async function websocketSitePageInner(apiRequest) {
           addGlow(document.querySelector('.SitePage_Page_prerequisiteArticles'));
         }
 
-        if(inputNextArticleIds) {
-          document.querySelectorAll('.SitePage_Page_nextArticleIds').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputNextArticleIds.getAttribute('value');
-            else
-              item.textContent = inputNextArticleIds.textContent;
-          });
-          addGlow(document.querySelector('.SitePage_Page_nextArticleIds'));
-        }
-
         if(inputNextArticles) {
           document.querySelectorAll('.SitePage_Page_nextArticles').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -559,16 +562,6 @@ async function websocketSitePageInner(apiRequest) {
           addGlow(document.querySelector('.SitePage_Page_labels'));
         }
 
-        if(inputRelatedArticleIds) {
-          document.querySelectorAll('.SitePage_Page_relatedArticleIds').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputRelatedArticleIds.getAttribute('value');
-            else
-              item.textContent = inputRelatedArticleIds.textContent;
-          });
-          addGlow(document.querySelector('.SitePage_Page_relatedArticleIds'));
-        }
-
         if(inputRelatedArticles) {
           document.querySelectorAll('.SitePage_Page_relatedArticles').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -577,6 +570,26 @@ async function websocketSitePageInner(apiRequest) {
               item.textContent = inputRelatedArticles.textContent;
           });
           addGlow(document.querySelector('.SitePage_Page_relatedArticles'));
+        }
+
+        if(inputNextArticleIds) {
+          document.querySelectorAll('.SitePage_Page_nextArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputNextArticleIds.getAttribute('value');
+            else
+              item.textContent = inputNextArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.SitePage_Page_nextArticleIds'));
+        }
+
+        if(inputRelatedArticleIds) {
+          document.querySelectorAll('.SitePage_Page_relatedArticleIds').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputRelatedArticleIds.getAttribute('value');
+            else
+              item.textContent = inputRelatedArticleIds.textContent;
+          });
+          addGlow(document.querySelector('.SitePage_Page_relatedArticleIds'));
         }
 
           pageGraphSitePage();
@@ -834,6 +847,10 @@ function searchSitePageFilters($formFilters) {
     if(filterH2 != null && filterH2 !== '')
       filters.push({ name: 'fq', value: 'h2:' + filterH2 });
 
+    var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
+    if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
+      filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
@@ -854,10 +871,6 @@ function searchSitePageFilters($formFilters) {
     if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
       filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
 
-    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
-    if(filterNextArticleIds != null && filterNextArticleIds !== '')
-      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
-
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
@@ -865,6 +878,10 @@ function searchSitePageFilters($formFilters) {
     var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
     if(filterLabels != null && filterLabels !== '')
       filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1187,6 +1204,18 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   if(removeH2 != null && removeH2 !== '')
     vals['removeH2'] = removeH2;
 
+  var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
+  var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value === 'true';
+  var setPageVideoUrl = removePageVideoUrl ? null : $formValues.querySelector('.setPageVideoUrl')?.value;
+  var addPageVideoUrl = $formValues.querySelector('.addPageVideoUrl')?.value;
+  if(removePageVideoUrl || setPageVideoUrl != null && setPageVideoUrl !== '')
+    vals['setPageVideoUrl'] = setPageVideoUrl;
+  if(addPageVideoUrl != null && addPageVideoUrl !== '')
+    vals['addPageVideoUrl'] = addPageVideoUrl;
+  var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value;
+  if(removePageVideoUrl != null && removePageVideoUrl !== '')
+    vals['removePageVideoUrl'] = removePageVideoUrl;
+
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
   var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
@@ -1211,18 +1240,6 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   if(removePrerequisiteArticleIds != null && removePrerequisiteArticleIds !== '')
     vals['removePrerequisiteArticleIds'] = removePrerequisiteArticleIds;
 
-  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
-  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value === 'true';
-  var setNextArticleIds = removeNextArticleIds ? null : $formValues.querySelector('.setNextArticleIds')?.value;
-  var addNextArticleIds = $formValues.querySelector('.addNextArticleIds')?.value;
-  if(removeNextArticleIds || setNextArticleIds != null && setNextArticleIds !== '')
-    vals['setNextArticleIds'] = setNextArticleIds;
-  if(addNextArticleIds != null && addNextArticleIds !== '')
-    vals['addNextArticleIds'] = addNextArticleIds;
-  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value;
-  if(removeNextArticleIds != null && removeNextArticleIds !== '')
-    vals['removeNextArticleIds'] = removeNextArticleIds;
-
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
   var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
@@ -1246,6 +1263,18 @@ async function patchSitePage($formFilters, $formValues, target, pageId, success,
   var removeLabels = $formValues.querySelector('.removeLabels')?.value;
   if(removeLabels != null && removeLabels !== '')
     vals['removeLabels'] = removeLabels;
+
+  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
+  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value === 'true';
+  var setNextArticleIds = removeNextArticleIds ? null : $formValues.querySelector('.setNextArticleIds')?.value;
+  var addNextArticleIds = $formValues.querySelector('.addNextArticleIds')?.value;
+  if(removeNextArticleIds || setNextArticleIds != null && setNextArticleIds !== '')
+    vals['setNextArticleIds'] = setNextArticleIds;
+  if(addNextArticleIds != null && addNextArticleIds !== '')
+    vals['addNextArticleIds'] = addNextArticleIds;
+  var removeNextArticleIds = $formValues.querySelector('.removeNextArticleIds')?.value;
+  if(removeNextArticleIds != null && removeNextArticleIds !== '')
+    vals['removeNextArticleIds'] = removeNextArticleIds;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   var removeRelatedArticleIds = $formValues.querySelector('.removeRelatedArticleIds')?.value === 'true';
@@ -1377,6 +1406,10 @@ function patchSitePageFilters($formFilters) {
     if(filterH2 != null && filterH2 !== '')
       filters.push({ name: 'fq', value: 'h2:' + filterH2 });
 
+    var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
+    if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
+      filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
@@ -1397,10 +1430,6 @@ function patchSitePageFilters($formFilters) {
     if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
       filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
 
-    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
-    if(filterNextArticleIds != null && filterNextArticleIds !== '')
-      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
-
     var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
     if(filterLabelsString != null && filterLabelsString !== '')
       filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
@@ -1408,6 +1437,10 @@ function patchSitePageFilters($formFilters) {
     var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
     if(filterLabels != null && filterLabels !== '')
       filters.push({ name: 'fq', value: 'labels:' + filterLabels });
+
+    var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
+    if(filterNextArticleIds != null && filterNextArticleIds !== '')
+      filters.push({ name: 'fq', value: 'nextArticleIds:' + filterNextArticleIds });
 
     var filterRelatedArticleIds = $formFilters.querySelector('.valueRelatedArticleIds')?.value;
     if(filterRelatedArticleIds != null && filterRelatedArticleIds !== '')
@@ -1555,6 +1588,10 @@ async function postSitePage($formValues, target, success, error) {
   if(valueH2 != null && valueH2 !== '')
     vals['h2'] = valueH2;
 
+  var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
+  if(valuePageVideoUrl != null && valuePageVideoUrl !== '')
+    vals['pageVideoUrl'] = valuePageVideoUrl;
+
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')
     vals['pageImageAlt'] = valuePageImageAlt;
@@ -1563,10 +1600,6 @@ async function postSitePage($formValues, target, success, error) {
   if(valuePrerequisiteArticleIds != null && valuePrerequisiteArticleIds !== '')
     vals['prerequisiteArticleIds'] = valuePrerequisiteArticleIds;
 
-  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
-  if(valueNextArticleIds != null && valueNextArticleIds !== '')
-    vals['nextArticleIds'] = valueNextArticleIds;
-
   var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
   if(valueLabelsString != null && valueLabelsString !== '')
     vals['labelsString'] = valueLabelsString;
@@ -1574,6 +1607,10 @@ async function postSitePage($formValues, target, success, error) {
   var valueLabels = $formValues.querySelector('.valueLabels')?.value;
   if(valueLabels != null && valueLabels !== '')
     vals['labels'] = JSON.parse(valueLabels);
+
+  var valueNextArticleIds = $formValues.querySelector('.valueNextArticleIds')?.value;
+  if(valueNextArticleIds != null && valueNextArticleIds !== '')
+    vals['nextArticleIds'] = valueNextArticleIds;
 
   var valueRelatedArticleIds = $formValues.querySelector('.valueRelatedArticleIds')?.value;
   if(valueRelatedArticleIds != null && valueRelatedArticleIds !== '')

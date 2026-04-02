@@ -66,17 +66,6 @@ Promise.all([
     facetStatsChange('SmartAquacultureDeveloper', 'description', false);
   });
 
-  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
-    sort('SmartAquacultureDeveloper', 'authorName', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_authorName')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'authorName', true);
-  });
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_authorName')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'authorName', false);
-  });
-
   document.querySelector('#pageSelectSortSmartAquacultureDeveloper_authorUrl')?.addEventListener('change', (event) => {
     sort('SmartAquacultureDeveloper', 'authorUrl', event.currentTarget.value);
   });
@@ -86,6 +75,17 @@ Promise.all([
   });
   document.querySelector('#pageStatsSmartAquacultureDeveloper_authorUrl')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('SmartAquacultureDeveloper', 'authorUrl', false);
+  });
+
+  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
+    sort('SmartAquacultureDeveloper', 'authorName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_authorName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'authorName', true);
+  });
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_authorName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'authorName', false);
   });
 
   document.querySelector('#pageSelectSortSmartAquacultureDeveloper_pageImageUri')?.addEventListener('change', (event) => {
@@ -242,17 +242,6 @@ Promise.all([
     facetStatsChange('SmartAquacultureDeveloper', 'solrId', false);
   });
 
-  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_nextArticleIds')?.addEventListener('change', (event) => {
-    sort('SmartAquacultureDeveloper', 'nextArticleIds', event.currentTarget.value);
-  });
-
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_nextArticleIds')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'nextArticleIds', true);
-  });
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_nextArticleIds')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'nextArticleIds', false);
-  });
-
   document.querySelector('#pageSelectSortSmartAquacultureDeveloper_labelsString')?.addEventListener('change', (event) => {
     sort('SmartAquacultureDeveloper', 'labelsString', event.currentTarget.value);
   });
@@ -264,15 +253,37 @@ Promise.all([
     facetStatsChange('SmartAquacultureDeveloper', 'labelsString', false);
   });
 
-  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_pageImageHeight')?.addEventListener('change', (event) => {
-    sort('SmartAquacultureDeveloper', 'pageImageHeight', event.currentTarget.value);
+  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_labels')?.addEventListener('change', (event) => {
+    sort('SmartAquacultureDeveloper', 'labels', event.currentTarget.value);
   });
 
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageImageHeight')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'pageImageHeight', true);
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_labels')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'labels', true);
   });
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageImageHeight')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'pageImageHeight', false);
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_labels')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'labels', false);
+  });
+
+  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_relatedArticleIds')?.addEventListener('change', (event) => {
+    sort('SmartAquacultureDeveloper', 'relatedArticleIds', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_relatedArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'relatedArticleIds', true);
+  });
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_relatedArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'relatedArticleIds', false);
+  });
+
+  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_pageImageType')?.addEventListener('change', (event) => {
+    sort('SmartAquacultureDeveloper', 'pageImageType', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageImageType')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'pageImageType', true);
+  });
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageImageType')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'pageImageType', false);
   });
 
   document.querySelector('#pageSelectSortSmartAquacultureDeveloper_pageImageAlt')?.addEventListener('change', (event) => {
@@ -286,15 +297,15 @@ Promise.all([
     facetStatsChange('SmartAquacultureDeveloper', 'pageImageAlt', false);
   });
 
-  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_labels')?.addEventListener('change', (event) => {
-    sort('SmartAquacultureDeveloper', 'labels', event.currentTarget.value);
+  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+    sort('SmartAquacultureDeveloper', 'prerequisiteArticleIds', event.currentTarget.value);
   });
 
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_labels')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'labels', true);
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_prerequisiteArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'prerequisiteArticleIds', true);
   });
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_labels')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'labels', false);
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'prerequisiteArticleIds', false);
   });
 
   document.querySelector('#pageSelectSortSmartAquacultureDeveloper_courseNum')?.addEventListener('change', (event) => {
@@ -319,6 +330,17 @@ Promise.all([
     facetStatsChange('SmartAquacultureDeveloper', 'lessonNum', false);
   });
 
+  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('SmartAquacultureDeveloper', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortSmartAquacultureDeveloper_pageImageWidth')?.addEventListener('change', (event) => {
     sort('SmartAquacultureDeveloper', 'pageImageWidth', event.currentTarget.value);
   });
@@ -330,37 +352,26 @@ Promise.all([
     facetStatsChange('SmartAquacultureDeveloper', 'pageImageWidth', false);
   });
 
-  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_pageImageType')?.addEventListener('change', (event) => {
-    sort('SmartAquacultureDeveloper', 'pageImageType', event.currentTarget.value);
+  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_pageImageHeight')?.addEventListener('change', (event) => {
+    sort('SmartAquacultureDeveloper', 'pageImageHeight', event.currentTarget.value);
   });
 
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageImageType')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'pageImageType', true);
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageImageHeight')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'pageImageHeight', true);
   });
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageImageType')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'pageImageType', false);
-  });
-
-  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_prerequisiteArticleIds')?.addEventListener('change', (event) => {
-    sort('SmartAquacultureDeveloper', 'prerequisiteArticleIds', event.currentTarget.value);
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_pageImageHeight')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'pageImageHeight', false);
   });
 
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_prerequisiteArticleIds')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'prerequisiteArticleIds', true);
-  });
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_prerequisiteArticleIds')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'prerequisiteArticleIds', false);
+  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_nextArticleIds')?.addEventListener('change', (event) => {
+    sort('SmartAquacultureDeveloper', 'nextArticleIds', event.currentTarget.value);
   });
 
-  document.querySelector('#pageSelectSortSmartAquacultureDeveloper_relatedArticleIds')?.addEventListener('change', (event) => {
-    sort('SmartAquacultureDeveloper', 'relatedArticleIds', event.currentTarget.value);
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_nextArticleIds')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'nextArticleIds', true);
   });
-
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_relatedArticleIds')?.addEventListener('wa-show', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'relatedArticleIds', true);
-  });
-  document.querySelector('#pageStatsSmartAquacultureDeveloper_relatedArticleIds')?.addEventListener('wa-hide', (event) => {
-    facetStatsChange('SmartAquacultureDeveloper', 'relatedArticleIds', false);
+  document.querySelector('#pageStatsSmartAquacultureDeveloper_nextArticleIds')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SmartAquacultureDeveloper', 'nextArticleIds', false);
   });
           document.querySelector('#fqSmartAquacultureDeveloper_created')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget, facetChangeSmartAquacultureDeveloperSuccess, facetChangeSmartAquacultureDeveloperError);
@@ -416,24 +427,6 @@ Promise.all([
           document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_description')?.addEventListener('change', (event) => {
             facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
-          document.querySelector('#fqSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
-            fqChange('SmartAquacultureDeveloper', event.currentTarget, facetChangeSmartAquacultureDeveloperSuccess, facetChangeSmartAquacultureDeveloperError);
-          });
-          document.querySelector('#buttonFacetSmartAquacultureDeveloper_authorName')?.addEventListener('click', (event) => {
-            facetFieldChange('SmartAquacultureDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetPivotSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
-            facetPivotChange('SmartAquacultureDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
-            facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
-            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
-          });
-          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
-            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
-          });
           document.querySelector('#fqSmartAquacultureDeveloper_authorUrl')?.addEventListener('change', (event) => {
             fqChange('SmartAquacultureDeveloper', event.currentTarget, facetChangeSmartAquacultureDeveloperSuccess, facetChangeSmartAquacultureDeveloperError);
           });
@@ -450,6 +443,24 @@ Promise.all([
             facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_authorUrl')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
+            fqChange('SmartAquacultureDeveloper', event.currentTarget, facetChangeSmartAquacultureDeveloperSuccess, facetChangeSmartAquacultureDeveloperError);
+          });
+          document.querySelector('#buttonFacetSmartAquacultureDeveloper_authorName')?.addEventListener('click', (event) => {
+            facetFieldChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetPivotChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_authorName')?.addEventListener('change', (event) => {
             facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
           document.querySelector('#fqSmartAquacultureDeveloper_pageImageUri')?.addEventListener('change', (event) => {
@@ -594,6 +605,24 @@ Promise.all([
             facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#fqSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('SmartAquacultureDeveloper', event.currentTarget, facetChangeSmartAquacultureDeveloperSuccess, facetChangeSmartAquacultureDeveloperError);
+          });
+          document.querySelector('#buttonFacetSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SmartAquacultureDeveloper', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSmartAquacultureDeveloper_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('SmartAquacultureDeveloper', event.currentTarget);
           });
 });

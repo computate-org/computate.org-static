@@ -1,0 +1,515 @@
+{% extends "en-us/PageLayout.htm" %}
+
+{%- block htmTitlePageLayout %}
+{%- block htmTitleSpineDocPage %}
+    <title>{% if resultCount == 0 %}no SPINE doc found{% else %}SPINE docs{% endif %}</title>
+{%- endblock htmTitleSpineDocPage %}
+{%- endblock htmTitlePageLayout %}
+
+{%- block htmStylesPageLayout %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ staticBaseUrl }}/css/en-us/search/spine-doc/SpineDoc.css"/>
+{%- block htmStylesSpineDocPage %}
+{%- endblock htmStylesSpineDocPage %}
+{%- endblock htmStylesPageLayout %}
+
+{%- block htmStylePageLayout %}
+      :root {
+        --site-results-number-of-columns: 2;
+      }
+{{ super() }}
+{%- block htmStyleSpineDocPage %}
+{%- endblock htmStyleSpineDocPage %}
+{%- endblock htmStylePageLayout %}
+
+{%- block htmScriptsPageLayout %}
+{{ super() }}
+{%- block htmScriptsSpineDocPage %}
+    <script src="{{staticBaseUrl}}/js/en-us/search/spine-doc/SpineDoc.js"></script>
+    <script type="module" src="{{staticBaseUrl}}/js/en-us/search/spine-doc/SpineDocSearchPage.js"></script>
+{%- endblock htmScriptsSpineDocPage %}
+{%- endblock htmScriptsPageLayout %}
+
+{%- block htmScriptPageLayout %}
+{%- block htmScriptSpineDocPage %}
+    <script>
+
+      function jsWebsocketSpineDoc(pageId, vars, $response) {
+{%- block jsWebsocketSpineDocPage %}{%- endblock %}
+      }
+
+      function jsTooltipSpineDoc(e, feature) {
+{%- block jsTooltipSpineDocPage %}{%- endblock %}
+      }
+
+      function htmTooltipSpineDoc(feature, layer) {
+        return `{%- block htmTooltipSpineDocPage %}
+<h3><i class="{{ classIconCssClasses }}  "></i><a href="${quoteattr(feature.properties.editPage)}">${feature.properties.objectTitle}</a></h3>
+{%- endblock htmTooltipSpineDocPage %}`;
+      }
+
+      function facetChangeSpineDocSuccess(e) {
+        var l = e.querySelector('.pageForm .listSpineDoc')?.value;
+        if(l)
+          window.listSpineDoc = JSON.parse(l);
+{% block facetChangeSpineDocSuccess %}{%- endblock facetSpineDocSuccess %}
+      }
+      function facetChangeSpineDocError(e) {
+{% block facetChangeSpineDocError %}{%- endblock facetSpineDocError %}
+      }
+
+      function facetSimpleRangeSpineDocSuccess(e) {
+{% block facetSimpleRangeSpineDocSuccess %}      facetChangeSpineDocSuccess(e);{% endblock facetSimpleRangeSpineDocSuccess %}
+      }
+      function facetSimpleRangeSpineDocError(e) {
+{% block facetSimpleRangeSpineDocError %}      facetChangeSpineDocError(e);{% endblock facetSimpleRangeSpineDocError %}
+      }
+      function facetSimpleRangeSpineDoc(e) {
+        facetSimpleRange(e, facetSimpleRangeSpineDocSuccess, facetSimpleRangeSpineDocError);
+      }
+
+      function facetRangeTimeZoneSpineDocSuccess(e) {
+{% block facetRangeTimeZoneSpineDocSuccess %}      facetChangeSpineDocSuccess(e);{% endblock facetRangeTimeZoneSpineDocSuccess %}
+      }
+      function facetRangeTimeZoneSpineDocError(e) {
+{% block facetRangeTimeZoneSpineDocError %}      facetChangeSpineDocError(e);{%- endblock facetRangeTimeZoneSpineDocError %}
+      }
+      function facetRangeTimeZoneSpineDoc(e) {
+        facetRangeTimeZone(e, facetRangeTimeZoneSpineDocSuccess, facetRangeTimeZoneSpineDocError);
+      }
+
+      function facetRangeGapChangeSpineDocSuccess(e) {
+{% block facetRangeGapChangeSpineDocSuccess %}      facetChangeSpineDocSuccess(e);{% endblock facetRangeGapChangeSpineDocSuccess %}
+      }
+      function facetRangeGapChangeSpineDocError(e) {
+{% block facetRangeGapChangeSpineDocError %}      facetChangeSpineDocError(e);{%- endblock facetRangeGapChangeSpineDocError %}
+      }
+      function facetRangeGapChangeSpineDoc(classSimpleName, event) {
+        facetRangeGapChange(classSimpleName, event, facetRangeGapChangeSpineDocSuccess, facetRangeGapChangeSpineDocError);
+      }
+
+      function facetRangeStartChangeSpineDocSuccess(e) {
+{% block facetRangeStartChangeSpineDocSuccess %}      facetChangeSpineDocSuccess(e);{% endblock facetRangeStartChangeSpineDocSuccess %}
+      }
+      function facetRangeStartChangeSpineDocError(e) {
+{% block facetRangeStartChangeSpineDocError %}      facetChangeSpineDocError(e);{%- endblock facetRangeStartChangeSpineDocError %}
+      }
+      function facetRangeStartChangeSpineDoc(classSimpleName, event) {
+        facetRangeStartChange(classSimpleName, event, facetRangeStartChangeSpineDocSuccess, facetRangeStartChangeSpineDocError);
+      }
+
+      function facetRangeEndChangeSpineDocSuccess(e) {
+{% block facetRangeEndChangeSpineDocSuccess %}      facetChangeSpineDocSuccess(e);{% endblock facetRangeEndChangeSpineDocSuccess %}
+      }
+      function facetRangeEndChangeSpineDocError(e) {
+{% block facetRangeEndChangeSpineDocError %}      facetChangeSpineDocError(e);{%- endblock facetRangeEndChangeSpineDocError %}
+      }
+      function facetRangeEndChangeSpineDoc(classSimpleName, event) {
+        facetRangeEndChange(classSimpleName, event, facetRangeEndChangeSpineDocSuccess, facetRangeEndChangeSpineDocError);
+      }
+    </script>
+    <script type="module">
+{% if DEFAULT_MAP_LOCATION is defined %}
+      window.DEFAULT_MAP_LOCATION = { type: 'Point', coordinates: [ {{ DEFAULT_MAP_LOCATION.coordinates[0] }}, {{ DEFAULT_MAP_LOCATION.coordinates[1] }} ]};
+{% endif %}
+{% if DEFAULT_MAP_ZOOM is defined %}
+      window.DEFAULT_MAP_ZOOM = {{ DEFAULT_MAP_ZOOM }};
+{% endif %}
+      window.DEFAULT_ZONE_ID = '{{ defaultZoneId }}';
+      Promise.all([
+        customElements.whenDefined('wa-button')
+        , customElements.whenDefined('wa-input')
+        , customElements.whenDefined('wa-select')
+        , customElements.whenDefined('wa-radio')
+        , customElements.whenDefined('wa-checkbox')
+        , customElements.whenDefined('wa-dropdown')
+      ]).then(() => {
+        window.FONTAWESOME_STYLE = document.querySelector('.pageForm .FONTAWESOME_STYLE')?.value;
+
+        var pageId = {% if result.pageId is defined %}{{ result.pageId | tojson }}{% else %}null{% endif %};
+
+        if(pageId == null) {
+          document.querySelector('#grid-toggle-details')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-list', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-details');
+          });
+          document.querySelector('#grid-toggle-list')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-card');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-list');
+          });
+          document.querySelector('#grid-toggle-card')?.addEventListener('click', () => {
+            document.querySelector('#site-results-grid').classList.remove('grid-mode-details', 'grid-mode-list');
+            document.querySelector('#site-results-grid').classList.add('grid-mode-card');
+          });
+        } else {
+          var o = document.querySelector('.pageForm .result')?.value;
+          if(o)
+            window.result = JSON.parse(o);
+        {% if result.pageId is defined %}
+        {% endif %}
+        }
+        var l = document.querySelector('.pageForm .listSpineDoc')?.value;
+        if(l)
+          window.listSpineDoc = JSON.parse(l);
+        window.varsFq = JSON.parse('{{ toJsonObjectStringInApostrophes(varsFq) }}');
+        window.varsRange = JSON.parse('{{ toJsonObjectStringInApostrophes(varsRange) }}');
+        window.defaultRangeVar = '{{ defaultRangeVar }}';
+        document.querySelector('#siteSidebarToggleRange')?.addEventListener('wa-after-hide', function(e) { document.querySelector('#pageFacetRangeTimeZonePopup').active = false; });
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSpineDoc);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('input', facetRangeTimeZoneSpineDoc);
+        document.querySelector('#pageFacetRangeTimeZoneInput')?.addEventListener('focus', facetRangeTimeZoneSpineDoc);
+        document.querySelector('#pageFacetSimpleRangeDropdown')?.addEventListener('wa-select', facetSimpleRangeSpineDoc);
+        pageGraphSpineDoc();
+        {% for key, value in varsQ.items() %}
+
+        document.querySelector('#qSpineDoc_{{ key }}')?.addEventListener('wa-{% if var == 'objectSuggest' %}keyup{% else %}change{% endif %}', event => {
+          qChange('SpineDoc', event.target, document.querySelector('#qSpineDocDiv_{{ key }}'));
+        });
+        {% endfor %}
+
+        document.querySelector('#qSpineDoc_rows')?.addEventListener('change', event => {
+          paramChange('SpineDoc', event.target, document.querySelector('#qSpineDocDiv_rows'));
+        });
+
+        document.querySelector('#qSpineDoc_start')?.addEventListener('change', event => {
+          paramChange('SpineDoc', event.target, document.querySelector('#qSpineDocDiv_start'));
+        });
+
+
+        var submitForm_patchSpineDoc = document.querySelector('#htmForm_patchSpineDoc')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_patchSpineDoc')?.addEventListener('click', event => {
+          event.preventDefault();
+          event.target.setAttribute('loading', true);
+          patchSpineDoc(null, document.querySelector('#htmForm_patchSpineDoc')
+              , document.querySelector('#htmFormButton_patchSpineDoc')
+              , event.target.getAttribute('data-pageId')
+              , (json, target) => {
+            
+          }, (response, target) => {
+            event.target.removeAttribute('loading');
+            addErrorJson(event.target);
+            if(response.ok) {
+              response.json().then(json => {
+                document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+              });
+            } else {
+              if(response.status === 405 || response.status === 401) {
+                document.querySelector('wa-page > wa-toast').create('You are no longer signed in, please refresh the page and sign in again. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else if(response.status === 403) {
+                document.querySelector('wa-page > wa-toast').create('You are not authorized to access this resource. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else {
+                response.json().then(json => {
+                  document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+                }).catch(error => {
+                  document.querySelector('wa-page > wa-toast').create('An unknown error occured. ', {size: 'danger', icon: 'triangle-exclamation'});
+                });
+              }
+            }
+          });
+          return false;
+        });
+
+        var submitForm_postSpineDoc = document.querySelector('#htmForm_postSpineDoc')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_postSpineDoc')?.addEventListener('click', event => {
+          event.preventDefault();
+          event.target.setAttribute('loading', true);
+          postSpineDoc(document.querySelector('#htmForm_postSpineDoc')
+              , document.querySelector('#htmFormButton_postSpineDoc')
+              , (json, target) => {
+            window.location.href = json.editPage;
+          }, (response, target) => {
+            event.target.removeAttribute('loading');
+            addErrorJson(event.target);
+            if(response.ok) {
+              response.json().then(json => {
+                document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+              });
+            } else {
+              if(response.status === 405 || response.status === 401) {
+                document.querySelector('wa-page > wa-toast').create('You are no longer signed in, please refresh the page and sign in again. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else if(response.status === 403) {
+                document.querySelector('wa-page > wa-toast').create('You are not authorized to access this resource. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else {
+                response.json().then(json => {
+                  document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+                }).catch(error => {
+                  document.querySelector('wa-page > wa-toast').create('An unknown error occured. ', {size: 'danger', icon: 'triangle-exclamation'});
+                });
+              }
+            }
+          });
+          return false;
+        });
+
+        var submitForm_putimportSpineDoc = document.querySelector('#htmForm_putimportSpineDoc')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_putimportSpineDoc')?.addEventListener('click', event => {
+          event.preventDefault();
+          event.target.setAttribute('loading', true);
+          putimportSpineDoc(document.querySelector('#htmForm_putimportSpineDoc')
+              , document.querySelector('#htmFormButton_putimportSpineDoc')
+              , event.target.getAttribute('data-pageId')
+              , (json, target) => {
+            
+          }, (response, target) => {
+            event.target.removeAttribute('loading');
+            addErrorJson(event.target);
+            if(response.ok) {
+              response.json().then(json => {
+                document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+              });
+            } else {
+              if(response.status === 405 || response.status === 401) {
+                document.querySelector('wa-page > wa-toast').create('You are no longer signed in, please refresh the page and sign in again. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else if(response.status === 403) {
+                document.querySelector('wa-page > wa-toast').create('You are not authorized to access this resource. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else {
+                response.json().then(json => {
+                  document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+                }).catch(error => {
+                  document.querySelector('wa-page > wa-toast').create('An unknown error occured. ', {size: 'danger', icon: 'triangle-exclamation'});
+                });
+              }
+            }
+          });
+          return false;
+        });
+
+        var submitForm_deleteSpineDoc = document.querySelector('#htmForm_deleteSpineDoc')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deleteSpineDoc')?.addEventListener('click', event => {
+          event.preventDefault();
+          event.target.setAttribute('loading', true);
+          deleteSpineDoc(event.target, event.target.getAttribute('data-pageId')
+              , (json, target) => {
+            
+          }, (response, target) => {
+            event.target.removeAttribute('loading');
+            addErrorJson(event.target);
+            if(response.ok) {
+              response.json().then(json => {
+                document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+              });
+            } else {
+              if(response.status === 405 || response.status === 401) {
+                document.querySelector('wa-page > wa-toast').create('You are no longer signed in, please refresh the page and sign in again. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else if(response.status === 403) {
+                document.querySelector('wa-page > wa-toast').create('You are not authorized to access this resource. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else {
+                response.json().then(json => {
+                  document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+                }).catch(error => {
+                  document.querySelector('wa-page > wa-toast').create('An unknown error occured. ', {size: 'danger', icon: 'triangle-exclamation'});
+                });
+              }
+            }
+          });
+          return false;
+        });
+
+        var submitForm_searchpageSpineDoc = document.querySelector('#htmForm_searchpageSpineDoc')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_searchpageSpineDoc')?.addEventListener('click', event => {
+          event.preventDefault();
+          event.target.setAttribute('loading', true);
+          searchpageSpineDoc();
+          return false;
+        });
+
+        var submitForm_deletefilterSpineDoc = document.querySelector('#htmForm_deletefilterSpineDoc')?.addEventListener('submit', event => {
+          event.preventDefault();
+          return false;
+        });
+        document.querySelector('#htmFormButton_deletefilterSpineDoc')?.addEventListener('click', event => {
+          event.preventDefault();
+          event.target.setAttribute('loading', true);
+          deletefilterSpineDoc(event.target
+              , (json, target) => {
+            
+          }, (response, target) => {
+            event.target.removeAttribute('loading');
+            addErrorJson(event.target);
+            if(response.ok) {
+              response.json().then(json => {
+                document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+              });
+            } else {
+              if(response.status === 405 || response.status === 401) {
+                document.querySelector('wa-page > wa-toast').create('You are no longer signed in, please refresh the page and sign in again. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else if(response.status === 403) {
+                document.querySelector('wa-page > wa-toast').create('You are not authorized to access this resource. ', {size: 'danger', icon: 'triangle-exclamation'});
+              } else {
+                response.json().then(json => {
+                  document.querySelector('wa-page > wa-toast').create(json?.error?.message, {size: 'danger', icon: 'triangle-exclamation'});
+                }).catch(error => {
+                  document.querySelector('wa-page > wa-toast').create('An unknown error occured. ', {size: 'danger', icon: 'triangle-exclamation'});
+                });
+              }
+            }
+          });
+          return false;
+        });
+{%- block htmScriptInitSpineDocPage %}{%- endblock htmScriptInitSpineDocPage %}
+      });
+    </script>
+{%- endblock htmScriptSpineDocPage %}
+{%- endblock htmScriptPageLayout %}
+
+{%- block websocketPageLayout %}
+{%- block websocketSpineDocPage %}
+{% if resultCount > 0 %}
+        window.eventBus = new EventBus('/eventbus');
+        window.eventBus.enableReconnect(true);
+        websocketSpineDoc(websocketSpineDocInner);
+{% endif %}
+{%- endblock websocketSpineDocPage %}
+{%- endblock websocketPageLayout %}
+
+{%- block htmUrlSpineDocPage %}{{pageUri}}?q={{query.q}}&amp;rows={% if rows is defined %}{{rows}}{% else %}{{pagination.rows}}{% endif %}&amp;rows={% if start is defined %}{{start}}{% else %}{{pagination.start}}{% endif %}{% for item query.fq %}{% if fq == item %}{% else %}&fq={{fq}}:{{val}}{% endif %}{% endfor %}{% for item in query.sort %}{% if sort == item %}{% else %}&sort={{var}} {{order}}{% endif %}{% endfor %}{%- endblock htmUrlSpineDocPage %}
+{%- if pageBreadcrumb is not defined %}
+{%- set pageBreadcrumb %}
+              <wa-tooltip for="return-to-SpineDoc">back to all SPINE docs</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-SpineDoc" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  <i class="fa-kit fa-spine"></i>
+                  all SPINE docs
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  search SPINE docs
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+{%- endset pageBreadcrumb %}
+{%- endif  %}
+
+{%- block htmBodyStartPageLayout %}
+{{ super() }}
+{%- block htmBodyStartSpineDocPage %}
+{% include en-us/search/spine-doc/SpineDocSidebar.htm %}
+{% if resultCount == 0 %}
+        <div class="wa-stack ">
+          <wa-tooltip for="return-to-SpineDoc">back to all SPINE docs</wa-tooltip></wa-tooltip>
+          <wa-breadcrumb>
+            <wa-breadcrumb-item id="return-to-SpineDoc" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+              <i class="fa-kit fa-spine"></i>
+              all SPINE docs
+            </wa-breadcrumb-item>
+            <wa-breadcrumb-item>
+              no SPINE doc found
+            </wa-breadcrumb-item>
+          </wa-breadcrumb>
+          <div class="wa-stack wa-align-items-center ">
+            <div class="wa-heading-3xl ">
+              <i class="fa-kit fa-spine"></i>
+            </div>
+            <span class="wa-heading-m ">no SPINE doc found</span>
+            <p class="wa-caption-l ">Learn about the bones that form the platform and data models built with SPINE Programming Theory and increase your developer productivity up to 4900%. </p>
+          </div>
+        </div>
+{% else %}
+{% include en-us/search/spine-doc/SpineDocSuggestedSearch.htm %}
+          <div class="pageContent ">
+            <form action="/en-us/api/spine-doc" id="SpineDocForm" class="pageForm " onsubmit="event.preventDefault(); return false; ">
+              <input name="FONTAWESOME_STYLE" class="FONTAWESOME_STYLE" type="hidden" value="{{ FONTAWESOME_STYLE }}"/>
+              <input name="focusId" type="hidden"/>
+              <input name="pageResponse" id="pageResponse" class="pageResponse"  value='{{ toJsonObjectStringInApostrophes(pageResponse) }}' type="hidden"/>
+              <input name="listSpineDoc" id="listSpineDoc" class="listSpineDoc"  value='{{ toJsonArrayStringInApostrophes(listSpineDoc) }}' type="hidden"/>
+            </form>
+            <div id="site-calendar-box">
+              <div id="site-calendar"><!-- // --></div>
+            </div>
+            <div class="wa-stack wa-gap-m ">
+{% endif %}
+{% include en-us/search/spine-doc/SpineDocSearchForm.htm %}
+{%- endblock htmBodyStartSpineDocPage %}
+{%- endblock htmBodyStartPageLayout %}
+{%- if pageSearchButtons is not defined %}
+{%- set pageSearchButtons %}
+{% include en-us/search/spine-doc/SpineDocSearchButtons.htm %}
+{%- endset pageSearchButtons %}
+{%- endif %}
+{%- if pageSearchFormButtons is not defined %}
+{%- set pageSearchFormButtons %}
+{% include en-us/search/spine-doc/SpineDocSearchFormButtons.htm %}
+{%- endset pageSearchFormButtons %}
+{%- endif %}
+
+{%- block htmBodyMiddlePageLayout %}
+{%- block htmBodyMiddleSpineDocPage %}
+{% if resultCount > 0 %}
+              <div class="wa-stack wa-gap-0 ">
+{% include en-us/search/spine-doc/SpineDocPaginationButtons.htm %}
+                <div class="card-like-thing background-color-surface-border" id="site-results-grid">
+                  <div>
+                    <wa-dropdown id="htmDropdown-name">
+                      <wa-button variant="brand" slot="trigger" caret>title</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSpineDoc_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SpineDoc').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-name-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by title ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSpineDoc_name'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SpineDoc').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-name-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by title descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                    <wa-dropdown id="htmDropdown-description">
+                      <wa-button variant="brand" slot="trigger" caret>description</wa-button>
+                      <wa-menu>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSpineDoc_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SpineDoc').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="asc" id="htmDropdown-description-asc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-a-z"></i>
+                          sort by description ascending
+                        </wa-menu-item>
+                        <wa-menu-item onclick="var e = document.querySelector('#pageFacetSortSpineDoc_description'); e.value = this.getAttribute('data-order'); document.querySelectorAll('.pageSearchVal-pageSort-SpineDoc').forEach(e => e.remove()); e.dispatchEvent(new Event('change', {})); " data-action="sort" data-order="desc" id="htmDropdown-description-desc">
+                          <i slot="start" class="{{ FONTAWESOME_STYLE }} fa-arrow-down-z-a"></i>
+                          sort by description descending
+                        </wa-menu-item>
+                      </wa-menu>
+                    </wa-dropdown>
+                  </div>
+                  {% for item in listSpineDoc%}
+                  <div>
+                    <a href="{{ item.displayPage }}">
+                      <i class="fa-kit fa-spine"></i>
+                      <span>{{ item.name | e }}</span>
+                    </a>
+                    <a href="{{ item.displayPage }}">
+                      <span>{{ item.description | e }}</span>
+                    </a>
+                  </div>
+                  {% endfor %}
+              {% if getColumnName is defined %}
+                <div>
+                </div>
+              {% endif %}
+              {% if getColumnDescription is defined %}
+                <div>
+                </div>
+              {% endif %}
+                </div>
+{% include en-us/search/spine-doc/SpineDocPaginationButtons.htm %}
+              </div>
+{% endif %}
+{%- endblock htmBodyMiddleSpineDocPage %}
+{%- endblock htmBodyMiddlePageLayout %}
+
+{%- block htmBodyEndPageLayout %}
+{%- block htmBodyEndSpineDocPage %}
+{%- include en-us/search/spine-doc/SpineDocLocation.htm %}
+            </div>
+          </div>
+{%- endblock htmBodyEndSpineDocPage %}
+  {{ super() }}
+{%- endblock htmBodyEndPageLayout %}

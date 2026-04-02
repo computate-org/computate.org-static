@@ -1,0 +1,26 @@
+{% include en-us/search/spine-doc/SpineDocSearchFormMacros.htm %}
+{%- if 'DELETE' in scopes %}
+    {{ htmForm_patchSpineDoc() }}
+{%- endif %}
+{%- if 'POST' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_postSpineDoc() }}
+  {%- else %}
+    {{ htmForm_postSpineDoc() }}
+  {%- endif %}
+{%- endif %}
+{%- if AUTH_SCOPE_SUPER_ADMIN in scopes %}
+  {{ htmForm_putimportSpineDoc() }}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deleteSpineDoc() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}
+{%- if 'DELETE' in scopes %}
+  {%- if resultCount >= 1 %}
+    {{ htmForm_deletefilterSpineDoc() }}
+  {%- else %}
+  {%- endif %}
+{%- endif %}

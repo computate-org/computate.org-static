@@ -334,6 +334,69 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH lessonNum
+          document.querySelector('#DeveloperComputerMinion_Page_lessonNum')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_lessonNum');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchDeveloperComputerMinionVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setLessonNum', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#DeveloperComputerMinion_Page_lessonNum')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#DeveloperComputerMinion_Page_lessonNum')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_lessonNum');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH pageVideoUrl
+          document.querySelector('#DeveloperComputerMinion_Page_pageVideoUrl')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageVideoUrl');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchDeveloperComputerMinionVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPageVideoUrl', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#DeveloperComputerMinion_Page_pageVideoUrl')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#DeveloperComputerMinion_Page_pageVideoUrl')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageVideoUrl');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH pageImageAlt
+          document.querySelector('#DeveloperComputerMinion_Page_pageImageAlt')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageImageAlt');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchDeveloperComputerMinionVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPageImageAlt', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#DeveloperComputerMinion_Page_pageImageAlt')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#DeveloperComputerMinion_Page_pageImageAlt')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageImageAlt');
+            const valid = form.reportValidity();
+          });
+
           // PATCH prerequisiteArticleIds
           document.querySelector('#DeveloperComputerMinion_Page_prerequisiteArticleIds')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_prerequisiteArticleIds');
@@ -376,6 +439,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH labelsString
+          document.querySelector('#DeveloperComputerMinion_Page_labelsString')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_labelsString');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchDeveloperComputerMinionVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setLabelsString', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#DeveloperComputerMinion_Page_labelsString')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#DeveloperComputerMinion_Page_labelsString')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_labelsString');
+            const valid = form.reportValidity();
+          });
+
           // PATCH labels
           document.querySelector('#DeveloperComputerMinion_Page_labels')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_labels');
@@ -415,69 +499,6 @@ Promise.all([
           });
           document.querySelector('#DeveloperComputerMinion_Page_relatedArticleIds')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_relatedArticleIds');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH lessonNum
-          document.querySelector('#DeveloperComputerMinion_Page_lessonNum')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_lessonNum');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchDeveloperComputerMinionVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLessonNum', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#DeveloperComputerMinion_Page_lessonNum')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#DeveloperComputerMinion_Page_lessonNum')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_lessonNum');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH pageImageAlt
-          document.querySelector('#DeveloperComputerMinion_Page_pageImageAlt')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_pageImageAlt');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchDeveloperComputerMinionVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setPageImageAlt', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#DeveloperComputerMinion_Page_pageImageAlt')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#DeveloperComputerMinion_Page_pageImageAlt')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_pageImageAlt');
-            const valid = form.reportValidity();
-          });
-
-          // PATCH labelsString
-          document.querySelector('#DeveloperComputerMinion_Page_labelsString')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_labelsString');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchDeveloperComputerMinionVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLabelsString', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#DeveloperComputerMinion_Page_labelsString')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#DeveloperComputerMinion_Page_labelsString')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_labelsString');
             const valid = form.reportValidity();
           });
 });

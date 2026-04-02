@@ -102,6 +102,7 @@ async function websocketCompanyCourseInner(apiRequest) {
         var inputStoreUrl = null;
         var inputDownloadUri = null;
         var inputCourseNum = null;
+        var inputPageVideoUrl = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
@@ -156,6 +157,8 @@ async function websocketCompanyCourseInner(apiRequest) {
           inputDownloadUri = $response.querySelector('.CompanyCourse_Page_downloadUri');
         if(vars.includes('courseNum'))
           inputCourseNum = $response.querySelector('.CompanyCourse_Page_courseNum');
+        if(vars.includes('pageVideoUrl'))
+          inputPageVideoUrl = $response.querySelector('.CompanyCourse_Page_pageVideoUrl');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.CompanyCourse_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
@@ -410,6 +413,16 @@ async function websocketCompanyCourseInner(apiRequest) {
               item.textContent = inputCourseNum.textContent;
           });
           addGlow(document.querySelector('.CompanyCourse_Page_courseNum'));
+        }
+
+        if(inputPageVideoUrl) {
+          document.querySelectorAll('.CompanyCourse_Page_pageVideoUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageVideoUrl.getAttribute('value');
+            else
+              item.textContent = inputPageVideoUrl.textContent;
+          });
+          addGlow(document.querySelector('.CompanyCourse_Page_pageVideoUrl'));
         }
 
         if(inputPageImageWidth) {
@@ -708,6 +721,10 @@ function searchCompanyCourseFilters($formFilters) {
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
+
+    var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
+    if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
+      filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1021,6 +1038,18 @@ async function patchCompanyCourse($formFilters, $formValues, target, pageId, suc
   if(removeCourseNum != null && removeCourseNum !== '')
     vals['removeCourseNum'] = removeCourseNum;
 
+  var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
+  var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value === 'true';
+  var setPageVideoUrl = removePageVideoUrl ? null : $formValues.querySelector('.setPageVideoUrl')?.value;
+  var addPageVideoUrl = $formValues.querySelector('.addPageVideoUrl')?.value;
+  if(removePageVideoUrl || setPageVideoUrl != null && setPageVideoUrl !== '')
+    vals['setPageVideoUrl'] = setPageVideoUrl;
+  if(addPageVideoUrl != null && addPageVideoUrl !== '')
+    vals['addPageVideoUrl'] = addPageVideoUrl;
+  var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value;
+  if(removePageVideoUrl != null && removePageVideoUrl !== '')
+    vals['removePageVideoUrl'] = removePageVideoUrl;
+
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
   var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
@@ -1154,6 +1183,10 @@ function patchCompanyCourseFilters($formFilters) {
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
+
+    var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
+    if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
+      filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1308,6 +1341,10 @@ async function postCompanyCourse($formValues, target, success, error) {
   var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
   if(valueCourseNum != null && valueCourseNum !== '')
     vals['courseNum'] = valueCourseNum;
+
+  var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
+  if(valuePageVideoUrl != null && valuePageVideoUrl !== '')
+    vals['pageVideoUrl'] = valuePageVideoUrl;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')

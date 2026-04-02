@@ -253,6 +253,17 @@ Promise.all([
     facetStatsChange('DeploySpine', 'courseNum', false);
   });
 
+  document.querySelector('#pageSelectSortDeploySpine_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('DeploySpine', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsDeploySpine_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('DeploySpine', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsDeploySpine_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('DeploySpine', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortDeploySpine_pageImageWidth')?.addEventListener('change', (event) => {
     sort('DeploySpine', 'pageImageWidth', event.currentTarget.value);
   });
@@ -565,6 +576,24 @@ Promise.all([
             facetRangeStartChange('DeploySpine', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndDeploySpine_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#fqDeploySpine_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('DeploySpine', event.currentTarget, facetChangeDeploySpineSuccess, facetChangeDeploySpineError);
+          });
+          document.querySelector('#buttonFacetDeploySpine_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotDeploySpine_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapDeploySpine_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartDeploySpine_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('DeploySpine', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndDeploySpine_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('DeploySpine', event.currentTarget);
           });
 });

@@ -355,6 +355,27 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH pageVideoUrl
+          document.querySelector('#SmartAgricultureDeveloper_Page_pageVideoUrl')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageVideoUrl');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAgricultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setPageVideoUrl', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SmartAgricultureDeveloper_Page_pageVideoUrl')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SmartAgricultureDeveloper_Page_pageVideoUrl')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageVideoUrl');
+            const valid = form.reportValidity();
+          });
+
           // PATCH pageImageAlt
           document.querySelector('#SmartAgricultureDeveloper_Page_pageImageAlt')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_pageImageAlt');

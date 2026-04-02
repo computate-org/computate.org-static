@@ -101,6 +101,7 @@ async function websocketSmartAgricultureDeveloperInner(apiRequest) {
         var inputSolrId = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
+        var inputPageVideoUrl = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
@@ -160,6 +161,8 @@ async function websocketSmartAgricultureDeveloperInner(apiRequest) {
           inputCourseNum = $response.querySelector('.SmartAgricultureDeveloper_Page_courseNum');
         if(vars.includes('lessonNum'))
           inputLessonNum = $response.querySelector('.SmartAgricultureDeveloper_Page_lessonNum');
+        if(vars.includes('pageVideoUrl'))
+          inputPageVideoUrl = $response.querySelector('.SmartAgricultureDeveloper_Page_pageVideoUrl');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.SmartAgricultureDeveloper_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
@@ -418,6 +421,16 @@ async function websocketSmartAgricultureDeveloperInner(apiRequest) {
               item.textContent = inputLessonNum.textContent;
           });
           addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_lessonNum'));
+        }
+
+        if(inputPageVideoUrl) {
+          document.querySelectorAll('.SmartAgricultureDeveloper_Page_pageVideoUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageVideoUrl.getAttribute('value');
+            else
+              item.textContent = inputPageVideoUrl.textContent;
+          });
+          addGlow(document.querySelector('.SmartAgricultureDeveloper_Page_pageVideoUrl'));
         }
 
         if(inputPageImageWidth) {
@@ -783,6 +796,10 @@ function searchSmartAgricultureDeveloperFilters($formFilters) {
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
 
+    var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
+    if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
+      filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
@@ -1099,6 +1116,18 @@ async function patchSmartAgricultureDeveloper($formFilters, $formValues, target,
   if(removeLessonNum != null && removeLessonNum !== '')
     vals['removeLessonNum'] = removeLessonNum;
 
+  var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
+  var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value === 'true';
+  var setPageVideoUrl = removePageVideoUrl ? null : $formValues.querySelector('.setPageVideoUrl')?.value;
+  var addPageVideoUrl = $formValues.querySelector('.addPageVideoUrl')?.value;
+  if(removePageVideoUrl || setPageVideoUrl != null && setPageVideoUrl !== '')
+    vals['setPageVideoUrl'] = setPageVideoUrl;
+  if(addPageVideoUrl != null && addPageVideoUrl !== '')
+    vals['addPageVideoUrl'] = addPageVideoUrl;
+  var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value;
+  if(removePageVideoUrl != null && removePageVideoUrl !== '')
+    vals['removePageVideoUrl'] = removePageVideoUrl;
+
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
   var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
@@ -1277,6 +1306,10 @@ function patchSmartAgricultureDeveloperFilters($formFilters) {
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
 
+    var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
+    if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
+      filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
@@ -1442,6 +1475,10 @@ async function postSmartAgricultureDeveloper($formValues, target, success, error
   var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
   if(valueLessonNum != null && valueLessonNum !== '')
     vals['lessonNum'] = valueLessonNum;
+
+  var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
+  if(valuePageVideoUrl != null && valuePageVideoUrl !== '')
+    vals['pageVideoUrl'] = valuePageVideoUrl;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')

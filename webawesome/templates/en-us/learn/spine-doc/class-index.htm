@@ -1,0 +1,21 @@
+{% extends "en-us/Article.htm" -%}
+    {% block htmMetaPageLayout -%}
+    {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.name" content="Deploy Developer Computer Management on OpenShift Local" />
+    <meta name="result.description" content="How to get started for free with OpenShift Local and deploying the Developer Computer Management platform with GitOps. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-03-28T12:23:40.556[America/Denver]" />
+    <meta name="result.pageVideoUrl" content="https://www.youtube.com/live/I8LYIzo3rg8" />
+    <meta name="result.pageImageUri" content="/png/dcm-on-openshift-local.png" />
+    <meta name="result.pageImageAlt" content="" />
+    <meta name="result.prerequisiteArticleIds" content="computer-requirements-for-dcm-development, install-openshift-local-on-your-computer" />
+    <meta name="result.importance" content="512" />
+    <meta name="result.labelsString" content="free-course" />
+    <meta name="result.courseNum" content="0"/>
+    {% endblock htmMetaPageLayout -%}
+          {% block htmBodyMiddleArticle -%}
+          <div class="content-padding-inline ">
+          </div>
+          {% endblock %}

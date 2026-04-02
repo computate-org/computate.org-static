@@ -101,18 +101,19 @@ async function websocketComputateDeveloperInner(apiRequest) {
         var inputSolrId = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
+        var inputPageVideoUrl = null;
         var inputPageImageWidth = null;
-        var inputPageImageHeight = null;
-        var inputPageImageType = null;
         var inputPageImageAlt = null;
         var inputPrerequisiteArticleIds = null;
-        var inputPrerequisiteArticles = null;
+        var inputPageImageHeight = null;
+        var inputPageImageType = null;
         var inputNextArticleIds = null;
         var inputNextArticles = null;
         var inputLabelsString = null;
         var inputLabels = null;
         var inputRelatedArticleIds = null;
         var inputRelatedArticles = null;
+        var inputPrerequisiteArticles = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.ComputateDeveloper_Page_created');
@@ -160,18 +161,18 @@ async function websocketComputateDeveloperInner(apiRequest) {
           inputCourseNum = $response.querySelector('.ComputateDeveloper_Page_courseNum');
         if(vars.includes('lessonNum'))
           inputLessonNum = $response.querySelector('.ComputateDeveloper_Page_lessonNum');
+        if(vars.includes('pageVideoUrl'))
+          inputPageVideoUrl = $response.querySelector('.ComputateDeveloper_Page_pageVideoUrl');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.ComputateDeveloper_Page_pageImageWidth');
-        if(vars.includes('pageImageHeight'))
-          inputPageImageHeight = $response.querySelector('.ComputateDeveloper_Page_pageImageHeight');
-        if(vars.includes('pageImageType'))
-          inputPageImageType = $response.querySelector('.ComputateDeveloper_Page_pageImageType');
         if(vars.includes('pageImageAlt'))
           inputPageImageAlt = $response.querySelector('.ComputateDeveloper_Page_pageImageAlt');
         if(vars.includes('prerequisiteArticleIds'))
           inputPrerequisiteArticleIds = $response.querySelector('.ComputateDeveloper_Page_prerequisiteArticleIds');
-        if(vars.includes('prerequisiteArticles'))
-          inputPrerequisiteArticles = $response.querySelector('.ComputateDeveloper_Page_prerequisiteArticles');
+        if(vars.includes('pageImageHeight'))
+          inputPageImageHeight = $response.querySelector('.ComputateDeveloper_Page_pageImageHeight');
+        if(vars.includes('pageImageType'))
+          inputPageImageType = $response.querySelector('.ComputateDeveloper_Page_pageImageType');
         if(vars.includes('nextArticleIds'))
           inputNextArticleIds = $response.querySelector('.ComputateDeveloper_Page_nextArticleIds');
         if(vars.includes('nextArticles'))
@@ -184,6 +185,8 @@ async function websocketComputateDeveloperInner(apiRequest) {
           inputRelatedArticleIds = $response.querySelector('.ComputateDeveloper_Page_relatedArticleIds');
         if(vars.includes('relatedArticles'))
           inputRelatedArticles = $response.querySelector('.ComputateDeveloper_Page_relatedArticles');
+        if(vars.includes('prerequisiteArticles'))
+          inputPrerequisiteArticles = $response.querySelector('.ComputateDeveloper_Page_prerequisiteArticles');
 
         jsWebsocketComputateDeveloper(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -420,6 +423,16 @@ async function websocketComputateDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.ComputateDeveloper_Page_lessonNum'));
         }
 
+        if(inputPageVideoUrl) {
+          document.querySelectorAll('.ComputateDeveloper_Page_pageVideoUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageVideoUrl.getAttribute('value');
+            else
+              item.textContent = inputPageVideoUrl.textContent;
+          });
+          addGlow(document.querySelector('.ComputateDeveloper_Page_pageVideoUrl'));
+        }
+
         if(inputPageImageWidth) {
           document.querySelectorAll('.ComputateDeveloper_Page_pageImageWidth').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -428,26 +441,6 @@ async function websocketComputateDeveloperInner(apiRequest) {
               item.textContent = inputPageImageWidth.textContent;
           });
           addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageWidth'));
-        }
-
-        if(inputPageImageHeight) {
-          document.querySelectorAll('.ComputateDeveloper_Page_pageImageHeight').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPageImageHeight.getAttribute('value');
-            else
-              item.textContent = inputPageImageHeight.textContent;
-          });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageHeight'));
-        }
-
-        if(inputPageImageType) {
-          document.querySelectorAll('.ComputateDeveloper_Page_pageImageType').forEach((item, index) => {
-            if(typeof item.value !== 'undefined')
-              item.value = inputPageImageType.getAttribute('value');
-            else
-              item.textContent = inputPageImageType.textContent;
-          });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageType'));
         }
 
         if(inputPageImageAlt) {
@@ -470,14 +463,24 @@ async function websocketComputateDeveloperInner(apiRequest) {
           addGlow(document.querySelector('.ComputateDeveloper_Page_prerequisiteArticleIds'));
         }
 
-        if(inputPrerequisiteArticles) {
-          document.querySelectorAll('.ComputateDeveloper_Page_prerequisiteArticles').forEach((item, index) => {
+        if(inputPageImageHeight) {
+          document.querySelectorAll('.ComputateDeveloper_Page_pageImageHeight').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
-              item.value = inputPrerequisiteArticles.getAttribute('value');
+              item.value = inputPageImageHeight.getAttribute('value');
             else
-              item.textContent = inputPrerequisiteArticles.textContent;
+              item.textContent = inputPageImageHeight.textContent;
           });
-          addGlow(document.querySelector('.ComputateDeveloper_Page_prerequisiteArticles'));
+          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageHeight'));
+        }
+
+        if(inputPageImageType) {
+          document.querySelectorAll('.ComputateDeveloper_Page_pageImageType').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageType.getAttribute('value');
+            else
+              item.textContent = inputPageImageType.textContent;
+          });
+          addGlow(document.querySelector('.ComputateDeveloper_Page_pageImageType'));
         }
 
         if(inputNextArticleIds) {
@@ -538,6 +541,16 @@ async function websocketComputateDeveloperInner(apiRequest) {
               item.textContent = inputRelatedArticles.textContent;
           });
           addGlow(document.querySelector('.ComputateDeveloper_Page_relatedArticles'));
+        }
+
+        if(inputPrerequisiteArticles) {
+          document.querySelectorAll('.ComputateDeveloper_Page_prerequisiteArticles').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPrerequisiteArticles.getAttribute('value');
+            else
+              item.textContent = inputPrerequisiteArticles.textContent;
+          });
+          addGlow(document.querySelector('.ComputateDeveloper_Page_prerequisiteArticles'));
         }
 
           pageGraphComputateDeveloper();
@@ -783,17 +796,13 @@ function searchComputateDeveloperFilters($formFilters) {
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
 
+    var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
+    if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
+      filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
-
-    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
-    if(filterPageImageHeight != null && filterPageImageHeight !== '')
-      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
-
-    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
-    if(filterPageImageType != null && filterPageImageType !== '')
-      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
@@ -802,6 +811,14 @@ function searchComputateDeveloperFilters($formFilters) {
     var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
     if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
       filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
+
+    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
+    if(filterPageImageHeight != null && filterPageImageHeight !== '')
+      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
+
+    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
+    if(filterPageImageType != null && filterPageImageType !== '')
+      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
     var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
     if(filterNextArticleIds != null && filterNextArticleIds !== '')
@@ -1099,6 +1116,18 @@ async function patchComputateDeveloper($formFilters, $formValues, target, pageId
   if(removeLessonNum != null && removeLessonNum !== '')
     vals['removeLessonNum'] = removeLessonNum;
 
+  var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
+  var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value === 'true';
+  var setPageVideoUrl = removePageVideoUrl ? null : $formValues.querySelector('.setPageVideoUrl')?.value;
+  var addPageVideoUrl = $formValues.querySelector('.addPageVideoUrl')?.value;
+  if(removePageVideoUrl || setPageVideoUrl != null && setPageVideoUrl !== '')
+    vals['setPageVideoUrl'] = setPageVideoUrl;
+  if(addPageVideoUrl != null && addPageVideoUrl !== '')
+    vals['addPageVideoUrl'] = addPageVideoUrl;
+  var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value;
+  if(removePageVideoUrl != null && removePageVideoUrl !== '')
+    vals['removePageVideoUrl'] = removePageVideoUrl;
+
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
   var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
@@ -1277,17 +1306,13 @@ function patchComputateDeveloperFilters($formFilters) {
     if(filterLessonNum != null && filterLessonNum !== '')
       filters.push({ name: 'fq', value: 'lessonNum:' + filterLessonNum });
 
+    var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
+    if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
+      filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
+
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
       filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
-
-    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
-    if(filterPageImageHeight != null && filterPageImageHeight !== '')
-      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
-
-    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
-    if(filterPageImageType != null && filterPageImageType !== '')
-      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
     var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
     if(filterPageImageAlt != null && filterPageImageAlt !== '')
@@ -1296,6 +1321,14 @@ function patchComputateDeveloperFilters($formFilters) {
     var filterPrerequisiteArticleIds = $formFilters.querySelector('.valuePrerequisiteArticleIds')?.value;
     if(filterPrerequisiteArticleIds != null && filterPrerequisiteArticleIds !== '')
       filters.push({ name: 'fq', value: 'prerequisiteArticleIds:' + filterPrerequisiteArticleIds });
+
+    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
+    if(filterPageImageHeight != null && filterPageImageHeight !== '')
+      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
+
+    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
+    if(filterPageImageType != null && filterPageImageType !== '')
+      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
 
     var filterNextArticleIds = $formFilters.querySelector('.valueNextArticleIds')?.value;
     if(filterNextArticleIds != null && filterNextArticleIds !== '')
@@ -1442,6 +1475,10 @@ async function postComputateDeveloper($formValues, target, success, error) {
   var valueLessonNum = $formValues.querySelector('.valueLessonNum')?.value;
   if(valueLessonNum != null && valueLessonNum !== '')
     vals['lessonNum'] = valueLessonNum;
+
+  var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
+  if(valuePageVideoUrl != null && valuePageVideoUrl !== '')
+    vals['pageVideoUrl'] = valuePageVideoUrl;
 
   var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
   if(valuePageImageAlt != null && valuePageImageAlt !== '')

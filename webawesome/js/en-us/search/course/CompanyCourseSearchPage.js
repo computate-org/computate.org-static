@@ -275,6 +275,17 @@ Promise.all([
     facetStatsChange('CompanyCourse', 'courseNum', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyCourse_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('CompanyCourse', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyCourse_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyCourse', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsCompanyCourse_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyCourse', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyCourse_pageImageWidth')?.addEventListener('change', (event) => {
     sort('CompanyCourse', 'pageImageWidth', event.currentTarget.value);
   });
@@ -579,6 +590,24 @@ Promise.all([
             facetRangeStartChange('CompanyCourse', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndCompanyCourse_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyCourse', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyCourse_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('CompanyCourse', event.currentTarget, facetChangeCompanyCourseSuccess, facetChangeCompanyCourseError);
+          });
+          document.querySelector('#buttonFacetCompanyCourse_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyCourse', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyCourse_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyCourse', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyCourse_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyCourse', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyCourse_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyCourse', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyCourse_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('CompanyCourse', event.currentTarget);
           });
 });

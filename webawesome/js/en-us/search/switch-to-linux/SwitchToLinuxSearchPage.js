@@ -253,6 +253,17 @@ Promise.all([
     facetStatsChange('SwitchToLinux', 'courseNum', false);
   });
 
+  document.querySelector('#pageSelectSortSwitchToLinux_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('SwitchToLinux', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSwitchToLinux_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SwitchToLinux', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsSwitchToLinux_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SwitchToLinux', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortSwitchToLinux_pageImageWidth')?.addEventListener('change', (event) => {
     sort('SwitchToLinux', 'pageImageWidth', event.currentTarget.value);
   });
@@ -565,6 +576,24 @@ Promise.all([
             facetRangeStartChange('SwitchToLinux', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndSwitchToLinux_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#fqSwitchToLinux_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('SwitchToLinux', event.currentTarget, facetChangeSwitchToLinuxSuccess, facetChangeSwitchToLinuxError);
+          });
+          document.querySelector('#buttonFacetSwitchToLinux_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSwitchToLinux_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSwitchToLinux_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSwitchToLinux_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SwitchToLinux', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSwitchToLinux_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('SwitchToLinux', event.currentTarget);
           });
 });

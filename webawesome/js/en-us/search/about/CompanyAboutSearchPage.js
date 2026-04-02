@@ -253,6 +253,17 @@ Promise.all([
     facetStatsChange('CompanyAbout', 'courseNum', false);
   });
 
+  document.querySelector('#pageSelectSortCompanyAbout_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('CompanyAbout', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsCompanyAbout_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('CompanyAbout', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsCompanyAbout_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('CompanyAbout', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortCompanyAbout_pageImageWidth')?.addEventListener('change', (event) => {
     sort('CompanyAbout', 'pageImageWidth', event.currentTarget.value);
   });
@@ -565,6 +576,24 @@ Promise.all([
             facetRangeStartChange('CompanyAbout', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndCompanyAbout_courseNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#fqCompanyAbout_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('CompanyAbout', event.currentTarget, facetChangeCompanyAboutSuccess, facetChangeCompanyAboutError);
+          });
+          document.querySelector('#buttonFacetCompanyAbout_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotCompanyAbout_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapCompanyAbout_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartCompanyAbout_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('CompanyAbout', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndCompanyAbout_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('CompanyAbout', event.currentTarget);
           });
 });

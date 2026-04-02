@@ -103,27 +103,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH authorName
-          document.querySelector('#SmartAquacultureDeveloper_Page_authorName')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_authorName');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setAuthorName', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_authorName')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_authorName')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_authorName');
-            const valid = form.reportValidity();
-          });
-
           // PATCH authorUrl
           document.querySelector('#SmartAquacultureDeveloper_Page_authorUrl')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_authorUrl');
@@ -142,6 +121,27 @@ Promise.all([
           });
           document.querySelector('#SmartAquacultureDeveloper_Page_authorUrl')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_authorUrl');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH authorName
+          document.querySelector('#SmartAquacultureDeveloper_Page_authorName')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_authorName');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setAuthorName', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_authorName')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_authorName')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_authorName');
             const valid = form.reportValidity();
           });
 
@@ -313,27 +313,6 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH nextArticleIds
-          document.querySelector('#SmartAquacultureDeveloper_Page_nextArticleIds')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_nextArticleIds');
-            const valid = form.checkValidity();
-            if(valid) {
-              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setNextArticleIds', event.currentTarget.value
-                  , event.currentTarget
-                , function(response, target) { addGlow(target); }
-                  , function(response, target) { addError(target); }
-                  );
-            }
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_nextArticleIds')?.addEventListener('focus', (event) => {
-            removeGlow(event.currentTarget);
-          });
-          document.querySelector('#SmartAquacultureDeveloper_Page_nextArticleIds')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_nextArticleIds');
-            const valid = form.reportValidity();
-          });
-
           // PATCH labelsString
           document.querySelector('#SmartAquacultureDeveloper_Page_labelsString')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_labelsString');
@@ -352,6 +331,48 @@ Promise.all([
           });
           document.querySelector('#SmartAquacultureDeveloper_Page_labelsString')?.addEventListener('blur', (event) => {
             const form = document.querySelector('#PageForm_labelsString');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH labels
+          document.querySelector('#SmartAquacultureDeveloper_Page_labels')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_labels');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setLabels', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
+                  , event.currentTarget
+                  , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_labels')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_labels')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_labels');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH relatedArticleIds
+          document.querySelector('#SmartAquacultureDeveloper_Page_relatedArticleIds')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_relatedArticleIds');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setRelatedArticleIds', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_relatedArticleIds')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SmartAquacultureDeveloper_Page_relatedArticleIds')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_relatedArticleIds');
             const valid = form.reportValidity();
           });
 
@@ -376,24 +397,24 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH labels
-          document.querySelector('#SmartAquacultureDeveloper_Page_labels')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_labels');
+          // PATCH prerequisiteArticleIds
+          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
             const valid = form.checkValidity();
             if(valid) {
               patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setLabels', event.currentTarget.value == '' ? null : JSON.parse(event.currentTarget.value)
+                  , 'setPrerequisiteArticleIds', event.currentTarget.value
                   , event.currentTarget
-                  , function(response, target) { addGlow(target); }
+                , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#SmartAquacultureDeveloper_Page_labels')?.addEventListener('focus', (event) => {
+          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#SmartAquacultureDeveloper_Page_labels')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_labels');
+          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
             const valid = form.reportValidity();
           });
 
@@ -439,45 +460,45 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
-          // PATCH prerequisiteArticleIds
-          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
+          // PATCH pageVideoUrl
+          document.querySelector('#SmartAquacultureDeveloper_Page_pageVideoUrl')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_pageVideoUrl');
             const valid = form.checkValidity();
             if(valid) {
               patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setPrerequisiteArticleIds', event.currentTarget.value
+                  , 'setPageVideoUrl', event.currentTarget.value
                   , event.currentTarget
                 , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('focus', (event) => {
+          document.querySelector('#SmartAquacultureDeveloper_Page_pageVideoUrl')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#SmartAquacultureDeveloper_Page_prerequisiteArticleIds')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_prerequisiteArticleIds');
+          document.querySelector('#SmartAquacultureDeveloper_Page_pageVideoUrl')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_pageVideoUrl');
             const valid = form.reportValidity();
           });
 
-          // PATCH relatedArticleIds
-          document.querySelector('#SmartAquacultureDeveloper_Page_relatedArticleIds')?.addEventListener('change', (event) => {
-            const form = document.querySelector('#PageForm_relatedArticleIds');
+          // PATCH nextArticleIds
+          document.querySelector('#SmartAquacultureDeveloper_Page_nextArticleIds')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_nextArticleIds');
             const valid = form.checkValidity();
             if(valid) {
               patchSmartAquacultureDeveloperVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
-                  , 'setRelatedArticleIds', event.currentTarget.value
+                  , 'setNextArticleIds', event.currentTarget.value
                   , event.currentTarget
                 , function(response, target) { addGlow(target); }
                   , function(response, target) { addError(target); }
                   );
             }
           });
-          document.querySelector('#SmartAquacultureDeveloper_Page_relatedArticleIds')?.addEventListener('focus', (event) => {
+          document.querySelector('#SmartAquacultureDeveloper_Page_nextArticleIds')?.addEventListener('focus', (event) => {
             removeGlow(event.currentTarget);
           });
-          document.querySelector('#SmartAquacultureDeveloper_Page_relatedArticleIds')?.addEventListener('blur', (event) => {
-            const form = document.querySelector('#PageForm_relatedArticleIds');
+          document.querySelector('#SmartAquacultureDeveloper_Page_nextArticleIds')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_nextArticleIds');
             const valid = form.reportValidity();
           });
 });

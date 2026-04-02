@@ -275,6 +275,17 @@ Promise.all([
     facetStatsChange('SpineProgramming', 'description', false);
   });
 
+  document.querySelector('#pageSelectSortSpineProgramming_pageVideoUrl')?.addEventListener('change', (event) => {
+    sort('SpineProgramming', 'pageVideoUrl', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineProgramming_pageVideoUrl')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineProgramming', 'pageVideoUrl', true);
+  });
+  document.querySelector('#pageStatsSpineProgramming_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineProgramming', 'pageVideoUrl', false);
+  });
+
   document.querySelector('#pageSelectSortSpineProgramming_pageImageWidth')?.addEventListener('change', (event) => {
     sort('SpineProgramming', 'pageImageWidth', event.currentTarget.value);
   });
@@ -587,6 +598,24 @@ Promise.all([
             facetRangeStartChange('SpineProgramming', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndSpineProgramming_lessonNum')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineProgramming', event.currentTarget);
+          });
+          document.querySelector('#fqSpineProgramming_pageVideoUrl')?.addEventListener('change', (event) => {
+            fqChange('SpineProgramming', event.currentTarget, facetChangeSpineProgrammingSuccess, facetChangeSpineProgrammingError);
+          });
+          document.querySelector('#buttonFacetSpineProgramming_pageVideoUrl')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineProgramming', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineProgramming_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineProgramming', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineProgramming_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineProgramming', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineProgramming_pageVideoUrl')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineProgramming', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineProgramming_pageVideoUrl')?.addEventListener('change', (event) => {
             facetRangeEndChange('SpineProgramming', event.currentTarget);
           });
 });
