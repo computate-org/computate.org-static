@@ -14,21 +14,6 @@
 {% set classApiMethodDELETE = '  DELETE:' in macroCode %}
 {% set classApiMethodPUTImport = '  PUTImport:' in macroCode %}
 {% endif -%}
-          {% if pageBreadcrumb is not defined -%}
-          {% set pageBreadcrumb -%}
-          <wa-tooltip for="return-to-{{ classSimpleName }}">back to {{ classAllName }}</wa-tooltip>
-          <wa-breadcrumb>
-            <wa-breadcrumb-item id="return-to-LearnSkills" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
-              <i class="fa-kit fa-computate-c-key"></i>
-              {{ classAllName }}
-            </wa-breadcrumb-item>
-            <wa-breadcrumb-item>
-              search {{ classAllName }}
-            </wa-breadcrumb-item>
-          </wa-breadcrumb>
-          {% endset pageBreadcrumb -%}
-          {% endif  -%}
-          {{ pageBreadcrumb }}
 
 <wa-intersection-observer id="{{ id | e }}-intersection-observer" threshold="1" intersect-class="visible" once>
   <wa-details summary="{{ summary | e }}" id="{{ id | e }}-details" icon-placement="start" open>

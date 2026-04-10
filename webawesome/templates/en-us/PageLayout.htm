@@ -141,15 +141,11 @@
     </script>
   </head>
   <body class="wa-body-{{ userFontSize[0:1] }} wa-size-{{ userFontSize[0:1] }} ">
-    {% if WEB_COMPONENTS_PRO == 'true' -%}
     <wa-page disable-sticky="header">
-      <wa-toast style="--width: 50vw; "></wa-toast>
-    {%- else -%}
-    <div id="site-grid">
-    {%- endif %}
+      <wa-toast style="--width: min(64rem, 100vw); "></wa-toast>
       <header slot="header">
         <div class="wa-cluster ">
-          <wa-button size="small" data-toggle-nav variant="brand" label="open menu"{% if WEB_COMPONENTS_PRO == 'false' %} onclick="document.querySelector('#site-aside-left').open = true;"{% endif %}>
+          <wa-button size="small" data-toggle-nav variant="brand" label="open menu">
             <i class="{{ FONTAWESOME_STYLE }} fa-bars"></i>
           </wa-button>
           <wa-popup placement="bottom-start" id="siteSearchDropdown">
@@ -178,10 +174,7 @@
       {% endif -%}
       {% block htmBodyPageLayout -%}
       {% block htmBodyStartPageLayout -%}
-      {% if WEB_COMPONENTS_PRO == 'false' -%}
-      <wa-drawer placement="start" id="site-aside-left" class="margin-block-end-1rem ">
-      {% endif -%}
-      <nav{% if WEB_COMPONENTS_PRO == 'true' %} slot="navigation"{% endif %}>
+      <nav slot="navigation">
         <div class="display-flex-center ">
           <a href="/">
             <img id="site-aside-left-img-logo" src="{{ STATIC_BASE_URL }}/svg/logo-{{ userSiteTheme | default(SITE_THEME) }}.svg"/>
@@ -297,6 +290,10 @@
                   <i slot="start" class="fa-kit fa-spine"></i>
                   SPINE Programming Theory
                 </wa-button>
+                <wa-button size="small" style="width: 100%; " variant="brand" id="site-aside-left-model-button-SpineDoc" href="{{ SITE_BASE_URL }}/en-us/search/spine-doc">
+                  <i slot="start" class="fa-kit fa-spine"></i>
+                  SPINE docs
+                </wa-button>
               </div>
             </wa-details>
             <wa-details summary="Develop a data-driven website" open="true">
@@ -374,9 +371,6 @@
           </div>
         </div>
       </nav>
-      {% if WEB_COMPONENTS_PRO == 'false' -%}
-      </wa-drawer>
-      {% endif %}
       <main id="site-main" class="wa-stack ">
         {% endblock htmBodyStartPageLayout -%}
         {% block htmBodyMiddlePageLayout -%}
