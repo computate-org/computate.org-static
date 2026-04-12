@@ -1,0 +1,38 @@
+{% extends "en-us/SpineDoc.htm" -%}
+    {% block htmMetaPageLayout -%}
+    {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.javaType" content="{{ result.pageId.split('-')[0] }}" />
+    <meta name="result.commentVar" content="Order" />
+    <meta name="result.javaClass" content="Integer" />
+    <meta name="result.sinceVersion" content="3" />
+    <meta name="result.supportStatus" content="stable" />
+    <meta name="result.copyCode" content="{{ result.commentVar }}: " />
+    <meta name="result.exampleValue" content="1" />
+    <meta name="result.exampleCode" content="{{ result.copyCode }}{{ result.exampleValue }}" />
+    <meta name="result.name" content="{{ result.javaType | capitalize }} {{ result.commentVar }} comment" />
+    <meta name="result.description" content="Order a Java Model Class numerically to sort all Models in the page layout and OpenAPI specification. " />
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-03-28T12:23:40.556[America/Denver]" />
+    <meta name="result.labelsString" content="class-comment" />
+    <meta name="result.courseNum" content="0"/>
+    {% endblock htmMetaPageLayout -%}
+          {% block htmBodyMiddleArticle -%}
+          <div class="content-padding-inline wa-stack ">
+            <h2>
+              Description
+            </h2>
+            <p>
+              This {{ result.javaType }} contains a comment <kbd>{{ result.exampleCode }}</kbd>, which means this {{ result.javaType }} will be sorted by the given number %s ascending when code that relates to multiple classes at the same time is generated. 
+            </p>
+            <h2>
+              Suggestion
+            </h2>
+            <p>
+              You can add a {{ result.javaType }} comment <kbd>{{ result.copyCode }}</kbd>, followed by an Integer to sort this class compared to other classes in the project. 
+              There is code that is generated that queries several classes and writes code for each class in a sequence. 
+              The <kbd>{{ result.commentVar }}</kbd> comment allows you do define which order the class code is generated. 
+            </p>
+          </div>
+          {% endblock %}
