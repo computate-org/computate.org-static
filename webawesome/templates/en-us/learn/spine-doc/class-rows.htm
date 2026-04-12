@@ -1,0 +1,24 @@
+{% extends "en-us/SpineDoc.htm" -%}
+    {% block htmMetaPageLayout -%}
+    {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.javaType" content="class" />
+    <meta name="result.commentVar" content="Rows" />
+    <meta name="result.javaClass" content="Integer" />
+    <meta name="result.sinceVersion" content="3" />
+    <meta name="result.supportStatus" content="stable" />
+    <meta name="result.copyCode" content="{{ result.commentVar }}: " />
+    <meta name="result.exampleValue" content="{{ exampleValue | default('10', true) }}" />
+    <meta name="result.exampleCode" content="{{ result.copyCode }}{{ result.exampleValue }}" />
+    <meta name="result.name" content="Class Rows comment" />
+    {% endblock htmMetaPageLayout -%}
+          {% block htmBodyMiddleArticle -%}
+          <div class="content-padding-inline wa-stack ">
+            <h2>
+              Suggestion
+            </h2>
+            You can add a class comment "Rows: 100" if you wish for the API to return more or less than 10 results by default. 
+            In this case, the API will return 100 results from the API instead of 10 by default. 
+            Each API has built in pagination of the search results to ensure a user can query all the data a page at a time without running the application out of memory. 
+          </div>
+          {% endblock %}
