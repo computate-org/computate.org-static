@@ -231,6 +231,94 @@ Promise.all([
     facetStatsChange('SpineDoc', 'importance', false);
   });
 
+  document.querySelector('#pageSelectSortSpineDoc_commentVar')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'commentVar', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_commentVar')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'commentVar', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_commentVar')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'commentVar', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_javaType')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'javaType', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_javaType')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'javaType', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_javaType')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'javaType', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_javaClass')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'javaClass', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_javaClass')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'javaClass', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_javaClass')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'javaClass', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_sinceVersion')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'sinceVersion', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_sinceVersion')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'sinceVersion', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_sinceVersion')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'sinceVersion', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_supportStatus')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'supportStatus', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_supportStatus')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'supportStatus', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_supportStatus')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'supportStatus', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_exampleValue')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'exampleValue', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_exampleValue')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'exampleValue', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_exampleValue')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'exampleValue', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_exampleCode')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'exampleCode', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_exampleCode')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'exampleCode', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_exampleCode')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'exampleCode', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_copyCode')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'copyCode', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_copyCode')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'copyCode', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_copyCode')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'copyCode', false);
+  });
+
   document.querySelector('#pageSelectSortSpineDoc_courseNum')?.addEventListener('change', (event) => {
     sort('SpineDoc', 'courseNum', event.currentTarget.value);
   });
@@ -562,6 +650,150 @@ Promise.all([
             facetRangeStartChange('SpineDoc', event.currentTarget);
           });
           document.querySelector('#pageFacetRangeEndSpineDoc_importance')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#fqSpineDoc_commentVar')?.addEventListener('change', (event) => {
+            fqChange('SpineDoc', event.currentTarget, facetChangeSpineDocSuccess, facetChangeSpineDocError);
+          });
+          document.querySelector('#buttonFacetSpineDoc_commentVar')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineDoc_commentVar')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineDoc_commentVar')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineDoc_commentVar')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineDoc_commentVar')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#fqSpineDoc_javaType')?.addEventListener('change', (event) => {
+            fqChange('SpineDoc', event.currentTarget, facetChangeSpineDocSuccess, facetChangeSpineDocError);
+          });
+          document.querySelector('#buttonFacetSpineDoc_javaType')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineDoc_javaType')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineDoc_javaType')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineDoc_javaType')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineDoc_javaType')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#fqSpineDoc_javaClass')?.addEventListener('change', (event) => {
+            fqChange('SpineDoc', event.currentTarget, facetChangeSpineDocSuccess, facetChangeSpineDocError);
+          });
+          document.querySelector('#buttonFacetSpineDoc_javaClass')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineDoc_javaClass')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineDoc_javaClass')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineDoc_javaClass')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineDoc_javaClass')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#fqSpineDoc_sinceVersion')?.addEventListener('change', (event) => {
+            fqChange('SpineDoc', event.currentTarget, facetChangeSpineDocSuccess, facetChangeSpineDocError);
+          });
+          document.querySelector('#buttonFacetSpineDoc_sinceVersion')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineDoc_sinceVersion')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineDoc_sinceVersion')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineDoc_sinceVersion')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineDoc_sinceVersion')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#fqSpineDoc_supportStatus')?.addEventListener('change', (event) => {
+            fqChange('SpineDoc', event.currentTarget, facetChangeSpineDocSuccess, facetChangeSpineDocError);
+          });
+          document.querySelector('#buttonFacetSpineDoc_supportStatus')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineDoc_supportStatus')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineDoc_supportStatus')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineDoc_supportStatus')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineDoc_supportStatus')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#fqSpineDoc_exampleValue')?.addEventListener('change', (event) => {
+            fqChange('SpineDoc', event.currentTarget, facetChangeSpineDocSuccess, facetChangeSpineDocError);
+          });
+          document.querySelector('#buttonFacetSpineDoc_exampleValue')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineDoc_exampleValue')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineDoc_exampleValue')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineDoc_exampleValue')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineDoc_exampleValue')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#fqSpineDoc_exampleCode')?.addEventListener('change', (event) => {
+            fqChange('SpineDoc', event.currentTarget, facetChangeSpineDocSuccess, facetChangeSpineDocError);
+          });
+          document.querySelector('#buttonFacetSpineDoc_exampleCode')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineDoc_exampleCode')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineDoc_exampleCode')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineDoc_exampleCode')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineDoc_exampleCode')?.addEventListener('change', (event) => {
+            facetRangeEndChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#fqSpineDoc_copyCode')?.addEventListener('change', (event) => {
+            fqChange('SpineDoc', event.currentTarget, facetChangeSpineDocSuccess, facetChangeSpineDocError);
+          });
+          document.querySelector('#buttonFacetSpineDoc_copyCode')?.addEventListener('click', (event) => {
+            facetFieldChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetPivotSpineDoc_copyCode')?.addEventListener('change', (event) => {
+            facetPivotChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeGapSpineDoc_copyCode')?.addEventListener('change', (event) => {
+            facetRangeGapChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeStartSpineDoc_copyCode')?.addEventListener('change', (event) => {
+            facetRangeStartChange('SpineDoc', event.currentTarget);
+          });
+          document.querySelector('#pageFacetRangeEndSpineDoc_copyCode')?.addEventListener('change', (event) => {
             facetRangeEndChange('SpineDoc', event.currentTarget);
           });
           document.querySelector('#fqSpineDoc_courseNum')?.addEventListener('change', (event) => {

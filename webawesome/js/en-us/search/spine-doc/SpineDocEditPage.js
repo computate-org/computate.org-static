@@ -292,6 +292,174 @@ Promise.all([
             const valid = form.reportValidity();
           });
 
+          // PATCH commentVar
+          document.querySelector('#SpineDoc_Page_commentVar')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_commentVar');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSpineDocVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setCommentVar', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SpineDoc_Page_commentVar')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SpineDoc_Page_commentVar')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_commentVar');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH javaType
+          document.querySelector('#SpineDoc_Page_javaType')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_javaType');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSpineDocVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setJavaType', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SpineDoc_Page_javaType')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SpineDoc_Page_javaType')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_javaType');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH javaClass
+          document.querySelector('#SpineDoc_Page_javaClass')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_javaClass');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSpineDocVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setJavaClass', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SpineDoc_Page_javaClass')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SpineDoc_Page_javaClass')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_javaClass');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH sinceVersion
+          document.querySelector('#SpineDoc_Page_sinceVersion')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_sinceVersion');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSpineDocVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setSinceVersion', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SpineDoc_Page_sinceVersion')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SpineDoc_Page_sinceVersion')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_sinceVersion');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH supportStatus
+          document.querySelector('#SpineDoc_Page_supportStatus')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_supportStatus');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSpineDocVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setSupportStatus', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SpineDoc_Page_supportStatus')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SpineDoc_Page_supportStatus')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_supportStatus');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH exampleValue
+          document.querySelector('#SpineDoc_Page_exampleValue')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_exampleValue');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSpineDocVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setExampleValue', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SpineDoc_Page_exampleValue')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SpineDoc_Page_exampleValue')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_exampleValue');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH exampleCode
+          document.querySelector('#SpineDoc_Page_exampleCode')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_exampleCode');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSpineDocVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setExampleCode', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SpineDoc_Page_exampleCode')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SpineDoc_Page_exampleCode')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_exampleCode');
+            const valid = form.reportValidity();
+          });
+
+          // PATCH copyCode
+          document.querySelector('#SpineDoc_Page_copyCode')?.addEventListener('change', (event) => {
+            const form = document.querySelector('#PageForm_copyCode');
+            const valid = form.checkValidity();
+            if(valid) {
+              patchSpineDocVal([{ name: 'softCommit', value: 'true' }, { name: 'fq', value: 'pageId:' + event.currentTarget.getAttribute('data-pageId') }]
+                  , 'setCopyCode', event.currentTarget.value
+                  , event.currentTarget
+                , function(response, target) { addGlow(target); }
+                  , function(response, target) { addError(target); }
+                  );
+            }
+          });
+          document.querySelector('#SpineDoc_Page_copyCode')?.addEventListener('focus', (event) => {
+            removeGlow(event.currentTarget);
+          });
+          document.querySelector('#SpineDoc_Page_copyCode')?.addEventListener('blur', (event) => {
+            const form = document.querySelector('#PageForm_copyCode');
+            const valid = form.reportValidity();
+          });
+
           // PATCH courseNum
           document.querySelector('#SpineDoc_Page_courseNum')?.addEventListener('change', (event) => {
             const form = document.querySelector('#PageForm_courseNum');

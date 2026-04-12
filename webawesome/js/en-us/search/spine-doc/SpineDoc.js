@@ -98,6 +98,14 @@ async function websocketSpineDocInner(apiRequest) {
         var inputObjectText = null;
         var inputSolrId = null;
         var inputImportance = null;
+        var inputCommentVar = null;
+        var inputJavaType = null;
+        var inputJavaClass = null;
+        var inputSinceVersion = null;
+        var inputSupportStatus = null;
+        var inputExampleValue = null;
+        var inputExampleCode = null;
+        var inputCopyCode = null;
         var inputCourseNum = null;
         var inputLessonNum = null;
         var inputName = null;
@@ -156,6 +164,22 @@ async function websocketSpineDocInner(apiRequest) {
           inputSolrId = $response.querySelector('.SpineDoc_Page_solrId');
         if(vars.includes('importance'))
           inputImportance = $response.querySelector('.SpineDoc_Page_importance');
+        if(vars.includes('commentVar'))
+          inputCommentVar = $response.querySelector('.SpineDoc_Page_commentVar');
+        if(vars.includes('javaType'))
+          inputJavaType = $response.querySelector('.SpineDoc_Page_javaType');
+        if(vars.includes('javaClass'))
+          inputJavaClass = $response.querySelector('.SpineDoc_Page_javaClass');
+        if(vars.includes('sinceVersion'))
+          inputSinceVersion = $response.querySelector('.SpineDoc_Page_sinceVersion');
+        if(vars.includes('supportStatus'))
+          inputSupportStatus = $response.querySelector('.SpineDoc_Page_supportStatus');
+        if(vars.includes('exampleValue'))
+          inputExampleValue = $response.querySelector('.SpineDoc_Page_exampleValue');
+        if(vars.includes('exampleCode'))
+          inputExampleCode = $response.querySelector('.SpineDoc_Page_exampleCode');
+        if(vars.includes('copyCode'))
+          inputCopyCode = $response.querySelector('.SpineDoc_Page_copyCode');
         if(vars.includes('courseNum'))
           inputCourseNum = $response.querySelector('.SpineDoc_Page_courseNum');
         if(vars.includes('lessonNum'))
@@ -394,6 +418,86 @@ async function websocketSpineDocInner(apiRequest) {
               item.textContent = inputImportance.textContent;
           });
           addGlow(document.querySelector('.SpineDoc_Page_importance'));
+        }
+
+        if(inputCommentVar) {
+          document.querySelectorAll('.SpineDoc_Page_commentVar').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCommentVar.getAttribute('value');
+            else
+              item.textContent = inputCommentVar.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_commentVar'));
+        }
+
+        if(inputJavaType) {
+          document.querySelectorAll('.SpineDoc_Page_javaType').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputJavaType.getAttribute('value');
+            else
+              item.textContent = inputJavaType.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_javaType'));
+        }
+
+        if(inputJavaClass) {
+          document.querySelectorAll('.SpineDoc_Page_javaClass').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputJavaClass.getAttribute('value');
+            else
+              item.textContent = inputJavaClass.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_javaClass'));
+        }
+
+        if(inputSinceVersion) {
+          document.querySelectorAll('.SpineDoc_Page_sinceVersion').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSinceVersion.getAttribute('value');
+            else
+              item.textContent = inputSinceVersion.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_sinceVersion'));
+        }
+
+        if(inputSupportStatus) {
+          document.querySelectorAll('.SpineDoc_Page_supportStatus').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputSupportStatus.getAttribute('value');
+            else
+              item.textContent = inputSupportStatus.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_supportStatus'));
+        }
+
+        if(inputExampleValue) {
+          document.querySelectorAll('.SpineDoc_Page_exampleValue').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputExampleValue.getAttribute('value');
+            else
+              item.textContent = inputExampleValue.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_exampleValue'));
+        }
+
+        if(inputExampleCode) {
+          document.querySelectorAll('.SpineDoc_Page_exampleCode').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputExampleCode.getAttribute('value');
+            else
+              item.textContent = inputExampleCode.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_exampleCode'));
+        }
+
+        if(inputCopyCode) {
+          document.querySelectorAll('.SpineDoc_Page_copyCode').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputCopyCode.getAttribute('value');
+            else
+              item.textContent = inputCopyCode.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_copyCode'));
         }
 
         if(inputCourseNum) {
@@ -797,6 +901,38 @@ function searchSpineDocFilters($formFilters) {
     if(filterImportance != null && filterImportance !== '')
       filters.push({ name: 'fq', value: 'importance:' + filterImportance });
 
+    var filterCommentVar = $formFilters.querySelector('.valueCommentVar')?.value;
+    if(filterCommentVar != null && filterCommentVar !== '')
+      filters.push({ name: 'fq', value: 'commentVar:' + filterCommentVar });
+
+    var filterJavaType = $formFilters.querySelector('.valueJavaType')?.value;
+    if(filterJavaType != null && filterJavaType !== '')
+      filters.push({ name: 'fq', value: 'javaType:' + filterJavaType });
+
+    var filterJavaClass = $formFilters.querySelector('.valueJavaClass')?.value;
+    if(filterJavaClass != null && filterJavaClass !== '')
+      filters.push({ name: 'fq', value: 'javaClass:' + filterJavaClass });
+
+    var filterSinceVersion = $formFilters.querySelector('.valueSinceVersion')?.value;
+    if(filterSinceVersion != null && filterSinceVersion !== '')
+      filters.push({ name: 'fq', value: 'sinceVersion:' + filterSinceVersion });
+
+    var filterSupportStatus = $formFilters.querySelector('.valueSupportStatus')?.value;
+    if(filterSupportStatus != null && filterSupportStatus !== '')
+      filters.push({ name: 'fq', value: 'supportStatus:' + filterSupportStatus });
+
+    var filterExampleValue = $formFilters.querySelector('.valueExampleValue')?.value;
+    if(filterExampleValue != null && filterExampleValue !== '')
+      filters.push({ name: 'fq', value: 'exampleValue:' + filterExampleValue });
+
+    var filterExampleCode = $formFilters.querySelector('.valueExampleCode')?.value;
+    if(filterExampleCode != null && filterExampleCode !== '')
+      filters.push({ name: 'fq', value: 'exampleCode:' + filterExampleCode });
+
+    var filterCopyCode = $formFilters.querySelector('.valueCopyCode')?.value;
+    if(filterCopyCode != null && filterCopyCode !== '')
+      filters.push({ name: 'fq', value: 'copyCode:' + filterCopyCode });
+
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
@@ -1098,6 +1234,102 @@ async function patchSpineDoc($formFilters, $formValues, target, pageId, success,
   if(removeImportance != null && removeImportance !== '')
     vals['removeImportance'] = removeImportance;
 
+  var valueCommentVar = $formValues.querySelector('.valueCommentVar')?.value;
+  var removeCommentVar = $formValues.querySelector('.removeCommentVar')?.value === 'true';
+  var setCommentVar = removeCommentVar ? null : $formValues.querySelector('.setCommentVar')?.value;
+  var addCommentVar = $formValues.querySelector('.addCommentVar')?.value;
+  if(removeCommentVar || setCommentVar != null && setCommentVar !== '')
+    vals['setCommentVar'] = setCommentVar;
+  if(addCommentVar != null && addCommentVar !== '')
+    vals['addCommentVar'] = addCommentVar;
+  var removeCommentVar = $formValues.querySelector('.removeCommentVar')?.value;
+  if(removeCommentVar != null && removeCommentVar !== '')
+    vals['removeCommentVar'] = removeCommentVar;
+
+  var valueJavaType = $formValues.querySelector('.valueJavaType')?.value;
+  var removeJavaType = $formValues.querySelector('.removeJavaType')?.value === 'true';
+  var setJavaType = removeJavaType ? null : $formValues.querySelector('.setJavaType')?.value;
+  var addJavaType = $formValues.querySelector('.addJavaType')?.value;
+  if(removeJavaType || setJavaType != null && setJavaType !== '')
+    vals['setJavaType'] = setJavaType;
+  if(addJavaType != null && addJavaType !== '')
+    vals['addJavaType'] = addJavaType;
+  var removeJavaType = $formValues.querySelector('.removeJavaType')?.value;
+  if(removeJavaType != null && removeJavaType !== '')
+    vals['removeJavaType'] = removeJavaType;
+
+  var valueJavaClass = $formValues.querySelector('.valueJavaClass')?.value;
+  var removeJavaClass = $formValues.querySelector('.removeJavaClass')?.value === 'true';
+  var setJavaClass = removeJavaClass ? null : $formValues.querySelector('.setJavaClass')?.value;
+  var addJavaClass = $formValues.querySelector('.addJavaClass')?.value;
+  if(removeJavaClass || setJavaClass != null && setJavaClass !== '')
+    vals['setJavaClass'] = setJavaClass;
+  if(addJavaClass != null && addJavaClass !== '')
+    vals['addJavaClass'] = addJavaClass;
+  var removeJavaClass = $formValues.querySelector('.removeJavaClass')?.value;
+  if(removeJavaClass != null && removeJavaClass !== '')
+    vals['removeJavaClass'] = removeJavaClass;
+
+  var valueSinceVersion = $formValues.querySelector('.valueSinceVersion')?.value;
+  var removeSinceVersion = $formValues.querySelector('.removeSinceVersion')?.value === 'true';
+  var setSinceVersion = removeSinceVersion ? null : $formValues.querySelector('.setSinceVersion')?.value;
+  var addSinceVersion = $formValues.querySelector('.addSinceVersion')?.value;
+  if(removeSinceVersion || setSinceVersion != null && setSinceVersion !== '')
+    vals['setSinceVersion'] = setSinceVersion;
+  if(addSinceVersion != null && addSinceVersion !== '')
+    vals['addSinceVersion'] = addSinceVersion;
+  var removeSinceVersion = $formValues.querySelector('.removeSinceVersion')?.value;
+  if(removeSinceVersion != null && removeSinceVersion !== '')
+    vals['removeSinceVersion'] = removeSinceVersion;
+
+  var valueSupportStatus = $formValues.querySelector('.valueSupportStatus')?.value;
+  var removeSupportStatus = $formValues.querySelector('.removeSupportStatus')?.value === 'true';
+  var setSupportStatus = removeSupportStatus ? null : $formValues.querySelector('.setSupportStatus')?.value;
+  var addSupportStatus = $formValues.querySelector('.addSupportStatus')?.value;
+  if(removeSupportStatus || setSupportStatus != null && setSupportStatus !== '')
+    vals['setSupportStatus'] = setSupportStatus;
+  if(addSupportStatus != null && addSupportStatus !== '')
+    vals['addSupportStatus'] = addSupportStatus;
+  var removeSupportStatus = $formValues.querySelector('.removeSupportStatus')?.value;
+  if(removeSupportStatus != null && removeSupportStatus !== '')
+    vals['removeSupportStatus'] = removeSupportStatus;
+
+  var valueExampleValue = $formValues.querySelector('.valueExampleValue')?.value;
+  var removeExampleValue = $formValues.querySelector('.removeExampleValue')?.value === 'true';
+  var setExampleValue = removeExampleValue ? null : $formValues.querySelector('.setExampleValue')?.value;
+  var addExampleValue = $formValues.querySelector('.addExampleValue')?.value;
+  if(removeExampleValue || setExampleValue != null && setExampleValue !== '')
+    vals['setExampleValue'] = setExampleValue;
+  if(addExampleValue != null && addExampleValue !== '')
+    vals['addExampleValue'] = addExampleValue;
+  var removeExampleValue = $formValues.querySelector('.removeExampleValue')?.value;
+  if(removeExampleValue != null && removeExampleValue !== '')
+    vals['removeExampleValue'] = removeExampleValue;
+
+  var valueExampleCode = $formValues.querySelector('.valueExampleCode')?.value;
+  var removeExampleCode = $formValues.querySelector('.removeExampleCode')?.value === 'true';
+  var setExampleCode = removeExampleCode ? null : $formValues.querySelector('.setExampleCode')?.value;
+  var addExampleCode = $formValues.querySelector('.addExampleCode')?.value;
+  if(removeExampleCode || setExampleCode != null && setExampleCode !== '')
+    vals['setExampleCode'] = setExampleCode;
+  if(addExampleCode != null && addExampleCode !== '')
+    vals['addExampleCode'] = addExampleCode;
+  var removeExampleCode = $formValues.querySelector('.removeExampleCode')?.value;
+  if(removeExampleCode != null && removeExampleCode !== '')
+    vals['removeExampleCode'] = removeExampleCode;
+
+  var valueCopyCode = $formValues.querySelector('.valueCopyCode')?.value;
+  var removeCopyCode = $formValues.querySelector('.removeCopyCode')?.value === 'true';
+  var setCopyCode = removeCopyCode ? null : $formValues.querySelector('.setCopyCode')?.value;
+  var addCopyCode = $formValues.querySelector('.addCopyCode')?.value;
+  if(removeCopyCode || setCopyCode != null && setCopyCode !== '')
+    vals['setCopyCode'] = setCopyCode;
+  if(addCopyCode != null && addCopyCode !== '')
+    vals['addCopyCode'] = addCopyCode;
+  var removeCopyCode = $formValues.querySelector('.removeCopyCode')?.value;
+  if(removeCopyCode != null && removeCopyCode !== '')
+    vals['removeCopyCode'] = removeCopyCode;
+
   var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
   var removeCourseNum = $formValues.querySelector('.removeCourseNum')?.value === 'true';
   var setCourseNum = removeCourseNum ? null : $formValues.querySelector('.setCourseNum')?.value;
@@ -1324,6 +1556,38 @@ function patchSpineDocFilters($formFilters) {
     if(filterImportance != null && filterImportance !== '')
       filters.push({ name: 'fq', value: 'importance:' + filterImportance });
 
+    var filterCommentVar = $formFilters.querySelector('.valueCommentVar')?.value;
+    if(filterCommentVar != null && filterCommentVar !== '')
+      filters.push({ name: 'fq', value: 'commentVar:' + filterCommentVar });
+
+    var filterJavaType = $formFilters.querySelector('.valueJavaType')?.value;
+    if(filterJavaType != null && filterJavaType !== '')
+      filters.push({ name: 'fq', value: 'javaType:' + filterJavaType });
+
+    var filterJavaClass = $formFilters.querySelector('.valueJavaClass')?.value;
+    if(filterJavaClass != null && filterJavaClass !== '')
+      filters.push({ name: 'fq', value: 'javaClass:' + filterJavaClass });
+
+    var filterSinceVersion = $formFilters.querySelector('.valueSinceVersion')?.value;
+    if(filterSinceVersion != null && filterSinceVersion !== '')
+      filters.push({ name: 'fq', value: 'sinceVersion:' + filterSinceVersion });
+
+    var filterSupportStatus = $formFilters.querySelector('.valueSupportStatus')?.value;
+    if(filterSupportStatus != null && filterSupportStatus !== '')
+      filters.push({ name: 'fq', value: 'supportStatus:' + filterSupportStatus });
+
+    var filterExampleValue = $formFilters.querySelector('.valueExampleValue')?.value;
+    if(filterExampleValue != null && filterExampleValue !== '')
+      filters.push({ name: 'fq', value: 'exampleValue:' + filterExampleValue });
+
+    var filterExampleCode = $formFilters.querySelector('.valueExampleCode')?.value;
+    if(filterExampleCode != null && filterExampleCode !== '')
+      filters.push({ name: 'fq', value: 'exampleCode:' + filterExampleCode });
+
+    var filterCopyCode = $formFilters.querySelector('.valueCopyCode')?.value;
+    if(filterCopyCode != null && filterCopyCode !== '')
+      filters.push({ name: 'fq', value: 'copyCode:' + filterCopyCode });
+
     var filterCourseNum = $formFilters.querySelector('.valueCourseNum')?.value;
     if(filterCourseNum != null && filterCourseNum !== '')
       filters.push({ name: 'fq', value: 'courseNum:' + filterCourseNum });
@@ -1497,6 +1761,38 @@ async function postSpineDoc($formValues, target, success, error) {
   var valueImportance = $formValues.querySelector('.valueImportance')?.value;
   if(valueImportance != null && valueImportance !== '')
     vals['importance'] = valueImportance;
+
+  var valueCommentVar = $formValues.querySelector('.valueCommentVar')?.value;
+  if(valueCommentVar != null && valueCommentVar !== '')
+    vals['commentVar'] = valueCommentVar;
+
+  var valueJavaType = $formValues.querySelector('.valueJavaType')?.value;
+  if(valueJavaType != null && valueJavaType !== '')
+    vals['javaType'] = valueJavaType;
+
+  var valueJavaClass = $formValues.querySelector('.valueJavaClass')?.value;
+  if(valueJavaClass != null && valueJavaClass !== '')
+    vals['javaClass'] = valueJavaClass;
+
+  var valueSinceVersion = $formValues.querySelector('.valueSinceVersion')?.value;
+  if(valueSinceVersion != null && valueSinceVersion !== '')
+    vals['sinceVersion'] = valueSinceVersion;
+
+  var valueSupportStatus = $formValues.querySelector('.valueSupportStatus')?.value;
+  if(valueSupportStatus != null && valueSupportStatus !== '')
+    vals['supportStatus'] = valueSupportStatus;
+
+  var valueExampleValue = $formValues.querySelector('.valueExampleValue')?.value;
+  if(valueExampleValue != null && valueExampleValue !== '')
+    vals['exampleValue'] = valueExampleValue;
+
+  var valueExampleCode = $formValues.querySelector('.valueExampleCode')?.value;
+  if(valueExampleCode != null && valueExampleCode !== '')
+    vals['exampleCode'] = valueExampleCode;
+
+  var valueCopyCode = $formValues.querySelector('.valueCopyCode')?.value;
+  if(valueCopyCode != null && valueCopyCode !== '')
+    vals['copyCode'] = valueCopyCode;
 
   var valueCourseNum = $formValues.querySelector('.valueCourseNum')?.value;
   if(valueCourseNum != null && valueCourseNum !== '')
