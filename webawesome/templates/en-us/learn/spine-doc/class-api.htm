@@ -1,0 +1,34 @@
+{% extends "en-us/SpineDoc.htm" -%}
+    {% block htmMetaPageLayout -%}
+    {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.javaType" content="class" />
+    <meta name="result.commentVar" content="Api" />
+    <meta name="result.javaClass" content="Boolean" />
+    <meta name="result.sinceVersion" content="3" />
+    <meta name="result.supportStatus" content="stable" />
+    <meta name="result.copyCode" content="{{ result.commentVar }}: {{ result.exampleValue }}" />
+    <meta name="result.exampleValue" content="{{ exampleValue | default('true', true) }}" />
+    <meta name="result.exampleCode" content="{{ result.copyCode }}" />
+    <meta name="result.name" content="Class Api comment" />
+    <meta name="result.description" content="Generate a Java REST API and OpenAPI spec for the given ApiMethods of the Java Class." />
+    {% endblock htmMetaPageLayout -%}
+          {% block htmBodyMiddleArticle -%}
+          <div class="content-padding-inline wa-stack ">
+            <h2>
+              Description
+            </h2>
+            <p>
+              This class contains a comment <kbd><b>Api: true</b></kbd>, which means this class will have Java Vert.x API backend code generated for these objects. 
+            </p>
+
+            <h2>
+              Suggestion
+            </h2>
+            {% if exampleValue is not defined -%}
+            <p>
+              You can add a class comment <kbd><b>Api: true</b></kbd> if you wish to GET, POST, PATCH or PUT these {{ classeNomSingulier }} objects in a RESTful API. 
+            </p>
+            {% endif %}
+          </div>
+          {% endblock %}

@@ -324,12 +324,32 @@
 
               {% macro copyCode(result) -%}
               {% if result.exampleCode is defined and result.copyCode is defined -%}
-              <div class="wa-flank wa-gap-2xs "><wa-copy-button value="{{ result.copyCode | e }}"></wa-copy-button><wa-scroller><pre class="wa-border-radius-square"><code>{{ result.exampleCode | e }}</code></pre></wa-scroller></div>
+              <div class="wa-flank wa-gap-2xs "><wa-copy-button value="
+                {%- if '\n' in result.copyCode -%}
+                {{- ' * ' + (result.copyCode | replace('\n', '\n * ')) | e -}}
+                {%- else -%}
+                {{- result.copyCode | e -}}
+                {%- endif -%}
+                "></wa-copy-button><wa-scroller><pre class="wa-border-radius-square"><code>{{- '/**
+ * ' + (result.exampleCode | replace('\n', '\n * ')) + '
+ */' | e -}}</code></pre></wa-scroller></div>
               {% else -%}
               {% if result.copyCode is defined -%}
+              {% if '\n' in result.copyCode -%}
+              {{ code('/**
+ * ' + (result.copyCode | replace('\n', '\n * ')) + '
+ */') }}
+              {% else -%}
               {{ code(result.copyCode) }}
+              {% endif -%}
+              {% else -%}
+              {% if '\n' in result.exampleCode -%}
+              {{ code('/**
+ * ' + (result.exampleCode | replace('\n', '\n * ')) + '
+ */') }}
               {% else -%}
               {{ code(result.exampleCode) }}
+              {% endif -%}
               {% endif -%}
               {% endif -%}
               {%- endmacro -%}
@@ -366,13 +386,13 @@
               <wa-scroller><pre class="wa-border-radius-square"><code>
               {%- if result.exampleCode is defined -%}
               {{ '/**
- * ' + result.exampleCode + '
+ * ' + (result.exampleCode | replace('\n', '\n * ')) + '
  */
 public class SpineDoc extends SpineDocGen<BaseResult> {
 }' | e }}
               {%- else -%}
               {{ '/**
- * ' + result.copyCode + '
+ * ' + (result.copyCode | replace('\n', '\n * ')) + '
  */
 public class SpineDoc extends SpineDocGen<BaseResult> {
 }' | e -}}

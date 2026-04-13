@@ -19,7 +19,7 @@
               Description
             </h2>
             <p>
-              This {{ result.javaType }} contains a comment <kbd>{{ result.exampleCode }}</kbd>, 
+              This {{ result.javaType }} contains a comment <kbd><b>{{ result.exampleCode }}</b></kbd>, 
               which means this {{ result.javaType }} will be sorted by the given number {{ result.exampleValue }} 
               ascending when code that relates to multiple classes at the same time is generated. 
             </p>
@@ -29,9 +29,9 @@
             </h2>
             {% if exampleValue is not defined -%}
             <p>
-              You can add a {{ result.javaType }} comment <kbd>{{ result.copyCode }}</kbd>, followed by an Integer to sort this class compared to other classes in the project. 
+              You can add a {{ result.javaType }} comment <kbd><b>{{ result.copyCode }}</b></kbd>, followed by an Integer to sort this class compared to other classes in the project. 
               There is code that is generated that queries several classes and writes code for each class in a sequence. 
-              The <kbd>{{ result.commentVar }}</kbd> comment allows you to define which order the class code is generated. 
+              The <kbd><b>{{ result.commentVar }}</b></kbd> comment allows you to define which order the class code is generated. 
             </p>
             {% endif -%}
           </div>

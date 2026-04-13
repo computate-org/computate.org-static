@@ -11,14 +11,26 @@
     <meta name="result.exampleValue" content="{{ exampleValue | default('10', true) }}" />
     <meta name="result.exampleCode" content="{{ result.copyCode }}{{ result.exampleValue }}" />
     <meta name="result.name" content="Class Rows comment" />
+    <meta name="result.description" content="Modify the search API for {{ classeNomPluriel }} to return up to a custom default number of results instead of 10 by default." />
     {% endblock htmMetaPageLayout -%}
           {% block htmBodyMiddleArticle -%}
           <div class="content-padding-inline wa-stack ">
             <h2>
+              Description
+            </h2>
+            <p>This class contains a comment <kbd><b>Rows: {{ result.exampleValue }}</b></kbd>, which means the {{ classeNomSingulier }} API will return a default of {{ result.exampleValue }} results instead of 10 by default. 
+            Each API has built in pagination of the search results to ensure a user can query all the data a page at a time without running the application out of memory. 
+            </p>
+
+            <h2>
               Suggestion
             </h2>
-            You can add a class comment "Rows: 100" if you wish for the API to return more or less than 10 results by default. 
-            In this case, the API will return 100 results from the API instead of 10 by default. 
-            Each API has built in pagination of the search results to ensure a user can query all the data a page at a time without running the application out of memory. 
+            {% if exampleValue is not defined -%}
+            <p>
+              You can add a class comment <kbd><b>Rows: 100</b></kbd> if you wish for the {{ classeNomSingulier }} API to return more or less than 10 results by default. 
+              In this case, the API will return 100 results from the API instead of 10 by default. 
+              Each API has built in pagination of the search results to ensure a user can query all the data a page at a time without running the application out of memory. 
+            </p>
+            {% endif -%}
           </div>
           {% endblock %}
