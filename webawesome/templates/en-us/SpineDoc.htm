@@ -1,4 +1,10 @@
 {% extends "en-us/PageLayout.htm" -%}
+{% if classSimpleName is not defined -%}
+{% set classSimpleName='FishPopulation' -%}
+{% endif -%}
+{% if classGenericSimpleName is not defined -%}
+{% set classGenericSimpleName='BaseModel' -%}
+{% endif -%}
 
 {% macro typed(summary, id, codeTemplate, skeletonTemplate=null, htmTemplate=null, typeSpeed=20, backSpeed=10, smartBackspace=true, modelJsonTemplate=null) -%}
 {% set macroCode -%}
@@ -331,13 +337,13 @@
                 {{- result.copyCode | e -}}
                 {%- endif -%}
                 "></wa-copy-button><wa-scroller><pre class="wa-border-radius-square"><code>{{- '/**
- * ' + (result.exampleCode | replace('\n', '\n * ')) + '
+ * ' + (result.exampleCode | e | replace("{{", "&#123;&#123;") | replace("}}", "&#125;&#125;") | replace('\n', '\n * ')) + '
  */' | e -}}</code></pre></wa-scroller></div>
               {% else -%}
               {% if result.copyCode is defined -%}
               {% if '\n' in result.copyCode -%}
               {{ code('/**
- * ' + (result.copyCode | replace('\n', '\n * ')) + '
+ * ' + (result.copyCode | e | replace('\n', '\n * ')) + '
  */') }}
               {% else -%}
               {{ code(result.copyCode) }}
@@ -345,7 +351,7 @@
               {% else -%}
               {% if '\n' in result.exampleCode -%}
               {{ code('/**
- * ' + (result.exampleCode | replace('\n', '\n * ')) + '
+ * ' + (result.exampleCode | e | replace("{{", "&#123;&#123;") | replace("}}", "&#125;&#125;") | replace('\n', '\n * ')) + '
  */') }}
               {% else -%}
               {{ code(result.exampleCode) }}
@@ -385,17 +391,17 @@
               {% macro exampleClassComment(code) -%}
               <wa-scroller><pre class="wa-border-radius-square"><code>
               {%- if result.exampleCode is defined -%}
-              {{ '/**
- * ' + (result.exampleCode | replace('\n', '\n * ')) + '
+              {{ ('/**
+ * ' + (result.exampleCode | e | replace("{{", "&#123;&#123;") | replace("}}", "&#125;&#125;") | replace('\n', '\n * ')) + '
  */
-public class SpineDoc extends SpineDocGen<BaseResult> {
-}' | e }}
+public class ' + classSimpleName + ' extends ' + classSimpleName + 'Gen<' + classGenericSimpleName + '> {
+}') }}
               {%- else -%}
-              {{ '/**
+              {{ ('/**
  * ' + (result.copyCode | replace('\n', '\n * ')) + '
  */
-public class SpineDoc extends SpineDocGen<BaseResult> {
-}' | e -}}
+public class ' + classSimpleName + ' extends ' + classSimpleName + 'Gen<' + classGenericSimpleName + '> {
+}') | e -}}
               {%- endif -%}
               </code></pre></wa-scroller>
               {%- endmacro -%}
@@ -412,7 +418,12 @@ public class SpineDoc extends SpineDocGen<BaseResult> {
             </div>
 
             <h2>
-              Java class example of {{ result.exampleCode }}
+              <div>
+                Java class example of: 
+              </div>
+              <div>
+                <kbd>{{ result.exampleCode | e | replace("{{", "&#123;&#123;") | replace("}}", "&#125;&#125;") }}</kbd>
+              </div>
             </h2>
             {{ exampleClassComment(result) }}
 

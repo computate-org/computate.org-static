@@ -4,19 +4,19 @@
     <meta name="result.pageId" content="{{ result.shortFileName }}" />
     <meta name="result.javaType" content="class" />
     <meta name="result.commentVar" content="ApiMethod" />
-    <meta name="result.javaClass" content="Boolean" />
+    <meta name="result.javaClass" content="YAML Object" />
     <meta name="result.sinceVersion" content="3" />
     <meta name="result.supportStatus" content="stable" />
-    <meta name="result.copyCode" content="{{ result.commentVar }}:
-{{ result.exampleValue }}" />
     <meta name="result.exampleValue" content="{{ exampleValue | default('  Search:
   GET:
   PATCH:
   POST:
   DELETE:', true) }}" />
+    <meta name="result.copyCode" content="{{ result.commentVar }}:
+{{ result.exampleValue }}" />
     <meta name="result.exampleCode" content="{{ result.copyCode }}" />
-    <meta name="result.name" content="Class ApiMethod comment" />
-    <meta name="result.description" content="Generate a Java REST API and OpenAPI spec for the given ApiMethods of the Java Class." />
+    <meta name="result.name" content="Class {{ result.commentVar }} comment" />
+    <meta name="result.description" content="Generate a Java REST API and OpenAPI spec for the given ApiMethods of the Java class." />
     {% endblock htmMetaPageLayout -%}
           {% block htmBodyMiddleArticle -%}
           <div class="content-padding-inline wa-stack ">
@@ -24,9 +24,12 @@
               Description
             </h2>
             <p>
-              This class contains a comment <kbd><b>ApiMethod: %s</b></kbd>, which creates an API "%s". 
+              This <kbd>{{ classSimpleName }}</kbd> class contains a comment <kbd>ApiMethod:</kbd>, 
+              followed by a series of data API method keys to be generated with SPINE (POST, GET, Search, PATCH, POST, DELETE, PUTImport). 
+              Each API method will be automatically generated in a <kbd>{{ classSimpleName }}EnUSGenApiServiceImpl.java</kbd> class. 
             </p>
+            <ul>
 
-            
+            </ul>
           </div>
           {% endblock %}

@@ -1,0 +1,67 @@
+{% extends "en-us/SpineDoc.htm" -%}
+{% set classSimpleName='FishPopulation' -%}
+{% set classGenericSimpleName='BaseModel' -%}
+    {% block htmMetaPageLayout -%}
+    {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.javaType" content="class" />
+    <meta name="result.commentVar" content="AName" />
+    <meta name="result.javaClass" content="String" />
+    <meta name="result.sinceVersion" content="3" />
+    <meta name="result.supportStatus" content="stable" />
+    <meta name="result.copyCode" content="{{ result.commentVar }}: " />
+    <meta name="result.exampleValue" content="{{ exampleValue | default('a fish population', true) }}" />
+    <meta name="result.exampleCode" content="{{ result.copyCode }}{{ result.exampleValue }}" />
+    <meta name="result.name" content="Class {{ result.commentVar }} comment" />
+    <meta name="result.description" content="Adds language context for a data model to describe an individual instance of a data model." />
+    {% endblock htmMetaPageLayout -%}
+          {% block htmBodyMiddleArticle -%}
+          <div class="content-padding-inline wa-stack ">
+            <h2>
+              Description
+            </h2>
+            <p>
+              For each data model Java Class, it's important to provide some language context for the data. 
+              This language context can be provided for generating the user interface or webpages for a given data model. 
+              When generating a data model for tracking information about {{ result.exampleValue }}, in the code snippet above, 
+              in the English Language you might describe the singular form of this model as "{{ result.exampleValue }}", 
+              so <kbd>{{ result.exampleCode }}</kbd> is specified to train the SPINE use this language when building the user interface for this <kbd>{{ classSimpleName }}</kbd> data model for buttons like these below. 
+            </p>
+            <div>
+              <wa-button slot="anchor" variant="brand" type="submit" id="htmFormButton_postFishPopulation" appearance="accent" size="medium">
+                Create {{ result.exampleValue }}
+              </wa-button>
+            </div>
+            <p>
+              Additional language context can be automatically derived from <kbd>{{ result.exampleCode }}</kbd>, like plural name. 
+            </p>
+            <wa-breadcrumb>
+              <wa-breadcrumb-item id="return-to-FishPopulation" variant="brand">
+                <i class="fa-duotone fa-regular fa-fish" aria-hidden="true"></i>
+                all fish populations
+                <wa-icon library="system" variant="solid" name="chevron-right" data-default="" slot="separator" aria-hidden="true" rotate="0" style="--rotate-angle: 0deg;"></wa-icon>
+              </wa-breadcrumb-item>
+              <wa-breadcrumb-item aria-current="page">
+                search fish populations
+                <wa-icon library="system" variant="solid" name="chevron-right" data-default="" slot="separator" aria-hidden="true" rotate="0" style="--rotate-angle: 0deg;"></wa-icon>
+              </wa-breadcrumb-item>
+            </wa-breadcrumb>
+            <p>
+              The Computate SPINE Programming platform at this time supports code generation in French and English. 
+              The entire Computate code base is entirely written in French, and primarily builds English websites as a second language through internationalization files with YAML translations in French and English. 
+              This requires adding each locale ( <kbd>.enUS</kbd>, <kbd>.frFR</kbd> ) after the <kbd>Description</kbd>, but before the <kbd>:</kbd>. 
+            </p>
+            <wa-scroller orientation="horizontal" style="--start-shadow-opacity: 0; --end-shadow-opacity: 0;"><pre class="wa-border-radius-square"><code>/**
+ * AName.enUS: a fish population
+ * AName.frFR: une population de poissons
+ */
+public class FishPopulation extends FishPopulationGen&lt;BaseModel&gt; {
+}</code></pre></wa-scroller>
+            <p>
+              It has also been used to generate French and English code at the same time, but this is not always a requirement of every website, but is available for those use cases. 
+            </p>
+            <div>
+              <wa-button slot="anchor" variant="brand" type="submit" id="htmFormButton_postFishPopulation" appearance="accent" size="medium">Créer une population de poissons</wa-button>
+            </div>
+          </div>
+          {% endblock %}

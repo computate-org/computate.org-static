@@ -10,7 +10,7 @@
     <meta name="result.copyCode" content="{{ result.commentVar }}: " />
     <meta name="result.exampleValue" content="{{ exampleValue | default('1', true) }}" />
     <meta name="result.exampleCode" content="{{ result.copyCode }}{{ result.exampleValue }}" />
-    <meta name="result.name" content="Class Order comment" />
+    <meta name="result.name" content="Class {{ result.commentVar }} comment" />
     <meta name="result.description" content="Order a Java Model Class numerically to sort all Models in the page layout and OpenAPI specification." />
     {% endblock htmMetaPageLayout -%}
           {% block htmBodyMiddleArticle -%}
@@ -22,6 +22,30 @@
               This {{ result.javaType }} contains a comment <kbd><b>{{ result.exampleCode }}</b></kbd>, 
               which means this {{ result.javaType }} will be sorted by the given number {{ result.exampleValue }} 
               ascending when code that relates to multiple classes at the same time is generated. 
+            </p>
+            <p>
+              SPINE Programming is about defining data models as code for customer business solutions and key performance indicators. 
+              Software developers can give each business data model a name as a Java Class, and organize that Java Class in any Java package that makes sense for an organization. 
+              Each Java Class that represents a data model should be given a numerical order in a SPINE Program. 
+              The reasons for ordering data models include ordered database schema definitions, ordered user interface navigation, and ordered OpenAPI Schemas. 
+            </p>
+            <p>
+              When defining data models in a database schema, database models without any foreign key dependencies should be defined first. 
+              Database models with foreign key relations should be defined after their dependencies. 
+              The filesystem can sort Java Classes alphabetically, but this usually doesn't provide a logical order for models. 
+              In SPINE Programming, a regular Java Class Comment is added with a numerical order. 
+            </p>
+            <p>
+              The order also applies to where the model is shown in the user interface or page layout of the website. 
+              There is typically a navigation section or &lt;nav&gt; element, where each data model is listed in a specific order. 
+              In SPINE Programming, the models are sorted in the website navigation the same as the database schema by default. 
+              The same sort order also applies to the models as they appear in the OpenAPI specification by default. 
+            </p>
+            <p>
+              Having a defined order of classes helps maintain the order of generated database schemas and OpenAPI specification over time. 
+              Without specifying the order of the data models, models are retrieved from the search engine index in any order that the search engine finds most relevant at query time. 
+              This means that every time the developer regenerates the database schema, the models can appear in a totally different order. 
+              By specifying a specific numerical order for each class, the order that the database models are defined is consistent over time, resulting in less conflicts, unnecessary repeated changes, and a database schema that has the correct order of create table statements and foreign key references. 
             </p>
 
             <h2>

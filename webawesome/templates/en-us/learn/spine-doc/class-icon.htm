@@ -1,0 +1,40 @@
+{% extends "en-us/SpineDoc.htm" -%}
+{% set classSimpleName='FishPopulation' -%}
+{% set classGenericSimpleName='BaseModel' -%}
+    {% block htmMetaPageLayout -%}
+    {{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}" />
+    <meta name="result.javaType" content="class" />
+    <meta name="result.commentVar" content="Icon" />
+    <meta name="result.javaClass" content="String" />
+    <meta name="result.sinceVersion" content="3" />
+    <meta name="result.supportStatus" content="stable" />
+    <meta name="result.copyCode" content="{{ result.commentVar }}: " />
+    <meta name="result.exampleValue" content="{{ exampleValue | default('&lt;i class=&quot;\\{\\{ FONTAWESOME_STYLE \\}\\} fa-fish&quot;&gt;&lt;/i&gt;', true) }}" />
+    <meta name="result.exampleCode" content="{{ result.copyCode }}{{ exampleValue | default('&lt;i class=&quot;\\{\\{ FONTAWESOME_STYLE \\}\\} fa-fish&quot;&gt;&lt;/i&gt;', true) }}" />
+    <meta name="result.name" content="Class {{ result.commentVar }} comment" />
+    <meta name="result.description" content="Adds a Font Awesome icon for the given data model for better visual cueues to what data model the page relates to." />
+    {% endblock htmMetaPageLayout -%}
+          {% block htmBodyMiddleArticle -%}
+          <div class="content-padding-inline wa-stack ">
+            <h2>
+              Description
+            </h2>
+            <p>
+              As a form of engaging visual communication, you can also define visual cues for identifying a data model in the user interface by defining an icon from an icon library. 
+              Above we define a fish icon from the Font Awesome library to the <kbd>{{ classSimpleName }}</kbd> data model. 
+            </p>
+            <wa-breadcrumb>
+              <wa-breadcrumb-item id="return-to-FishPopulation" variant="brand" href="https://smaq.computate.org/en-us/search/fish-population" aria-labelledby="wa-tooltip-fARiLJOGmkfPnfuZXZ0C4">
+                <i class="fa-duotone fa-regular fa-fish" aria-hidden="true"></i>
+                all fish populations
+              <wa-icon library="system" variant="solid" name="chevron-right" data-default="" slot="separator" aria-hidden="true" rotate="0" style="--rotate-angle: 0deg;"></wa-icon></wa-breadcrumb-item>
+              <wa-breadcrumb-item aria-current="page">
+                search fish populations
+              <wa-icon library="system" variant="solid" name="chevron-right" data-default="" slot="separator" aria-hidden="true" rotate="0" style="--rotate-angle: 0deg;"></wa-icon></wa-breadcrumb-item>
+            </wa-breadcrumb>
+            <p>
+              When the user sees the school icon, it serves as a visual cue that reminds the user that it's related to <kbd>{{ classSimpleName }}</kbd>. 
+            </p>
+          </div>
+          {% endblock %}

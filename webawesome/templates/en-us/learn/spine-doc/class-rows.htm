@@ -10,7 +10,7 @@
     <meta name="result.copyCode" content="{{ result.commentVar }}: " />
     <meta name="result.exampleValue" content="{{ exampleValue | default('10', true) }}" />
     <meta name="result.exampleCode" content="{{ result.copyCode }}{{ result.exampleValue }}" />
-    <meta name="result.name" content="Class Rows comment" />
+    <meta name="result.name" content="Class {{ result.commentVar }} comment" />
     <meta name="result.description" content="Modify the search API for {{ classeNomPluriel }} to return up to a custom default number of results instead of 10 by default." />
     {% endblock htmMetaPageLayout -%}
           {% block htmBodyMiddleArticle -%}
