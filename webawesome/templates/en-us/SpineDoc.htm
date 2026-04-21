@@ -1,3 +1,47 @@
+      {% if pageBreadcrumb is not defined -%}
+      {% set pageBreadcrumb -%}
+              <wa-tooltip for="return-to-{{ classSimpleName }}">back to all SPINE docs</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-{{ classSimpleName }}" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  {{ classIcon }}
+                  {{ classAllName }}
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  {{ result.name }}
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+      {%- endset pageBreadcrumb -%}
+      {%- endif  -%}
+      {% if pageAside is not defined -%}
+      {% set pageAside -%}
+      <aside slot="aside" id="outline" class="docs-aside">
+        <nav class="wa-stack ">
+          <div class="wa-heading-xl ">
+            <i class="fa-kit fa-spine"></i>
+            SPINE docs
+          </div>
+          <div class="wa-heading-l ">
+            Java class comments
+          </div>
+          <div class="wa-stack wa-gap-xs ">
+            {% for spineDoc in classSpineDocs -%}
+            <div>
+              <a href="{{ spineDoc.displayPage | e }}" class="{% if spineDoc.pageId == result.pageId %}font-weight-bold {% endif %}">
+                {% if spineDoc.pageId == result.pageId %}
+                <i class="fa-kit fa-spine"></i>
+                {% endif %}
+                <span>{{ spineDoc.name | e }}</span>
+              </a>
+            </div>
+            {%- endfor -%}{{''}}
+          </div>
+          <div class="wa-heading-l ">
+            Java method comments
+          </div>
+        </nav>
+      </aside>
+      {% endset pageAside -%}
+      {% endif -%}
 {% extends "en-us/PageLayout.htm" -%}
 {% if classSimpleName is not defined -%}
 {% set classSimpleName='FishPopulation' -%}

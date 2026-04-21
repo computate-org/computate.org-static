@@ -160,7 +160,7 @@
           {%- endif %}{{''}}
         </div>
       </header>
-      {% if pageSearchButtons is defined or pageBreadcrumb is defined -%}
+      G{% if pageSearchButtons is defined or pageBreadcrumb is defined -%}
       <header slot="subheader">
         <div class="wa-cluster ">
           <div>
@@ -485,6 +485,9 @@
           </div>
         </div>
       </main>
+      {%- if pageAside is defined -%}
+      {{- pageAside -}}
+      {%- endif -%}
     {%- if WEB_COMPONENTS_PREFIX == 'wa-' %}{{''}}
     </wa-page>
     {%- else -%}
