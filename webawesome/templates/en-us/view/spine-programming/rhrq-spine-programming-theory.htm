@@ -1,0 +1,24 @@
+{% extends "en-us/PageLayout.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}"/>
+    <meta name="result.displayPage" content="https://research.redhat.com/blog/article/developing-digital-twins-data-driven-websites-with-spine-programming-theory/"/>
+    <meta name="result.name" content="SPINE Programming Theory in Red Hat Research Quarterly magazine"/>
+    <meta name="result.description" content="Developing AI telemetry, digital twins, and other data-driven websites with SPINE Programming Theory. Developers using SPINE Programming have drastically cut manual coding time while maintaining full control over their data. "/>
+    <meta name="result.authorName" content="Christopher Tate, Dewayne Branch, Denis Poussard" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-04-24T12:24:25.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/rhrq-spt.png" />
+    <meta name="result.pageImageAlt" content="SPINE Programming Theory article in Red Hat Research Quarterly magazine" />
+    <meta name="result.prerequisiteArticleIds" content="introduction-to-spine-programming" />
+    <meta name="result.nextArticleIds" content="spine-programming-prerequisites" />
+    <meta name="result.courseNum" content="0"/>
+    <meta name="result.lessonNum" content="1"/>
+{% endblock htmMetaPageLayout %}
+{% block htmStylePageLayout %}
+{% endblock htmStylePageLayout %}
+{% block htmTitlePageLayout %}
+    <title>{{ title }}</title>
+{% endblock htmTitlePageLayout %}
+{% block htmBodyMiddlePageLayout %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "en-us/PageLayout.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}"/>
+    <meta name="result.displayPage" content="https://docs.google.com/presentation/d/145PVu1LKcv6SduYq8WrUahX1mbv0CHLEiOhQJhRUls8/edit?usp=sharing"/>
+    <meta name="result.name" content="SPINE Programming Theory slides at NEDSI 2026"/>
+    <meta name="result.description" content="Presented at the North East Decision Sciences Institute (NEDSI) 2026 conference, with other scholars and practitioners interested in the application of quantitative and behavioral methods to the problems of society through emerging technology. "/>
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="{{ SITE_BASE_URL }}/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.created" content="2026-04-10T12:24:25.556[America/Denver]" />
+    <meta name="result.pageImageUri" content="/png/spt-slides.png" />
+    <meta name="result.pageImageAlt" content="SPINE Programming Theory slides" />
+    <meta name="result.prerequisiteArticleIds" content="spine-programming-prerequisites" />
+    <meta name="result.nextArticleIds" content="spine-programming-research-paper" />
+    <meta name="result.courseNum" content="0"/>
+    <meta name="result.lessonNum" content="3"/>
+{% endblock htmMetaPageLayout %}
+{% block htmStylePageLayout %}
+{% endblock htmStylePageLayout %}
+{% block htmTitlePageLayout %}
+    <title>{{ title }}</title>
+{% endblock htmTitlePageLayout %}
+{% block htmBodyMiddlePageLayout %}
+{% endblock %}
