@@ -1,0 +1,19 @@
+{% extends "en-us/CompanyEvent.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}"/>
+    <meta name="result.name" content="Smart Aquaculture demo at the Red Hat booth at All Things Open 2025 in Raleigh, North Carolina USA"/>
+    <meta name="result.nameFrFR" content="Démonstration Smart Aquaculture au stand Red Hat lors de All Things Open 2025 à Raleigh, Caroline du Nord, États-Unis"/>
+    <meta name="result.description" content="Learn how to deploy open source applications like the Smart Aquaculture platform on your own computer with OpenShift Local, and gain some skills in GitOps, cloud secrets, Jobs, CronJobs, application deployment, and fine-grained access control with Keycloak. See the free course to learn more. "/>
+    <meta name="result.descriptionFrFR" content="Apprenez comment déployer des applications open source comme la plateforme Smart Aquaculture sur votre propre ordinateur avec OpenShift Local, et acquérez quelques compétences en GitOps, secrets cloud, Jobs, CronJobs, déploiement d'applications et contrôle d'accès finement ciblé avec Keycloak. Consultez le cours gratuit pour en savoir plus. "/>
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="https://computate.org/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.startDateTime" content="2025-10-13T16:30:00.000[America/New_York]"/>
+    <meta name="result.endDateTime" content="2025-10-14T16:45:00.000[America/New_York]"/>
+    <meta name="result.location" content="35.773719647675904, -78.64136339021182"/>
+    <meta name="result.pageImageUri" content='/event/{{ result.pageId }}/ato-demo-2025.jpg'/>
+    <meta name="result.displayPageFrFR" content='{{ SITE_BASE_URL }}/fr-fr/visiter/evenement/{{ result.pageId }}'/>
+{% endblock htmMetaPageLayout %}
+{% block htmBodyMiddleArticle %}
+{% include result.dialogTemplate %}
+{% endblock %}

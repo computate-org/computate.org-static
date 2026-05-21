@@ -1,0 +1,16 @@
+{% extends "en-us/CompanyEvent.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}"/>
+    <meta name="result.name" content="SPINE Programming Theory at James Madison University"/>
+    <meta name="result.description" content="Christopher Tate will present SPINE Programming Theory to James Madison University in Harrisonburg, Virginia, Fri, May 29, 2026"/>
+    <meta name="result.authorName" content="Christopher Tate" />
+    <meta name="result.authorUrl" content="https://computate.org/en-us/learn/about/about-christopher-tate" />
+    <meta name="result.startDateTime" content="2026-05-29T18:00:00.000[America/New_York]"/>
+    <meta name="result.endDateTime" content="2026-04-11T18:00:00.000[America/New_York]"/>
+    <meta name="result.location" content='{ "coordinates": [ -78.86969297798406, 38.43522958991042 ], "type": "Point" }'/>
+    <meta name="result.pageImageUri" content='/png/smaq-spine-programming.png'/>
+{% endblock htmMetaPageLayout %}
+{% block htmBodyMiddleArticle %}
+{% include result.dialogTemplate %}
+{% endblock %}

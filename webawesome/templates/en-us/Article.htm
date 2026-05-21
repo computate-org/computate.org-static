@@ -1,4 +1,28 @@
 {% extends "en-us/PageLayout.htm" -%}
+              {% if pageBreadcrumb is not defined -%}
+              {% set pageBreadcrumb -%}
+              <wa-tooltip for="return-to-{{ classSimpleName }}">back to {{ classAllName }}</wa-tooltip>
+              <wa-breadcrumb>
+                <wa-breadcrumb-item id="return-to-{{ classSimpleName }}" variant="brand" href="{{ SITE_BASE_URL }}{{ pageUri }}">
+                  {{ classIcon }}
+                  {{ classAllName }}
+                </wa-breadcrumb-item>
+                <wa-breadcrumb-item>
+                  {{ result.name }}
+                </wa-breadcrumb-item>
+              </wa-breadcrumb>
+              {%- endset pageBreadcrumb -%}
+              {%- endif  -%}
+              {% if pageDate is not defined -%}
+              {% set pageDate -%}
+              <div class="wa-caption-l ">
+                <div class="wa-stack wa-gap-3xs ">
+                  <wa-relative-time format="long" sync="true" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-relative-time>
+                  <wa-format-date weekday="short" month="short" day="numeric" year="numeric" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
+                </div>
+              </div>
+              {%- endset pageDate -%}
+              {%- endif  -%}
 
 {% macro typed(summary, id, codeTemplate, skeletonTemplate=null, htmTemplate=null, typeSpeed=20, backSpeed=10, smartBackspace=true, modelJsonTemplate=null) -%}
 {% set macroCode -%}
@@ -313,21 +337,15 @@
                 </a>
               </div>
               {%- endmacro -%}
-              {% macro articleCreated(result) -%}
-              <div class="wa-caption-l ">
-                <div class="wa-stack wa-gap-3xs ">
-                  <wa-relative-time format="long" sync="true" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-relative-time>
-                  <wa-format-date weekday="short" month="short" day="numeric" year="numeric" date="{{ formatZonedDateTime(result.created, "yyyy-MM-dd'T'HH:mm:ss.SSSX", defaultLocaleId, "UTC") }}"></wa-format-date>
-                </div>
-              </div>
-              {%- endmacro -%}
         {% macro articleStart(result) -%}
         <div class="wa-stack ">
           <div class="wa-split content-padding-inline wa-stack padding-block-s ">
             {{ articleH1(result) -}}
             <div class="wa-stack wa-gap-3xs ">
               {{ articleAuthor(result) }}
-              {{ articleCreated(result) }}{{''}}
+              {% if pageDate is defined -%}
+              {{ pageDate | default('') }}
+              {% endif -%}
             </div>
           </div>
           {{ prerequisiteArticles(result) -}}

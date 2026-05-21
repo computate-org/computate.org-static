@@ -1,4 +1,4 @@
-{% extends "en-us/PageLayout.htm" %}
+{% extends "en-us/CompanyEvent.htm" %}
 {% block htmMetaPageLayout %}
 {{ super() }}
     <meta name="result.pageId" content="{{ result.shortFileName }}"/>
@@ -7,6 +7,7 @@
     <meta name="result.startDateTime" content="2025-05-20T10:30:00.000[America/New_York]"/>
     <meta name="result.endDateTime" content="2025-05-20T12:00:00.000[America/New_York]"/>
     <meta name="result.location" content="42.34540126087078, -71.04751409087456"/>
+    <meta name="result.pageImageUri" content='/event/{{ result.pageId }}/jarvis-presenting.jpg'/>
 {% endblock htmMetaPageLayout %}
 {% block htmStylePageLayout %}
 

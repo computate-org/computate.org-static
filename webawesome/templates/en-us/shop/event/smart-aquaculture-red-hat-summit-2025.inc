@@ -1,0 +1,217 @@
+
+        <div class="wa-stack red-pink-background-headers ">
+
+          <wa-tooltip for="carousel-item-1" placement="left" hoist>Jarvis presenting the Smart Aquaculture workshop at the the Red Hat Summit 2025 in Boston, Massachussetts, USA. </wa-tooltip>
+          <wa-tooltip for="carousel-item-0" placement="left" hoist>Chris presenting the Smart Aquaculture workshop at the the Red Hat Summit 2025 in Boston, Massachussetts, USA. </wa-tooltip>
+
+          <wa-carousel style="--aspect-ratio: 16/4; " autoplay loop navigation pagination autoplay-interval="5000">
+            <wa-carousel-item>
+              <img src="{{ STATIC_BASE_URL }}/event/{{ result.pageId }}/jarvis-presenting-landscape.jpg">
+            </wa-carousel-item>
+            <wa-carousel-item>
+              <img src="{{ STATIC_BASE_URL }}/event/{{ result.pageId }}/chris-presenting-landscape.jpg">
+            </wa-carousel-item>
+          </wa-carousel>
+
+          <wa-card class="red-pink-background ">
+            <div class="wa-stack ">
+              <div class="wa-flank ">
+                <i class="fa-brands fa-redhat fa-8x "></i>
+                <div>
+                  <h1 class="brand-font">
+                    Vibe code a data-driven website with generative AI for smart aquaculture in Red Hat OpenShift AI
+                  </h1>
+                  <h2 class="brand-font">
+                    at the Red Hat Summit May 20, 2025 in Boston, Massachussetts
+                  </h2>
+                </div>
+              </div>
+              <div class="wa-frame wa-border-radius-l ">
+                <img src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-vscode-workbench.png"/>
+              </div>
+              <div class="wa-stack ">
+                <h3 class="wa-heading-xl ">
+                  Smart Aquaculture workshop at Red Hat Summit 2025
+                </h3>
+                <p class="wa-caption-l ">
+                  This course will become available for participants at the 
+                  <a href="https://events.experiences.redhat.com/widget/redhat/sum25/SessionCatalog2025/session/1731473553640001dRBg">Red Hat Summit 2025</a>
+                  in Boston, Massachussetts, USA Tuesday May 20, 2025 10:30 AM - 12:00 PM EDT. 
+                </p>
+                <div>
+                  <div>Speakers:</div>
+                  <ul>
+                    <li>Dewayne Branch, CEO, Founder, Qatar Strategic Business Group</li>
+                    <li>Jarvis Green, Founder, Green Reef Foundation</li>
+                    <li>Christopher Tate, Principal Software Engineer, Red Hat</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </wa-card>
+
+          <wa-card with-header>
+            <div slot="header" class="wa-flank wa-gap-3xl ">
+              <div>
+                <img src="{{ STATIC_BASE_URL }}/svg/logo-{{ SITE_THEME }}.svg"/>
+              </div>
+              <h2 class="brand-font anchor-heading">
+                What is the Smart Aquaculture workshop at Red Hat Summit?
+              </h2>
+            </div>
+            <div class="wa-align-items-center wa-stack wa-gap-3xl ">
+              <div>
+                <img src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-fish-populations.png"/>
+              </div>
+              <div>
+                <p>
+                  In this hands-on lab, we’ll develop a new smart aquaculture web platform with data models. You'll learn fine-grained access control with the Red Hat Build of Keycloak. You'll build FIWARE Smart Data Models for Smart Aquaculture with generative artificial intelligence (AI) in a Red Hat OpenShift AI Visual Studio Code (VSCode) Java workbench. With this platform, we’ll visualize fish and population data to help mitigate food insecurity.
+                </p>
+                <p>
+                  The Smart Aquaculture project—a collaboration between Green Reef Foundation, Oceans 97, and Qatar Strategic Business Group—supports food processing in developing nations through workforce training with academic and industry partners using innovative digital twins, unmanned aerial vehicle (UAVs), and autonomous aerial vehicles (AAVs). Arise Fish and Seafood Process and the Green Reef Foundation combine high-fidelity simulations with digital culture preservation and training on open source edge computing to support these digital twins.
+                </p>
+                <p>
+                  Join us to learn more about:
+                </p>
+                <ol>
+                  <li>Intelligent application programming interface (API) and dashboard code generation with the Computate platform.</li>
+                  <li>Smart device registration with FIWARE microservices.</li>
+                  <li>Event-driven subscriptions to smart device data changes.</li>
+                  <li>Granular data access control between edge and cloud with Red Hat build of Keycloak.</li>
+                  <li>Custom Leaflet dashboards for visualizing live GeoJSON data on maps.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="wa-grid orange-blue-background-headers " style="--min-column-size: 20rem; ">
+
+              <wa-card with-image with-header>
+                <div slot="header" variant="brand" class="wa-flank wa-heading-l ">
+                  <i class="fa-duotone fa-regular fa-code fa-xl"></i>
+                  <div>
+                    Modern developer workbenches in the cloud
+                  </div>
+                </div>
+                <img slot="image" class="wa-frame:landscape " src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-vscode-workbench.png"/>
+                <p>
+                  Use the latest cloud deployment tools like Jupyter, Ansible, Helm, and OpenShift command line interface from your browser, 
+                  and start deploying microservices to the cloud like a modern cloud developer. 
+                </p>
+              </wa-card>
+
+              <wa-card with-image with-header>
+                <div slot="header" class="wa-flank wa-heading-l ">
+                  <i class="fa-duotone fa-regular fa-clouds fa-xl"></i>
+                  <div>
+                    Cloud-native microservices that cluster and scale
+                  </div>
+                </div>
+                <img slot="image" class="wa-frame:landscape " src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-openshift-topology.png"/>
+                <p>
+                  Deploy modern open source microservices including Apache Zookeeper cluster manager, Apache Solr search engine, PostgreSQL relational database, MongoDB No-SQL database, RabbitMQ message broker, Keycloak single sign-on authentication and authorization, and reactive—event bus driven applications. 
+                </p>
+              </wa-card>
+
+              <wa-card with-header with-image>
+                <div slot="header" class="wa-flank wa-heading-l ">
+                  <i class="fa-duotone fa-regular fa-database fa-xl"></i>
+                  <div>
+                    High performance relational databases
+                  </div>
+                </div>
+                <img slot="image" class="wa-frame:landscape " src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-database-tables.png"/>
+                <p>
+                  Set up access to a new database for your applications. 
+                </p>
+              </wa-card>
+
+              <wa-card with-image with-header>
+                <div slot="header" class="wa-flank wa-heading-l ">
+                  <i class="fa-duotone fa-regular fa-user fa-xl"></i>
+                  <div>
+                    Fine-grain zero-trust authorization to data
+                  </div>
+                </div>
+                <img slot="image" class="wa-frame:landscape " src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-auth-permissions.png"/>
+                <p>
+                  Create authentication realms, clients, OAuth identity providers, and fine-grain resources, scopes, policies, and permissions to data and dashboards. 
+                </p>
+              </wa-card>
+
+              <wa-card with-image with-header>
+                <div slot="header" class="wa-flank wa-heading-l ">
+                  <i class="fa-kit fa-fiware fa-xl"></i>
+                  <div>
+                    FIWARE IoT services and Smart Data Models
+                  </div>
+                </div>
+                <img slot="image" class="wa-frame:landscape " src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-ngsild-context.png"/>
+                <p>
+                  Connect your databases and message broker to a FIWARE Context Broker 
+                  — utilize NGSI-LD standards and Smart Data Models to manage your own smart device data. 
+                </p>
+              </wa-card>
+
+              <wa-card with-image with-header>
+                <div slot="header" class="wa-flank wa-heading-l ">
+                  <i class="fa-duotone fa-regular fa-cloud-check fa-xl"></i>
+                  <div>
+                    Manage cloud secrets securely
+                  </div>
+                </div>
+                <img slot="image" class="wa-frame:landscape " src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-secrets.png"/>
+                <p>
+                  Learn how to configure secrets in the cloud that allow applications to connect to each other securely. 
+                </p>
+              </wa-card>
+
+              <wa-card with-image with-header>
+                <div slot="header" class="wa-flank wa-heading-l ">
+                  <i class="fa-duotone fa-regular fa-browser fa-xl"></i>
+                  <div>
+                    Deploy a complete data-driven website
+                  </div>
+                </div>
+                <img slot="image" class="wa-frame:landscape " src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-layout.png"/>
+                <p>
+                  Learn how to configure and deploy a custom data-driven website for Smart Aquaculture with smart data models so that you can do it yourself. 
+                </p>
+              </wa-card>
+
+            </div>
+          </wa-card>
+
+          <wa-card with-header>
+            <div slot="header">
+              <div class="wa-flank ">
+                <i class="fa-brands fa-redhat fa-8x "></i>
+                <div>
+                  <h2 class="wa-heading-xl ">
+                    About the conference
+                  </h2>
+                  <h2 class="wa-heading-2xl ">
+                    Red Hat Summit
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="wa-stack ">
+              <div class="wa-grid wa-gap-3xl ">
+                <div class="wa-frame wa-border-radius-l ">
+                  <img src="{{ STATIC_BASE_URL }}/png/smart-aquaculture-openshift-topology.png"/>
+                </div>
+                <div>
+                  <p>
+                    Red Hat Summit 2025 offers people and teams several opportunities to connect, including:
+                  </p>
+                  <ul>
+                    <li>Engineers, developers, system administrators, architects, multiskilled technical professionals, and those with all skill sets across technology organizations.</li>
+                    <li>Executives, vice presidents, directors, managers, and thought leaders.</li>
+                    <li>Red Hat partners and customers from across industries and companies.</li>
+                    <li>Open source communities, community members, and contributors.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </wa-card>
+        </div>

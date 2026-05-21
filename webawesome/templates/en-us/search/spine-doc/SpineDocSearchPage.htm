@@ -1,1 +1,60 @@
+{% import "en-us/SpineDocMacros.htm" -%}
 {% extends "en-us/search/spine-doc/SpineDocGenSearchPage.htm" %}
+{% include "en-us/ArticlePart.htm" %}
+{%- block htmBodyMiddleSpineDocPage %}
+{% if resultCount > 0 %}
+<script type="module">
+
+  Promise.all([
+    customElements.whenDefined('wa-button')
+    , customElements.whenDefined('wa-input')
+  ]).then(() => {
+    {% for result in listSpineDoc %}
+    document.querySelector('#dialog-card-link-{{ result.pageId }}').addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('#dialog-{{ result.pageId }}').open = true;
+      return false;
+    });
+    {% endfor %}
+  });
+</script>
+<div class="wa-stack wa-align-items-center" style="max-width: 105ch; margin: 0 auto;">
+  <div class="wa-grid" style="--min-column-size: 40ch;">
+    {% for result in listSpineDoc %}
+    <a class="wa-link-plain " href="{{ result.displayPage }}" id="dialog-card-link-{{ result.pageId }}">
+      <wa-card>
+        <div slot="media">
+          {{ exampleClassComment(result) }}
+        </div>
+        <div slot="header" class="wa-stack ">
+          <div class="wa-heading-xl ">
+            {{ result.name | e }}
+          </div>
+        </div>
+        <div class="wa-stack ">
+          <p>
+            {{ result.description | e }}
+          </p>
+          <wa-button variant="brand" id="dialog-button-{{ result.pageId }}" data-dialog="open dialog-{{ result.pageId }}">View summary</wa-button>
+        </div>
+      </wa-card>
+    </a>
+    {% endfor %}
+    {% for result in listSpineDoc %}
+    <wa-dialog label="{{ result.name | e }}" id="dialog-{{ result.pageId }}" light-dismiss style="--width: 60rem; ">
+      <div class="wa-stack ">
+        {{ articleStart(result) -}}
+        {% include result.dialogTemplate %}
+      </div>
+      <div slot="footer">
+        <wa-button variant="brand" href="{{ result.displayPage }}">
+          See more
+        </wa-button>
+      </div>
+    </wa-dialog>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}
+{%- endblock htmBodyMiddleSpineDocPage %}

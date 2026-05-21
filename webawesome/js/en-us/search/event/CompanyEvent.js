@@ -85,8 +85,11 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputLocation = null;
         var inputDescription = null;
         var inputStartDateTime = null;
+        var inputAuthorName = null;
+        var inputAuthorUrl = null;
         var inputEndDateTime = null;
         var inputPrice = null;
+        var inputPageImageUri = null;
         var inputPageId = null;
         var inputDisplayPage = null;
         var inputClassCanonicalName = null;
@@ -105,6 +108,13 @@ async function websocketCompanyEventInner(apiRequest) {
         var inputLocationColors = null;
         var inputLocationTitles = null;
         var inputLocationLinks = null;
+        var inputDialogTemplate = null;
+        var inputPageImageWidth = null;
+        var inputPageImageHeight = null;
+        var inputPageImageType = null;
+        var inputPageImageAlt = null;
+        var inputLabelsString = null;
+        var inputLabels = null;
 
         if(vars.includes('created'))
           inputCreated = $response.querySelector('.CompanyEvent_Page_created');
@@ -120,10 +130,16 @@ async function websocketCompanyEventInner(apiRequest) {
           inputDescription = $response.querySelector('.CompanyEvent_Page_description');
         if(vars.includes('startDateTime'))
           inputStartDateTime = $response.querySelector('.CompanyEvent_Page_startDateTime');
+        if(vars.includes('authorName'))
+          inputAuthorName = $response.querySelector('.CompanyEvent_Page_authorName');
+        if(vars.includes('authorUrl'))
+          inputAuthorUrl = $response.querySelector('.CompanyEvent_Page_authorUrl');
         if(vars.includes('endDateTime'))
           inputEndDateTime = $response.querySelector('.CompanyEvent_Page_endDateTime');
         if(vars.includes('price'))
           inputPrice = $response.querySelector('.CompanyEvent_Page_price');
+        if(vars.includes('pageImageUri'))
+          inputPageImageUri = $response.querySelector('.CompanyEvent_Page_pageImageUri');
         if(vars.includes('pageId'))
           inputPageId = $response.querySelector('.CompanyEvent_Page_pageId');
         if(vars.includes('displayPage'))
@@ -160,6 +176,20 @@ async function websocketCompanyEventInner(apiRequest) {
           inputLocationTitles = $response.querySelector('.CompanyEvent_Page_locationTitles');
         if(vars.includes('locationLinks'))
           inputLocationLinks = $response.querySelector('.CompanyEvent_Page_locationLinks');
+        if(vars.includes('dialogTemplate'))
+          inputDialogTemplate = $response.querySelector('.CompanyEvent_Page_dialogTemplate');
+        if(vars.includes('pageImageWidth'))
+          inputPageImageWidth = $response.querySelector('.CompanyEvent_Page_pageImageWidth');
+        if(vars.includes('pageImageHeight'))
+          inputPageImageHeight = $response.querySelector('.CompanyEvent_Page_pageImageHeight');
+        if(vars.includes('pageImageType'))
+          inputPageImageType = $response.querySelector('.CompanyEvent_Page_pageImageType');
+        if(vars.includes('pageImageAlt'))
+          inputPageImageAlt = $response.querySelector('.CompanyEvent_Page_pageImageAlt');
+        if(vars.includes('labelsString'))
+          inputLabelsString = $response.querySelector('.CompanyEvent_Page_labelsString');
+        if(vars.includes('labels'))
+          inputLabels = $response.querySelector('.CompanyEvent_Page_labels');
 
         jsWebsocketCompanyEvent(pageId, vars, $response);
         window.result = JSON.parse($response.querySelector('.pageForm .result')?.value);
@@ -236,6 +266,26 @@ async function websocketCompanyEventInner(apiRequest) {
           addGlow(document.querySelector('.CompanyEvent_Page_startDateTime'));
         }
 
+        if(inputAuthorName) {
+          document.querySelectorAll('.CompanyEvent_Page_authorName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAuthorName.getAttribute('value');
+            else
+              item.textContent = inputAuthorName.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_authorName'));
+        }
+
+        if(inputAuthorUrl) {
+          document.querySelectorAll('.CompanyEvent_Page_authorUrl').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputAuthorUrl.getAttribute('value');
+            else
+              item.textContent = inputAuthorUrl.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_authorUrl'));
+        }
+
         if(inputEndDateTime) {
           document.querySelectorAll('.CompanyEvent_Page_endDateTime').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -254,6 +304,16 @@ async function websocketCompanyEventInner(apiRequest) {
               item.textContent = inputPrice.textContent;
           });
           addGlow(document.querySelector('.CompanyEvent_Page_price'));
+        }
+
+        if(inputPageImageUri) {
+          document.querySelectorAll('.CompanyEvent_Page_pageImageUri').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageUri.getAttribute('value');
+            else
+              item.textContent = inputPageImageUri.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_pageImageUri'));
         }
 
         if(inputPageId) {
@@ -434,6 +494,76 @@ async function websocketCompanyEventInner(apiRequest) {
               item.textContent = inputLocationLinks.textContent;
           });
           addGlow(document.querySelector('.CompanyEvent_Page_locationLinks'));
+        }
+
+        if(inputDialogTemplate) {
+          document.querySelectorAll('.CompanyEvent_Page_dialogTemplate').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDialogTemplate.getAttribute('value');
+            else
+              item.textContent = inputDialogTemplate.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_dialogTemplate'));
+        }
+
+        if(inputPageImageWidth) {
+          document.querySelectorAll('.CompanyEvent_Page_pageImageWidth').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageWidth.getAttribute('value');
+            else
+              item.textContent = inputPageImageWidth.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_pageImageWidth'));
+        }
+
+        if(inputPageImageHeight) {
+          document.querySelectorAll('.CompanyEvent_Page_pageImageHeight').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageHeight.getAttribute('value');
+            else
+              item.textContent = inputPageImageHeight.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_pageImageHeight'));
+        }
+
+        if(inputPageImageType) {
+          document.querySelectorAll('.CompanyEvent_Page_pageImageType').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageType.getAttribute('value');
+            else
+              item.textContent = inputPageImageType.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_pageImageType'));
+        }
+
+        if(inputPageImageAlt) {
+          document.querySelectorAll('.CompanyEvent_Page_pageImageAlt').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputPageImageAlt.getAttribute('value');
+            else
+              item.textContent = inputPageImageAlt.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_pageImageAlt'));
+        }
+
+        if(inputLabelsString) {
+          document.querySelectorAll('.CompanyEvent_Page_labelsString').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabelsString.getAttribute('value');
+            else
+              item.textContent = inputLabelsString.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_labelsString'));
+        }
+
+        if(inputLabels) {
+          document.querySelectorAll('.CompanyEvent_Page_labels').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputLabels.getAttribute('value');
+            else
+              item.textContent = inputLabels.textContent;
+          });
+          addGlow(document.querySelector('.CompanyEvent_Page_labels'));
         }
 
           pageGraphCompanyEvent();
@@ -775,6 +905,14 @@ function searchCompanyEventFilters($formFilters) {
     if(filterStartDateTime != null && filterStartDateTime !== '')
       filters.push({ name: 'fq', value: 'startDateTime:' + filterStartDateTime });
 
+    var filterAuthorName = $formFilters.querySelector('.valueAuthorName')?.value;
+    if(filterAuthorName != null && filterAuthorName !== '')
+      filters.push({ name: 'fq', value: 'authorName:' + filterAuthorName });
+
+    var filterAuthorUrl = $formFilters.querySelector('.valueAuthorUrl')?.value;
+    if(filterAuthorUrl != null && filterAuthorUrl !== '')
+      filters.push({ name: 'fq', value: 'authorUrl:' + filterAuthorUrl });
+
     var filterEndDateTime = $formFilters.querySelector('.valueEndDateTime')?.value;
     if(filterEndDateTime != null && filterEndDateTime !== '')
       filters.push({ name: 'fq', value: 'endDateTime:' + filterEndDateTime });
@@ -782,6 +920,10 @@ function searchCompanyEventFilters($formFilters) {
     var filterPrice = $formFilters.querySelector('.valuePrice')?.value;
     if(filterPrice != null && filterPrice !== '')
       filters.push({ name: 'fq', value: 'price:' + filterPrice });
+
+    var filterPageImageUri = $formFilters.querySelector('.valuePageImageUri')?.value;
+    if(filterPageImageUri != null && filterPageImageUri !== '')
+      filters.push({ name: 'fq', value: 'pageImageUri:' + filterPageImageUri });
 
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
@@ -854,6 +996,34 @@ function searchCompanyEventFilters($formFilters) {
     var filterLocationLinks = $formFilters.querySelector('.valueLocationLinks')?.value;
     if(filterLocationLinks != null && filterLocationLinks !== '')
       filters.push({ name: 'fq', value: 'locationLinks:' + filterLocationLinks });
+
+    var filterDialogTemplate = $formFilters.querySelector('.valueDialogTemplate')?.value;
+    if(filterDialogTemplate != null && filterDialogTemplate !== '')
+      filters.push({ name: 'fq', value: 'dialogTemplate:' + filterDialogTemplate });
+
+    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
+    if(filterPageImageWidth != null && filterPageImageWidth !== '')
+      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
+
+    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
+    if(filterPageImageHeight != null && filterPageImageHeight !== '')
+      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
+
+    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
+    if(filterPageImageType != null && filterPageImageType !== '')
+      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
+
+    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
+    if(filterPageImageAlt != null && filterPageImageAlt !== '')
+      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
+    if(filterLabelsString != null && filterLabelsString !== '')
+      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
   }
   return filters;
 }
@@ -1015,6 +1185,30 @@ async function patchCompanyEvent($formFilters, $formValues, target, pageId, succ
   if(removeStartDateTime != null && removeStartDateTime !== '')
     vals['removeStartDateTime'] = removeStartDateTime;
 
+  var valueAuthorName = $formValues.querySelector('.valueAuthorName')?.value;
+  var removeAuthorName = $formValues.querySelector('.removeAuthorName')?.value === 'true';
+  var setAuthorName = removeAuthorName ? null : $formValues.querySelector('.setAuthorName')?.value;
+  var addAuthorName = $formValues.querySelector('.addAuthorName')?.value;
+  if(removeAuthorName || setAuthorName != null && setAuthorName !== '')
+    vals['setAuthorName'] = setAuthorName;
+  if(addAuthorName != null && addAuthorName !== '')
+    vals['addAuthorName'] = addAuthorName;
+  var removeAuthorName = $formValues.querySelector('.removeAuthorName')?.value;
+  if(removeAuthorName != null && removeAuthorName !== '')
+    vals['removeAuthorName'] = removeAuthorName;
+
+  var valueAuthorUrl = $formValues.querySelector('.valueAuthorUrl')?.value;
+  var removeAuthorUrl = $formValues.querySelector('.removeAuthorUrl')?.value === 'true';
+  var setAuthorUrl = removeAuthorUrl ? null : $formValues.querySelector('.setAuthorUrl')?.value;
+  var addAuthorUrl = $formValues.querySelector('.addAuthorUrl')?.value;
+  if(removeAuthorUrl || setAuthorUrl != null && setAuthorUrl !== '')
+    vals['setAuthorUrl'] = setAuthorUrl;
+  if(addAuthorUrl != null && addAuthorUrl !== '')
+    vals['addAuthorUrl'] = addAuthorUrl;
+  var removeAuthorUrl = $formValues.querySelector('.removeAuthorUrl')?.value;
+  if(removeAuthorUrl != null && removeAuthorUrl !== '')
+    vals['removeAuthorUrl'] = removeAuthorUrl;
+
   var valueEndDateTime = $formValues.querySelector('.valueEndDateTime')?.value;
   var removeEndDateTime = $formValues.querySelector('.removeEndDateTime')?.value === 'true';
   var setEndDateTime = removeEndDateTime ? null : $formValues.querySelector('.setEndDateTime')?.value;
@@ -1038,6 +1232,18 @@ async function patchCompanyEvent($formFilters, $formValues, target, pageId, succ
   var removePrice = $formValues.querySelector('.removePrice')?.value;
   if(removePrice != null && removePrice !== '')
     vals['removePrice'] = removePrice;
+
+  var valuePageImageUri = $formValues.querySelector('.valuePageImageUri')?.value;
+  var removePageImageUri = $formValues.querySelector('.removePageImageUri')?.value === 'true';
+  var setPageImageUri = removePageImageUri ? null : $formValues.querySelector('.setPageImageUri')?.value;
+  var addPageImageUri = $formValues.querySelector('.addPageImageUri')?.value;
+  if(removePageImageUri || setPageImageUri != null && setPageImageUri !== '')
+    vals['setPageImageUri'] = setPageImageUri;
+  if(addPageImageUri != null && addPageImageUri !== '')
+    vals['addPageImageUri'] = addPageImageUri;
+  var removePageImageUri = $formValues.querySelector('.removePageImageUri')?.value;
+  if(removePageImageUri != null && removePageImageUri !== '')
+    vals['removePageImageUri'] = removePageImageUri;
 
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   var removePageId = $formValues.querySelector('.removePageId')?.value === 'true';
@@ -1147,6 +1353,54 @@ async function patchCompanyEvent($formFilters, $formValues, target, pageId, succ
   if(removeStoreUrl != null && removeStoreUrl !== '')
     vals['removeStoreUrl'] = removeStoreUrl;
 
+  var valueDialogTemplate = $formValues.querySelector('.valueDialogTemplate')?.value;
+  var removeDialogTemplate = $formValues.querySelector('.removeDialogTemplate')?.value === 'true';
+  var setDialogTemplate = removeDialogTemplate ? null : $formValues.querySelector('.setDialogTemplate')?.value;
+  var addDialogTemplate = $formValues.querySelector('.addDialogTemplate')?.value;
+  if(removeDialogTemplate || setDialogTemplate != null && setDialogTemplate !== '')
+    vals['setDialogTemplate'] = setDialogTemplate;
+  if(addDialogTemplate != null && addDialogTemplate !== '')
+    vals['addDialogTemplate'] = addDialogTemplate;
+  var removeDialogTemplate = $formValues.querySelector('.removeDialogTemplate')?.value;
+  if(removeDialogTemplate != null && removeDialogTemplate !== '')
+    vals['removeDialogTemplate'] = removeDialogTemplate;
+
+  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
+  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value === 'true';
+  var setPageImageAlt = removePageImageAlt ? null : $formValues.querySelector('.setPageImageAlt')?.value;
+  var addPageImageAlt = $formValues.querySelector('.addPageImageAlt')?.value;
+  if(removePageImageAlt || setPageImageAlt != null && setPageImageAlt !== '')
+    vals['setPageImageAlt'] = setPageImageAlt;
+  if(addPageImageAlt != null && addPageImageAlt !== '')
+    vals['addPageImageAlt'] = addPageImageAlt;
+  var removePageImageAlt = $formValues.querySelector('.removePageImageAlt')?.value;
+  if(removePageImageAlt != null && removePageImageAlt !== '')
+    vals['removePageImageAlt'] = removePageImageAlt;
+
+  var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
+  var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value === 'true';
+  var setLabelsString = removeLabelsString ? null : $formValues.querySelector('.setLabelsString')?.value;
+  var addLabelsString = $formValues.querySelector('.addLabelsString')?.value;
+  if(removeLabelsString || setLabelsString != null && setLabelsString !== '')
+    vals['setLabelsString'] = setLabelsString;
+  if(addLabelsString != null && addLabelsString !== '')
+    vals['addLabelsString'] = addLabelsString;
+  var removeLabelsString = $formValues.querySelector('.removeLabelsString')?.value;
+  if(removeLabelsString != null && removeLabelsString !== '')
+    vals['removeLabelsString'] = removeLabelsString;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value === 'true';
+  var setLabels = removeLabels ? null : $formValues.querySelector('.setLabels')?.value;
+  var addLabels = $formValues.querySelector('.addLabels')?.value;
+  if(removeLabels || setLabels != null && setLabels !== '')
+    vals['setLabels'] = JSON.parse(setLabels);
+  if(addLabels != null && addLabels !== '')
+    vals['addLabels'] = addLabels;
+  var removeLabels = $formValues.querySelector('.removeLabels')?.value;
+  if(removeLabels != null && removeLabels !== '')
+    vals['removeLabels'] = removeLabels;
+
   patchCompanyEventVals(pageId == null ? deparam(window.location.search ? window.location.search.substring(1) : window.location.search) : [{name:'fq', value:'pageId:' + pageId}], vals, target, success, error);
 }
 
@@ -1189,6 +1443,14 @@ function patchCompanyEventFilters($formFilters) {
     if(filterStartDateTime != null && filterStartDateTime !== '')
       filters.push({ name: 'fq', value: 'startDateTime:' + filterStartDateTime });
 
+    var filterAuthorName = $formFilters.querySelector('.valueAuthorName')?.value;
+    if(filterAuthorName != null && filterAuthorName !== '')
+      filters.push({ name: 'fq', value: 'authorName:' + filterAuthorName });
+
+    var filterAuthorUrl = $formFilters.querySelector('.valueAuthorUrl')?.value;
+    if(filterAuthorUrl != null && filterAuthorUrl !== '')
+      filters.push({ name: 'fq', value: 'authorUrl:' + filterAuthorUrl });
+
     var filterEndDateTime = $formFilters.querySelector('.valueEndDateTime')?.value;
     if(filterEndDateTime != null && filterEndDateTime !== '')
       filters.push({ name: 'fq', value: 'endDateTime:' + filterEndDateTime });
@@ -1196,6 +1458,10 @@ function patchCompanyEventFilters($formFilters) {
     var filterPrice = $formFilters.querySelector('.valuePrice')?.value;
     if(filterPrice != null && filterPrice !== '')
       filters.push({ name: 'fq', value: 'price:' + filterPrice });
+
+    var filterPageImageUri = $formFilters.querySelector('.valuePageImageUri')?.value;
+    if(filterPageImageUri != null && filterPageImageUri !== '')
+      filters.push({ name: 'fq', value: 'pageImageUri:' + filterPageImageUri });
 
     var filterPageId = $formFilters.querySelector('.valuePageId')?.value;
     if(filterPageId != null && filterPageId !== '')
@@ -1268,6 +1534,34 @@ function patchCompanyEventFilters($formFilters) {
     var filterLocationLinks = $formFilters.querySelector('.valueLocationLinks')?.value;
     if(filterLocationLinks != null && filterLocationLinks !== '')
       filters.push({ name: 'fq', value: 'locationLinks:' + filterLocationLinks });
+
+    var filterDialogTemplate = $formFilters.querySelector('.valueDialogTemplate')?.value;
+    if(filterDialogTemplate != null && filterDialogTemplate !== '')
+      filters.push({ name: 'fq', value: 'dialogTemplate:' + filterDialogTemplate });
+
+    var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
+    if(filterPageImageWidth != null && filterPageImageWidth !== '')
+      filters.push({ name: 'fq', value: 'pageImageWidth:' + filterPageImageWidth });
+
+    var filterPageImageHeight = $formFilters.querySelector('.valuePageImageHeight')?.value;
+    if(filterPageImageHeight != null && filterPageImageHeight !== '')
+      filters.push({ name: 'fq', value: 'pageImageHeight:' + filterPageImageHeight });
+
+    var filterPageImageType = $formFilters.querySelector('.valuePageImageType')?.value;
+    if(filterPageImageType != null && filterPageImageType !== '')
+      filters.push({ name: 'fq', value: 'pageImageType:' + filterPageImageType });
+
+    var filterPageImageAlt = $formFilters.querySelector('.valuePageImageAlt')?.value;
+    if(filterPageImageAlt != null && filterPageImageAlt !== '')
+      filters.push({ name: 'fq', value: 'pageImageAlt:' + filterPageImageAlt });
+
+    var filterLabelsString = $formFilters.querySelector('.valueLabelsString')?.value;
+    if(filterLabelsString != null && filterLabelsString !== '')
+      filters.push({ name: 'fq', value: 'labelsString:' + filterLabelsString });
+
+    var filterLabels = $formFilters.querySelector('.valueLabels')?.value;
+    if(filterLabels != null && filterLabels !== '')
+      filters.push({ name: 'fq', value: 'labels:' + filterLabels });
   }
   return filters;
 }
@@ -1359,6 +1653,14 @@ async function postCompanyEvent($formValues, target, success, error) {
   if(valueStartDateTime != null && valueStartDateTime !== '')
     vals['startDateTime'] = valueStartDateTime;
 
+  var valueAuthorName = $formValues.querySelector('.valueAuthorName')?.value;
+  if(valueAuthorName != null && valueAuthorName !== '')
+    vals['authorName'] = valueAuthorName;
+
+  var valueAuthorUrl = $formValues.querySelector('.valueAuthorUrl')?.value;
+  if(valueAuthorUrl != null && valueAuthorUrl !== '')
+    vals['authorUrl'] = valueAuthorUrl;
+
   var valueEndDateTime = $formValues.querySelector('.valueEndDateTime')?.value;
   if(valueEndDateTime != null && valueEndDateTime !== '')
     vals['endDateTime'] = valueEndDateTime;
@@ -1366,6 +1668,10 @@ async function postCompanyEvent($formValues, target, success, error) {
   var valuePrice = $formValues.querySelector('.valuePrice')?.value;
   if(valuePrice != null && valuePrice !== '')
     vals['price'] = valuePrice;
+
+  var valuePageImageUri = $formValues.querySelector('.valuePageImageUri')?.value;
+  if(valuePageImageUri != null && valuePageImageUri !== '')
+    vals['pageImageUri'] = valuePageImageUri;
 
   var valuePageId = $formValues.querySelector('.valuePageId')?.value;
   if(valuePageId != null && valuePageId !== '')
@@ -1402,6 +1708,22 @@ async function postCompanyEvent($formValues, target, success, error) {
   var valueStoreUrl = $formValues.querySelector('.valueStoreUrl')?.value;
   if(valueStoreUrl != null && valueStoreUrl !== '')
     vals['storeUrl'] = valueStoreUrl;
+
+  var valueDialogTemplate = $formValues.querySelector('.valueDialogTemplate')?.value;
+  if(valueDialogTemplate != null && valueDialogTemplate !== '')
+    vals['dialogTemplate'] = valueDialogTemplate;
+
+  var valuePageImageAlt = $formValues.querySelector('.valuePageImageAlt')?.value;
+  if(valuePageImageAlt != null && valuePageImageAlt !== '')
+    vals['pageImageAlt'] = valuePageImageAlt;
+
+  var valueLabelsString = $formValues.querySelector('.valueLabelsString')?.value;
+  if(valueLabelsString != null && valueLabelsString !== '')
+    vals['labelsString'] = valueLabelsString;
+
+  var valueLabels = $formValues.querySelector('.valueLabels')?.value;
+  if(valueLabels != null && valueLabels !== '')
+    vals['labels'] = JSON.parse(valueLabels);
 
   fetch(
     '/en-us/api/event'

@@ -110,7 +110,10 @@ async function websocketSpineDocInner(apiRequest) {
         var inputLessonNum = null;
         var inputName = null;
         var inputDescription = null;
+        var inputExampleClassSimpleName = null;
+        var inputExampleClassGenericSimpleName = null;
         var inputPageVideoUrl = null;
+        var inputDialogTemplate = null;
         var inputPageImageWidth = null;
         var inputPageImageHeight = null;
         var inputPageImageType = null;
@@ -188,8 +191,14 @@ async function websocketSpineDocInner(apiRequest) {
           inputName = $response.querySelector('.SpineDoc_Page_name');
         if(vars.includes('description'))
           inputDescription = $response.querySelector('.SpineDoc_Page_description');
+        if(vars.includes('exampleClassSimpleName'))
+          inputExampleClassSimpleName = $response.querySelector('.SpineDoc_Page_exampleClassSimpleName');
+        if(vars.includes('exampleClassGenericSimpleName'))
+          inputExampleClassGenericSimpleName = $response.querySelector('.SpineDoc_Page_exampleClassGenericSimpleName');
         if(vars.includes('pageVideoUrl'))
           inputPageVideoUrl = $response.querySelector('.SpineDoc_Page_pageVideoUrl');
+        if(vars.includes('dialogTemplate'))
+          inputDialogTemplate = $response.querySelector('.SpineDoc_Page_dialogTemplate');
         if(vars.includes('pageImageWidth'))
           inputPageImageWidth = $response.querySelector('.SpineDoc_Page_pageImageWidth');
         if(vars.includes('pageImageHeight'))
@@ -540,6 +549,26 @@ async function websocketSpineDocInner(apiRequest) {
           addGlow(document.querySelector('.SpineDoc_Page_description'));
         }
 
+        if(inputExampleClassSimpleName) {
+          document.querySelectorAll('.SpineDoc_Page_exampleClassSimpleName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputExampleClassSimpleName.getAttribute('value');
+            else
+              item.textContent = inputExampleClassSimpleName.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_exampleClassSimpleName'));
+        }
+
+        if(inputExampleClassGenericSimpleName) {
+          document.querySelectorAll('.SpineDoc_Page_exampleClassGenericSimpleName').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputExampleClassGenericSimpleName.getAttribute('value');
+            else
+              item.textContent = inputExampleClassGenericSimpleName.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_exampleClassGenericSimpleName'));
+        }
+
         if(inputPageVideoUrl) {
           document.querySelectorAll('.SpineDoc_Page_pageVideoUrl').forEach((item, index) => {
             if(typeof item.value !== 'undefined')
@@ -548,6 +577,16 @@ async function websocketSpineDocInner(apiRequest) {
               item.textContent = inputPageVideoUrl.textContent;
           });
           addGlow(document.querySelector('.SpineDoc_Page_pageVideoUrl'));
+        }
+
+        if(inputDialogTemplate) {
+          document.querySelectorAll('.SpineDoc_Page_dialogTemplate').forEach((item, index) => {
+            if(typeof item.value !== 'undefined')
+              item.value = inputDialogTemplate.getAttribute('value');
+            else
+              item.textContent = inputDialogTemplate.textContent;
+          });
+          addGlow(document.querySelector('.SpineDoc_Page_dialogTemplate'));
         }
 
         if(inputPageImageWidth) {
@@ -949,9 +988,21 @@ function searchSpineDocFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
+    var filterExampleClassSimpleName = $formFilters.querySelector('.valueExampleClassSimpleName')?.value;
+    if(filterExampleClassSimpleName != null && filterExampleClassSimpleName !== '')
+      filters.push({ name: 'fq', value: 'exampleClassSimpleName:' + filterExampleClassSimpleName });
+
+    var filterExampleClassGenericSimpleName = $formFilters.querySelector('.valueExampleClassGenericSimpleName')?.value;
+    if(filterExampleClassGenericSimpleName != null && filterExampleClassGenericSimpleName !== '')
+      filters.push({ name: 'fq', value: 'exampleClassGenericSimpleName:' + filterExampleClassGenericSimpleName });
+
     var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
     if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
       filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
+
+    var filterDialogTemplate = $formFilters.querySelector('.valueDialogTemplate')?.value;
+    if(filterDialogTemplate != null && filterDialogTemplate !== '')
+      filters.push({ name: 'fq', value: 'dialogTemplate:' + filterDialogTemplate });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1378,6 +1429,30 @@ async function patchSpineDoc($formFilters, $formValues, target, pageId, success,
   if(removeDescription != null && removeDescription !== '')
     vals['removeDescription'] = removeDescription;
 
+  var valueExampleClassSimpleName = $formValues.querySelector('.valueExampleClassSimpleName')?.value;
+  var removeExampleClassSimpleName = $formValues.querySelector('.removeExampleClassSimpleName')?.value === 'true';
+  var setExampleClassSimpleName = removeExampleClassSimpleName ? null : $formValues.querySelector('.setExampleClassSimpleName')?.value;
+  var addExampleClassSimpleName = $formValues.querySelector('.addExampleClassSimpleName')?.value;
+  if(removeExampleClassSimpleName || setExampleClassSimpleName != null && setExampleClassSimpleName !== '')
+    vals['setExampleClassSimpleName'] = setExampleClassSimpleName;
+  if(addExampleClassSimpleName != null && addExampleClassSimpleName !== '')
+    vals['addExampleClassSimpleName'] = addExampleClassSimpleName;
+  var removeExampleClassSimpleName = $formValues.querySelector('.removeExampleClassSimpleName')?.value;
+  if(removeExampleClassSimpleName != null && removeExampleClassSimpleName !== '')
+    vals['removeExampleClassSimpleName'] = removeExampleClassSimpleName;
+
+  var valueExampleClassGenericSimpleName = $formValues.querySelector('.valueExampleClassGenericSimpleName')?.value;
+  var removeExampleClassGenericSimpleName = $formValues.querySelector('.removeExampleClassGenericSimpleName')?.value === 'true';
+  var setExampleClassGenericSimpleName = removeExampleClassGenericSimpleName ? null : $formValues.querySelector('.setExampleClassGenericSimpleName')?.value;
+  var addExampleClassGenericSimpleName = $formValues.querySelector('.addExampleClassGenericSimpleName')?.value;
+  if(removeExampleClassGenericSimpleName || setExampleClassGenericSimpleName != null && setExampleClassGenericSimpleName !== '')
+    vals['setExampleClassGenericSimpleName'] = setExampleClassGenericSimpleName;
+  if(addExampleClassGenericSimpleName != null && addExampleClassGenericSimpleName !== '')
+    vals['addExampleClassGenericSimpleName'] = addExampleClassGenericSimpleName;
+  var removeExampleClassGenericSimpleName = $formValues.querySelector('.removeExampleClassGenericSimpleName')?.value;
+  if(removeExampleClassGenericSimpleName != null && removeExampleClassGenericSimpleName !== '')
+    vals['removeExampleClassGenericSimpleName'] = removeExampleClassGenericSimpleName;
+
   var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
   var removePageVideoUrl = $formValues.querySelector('.removePageVideoUrl')?.value === 'true';
   var setPageVideoUrl = removePageVideoUrl ? null : $formValues.querySelector('.setPageVideoUrl')?.value;
@@ -1604,9 +1679,21 @@ function patchSpineDocFilters($formFilters) {
     if(filterDescription != null && filterDescription !== '')
       filters.push({ name: 'fq', value: 'description:' + filterDescription });
 
+    var filterExampleClassSimpleName = $formFilters.querySelector('.valueExampleClassSimpleName')?.value;
+    if(filterExampleClassSimpleName != null && filterExampleClassSimpleName !== '')
+      filters.push({ name: 'fq', value: 'exampleClassSimpleName:' + filterExampleClassSimpleName });
+
+    var filterExampleClassGenericSimpleName = $formFilters.querySelector('.valueExampleClassGenericSimpleName')?.value;
+    if(filterExampleClassGenericSimpleName != null && filterExampleClassGenericSimpleName !== '')
+      filters.push({ name: 'fq', value: 'exampleClassGenericSimpleName:' + filterExampleClassGenericSimpleName });
+
     var filterPageVideoUrl = $formFilters.querySelector('.valuePageVideoUrl')?.value;
     if(filterPageVideoUrl != null && filterPageVideoUrl !== '')
       filters.push({ name: 'fq', value: 'pageVideoUrl:' + filterPageVideoUrl });
+
+    var filterDialogTemplate = $formFilters.querySelector('.valueDialogTemplate')?.value;
+    if(filterDialogTemplate != null && filterDialogTemplate !== '')
+      filters.push({ name: 'fq', value: 'dialogTemplate:' + filterDialogTemplate });
 
     var filterPageImageWidth = $formFilters.querySelector('.valuePageImageWidth')?.value;
     if(filterPageImageWidth != null && filterPageImageWidth !== '')
@@ -1809,6 +1896,14 @@ async function postSpineDoc($formValues, target, success, error) {
   var valueDescription = $formValues.querySelector('.valueDescription')?.value;
   if(valueDescription != null && valueDescription !== '')
     vals['description'] = valueDescription;
+
+  var valueExampleClassSimpleName = $formValues.querySelector('.valueExampleClassSimpleName')?.value;
+  if(valueExampleClassSimpleName != null && valueExampleClassSimpleName !== '')
+    vals['exampleClassSimpleName'] = valueExampleClassSimpleName;
+
+  var valueExampleClassGenericSimpleName = $formValues.querySelector('.valueExampleClassGenericSimpleName')?.value;
+  if(valueExampleClassGenericSimpleName != null && valueExampleClassGenericSimpleName !== '')
+    vals['exampleClassGenericSimpleName'] = valueExampleClassGenericSimpleName;
 
   var valuePageVideoUrl = $formValues.querySelector('.valuePageVideoUrl')?.value;
   if(valuePageVideoUrl != null && valuePageVideoUrl !== '')

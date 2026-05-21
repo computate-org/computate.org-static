@@ -363,6 +363,28 @@ Promise.all([
     facetStatsChange('SpineDoc', 'description', false);
   });
 
+  document.querySelector('#pageSelectSortSpineDoc_exampleClassSimpleName')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'exampleClassSimpleName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_exampleClassSimpleName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'exampleClassSimpleName', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_exampleClassSimpleName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'exampleClassSimpleName', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_exampleClassGenericSimpleName')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'exampleClassGenericSimpleName', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_exampleClassGenericSimpleName')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'exampleClassGenericSimpleName', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_exampleClassGenericSimpleName')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'exampleClassGenericSimpleName', false);
+  });
+
   document.querySelector('#pageSelectSortSpineDoc_pageVideoUrl')?.addEventListener('change', (event) => {
     sort('SpineDoc', 'pageVideoUrl', event.currentTarget.value);
   });
@@ -372,6 +394,17 @@ Promise.all([
   });
   document.querySelector('#pageStatsSpineDoc_pageVideoUrl')?.addEventListener('wa-hide', (event) => {
     facetStatsChange('SpineDoc', 'pageVideoUrl', false);
+  });
+
+  document.querySelector('#pageSelectSortSpineDoc_dialogTemplate')?.addEventListener('change', (event) => {
+    sort('SpineDoc', 'dialogTemplate', event.currentTarget.value);
+  });
+
+  document.querySelector('#pageStatsSpineDoc_dialogTemplate')?.addEventListener('wa-show', (event) => {
+    facetStatsChange('SpineDoc', 'dialogTemplate', true);
+  });
+  document.querySelector('#pageStatsSpineDoc_dialogTemplate')?.addEventListener('wa-hide', (event) => {
+    facetStatsChange('SpineDoc', 'dialogTemplate', false);
   });
 
   document.querySelector('#pageSelectSortSpineDoc_pageImageWidth')?.addEventListener('change', (event) => {

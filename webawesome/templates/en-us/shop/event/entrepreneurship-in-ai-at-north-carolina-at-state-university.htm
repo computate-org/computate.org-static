@@ -1,0 +1,17 @@
+{% extends "en-us/CompanyEvent.htm" %}
+{% block htmMetaPageLayout %}
+{{ super() }}
+    <meta name="result.pageId" content="{{ result.shortFileName }}"/>
+    <meta name="result.name" content="Entrepreneurship in AI at North Carolina A&T State University"/>
+    <meta name="result.description" content="Benjamin Branch will present Entrepreheurship in AI to North Carolina A&T State University for Genomics data science and cloud computing, Mon, June 8, 2026"/>
+    <meta name="result.authorName" content="Benjamin Branch" />
+    <meta name="result.authorUrl" content="https://www.linkedin.com/in/geobranch/" />
+    <meta name="result.startDateTime" content="2026-06-08T09:00:00.000[America/New_York]"/>
+    <meta name="result.endDateTime" content="2026-06-08T10:00:00.000[America/New_York]"/>
+    <meta name="result.location" content='{ "coordinates": [ -79.77168865927337, 36.07691776600018 ], "type": "Point" }'/>
+    <meta name="result.pageImageUri" content='/jpg/nedsi-conference-2025.jpg'/>
+    <meta name="result.displayPageFrFR" content='{{ SITE_BASE_URL }}/fr-fr/visiter/evenement/{{ result.pageId }}'/>
+{% endblock htmMetaPageLayout %}
+{% block htmBodyMiddleArticle %}
+{% include result.dialogTemplate %}
+{% endblock %}
